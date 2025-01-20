@@ -8,7 +8,7 @@ describe('Start Gen Testcase', () => {
     const outputFolderPath = path.join(__dirname, 'auto_gen_specs');
 
     beforeAll(() => {
-        // Generate all test files
+
 
     });
     generateAllSpecsFromFolder(dtoFolderPath, outputFolderPath);

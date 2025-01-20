@@ -8,7 +8,8 @@ export const createUserDTO = {
     birthday: new Date().toISOString(),
     age: 22,
     role: UserRole.USER,
-    isActive: true
+    isActive: true,
+    additionalData: null,
 };
 
 // export class createUserDTO {

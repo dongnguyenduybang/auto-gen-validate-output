@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { generateBooleanTests, generateDateTests, generateDefaultTests, generateEnumTests, generateNumberTests, generateStringTests } from './template/template';
+import { generateAnyTests, generateBooleanTests, generateDateTests, generateEnumTests, generateNumberTests, generateStringTests } from './template/template';
 import { UserRole } from './dtos/enums/user-role.enum';
 
 function generateTestSpec(obj: Record<string, any>, outputFilePath: string, enums: Record<string, Record<string, any>>) {
@@ -20,11 +20,8 @@ function generateTestSpec(obj: Record<string, any>, outputFilePath: string, enum
                 } else {
                     console.error(`Value of ${key} does not match enum ${enumType}`);
                 }
-                continue; // Không xử lý thêm vì đã là enum
+                continue;
             }
-
-
-
 
             if (type === 'string' && !isNaN(Date.parse(value))) {
 
@@ -46,7 +43,7 @@ function generateTestSpec(obj: Record<string, any>, outputFilePath: string, enum
                         break;
 
                     default:
-                        testCases.push(generateDefaultTests(key, type));
+                        testCases.push(generateAnyTests(key));
                         break;
                 }
             }

@@ -236,4 +236,43 @@
             });
         });
     
+
+        describe('additionalData should accept any value', () => {
+            
+            it('should pass with string value', async () => {
+                const obj = { additionalData: 'a string value' };
+               
+            });
+
+            it('should pass with number value', async () => {
+                const obj = { additionalData: 123 };
+            
+            });
+
+            it('should pass with boolean value', async () => {
+                const obj = { additionalData: true };
+                
+            });
+
+            it('should pass with object value', async () => {
+                const obj = { additionalData: { key: 'value' } };
+              
+            });
+
+            it('should pass with array value', async () => {
+                const obj = { additionalData: [1, 2, 3] };
+               
+            });
+
+            it('should pass with null value', async () => {
+                const obj = { additionalData: null };
+               
+            });
+
+            it('should pass with undefined value', async () => {
+                const obj = { additionalData: undefined };
+               
+            });
+        });
+    
         

@@ -170,25 +170,43 @@ export function generateEnumTests(property: string, enumType: Record<string, any
     `;
 }
 
-
-
-
-export function generateDefaultTests(property: string, type: string): string {
+export function generateAnyTests(property: string): string {
     return `
-        describe('${property} should be a valid ${type}', () => {
-            it('should pass with a valid value', async () => {
-                const obj = { ${property}: "valid ${type}" };
+        describe('${property} should accept any value', () => {
+            
+            it('should pass with string value', async () => {
+                const obj = { ${property}: 'a string value' };
+               
+            });
+
+            it('should pass with number value', async () => {
+                const obj = { ${property}: 123 };
             
             });
 
-            it('should fail with null', async () => {
-                const obj = { ${property}: null };
-            
-            });
-
-            it('should fail with undefined', async () => {
-                const obj = { ${property}: undefined };
+            it('should pass with boolean value', async () => {
+                const obj = { ${property}: true };
                 
+            });
+
+            it('should pass with object value', async () => {
+                const obj = { ${property}: { key: 'value' } };
+              
+            });
+
+            it('should pass with array value', async () => {
+                const obj = { ${property}: [1, 2, 3] };
+               
+            });
+
+            it('should pass with null value', async () => {
+                const obj = { ${property}: null };
+               
+            });
+
+            it('should pass with undefined value', async () => {
+                const obj = { ${property}: undefined };
+               
             });
         });
     `;
