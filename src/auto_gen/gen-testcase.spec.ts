@@ -1,27 +1,53 @@
-import { generateAllSpecsFromFolder } from './gen-testcase';
+import { logPropertyConstraints } from './gens/gen-property';
 import * as path from 'path';
 import * as fs from 'fs';
+
+console.log(new Date())
 
 describe('Start Gen Testcase', () => {
 
     const dtoFolderPath = path.join(__dirname, 'dtos');
     const outputFolderPath = path.join(__dirname, 'auto_gen_specs');
 
-    generateAllSpecsFromFolder(dtoFolderPath, outputFolderPath);
+    fs.readdirSync(dtoFolderPath).forEach((file) => {
+        const filePath = path.join(dtoFolderPath, file);
 
-    describe('Generated Test Files', () => {
-        let specFiles: string[] = [];
+        if (file.endsWith('.dto.ts') || file.endsWith('.dto.js')) {
+            try {
+                // Import module từ file
+                const dtoModule = require(filePath);
 
-        specFiles = fs.readdirSync(outputFolderPath).filter((file) => file.endsWith('.spec.ts'));
+                // Duyệt qua tất cả các export trong file để tìm các class
+                Object.keys(dtoModule).forEach((exportedKey) => {
+                    const exportedClass = dtoModule[exportedKey];
 
-        specFiles.forEach((file) => {
-            const filePath = path.join(outputFolderPath, file);
+                    // Kiểm tra nếu đối tượng export là một class (constructor)
+                    if (typeof exportedClass === 'function' && /^class\s/.test(Function.prototype.toString.call(exportedClass))) {
+                        console.log(`Processing class: ${exportedKey} from file: ${file}`);
+                        logPropertyConstraints(exportedClass); // Gọi hàm logPropertyConstraints cho class
+                    }
+                });
+            } catch (error) {
+                console.error(`Error loading file: ${file}`, error);
+            }
+        }
+    })
 
-            describe(`Test Suite for ${file}`, () => {
+    // describe('Generated Test Files', () => {
+    //     let specFiles: string[] = [];
 
-                require(filePath);
+    //     specFiles = fs.readdirSync(outputFolderPath).filter((file) => file.endsWith('.spec.ts'));
 
-            });
-        });
-    });
+    //     specFiles.forEach((file) => {
+    //         const filePath = path.join(outputFolderPath, file);
+
+    //         describe(`Test Suite for ${file}`, () => {
+
+    //             require(filePath);
+
+    //         });
+    //     });
+    // });
 });
+
+
