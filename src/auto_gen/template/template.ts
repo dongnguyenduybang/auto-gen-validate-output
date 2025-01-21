@@ -211,3 +211,41 @@ export function generateAnyTests(property: string): string {
         });
     `;
 }
+
+export function generateArrayTests(property: string): string {
+    return `
+        describe('${property} should be a valid array', () => {
+
+            it('should pass with an empty array', async () => {
+                const obj = { ${property}: [] };
+              
+            });
+
+            it('should pass with a valid array of values', async () => {
+                const obj = { ${property}: [1, 2, 3] };
+               
+            });
+
+            it('should fail with null', async () => {
+                const obj = { ${property}: null };
+               
+            });
+
+            it('should fail with undefined', async () => {
+                const obj = { ${property}: undefined };
+               
+            });
+
+            it('should fail with a non-array value', async () => {
+                const obj = { ${property}: 'not an array' };
+              
+            });
+
+            it('should fail with an array containing invalid elements', async () => {
+                const obj = { ${property}: ['invalid_element', 123] };
+               
+            });
+
+        });
+    `;
+}

@@ -10,6 +10,7 @@ export const createUserDTO = {
     role: UserRole.USER,
     isActive: true,
     additionalData: null,
+    tags: ['tag1', 'tag2']
 };
 
 // export class createUserDTO {

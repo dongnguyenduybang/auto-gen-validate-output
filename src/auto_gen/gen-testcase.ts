@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { generateAnyTests, generateBooleanTests, generateDateTests, generateEnumTests, generateNumberTests, generateStringTests } from './template/template';
+import { generateAnyTests, generateArrayTests, generateBooleanTests, generateDateTests, generateEnumTests, generateNumberTests, generateStringTests } from './template/template';
 import { UserRole } from './dtos/enums/user-role.enum';
 
 function generateTestSpec(obj: Record<string, any>, outputFilePath: string, enums: Record<string, Record<string, any>>) {
@@ -11,7 +11,7 @@ function generateTestSpec(obj: Record<string, any>, outputFilePath: string, enum
         if (obj.hasOwnProperty(key)) {
 
             const value = obj[key];
-            const type = typeof value;
+            const type = Array.isArray(value) ? 'array' : typeof value;
 
             if (enums[key]) {
                 const enumType = enums[key];
@@ -41,6 +41,10 @@ function generateTestSpec(obj: Record<string, any>, outputFilePath: string, enum
                     case 'boolean':
                         testCases.push(generateBooleanTests(key));
                         break;
+                    case 'array':
+                        testCases.push(generateArrayTests(key));
+                        break;
+
 
                     default:
                         testCases.push(generateAnyTests(key));
