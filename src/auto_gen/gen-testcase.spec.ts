@@ -38,13 +38,11 @@ describe('Start Gen Testcase', () => {
                         const inputPayload = {
                             username: null,
                             address: null,
-                            typeAny: null,
-                            birthday: null,
-                            isActive: true,
-                            tags: null,
-                            age: null
-
-
+                            // typeAny: null,
+                            // birthday: null,
+                            // isActive: true,
+                            // tags: null,
+                            // age: null
                         };
 
                         result.forEach((item, index) => {
@@ -66,7 +64,6 @@ describe('Start Gen Testcase', () => {
                                     }
                                 });
                         
-                               
                                 if (matchingKeysCount > 1) {
                                     errors.push(\`\${matchingKeysCount} matching keys between inputPayload and testCasePayload\`);
                                 }
@@ -81,8 +78,6 @@ describe('Start Gen Testcase', () => {
                             `;
 
                         fs.writeFileSync(outputFilePath, fileContent, 'utf-8');
-
-
                     }
                 });
             } catch (error) {

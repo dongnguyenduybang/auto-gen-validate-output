@@ -22,7 +22,6 @@ export function logPropertyConstraints<T>(cls: new () => T) {
     });
 
     const baseValues = { ...instance };
-    console.log(baseValues)
     const testCases = generateTestCases(baseValues, propertyDecorators);
 
     return testCases
@@ -69,9 +68,7 @@ export function generateExpectedDetail(testCase: Record<string, any>): string[] 
         },
         username: (value) => {
             const errors: string[] = [];
-            if (value === null || value === undefined || value === '') {
-                errors.push('username should not be null, undefined or empty');
-            } else if (typeof value !== 'string') {
+            if (typeof value !== 'string') {
                 errors.push('username should be a string');
             } else if (value.length <= 1 || value.length >= 255) {
                 errors.push('username should have a length between 1 and 255');
