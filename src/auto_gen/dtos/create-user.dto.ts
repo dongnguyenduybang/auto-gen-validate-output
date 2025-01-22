@@ -11,30 +11,30 @@ export class CreateUserDTO {
 
     @IsOptional()
     @IsString()
+    @Min(1)
+    @Max(255)
     address?: string = undefined;
 
-    // @IsOptional()
-    // @IsDate()
-    // birthday?: Date = undefined;
+    @IsOptional()
+    @IsDate()
+    birthday?: Date = undefined;
 
+    @Min(1)
+    @IsOptional()
+    @IsNumber()
+    age?: number = undefined;
 
+    @IsOptional()
+    @IsBoolean()
+    isActive: boolean = undefined;
 
-    // @Min(1)
-    // @IsOptional()
-    // @IsNumber()
-    // age?: number = undefined;
+    @IsOptional()
+    @IsAny()
+    typeAny?: any = undefined;
 
-    // @IsOptional()
-    // @IsBoolean()
-    // isActive: boolean = undefined;
-
-    // @IsOptional()
-    // @IsAny()
-    // typeAny?: any = undefined;
-
-    // @IsOptional()
-    // @IsArray()
-    // tags?: string[] = undefined;
+    @IsOptional()
+    @IsArray()
+    tags?: string[] = undefined;
 }
 
 // Decorator Min

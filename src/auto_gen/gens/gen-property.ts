@@ -1,5 +1,5 @@
 
-export function logPropertyConstraints<T>(cls: new () => T): void {
+export function logPropertyConstraints<T>(cls: new () => T) {
     const instance = new cls();
     const keys = Object.keys(instance) as (keyof T)[];
     const propertyDecorators: Record<string, any[]> = {};
@@ -8,10 +8,14 @@ export function logPropertyConstraints<T>(cls: new () => T): void {
         const property = key as string;
 
         const type = Reflect.getMetadata('type', instance, property);
+        const min = Reflect.getMetadata('min', instance, property);
+        const max = Reflect.getMetadata('max', instance, property);
         const isOptional = Reflect.getMetadata('optional', instance, property);
 
         const decorators = [];
         if (type !== undefined) decorators.push({ decorator: 'Type', value: type });
+        if (type !== undefined) decorators.push({ decorator: 'Min', value: min });
+        if (type !== undefined) decorators.push({ decorator: 'Max', value: max });
         if (isOptional) decorators.push({ decorator: 'Optional', value: true });
 
         propertyDecorators[property] = decorators;
@@ -21,7 +25,8 @@ export function logPropertyConstraints<T>(cls: new () => T): void {
     console.log(baseValues)
     const testCases = generateTestCases(baseValues, propertyDecorators);
 
-    console.log(JSON.stringify(testCases, null, 2));
+    return testCases
+
 }
 
 function generateTestCases(baseValues: Record<string, any>, decorators: Record<string, any[]>): any[] {
@@ -47,7 +52,8 @@ function generateTestCases(baseValues: Record<string, any>, decorators: Record<s
     });
 }
 
-function generateExpectedDetail(testCase: Record<string, any>): string[] {
+
+export function generateExpectedDetail(testCase: Record<string, any>): string[] {
     const details: string[] = [];
     const fieldValidators: Record<string, (value: any) => string[]> = {
         age: (value) => {
@@ -67,7 +73,7 @@ function generateExpectedDetail(testCase: Record<string, any>): string[] {
                 errors.push('username should not be null, undefined or empty');
             } else if (typeof value !== 'string') {
                 errors.push('username should be a string');
-            } else if (value.length < 1 || value.length > 255) {
+            } else if (value.length <= 1 || value.length >= 255) {
                 errors.push('username should have a length between 1 and 255');
             }
             return errors;
@@ -76,6 +82,8 @@ function generateExpectedDetail(testCase: Record<string, any>): string[] {
             const errors: string[] = [];
             if (value !== undefined && typeof value !== 'string') {
                 errors.push('address should be a string');
+            } else if (value.length <= 1 || value.length >= 255) {
+                errors.push('address should have a length between 1 and 255');
             }
             return errors;
         },
@@ -105,61 +113,55 @@ function generateExpectedDetail(testCase: Record<string, any>): string[] {
             return errors;
         },
     };
-
     Object.entries(testCase).forEach(([key, value]) => {
 
-        if (fieldValidators[key]) {
+        if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+            return;
+        }
+        if (value === null) {
+            details.push(`${key} is null`);
+        } else if (value === undefined) {
+            details.push(`${key} is missing`);
+        } else if (value === '') {
+            details.push(`${key} is empty`);
+        } else if (fieldValidators[key]) {
             const errors = fieldValidators[key](value);
             details.push(...errors);
         }
-
-        const expectedMessages: Record<string, string[]> = {
-            null: ['is null'],
-            undefined: ['is missing'],
-            '': ['is empty'],
-        };
-
-        Object.entries(expectedMessages).forEach(([checkValue, message]) => {
-
-            if (value === checkValue) details.push(`${key} ${message}`);
-        });
-
-        if (typeof value === 'number' && isNaN(value)) {
-            details.push(`${key} should be a valid number`);
-        }
     });
 
-    return details.length > 0 ? details : ['Valid test case'];
+    return details;
 }
 
 function generateVariantsForField(value: any, fieldDecorators: any[]): any[] {
     const variants: any[] = [];
+
     const fieldType = fieldDecorators.find((decorator) => decorator.decorator === 'Type')?.value;
     const minLength = fieldDecorators.find((decorator) => decorator.decorator === 'Min')?.value;
     const maxLength = fieldDecorators.find((decorator) => decorator.decorator === 'Max')?.value;
-
+    console.log(fieldType, minLength, maxLength)
     const addVariants = (newVariants: any[]) => variants.push(...newVariants);
 
     switch (fieldType) {
         case 'string':
-            addVariants([null, undefined, '', 'random_string']);
+            addVariants([null, undefined, ''])
             if (minLength) addVariants([''.padStart(minLength, 'a')]);
             if (maxLength) addVariants([''.padStart(maxLength, 'a')]);
             break;
         case 'number':
-            addVariants([null, undefined, '', 'random_string', 22, 0, -1]);
+            addVariants([null, undefined, '', 'random_string', 0, -1]);
             break;
         case 'boolean':
-            addVariants([null, undefined, value !== undefined ? !value : true]);
+            addVariants([null, undefined, '', 'abc', 123]);
             break;
         case 'date':
-            addVariants([null, undefined, new Date('invalid-date'), new Date()]);
+            addVariants([null, undefined, '', new Date('invalid-date')]);
             break;
         case 'any':
-            addVariants([null, undefined, {}, [], 'random_object', 123]);
+            addVariants([null, undefined, {}, [], '', 'random_object', 123]);
             break;
         case 'array':
-            addVariants([null, undefined, [], ['item1', 'item2']]);
+            addVariants([null, undefined, []]);
             break;
         default:
             addVariants([null, undefined]);
