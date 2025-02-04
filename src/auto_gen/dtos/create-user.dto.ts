@@ -1,32 +1,44 @@
-import { isDate } from 'class-validator';
+
 import 'reflect-metadata';
+import { IsAny, IsArray, IsBoolean, IsDate, IsNotEmpty, IsNotNull, IsNumber, IsOptional, IsString, MaxArray, MaxLength, Min, MinArray, MinLength } from './decorator/dto-decorator';
+
 
 export class CreateUserDTO {
 
-    @Max(255)
-    @Min(1)
-    @IsOptional()
+    @MaxLength(255)
+    @MinLength(1)
     @IsString()
-    username: string = undefined;
+    @IsNotEmpty()
+    @IsNotNull()
+    username: string = 'duy';
 
     @IsOptional()
     @IsString()
-    @Min(1)
-    @Max(255)
-    address?: string = undefined;
+    @MinLength(1)
+    @MaxLength(255)
+    @IsNotEmpty()
+    @IsNotNull()
+    address?: string = 'can tho';
 
     // @IsOptional()
     // @IsDate()
+    // @IsNotEmpty()
+    // @IsNotNul()
     // birthday?: Date = undefined;
 
     // @Min(1)
+    // @Min(100)
     // @IsOptional()
     // @IsNumber()
+    // @IsNotEmpty()
+    // @IsNotNul()
     // age?: number = undefined;
 
     // @IsOptional()
     // @IsBoolean()
-    // isActive: boolean = undefined;
+    // @IsNotEmpty()
+    // @IsNotNul()
+    // isActive?: boolean = undefined;
 
     // @IsOptional()
     // @IsAny()
@@ -34,68 +46,10 @@ export class CreateUserDTO {
 
     // @IsOptional()
     // @IsArray()
+    // @MaxArray(10)
+    // @MinArray(1)
+    // @IsNotEmpty()
+    // @IsNotNul()
     // tags?: string[] = undefined;
 }
 
-// Decorator Min
-function Min(value: number) {
-    return (target: any, propertyKey: string) => {
-        Reflect.defineMetadata('min', value, target, propertyKey);
-    };
-}
-
-// Decorator Max
-function Max(value: number) {
-    return (target: any, propertyKey: string) => {
-        Reflect.defineMetadata('max', value, target, propertyKey);
-    };
-}
-
-// Decorator IsOptional
-function IsOptional() {
-    return (target: any, propertyKey: string) => {
-        Reflect.defineMetadata('optional', true, target, propertyKey);
-    };
-}
-
-// Decorator IsString
-function IsString() {
-    return (target: any, propertyKey: string) => {
-        Reflect.defineMetadata('type', 'string', target, propertyKey);
-    };
-}
-
-// Decorator IsNumber
-function IsNumber() {
-    return (target: any, propertyKey: string) => {
-        Reflect.defineMetadata('type', 'number', target, propertyKey);
-    };
-}
-
-// Decorator IsBoolean
-function IsBoolean() {
-    return (target: any, propertyKey: string) => {
-        Reflect.defineMetadata('type', 'boolean', target, propertyKey);
-    };
-}
-
-// Decorator IsDate
-function IsDate() {
-    return (target: any, propertyKey: string) => {
-        Reflect.defineMetadata('type', 'date', target, propertyKey);
-    };
-}
-
-// Decorator IsAny
-function IsAny() {
-    return (target: any, propertyKey: string) => {
-        Reflect.defineMetadata('type', 'any', target, propertyKey);
-    };
-}
-
-// Decorator IsArray
-function IsArray() {
-    return (target: any, propertyKey: string) => {
-        Reflect.defineMetadata('type', 'array', target, propertyKey);
-    };
-}
