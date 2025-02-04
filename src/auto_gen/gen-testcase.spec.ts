@@ -1,7 +1,6 @@
 import { generateErrorCasesWithEnum } from './gens/gen-property';
 import * as path from 'path';
 import * as fs from 'fs';
-import axios from 'axios';
 import { CreateUserDTO } from './dtos/create-user.dto';
 
 describe('Start Gen Testcase', () => {
@@ -10,7 +9,6 @@ describe('Start Gen Testcase', () => {
   const outputDir = path.join(__dirname, 'auto_gen_spec');
   const defaultDTO = new CreateUserDTO();
   payload = defaultDTO
-
 
   fs.readdirSync(dtoFolderPath).forEach((file) => {
     const filePath = path.join(dtoFolderPath, file);
@@ -72,7 +70,6 @@ describe('Start Gen Testcase', () => {
 
                                 expect(errors.length).toBe(0);
 
-                
                             });
                         `;
             });
