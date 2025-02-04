@@ -45,26 +45,30 @@ describe('Start Gen Testcase', () => {
             const inputPayload = payload
 
             result.forEach((item, index) => {
+
               const testCasePayload = item.testcaseGen;
               const expectedDetail = item.expectedDetail.length > 0 ? JSON.stringify(item.expectedDetail) : ['Test case has no expected errors.'];
 
               fileContent += `
                             it('should return test case ${index + 1}: ${expectedDetail}', async () => {
+
                                 const inputPayload = ${JSON.stringify(inputPayload, null, 4)};
                                 const testCasePayload = ${JSON.stringify(testCasePayload, null, 4)};
-                                
                                 let errors = []; 
 
                                 const result = await validateTestCase(inputPayload, testCasePayload, ${exportedKey});
 
                                 if (result.valid) {
+
                                     console.log('Test case is valid.');
                                 } else {
+
                                     errors.push(...result.errors);
         
                                 }
 
                                 if (errors.length > 0) {
+                                
                                     console.log('Errors:', errors);
                                 }
 
