@@ -1,7 +1,7 @@
 export enum ErrorMessage {
-    null = 'is not null',
-    empty = 'is not empty',
-    undefined = 'is not missing',
+    null = 'should not be null',
+    empty = 'should not be empty',
+    undefined = 'should not be undefined',
     minLength = 'must be longer than or equal to',
     maxLength = 'must be less than or equal to',
     min = 'must not be less than ',
@@ -11,6 +11,7 @@ export enum ErrorMessage {
     invalidTypeBoolean = 'must be a boolean',
     invalidTypeArray = 'must be a array',
     invalidTypeDate = 'must be a date',
+    invalidTypeObj = 'must be a object',
     minArray = 'must contain at least',
     maxArray = 'must contain at most'
 }
