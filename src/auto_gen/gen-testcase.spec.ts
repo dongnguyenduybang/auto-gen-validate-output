@@ -4,6 +4,7 @@ import * as fs from 'fs';
 import { CreateUserDTO } from './dtos/create-user.dto';
 
 describe('Start Gen Testcase', () => {
+
   let payload: any;
   const dtoFolderPath = path.join(__dirname, 'dtos');
   const outputDir = path.join(__dirname, 'auto_gen_spec');
@@ -52,11 +53,10 @@ describe('Start Gen Testcase', () => {
               fileContent += `
                             it('should return test case ${index + 1}: ${expectedDetail}', async () => {
 
-                                const inputPayload = ${JSON.stringify(inputPayload, null, 4)};
                                 const testCasePayload = ${JSON.stringify(testCasePayload, null, 4)};
                                 let errors = []; 
 
-                                const result = await validateTestCase(inputPayload, testCasePayload, ${exportedKey});
+                                const result = await validateTestCase(testCasePayload, ${exportedKey});
 
                                 if (result.valid) {
 

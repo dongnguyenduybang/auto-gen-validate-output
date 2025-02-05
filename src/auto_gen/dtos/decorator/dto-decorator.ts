@@ -102,3 +102,16 @@ export function IsArray() {
     };
 }
 
+// Decorator IsObject
+export function IsObject() {
+    return (target: any, propertyKey: string) => {
+        Reflect.defineMetadata('type', 'object', target, propertyKey);
+    };
+}
+
+
+export function IsEnum() {
+    return (target: any, propertyKey: string) => {
+        Reflect.defineMetadata('type', 'enum', target, propertyKey);
+    };
+}

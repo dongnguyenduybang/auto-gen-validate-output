@@ -18,7 +18,6 @@ export function getDecorators(target: any, propertyKey: string): Record<string, 
     return decorators;
 }
 
-
 export function generateErrorVariantsForField(fieldValue: any, decorators: Record<string, any>): any[] {
     const errorVariants: any[] = [];
 
@@ -30,60 +29,59 @@ export function generateErrorVariantsForField(fieldValue: any, decorators: Recor
         return errorVariants.concat([null, undefined, 'string', '', 123, new Date(), true, []]);
     }
 
+    if (decorators['min'] && fieldValue < decorators['min']) {
+        errorVariants.push(fieldValue - 1);
+    }
+    if (decorators['max'] && fieldValue > decorators['max']) {
+        errorVariants.push(fieldValue + 1);
+    }
+
     if (decorators['notNull']) errorVariants.push(null);
     if (decorators['notEmpty']) errorVariants.push('');
 
+
     const typeHandlers: Record<string, () => void> = {
         number: () => {
-            if (decorators['min']) {
-                errorVariants.push(fieldValue < decorators['min'] ? fieldValue : decorators['min'] - 1);
-            }
-            if (decorators['max']) {
-                errorVariants.push(fieldValue > decorators['max'] ? fieldValue : decorators['max'] + 1);
-            }
-            errorVariants.push('abcdefght');
-            errorVariants.push(fieldValue);
+            errorVariants.push('abcdefg');
+            errorVariants.push(fieldValue)
         },
         string: () => {
-            if (decorators['minLength']) {
-                errorVariants.push(''.padStart(decorators['minLength'], 'a'));
-            }
-            if (decorators['maxLength']) {
-                errorVariants.push(''.padStart(decorators['maxLength'] + 1, 'a'));
-            }
             errorVariants.push(123456789);
-            errorVariants.push(fieldValue);
+            errorVariants.push(fieldValue)
         },
         array: () => {
-            if (decorators['minArray']) {
-                errorVariants.push(new Array(decorators['minArray'] - 1).fill('value'));
-            }
-            if (decorators['maxArray']) {
-                errorVariants.push(new Array(decorators['maxArray'] + 1).fill('value'));
-            }
             errorVariants.push('string');
-            errorVariants.push(fieldValue);
+            errorVariants.push(fieldValue)
         },
         boolean: () => {
             errorVariants.push('string');
-            errorVariants.push(fieldValue);
+            errorVariants.push(fieldValue)
         },
         date: () => {
             errorVariants.push('random_string');
+            errorVariants.push(fieldValue)
+        },
+        any: () => { },
+        object: () => {
+            errorVariants.push('string');
             errorVariants.push(fieldValue);
         },
-        any: () => {
-            return;
-        },
+        enum: () => {
+            errorVariants.push(fieldValue);
+        }
     };
 
-    if (decorators['type'] && typeHandlers[decorators['type']]) {
-        typeHandlers[decorators['type']]();
+    if (decorators['type']) {
+        console.log('decorators.type:', decorators['type']);  
+        if (typeHandlers[decorators['type']]) {
+            typeHandlers[decorators['type']](); 
+        } else {
+            console.error(`No handler found for type: ${decorators['type']}`); 
+        }
     }
-
+    
     return errorVariants;
 }
-
 
 export function combineFields(arrays: any[][]): any[][] {
     return arrays.reduce((a, b) => a.flatMap((d) => b.map((e) => [d, e].flat())));
@@ -169,6 +167,13 @@ export function mapErrorToEnum(field: string, value: any, decorators: Record<str
         }
     }
 
+    if (decorators['type'] === 'object') {
+        if (typeof value !== 'object' || value === null) {
+            return `${field} ${ErrorMessage.invalidTypeObj}`;
+        }
+    }
+
+
     return null;
 }
 
@@ -194,30 +199,31 @@ function comparePayload(inputPayload: any, testCasePayload: any) {
 
 function validatePayloadType(payload: any, dtoClass: any) {
     let errors = [];
+    let valueDate
 
     const dtoInstance = new dtoClass()
-    
+
     Object.keys(payload).forEach((key) => {
-    
+
         const isOptional = Reflect.getMetadata('optional', dtoClass.prototype, key);
         const defaultValue = dtoInstance[key];
 
         if (isOptional && payload[key] === undefined) {
 
             payload[key] = defaultValue;
-        }else if (payload[key] === ''){
+        } else if (payload[key] === '') {
 
             errors.push(`Error: Value for key "${key}" ${ErrorMessage.empty}`);
-        }else if(payload[key] === undefined){
+        } else if (payload[key] === undefined) {
 
             errors.push(`Error: Value for key "${key}" ${ErrorMessage.undefined}`);
-        }else if(payload[key] === null){
+        } else if (payload[key] === null) {
 
             errors.push(`Error: Value for key "${key}" ${ErrorMessage.null}`);
         }
 
         const metadata = Reflect.getMetadata('type', dtoClass.prototype, key);
-        
+
         if (metadata) {
             if (metadata === 'string' && typeof payload[key] !== 'string') {
 
@@ -231,25 +237,33 @@ function validatePayloadType(payload: any, dtoClass: any) {
             } else if (metadata === 'array' && !Array.isArray(payload[key])) {
 
                 errors.push(`Error: Value for key "${key}" ${ErrorMessage.invalidTypeArray}`);
+            } else if (metadata === 'object' && typeof payload[key] !== 'object' && !Array.isArray(payload[key])) {
+
+                errors.push(`Error: Value for key "${key}" ${ErrorMessage.invalidTypeObj}`);
+            } else if (metadata === 'date') {
+
+                if (!(payload[key] instanceof Date)) {
+                    valueDate = new Date(payload[key]);
+                }
+                if (isNaN(valueDate.getTime())) {
+                    errors.push(`Error: Value for key "${key}" ${ErrorMessage.invalidTypeDate}`);
+                }
             }
         }
 
         const minLength = Reflect.getMetadata('minLength', dtoClass.prototype, key);
-
         if (minLength && payload[key]?.length <= minLength) {
 
             errors.push(`Error: Value for key "${key}" ${ErrorMessage.minLength} ${minLength} characters. But got ${payload[key]?.length}`);
         }
 
         const maxLength = Reflect.getMetadata('maxLength', dtoClass.prototype, key);
-
         if (maxLength && payload[key]?.length > maxLength) {
 
             errors.push(`Error: Value for key "${key}" ${ErrorMessage.maxLength} ${maxLength} characters. But got ${payload[key]?.length}`);
         }
 
         const min = Reflect.getMetadata('min', dtoClass.prototype, key);
-
         if (min && payload[key] < min) {
 
             errors.push(`Error: Value for key "${key}" ${ErrorMessage.min} ${min}. But got ${payload[key]}`);
@@ -260,25 +274,37 @@ function validatePayloadType(payload: any, dtoClass: any) {
 
             errors.push(`Error: Value for key "${key}" ${ErrorMessage.max} ${max}. Got ${payload[key]}`);
         }
+
+        const minArray = Reflect.getMetadata('minArray', dtoClass.prototype, key);
+        if (minArray && payload[key] < minArray) {
+
+            errors.push(`Error: Value for key "${key}" ${ErrorMessage.minArray} ${minArray}. But got ${payload[key]}`);
+        }
+
+        const maxArray = Reflect.getMetadata('maxArray', dtoClass.prototype, key);
+        if (maxArray && payload[key] > maxArray) {
+
+            errors.push(`Error: Value for key "${key}" ${ErrorMessage.maxArray} ${maxArray}. Got ${payload[key]}`);
+        }
     });
 
     return errors;
 }
 
-export async function validateTestCase(inputPayload: any, testCasePayload: any, dtoClass: any) {
+export async function validateTestCase(testCasePayload: any, dtoClass: any) {
 
-    let result = comparePayload(inputPayload, testCasePayload);
+    // let result = comparePayload(inputPayload, testCasePayload);
 
-    if (!result.isTestCaseValid) {
+    // if (!result.isTestCaseValid) {
 
-        return { valid: false, errors: result.errors };
-    }
+    //     return { valid: false, errors: result.errors };
+    // }
 
-    const typeErrors = validatePayloadType(inputPayload, dtoClass);
+    const typeErrors = validatePayloadType(testCasePayload, dtoClass);
     if (typeErrors.length > 0) {
-        
+
         return { valid: false, errors: typeErrors };
-    }   
+    }
 
     return { valid: true, errors: [] };
 }

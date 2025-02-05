@@ -1,55 +1,69 @@
 
 import 'reflect-metadata';
-import { IsAny, IsArray, IsBoolean, IsDate, IsNotEmpty, IsNotNull, IsNumber, IsOptional, IsString, MaxArray, MaxLength, Min, MinArray, MinLength } from './decorator/dto-decorator';
+import { IsAny, IsEnum, IsObject, IsArray, IsBoolean, IsDate, IsNotEmpty, IsNotNull, IsNumber, IsOptional, IsString, MaxArray, MaxLength, Min, MinArray, MinLength } from './decorator/dto-decorator';
+import { UserRole } from './enums/user-role.enum';
 
 
 export class CreateUserDTO {
 
-    @MaxLength(255)
-    @MinLength(1)
-    @IsString()
-    @IsNotEmpty()
-    @IsNotNull()
-    username: string = 'duy';
+    // @IsOptional()
+    // @MaxLength(255)
+    // @MinLength(1)
+    // @IsString()
+    // @IsNotEmpty()
+    // @IsNotNull()
+    // username?: string = 'duy'
 
-    @IsOptional()
-    @IsString()
-    @MinLength(1)
-    @MaxLength(255)
-    @IsNotEmpty()
-    @IsNotNull()
-    address?: string = 'can tho';
+    // @IsOptional()
+    // @IsString()
+    // @MinLength(1)
+    // @MaxLength(255)
+    // @IsNotEmpty()
+    // @IsNotNull()
+    // address?: string = 'can tho'
 
     // @IsOptional()
     // @IsDate()
     // @IsNotEmpty()
-    // @IsNotNul()
-    // birthday?: Date = undefined;
+    // @IsNotNull()
+    // birthday?: Date = new Date()
 
     // @Min(1)
     // @Min(100)
     // @IsOptional()
     // @IsNumber()
     // @IsNotEmpty()
-    // @IsNotNul()
-    // age?: number = undefined;
+    // @IsNotNull()
+    // age?: number = 10;
 
     // @IsOptional()
     // @IsBoolean()
     // @IsNotEmpty()
-    // @IsNotNul()
-    // isActive?: boolean = undefined;
+    // @IsNotNull()
+    // isActive?: boolean = true;
+
+    // @IsOptional()
+    // @IsObject()
+    // @IsNotEmpty()
+    // @IsNotNull()
+    // isObject?: object = { key: 'value' }
+    
 
     // @IsOptional()
     // @IsAny()
-    // typeAny?: any = undefined;
+    // typeAny?: any = true;
 
-    // @IsOptional()
-    // @IsArray()
-    // @MaxArray(10)
-    // @MinArray(1)
-    // @IsNotEmpty()
-    // @IsNotNul()
-    // tags?: string[] = undefined;
+    @IsOptional()
+    @IsArray()
+    @MaxArray(10)
+    @MinArray(1)
+    @IsNotEmpty()
+    @IsNotNull()
+    tags?: string[] = ['a','b'];
+
+    @IsEnum()
+    @IsNotNull()
+    @IsNotEmpty()
+    role: UserRole = UserRole.USER
 }
 
