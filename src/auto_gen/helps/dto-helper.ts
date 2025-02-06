@@ -59,6 +59,7 @@ export function generateErrorVariantsForField(fieldValue: any, decorators: Recor
             variants.push(fieldValue);
         },
         enum: () => {
+            variants.push('random_string');
             variants.push(fieldValue);
         }
     };
@@ -106,6 +107,7 @@ export function mapErrorToEnum(field: string, value: any, decorators: Record<str
     if (decorators['isAny']) {
         return null;
     }
+
 
     if (decorators['type'] === 'string') {
 
@@ -162,6 +164,13 @@ export function mapErrorToEnum(field: string, value: any, decorators: Record<str
     if (decorators['type'] === 'object') {
         if (typeof value !== 'object' || value === null) {
             return `${field} ${ErrorMessage.invalidTypeObj}`;
+        }
+    }
+
+    if (decorators['type'] === 'enum') {
+        const enumType = decorators['enumType'];
+        if (enumType && !Object.values(enumType).includes(value)) {
+            return `${field} ${ErrorMessage.invalidEnum}`;
         }
     }
 
@@ -239,6 +248,11 @@ function validatePayloadType(payload: any, dtoClass: any) {
                 }
                 if (isNaN(valueDate.getTime())) {
                     errors.push(`"${key}" ${ErrorMessage.invalidTypeDate}`);
+                }
+            } else if (metadata === 'enum') {
+                const enumType = Reflect.getMetadata('enumType', dtoClass.prototype, key);
+                if (enumType && !Object.values(enumType).includes(payload[key])) {
+                    errors.push(`"${key}" ${ErrorMessage.invalidEnum}`);
                 }
             }
         }
