@@ -11,68 +11,60 @@ export function getDecorators(target: any, propertyKey: string): Record<string, 
         decorators[key] = value;
     });
 
-    if (Reflect.hasMetadata('isAny', target, propertyKey)) {
-        decorators['isAny'] = Reflect.getMetadata('isAny', target, propertyKey);
-    }
-
     return decorators;
 }
 
 export function generateErrorVariantsForField(fieldValue: any, decorators: Record<string, any>): any[] {
-    const errorVariants: any[] = [];
+    const variants: any[] = [];
 
     if (!decorators['optional']) {
-        errorVariants.push(undefined);
-    }
-
-    if (decorators['isAny']) {
-        return errorVariants.concat([null, undefined, 'string', '', 123, new Date(), true, []]);
+        variants.push(undefined);
     }
 
     if (decorators['min'] && fieldValue < decorators['min']) {
-        errorVariants.push(fieldValue - 1);
+        variants.push(fieldValue - 1);
     }
     if (decorators['max'] && fieldValue > decorators['max']) {
-        errorVariants.push(fieldValue + 1);
+        variants.push(fieldValue + 1);
     }
 
-    if (decorators['notNull']) errorVariants.push(null);
-    if (decorators['notEmpty']) errorVariants.push('');
+    if (decorators['notNull']) variants.push(null);
+    if (decorators['notEmpty']) variants.push('');
 
 
     const typeHandlers: Record<string, () => void> = {
         number: () => {
-            errorVariants.push('abcdefg');
-            errorVariants.push(fieldValue)
+            variants.push('random_string');
+            variants.push(fieldValue)
         },
         string: () => {
-            errorVariants.push(123456789);
-            errorVariants.push(fieldValue)
+            variants.push(123456789);
+            variants.push(fieldValue)
         },
         array: () => {
-            errorVariants.push('string');
-            errorVariants.push(fieldValue)
+            variants.push('random_string');
+            variants.push(fieldValue)
         },
         boolean: () => {
-            errorVariants.push('string');
-            errorVariants.push(fieldValue)
+            variants.push('random_string');
+            variants.push(fieldValue)
         },
         date: () => {
-            errorVariants.push('random_string');
-            errorVariants.push(fieldValue)
+            variants.push('random_string');
+            variants.push(fieldValue)
         },
         any: () => { },
         object: () => {
-            errorVariants.push('string');
-            errorVariants.push(fieldValue);
+            variants.push('random_string');
+            variants.push(fieldValue);
         },
         enum: () => {
-            errorVariants.push(fieldValue);
+            variants.push(fieldValue);
         }
     };
 
     if (decorators['type']) {
-        console.log('decorators.type:', decorators['type']);  
+        console.log('decorators type', decorators['type']);  
         if (typeHandlers[decorators['type']]) {
             typeHandlers[decorators['type']](); 
         } else {
@@ -80,7 +72,7 @@ export function generateErrorVariantsForField(fieldValue: any, decorators: Recor
         }
     }
     
-    return errorVariants;
+    return variants;
 }
 
 export function combineFields(arrays: any[][]): any[][] {
@@ -173,7 +165,6 @@ export function mapErrorToEnum(field: string, value: any, decorators: Record<str
         }
     }
 
-
     return null;
 }
 
@@ -213,40 +204,41 @@ function validatePayloadType(payload: any, dtoClass: any) {
             payload[key] = defaultValue;
         } else if (payload[key] === '') {
 
-            errors.push(`Error: Value for key "${key}" ${ErrorMessage.empty}`);
+            errors.push(`"${key}" ${ErrorMessage.empty}`);
         } else if (payload[key] === undefined) {
 
-            errors.push(`Error: Value for key "${key}" ${ErrorMessage.undefined}`);
+            errors.push(`"${key}" ${ErrorMessage.undefined}`);
         } else if (payload[key] === null) {
 
-            errors.push(`Error: Value for key "${key}" ${ErrorMessage.null}`);
+            errors.push(`"${key}" ${ErrorMessage.null}`);
         }
 
         const metadata = Reflect.getMetadata('type', dtoClass.prototype, key);
 
         if (metadata) {
+
             if (metadata === 'string' && typeof payload[key] !== 'string') {
 
-                errors.push(`Error: Value for key "${key}" ${ErrorMessage.invalidTypeString}`);
+                errors.push(`"${key}" ${ErrorMessage.invalidTypeString}`);
             } else if (metadata === 'number' && typeof payload[key] !== 'number') {
 
-                errors.push(`Error: Value for key "${key}" ${ErrorMessage.invalidTypeNum}`);
+                errors.push(`"${key}" ${ErrorMessage.invalidTypeNum}`);
             } else if (metadata === 'boolean' && typeof payload[key] !== 'boolean') {
 
-                errors.push(`Error: Value for key "${key}" ${ErrorMessage.invalidTypeBoolean}`);
+                errors.push(`"${key}" ${ErrorMessage.invalidTypeBoolean}`);
             } else if (metadata === 'array' && !Array.isArray(payload[key])) {
 
-                errors.push(`Error: Value for key "${key}" ${ErrorMessage.invalidTypeArray}`);
+                errors.push(`"${key}" ${ErrorMessage.invalidTypeArray}`);
             } else if (metadata === 'object' && typeof payload[key] !== 'object' && !Array.isArray(payload[key])) {
 
-                errors.push(`Error: Value for key "${key}" ${ErrorMessage.invalidTypeObj}`);
+                errors.push(`"${key}" ${ErrorMessage.invalidTypeObj}`);
             } else if (metadata === 'date') {
 
                 if (!(payload[key] instanceof Date)) {
                     valueDate = new Date(payload[key]);
                 }
                 if (isNaN(valueDate.getTime())) {
-                    errors.push(`Error: Value for key "${key}" ${ErrorMessage.invalidTypeDate}`);
+                    errors.push(`"${key}" ${ErrorMessage.invalidTypeDate}`);
                 }
             }
         }
@@ -254,37 +246,37 @@ function validatePayloadType(payload: any, dtoClass: any) {
         const minLength = Reflect.getMetadata('minLength', dtoClass.prototype, key);
         if (minLength && payload[key]?.length <= minLength) {
 
-            errors.push(`Error: Value for key "${key}" ${ErrorMessage.minLength} ${minLength} characters. But got ${payload[key]?.length}`);
+            errors.push(` "${key}" ${ErrorMessage.minLength} ${minLength} characters. But got ${payload[key]?.length}`);
         }
 
         const maxLength = Reflect.getMetadata('maxLength', dtoClass.prototype, key);
         if (maxLength && payload[key]?.length > maxLength) {
 
-            errors.push(`Error: Value for key "${key}" ${ErrorMessage.maxLength} ${maxLength} characters. But got ${payload[key]?.length}`);
+            errors.push(`"${key}" ${ErrorMessage.maxLength} ${maxLength} characters. But got ${payload[key]?.length}`);
         }
 
         const min = Reflect.getMetadata('min', dtoClass.prototype, key);
         if (min && payload[key] < min) {
 
-            errors.push(`Error: Value for key "${key}" ${ErrorMessage.min} ${min}. But got ${payload[key]}`);
+            errors.push(`"${key}" ${ErrorMessage.min} ${min}. But got ${payload[key]}`);
         }
 
         const max = Reflect.getMetadata('max', dtoClass.prototype, key);
         if (max && payload[key] > max) {
 
-            errors.push(`Error: Value for key "${key}" ${ErrorMessage.max} ${max}. Got ${payload[key]}`);
+            errors.push(`"${key}" ${ErrorMessage.max} ${max}. But got ${payload[key]}`);
         }
 
         const minArray = Reflect.getMetadata('minArray', dtoClass.prototype, key);
         if (minArray && payload[key] < minArray) {
 
-            errors.push(`Error: Value for key "${key}" ${ErrorMessage.minArray} ${minArray}. But got ${payload[key]}`);
+            errors.push(`"${key}" ${ErrorMessage.minArray} ${minArray}. But got ${payload[key]}`);
         }
 
         const maxArray = Reflect.getMetadata('maxArray', dtoClass.prototype, key);
         if (maxArray && payload[key] > maxArray) {
 
-            errors.push(`Error: Value for key "${key}" ${ErrorMessage.maxArray} ${maxArray}. Got ${payload[key]}`);
+            errors.push(`"${key}" ${ErrorMessage.maxArray} ${maxArray}. But got ${payload[key]}`);
         }
     });
 
