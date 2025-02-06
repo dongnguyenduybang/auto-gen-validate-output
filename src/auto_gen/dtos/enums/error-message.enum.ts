@@ -11,8 +11,8 @@ export enum ErrorMessage {
     invalidTypeNum = 'must be a number conforming to the specified constraints ',
     invalidTypeString = 'must be a string',
     invalidTypeBoolean = 'must be a boolean',
-    invalidTypeArray = 'must be a array',
+    invalidTypeArray = 'must be an array',
     invalidTypeDate = 'must be a date',
-    invalidTypeObj = 'must be a object',
+    invalidTypeObj = 'must be an object',
     invalidEnum = 'should not be invalid enum'
 }
