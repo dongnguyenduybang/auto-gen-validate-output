@@ -13,5 +13,6 @@ export enum ErrorMessage {
     invalidTypeDate = 'must be a date',
     invalidTypeObj = 'must be a object',
     minArray = 'must contain at least',
-    maxArray = 'must contain at most'
+    maxArray = 'must contain at most',
+    invalidEnum = 'should not be invalid enum'
 }
