@@ -62,7 +62,7 @@ export class CreateUserDTO {
     tags?: string[] = ['a','b'];
 
     @IsOptional()
-    @IsEnum()
+    @IsEnum(UserRole)
     @IsNotNull()
     @IsNotEmpty()
     role?: UserRole = UserRole.USER
