@@ -6,13 +6,13 @@ import { UserRole } from './enums/user-role.enum';
 
 export class CreateUserDTO {
 
-    // @IsOptional()
-    // @MaxLength(255)
-    // @MinLength(1)
-    // @IsString()
-    // @IsNotEmpty()
-    // @IsNotNull()
-    // username?: string = 'duy'
+    @IsOptional()
+    @MaxLength(255)
+    @MinLength(1)
+    @IsString()
+    @IsNotEmpty()
+    @IsNotNull()
+    username?: string = 'duy'
 
     // @IsOptional()
     // @IsString()
@@ -22,31 +22,31 @@ export class CreateUserDTO {
     // @IsNotNull()
     // address?: string = 'can tho'
 
-    // @IsOptional()
-    // @IsDate()
-    // @IsNotEmpty()
-    // @IsNotNull()
-    // birthday?: Date = new Date()
+    @IsOptional()
+    @IsDate()
+    @IsNotEmpty()
+    @IsNotNull()
+    birthday?: Date = new Date()
 
-    // @Min(1)
-    // @Min(100)
-    // @IsOptional()
-    // @IsNumber()
-    // @IsNotEmpty()
-    // @IsNotNull()
-    // age?: number = 10;
+    @Min(1)
+    @Min(100)
+    @IsOptional()
+    @IsNumber()
+    @IsNotEmpty()
+    @IsNotNull()
+    age?: number = 10;
 
-    // @IsOptional()
-    // @IsBoolean()
-    // @IsNotEmpty()
-    // @IsNotNull()
-    // isActive?: boolean = true;
+    @IsOptional()
+    @IsBoolean()
+    @IsNotEmpty()
+    @IsNotNull()
+    isActive?: boolean = true;
 
-    // @IsOptional()
-    // @IsObject()
-    // @IsNotEmpty()
-    // @IsNotNull()
-    // isObject?: object = { key: 'value' }
+    @IsOptional()
+    @IsObject()
+    @IsNotEmpty()
+    @IsNotNull()
+    isObject?: object = { key: 'value' }
     
 
     // @IsOptional()
@@ -61,9 +61,10 @@ export class CreateUserDTO {
     @IsNotNull()
     tags?: string[] = ['a','b'];
 
+    @IsOptional()
     @IsEnum()
     @IsNotNull()
     @IsNotEmpty()
-    role: UserRole = UserRole.USER
+    role?: UserRole = UserRole.USER
 }
 
