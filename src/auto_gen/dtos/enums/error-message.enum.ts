@@ -6,13 +6,13 @@ export enum ErrorMessage {
     maxLength = 'must be less than or equal to',
     min = 'must not be less than ',
     max = 'must not be greater than ',
+    minArray = 'must contain at least',
+    maxArray = 'must contain at most',
     invalidTypeNum = 'must be a number conforming to the specified constraints ',
     invalidTypeString = 'must be a string',
     invalidTypeBoolean = 'must be a boolean',
     invalidTypeArray = 'must be a array',
     invalidTypeDate = 'must be a date',
     invalidTypeObj = 'must be a object',
-    minArray = 'must contain at least',
-    maxArray = 'must contain at most',
     invalidEnum = 'should not be invalid enum'
 }
