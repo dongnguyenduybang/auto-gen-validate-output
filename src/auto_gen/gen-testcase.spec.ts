@@ -10,7 +10,7 @@ describe('Start Gen Testcase', () => {
   const outputDir = path.join(__dirname, 'auto_gen_spec');
   const defaultDTO = new CreateUserDTO();
   payload = defaultDTO
-
+  
   fs.readdirSync(dtoFolderPath).forEach((file) => {
     const filePath = path.join(dtoFolderPath, file);
 
@@ -40,6 +40,8 @@ describe('Start Gen Testcase', () => {
             let fileContent = `
                         import { ${exportedKey} } from '../dtos/${file.replace('.ts', '')}';
                         import { validateTestCase } from '../helps/dto-helper';
+                        import { handleResponse } from '../helps/handles/response';
+                        import { validate } from '../helps/validates/validate-logic';
                         describe('Testcase from ${exportedKey}', () => {
                             `;
 
@@ -52,27 +54,34 @@ describe('Start Gen Testcase', () => {
 
               fileContent += `
                             it('should return test case ${index + 1}: ${expectedDetail}', async () => {
-
+                      
                                 const testCasePayload = ${JSON.stringify(testCasePayload, null, 4)};
                                 let errors = []; 
 
-                                const result = await validateTestCase(testCasePayload, ${exportedKey});
+                                const result = await validateTestCase(testCasePayload, CreateUserDTO);
 
-                                if (result.valid) {
+                                        const response = {
+                                            ok: result.valid,
+                                            data: result.valid ? testCasePayload : null,
+                                            errors: result.valid ? null : result.errors
+                                        };
+                                        
+                                        const resultResponse = handleResponse(response);
 
-                                    console.log('Test case is valid.');
-                                } else {
-
-                                    errors.push(...result.errors);
-        
-                                }
-
-                                if (errors.length > 0) {
-                                
-                                    console.log('Errors:', errors);
-                                }
-
-                                expect(errors.length).toBe(0);
+                                         if (resultResponse.ok == true) {
+                                       
+                                                   const dtoInstance = new CreateUserDTO();
+                                                   Object.assign(dtoInstance, resultResponse.data);
+                                       
+                                                   const result = validate(CreateUserDTO, dtoInstance);
+                                       
+                                                   expect(result.valid).toBe(true);
+                                                   expect(result.errors).toHaveLength(0);
+                                       
+                                               } else {
+                                                   console.log(resultResponse)
+                                               }
+                                       
 
                             });
                         `;
@@ -83,6 +92,7 @@ describe('Start Gen Testcase', () => {
                             `;
 
             fs.writeFileSync(outputFilePath, fileContent, 'utf-8');
+
           }
         });
       } catch (error) {
