@@ -65,14 +65,14 @@ export function generateErrorVariantsForField(fieldValue: any, decorators: Recor
     };
 
     if (decorators['type']) {
-        console.log('decorators type', decorators['type']);  
+        console.log('decorators type', decorators['type']);
         if (typeHandlers[decorators['type']]) {
-            typeHandlers[decorators['type']](); 
+            typeHandlers[decorators['type']]();
         } else {
-            console.error(`No handler found for type: ${decorators['type']}`); 
+            console.error(`No handler found for type: ${decorators['type']}`);
         }
     }
-    
+
     return variants;
 }
 
@@ -93,15 +93,15 @@ export function generateCombinations(fields: string[], errorCasesByField: Record
 export function mapErrorToEnum(field: string, value: any, decorators: Record<string, any>): string | null {
 
     if (value === undefined && decorators['optional'] !== true) {
-        return `${field} ${ErrorMessage.undefined}`;
+        return `${field} ${ErrorMessage.UNDEFINED}`;
     }
 
     if (value === null && decorators['notNull']) {
-        return `${field} ${ErrorMessage.null}`;
+        return `${field} ${ErrorMessage.NULL}`;
     }
 
     if (value === '' && decorators['notEmpty']) {
-        return `${field} ${ErrorMessage.empty}`;
+        return `${field} ${ErrorMessage.EMPTY}`;
     }
 
     if (decorators['isAny']) {
@@ -112,65 +112,65 @@ export function mapErrorToEnum(field: string, value: any, decorators: Record<str
     if (decorators['type'] === 'string') {
 
         if (decorators['minLength'] && typeof value === 'string' && value.length <= decorators['minLength']) {
-            return `${field} ${ErrorMessage.minLength} ${decorators['minLength']}`;
+            return `${field} ${ErrorMessage.MIN_LENGTH} ${decorators['minLength']}`;
         }
 
         if (decorators['maxLength'] && typeof value === 'string' && value.length > decorators['maxLength']) {
 
-            return `${field} ${ErrorMessage.maxLength} ${decorators['maxLength']}`;
+            return `${field} ${ErrorMessage.MAX_LENGTH} ${decorators['maxLength']}`;
         }
 
         if (typeof value !== 'string') {
-            return `${field} ${ErrorMessage.invalidTypeString}`;
+            return `${field} ${ErrorMessage.INVALID_TYPE_STRING}`;
         }
     }
 
     if (decorators['type'] === 'number') {
         if (typeof value !== 'number') {
-            return `${field} ${ErrorMessage.invalidTypeNum}`;
+            return `${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`;
         }
         if (decorators['min'] && value < decorators['min']) {
-            return `${field} ${ErrorMessage.min} ${decorators['min']}`;
+            return `${field} ${ErrorMessage.MIN} ${decorators['min']}`;
         }
         if (decorators['max'] && value > decorators['max']) {
-            return `${field} ${ErrorMessage.max} ${decorators['max']}`;
+            return `${field} ${ErrorMessage.MAX} ${decorators['max']}`;
         }
     }
 
     if (decorators['type'] === 'array') {
         if (!Array.isArray(value)) {
-            return `${field} ${ErrorMessage.invalidTypeArray}`;
+            return `${field} ${ErrorMessage.INVALID_TYPE_ARRAY}`;
         }
         if (decorators['minArray'] && value.length < decorators['minArray']) {
-            return `${field} ${ErrorMessage.minArray} ${decorators['minArray']}`;
+            return `${field} ${ErrorMessage.MIN_ARRAY} ${decorators['minArray']}`;
         }
         if (decorators['maxArray'] && value.length > decorators['maxArray']) {
-            return `${field} ${ErrorMessage.maxArray} ${decorators['maxArray']}`;
+            return `${field} ${ErrorMessage.MAX_ARRAY} ${decorators['maxArray']}`;
         }
     }
 
     if (decorators['type'] === 'boolean') {
         if (typeof value !== 'boolean') {
-            return `${field} ${ErrorMessage.invalidTypeBoolean}`;
+            return `${field} ${ErrorMessage.INVALID_TYPE_BOOLEAN}`;
         }
     }
 
     if (decorators['type'] === 'date') {
         if (!(value instanceof Date) || isNaN(value.getTime())) {
-            return `${field} ${ErrorMessage.invalidTypeDate}`;
+            return `${field} ${ErrorMessage.INVALID_TYPE_DATE}`;
         }
     }
 
     if (decorators['type'] === 'object') {
         if (typeof value !== 'object' || value === null) {
-            return `${field} ${ErrorMessage.invalidTypeObj}`;
+            return `${field} ${ErrorMessage.INVALID_TYPE_OBJ}`;
         }
     }
 
     if (decorators['type'] === 'enum') {
         const enumType = decorators['enumType'];
         if (enumType && !Object.values(enumType).includes(value)) {
-            return `${field} ${ErrorMessage.invalidEnum}`;
+            return `${field} ${ErrorMessage.INVALID_ENUM}`;
         }
     }
 
@@ -197,103 +197,82 @@ function comparePayload(inputPayload: any, testCasePayload: any) {
     return { isTestCaseValid, errors };
 }
 
+
+
 function validatePayloadType(payload: any, dtoClass: any) {
     let errors = [];
-    let valueDate
-
-    const dtoInstance = new dtoClass()
-
+    let valueDate;
+    const dtoInstance = new dtoClass();
     Object.keys(payload).forEach((key) => {
-
         const isOptional = Reflect.getMetadata('optional', dtoClass.prototype, key);
         const defaultValue = dtoInstance[key];
-
         if (isOptional && payload[key] === undefined) {
-
             payload[key] = defaultValue;
         } else if (payload[key] === '') {
-
-            errors.push(`"${key}" ${ErrorMessage.empty}`);
+            errors.push(`"${key}" ${ErrorMessage.EMPTY}`);
         } else if (payload[key] === undefined) {
-
-            errors.push(`"${key}" ${ErrorMessage.undefined}`);
+            errors.push(`"${key}" ${ErrorMessage.UNDEFINED}`);
         } else if (payload[key] === null) {
-
-            errors.push(`"${key}" ${ErrorMessage.null}`);
+            errors.push(`"${key}" ${ErrorMessage.NULL}`);
         }
 
         const metadata = Reflect.getMetadata('type', dtoClass.prototype, key);
-
         if (metadata) {
-
             if (metadata === 'string' && typeof payload[key] !== 'string') {
-
-                errors.push(`"${key}" ${ErrorMessage.invalidTypeString}`);
+                errors.push(`"${key}" ${ErrorMessage.INVALID_TYPE_STRING}`);
             } else if (metadata === 'number' && typeof payload[key] !== 'number') {
-
-                errors.push(`"${key}" ${ErrorMessage.invalidTypeNum}`);
+                errors.push(`"${key}" ${ErrorMessage.INVALID_TYPE_NUMBER}`);
             } else if (metadata === 'boolean' && typeof payload[key] !== 'boolean') {
-
-                errors.push(`"${key}" ${ErrorMessage.invalidTypeBoolean}`);
+                errors.push(`"${key}" ${ErrorMessage.INVALID_TYPE_BOOLEAN}`);
             } else if (metadata === 'array' && !Array.isArray(payload[key])) {
-
-                errors.push(`"${key}" ${ErrorMessage.invalidTypeArray}`);
+                errors.push(`"${key}" ${ErrorMessage.INVALID_TYPE_ARRAY}`);
             } else if (metadata === 'object' && typeof payload[key] !== 'object' && !Array.isArray(payload[key])) {
-
-                errors.push(`"${key}" ${ErrorMessage.invalidTypeObj}`);
+                errors.push(`"${key}" ${ErrorMessage.INVALID_TYPE_OBJ}`);
             } else if (metadata === 'date') {
-
                 if (!(payload[key] instanceof Date)) {
                     valueDate = new Date(payload[key]);
                 }
                 if (isNaN(valueDate.getTime())) {
-                    errors.push(`"${key}" ${ErrorMessage.invalidTypeDate}`);
+                    errors.push(`"${key}" ${ErrorMessage.INVALID_TYPE_DATE}`);
                 }
             } else if (metadata === 'enum') {
                 const enumType = Reflect.getMetadata('enumType', dtoClass.prototype, key);
                 if (enumType && !Object.values(enumType).includes(payload[key])) {
-                    errors.push(`"${key}" ${ErrorMessage.invalidEnum}`);
+                    errors.push(`"${key}" ${ErrorMessage.INVALID_ENUM}`);
                 }
             }
         }
 
         const minLength = Reflect.getMetadata('minLength', dtoClass.prototype, key);
         if (minLength && payload[key]?.length <= minLength) {
-
-            errors.push(` "${key}" ${ErrorMessage.minLength} ${minLength} characters. But got ${payload[key]?.length}`);
+            errors.push(`"${key}" ${ErrorMessage.MIN_LENGTH} ${minLength} characters. But got ${payload[key]?.length}`);
         }
 
         const maxLength = Reflect.getMetadata('maxLength', dtoClass.prototype, key);
         if (maxLength && payload[key]?.length > maxLength) {
-
-            errors.push(`"${key}" ${ErrorMessage.maxLength} ${maxLength} characters. But got ${payload[key]?.length}`);
+            errors.push(`"${key}" ${ErrorMessage.MAX_LENGTH} ${maxLength} characters. But got ${payload[key]?.length}`);
         }
 
         const min = Reflect.getMetadata('min', dtoClass.prototype, key);
         if (min && payload[key] < min) {
-
-            errors.push(`"${key}" ${ErrorMessage.min} ${min}. But got ${payload[key]}`);
+            errors.push(`"${key}" ${ErrorMessage.MIN} ${min}. But got ${payload[key]}`);
         }
 
         const max = Reflect.getMetadata('max', dtoClass.prototype, key);
         if (max && payload[key] > max) {
-
-            errors.push(`"${key}" ${ErrorMessage.max} ${max}. But got ${payload[key]}`);
+            errors.push(`"${key}" ${ErrorMessage.MAX} ${max}. But got ${payload[key]}`);
         }
 
         const minArray = Reflect.getMetadata('minArray', dtoClass.prototype, key);
-        if (minArray && payload[key] < minArray) {
-
-            errors.push(`"${key}" ${ErrorMessage.minArray} ${minArray}. But got ${payload[key]}`);
+        if (minArray && payload[key]?.length < minArray) {
+            errors.push(`"${key}" ${ErrorMessage.MIN_ARRAY} ${minArray}. But got ${payload[key]?.length}`);
         }
 
         const maxArray = Reflect.getMetadata('maxArray', dtoClass.prototype, key);
-        if (maxArray && payload[key] > maxArray) {
-
-            errors.push(`"${key}" ${ErrorMessage.maxArray} ${maxArray}. But got ${payload[key]}`);
+        if (maxArray && payload[key]?.length > maxArray) {
+            errors.push(`"${key}" ${ErrorMessage.MAX_ARRAY} ${maxArray}. But got ${payload[key]?.length}`);
         }
     });
-
     return errors;
 }
 
