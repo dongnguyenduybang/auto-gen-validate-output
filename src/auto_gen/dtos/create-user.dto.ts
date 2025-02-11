@@ -1,6 +1,6 @@
 
 import 'reflect-metadata';
-import { IsAny, IsEnum, IsObject, IsArray, IsBoolean, IsDate, IsNotEmpty, IsNotNull, IsNumber, IsOptional, IsString, MaxArray, MaxLength, Min, MinArray, MinLength } from './decorator/dto-decorator';
+import { IsAny, IsEnum, IsObject, IsArray, IsBoolean, IsDate, IsNotEmpty, IsNotNull, IsNumber, IsOptional, IsString, MaxArray, MaxLength, Min, MinArray, MinLength, Max } from './decorator/dto-decorator';
 import { UserRole } from './enums/user-role.enum';
 
 
@@ -29,7 +29,7 @@ export class CreateUserDTO {
     birthday?: Date = new Date()
 
     @Min(1)
-    @Min(100)
+    @Max(100)
     @IsOptional()
     @IsNumber()
     @IsNotEmpty()
