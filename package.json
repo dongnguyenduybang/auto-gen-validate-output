@@ -8,10 +8,13 @@
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-    "gen": "jest",
-    "gen:watch": "jest --watch",
-    "test:gen": "jest auto_gen_spec",
-    "test:gen:watch": "jest auto_gen_spec --watch"
+
+    "gen:body": "jest gen-body.spec.ts",
+    "gen:testcase": "jest gen-testcases.spec.ts",
+    "gen:test": "jest folder_gen",
+    "gen:testcase-validate-logic": "jest gen-validate-logic.spec.ts",
+    "gen:passed-test": "jest folder_gen/results"
+    
   },
   "engines": {
     "npm": ">=8.0.0",
@@ -24,6 +27,7 @@
     "axios": "^1.7.9",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
+    "dotenv": "^16.4.7",
     "path": "^0.12.7",
     "reflect-metadata": "^0.2.1",
     "rxjs": "^7.8.1",
