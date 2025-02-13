@@ -1,4 +1,4 @@
-import { UserRole } from "../../dtos/enums/user-role.enum";
+import { UserRole } from "../../enums/user-role.enum";
 
 export function transformDataResponse(dtoInstance: any): DataResponse {
     const instance = Array.isArray(dtoInstance) ? dtoInstance[0] : dtoInstance;

@@ -1,7 +1,6 @@
-import { UserRole } from '../dtos/enums/user-role.enum'
-import { ErrorMessage } from '../dtos/enums/error-message.enum';
+import { UserRole } from '../enums/user-role.enum'
+import { ErrorMessage } from '../enums/error-message.enum';
 import { DataResponse, typeMap } from '../helps/structures/responses';
-import { MinLength } from '../dtos/decorator/dto-decorator';
 export function validateLogicData(data: DataResponse[], dtoClass): any {
 
     const errors: string[] = [];
