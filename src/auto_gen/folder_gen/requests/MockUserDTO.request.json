@@ -1,0 +1,15 @@
+{
+  "method": "POST",
+  "path": "https://api-sb11.rpc.ziichat.dev/InternalFaker/MockUsers",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "optionals": [
+    "badge"
+  ],
+  "payload": {
+    "prefix": "duy12345",
+    "quantity": 1,
+    "badge": 0
+  }
+}
