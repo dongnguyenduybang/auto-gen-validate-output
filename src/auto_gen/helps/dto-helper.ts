@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { ErrorMessage } from '../dtos/enums/error-message.enum';
+import { ErrorMessage } from '../enums/error-message.enum';
 
 export function getDecorators(target: any, propertyKey: string): Record<string, any> {
     const decorators: Record<string, any> = {};
@@ -13,6 +13,44 @@ export function getDecorators(target: any, propertyKey: string): Record<string, 
 
     return decorators;
 }
+
+
+  export function generateErrorCases(dtoClass: any): any[] {
+    const instance = new dtoClass();
+    const keys = Object.keys(instance);
+    const errorCasesByField: Record<string, any[]> = {};
+  
+    keys.forEach((field) => {
+      const decorators = getDecorators(instance, field);
+  
+      errorCasesByField[field] = generateErrorVariantsForField(
+        instance[field],
+        decorators,
+      );
+    });
+  
+    const fields = Object.keys(errorCasesByField);
+    const allErrorCombinations = generateCombinations(fields, errorCasesByField);
+  
+    return allErrorCombinations.map((combination) => {
+      if (typeof combination === 'object' && combination !== null) {
+        const testcaseGen = { ...combination };
+  
+        const expectedDetail = fields
+          .map((field) => {
+            const value = testcaseGen[field];
+            const decorators = getDecorators(instance, field);
+            return mapErrorToEnum(field, value, decorators);
+          })
+          .filter((error) => error !== null);
+  
+        return { testcaseGen, expectedDetail };
+      } else {
+        console.error(combination);
+      }
+    });
+  }
+  
 
 export function generateErrorVariantsForField(fieldValue: any, decorators: Record<string, any>): any[] {
     const variants: any[] = [];
@@ -84,7 +122,7 @@ export function generateCombinations(fields: string[], errorCasesByField: Record
     const fieldErrorVariants = fields.map((field) => {
         return errorCasesByField[field].map((errorVariant) => ({ [field]: errorVariant }));
     });
-
+    console.log(fieldErrorVariants)
     return combineFields(fieldErrorVariants).map((combination) => {
         return combination.reduce((acc, curr) => ({ ...acc, ...curr }), {});
     });
@@ -290,6 +328,27 @@ export async function validateTestCase(testCasePayload: any, dtoClass: any) {
 
         return { valid: false, errors: typeErrors };
     }
-
+    
     return { valid: true, errors: [] };
+}
+
+export function extractDTO(dtoClass: any) {
+  const optionals: string[] = [];
+  const payload: Record<string, any> = {};
+
+  const prototype = dtoClass.prototype;
+  const instance = new dtoClass();
+
+  for (const key of Object.keys(instance)) {
+    const isOptional = Reflect.getMetadata('optional', prototype, key);
+    const defaultValue = instance[key];
+
+    if (isOptional) {
+      optionals.push(key);
+    }
+
+    payload[key] = defaultValue;
+  }
+
+  return { optionals, payload };
 }
