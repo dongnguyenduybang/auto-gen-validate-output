@@ -1,89 +1,50 @@
-import { UserRole } from '../enums/user-role.enum'
-import { ErrorMessage } from '../enums/error-message.enum';
-import { DataResponse, typeMap } from '../helps/structures/responses';
-export function validateLogicData(data: DataResponse[], dtoClass): any {
+import { error } from "console";
+import { MockUserResponseDTO } from "../dto_response/mock-user-response.dto";
 
-    const errors: string[] = [];
-    data.forEach((item) => {
-        Object.keys(item).forEach((key) => {
+export function testMockUserLogic(mockUserResponse: MockUserResponseDTO, payload: any) {
+  let errors = []
 
-            const minLength = Reflect.getMetadata('minLength', dtoClass.prototype, key);
-            const maxLength = Reflect.getMetadata('maxLength', dtoClass.prototype, key);
-            const minArray = Reflect.getMetadata('minArray', dtoClass.prototype, key);
-            const maxArray = Reflect.getMetadata('maxArray', dtoClass.prototype, key);
-            const min = Reflect.getMetadata('min', dtoClass.prototype, key);
-            const max = Reflect.getMetadata('max', dtoClass.prototype, key);
+  if (!mockUserResponse.username.startsWith(payload.prefix)) {
+    errors.push('first character of the username must start with the name of the prefix')
+  }
 
-            const value = item[key];
-            if (!typeMap[key]) {
-                errors.push(`"${key}" is not defined`);
-                return;
-            }
-            const expectedType = typeMap[key];
-            if (value === null) {
-                errors.push(`"${key}" ${ErrorMessage.NULL}`);
-            } else if (value === '') {
-                errors.push(`"${key}" ${ErrorMessage.EMPTY}`);
-            } else if (value === undefined) {
-                errors.push(`"${key}" ${ErrorMessage.UNDEFINED}`);
-            } else {
-                switch (expectedType) {
-                    case 'string':
-                        if (typeof value !== 'string') {
-                            errors.push(`"${key}" ${ErrorMessage.INVALID_TYPE_STRING}`);
-                        }else if(minLength && value.length < minLength){
-                            errors.push(`"${key}" ${ErrorMessage.MIN_LENGTH}`);
-                        }else if (maxLength && value.length > maxLength){
-                            errors.push(`"${key}" ${ErrorMessage.MAX_LENGTH}`);
-                        }
-                        break;
-                    case 'number':
-                        if (typeof value !== 'number') {
-                            errors.push(`"${key}" ${ErrorMessage.INVALID_TYPE_NUMBER}`);
-                        }else if(min && value < min ){
-                            errors.push(`"${key}" ${ErrorMessage.MIN}`);
-                        }else if (max && value > max){
-                            errors.push(`"${key}" ${ErrorMessage.MAX}`);
-                        }
-                        break;
-                    case 'boolean':
-                        if (typeof value !== 'boolean') {
-                            errors.push(`"${key}" ${ErrorMessage.INVALID_TYPE_BOOLEAN}`);
-                        }
-                        break;
-                    case 'object':
-                        if (typeof value !== 'object' || Array.isArray(value)) {
-                            errors.push(`"${key}" ${ErrorMessage.INVALID_TYPE_OBJ}`);
-                        }
-                        break;
-                    case 'Date':
-                        if (!(new Date(value) instanceof Date)) {
-                            errors.push(`"${key}" ${ErrorMessage.INVALID_TYPE_DATE}`);
-                        }else if(new Date(value) > new Date()){
-                            errors.push(`"${key}" ${ErrorMessage.INVALID_DATE_OVER_CURRENT}`);
-                        }
-                        break;
-                    case 'array':
-                        if (!Array.isArray(value)) {
-                            errors.push(`"${key}" ${ErrorMessage.INVALID_TYPE_ARRAY}`);
-                        }else if(minArray && value.length < minArray){
-                            errors.push(`"${key}" ${ErrorMessage.MIN_ARRAY}`);
-                        }else if (maxArray && value.length > maxArray){
-                            errors.push(`"${key}" ${ErrorMessage.MAX_ARRAY}`);
-                        }
-                        break;
-                    case UserRole:
-                        if (!Object.values(UserRole).includes(value)) {
-                            errors.push(`"${key}" ${ErrorMessage.INVALID_ENUM}`);
-                        }
-                        break;
-                }
-            }
-        });
-    });
-    if (errors.length > 0) {
-        return { valid: false, errors: errors };
-    } else {
-        return { valid: true, errors: [] };
-    }
+  if (mockUserResponse.securityKey.length !== 64 || mockUserResponse.recoverKey.length !== 64) {
+    errors.push('invalid length for securityKey or recoverKey')
+  }
+
+  if (mockUserResponse.badge !== payload.badge) {
+    errors.push('response badges are different from payloads')
+  }
+
+  if (!mockUserResponse.username.includes(mockUserResponse.userId)) {
+   errors.push(`username "${mockUserResponse.username}" does not contain userId "${mockUserResponse.userId}"`);
+  }
+
+  if (typeof mockUserResponse.token !== "string" || mockUserResponse.token.length === 0) {
+    errors.push(`${mockUserResponse.token} must be a string, but got "${mockUserResponse.token}"`);
+  }
+
+  if (typeof mockUserResponse.userId !== "string" || mockUserResponse.userId.length === 0) {
+    errors.push(`${mockUserResponse.userId} must be a string, but got "${mockUserResponse.userId}"`);
+  }
+
+  if (typeof mockUserResponse.securityKey !== "string" || mockUserResponse.securityKey.length === 0) {
+    errors.push(`${mockUserResponse.securityKey} must be a string`);
+  }
+
+  if (typeof mockUserResponse.recoverKey !== "string" || mockUserResponse.recoverKey.length === 0) {
+    errors.push(`${mockUserResponse.recoverKey} must be a string`);
+  }
+
+  if (typeof mockUserResponse.badge !== "number") {
+    errors.push(`${mockUserResponse.badge} must be a number`);
+  }
+
+  if(errors.length === 0 ){
+    return {isValid: true, errors: null}
+  }else{
+    return {isValid: false, errors: errors}
+  }
 }
+
+
