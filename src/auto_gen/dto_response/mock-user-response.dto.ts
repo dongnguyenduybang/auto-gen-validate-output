@@ -1,6 +1,7 @@
-import { IsString, IsNotEmpty, IsNumber, IsDefined, IsOptional, MinLength, minLength, Min, Max } from 'class-validator';
+import { IsString, IsNotEmpty, IsNumber, IsDefined, IsOptional, Min, Max } from 'class-validator';
 
 export class MockUserDTOResponse {
+    @IsOptional()
     @IsDefined()
     @IsString()
     @IsNotEmpty()

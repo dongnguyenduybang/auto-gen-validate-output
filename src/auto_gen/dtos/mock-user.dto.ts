@@ -1,6 +1,6 @@
 
 import 'reflect-metadata';
-import { IsAny, IsEnum, IsObject, IsArray, IsBoolean, IsDate, IsNotEmpty, IsNotNull, IsNumber, IsOptional, IsString, MaxArray, MaxLength, Min, MinArray, MinLength, Max } from '../decorator/dto-decorator';
+import {IsNotEmpty, IsNotNull, IsNumber, IsString, Max, Min } from '../decorator/dto-decorator';
 
 export class MockUserDTO {
   
@@ -20,5 +20,7 @@ export class MockUserDTO {
   @IsNumber()
   @IsNotEmpty()
   @IsNotNull()
+  @Min(0)
+  @Max(3)
   badge?: number = 0;
 }
