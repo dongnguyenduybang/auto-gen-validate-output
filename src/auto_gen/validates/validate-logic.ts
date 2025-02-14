@@ -1,3 +1,4 @@
+import { ErrorMessage } from "../enums/error-message.enum";
 import { ValidationResult, ValidationRule } from "../helps/structures/responses";
 
 export function validateLogicData(data: any, rules: ValidationRule[], payload?: any): ValidationResult {
@@ -6,12 +7,22 @@ export function validateLogicData(data: any, rules: ValidationRule[], payload?: 
   for (const rule of rules) {
     const value = data[rule.field];
 
-    if (rule.optional && (value === undefined || value === null || value === "")) {
+    if (rule.optional === true && (value === undefined || value === null || value === "")) {
       continue;
     }
 
-    if (rule.required && (value === undefined || value === null || value === "")) {
-      errors.push(`Field "${rule.field}" is required`);
+    if (rule.required && (value === undefined)) {
+      errors.push(`Field "${rule.field}" ${ErrorMessage.UNDEFINED}`);
+      continue;
+    }
+
+    if (rule.required && (value === null)) {
+      errors.push(`Field "${rule.field}" ${ErrorMessage.NULL}`);
+      continue;
+    }
+
+    if (rule.required && (value === "")) {
+      errors.push(`Field "${rule.field}" ${ErrorMessage.EMPTY}`);
       continue;
     }
 
@@ -21,19 +32,27 @@ export function validateLogicData(data: any, rules: ValidationRule[], payload?: 
     }
 
     if (rule.type === "string" && rule.minLength && value.length < rule.minLength) {
-      errors.push(`Field "${rule.field}" must have a minimum length of ${rule.minLength}`);
+      errors.push(`Field "${rule.field}" must a minimum length of ${rule.minLength}`);
     }
 
     if (rule.type === "string" && rule.maxLength && value.length > rule.maxLength) {
-      errors.push(`Field "${rule.field}" must have a maximum length of ${rule.maxLength}`);
+      errors.push(`Field "${rule.field}" must a maximum length of ${rule.maxLength}`);
+    }
+
+    if (rule.type === "number" && rule.min && value.length < rule.min) {
+      errors.push(`Field "${rule.field}" must a minimum of ${rule.min}`);
+    }
+
+    if (rule.type === "number" && rule.max && value.length > rule.max) {
+      errors.push(`Field "${rule.field}" must a maximum of ${rule.max}`);
     }
 
     if (rule.type === "array") {
       if (rule.minArray && value.length < rule.minArray) {
-        errors.push(`Field "${rule.field}" must have at least ${rule.minArray} items`);
+        errors.push(`Field "${rule.field}" must at least ${rule.minArray} items`);
       }
       if (rule.maxArray && value.length > rule.maxArray) {
-        errors.push(`Field "${rule.field}" must have at most ${rule.maxArray} items`);
+        errors.push(`Field "${rule.field}" must at most ${rule.maxArray} items`);
       }
     }
 
@@ -46,11 +65,6 @@ export function validateLogicData(data: any, rules: ValidationRule[], payload?: 
       }
     }
 
-    if (rule.type === "string" && rule.startsWith && !value.startsWith(rule.startsWith)) {
-      errors.push(`Field "${rule.field}" must start with "${rule.startsWith}"`);
-    }
-
-    
 
   }
 
