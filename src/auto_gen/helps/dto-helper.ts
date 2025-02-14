@@ -40,7 +40,7 @@ export function getDecorators(target: any, propertyKey: string): Record<string, 
           .map((field) => {
             const value = testcaseGen[field];
             const decorators = getDecorators(instance, field);
-            return mapErrorToEnum(field, value, decorators);
+            return mapError(field, value, decorators);
           })
           .filter((error) => error !== null);
   
@@ -128,10 +128,12 @@ export function generateCombinations(fields: string[], errorCasesByField: Record
     });
 }
 
-export function mapErrorToEnum(field: string, value: any, decorators: Record<string, any>): string | null {
+export function mapError(field: string, value: any, decorators: Record<string, any>): string | null {
 
-    if (value === undefined && decorators['optional'] !== true) {
-        return `${field} ${ErrorMessage.UNDEFINED}`;
+    if (value === undefined && decorators['optional'] === true) {
+        return null; 
+    }else if (value === undefined && decorators['optional'] !== true){
+        return `${field} ${ErrorMessage.UNDEFINED}`; 
     }
 
     if (value === null && decorators['notNull']) {
