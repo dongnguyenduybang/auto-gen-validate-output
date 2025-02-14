@@ -20,12 +20,13 @@ function genTestCase(requestConfigPath: string, payloadPath: string, name: strin
   const methods = requestConfig.method.split('|');
 
   const specContent = `
-      import axios from 'axios';
-      import { plainToInstance } from 'class-transformer';
-      import { MockUserDTOResponse } from '../../dto_response/mock-user-response.dto';
-      import { validate } from 'class-validator';
+        import axios from 'axios';
+        import { plainToInstance } from 'class-transformer';
+        import { MockUserDTOResponse } from '../../dto_response/mock-user-response.dto';
+        import { validate } from 'class-validator';
         import { validateLogicData } from '../../validates/validate-logic';
         import { getValidationFromDTOResponse } from '../../helps/ultil';
+        import { failResponse } from '../../helps/structures/responses';
       describe('Testcase', () => {
       ${methods.map(method => `
         describe('Testcase ${method.trim()} method', () => {
@@ -51,8 +52,9 @@ function genTestCase(requestConfigPath: string, payloadPath: string, name: strin
                   console.log(result)
               }
             } catch (error) {
+
               const expectedError = ${JSON.stringify(testCase.expects)}
-                expect(error.response.data.error.details).toEqual(expectedError)
+              expect(error.response.data).toEqual(failResponse(expectedError))
             }
           });`).join('\n')}
         });`).join('\n')}
