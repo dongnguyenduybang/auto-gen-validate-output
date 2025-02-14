@@ -50,7 +50,7 @@ export function validateLogicData(data: any, rules: ValidationRule[], payload?: 
       errors.push(`Field "${rule.field}" must start with "${rule.startsWith}"`);
     }
 
-    console.log(value)
+    
 
   }
 

@@ -1,4 +1,12 @@
-export const testCasePayloads = [
+[
+    {
+        "body": {},
+        "expects": [
+            "prefix should not be undefined",
+            "quantity should not be undefined",
+            "badge should not be undefined"
+        ]
+    },
     {
         "body": {
             "badge": null
@@ -26,7 +34,7 @@ export const testCasePayloads = [
         "expects": [
             "prefix should not be undefined",
             "quantity should not be undefined",
-            "badge must be a number conforming to the specified constraints "
+            "badge must be a number conforming to the specified constraints"
         ]
     },
     {
@@ -40,6 +48,16 @@ export const testCasePayloads = [
     },
     {
         "body": {
+            "quantity": null
+        },
+        "expects": [
+            "prefix should not be undefined",
+            "quantity should not be null",
+            "badge should not be undefined"
+        ]
+    },
+    {
+        "body": {
             "quantity": null,
             "badge": null
         },
@@ -68,7 +86,7 @@ export const testCasePayloads = [
         "expects": [
             "prefix should not be undefined",
             "quantity should not be null",
-            "badge must be a number conforming to the specified constraints "
+            "badge must be a number conforming to the specified constraints"
         ]
     },
     {
@@ -83,6 +101,16 @@ export const testCasePayloads = [
     },
     {
         "body": {
+            "quantity": ""
+        },
+        "expects": [
+            "prefix should not be undefined",
+            "quantity should not be empty",
+            "badge should not be undefined"
+        ]
+    },
+    {
+        "body": {
             "quantity": "",
             "badge": null
         },
@@ -111,7 +139,7 @@ export const testCasePayloads = [
         "expects": [
             "prefix should not be undefined",
             "quantity should not be empty",
-            "badge must be a number conforming to the specified constraints "
+            "badge must be a number conforming to the specified constraints"
         ]
     },
     {
@@ -126,12 +154,22 @@ export const testCasePayloads = [
     },
     {
         "body": {
+            "quantity": "random_string"
+        },
+        "expects": [
+            "prefix should not be undefined",
+            "quantity must be a number conforming to the specified constraints",
+            "badge should not be undefined"
+        ]
+    },
+    {
+        "body": {
             "quantity": "random_string",
             "badge": null
         },
         "expects": [
             "prefix should not be undefined",
-            "quantity must be a number conforming to the specified constraints ",
+            "quantity must be a number conforming to the specified constraints",
             "badge should not be null"
         ]
     },
@@ -142,7 +180,7 @@ export const testCasePayloads = [
         },
         "expects": [
             "prefix should not be undefined",
-            "quantity must be a number conforming to the specified constraints ",
+            "quantity must be a number conforming to the specified constraints",
             "badge should not be empty"
         ]
     },
@@ -153,8 +191,8 @@ export const testCasePayloads = [
         },
         "expects": [
             "prefix should not be undefined",
-            "quantity must be a number conforming to the specified constraints ",
-            "badge must be a number conforming to the specified constraints "
+            "quantity must be a number conforming to the specified constraints",
+            "badge must be a number conforming to the specified constraints"
         ]
     },
     {
@@ -164,7 +202,16 @@ export const testCasePayloads = [
         },
         "expects": [
             "prefix should not be undefined",
-            "quantity must be a number conforming to the specified constraints "
+            "quantity must be a number conforming to the specified constraints"
+        ]
+    },
+    {
+        "body": {
+            "quantity": 1
+        },
+        "expects": [
+            "prefix should not be undefined",
+            "badge should not be undefined"
         ]
     },
     {
@@ -194,7 +241,7 @@ export const testCasePayloads = [
         },
         "expects": [
             "prefix should not be undefined",
-            "badge must be a number conforming to the specified constraints "
+            "badge must be a number conforming to the specified constraints"
         ]
     },
     {
@@ -208,6 +255,16 @@ export const testCasePayloads = [
     },
     {
         "body": {
+            "prefix": null
+        },
+        "expects": [
+            "prefix should not be null",
+            "quantity should not be undefined",
+            "badge should not be undefined"
+        ]
+    },
+    {
+        "body": {
             "prefix": null,
             "badge": null
         },
@@ -236,7 +293,7 @@ export const testCasePayloads = [
         "expects": [
             "prefix should not be null",
             "quantity should not be undefined",
-            "badge must be a number conforming to the specified constraints "
+            "badge must be a number conforming to the specified constraints"
         ]
     },
     {
@@ -252,6 +309,17 @@ export const testCasePayloads = [
     {
         "body": {
             "prefix": null,
+            "quantity": null
+        },
+        "expects": [
+            "prefix should not be null",
+            "quantity should not be null",
+            "badge should not be undefined"
+        ]
+    },
+    {
+        "body": {
+            "prefix": null,
             "quantity": null,
             "badge": null
         },
@@ -282,7 +350,7 @@ export const testCasePayloads = [
         "expects": [
             "prefix should not be null",
             "quantity should not be null",
-            "badge must be a number conforming to the specified constraints "
+            "badge must be a number conforming to the specified constraints"
         ]
     },
     {
@@ -299,6 +367,17 @@ export const testCasePayloads = [
     {
         "body": {
             "prefix": null,
+            "quantity": ""
+        },
+        "expects": [
+            "prefix should not be null",
+            "quantity should not be empty",
+            "badge should not be undefined"
+        ]
+    },
+    {
+        "body": {
+            "prefix": null,
             "quantity": "",
             "badge": null
         },
@@ -329,7 +408,7 @@ export const testCasePayloads = [
         "expects": [
             "prefix should not be null",
             "quantity should not be empty",
-            "badge must be a number conforming to the specified constraints "
+            "badge must be a number conforming to the specified constraints"
         ]
     },
     {
@@ -346,12 +425,23 @@ export const testCasePayloads = [
     {
         "body": {
             "prefix": null,
+            "quantity": "random_string"
+        },
+        "expects": [
+            "prefix should not be null",
+            "quantity must be a number conforming to the specified constraints",
+            "badge should not be undefined"
+        ]
+    },
+    {
+        "body": {
+            "prefix": null,
             "quantity": "random_string",
             "badge": null
         },
         "expects": [
             "prefix should not be null",
-            "quantity must be a number conforming to the specified constraints ",
+            "quantity must be a number conforming to the specified constraints",
             "badge should not be null"
         ]
     },
@@ -363,7 +453,7 @@ export const testCasePayloads = [
         },
         "expects": [
             "prefix should not be null",
-            "quantity must be a number conforming to the specified constraints ",
+            "quantity must be a number conforming to the specified constraints",
             "badge should not be empty"
         ]
     },
@@ -375,8 +465,8 @@ export const testCasePayloads = [
         },
         "expects": [
             "prefix should not be null",
-            "quantity must be a number conforming to the specified constraints ",
-            "badge must be a number conforming to the specified constraints "
+            "quantity must be a number conforming to the specified constraints",
+            "badge must be a number conforming to the specified constraints"
         ]
     },
     {
@@ -387,7 +477,17 @@ export const testCasePayloads = [
         },
         "expects": [
             "prefix should not be null",
-            "quantity must be a number conforming to the specified constraints "
+            "quantity must be a number conforming to the specified constraints"
+        ]
+    },
+    {
+        "body": {
+            "prefix": null,
+            "quantity": 1
+        },
+        "expects": [
+            "prefix should not be null",
+            "badge should not be undefined"
         ]
     },
     {
@@ -420,7 +520,7 @@ export const testCasePayloads = [
         },
         "expects": [
             "prefix should not be null",
-            "badge must be a number conforming to the specified constraints "
+            "badge must be a number conforming to the specified constraints"
         ]
     },
     {
@@ -435,6 +535,16 @@ export const testCasePayloads = [
     },
     {
         "body": {
+            "prefix": ""
+        },
+        "expects": [
+            "prefix should not be empty",
+            "quantity should not be undefined",
+            "badge should not be undefined"
+        ]
+    },
+    {
+        "body": {
             "prefix": "",
             "badge": null
         },
@@ -463,7 +573,7 @@ export const testCasePayloads = [
         "expects": [
             "prefix should not be empty",
             "quantity should not be undefined",
-            "badge must be a number conforming to the specified constraints "
+            "badge must be a number conforming to the specified constraints"
         ]
     },
     {
@@ -479,6 +589,17 @@ export const testCasePayloads = [
     {
         "body": {
             "prefix": "",
+            "quantity": null
+        },
+        "expects": [
+            "prefix should not be empty",
+            "quantity should not be null",
+            "badge should not be undefined"
+        ]
+    },
+    {
+        "body": {
+            "prefix": "",
             "quantity": null,
             "badge": null
         },
@@ -509,7 +630,7 @@ export const testCasePayloads = [
         "expects": [
             "prefix should not be empty",
             "quantity should not be null",
-            "badge must be a number conforming to the specified constraints "
+            "badge must be a number conforming to the specified constraints"
         ]
     },
     {
@@ -526,6 +647,17 @@ export const testCasePayloads = [
     {
         "body": {
             "prefix": "",
+            "quantity": ""
+        },
+        "expects": [
+            "prefix should not be empty",
+            "quantity should not be empty",
+            "badge should not be undefined"
+        ]
+    },
+    {
+        "body": {
+            "prefix": "",
             "quantity": "",
             "badge": null
         },
@@ -556,7 +688,7 @@ export const testCasePayloads = [
         "expects": [
             "prefix should not be empty",
             "quantity should not be empty",
-            "badge must be a number conforming to the specified constraints "
+            "badge must be a number conforming to the specified constraints"
         ]
     },
     {
@@ -573,12 +705,23 @@ export const testCasePayloads = [
     {
         "body": {
             "prefix": "",
+            "quantity": "random_string"
+        },
+        "expects": [
+            "prefix should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "badge should not be undefined"
+        ]
+    },
+    {
+        "body": {
+            "prefix": "",
             "quantity": "random_string",
             "badge": null
         },
         "expects": [
             "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints ",
+            "quantity must be a number conforming to the specified constraints",
             "badge should not be null"
         ]
     },
@@ -590,7 +733,7 @@ export const testCasePayloads = [
         },
         "expects": [
             "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints ",
+            "quantity must be a number conforming to the specified constraints",
             "badge should not be empty"
         ]
     },
@@ -602,8 +745,8 @@ export const testCasePayloads = [
         },
         "expects": [
             "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints ",
-            "badge must be a number conforming to the specified constraints "
+            "quantity must be a number conforming to the specified constraints",
+            "badge must be a number conforming to the specified constraints"
         ]
     },
     {
@@ -614,7 +757,17 @@ export const testCasePayloads = [
         },
         "expects": [
             "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints "
+            "quantity must be a number conforming to the specified constraints"
+        ]
+    },
+    {
+        "body": {
+            "prefix": "",
+            "quantity": 1
+        },
+        "expects": [
+            "prefix should not be empty",
+            "badge should not be undefined"
         ]
     },
     {
@@ -647,7 +800,7 @@ export const testCasePayloads = [
         },
         "expects": [
             "prefix should not be empty",
-            "badge must be a number conforming to the specified constraints "
+            "badge must be a number conforming to the specified constraints"
         ]
     },
     {
@@ -662,6 +815,16 @@ export const testCasePayloads = [
     },
     {
         "body": {
+            "prefix": 123456789
+        },
+        "expects": [
+            "prefix must be a string",
+            "quantity should not be undefined",
+            "badge should not be undefined"
+        ]
+    },
+    {
+        "body": {
             "prefix": 123456789,
             "badge": null
         },
@@ -690,7 +853,7 @@ export const testCasePayloads = [
         "expects": [
             "prefix must be a string",
             "quantity should not be undefined",
-            "badge must be a number conforming to the specified constraints "
+            "badge must be a number conforming to the specified constraints"
         ]
     },
     {
@@ -706,6 +869,17 @@ export const testCasePayloads = [
     {
         "body": {
             "prefix": 123456789,
+            "quantity": null
+        },
+        "expects": [
+            "prefix must be a string",
+            "quantity should not be null",
+            "badge should not be undefined"
+        ]
+    },
+    {
+        "body": {
+            "prefix": 123456789,
             "quantity": null,
             "badge": null
         },
@@ -736,7 +910,7 @@ export const testCasePayloads = [
         "expects": [
             "prefix must be a string",
             "quantity should not be null",
-            "badge must be a number conforming to the specified constraints "
+            "badge must be a number conforming to the specified constraints"
         ]
     },
     {
@@ -753,6 +927,17 @@ export const testCasePayloads = [
     {
         "body": {
             "prefix": 123456789,
+            "quantity": ""
+        },
+        "expects": [
+            "prefix must be a string",
+            "quantity should not be empty",
+            "badge should not be undefined"
+        ]
+    },
+    {
+        "body": {
+            "prefix": 123456789,
             "quantity": "",
             "badge": null
         },
@@ -783,7 +968,7 @@ export const testCasePayloads = [
         "expects": [
             "prefix must be a string",
             "quantity should not be empty",
-            "badge must be a number conforming to the specified constraints "
+            "badge must be a number conforming to the specified constraints"
         ]
     },
     {
@@ -800,12 +985,23 @@ export const testCasePayloads = [
     {
         "body": {
             "prefix": 123456789,
+            "quantity": "random_string"
+        },
+        "expects": [
+            "prefix must be a string",
+            "quantity must be a number conforming to the specified constraints",
+            "badge should not be undefined"
+        ]
+    },
+    {
+        "body": {
+            "prefix": 123456789,
             "quantity": "random_string",
             "badge": null
         },
         "expects": [
             "prefix must be a string",
-            "quantity must be a number conforming to the specified constraints ",
+            "quantity must be a number conforming to the specified constraints",
             "badge should not be null"
         ]
     },
@@ -817,7 +1013,7 @@ export const testCasePayloads = [
         },
         "expects": [
             "prefix must be a string",
-            "quantity must be a number conforming to the specified constraints ",
+            "quantity must be a number conforming to the specified constraints",
             "badge should not be empty"
         ]
     },
@@ -829,8 +1025,8 @@ export const testCasePayloads = [
         },
         "expects": [
             "prefix must be a string",
-            "quantity must be a number conforming to the specified constraints ",
-            "badge must be a number conforming to the specified constraints "
+            "quantity must be a number conforming to the specified constraints",
+            "badge must be a number conforming to the specified constraints"
         ]
     },
     {
@@ -841,7 +1037,17 @@ export const testCasePayloads = [
         },
         "expects": [
             "prefix must be a string",
-            "quantity must be a number conforming to the specified constraints "
+            "quantity must be a number conforming to the specified constraints"
+        ]
+    },
+    {
+        "body": {
+            "prefix": 123456789,
+            "quantity": 1
+        },
+        "expects": [
+            "prefix must be a string",
+            "badge should not be undefined"
         ]
     },
     {
@@ -874,7 +1080,7 @@ export const testCasePayloads = [
         },
         "expects": [
             "prefix must be a string",
-            "badge must be a number conforming to the specified constraints "
+            "badge must be a number conforming to the specified constraints"
         ]
     },
     {
@@ -889,6 +1095,15 @@ export const testCasePayloads = [
     },
     {
         "body": {
+            "prefix": "duy12345"
+        },
+        "expects": [
+            "quantity should not be undefined",
+            "badge should not be undefined"
+        ]
+    },
+    {
+        "body": {
             "prefix": "duy12345",
             "badge": null
         },
@@ -914,7 +1129,7 @@ export const testCasePayloads = [
         },
         "expects": [
             "quantity should not be undefined",
-            "badge must be a number conforming to the specified constraints "
+            "badge must be a number conforming to the specified constraints"
         ]
     },
     {
@@ -929,6 +1144,16 @@ export const testCasePayloads = [
     {
         "body": {
             "prefix": "duy12345",
+            "quantity": null
+        },
+        "expects": [
+            "quantity should not be null",
+            "badge should not be undefined"
+        ]
+    },
+    {
+        "body": {
+            "prefix": "duy12345",
             "quantity": null,
             "badge": null
         },
@@ -956,7 +1181,7 @@ export const testCasePayloads = [
         },
         "expects": [
             "quantity should not be null",
-            "badge must be a number conforming to the specified constraints "
+            "badge must be a number conforming to the specified constraints"
         ]
     },
     {
@@ -972,6 +1197,16 @@ export const testCasePayloads = [
     {
         "body": {
             "prefix": "duy12345",
+            "quantity": ""
+        },
+        "expects": [
+            "quantity should not be empty",
+            "badge should not be undefined"
+        ]
+    },
+    {
+        "body": {
+            "prefix": "duy12345",
             "quantity": "",
             "badge": null
         },
@@ -999,7 +1234,7 @@ export const testCasePayloads = [
         },
         "expects": [
             "quantity should not be empty",
-            "badge must be a number conforming to the specified constraints "
+            "badge must be a number conforming to the specified constraints"
         ]
     },
     {
@@ -1015,11 +1250,21 @@ export const testCasePayloads = [
     {
         "body": {
             "prefix": "duy12345",
+            "quantity": "random_string"
+        },
+        "expects": [
+            "quantity must be a number conforming to the specified constraints",
+            "badge should not be undefined"
+        ]
+    },
+    {
+        "body": {
+            "prefix": "duy12345",
             "quantity": "random_string",
             "badge": null
         },
         "expects": [
-            "quantity must be a number conforming to the specified constraints ",
+            "quantity must be a number conforming to the specified constraints",
             "badge should not be null"
         ]
     },
@@ -1030,7 +1275,7 @@ export const testCasePayloads = [
             "badge": ""
         },
         "expects": [
-            "quantity must be a number conforming to the specified constraints ",
+            "quantity must be a number conforming to the specified constraints",
             "badge should not be empty"
         ]
     },
@@ -1041,8 +1286,8 @@ export const testCasePayloads = [
             "badge": "random_string"
         },
         "expects": [
-            "quantity must be a number conforming to the specified constraints ",
-            "badge must be a number conforming to the specified constraints "
+            "quantity must be a number conforming to the specified constraints",
+            "badge must be a number conforming to the specified constraints"
         ]
     },
     {
@@ -1052,7 +1297,16 @@ export const testCasePayloads = [
             "badge": 0
         },
         "expects": [
-            "quantity must be a number conforming to the specified constraints "
+            "quantity must be a number conforming to the specified constraints"
+        ]
+    },
+    {
+        "body": {
+            "prefix": "duy12345",
+            "quantity": 1
+        },
+        "expects": [
+            "badge should not be undefined"
         ]
     },
     {
@@ -1082,7 +1336,7 @@ export const testCasePayloads = [
             "badge": "random_string"
         },
         "expects": [
-            "badge must be a number conforming to the specified constraints "
+            "badge must be a number conforming to the specified constraints"
         ]
     },
     {

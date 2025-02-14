@@ -9,36 +9,49 @@ function readJsonFile(filePath: string): any {
 
 function readPayloadFile(filePath: string): any {
   const fileContent = fs.readFileSync(filePath, 'utf-8');
-
-  const payload = fileContent.replace(/export\s+const\s+testCasePayloads\s*=\s*/, '');
-  return eval(payload);
+  return eval(fileContent);
 }
 
-function genTestCase(apiConfigPath: string, payloadPath: string, name: string) {
+function genTestCase(requestConfigPath: string, payloadPath: string, name: string) {
 
-  const apiConfig = readJsonFile(apiConfigPath);
+  const requestConfig = readJsonFile(requestConfigPath);
   const testCasePayloads = readPayloadFile(payloadPath);
-  const methods = apiConfig.method.split('|');
+  const methods = requestConfig.method.split('|');
 
   const specContent = `
       import axios from 'axios';
+      import { plainToInstance } from 'class-transformer';
+      import { MockUserDTOResponse } from '../../dto_response/mock-user-response.dto';
+      import { validate } from 'class-validator';
+        import { validateLogicData } from '../../validates/validate-logic';
+        import { getValidationFromDTOResponse } from '../../helps/ultil';
       describe('Testcase', () => {
       ${methods.map(method => `
         describe('Testcase ${method.trim()} method', () => {
       ${testCasePayloads.map((testCase: any, index: number) => `
           it('Test case #${index + 1}', async () => {
+           const payload =  ${JSON.stringify(testCase.body)}
             try {
+           
               const response = await axios({
                 method: '${method.trim().toLowerCase()}',
-                url:'${apiConfig.path}',
-                headers: ${JSON.stringify(apiConfig.headers)},
+                url:'${requestConfig.path}',
+                headers: ${JSON.stringify(requestConfig.headers)},
                 data: ${JSON.stringify(testCase.body)}
               });
+              const mockUserResponse = plainToInstance(${name}Response, response.data.data[0]);
+              const errors = await validate(mockUserResponse);
+              if (errors.length > 0) {
+                console.error("validation failed:", errors);
+              } else {
 
-              console.log(response.data)
+                  const mockUserValidationRules = getValidationFromDTOResponse(${name}Response);
+                  const result = validateLogicData(mockUserResponse, mockUserValidationRules, payload)
+                  console.log(result)
+              }
             } catch (error) {
-             const expectedError = ${JSON.stringify(testCase.expects)}
-              console.log(error)
+              const expectedError = ${JSON.stringify(testCase.expects)}
+                expect(error.response.data.error.details).toEqual(expectedError)
             }
           });`).join('\n')}
         });`).join('\n')}
@@ -62,6 +75,6 @@ const payloadsDir = path.join(__dirname, '../folder_gen/payloads');
 
 const pairedFiles = pairFiles(requestsDir, payloadsDir);
 
-pairedFiles.forEach(({ apiConfig, payload, name }) => {
-  genTestCase(apiConfig, payload, name);
+pairedFiles.forEach(({ requestConfig, payload, name }) => {
+  genTestCase(requestConfig, payload, name);
 });

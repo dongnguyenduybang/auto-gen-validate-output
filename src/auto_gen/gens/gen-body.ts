@@ -37,7 +37,7 @@ fs.readdirSync(dtoFolderPath).forEach((file) => {
                         }
                     });
                     
-                    let fileContent = `export const testCasePayloads = ${JSON.stringify(testCasePayload, null, 4)};`;
+                    let fileContent = `${JSON.stringify(testCasePayload, null, 4)};`;
                     fs.writeFileSync(outputFilePath, fileContent, 'utf-8');
                     console.log(`Success: ${outputFilePath}`);
                     

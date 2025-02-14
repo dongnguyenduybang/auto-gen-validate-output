@@ -4,9 +4,7 @@
   "headers": {
     "Content-Type": "application/json"
   },
-  "optionals": [
-    "badge"
-  ],
+  "optionals": [],
   "payload": {
     "prefix": "duy12345",
     "quantity": 1,
