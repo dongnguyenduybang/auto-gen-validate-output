@@ -2,6 +2,7 @@ import { generateErrorCases } from '../helps/dto-helper';
 import * as path from 'path';
 import * as fs from 'fs';
 
+
 const dtoFolderPath = path.join(__dirname, '../dtos');
 const outputDir = path.join(__dirname, '../folder_gen/payloads');
 
