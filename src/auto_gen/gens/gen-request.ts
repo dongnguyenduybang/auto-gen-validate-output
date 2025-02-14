@@ -4,6 +4,7 @@ import { extractDTO } from '../helps/dto-helper';
 import dotenv from 'dotenv';
 dotenv.config();
 
+
 const dtoFolderPath = path.join(__dirname, '../dtos');
 const outputDir = path.join(__dirname, '../folder_gen/requests');
 
