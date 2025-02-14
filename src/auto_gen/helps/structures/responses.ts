@@ -19,13 +19,13 @@ export function successResponse(data: DataResponse[]): SuccessResponse {
     };
 }
 
-export function failResponse(code: number, message: string, details: string[]): FailResponse {
+export function failResponse(details: string[]): FailResponse {
     return {
         ok: false,
         data: null,
         error: {
-            code,
-            message,
+            code: 1000,
+            message: "Invalid argument",
             details,
         },
     };
