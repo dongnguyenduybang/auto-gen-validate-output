@@ -49,7 +49,7 @@ function genTestCase(requestConfigPath: string, payloadPath: string, name: strin
 
                   const mockUserValidationRules = getValidationFromDTOResponse(${name}Response);
                   const result = validateLogicData(mockUserResponse, mockUserValidationRules, payload)
-                  console.log(result)
+                  expect(result.isValid).toBe(true)
               }
             } catch (error) {
 
