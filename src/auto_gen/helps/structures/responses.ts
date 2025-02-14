@@ -1,17 +1,16 @@
 import { UserRole } from "../../enums/user-role.enum";
+import 'reflect-metadata';
 
-export function transformDataResponse(dtoInstance: any): DataResponse {
+export function transformDataResponse(dtoInstance: any): any {
     const instance = Array.isArray(dtoInstance) ? dtoInstance[0] : dtoInstance;
-    return {
-        username: instance.username,
-        birthday: instance.birthday,
-        age: instance.age,
-        isActive: instance.isActive,
-        isObject: instance.isObject,
-        tags: instance.tags,
-        role: instance.role,
-    };
-}
+    const transformedData: { [key: string]: any } = {};
+  
+    for (const key of Object.keys(instance)) {
+      transformedData[key] = instance[key];
+    }
+  
+    return transformedData;
+  }
 
 export function successResponse(data: DataResponse[]): SuccessResponse {
     return {
@@ -33,25 +32,27 @@ export function failResponse(code: number, message: string, details: string[]): 
 }
 
 export interface DataResponse {
-    username: string;
-    birthday: Date;
-    age: number;
-    isActive: boolean;
-    isObject: object;
-    tags: string[];
-    role: UserRole;
+  
+ prefix: string,
+ quantity: number,
+ badge: number
+
+}
+
+export function generateTypeMap(dtoClass: any): { [key: string]: any } {
+  const typeMap: { [key: string]: any } = {};
+  const metadataKeys = Reflect.getMetadataKeys(dtoClass);
+  for (const key of metadataKeys) {
+    const type = Reflect.getMetadata('type', dtoClass, key);
+    if (type) {
+      typeMap[key] = type;
+    }
+  }
+
+  return typeMap;
 }
 
 
-export const typeMap: { [key: string]: any } = {
-    username: 'string',
-    birthday: 'Date',
-    age: 'number',
-    isActive: 'boolean',
-    isObject: 'object',
-    tags: 'array',
-    role: UserRole,
-};
 
 export interface SuccessResponse {
     ok: true;
@@ -64,11 +65,24 @@ export interface FailResponse {
     error: { [key: string]: any };
 }
 
-export function requestAPI(method: string, path: string, headers: any, payload: any) {
-    return {
-        method: method,
-        url: path,
-        headers: headers,
-        data: payload,
-    };
+export interface ValidationRule {
+  field: string; 
+  type: "string" | "number" | "boolean" | "array" | "object" | "date" ;
+  required: boolean; 
+  minLength: number; 
+  maxLength: number; 
+  startsWith: string; 
+  includes: string;
+  min: number;
+  max: number;
+  minArray: number;
+  maxArray: number;
+  minDate: Date;
+  maxDate: Date;
+  optional: boolean;
+}
+
+export interface ValidationResult {
+  isValid: boolean;
+  errors: string[] | null;
 }
