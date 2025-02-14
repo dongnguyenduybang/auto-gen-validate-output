@@ -12,14 +12,8 @@
     "gen:request": "npx ts-node src/auto_gen/gens/gen-request.ts",
     "gen:body": "npx ts-node src/auto_gen/gens/gen-body.ts",
     "gen:testcase": "npx ts-node src/auto_gen/gens/gen-testcase.ts",
-
-    "gen:test": "jest folder_gen",
-    "gen:testcase-validate-logic": "npx ts-node src/auto_gen/gen-validate-logic.ts",
-    "gen:passed-test": "jest folder_gen/results",
-
-    "gen:tests": "jest folder_gen/test-case"
-
-    
+    "gen:tests": "jest folder_gen/test-case",
+    "gen:test": "jest folder_gen"    
   },
   "engines": {
     "npm": ">=8.0.0",
