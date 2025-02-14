@@ -2,6 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { pairFiles } from '../helps/ultil';
 
+
 function readJsonFile(filePath: string): any {
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   return JSON.parse(fileContent);
