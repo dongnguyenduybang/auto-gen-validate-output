@@ -125,3 +125,11 @@ export function pairFiles(
   
     return Object.values(rulesPush) as ValidationRule[];
   }
+
+
+  export function getLength(value) {
+    if (value === null || value === undefined || value === '') {
+        return 0; // Coi giá trị null, undefined, hoặc empty string có độ dài 0
+    }
+    return value.length;
+}
