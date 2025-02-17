@@ -27,6 +27,7 @@ fs.readdirSync(dtoFolderPath).forEach((file) => {
                     let testCasePayload = []; 
                     result.forEach((item) => {
                         const testCase = item.testcaseGen;
+
                         if (testCase && typeof testCase === 'object') {
                             const testCasePush = {
                                 body: testCase,

@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 import { ErrorMessage } from '../enums/error-message.enum';
+import { getLength } from './ultil';
 
 export function getDecorators(target: any, propertyKey: string): Record<string, any> {
     const decorators: Record<string, any> = {};
@@ -15,105 +16,71 @@ export function getDecorators(target: any, propertyKey: string): Record<string, 
 }
 
 
-  export function generateErrorCases(dtoClass: any): any[] {
+export function generateErrorCases(dtoClass: any): any[] {
     const instance = new dtoClass();
     const keys = Object.keys(instance);
     const errorCasesByField: Record<string, any[]> = {};
-  
+
     keys.forEach((field) => {
-      const decorators = getDecorators(instance, field);
-  
-      errorCasesByField[field] = generateErrorVariantsForField(
-        instance[field],
-        decorators,
-      );
+        const decorators = getDecorators(instance, field);
+        errorCasesByField[field] = generateErrorVariantsForField(instance[field], decorators);
     });
-  
+
     const fields = Object.keys(errorCasesByField);
     const allErrorCombinations = generateCombinations(fields, errorCasesByField);
-  
+
     return allErrorCombinations.map((combination) => {
-      if (typeof combination === 'object' && combination !== null) {
         const testcaseGen = { ...combination };
-  
-        const expectedDetail = fields
-          .map((field) => {
+        const expectedDetail = fields.flatMap((field) => {
             const value = testcaseGen[field];
             const decorators = getDecorators(instance, field);
             return mapError(field, value, decorators);
-          })
-          .filter((error) => error !== null);
-  
-        return { testcaseGen, expectedDetail };
-      } else {
-        console.error(combination);
-      }
-    });
-  }
-  
+        });
 
+        return { testcaseGen, expectedDetail };
+    });
+}
 export function generateErrorVariantsForField(fieldValue: any, decorators: Record<string, any>): any[] {
     const variants: any[] = [];
 
     if (!decorators['optional']) {
         variants.push(undefined);
     }
-
-    if (decorators['min'] && fieldValue < decorators['min']) {
-        variants.push(fieldValue - 1);
-    }
-    if (decorators['max'] && fieldValue > decorators['max']) {
-        variants.push(fieldValue + 1);
+    if (decorators['notNull']) {
+        variants.push(null);
     }
 
-    if (decorators['notNull']) variants.push(null);
-    if (decorators['notEmpty']) variants.push('');
-
-
-    const typeHandlers: Record<string, () => void> = {
-        number: () => {
-            variants.push('random_string');
-            variants.push(fieldValue)
-        },
-        string: () => {
-            variants.push(123456789);
-            variants.push(fieldValue)
-        },
-        array: () => {
-            variants.push('random_string');
-            variants.push(fieldValue)
-        },
-        boolean: () => {
-            variants.push('random_string');
-            variants.push(fieldValue)
-        },
-        date: () => {
-            variants.push('random_string');
-            variants.push(fieldValue)
-        },
-        any: () => { },
-        object: () => {
-            variants.push('random_string');
-            variants.push(fieldValue);
-        },
-        enum: () => {
-            variants.push('random_string');
-            variants.push(fieldValue);
-        }
-    };
-
-    if (decorators['type']) {
-        console.log('decorators type', decorators['type']);
-        if (typeHandlers[decorators['type']]) {
-            typeHandlers[decorators['type']]();
-        } else {
-            console.error(`No handler found for type: ${decorators['type']}`);
-        }
+    if (decorators['notEmpty']) {
+        variants.push('');
     }
 
+    if (decorators['type'] === 'string') {
+        variants.push(12345);
+        variants.push(fieldValue)
+    } else if (decorators['type'] === 'number') {
+        variants.push('random_string'); 
+        variants.push(fieldValue)
+    } else if (decorators['type'] === 'enum') {
+        variants.push('invalid_value');
+        variants.push(fieldValue)
+    }
+
+    if (decorators['min'] !== undefined) {
+        variants.push(decorators['min'] - 1); 
+    }
+
+    if (decorators['max'] !== undefined) {
+        variants.push(decorators['max'] + 1); 
+    }
+
+    if (decorators['minLength'] !== undefined) { 
+        variants.push('a'.repeat(decorators['minLength'] - 1)); 
+    }
+    if (decorators['maxLength'] !== undefined) { 
+        variants.push('a'.repeat(decorators['maxLength'] + 1)); 
+    }
     return variants;
 }
-
 export function combineFields(arrays: any[][]): any[][] {
     return arrays.reduce((a, b) => a.flatMap((d) => b.map((e) => [d, e].flat())));
 }
@@ -128,116 +95,64 @@ export function generateCombinations(fields: string[], errorCasesByField: Record
     });
 }
 
-export function mapError(field: string, value: any, decorators: Record<string, any>): string | null {
+export function mapError(field: string, value: any, decorators: Record<string, any>): string[] {
+    const errors: string[] = [];
 
-    if (value === undefined && decorators['optional'] === true) {
-        return null; 
-    }else if (value === undefined && decorators['optional'] !== true){
-        return `${field} ${ErrorMessage.UNDEFINED}`; 
+    if (value === undefined  && !decorators['optional'] && !decorators['enumType']) {
+        errors.push(`${field} should not be null or undefined`);
     }
 
-    if (value === null && decorators['notNull']) {
-        return `${field} ${ErrorMessage.NULL}`;
+    if ((value === null && decorators['notNull']) || (value === undefined && decorators['undefined'])  ) {
+        errors.push(`${field} should not be null or undefined`);
     }
 
-    if (value === '' && decorators['notEmpty']) {
-        return `${field} ${ErrorMessage.EMPTY}`;
+    if (decorators['notEmpty'] && (value === undefined || value === '')) {
+        errors.push(`${field} should not be empty`);
     }
 
-    if (decorators['isAny']) {
-        return null;
-    }
-
-
-    if (decorators['type'] === 'string') {
-
-        if (decorators['minLength'] && typeof value === 'string' && value.length <= decorators['minLength']) {
-            return `${field} ${ErrorMessage.MIN_LENGTH} ${decorators['minLength']}`;
-        }
-
-        if (decorators['maxLength'] && typeof value === 'string' && value.length > decorators['maxLength']) {
-
-            return `${field} ${ErrorMessage.MAX_LENGTH} ${decorators['maxLength']}`;
-        }
-
-        if (typeof value !== 'string') {
-            return `${field} ${ErrorMessage.INVALID_TYPE_STRING}`;
-        }
-    }
-
-    if (decorators['type'] === 'number') {
-        if (typeof value !== 'number') {
-            return `${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`;
-        }
-        if (decorators['min'] && value < decorators['min']) {
-            return `${field} ${ErrorMessage.MIN} ${decorators['min']}`;
-        }
-        if (decorators['max'] && value > decorators['max']) {
-            return `${field} ${ErrorMessage.MAX} ${decorators['max']}`;
-        }
-    }
-
-    if (decorators['type'] === 'array') {
-        if (!Array.isArray(value)) {
-            return `${field} ${ErrorMessage.INVALID_TYPE_ARRAY}`;
-        }
-        if (decorators['minArray'] && value.length < decorators['minArray']) {
-            return `${field} ${ErrorMessage.MIN_ARRAY} ${decorators['minArray']}`;
-        }
-        if (decorators['maxArray'] && value.length > decorators['maxArray']) {
-            return `${field} ${ErrorMessage.MAX_ARRAY} ${decorators['maxArray']}`;
-        }
-    }
-
-    if (decorators['type'] === 'boolean') {
-        if (typeof value !== 'boolean') {
-            return `${field} ${ErrorMessage.INVALID_TYPE_BOOLEAN}`;
-        }
-    }
-
-    if (decorators['type'] === 'date') {
-        if (!(value instanceof Date) || isNaN(value.getTime())) {
-            return `${field} ${ErrorMessage.INVALID_TYPE_DATE}`;
-        }
-    }
-
-    if (decorators['type'] === 'object') {
-        if (typeof value !== 'object' || value === null) {
-            return `${field} ${ErrorMessage.INVALID_TYPE_OBJ}`;
-        }
-    }
-
-    if (decorators['type'] === 'enum') {
-        const enumType = decorators['enumType'];
-        if (enumType && !Object.values(enumType).includes(value)) {
-            return `${field} ${ErrorMessage.INVALID_ENUM}`;
-        }
-    }
-
-    return null;
-}
-
-function comparePayload(inputPayload: any, testCasePayload: any) {
-
-    let errors = [];
-    let isTestCaseValid = true;
-
-    Object.keys(inputPayload).forEach((key) => {
-        if (testCasePayload.hasOwnProperty(key)) {
-            if (testCasePayload[key] !== inputPayload[key]) {
-                errors.push(`Error: Value mismatch for key "${key}". Expected "${inputPayload[key]}" but got "${testCasePayload[key]}"`);
-                isTestCaseValid = false;
+    if (decorators['type']) {
+        if (decorators['type'] === 'string') {
+            
+            if (typeof value !== 'string') {
+                errors.push(`${field} ${ErrorMessage.INVALID_TYPE_STRING}`);
             }
-        } else {
-            errors.push(`Error: Missing key "${key}" in testCasePayload`);
-            isTestCaseValid = false;
+            
+            if (decorators['minLength'] !== undefined) {
+                const safeLength = getLength(value);
+                if (safeLength < decorators['minLength']) {
+                    errors.push(`${field} ${ErrorMessage.MIN_LENGTH} ${decorators['minLength']} characters`);
+                }
+            }
+            if (decorators['maxLength'] !== undefined) {
+                const safeLength = getLength(value);
+                if (safeLength > decorators['maxLength']) {
+                    errors.push(`${field} ${ErrorMessage.MAX_LENGTH} ${decorators['maxLength']} characters`);
+                }
+            }
+        
+        } else if (decorators['type'] === 'number') {
+            if (typeof value !== 'number') {
+                errors.push(`${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`);
+            } 
+            if ( decorators['enumType']) {
+                const enumValues = Object.values(decorators['enumType']);
+                const numericValues = enumValues.filter((value) => typeof value === 'number');
+                const uniqueValues = [...new Set(numericValues)];
+                if (!uniqueValues.includes(value)) {
+                    errors.push(`${field} ${ErrorMessage.INVALID_RANGE_NUMBER} ${uniqueValues.join(', ')}`);
+                }
+            }
+            if (decorators['min'] !== undefined && value < decorators['min'] && !decorators['enumType']) {
+                errors.push(`${field} ${ErrorMessage.MIN} ${decorators['min']}`);
+            }
+            if (decorators['max'] !== undefined && value > decorators['max'] && !decorators['enumType']) {
+                errors.push(`${field} ${ErrorMessage.MAX} ${decorators['max']}`);
+            }
         }
-    });
+    }
 
-    return { isTestCaseValid, errors };
+    return errors;
 }
-
-
 
 function validatePayloadType(payload: any, dtoClass: any) {
     let errors = [];

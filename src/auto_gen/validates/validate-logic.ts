@@ -3,7 +3,7 @@ import { ValidationResult, ValidationRule } from "../helps/structures/responses"
 
 export function validateLogicData(data: any, rules: ValidationRule[], payload?: any): ValidationResult {
   const errors: string[] = [];
-
+  console.log(payload)
   for (const rule of rules) {
     const value = data[rule.field];
 
