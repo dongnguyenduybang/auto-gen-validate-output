@@ -1,0 +1,14 @@
+{
+    "method": "POST",
+    "path": "${process.env.API_BASE_URL}/InternalFaker/MockUsers",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "optionals": [],
+    "payload": {
+      "prefix": "duy12345",
+      "quantity": 1,
+      "totalMessages": 1,
+      "typeChannel": 0
+    }
+  }

@@ -1,0 +1,13 @@
+{
+  "method": "POST",
+  "path": "InternalFaker/MockUsers",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "optionals": [],
+  "payload": {
+    "prefix": "duy12345",
+    "quantity": 1,
+    "badge": 0
+  }
+}
