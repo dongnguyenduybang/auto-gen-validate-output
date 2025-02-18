@@ -132,18 +132,6 @@ export function mapError(
   decorators: Record<string, any>,
 ): string[] {
   const errors: string[] = [];
-
-  if (
-    (value === null && decorators['notNull']) &&
-    (value === undefined && decorators['undefined'] && decorators['type'] === 'string')
-  ) {
-    errors.push(`${field} should not be null or undefined`);
-  }
-
-  if (decorators['notEmpty'] && (value === undefined || value === '')) {
-    errors.push(`${field} should not be empty`);
-  }
-
   if (decorators['type']) {
     if (decorators['type'] === 'string') {
       if (typeof value !== 'string') {
@@ -165,14 +153,21 @@ export function mapError(
           );
         }
       }
+
+      if ((value === null || value === undefined) && !decorators['optional']) {
+        errors.push(`${field} should not be null or undefined`);
+      }
+  
+      if (decorators['notEmpty'] && (value === undefined || value === '')) {
+        errors.push(`${field} should not be empty`);
+      }
     } else if (decorators['type'] === 'number') {
+      if (typeof value !== 'number') {
+        errors.push(`${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`);
+      }
 
       if (value === undefined || value === null || value === '') {
         errors.push(`${field} should not be empty`);
-      }
-
-      if (typeof value !== 'number') {
-        errors.push(`${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`);
       }
 
       if (decorators['enumType']) {
