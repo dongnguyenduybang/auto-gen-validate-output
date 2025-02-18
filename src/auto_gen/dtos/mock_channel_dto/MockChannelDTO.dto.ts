@@ -1,3 +1,4 @@
+import { TypeChannelEnum } from '../../enums/type-channel.enum';
 import {
   IsNotEmpty,
   IsNotNull,
@@ -6,6 +7,7 @@ import {
   IsString,
   Max,
   Min,
+  IsEnum,
 } from '../../decorator/dto-decorator';
 
 export class MockChannelDTO {
@@ -34,5 +36,6 @@ export class MockChannelDTO {
   @IsNotNull()
   @Min(0)
   @Max(3)
-  typeChannel?: number = 0;
+  @IsEnum(TypeChannelEnum)
+  typeChannel?: TypeChannelEnum = 0;
 }
