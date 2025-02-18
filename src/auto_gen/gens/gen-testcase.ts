@@ -14,7 +14,6 @@ function readJsonFile(filePath: string): any {
   return JSON.parse(fileContent);
 }
 
-console.log(process.env.API_BASE_URL);
 function getAllFiles(dirPath: string): string[] {
   let files: string[] = [];
   const items = fs.readdirSync(dirPath);
