@@ -9,11 +9,10 @@ if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir, { recursive: true });
 }
 
-function processFiles() {
+function genBodyPayload() {
   const files = getAllFiles(dtoFolderPath);
-  console.log(files)
-  const fileMap = groupFilesByName(files);
 
+  const fileMap = groupFilesByName(files);
 
   Object.entries(fileMap).forEach(([className, { dtoPath, requestPath }]) => {
     if (!dtoPath || !requestPath) {
@@ -80,7 +79,7 @@ function groupFilesByName(
 
   files.forEach((filePath) => {
     const fileName = path.basename(filePath, path.extname(filePath));
-    if (filePath.endsWith('.dto.ts') || filePath.endsWith('.dto.js')) {
+    if (filePath.endsWith('.dto.ts')) {
       const className = fileName.replace('.dto', '');
       fileMap[className] = fileMap[className] || {};
       fileMap[className].dtoPath = filePath;
@@ -94,4 +93,4 @@ function groupFilesByName(
   return fileMap;
 }
 
-processFiles();
+genBodyPayload();
