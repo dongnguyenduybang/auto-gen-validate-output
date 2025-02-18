@@ -10,10 +10,8 @@ export function validateLogicData(
   payload?: any,
 ): ValidationResult {
   const errors: string[] = [];
-  console.log(payload);
   for (const rule of rules) {
     const value = data[rule.field];
-
     if (
       rule.optional === true &&
       (value === undefined || value === null || value === '')
@@ -94,6 +92,13 @@ export function validateLogicData(
         errors.push(
           `Field "${rule.field}" must be on or before ${rule.maxDate.toISOString()}`,
         );
+      }
+    }
+
+    if (rule.customValidation) {
+      const customError = rule.customValidation(value, payload, data);
+      if (customError) {
+        errors.push(customError);
       }
     }
   }
