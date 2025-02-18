@@ -124,7 +124,15 @@ export function getValidationFromDTOResponse(dtoClass: any): ValidationRule[] {
 
 export function getLength(value) {
   if (value === null || value === undefined || value === '') {
-    return 0; // Coi giá trị null, undefined, hoặc empty string có độ dài 0
+    return 0; 
   }
   return value.length;
+}
+
+
+export function replaceClassName(input: string): any{
+  let cleanedInput = input.replace(/DTO$/, '');
+  
+  let cleanedClassname = cleanedInput.replace(/([a-z])([A-Z])/g, '$1-$2') .toLowerCase();
+  return {text: cleanedInput , text2:cleanedClassname}
 }
