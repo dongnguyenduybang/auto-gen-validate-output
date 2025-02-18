@@ -1,42 +1,39 @@
-import { UserRole } from "../../enums/user-role.enum";
 import 'reflect-metadata';
 
 export function transformDataResponse(dtoInstance: any): any {
-    const instance = Array.isArray(dtoInstance) ? dtoInstance[0] : dtoInstance;
-    const transformedData: { [key: string]: any } = {};
-  
-    for (const key of Object.keys(instance)) {
-      transformedData[key] = instance[key];
-    }
-  
-    return transformedData;
+  const instance = Array.isArray(dtoInstance) ? dtoInstance[0] : dtoInstance;
+  const transformedData: { [key: string]: any } = {};
+
+  for (const key of Object.keys(instance)) {
+    transformedData[key] = instance[key];
   }
 
+  return transformedData;
+}
+
 export function successResponse(data: DataResponse[]): SuccessResponse {
-    return {
-        ok: true,
-        data: data,
-    };
+  return {
+    ok: true,
+    data: data,
+  };
 }
 
 export function failResponse(details: string[]): FailResponse {
-    return {
-        ok: false,
-        data: null,
-        error: {
-            code: 1000,
-            message: "Invalid argument",
-            details,
-        },
-    };
+  return {
+    ok: false,
+    data: null,
+    error: {
+      code: 1000,
+      message: 'Invalid argument',
+      details,
+    },
+  };
 }
 
 export interface DataResponse {
-  
- prefix: string,
- quantity: number,
- badge: number
-
+  prefix: string;
+  quantity: number;
+  badge: number;
 }
 
 export function generateTypeMap(dtoClass: any): { [key: string]: any } {
@@ -52,34 +49,32 @@ export function generateTypeMap(dtoClass: any): { [key: string]: any } {
   return typeMap;
 }
 
-
-
 export interface SuccessResponse {
-    ok: true;
-    data: DataResponse[];
+  ok: true;
+  data: DataResponse[];
 }
 
 export interface FailResponse {
-    ok: false;
-    data: null;
-    error: { [key: string]: any };
+  ok: false;
+  data: null;
+  error: { [key: string]: any };
 }
 
 export interface ValidationRule {
-  field: string; 
-  type: "string" | "number" | "boolean" | "array" | "object" | "date" ;
-  required: boolean; 
-  minLength: number; 
-  maxLength: number; 
-  startsWith: string; 
-  includes: string;
-  min: number;
-  max: number;
-  minArray: number;
-  maxArray: number;
-  minDate: Date;
-  maxDate: Date;
-  optional: boolean;
+  field: string;
+  type: 'string' | 'number' | 'boolean' | 'array' | 'object' | 'date';
+  required: boolean;
+  minLength?: number;
+  maxLength?: number;
+  includes?: string;
+  min?: number;
+  max?: number;
+  minArray?: number;
+  maxArray?: number;
+  minDate?: Date;
+  maxDate?: Date;
+  optional?: boolean;
+  customValidation?: (value: any, payload?: any, data?: any) => string | null; 
 }
 
 export interface ValidationResult {
