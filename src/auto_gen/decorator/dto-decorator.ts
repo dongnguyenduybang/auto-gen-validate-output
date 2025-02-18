@@ -1,10 +1,9 @@
-import 'reflect-metadata'
+import 'reflect-metadata';
 import {
   registerDecorator,
   ValidationOptions,
   ValidationArguments,
 } from 'class-validator';
-
 
 // Decorator Min
 export function Min(value: number) {
@@ -123,7 +122,6 @@ export function IsEnum(enumType: any) {
     Reflect.defineMetadata('enumType', enumType, target, propertyKey);
   };
 }
-
 
 export function StartsWith(
   prefix: string,

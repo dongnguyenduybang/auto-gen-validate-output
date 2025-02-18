@@ -1,4 +1,3 @@
-
 import {
   IsNotEmpty,
   IsNotNull,
@@ -6,7 +5,7 @@ import {
   IsNumber,
   IsString,
   Max,
-  Min
+  Min,
 } from '../../decorator/dto-decorator';
 
 export class MockChannelDTO {
@@ -14,7 +13,7 @@ export class MockChannelDTO {
   @IsNotEmpty()
   @IsNotNull()
   @MinLength(5)
-  prefix?: string = ''; 
+  prefix?: string = '';
 
   @IsNumber()
   @IsNotEmpty()
@@ -36,5 +35,4 @@ export class MockChannelDTO {
   @Min(0)
   @Max(3)
   typeChannel?: number = 0;
-
 }

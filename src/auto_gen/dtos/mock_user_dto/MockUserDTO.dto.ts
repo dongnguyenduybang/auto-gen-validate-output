@@ -16,7 +16,7 @@ export class MockUserDTO {
   @IsNotEmpty()
   @IsNotNull()
   @MinLength(5)
-  prefix?: string = ''; 
+  prefix?: string = '';
 
   @IsNumber()
   @IsNotEmpty()
@@ -31,5 +31,5 @@ export class MockUserDTO {
   @Min(0)
   @Max(3)
   @IsEnum(BadgeEnum)
-  badge?: BadgeEnum  = 0;
+  badge?: BadgeEnum = 0;
 }

@@ -1,4 +1,12 @@
-import { IsOptional, IsDefined, IsString, IsNotEmpty, IsNumber, Min, Max } from "class-validator";
+import {
+  IsOptional,
+  IsDefined,
+  IsString,
+  IsNotEmpty,
+  IsNumber,
+  Min,
+  Max,
+} from 'class-validator';
 
 export class MockChannelDTOResponse {
   @IsOptional()

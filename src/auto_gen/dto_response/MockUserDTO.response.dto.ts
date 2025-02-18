@@ -3,13 +3,12 @@ import {
   IsNotEmpty,
   IsNumber,
   IsDefined,
-  IsOptional,
   Min,
   Max,
 } from 'class-validator';
 
 export class MockUserDTOResponse {
-  @IsOptional()
+
   @IsDefined()
   @IsString()
   @IsNotEmpty()
@@ -35,6 +34,8 @@ export class MockUserDTOResponse {
   @IsNotEmpty()
   recoverKey: string;
 
+  @IsDefined()
+  @IsNotEmpty()
   @IsNumber()
   @Min(0)
   @Max(3)
