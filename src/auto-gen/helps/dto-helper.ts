@@ -131,6 +131,8 @@ export function mapError(
   value: any,
   decorators: Record<string, any>,
 ): string[] {
+
+
   const errors: string[] = [];
 
   if (decorators['type']) {
@@ -140,15 +142,13 @@ export function mapError(
       }
 
       if (decorators['minLength'] !== undefined) {
-        // Chuyển value thành chuỗi để đảm bảo tính nhất quán
-        const stringValue = String(value || ''); // Chuyển về chuỗi, nếu null/undefined thì thành ""
-
-        // Kiểm tra độ dài
-        if (stringValue.length < decorators['minLength']) {
+        const stringValue = String(value || '');
+        if (stringValue.length < decorators['minLength'] ||  typeof value !== 'string') {
           errors.push(
             `${field} ${ErrorMessage.MIN_LENGTH} ${decorators['minLength']} characters`,
           );
         }
+       
       }
 
       if (decorators['maxLength'] !== undefined) {
@@ -171,12 +171,15 @@ export function mapError(
         errors.push(`${field} should not be empty`);
       }
     } else if (decorators['type'] === 'number') {
+      
       if (typeof value !== 'number') {
         errors.push(`${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`);
       }
 
-      if (value === undefined || value === null || value === '') {
+      if ((value === undefined || value === null || value === '')) {
         errors.push(`${field} should not be empty`);
+      }else {
+
       }
 
       if (decorators['isIn']) {
@@ -189,17 +192,22 @@ export function mapError(
         }
       }
 
-      if (decorators['min']) {
+
+      if (decorators['min'] || decorators['min'] === 0) {
         if (
           value === undefined ||
           value === null ||
           value === '' ||
           typeof value !== 'number'
         ) {
+
           errors.push(`${field} ${ErrorMessage.MIN} ${decorators['min']}`);
-        } else if (value < decorators['min']) {
+        } 
+        else if (value < decorators['min']) {
           errors.push(`${field} ${ErrorMessage.MIN} ${decorators['min']}`);
-        }
+        } 
+
+       
       }
 
       if (decorators['max']) {
@@ -210,7 +218,8 @@ export function mapError(
           typeof value !== 'number'
         ) {
           errors.push(`${field} ${ErrorMessage.MAX} ${decorators['max']}`);
-        } else if (value > decorators['max']) {
+        } 
+        else if (value > decorators['max']) {
           errors.push(`${field} ${ErrorMessage.MAX} ${decorators['max']}`);
         }
       }
@@ -219,6 +228,8 @@ export function mapError(
 
   return errors;
 }
+
+
 function validatePayloadType(payload: any, dtoClass: any) {
   const errors = [];
   let valueDate;
