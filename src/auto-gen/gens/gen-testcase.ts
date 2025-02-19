@@ -61,8 +61,6 @@ function genTestCase(
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join('');
 
-
-
   const specContent = `
     import axios from 'axios';
     import { plainToInstance } from 'class-transformer';
@@ -73,10 +71,9 @@ function genTestCase(
     import fs from 'fs';
     import path from 'path';
 
-      // Hàm phân tích lỗi
   function analyzeErrors(expected: string[], actual: string[]) {
-    const missing = expected.filter((error) => !actual.includes(error)); // Lỗi thiếu
-    const extra = actual.filter((error) => !expected.includes(error)); // Lỗi thừa
+    const missing = expected.filter((error) => !actual.includes(error)); 
+    const extra = actual.filter((error) => !expected.includes(error));
     return { missing, extra };
   }
 
@@ -145,8 +142,9 @@ function genTestCase(
           }
 
           const resultContent = \`
-              === Test Results for DTO "${className}" ===
-
+              === Test Reports for DTO "${className}" ===
+              Host: \${globalThis.url}\
+              Endpoint: ${requestConfig.path}
               Total Tests: \${totalTests}
               Passed Tests: \${passedTests}
               Failed Tests: \${failedTests.length}
