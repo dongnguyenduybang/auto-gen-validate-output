@@ -1,0 +1,149 @@
+
+=== Test Results for DTO "mock-user" ===
+
+Total Tests: 210
+Passed Tests: 175
+Failed Tests: 35
+
+Failed Test Details:
+
+- Test case #106
+  Expected: ["prefix must be a string","quantity must be a number conforming to the specified constraints","quantity should not be empty","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3"]
+  Actual:   ["quantity must not be greater than 100","quantity must not be less than 1","quantity should not be empty","quantity must be a number conforming to the specified constraints","prefix must be longer than or equal to 5 characters","prefix must be a string","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3","badge must be a number conforming to the specified constraints"]
+
+- Test case #107
+  Expected: ["prefix must be a string","quantity must be a number conforming to the specified constraints","quantity should not be empty","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3"]
+  Actual:   ["quantity must not be greater than 100","quantity must not be less than 1","quantity should not be empty","quantity must be a number conforming to the specified constraints","prefix must be longer than or equal to 5 characters","prefix must be a string","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3","badge must be a number conforming to the specified constraints"]
+
+- Test case #108
+  Expected: ["prefix must be a string","quantity must be a number conforming to the specified constraints","quantity should not be empty","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3"]
+  Actual:   ["quantity must not be greater than 100","quantity must not be less than 1","quantity should not be empty","quantity must be a number conforming to the specified constraints","prefix must be longer than or equal to 5 characters","prefix must be a string","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3","badge must be a number conforming to the specified constraints"]
+
+- Test case #109
+  Expected: ["prefix must be a string","quantity must be a number conforming to the specified constraints","quantity should not be empty","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"]
+  Actual:   ["quantity must not be greater than 100","quantity must not be less than 1","quantity should not be empty","quantity must be a number conforming to the specified constraints","prefix must be longer than or equal to 5 characters","prefix must be a string","badge must be one of the following values: 0, 1, 2, 3","badge must be a number conforming to the specified constraints"]
+
+- Test case #110
+  Expected: ["prefix must be a string","quantity must be a number conforming to the specified constraints","quantity should not be empty","quantity must not be less than 1","quantity must not be greater than 100"]
+  Actual:   ["quantity must not be greater than 100","quantity must not be less than 1","quantity should not be empty","quantity must be a number conforming to the specified constraints","prefix must be longer than or equal to 5 characters","prefix must be a string"]
+
+- Test case #111
+  Expected: ["prefix must be a string","quantity must be a number conforming to the specified constraints","quantity should not be empty","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3"]
+  Actual:   ["quantity must not be greater than 100","quantity must not be less than 1","quantity should not be empty","quantity must be a number conforming to the specified constraints","prefix must be longer than or equal to 5 characters","prefix must be a string","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3","badge must be a number conforming to the specified constraints"]
+
+- Test case #112
+  Expected: ["prefix must be a string","quantity must be a number conforming to the specified constraints","quantity should not be empty","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3"]
+  Actual:   ["quantity must not be greater than 100","quantity must not be less than 1","quantity should not be empty","quantity must be a number conforming to the specified constraints","prefix must be longer than or equal to 5 characters","prefix must be a string","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3","badge must be a number conforming to the specified constraints"]
+
+- Test case #113
+  Expected: ["prefix must be a string","quantity must be a number conforming to the specified constraints","quantity should not be empty","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3"]
+  Actual:   ["quantity must not be greater than 100","quantity must not be less than 1","quantity should not be empty","quantity must be a number conforming to the specified constraints","prefix must be longer than or equal to 5 characters","prefix must be a string","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3","badge must be a number conforming to the specified constraints"]
+
+- Test case #114
+  Expected: ["prefix must be a string","quantity must be a number conforming to the specified constraints","quantity should not be empty","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"]
+  Actual:   ["quantity must not be greater than 100","quantity must not be less than 1","quantity should not be empty","quantity must be a number conforming to the specified constraints","prefix must be longer than or equal to 5 characters","prefix must be a string","badge must be one of the following values: 0, 1, 2, 3","badge must be a number conforming to the specified constraints"]
+
+- Test case #115
+  Expected: ["prefix must be a string","quantity must be a number conforming to the specified constraints","quantity should not be empty","quantity must not be less than 1","quantity must not be greater than 100"]
+  Actual:   ["quantity must not be greater than 100","quantity must not be less than 1","quantity should not be empty","quantity must be a number conforming to the specified constraints","prefix must be longer than or equal to 5 characters","prefix must be a string"]
+
+- Test case #116
+  Expected: ["prefix must be a string","quantity must be a number conforming to the specified constraints","quantity should not be empty","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3"]
+  Actual:   ["quantity must not be greater than 100","quantity must not be less than 1","quantity should not be empty","quantity must be a number conforming to the specified constraints","prefix must be longer than or equal to 5 characters","prefix must be a string","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3","badge must be a number conforming to the specified constraints"]
+
+- Test case #117
+  Expected: ["prefix must be a string","quantity must be a number conforming to the specified constraints","quantity should not be empty","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3"]
+  Actual:   ["quantity must not be greater than 100","quantity must not be less than 1","quantity should not be empty","quantity must be a number conforming to the specified constraints","prefix must be longer than or equal to 5 characters","prefix must be a string","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3","badge must be a number conforming to the specified constraints"]
+
+- Test case #118
+  Expected: ["prefix must be a string","quantity must be a number conforming to the specified constraints","quantity should not be empty","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3"]
+  Actual:   ["quantity must not be greater than 100","quantity must not be less than 1","quantity should not be empty","quantity must be a number conforming to the specified constraints","prefix must be longer than or equal to 5 characters","prefix must be a string","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3","badge must be a number conforming to the specified constraints"]
+
+- Test case #119
+  Expected: ["prefix must be a string","quantity must be a number conforming to the specified constraints","quantity should not be empty","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"]
+  Actual:   ["quantity must not be greater than 100","quantity must not be less than 1","quantity should not be empty","quantity must be a number conforming to the specified constraints","prefix must be longer than or equal to 5 characters","prefix must be a string","badge must be one of the following values: 0, 1, 2, 3","badge must be a number conforming to the specified constraints"]
+
+- Test case #120
+  Expected: ["prefix must be a string","quantity must be a number conforming to the specified constraints","quantity should not be empty","quantity must not be less than 1","quantity must not be greater than 100"]
+  Actual:   ["quantity must not be greater than 100","quantity must not be less than 1","quantity should not be empty","quantity must be a number conforming to the specified constraints","prefix must be longer than or equal to 5 characters","prefix must be a string"]
+
+- Test case #121
+  Expected: ["prefix must be a string","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3"]
+  Actual:   ["quantity must not be greater than 100","quantity must not be less than 1","quantity must be a number conforming to the specified constraints","prefix must be longer than or equal to 5 characters","prefix must be a string","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3","badge must be a number conforming to the specified constraints"]
+
+- Test case #122
+  Expected: ["prefix must be a string","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3"]
+  Actual:   ["quantity must not be greater than 100","quantity must not be less than 1","quantity must be a number conforming to the specified constraints","prefix must be longer than or equal to 5 characters","prefix must be a string","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3","badge must be a number conforming to the specified constraints"]
+
+- Test case #123
+  Expected: ["prefix must be a string","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3"]
+  Actual:   ["quantity must not be greater than 100","quantity must not be less than 1","quantity must be a number conforming to the specified constraints","prefix must be longer than or equal to 5 characters","prefix must be a string","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3","badge must be a number conforming to the specified constraints"]
+
+- Test case #124
+  Expected: ["prefix must be a string","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"]
+  Actual:   ["quantity must not be greater than 100","quantity must not be less than 1","quantity must be a number conforming to the specified constraints","prefix must be longer than or equal to 5 characters","prefix must be a string","badge must be one of the following values: 0, 1, 2, 3","badge must be a number conforming to the specified constraints"]
+
+- Test case #125
+  Expected: ["prefix must be a string","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"]
+  Actual:   ["quantity must not be greater than 100","quantity must not be less than 1","quantity must be a number conforming to the specified constraints","prefix must be longer than or equal to 5 characters","prefix must be a string"]
+
+- Test case #126
+  Expected: ["prefix must be a string","badge must be a number conforming to the specified constraints","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3"]
+  Actual:   ["prefix must be longer than or equal to 5 characters","prefix must be a string","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3","badge must be a number conforming to the specified constraints"]
+
+- Test case #127
+  Expected: ["prefix must be a string","badge must be a number conforming to the specified constraints","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3"]
+  Actual:   ["prefix must be longer than or equal to 5 characters","prefix must be a string","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3","badge must be a number conforming to the specified constraints"]
+
+- Test case #128
+  Expected: ["prefix must be a string","badge must be a number conforming to the specified constraints","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3"]
+  Actual:   ["prefix must be longer than or equal to 5 characters","prefix must be a string","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3","badge must be a number conforming to the specified constraints"]
+
+- Test case #129
+  Expected: ["prefix must be a string","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"]
+  Actual:   ["prefix must be longer than or equal to 5 characters","prefix must be a string","badge must be one of the following values: 0, 1, 2, 3","badge must be a number conforming to the specified constraints"]
+
+- Test case #130
+  Expected: ["prefix must be a string"]
+  Actual:   ["prefix must be longer than or equal to 5 characters","prefix must be a string"]
+
+- Test case #131
+  Expected: ["prefix must be a string","quantity must not be less than 1","badge must be a number conforming to the specified constraints","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3"]
+  Actual:   ["quantity must not be less than 1","prefix must be longer than or equal to 5 characters","prefix must be a string","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3","badge must be a number conforming to the specified constraints"]
+
+- Test case #132
+  Expected: ["prefix must be a string","quantity must not be less than 1","badge must be a number conforming to the specified constraints","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3"]
+  Actual:   ["quantity must not be less than 1","prefix must be longer than or equal to 5 characters","prefix must be a string","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3","badge must be a number conforming to the specified constraints"]
+
+- Test case #133
+  Expected: ["prefix must be a string","quantity must not be less than 1","badge must be a number conforming to the specified constraints","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3"]
+  Actual:   ["quantity must not be less than 1","prefix must be longer than or equal to 5 characters","prefix must be a string","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3","badge must be a number conforming to the specified constraints"]
+
+- Test case #134
+  Expected: ["prefix must be a string","quantity must not be less than 1","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"]
+  Actual:   ["quantity must not be less than 1","prefix must be longer than or equal to 5 characters","prefix must be a string","badge must be one of the following values: 0, 1, 2, 3","badge must be a number conforming to the specified constraints"]
+
+- Test case #135
+  Expected: ["prefix must be a string","quantity must not be less than 1"]
+  Actual:   ["quantity must not be less than 1","prefix must be longer than or equal to 5 characters","prefix must be a string"]
+
+- Test case #136
+  Expected: ["prefix must be a string","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3"]
+  Actual:   ["quantity must not be greater than 100","prefix must be longer than or equal to 5 characters","prefix must be a string","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3","badge must be a number conforming to the specified constraints"]
+
+- Test case #137
+  Expected: ["prefix must be a string","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3"]
+  Actual:   ["quantity must not be greater than 100","prefix must be longer than or equal to 5 characters","prefix must be a string","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3","badge must be a number conforming to the specified constraints"]
+
+- Test case #138
+  Expected: ["prefix must be a string","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3"]
+  Actual:   ["quantity must not be greater than 100","prefix must be longer than or equal to 5 characters","prefix must be a string","badge should not be empty","badge must be one of the following values: 0, 1, 2, 3","badge must be a number conforming to the specified constraints"]
+
+- Test case #139
+  Expected: ["prefix must be a string","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"]
+  Actual:   ["quantity must not be greater than 100","prefix must be longer than or equal to 5 characters","prefix must be a string","badge must be one of the following values: 0, 1, 2, 3","badge must be a number conforming to the specified constraints"]
+
+- Test case #140
+  Expected: ["prefix must be a string","quantity must not be greater than 100"]
+  Actual:   ["quantity must not be greater than 100","prefix must be longer than or equal to 5 characters","prefix must be a string"]
+

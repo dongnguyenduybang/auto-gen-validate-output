@@ -1,6 +1,5 @@
 
 import dotenv from 'dotenv';
-
 export default {
     moduleFileExtensions: ['js', 'json', 'ts'],
     rootDir: '.',
@@ -8,18 +7,19 @@ export default {
     testRegex: '\\.spec\\.ts$',
     transform: {
         '^.+\\.tsx?$': ['ts-jest', { tsconfig: 'tsconfig.json' }],
-    },
-    // Nạp file .env trước khi chạy test
+      },
+      
     setupFiles: ['dotenv/config'],
+    setupFilesAfterEnv: ['./jest.setup.ts'],
     preset: 'ts-jest',
     moduleNameMapper: {
-        '#ansi-styles': 'ansi-styles', // Khắc phục lỗi ESM của chalk
+        '#ansi-styles': 'ansi-styles',
     },
-    globals: {
+    globals: {  
         'ts-jest': {
-            useESM: true, // Kích hoạt ESM trong ts-jest
+            useESM: true,
         },
     },
-    extensionsToTreatAsEsm: ['.ts', '.tsx'], // Xem các tệp TypeScript là ESM
-    maxWorkers: 2, // Giới hạn số lượng worker
+    extensionsToTreatAsEsm: ['.ts', '.tsx'],
+    maxWorkers: 2, 
 };
