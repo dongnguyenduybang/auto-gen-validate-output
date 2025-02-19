@@ -1,6 +1,0 @@
-export enum TypeChannelEnum {
-  CHANNEL_1_N = 0,
-  CHANNEL_1_1 = 1,
-  INCOMING_MESSAGE_REQUEST = 2,
-  OUTGOING_MESSAGE_REQUEST = 3,
-}
