@@ -1,0 +1,430 @@
+[
+    {
+        "body": {},
+        "expects": [
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 200",
+            "type must be a number conforming to the specified constraints",
+            "type should not be empty",
+            "type must be one of the following values: 0, 1, 2"
+        ]
+    },
+    {
+        "body": {
+            "type": null
+        },
+        "expects": [
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 200",
+            "type must be a number conforming to the specified constraints",
+            "type should not be empty",
+            "type must be one of the following values: 0, 1, 2"
+        ]
+    },
+    {
+        "body": {
+            "type": ""
+        },
+        "expects": [
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 200",
+            "type must be a number conforming to the specified constraints",
+            "type should not be empty",
+            "type must be one of the following values: 0, 1, 2"
+        ]
+    },
+    {
+        "body": {
+            "type": "random_string"
+        },
+        "expects": [
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 200",
+            "type must be a number conforming to the specified constraints",
+            "type must be one of the following values: 0, 1, 2"
+        ]
+    },
+    {
+        "body": {
+            "type": 2
+        },
+        "expects": [
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 200"
+        ]
+    },
+    {
+        "body": {
+            "quantity": null
+        },
+        "expects": [
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 200",
+            "type must be a number conforming to the specified constraints",
+            "type should not be empty",
+            "type must be one of the following values: 0, 1, 2"
+        ]
+    },
+    {
+        "body": {
+            "quantity": null,
+            "type": null
+        },
+        "expects": [
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 200",
+            "type must be a number conforming to the specified constraints",
+            "type should not be empty",
+            "type must be one of the following values: 0, 1, 2"
+        ]
+    },
+    {
+        "body": {
+            "quantity": null,
+            "type": ""
+        },
+        "expects": [
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 200",
+            "type must be a number conforming to the specified constraints",
+            "type should not be empty",
+            "type must be one of the following values: 0, 1, 2"
+        ]
+    },
+    {
+        "body": {
+            "quantity": null,
+            "type": "random_string"
+        },
+        "expects": [
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 200",
+            "type must be a number conforming to the specified constraints",
+            "type must be one of the following values: 0, 1, 2"
+        ]
+    },
+    {
+        "body": {
+            "quantity": null,
+            "type": 2
+        },
+        "expects": [
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 200"
+        ]
+    },
+    {
+        "body": {
+            "quantity": ""
+        },
+        "expects": [
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 200",
+            "type must be a number conforming to the specified constraints",
+            "type should not be empty",
+            "type must be one of the following values: 0, 1, 2"
+        ]
+    },
+    {
+        "body": {
+            "quantity": "",
+            "type": null
+        },
+        "expects": [
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 200",
+            "type must be a number conforming to the specified constraints",
+            "type should not be empty",
+            "type must be one of the following values: 0, 1, 2"
+        ]
+    },
+    {
+        "body": {
+            "quantity": "",
+            "type": ""
+        },
+        "expects": [
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 200",
+            "type must be a number conforming to the specified constraints",
+            "type should not be empty",
+            "type must be one of the following values: 0, 1, 2"
+        ]
+    },
+    {
+        "body": {
+            "quantity": "",
+            "type": "random_string"
+        },
+        "expects": [
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 200",
+            "type must be a number conforming to the specified constraints",
+            "type must be one of the following values: 0, 1, 2"
+        ]
+    },
+    {
+        "body": {
+            "quantity": "",
+            "type": 2
+        },
+        "expects": [
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 200"
+        ]
+    },
+    {
+        "body": {
+            "quantity": "random_string"
+        },
+        "expects": [
+            "quantity must be a number conforming to the specified constraints",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 200",
+            "type must be a number conforming to the specified constraints",
+            "type should not be empty",
+            "type must be one of the following values: 0, 1, 2"
+        ]
+    },
+    {
+        "body": {
+            "quantity": "random_string",
+            "type": null
+        },
+        "expects": [
+            "quantity must be a number conforming to the specified constraints",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 200",
+            "type must be a number conforming to the specified constraints",
+            "type should not be empty",
+            "type must be one of the following values: 0, 1, 2"
+        ]
+    },
+    {
+        "body": {
+            "quantity": "random_string",
+            "type": ""
+        },
+        "expects": [
+            "quantity must be a number conforming to the specified constraints",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 200",
+            "type must be a number conforming to the specified constraints",
+            "type should not be empty",
+            "type must be one of the following values: 0, 1, 2"
+        ]
+    },
+    {
+        "body": {
+            "quantity": "random_string",
+            "type": "random_string"
+        },
+        "expects": [
+            "quantity must be a number conforming to the specified constraints",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 200",
+            "type must be a number conforming to the specified constraints",
+            "type must be one of the following values: 0, 1, 2"
+        ]
+    },
+    {
+        "body": {
+            "quantity": "random_string",
+            "type": 2
+        },
+        "expects": [
+            "quantity must be a number conforming to the specified constraints",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 200"
+        ]
+    },
+    {
+        "body": {
+            "quantity": 1
+        },
+        "expects": [
+            "type must be a number conforming to the specified constraints",
+            "type should not be empty",
+            "type must be one of the following values: 0, 1, 2"
+        ]
+    },
+    {
+        "body": {
+            "quantity": 1,
+            "type": null
+        },
+        "expects": [
+            "type must be a number conforming to the specified constraints",
+            "type should not be empty",
+            "type must be one of the following values: 0, 1, 2"
+        ]
+    },
+    {
+        "body": {
+            "quantity": 1,
+            "type": ""
+        },
+        "expects": [
+            "type must be a number conforming to the specified constraints",
+            "type should not be empty",
+            "type must be one of the following values: 0, 1, 2"
+        ]
+    },
+    {
+        "body": {
+            "quantity": 1,
+            "type": "random_string"
+        },
+        "expects": [
+            "type must be a number conforming to the specified constraints",
+            "type must be one of the following values: 0, 1, 2"
+        ]
+    },
+    {
+        "body": {
+            "quantity": 1,
+            "type": 2
+        },
+        "expects": []
+    },
+    {
+        "body": {
+            "quantity": 0
+        },
+        "expects": [
+            "quantity must not be less than 1",
+            "type must be a number conforming to the specified constraints",
+            "type should not be empty",
+            "type must be one of the following values: 0, 1, 2"
+        ]
+    },
+    {
+        "body": {
+            "quantity": 0,
+            "type": null
+        },
+        "expects": [
+            "quantity must not be less than 1",
+            "type must be a number conforming to the specified constraints",
+            "type should not be empty",
+            "type must be one of the following values: 0, 1, 2"
+        ]
+    },
+    {
+        "body": {
+            "quantity": 0,
+            "type": ""
+        },
+        "expects": [
+            "quantity must not be less than 1",
+            "type must be a number conforming to the specified constraints",
+            "type should not be empty",
+            "type must be one of the following values: 0, 1, 2"
+        ]
+    },
+    {
+        "body": {
+            "quantity": 0,
+            "type": "random_string"
+        },
+        "expects": [
+            "quantity must not be less than 1",
+            "type must be a number conforming to the specified constraints",
+            "type must be one of the following values: 0, 1, 2"
+        ]
+    },
+    {
+        "body": {
+            "quantity": 0,
+            "type": 2
+        },
+        "expects": [
+            "quantity must not be less than 1"
+        ]
+    },
+    {
+        "body": {
+            "quantity": 201
+        },
+        "expects": [
+            "quantity must not be greater than 200",
+            "type must be a number conforming to the specified constraints",
+            "type should not be empty",
+            "type must be one of the following values: 0, 1, 2"
+        ]
+    },
+    {
+        "body": {
+            "quantity": 201,
+            "type": null
+        },
+        "expects": [
+            "quantity must not be greater than 200",
+            "type must be a number conforming to the specified constraints",
+            "type should not be empty",
+            "type must be one of the following values: 0, 1, 2"
+        ]
+    },
+    {
+        "body": {
+            "quantity": 201,
+            "type": ""
+        },
+        "expects": [
+            "quantity must not be greater than 200",
+            "type must be a number conforming to the specified constraints",
+            "type should not be empty",
+            "type must be one of the following values: 0, 1, 2"
+        ]
+    },
+    {
+        "body": {
+            "quantity": 201,
+            "type": "random_string"
+        },
+        "expects": [
+            "quantity must not be greater than 200",
+            "type must be a number conforming to the specified constraints",
+            "type must be one of the following values: 0, 1, 2"
+        ]
+    },
+    {
+        "body": {
+            "quantity": 201,
+            "type": 2
+        },
+        "expects": [
+            "quantity must not be greater than 200"
+        ]
+    }
+]

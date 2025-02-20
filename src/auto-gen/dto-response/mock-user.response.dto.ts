@@ -1,42 +1,18 @@
-import {
-  IsString,
-  IsNotEmpty,
-  IsNumber,
-  IsDefined,
-  Min,
-  Max,
-} from 'class-validator';
+import { IsDefined, IsString, IsNotEmpty, IsNumber, Min, Max, IsArray, IsBoolean } from 'class-validator';
 
 export class MockUserDTOResponse {
   @IsDefined()
-  @IsString()
-  @IsNotEmpty()
-  userId: string;
+  @IsBoolean()
+  ok: boolean;
 
   @IsDefined()
-  @IsString()
-  @IsNotEmpty()
-  username: string;
-
-  @IsDefined()
-  @IsString()
-  @IsNotEmpty()
-  token: string;
-
-  @IsDefined()
-  @IsString()
-  @IsNotEmpty()
-  securityKey: string;
-
-  @IsDefined()
-  @IsString()
-  @IsNotEmpty()
-  recoverKey: string;
-
-  @IsDefined()
-  @IsNotEmpty()
-  @IsNumber()
-  @Min(0)
-  @Max(3)
-  badge: number;
+  @IsArray()
+  data: Array<{
+    userId: string;
+    username: string;
+    token: string;
+    securityKey: string;
+    recoverKey: string;
+    badge: number;
+  }>;
 }

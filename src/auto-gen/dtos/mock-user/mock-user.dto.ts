@@ -29,6 +29,7 @@ export class MockUserDTO {
   @IsNumber()
   @IsNotEmpty()
   @IsNotNull()
+
   @IsIn([0, 1, 2, 3])
   badge?: number = 0;
 }

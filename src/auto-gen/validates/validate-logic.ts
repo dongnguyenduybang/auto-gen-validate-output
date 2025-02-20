@@ -10,97 +10,86 @@ export function validateLogicData(
   payload?: any,
 ): ValidationResult {
   const errors: string[] = [];
-  for (const rule of rules) {
-    const value = data[rule.field];
-    if (
-      rule.optional === true &&
-      (value === undefined || value === null || value === '')
-    ) {
-      continue;
-    }
 
-    if (rule.required && value === undefined) {
-      errors.push(`Field "${rule.field}" ${ErrorMessage.UNDEFINED}`);
-      continue;
-    }
+  if(data.ok !== true){
+    errors.push('Field "ok" must be true');
+  }
 
-    if (rule.required && value === null) {
-      errors.push(`Field "${rule.field}" ${ErrorMessage.NULL}`);
-      continue;
-    }
+  if (Array.isArray(data.data)) {
+    data.forEach((item, index) => {
+      rules.forEach((rule) => {
+        const value = item[rule.field];
+        if (
+          rule.optional === true &&
+          (value === undefined || value === null || value === '')
+        ) {
+          return;
+        }
+        if (rule.required && value === undefined) {
+          errors.push(`[${index}] Field "${rule.field}" ${ErrorMessage.UNDEFINED}`);
+          return;
+        }
+        if (rule.required && value === null) {
+          errors.push(`[${index}] Field "${rule.field}" ${ErrorMessage.NULL}`);
+          return;
+        }
+        if (rule.required && value === '') {
+          errors.push(`[${index}] Field "${rule.field}" ${ErrorMessage.EMPTY}`);
+          return;
+        }
 
-    if (rule.required && value === '') {
-      errors.push(`Field "${rule.field}" ${ErrorMessage.EMPTY}`);
-      continue;
-    }
+        if (rule.type) {
+          if (rule.type === 'array') {
+            if (!Array.isArray(value)) {
+              errors.push(
+                `[${index}] Field "${rule.field}" ${ErrorMessage.INVALID_TYPE} "${rule.type}", but got "${typeof value}"`,
+              );
+              return;
+            }
+          } else if (typeof value !== rule.type) {
+            errors.push(
+              `[${index}] Field "${rule.field}" ${ErrorMessage.INVALID_TYPE} "${rule.type}", but got "${typeof value}"`,
+            );
+            return;
+          }
+        }
 
-    if (rule.type && typeof value !== rule.type) {
-      errors.push(
-        `Field "${rule.field}" must be of type "${rule.type}", but got "${typeof value}"`,
-      );
-      continue;
-    }
+        if (rule.type === 'string') {
+          if (rule.minLength && value.length < rule.minLength) {
+            errors.push(
+              `[${index}] Field "${rule.field}" ${ErrorMessage.MIN_LENGTH} ${rule.minLength}`,
+            );
+          }
+          if (rule.maxLength && value.length > rule.maxLength) {
+            errors.push(
+              `[${index}] Field "${rule.field}" ${ErrorMessage.MAX_LENGTH} ${rule.maxLength}`,
+            );
+          }
+        }
 
-    if (
-      rule.type === 'string' &&
-      rule.minLength &&
-      value.length < rule.minLength
-    ) {
-      errors.push(
-        `Field "${rule.field}" must a minimum length of ${rule.minLength}`,
-      );
-    }
+        if (rule.type === 'number') {
+          if (rule.min && value < rule.min) {
+            errors.push(
+              `[${index}] Field "${rule.field}" ${ErrorMessage.MIN} ${rule.min}`,
+            );
+          }
+          if (rule.max && value > rule.max) {
+            errors.push(
+              `[${index}] Field "${rule.field}" ${ErrorMessage.MAX} ${rule.max}`,
+            );
+          }
+        }
 
-    if (
-      rule.type === 'string' &&
-      rule.maxLength &&
-      value.length > rule.maxLength
-    ) {
-      errors.push(
-        `Field "${rule.field}" must a maximum length of ${rule.maxLength}`,
-      );
-    }
-
-    if (rule.type === 'number' && rule.min && value.length < rule.min) {
-      errors.push(`Field "${rule.field}" must a minimum of ${rule.min}`);
-    }
-
-    if (rule.type === 'number' && rule.max && value.length > rule.max) {
-      errors.push(`Field "${rule.field}" must a maximum of ${rule.max}`);
-    }
-
-    if (rule.type === 'array') {
-      if (rule.minArray && value.length < rule.minArray) {
-        errors.push(
-          `Field "${rule.field}" must at least ${rule.minArray} items`,
-        );
-      }
-      if (rule.maxArray && value.length > rule.maxArray) {
-        errors.push(
-          `Field "${rule.field}" must at most ${rule.maxArray} items`,
-        );
-      }
-    }
-
-    if (rule.type === 'date') {
-      if (rule.minDate && value < rule.minDate) {
-        errors.push(
-          `Field "${rule.field}" must be on or after ${rule.minDate.toISOString()}`,
-        );
-      }
-      if (rule.maxDate && value > rule.maxDate) {
-        errors.push(
-          `Field "${rule.field}" must be on or before ${rule.maxDate.toISOString()}`,
-        );
-      }
-    }
-
-    if (rule.customValidation) {
-      const customError = rule.customValidation(value, payload, data);
-      if (customError) {
-        errors.push(customError);
-      }
-    }
+        if (rule.customValidation) {
+          const customError = rule.customValidation(value, payload, item);
+          if (customError) {
+            errors.push(`[${index}] ${customError}`);
+          }
+        }
+      });
+    });
+  } else {
+    errors.push('Field "data" must be an array');
   }
 
   return {

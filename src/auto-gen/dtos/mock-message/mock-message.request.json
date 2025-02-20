@@ -1,0 +1,13 @@
+{
+    "method": "POST",
+    "path": "/InternalFaker/MockMessages",
+    "headers": {
+     
+    },
+    "optionals": [],
+    "payload": {
+        "workspaceId": "0",
+        "channelId":  "01JMGGW4E77DY2KP2CS5R1KZVV",
+        "quantity": 1
+    }
+  }

@@ -1,0 +1,1488 @@
+[
+    {
+        "body": {},
+        "expects": [
+            "workspaceId must be a string",
+            "workspaceId should not be null or undefined",
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "channelId should not be null or undefined",
+            "channelId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "quantity": null
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "workspaceId should not be null or undefined",
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "channelId should not be null or undefined",
+            "channelId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "quantity": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "workspaceId should not be null or undefined",
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "channelId should not be null or undefined",
+            "channelId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "quantity": "random_string"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "workspaceId should not be null or undefined",
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "channelId should not be null or undefined",
+            "channelId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "quantity": 1
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "workspaceId should not be null or undefined",
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "channelId should not be null or undefined",
+            "channelId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "quantity": 0
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "workspaceId should not be null or undefined",
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "channelId should not be null or undefined",
+            "channelId should not be empty",
+            "quantity must not be less than 1"
+        ]
+    },
+    {
+        "body": {
+            "quantity": 101
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "workspaceId should not be null or undefined",
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "channelId should not be null or undefined",
+            "channelId should not be empty",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "channelId": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "workspaceId should not be null or undefined",
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "quantity": null
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "workspaceId should not be null or undefined",
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "quantity": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "workspaceId should not be null or undefined",
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "quantity": "random_string"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "workspaceId should not be null or undefined",
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "quantity": 1
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "workspaceId should not be null or undefined",
+            "workspaceId should not be empty",
+            "channelId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "quantity": 0
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "workspaceId should not be null or undefined",
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "quantity must not be less than 1"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "quantity": 101
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "workspaceId should not be null or undefined",
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "workspaceId should not be null or undefined",
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 12345,
+            "quantity": null
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "workspaceId should not be null or undefined",
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 12345,
+            "quantity": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "workspaceId should not be null or undefined",
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 12345,
+            "quantity": "random_string"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "workspaceId should not be null or undefined",
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 12345,
+            "quantity": 1
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "workspaceId should not be null or undefined",
+            "workspaceId should not be empty",
+            "channelId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 12345,
+            "quantity": 0
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "workspaceId should not be null or undefined",
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "quantity must not be less than 1"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 12345,
+            "quantity": 101
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "workspaceId should not be null or undefined",
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "01JMGGW4E77DY2KP2CS5R1KZVV"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "workspaceId should not be null or undefined",
+            "workspaceId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "01JMGGW4E77DY2KP2CS5R1KZVV",
+            "quantity": null
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "workspaceId should not be null or undefined",
+            "workspaceId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "01JMGGW4E77DY2KP2CS5R1KZVV",
+            "quantity": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "workspaceId should not be null or undefined",
+            "workspaceId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "01JMGGW4E77DY2KP2CS5R1KZVV",
+            "quantity": "random_string"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "workspaceId should not be null or undefined",
+            "workspaceId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "01JMGGW4E77DY2KP2CS5R1KZVV",
+            "quantity": 1
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "workspaceId should not be null or undefined",
+            "workspaceId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "01JMGGW4E77DY2KP2CS5R1KZVV",
+            "quantity": 0
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "workspaceId should not be null or undefined",
+            "workspaceId should not be empty",
+            "quantity must not be less than 1"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "01JMGGW4E77DY2KP2CS5R1KZVV",
+            "quantity": 101
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "workspaceId should not be null or undefined",
+            "workspaceId should not be empty",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "channelId should not be null or undefined",
+            "channelId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "quantity": null
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "channelId should not be null or undefined",
+            "channelId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "quantity": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "channelId should not be null or undefined",
+            "channelId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "quantity": "random_string"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "channelId should not be null or undefined",
+            "channelId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "quantity": 1
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "channelId should not be null or undefined",
+            "channelId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "quantity": 0
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "channelId should not be null or undefined",
+            "channelId should not be empty",
+            "quantity must not be less than 1"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "quantity": 101
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "channelId should not be null or undefined",
+            "channelId should not be empty",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "quantity": null
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "quantity": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "quantity": "random_string"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "quantity": 1
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "quantity": 0
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "quantity must not be less than 1"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "quantity": 101
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "quantity": null
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "quantity": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "quantity": "random_string"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "quantity": 1
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "quantity": 0
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "quantity must not be less than 1"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "quantity": 101
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "01JMGGW4E77DY2KP2CS5R1KZVV"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "01JMGGW4E77DY2KP2CS5R1KZVV",
+            "quantity": null
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "01JMGGW4E77DY2KP2CS5R1KZVV",
+            "quantity": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "01JMGGW4E77DY2KP2CS5R1KZVV",
+            "quantity": "random_string"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "01JMGGW4E77DY2KP2CS5R1KZVV",
+            "quantity": 1
+        },
+        "expects": [
+            "workspaceId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "01JMGGW4E77DY2KP2CS5R1KZVV",
+            "quantity": 0
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "quantity must not be less than 1"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "01JMGGW4E77DY2KP2CS5R1KZVV",
+            "quantity": 101
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "channelId should not be null or undefined",
+            "channelId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "quantity": null
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "channelId should not be null or undefined",
+            "channelId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "quantity": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "channelId should not be null or undefined",
+            "channelId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "quantity": "random_string"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "channelId should not be null or undefined",
+            "channelId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "quantity": 1
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "channelId should not be null or undefined",
+            "channelId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "quantity": 0
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "channelId should not be null or undefined",
+            "channelId should not be empty",
+            "quantity must not be less than 1"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "quantity": 101
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "channelId should not be null or undefined",
+            "channelId should not be empty",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "quantity": null
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "quantity": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "quantity": "random_string"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "quantity": 1
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "quantity": 0
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "quantity must not be less than 1"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "quantity": 101
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "quantity": null
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "quantity": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "quantity": "random_string"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "quantity": 1
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "quantity": 0
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "quantity must not be less than 1"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "quantity": 101
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "01JMGGW4E77DY2KP2CS5R1KZVV"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "01JMGGW4E77DY2KP2CS5R1KZVV",
+            "quantity": null
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "01JMGGW4E77DY2KP2CS5R1KZVV",
+            "quantity": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "01JMGGW4E77DY2KP2CS5R1KZVV",
+            "quantity": "random_string"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "01JMGGW4E77DY2KP2CS5R1KZVV",
+            "quantity": 1
+        },
+        "expects": [
+            "workspaceId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "01JMGGW4E77DY2KP2CS5R1KZVV",
+            "quantity": 0
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "quantity must not be less than 1"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "01JMGGW4E77DY2KP2CS5R1KZVV",
+            "quantity": 101
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0"
+        },
+        "expects": [
+            "channelId must be a string",
+            "channelId should not be null or undefined",
+            "channelId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "quantity": null
+        },
+        "expects": [
+            "channelId must be a string",
+            "channelId should not be null or undefined",
+            "channelId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "quantity": ""
+        },
+        "expects": [
+            "channelId must be a string",
+            "channelId should not be null or undefined",
+            "channelId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "quantity": "random_string"
+        },
+        "expects": [
+            "channelId must be a string",
+            "channelId should not be null or undefined",
+            "channelId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "quantity": 1
+        },
+        "expects": [
+            "channelId must be a string",
+            "channelId should not be null or undefined",
+            "channelId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "quantity": 0
+        },
+        "expects": [
+            "channelId must be a string",
+            "channelId should not be null or undefined",
+            "channelId should not be empty",
+            "quantity must not be less than 1"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "quantity": 101
+        },
+        "expects": [
+            "channelId must be a string",
+            "channelId should not be null or undefined",
+            "channelId should not be empty",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": ""
+        },
+        "expects": [
+            "channelId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "quantity": null
+        },
+        "expects": [
+            "channelId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "quantity": ""
+        },
+        "expects": [
+            "channelId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "quantity": "random_string"
+        },
+        "expects": [
+            "channelId should not be empty",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "quantity": 1
+        },
+        "expects": [
+            "channelId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "quantity": 0
+        },
+        "expects": [
+            "channelId should not be empty",
+            "quantity must not be less than 1"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "quantity": 101
+        },
+        "expects": [
+            "channelId should not be empty",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345
+        },
+        "expects": [
+            "channelId must be a string",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "quantity": null
+        },
+        "expects": [
+            "channelId must be a string",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "quantity": ""
+        },
+        "expects": [
+            "channelId must be a string",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "quantity": "random_string"
+        },
+        "expects": [
+            "channelId must be a string",
+            "quantity must be a number conforming to the specified constraints",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "quantity": 1
+        },
+        "expects": [
+            "channelId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "quantity": 0
+        },
+        "expects": [
+            "channelId must be a string",
+            "quantity must not be less than 1"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "quantity": 101
+        },
+        "expects": [
+            "channelId must be a string",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "01JMGGW4E77DY2KP2CS5R1KZVV"
+        },
+        "expects": [
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "01JMGGW4E77DY2KP2CS5R1KZVV",
+            "quantity": null
+        },
+        "expects": [
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "01JMGGW4E77DY2KP2CS5R1KZVV",
+            "quantity": ""
+        },
+        "expects": [
+            "quantity must be a number conforming to the specified constraints",
+            "quantity should not be empty",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "01JMGGW4E77DY2KP2CS5R1KZVV",
+            "quantity": "random_string"
+        },
+        "expects": [
+            "quantity must be a number conforming to the specified constraints",
+            "quantity must not be less than 1",
+            "quantity must not be greater than 100"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "01JMGGW4E77DY2KP2CS5R1KZVV",
+            "quantity": 1
+        },
+        "expects": []
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "01JMGGW4E77DY2KP2CS5R1KZVV",
+            "quantity": 0
+        },
+        "expects": [
+            "quantity must not be less than 1"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "01JMGGW4E77DY2KP2CS5R1KZVV",
+            "quantity": 101
+        },
+        "expects": [
+            "quantity must not be greater than 100"
+        ]
+    }
+]

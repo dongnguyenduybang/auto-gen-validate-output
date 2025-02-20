@@ -4,6 +4,7 @@ import 'reflect-metadata';
 
 import { getMetadataStorage } from 'class-validator';
 import { ValidationRule } from './structures/responses';
+import axios from 'axios';
 
 function getFileNameWithoutExtension(filePath: string): string {
   const fileName = path.basename(filePath);
@@ -137,3 +138,30 @@ export function replaceClassName(input: string): any {
     .toLowerCase();
   return { text: cleanedInput, text2: cleanedClassname };
 }
+
+export const getMockUser = async () => {
+  if (!globalThis.url) {
+    throw new Error("globalThis.url is not defined...");
+  }
+  try {
+      const baseUrl =  `${globalThis.url}/InternalFaker/MockUsers`;
+      const payload = { prefix: 'fakedata', quantity: 1, badge: 0 }
+      console.log(baseUrl)
+      const response = await axios.post(baseUrl, payload);
+
+      if (response.data && Array.isArray(response.data.data) && response.data.data.length > 0) {
+          const getUser = response.data.data[0];
+          return { 
+            getUser
+          };
+      } else {
+          throw new Error("Invalid response from MockUsers API");
+      }
+  } catch (error) {
+
+      console.error("Error in getMockUser:", error);
+
+
+      throw new Error("Failed to get getMockUser");
+  }
+};

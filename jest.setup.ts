@@ -3,7 +3,7 @@ setupConfiguration();
 
 try {
 
-  global.url = getOrThrow<string>('host');
+  globalThis.url = getOrThrow<string>('host');
 } catch (error) {
   console.error('Error:', error.message);
 }

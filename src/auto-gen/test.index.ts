@@ -1,6 +1,7 @@
 import path from 'path';
 import { genBodyPayload } from './gens/gen-body';
 import { genTestCaseForDTO } from './gens/gen-testcase';
+import { getMockUser } from './helps/ultil';
 
 const args = process.argv.slice(2);
 
@@ -11,7 +12,7 @@ if (args.length < 2) {
 
 const [action, dtoName] = args;
 
-const validActions = ['body', 'testcase', 'test'];
+const validActions = ['gen', 'test', 'fake'];
 if (!validActions.includes(action)) {
   console.error(`Invalid action. Valid actions: ${validActions.join(', ')}`);
   process.exit(1);
@@ -20,10 +21,8 @@ if (!validActions.includes(action)) {
 console.log(`Running gen "${action}" for DTO: ${dtoName}`);
 
 switch (action) {
-  case 'body':
+  case 'gen':
     handleBody(dtoName);
-    break;
-  case 'testcase':
     handleTestCase(dtoName);
     break;
   case 'test':
@@ -51,4 +50,29 @@ function handleTest(dtoName) {
     console.error(`"${dtoName}":`, error.message);
     process.exit(1);
   }
+}
+function handleFake(dtoName) {
+
+  const mockFunctions = {
+    'mock-user': mockUser,
+    'mock-channel': mockChannel
+  };
+
+  if (mockFunctions[dtoName]) {
+    return mockFunctions[dtoName]();
+  } else {
+    throw new Error(`No mock function found for dtoName: ${dtoName}`);
+  }
+}
+
+
+async function mockUser() {
+    console.log("Current globalThis.url:", globalThis.url); // Debugging
+
+  const dataMockUser = await getMockUser()
+  console.log(dataMockUser)
+}
+
+function mockChannel() {
+  
 }

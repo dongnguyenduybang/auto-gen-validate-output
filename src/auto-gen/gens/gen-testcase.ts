@@ -12,6 +12,7 @@ function getAllFiles(dirPath: string): string[] {
   let files: string[] = [];
   const items = fs.readdirSync(dirPath);
   items.forEach((item) => {
+    
     const itemPath = path.join(dirPath, item);
     if (fs.statSync(itemPath).isDirectory()) {
       files = files.concat(getAllFiles(itemPath));
@@ -25,6 +26,7 @@ function getAllFiles(dirPath: string): string[] {
 function pairFiles(
   files: string[],
 ): { dtoPath: string; requestPath: string; className: string }[] {
+
   const fileMap: Record<string, { dtoPath?: string; requestPath?: string }> =
     {};
   files.forEach((filePath) => {
@@ -95,14 +97,14 @@ function genTestCase(
                 headers: ${JSON.stringify(requestConfig.headers)},
                 data: ${JSON.stringify(testCase.body)}
               });
-              const dataResponse = plainToInstance(${classNameCapitalized}DTOResponse , response.data.data[0]);
-              const errors = await validate(dataResponse);
-              if (errors.length > 0) {
-                console.error("validation failed:", errors);
+              const dataResponse = plainToInstance(${classNameCapitalized}DTOResponse , response.data);
+              const validationErrors = await validate(dataResponse);
+              if (validationErrors.length > 0) {
+                console.error("validation failed:", validationErrors);
                 failedTests.push({
                   name: 'Test case #${index + 1}',
                   expected: ${JSON.stringify(testCase.expects)},
-                  actual: errors.map(err => err.toString())
+                  actual: validationErrors.map(err => err.toString())
                 });
                 throw new Error('Validation failed');
               } else {

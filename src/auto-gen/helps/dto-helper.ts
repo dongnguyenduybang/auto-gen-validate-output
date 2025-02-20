@@ -148,7 +148,7 @@ export function mapError(
             `${field} ${ErrorMessage.MIN_LENGTH} ${decorators['minLength']} characters`,
           );
         }
-       
+      
       }
 
       if (decorators['maxLength'] !== undefined) {
@@ -173,6 +173,7 @@ export function mapError(
     } else if (decorators['type'] === 'number') {
       
       if (typeof value !== 'number') {
+
         errors.push(`${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`);
       }
 
@@ -192,7 +193,6 @@ export function mapError(
         }
       }
 
-
       if (decorators['min'] || decorators['min'] === 0) {
         if (
           value === undefined ||
@@ -206,8 +206,6 @@ export function mapError(
         else if (value < decorators['min']) {
           errors.push(`${field} ${ErrorMessage.MIN} ${decorators['min']}`);
         } 
-
-       
       }
 
       if (decorators['max']) {
