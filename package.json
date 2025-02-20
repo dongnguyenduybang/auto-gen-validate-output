@@ -13,7 +13,8 @@
     "gen:testcase": "npx ts-node src/auto-gen/gens/gen-testcase.ts",
     "test": "jest folder-gen",
 
-    "choose": "npx ts-node src/auto-gen/test.index.ts"
+    "gen": "npx ts-node src/auto-gen/test.index.ts gen ",
+    "test:": "npx ts-node src/auto-gen/test.index.ts test "
 
   },
   "engines": {
