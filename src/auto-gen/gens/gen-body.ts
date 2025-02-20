@@ -4,7 +4,7 @@ import { generateErrorCases } from '../helps/dto-helper';
 
 export function genBodyPayload(dtoName) {
   const dtoFolderPath = path.join(__dirname, '../dtos', dtoName);
-  const outputDir = path.join(__dirname, '../folder-gen/payloads');
+  const outputDir = path.join(__dirname, '../expect-json');
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
   }

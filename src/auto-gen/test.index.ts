@@ -44,7 +44,7 @@ function handleTest(dtoName) {
   console.log(`Running test for DTO "${dtoName}"...`);
   try {
     const { execSync } = require('child_process');
-    const jestCommand = `jest  src/auto-gen/folder-gen/test-case/${dtoName}`;
+    const jestCommand = `jest  src/auto-gen/test-case/${dtoName}`;
     const result = execSync(jestCommand, { stdio: 'inherit' });
   } catch (error) {
     console.error(`"${dtoName}":`, error.message);

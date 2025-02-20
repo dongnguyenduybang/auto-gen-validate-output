@@ -1,7 +1,7 @@
 import * as path from 'path';
 import * as fs from 'fs';
 
-const outputDir = path.join(__dirname, '../folder-gen/test-case');
+const outputDir = path.join(__dirname, '../test-case');
 
 function readJsonFile(filePath: string): any {
   const fileContent = fs.readFileSync(filePath, 'utf-8');
@@ -12,7 +12,7 @@ function getAllFiles(dirPath: string): string[] {
   let files: string[] = [];
   const items = fs.readdirSync(dirPath);
   items.forEach((item) => {
-    
+
     const itemPath = path.join(dirPath, item);
     if (fs.statSync(itemPath).isDirectory()) {
       files = files.concat(getAllFiles(itemPath));
@@ -66,10 +66,10 @@ function genTestCase(
   const specContent = `
     import axios from 'axios';
     import { plainToInstance } from 'class-transformer';
-    import { ${classNameCapitalized}DTOResponse } from '../../dto-response/${className}.response.dto';
+    import { ${classNameCapitalized}DTOResponse } from '../dto-response/${className}.response.dto';
     import { validate } from 'class-validator';
-    import { validationRules${classNameCapitalized} } from '../../validates/${className}/validate-${className}';
-    import { validateLogicData } from '../../validates/validate-logic';
+    import { validationRules${classNameCapitalized} } from '../validates/${className}/validate-${className}';
+    import { validateLogicData } from '../validates/validate-logic';
     import fs from 'fs';
     import path from 'path';
 
@@ -179,7 +179,7 @@ function genTestCase(
 }
 export function genTestCaseForDTO(dtoName: string) {
   const dtosDir = path.join(__dirname, '../dtos', dtoName);
-  const payloadsDir = path.join(__dirname, '../folder-gen/payloads');
+  const payloadsDir = path.join(__dirname, '../expect-json');
   const allFiles = getAllFiles(dtosDir);
   const pairedFiles = pairFiles(allFiles);
 
