@@ -9,27 +9,24 @@ import {
   Min,
   IsEnum,
   IsIn,
+  IsDefined,
 } from '../../decorator/dto-decorator';
 import { BadgeEnum } from '../../enums/badge.enum';
 
 export class MockUserDTO {
   @IsString()
   @IsNotEmpty()
-  @IsNotNull()
+  @IsDefined()
   @MinLength(5)
-  prefix?: string = '';
+  prefix?: string = ''
 
   @IsNumber()
   @IsNotEmpty()
-  @IsNotNull()
   @Min(1)
   @Max(100)
-  quantity?: number = 0;
+  quantity?: number = 0
 
-  @IsNumber()
   @IsNotEmpty()
-  @IsNotNull()
-
-  @IsIn([0, 1, 2, 3])
-  badge?: number = 0;
+  @IsEnum(BadgeEnum)
+  badge?: BadgeEnum = 0
 }

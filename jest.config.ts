@@ -5,6 +5,8 @@ export default {
     rootDir: '.',
     testEnvironment: 'node',
     testRegex: '\\.spec\\.ts$',
+    verbose: false,
+    reporters: ['default'],
     transform: {
         '^.+\\.tsx?$': ['ts-jest', { tsconfig: 'tsconfig.json' }],
       },

@@ -1,6 +1,7 @@
 export enum ErrorMessage {
   NULL = 'should not be null',
   EMPTY = 'should not be empty',
+  DEFINED = 'should not be null or undefined',
   UNDEFINED = 'should not be undefined',
   MIN_LENGTH = 'must be longer than or equal to',
   MAX_LENGTH = 'must be less than or equal to',
@@ -17,5 +18,5 @@ export enum ErrorMessage {
   INVALID_ENUM = 'should not be invalid enum',
   INVALID_DATE_OVER_CURRENT = 'must not dates greater than or equal to the current date',
   INVALID_RANGE_NUMBER = 'must be one of the following values:',
-  INVALID_TYPE = 'must be a type'
+  INVALID_TYPE = 'must be a type',
 }

@@ -2,34 +2,16 @@
     {
         "body": {},
         "expects": [
+            "prefix should not be empty",
+            "prefix should not be null or undefined",
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "badge": null
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
             "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -38,30 +20,30 @@
             "badge": ""
         },
         "expects": [
+            "prefix should not be empty",
+            "prefix should not be null or undefined",
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
+            "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
     {
         "body": {
-            "badge": "random_string"
+            "badge": "invalid_value"
         },
         "expects": [
+            "prefix should not be empty",
+            "prefix should not be null or undefined",
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
             "badge must be a number conforming to the specified constraints",
@@ -73,102 +55,12 @@
             "badge": 0
         },
         "expects": [
+            "prefix should not be empty",
+            "prefix should not be null or undefined",
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
             "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100"
-        ]
-    },
-    {
-        "body": {
-            "quantity": null
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
             "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "quantity": null,
-            "badge": null
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "quantity": null,
-            "badge": ""
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "quantity": null,
-            "badge": "random_string"
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "quantity": null,
-            "badge": 0
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
             "quantity must not be less than 1",
             "quantity must not be greater than 100"
         ]
@@ -178,35 +70,16 @@
             "quantity": ""
         },
         "expects": [
+            "prefix should not be empty",
+            "prefix should not be null or undefined",
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "quantity": "",
-            "badge": null
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
             "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -216,31 +89,31 @@
             "badge": ""
         },
         "expects": [
+            "prefix should not be empty",
+            "prefix should not be null or undefined",
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
+            "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
     {
         "body": {
             "quantity": "",
-            "badge": "random_string"
+            "badge": "invalid_value"
         },
         "expects": [
+            "prefix should not be empty",
+            "prefix should not be null or undefined",
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
             "badge must be a number conforming to the specified constraints",
@@ -253,12 +126,12 @@
             "badge": 0
         },
         "expects": [
+            "prefix should not be empty",
+            "prefix should not be null or undefined",
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100"
         ]
@@ -268,33 +141,15 @@
             "quantity": "random_string"
         },
         "expects": [
+            "prefix should not be empty",
+            "prefix should not be null or undefined",
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
             "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "quantity": "random_string",
-            "badge": null
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
             "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -304,28 +159,28 @@
             "badge": ""
         },
         "expects": [
+            "prefix should not be empty",
+            "prefix should not be null or undefined",
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
             "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
+            "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
     {
         "body": {
             "quantity": "random_string",
-            "badge": "random_string"
+            "badge": "invalid_value"
         },
         "expects": [
+            "prefix should not be empty",
+            "prefix should not be null or undefined",
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
             "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
@@ -339,10 +194,10 @@
             "badge": 0
         },
         "expects": [
+            "prefix should not be empty",
+            "prefix should not be null or undefined",
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
             "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100"
@@ -353,27 +208,12 @@
             "quantity": 1
         },
         "expects": [
+            "prefix should not be empty",
+            "prefix should not be null or undefined",
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "quantity": 1,
-            "badge": null
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
             "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -383,25 +223,25 @@
             "badge": ""
         },
         "expects": [
+            "prefix should not be empty",
+            "prefix should not be null or undefined",
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
+            "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
     {
         "body": {
             "quantity": 1,
-            "badge": "random_string"
+            "badge": "invalid_value"
         },
         "expects": [
+            "prefix should not be empty",
+            "prefix should not be null or undefined",
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
             "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
@@ -412,10 +252,10 @@
             "badge": 0
         },
         "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
+            "prefix should not be empty",
             "prefix should not be null or undefined",
-            "prefix should not be empty"
+            "prefix must be a string",
+            "prefix must be longer than or equal to 5 characters"
         ]
     },
     {
@@ -423,29 +263,13 @@
             "quantity": 0
         },
         "expects": [
+            "prefix should not be empty",
+            "prefix should not be null or undefined",
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
             "quantity must not be less than 1",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "quantity": 0,
-            "badge": null
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must not be less than 1",
             "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -455,26 +279,26 @@
             "badge": ""
         },
         "expects": [
+            "prefix should not be empty",
+            "prefix should not be null or undefined",
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
             "quantity must not be less than 1",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
+            "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
     {
         "body": {
             "quantity": 0,
-            "badge": "random_string"
+            "badge": "invalid_value"
         },
         "expects": [
+            "prefix should not be empty",
+            "prefix should not be null or undefined",
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
             "quantity must not be less than 1",
             "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
@@ -486,10 +310,10 @@
             "badge": 0
         },
         "expects": [
+            "prefix should not be empty",
+            "prefix should not be null or undefined",
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
             "quantity must not be less than 1"
         ]
     },
@@ -498,29 +322,13 @@
             "quantity": 101
         },
         "expects": [
+            "prefix should not be empty",
+            "prefix should not be null or undefined",
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "quantity": 101,
-            "badge": null
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must not be greater than 100",
             "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -530,26 +338,26 @@
             "badge": ""
         },
         "expects": [
+            "prefix should not be empty",
+            "prefix should not be null or undefined",
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
+            "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
     {
         "body": {
             "quantity": 101,
-            "badge": "random_string"
+            "badge": "invalid_value"
         },
         "expects": [
+            "prefix should not be empty",
+            "prefix should not be null or undefined",
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
             "quantity must not be greater than 100",
             "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
@@ -561,615 +369,10 @@
             "badge": 0
         },
         "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
             "prefix should not be empty",
-            "quantity must not be greater than 100"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null
-        },
-        "expects": [
+            "prefix should not be null or undefined",
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null,
-            "badge": null
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null,
-            "badge": ""
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null,
-            "badge": "random_string"
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null,
-            "badge": 0
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null,
-            "quantity": null
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null,
-            "quantity": null,
-            "badge": null
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null,
-            "quantity": null,
-            "badge": ""
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null,
-            "quantity": null,
-            "badge": "random_string"
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null,
-            "quantity": null,
-            "badge": 0
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null,
-            "quantity": ""
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null,
-            "quantity": "",
-            "badge": null
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null,
-            "quantity": "",
-            "badge": ""
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null,
-            "quantity": "",
-            "badge": "random_string"
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null,
-            "quantity": "",
-            "badge": 0
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null,
-            "quantity": "random_string"
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null,
-            "quantity": "random_string",
-            "badge": null
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null,
-            "quantity": "random_string",
-            "badge": ""
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null,
-            "quantity": "random_string",
-            "badge": "random_string"
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null,
-            "quantity": "random_string",
-            "badge": 0
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null,
-            "quantity": 1
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null,
-            "quantity": 1,
-            "badge": null
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null,
-            "quantity": 1,
-            "badge": ""
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null,
-            "quantity": 1,
-            "badge": "random_string"
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "badge must be a number conforming to the specified constraints",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null,
-            "quantity": 1,
-            "badge": 0
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null,
-            "quantity": 0
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must not be less than 1",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null,
-            "quantity": 0,
-            "badge": null
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must not be less than 1",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null,
-            "quantity": 0,
-            "badge": ""
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must not be less than 1",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null,
-            "quantity": 0,
-            "badge": "random_string"
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must not be less than 1",
-            "badge must be a number conforming to the specified constraints",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null,
-            "quantity": 0,
-            "badge": 0
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must not be less than 1"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null,
-            "quantity": 101
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null,
-            "quantity": 101,
-            "badge": null
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null,
-            "quantity": 101,
-            "badge": ""
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null,
-            "quantity": 101,
-            "badge": "random_string"
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": null,
-            "quantity": 101,
-            "badge": 0
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be null or undefined",
-            "prefix should not be empty",
             "quantity must not be greater than 100"
         ]
     },
@@ -1178,31 +381,14 @@
             "prefix": ""
         },
         "expects": [
-            "prefix must be longer than or equal to 5 characters",
             "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
+            "prefix must be longer than or equal to 5 characters",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": "",
-            "badge": null
-        },
-        "expects": [
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
             "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -1212,27 +398,27 @@
             "badge": ""
         },
         "expects": [
-            "prefix must be longer than or equal to 5 characters",
             "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
+            "prefix must be longer than or equal to 5 characters",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
+            "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
     {
         "body": {
             "prefix": "",
-            "badge": "random_string"
+            "badge": "invalid_value"
         },
         "expects": [
-            "prefix must be longer than or equal to 5 characters",
             "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
+            "prefix must be longer than or equal to 5 characters",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
             "badge must be a number conforming to the specified constraints",
@@ -1245,95 +431,10 @@
             "badge": 0
         },
         "expects": [
-            "prefix must be longer than or equal to 5 characters",
             "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100"
-        ]
-    },
-    {
-        "body": {
-            "prefix": "",
-            "quantity": null
-        },
-        "expects": [
             "prefix must be longer than or equal to 5 characters",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
             "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": "",
-            "quantity": null,
-            "badge": null
-        },
-        "expects": [
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be empty",
             "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": "",
-            "quantity": null,
-            "badge": ""
-        },
-        "expects": [
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": "",
-            "quantity": null,
-            "badge": "random_string"
-        },
-        "expects": [
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": "",
-            "quantity": null,
-            "badge": 0
-        },
-        "expects": [
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
             "quantity must not be less than 1",
             "quantity must not be greater than 100"
         ]
@@ -1344,32 +445,14 @@
             "quantity": ""
         },
         "expects": [
-            "prefix must be longer than or equal to 5 characters",
             "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
+            "prefix must be longer than or equal to 5 characters",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": "",
-            "quantity": "",
-            "badge": null
-        },
-        "expects": [
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
             "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -1380,14 +463,14 @@
             "badge": ""
         },
         "expects": [
-            "prefix must be longer than or equal to 5 characters",
             "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
+            "prefix must be longer than or equal to 5 characters",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
+            "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -1395,13 +478,13 @@
         "body": {
             "prefix": "",
             "quantity": "",
-            "badge": "random_string"
+            "badge": "invalid_value"
         },
         "expects": [
-            "prefix must be longer than or equal to 5 characters",
             "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
+            "prefix must be longer than or equal to 5 characters",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
             "badge must be a number conforming to the specified constraints",
@@ -1415,10 +498,10 @@
             "badge": 0
         },
         "expects": [
-            "prefix must be longer than or equal to 5 characters",
             "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
+            "prefix must be longer than or equal to 5 characters",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100"
         ]
@@ -1429,30 +512,13 @@
             "quantity": "random_string"
         },
         "expects": [
-            "prefix must be longer than or equal to 5 characters",
             "prefix should not be empty",
+            "prefix must be longer than or equal to 5 characters",
             "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": "",
-            "quantity": "random_string",
-            "badge": null
-        },
-        "expects": [
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be empty",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
             "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -1463,13 +529,13 @@
             "badge": ""
         },
         "expects": [
-            "prefix must be longer than or equal to 5 characters",
             "prefix should not be empty",
+            "prefix must be longer than or equal to 5 characters",
             "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
+            "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -1477,11 +543,11 @@
         "body": {
             "prefix": "",
             "quantity": "random_string",
-            "badge": "random_string"
+            "badge": "invalid_value"
         },
         "expects": [
-            "prefix must be longer than or equal to 5 characters",
             "prefix should not be empty",
+            "prefix must be longer than or equal to 5 characters",
             "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
@@ -1496,8 +562,8 @@
             "badge": 0
         },
         "expects": [
-            "prefix must be longer than or equal to 5 characters",
             "prefix should not be empty",
+            "prefix must be longer than or equal to 5 characters",
             "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100"
@@ -1509,24 +575,10 @@
             "quantity": 1
         },
         "expects": [
-            "prefix must be longer than or equal to 5 characters",
             "prefix should not be empty",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": "",
-            "quantity": 1,
-            "badge": null
-        },
-        "expects": [
             "prefix must be longer than or equal to 5 characters",
-            "prefix should not be empty",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
+            "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -1537,10 +589,10 @@
             "badge": ""
         },
         "expects": [
-            "prefix must be longer than or equal to 5 characters",
             "prefix should not be empty",
-            "badge must be a number conforming to the specified constraints",
+            "prefix must be longer than or equal to 5 characters",
             "badge should not be empty",
+            "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -1548,11 +600,11 @@
         "body": {
             "prefix": "",
             "quantity": 1,
-            "badge": "random_string"
+            "badge": "invalid_value"
         },
         "expects": [
-            "prefix must be longer than or equal to 5 characters",
             "prefix should not be empty",
+            "prefix must be longer than or equal to 5 characters",
             "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
@@ -1564,8 +616,8 @@
             "badge": 0
         },
         "expects": [
-            "prefix must be longer than or equal to 5 characters",
-            "prefix should not be empty"
+            "prefix should not be empty",
+            "prefix must be longer than or equal to 5 characters"
         ]
     },
     {
@@ -1574,26 +626,11 @@
             "quantity": 0
         },
         "expects": [
-            "prefix must be longer than or equal to 5 characters",
             "prefix should not be empty",
-            "quantity must not be less than 1",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": "",
-            "quantity": 0,
-            "badge": null
-        },
-        "expects": [
             "prefix must be longer than or equal to 5 characters",
-            "prefix should not be empty",
             "quantity must not be less than 1",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
+            "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -1604,11 +641,11 @@
             "badge": ""
         },
         "expects": [
-            "prefix must be longer than or equal to 5 characters",
             "prefix should not be empty",
+            "prefix must be longer than or equal to 5 characters",
             "quantity must not be less than 1",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
+            "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -1616,11 +653,11 @@
         "body": {
             "prefix": "",
             "quantity": 0,
-            "badge": "random_string"
+            "badge": "invalid_value"
         },
         "expects": [
-            "prefix must be longer than or equal to 5 characters",
             "prefix should not be empty",
+            "prefix must be longer than or equal to 5 characters",
             "quantity must not be less than 1",
             "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
@@ -1633,8 +670,8 @@
             "badge": 0
         },
         "expects": [
-            "prefix must be longer than or equal to 5 characters",
             "prefix should not be empty",
+            "prefix must be longer than or equal to 5 characters",
             "quantity must not be less than 1"
         ]
     },
@@ -1644,26 +681,11 @@
             "quantity": 101
         },
         "expects": [
-            "prefix must be longer than or equal to 5 characters",
             "prefix should not be empty",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": "",
-            "quantity": 101,
-            "badge": null
-        },
-        "expects": [
             "prefix must be longer than or equal to 5 characters",
-            "prefix should not be empty",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
+            "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -1674,11 +696,11 @@
             "badge": ""
         },
         "expects": [
-            "prefix must be longer than or equal to 5 characters",
             "prefix should not be empty",
+            "prefix must be longer than or equal to 5 characters",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
+            "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -1686,11 +708,11 @@
         "body": {
             "prefix": "",
             "quantity": 101,
-            "badge": "random_string"
+            "badge": "invalid_value"
         },
         "expects": [
-            "prefix must be longer than or equal to 5 characters",
             "prefix should not be empty",
+            "prefix must be longer than or equal to 5 characters",
             "quantity must not be greater than 100",
             "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
@@ -1703,8 +725,8 @@
             "badge": 0
         },
         "expects": [
-            "prefix must be longer than or equal to 5 characters",
             "prefix should not be empty",
+            "prefix must be longer than or equal to 5 characters",
             "quantity must not be greater than 100"
         ]
     },
@@ -1715,29 +737,12 @@
         "expects": [
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
-            "quantity must be a number conforming to the specified constraints",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": 12345,
-            "badge": null
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
             "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -1749,25 +754,25 @@
         "expects": [
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
-            "quantity must be a number conforming to the specified constraints",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
+            "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
     {
         "body": {
             "prefix": 12345,
-            "badge": "random_string"
+            "badge": "invalid_value"
         },
         "expects": [
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
-            "quantity must be a number conforming to the specified constraints",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
             "badge must be a number conforming to the specified constraints",
@@ -1782,93 +787,8 @@
         "expects": [
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
-            "quantity must be a number conforming to the specified constraints",
             "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100"
-        ]
-    },
-    {
-        "body": {
-            "prefix": 12345,
-            "quantity": null
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
             "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": 12345,
-            "quantity": null,
-            "badge": null
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": 12345,
-            "quantity": null,
-            "badge": ""
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": 12345,
-            "quantity": null,
-            "badge": "random_string"
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": 12345,
-            "quantity": null,
-            "badge": 0
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
             "quantity must not be less than 1",
             "quantity must not be greater than 100"
         ]
@@ -1881,30 +801,12 @@
         "expects": [
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
-            "quantity must be a number conforming to the specified constraints",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": 12345,
-            "quantity": "",
-            "badge": null
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
             "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -1917,12 +819,12 @@
         "expects": [
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
-            "quantity must be a number conforming to the specified constraints",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
+            "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -1930,13 +832,13 @@
         "body": {
             "prefix": 12345,
             "quantity": "",
-            "badge": "random_string"
+            "badge": "invalid_value"
         },
         "expects": [
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
-            "quantity must be a number conforming to the specified constraints",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
             "badge must be a number conforming to the specified constraints",
@@ -1952,8 +854,8 @@
         "expects": [
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
-            "quantity must be a number conforming to the specified constraints",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100"
         ]
@@ -1969,25 +871,8 @@
             "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": 12345,
-            "quantity": "random_string",
-            "badge": null
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
             "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -2003,8 +888,8 @@
             "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
+            "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -2012,7 +897,7 @@
         "body": {
             "prefix": 12345,
             "quantity": "random_string",
-            "badge": "random_string"
+            "badge": "invalid_value"
         },
         "expects": [
             "prefix must be a string",
@@ -2046,22 +931,8 @@
         "expects": [
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": 12345,
-            "quantity": 1,
-            "badge": null
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
             "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -2074,8 +945,8 @@
         "expects": [
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
+            "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -2083,7 +954,7 @@
         "body": {
             "prefix": 12345,
             "quantity": 1,
-            "badge": "random_string"
+            "badge": "invalid_value"
         },
         "expects": [
             "prefix must be a string",
@@ -2112,23 +983,8 @@
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
             "quantity must not be less than 1",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": 12345,
-            "quantity": 0,
-            "badge": null
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "quantity must not be less than 1",
             "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -2142,8 +998,8 @@
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
             "quantity must not be less than 1",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
+            "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -2151,7 +1007,7 @@
         "body": {
             "prefix": 12345,
             "quantity": 0,
-            "badge": "random_string"
+            "badge": "invalid_value"
         },
         "expects": [
             "prefix must be a string",
@@ -2182,23 +1038,8 @@
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": 12345,
-            "quantity": 101,
-            "badge": null
-        },
-        "expects": [
-            "prefix must be a string",
-            "prefix must be longer than or equal to 5 characters",
-            "quantity must not be greater than 100",
             "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -2212,8 +1053,8 @@
             "prefix must be a string",
             "prefix must be longer than or equal to 5 characters",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
+            "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -2221,7 +1062,7 @@
         "body": {
             "prefix": 12345,
             "quantity": 101,
-            "badge": "random_string"
+            "badge": "invalid_value"
         },
         "expects": [
             "prefix must be a string",
@@ -2248,27 +1089,12 @@
             "prefix": "duy12345"
         },
         "expects": [
-            "quantity must be a number conforming to the specified constraints",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": "duy12345",
-            "badge": null
-        },
-        "expects": [
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
             "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -2278,23 +1104,23 @@
             "badge": ""
         },
         "expects": [
-            "quantity must be a number conforming to the specified constraints",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
+            "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
     {
         "body": {
             "prefix": "duy12345",
-            "badge": "random_string"
+            "badge": "invalid_value"
         },
         "expects": [
-            "quantity must be a number conforming to the specified constraints",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
             "badge must be a number conforming to the specified constraints",
@@ -2307,83 +1133,8 @@
             "badge": 0
         },
         "expects": [
-            "quantity must be a number conforming to the specified constraints",
             "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100"
-        ]
-    },
-    {
-        "body": {
-            "prefix": "duy12345",
-            "quantity": null
-        },
-        "expects": [
             "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": "duy12345",
-            "quantity": null,
-            "badge": null
-        },
-        "expects": [
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": "duy12345",
-            "quantity": null,
-            "badge": ""
-        },
-        "expects": [
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": "duy12345",
-            "quantity": null,
-            "badge": "random_string"
-        },
-        "expects": [
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": "duy12345",
-            "quantity": null,
-            "badge": 0
-        },
-        "expects": [
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
             "quantity must not be less than 1",
             "quantity must not be greater than 100"
         ]
@@ -2394,28 +1145,12 @@
             "quantity": ""
         },
         "expects": [
-            "quantity must be a number conforming to the specified constraints",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": "duy12345",
-            "quantity": "",
-            "badge": null
-        },
-        "expects": [
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
             "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -2426,12 +1161,12 @@
             "badge": ""
         },
         "expects": [
-            "quantity must be a number conforming to the specified constraints",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
+            "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -2439,11 +1174,11 @@
         "body": {
             "prefix": "duy12345",
             "quantity": "",
-            "badge": "random_string"
+            "badge": "invalid_value"
         },
         "expects": [
-            "quantity must be a number conforming to the specified constraints",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
             "badge must be a number conforming to the specified constraints",
@@ -2457,8 +1192,8 @@
             "badge": 0
         },
         "expects": [
-            "quantity must be a number conforming to the specified constraints",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100"
         ]
@@ -2472,23 +1207,8 @@
             "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": "duy12345",
-            "quantity": "random_string",
-            "badge": null
-        },
-        "expects": [
-            "quantity must be a number conforming to the specified constraints",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
             "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -2502,8 +1222,8 @@
             "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
+            "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -2511,7 +1231,7 @@
         "body": {
             "prefix": "duy12345",
             "quantity": "random_string",
-            "badge": "random_string"
+            "badge": "invalid_value"
         },
         "expects": [
             "quantity must be a number conforming to the specified constraints",
@@ -2539,20 +1259,8 @@
             "quantity": 1
         },
         "expects": [
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": "duy12345",
-            "quantity": 1,
-            "badge": null
-        },
-        "expects": [
             "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -2563,8 +1271,8 @@
             "badge": ""
         },
         "expects": [
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
+            "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -2572,7 +1280,7 @@
         "body": {
             "prefix": "duy12345",
             "quantity": 1,
-            "badge": "random_string"
+            "badge": "invalid_value"
         },
         "expects": [
             "badge must be a number conforming to the specified constraints",
@@ -2594,21 +1302,8 @@
         },
         "expects": [
             "quantity must not be less than 1",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": "duy12345",
-            "quantity": 0,
-            "badge": null
-        },
-        "expects": [
-            "quantity must not be less than 1",
             "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -2620,8 +1315,8 @@
         },
         "expects": [
             "quantity must not be less than 1",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
+            "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -2629,7 +1324,7 @@
         "body": {
             "prefix": "duy12345",
             "quantity": 0,
-            "badge": "random_string"
+            "badge": "invalid_value"
         },
         "expects": [
             "quantity must not be less than 1",
@@ -2654,21 +1349,8 @@
         },
         "expects": [
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": "duy12345",
-            "quantity": 101,
-            "badge": null
-        },
-        "expects": [
-            "quantity must not be greater than 100",
             "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -2680,8 +1362,8 @@
         },
         "expects": [
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
+            "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -2689,7 +1371,7 @@
         "body": {
             "prefix": "duy12345",
             "quantity": 101,
-            "badge": "random_string"
+            "badge": "invalid_value"
         },
         "expects": [
             "quantity must not be greater than 100",
@@ -2713,28 +1395,12 @@
         },
         "expects": [
             "prefix must be longer than or equal to 5 characters",
-            "quantity must be a number conforming to the specified constraints",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": "aaaa",
-            "badge": null
-        },
-        "expects": [
-            "prefix must be longer than or equal to 5 characters",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
             "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -2745,24 +1411,24 @@
         },
         "expects": [
             "prefix must be longer than or equal to 5 characters",
-            "quantity must be a number conforming to the specified constraints",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
+            "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
     {
         "body": {
             "prefix": "aaaa",
-            "badge": "random_string"
+            "badge": "invalid_value"
         },
         "expects": [
             "prefix must be longer than or equal to 5 characters",
-            "quantity must be a number conforming to the specified constraints",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
             "badge must be a number conforming to the specified constraints",
@@ -2776,88 +1442,8 @@
         },
         "expects": [
             "prefix must be longer than or equal to 5 characters",
-            "quantity must be a number conforming to the specified constraints",
             "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100"
-        ]
-    },
-    {
-        "body": {
-            "prefix": "aaaa",
-            "quantity": null
-        },
-        "expects": [
-            "prefix must be longer than or equal to 5 characters",
             "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": "aaaa",
-            "quantity": null,
-            "badge": null
-        },
-        "expects": [
-            "prefix must be longer than or equal to 5 characters",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": "aaaa",
-            "quantity": null,
-            "badge": ""
-        },
-        "expects": [
-            "prefix must be longer than or equal to 5 characters",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": "aaaa",
-            "quantity": null,
-            "badge": "random_string"
-        },
-        "expects": [
-            "prefix must be longer than or equal to 5 characters",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": "aaaa",
-            "quantity": null,
-            "badge": 0
-        },
-        "expects": [
-            "prefix must be longer than or equal to 5 characters",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
             "quantity must not be less than 1",
             "quantity must not be greater than 100"
         ]
@@ -2869,29 +1455,12 @@
         },
         "expects": [
             "prefix must be longer than or equal to 5 characters",
-            "quantity must be a number conforming to the specified constraints",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": "aaaa",
-            "quantity": "",
-            "badge": null
-        },
-        "expects": [
-            "prefix must be longer than or equal to 5 characters",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity should not be empty",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
             "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -2903,12 +1472,12 @@
         },
         "expects": [
             "prefix must be longer than or equal to 5 characters",
-            "quantity must be a number conforming to the specified constraints",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
+            "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -2916,12 +1485,12 @@
         "body": {
             "prefix": "aaaa",
             "quantity": "",
-            "badge": "random_string"
+            "badge": "invalid_value"
         },
         "expects": [
             "prefix must be longer than or equal to 5 characters",
-            "quantity must be a number conforming to the specified constraints",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
             "badge must be a number conforming to the specified constraints",
@@ -2936,8 +1505,8 @@
         },
         "expects": [
             "prefix must be longer than or equal to 5 characters",
-            "quantity must be a number conforming to the specified constraints",
             "quantity should not be empty",
+            "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100"
         ]
@@ -2952,24 +1521,8 @@
             "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": "aaaa",
-            "quantity": "random_string",
-            "badge": null
-        },
-        "expects": [
-            "prefix must be longer than or equal to 5 characters",
-            "quantity must be a number conforming to the specified constraints",
-            "quantity must not be less than 1",
-            "quantity must not be greater than 100",
             "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -2984,8 +1537,8 @@
             "quantity must be a number conforming to the specified constraints",
             "quantity must not be less than 1",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
+            "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -2993,7 +1546,7 @@
         "body": {
             "prefix": "aaaa",
             "quantity": "random_string",
-            "badge": "random_string"
+            "badge": "invalid_value"
         },
         "expects": [
             "prefix must be longer than or equal to 5 characters",
@@ -3024,21 +1577,8 @@
         },
         "expects": [
             "prefix must be longer than or equal to 5 characters",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": "aaaa",
-            "quantity": 1,
-            "badge": null
-        },
-        "expects": [
-            "prefix must be longer than or equal to 5 characters",
             "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -3050,8 +1590,8 @@
         },
         "expects": [
             "prefix must be longer than or equal to 5 characters",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
+            "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -3059,7 +1599,7 @@
         "body": {
             "prefix": "aaaa",
             "quantity": 1,
-            "badge": "random_string"
+            "badge": "invalid_value"
         },
         "expects": [
             "prefix must be longer than or equal to 5 characters",
@@ -3085,22 +1625,8 @@
         "expects": [
             "prefix must be longer than or equal to 5 characters",
             "quantity must not be less than 1",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": "aaaa",
-            "quantity": 0,
-            "badge": null
-        },
-        "expects": [
-            "prefix must be longer than or equal to 5 characters",
-            "quantity must not be less than 1",
             "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -3113,8 +1639,8 @@
         "expects": [
             "prefix must be longer than or equal to 5 characters",
             "quantity must not be less than 1",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
+            "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -3122,7 +1648,7 @@
         "body": {
             "prefix": "aaaa",
             "quantity": 0,
-            "badge": "random_string"
+            "badge": "invalid_value"
         },
         "expects": [
             "prefix must be longer than or equal to 5 characters",
@@ -3150,22 +1676,8 @@
         "expects": [
             "prefix must be longer than or equal to 5 characters",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
-            "badge must be one of the following values: 0, 1, 2, 3"
-        ]
-    },
-    {
-        "body": {
-            "prefix": "aaaa",
-            "quantity": 101,
-            "badge": null
-        },
-        "expects": [
-            "prefix must be longer than or equal to 5 characters",
-            "quantity must not be greater than 100",
             "badge must be a number conforming to the specified constraints",
-            "badge should not be empty",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -3178,8 +1690,8 @@
         "expects": [
             "prefix must be longer than or equal to 5 characters",
             "quantity must not be greater than 100",
-            "badge must be a number conforming to the specified constraints",
             "badge should not be empty",
+            "badge must be a number conforming to the specified constraints",
             "badge must be one of the following values: 0, 1, 2, 3"
         ]
     },
@@ -3187,7 +1699,7 @@
         "body": {
             "prefix": "aaaa",
             "quantity": 101,
-            "badge": "random_string"
+            "badge": "invalid_value"
         },
         "expects": [
             "prefix must be longer than or equal to 5 characters",

@@ -131,97 +131,79 @@ export function mapError(
   value: any,
   decorators: Record<string, any>,
 ): string[] {
-
-
   const errors: string[] = [];
 
-  if (decorators['type']) {
-    if (decorators['type'] === 'string') {
-      if (typeof value !== 'string') {
-        errors.push(`${field} ${ErrorMessage.INVALID_TYPE_STRING}`);
-      }
 
-      if (decorators['minLength'] !== undefined) {
-        const stringValue = String(value || '');
-        if (stringValue.length < decorators['minLength'] ||  typeof value !== 'string') {
-          errors.push(
-            `${field} ${ErrorMessage.MIN_LENGTH} ${decorators['minLength']} characters`,
-          );
-        }
+  if(decorators['notEmpty'] && (value === undefined || value === null || value === "") && !decorators['notEmptyMessage']){
+    errors.push(`${field} ${ErrorMessage.EMPTY}`)
+  } 
+
+  if(decorators['isDefined'] && (value === undefined || value === null)) {
+    errors.push(`${field} ${ErrorMessage.DEFINED}`)
+    
+  }
+
+  if(decorators['notEmptyMessage'] && ( value === undefined || value === null || value === "" )){
+    errors.push(decorators['notEmptyMessage'])
+  }
+
+  if(decorators['type'] === 'string'){
+    
+    if(typeof value !== 'string') errors.push(`${field} ${ErrorMessage.INVALID_TYPE_STRING}`)
+
+    
+    if(value === "" || value === null || value === undefined || typeof value !== 'string'){
+      value = -1
+      if(decorators['minLength'] && value < decorators['minLength']) errors.push(`${field} ${ErrorMessage.MIN_LENGTH} ${decorators['minLength']} characters`)
+    }else {
       
-      }
+      if(decorators['minLength'] && value.length < decorators['minLength']) errors.push(`${field} ${ErrorMessage.MIN_LENGTH} ${decorators['minLength']} characters`)
 
-      if (decorators['maxLength'] !== undefined) {
-        const safeLength = getLength(value);
-        if (safeLength > decorators['maxLength']) {
-          errors.push(
-            `${field} ${ErrorMessage.MAX_LENGTH} ${decorators['maxLength']} characters`,
-          );
-        }
-      }
-
-      if ((value === null || value === undefined) && !decorators['optional']) {
-        errors.push(`${field} should not be null or undefined`);
-      }
-
-      if (
-        decorators['notEmpty'] &&
-        (value === undefined || value === '' || value === null)
-      ) {
-        errors.push(`${field} should not be empty`);
-      }
-    } else if (decorators['type'] === 'number') {
-      
-      if (typeof value !== 'number') {
-
-        errors.push(`${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`);
-      }
-
-      if ((value === undefined || value === null || value === '')) {
-        errors.push(`${field} should not be empty`);
-      }else {
-
-      }
-
-      if (decorators['isIn']) {
-        const allowedValues = decorators['isIn'];
-        if (!allowedValues.includes(value)) {
-          errors.push(
-            `${field} must be one of the following values: ${allowedValues.join(', ')}`,
-          );
-          return errors;
-        }
-      }
-
-      if (decorators['min'] || decorators['min'] === 0) {
-        if (
-          value === undefined ||
-          value === null ||
-          value === '' ||
-          typeof value !== 'number'
-        ) {
-
-          errors.push(`${field} ${ErrorMessage.MIN} ${decorators['min']}`);
-        } 
-        else if (value < decorators['min']) {
-          errors.push(`${field} ${ErrorMessage.MIN} ${decorators['min']}`);
-        } 
-      }
-
-      if (decorators['max']) {
-        if (
-          value === undefined ||
-          value === null ||
-          value === '' ||
-          typeof value !== 'number'
-        ) {
-          errors.push(`${field} ${ErrorMessage.MAX} ${decorators['max']}`);
-        } 
-        else if (value > decorators['max']) {
-          errors.push(`${field} ${ErrorMessage.MAX} ${decorators['max']}`);
-        }
-      }
     }
+  }
+
+  if(decorators['type'] === 'number'){
+
+    if(typeof value !== 'number') errors.push(`${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`)
+
+  
+    if(value < decorators['min']){
+
+      errors.push(`${field} ${ErrorMessage.MIN} ${decorators['min']}`)
+
+    }else if (( value === undefined || value === "" || value === null || typeof value !== 'number' )) {
+      
+      errors.push(`${field} ${ErrorMessage.MIN} ${decorators['min']}`)
+    }
+
+    if(decorators['max'] && value > decorators['max']){
+
+      errors.push(`${field} ${ErrorMessage.MAX} ${decorators['max']}`)
+
+    }else if (( value === undefined || value === "" || value === null || typeof value !== 'number' ) && decorators['max']) {
+
+      errors.push(`${field} ${ErrorMessage.MAX} ${decorators['max']}`)
+    }
+
+  }
+
+  if(decorators['type'] === 'enum'){
+    
+    const allowedValues = Object.values(decorators['enumType']);
+
+    if(typeof value !== 'number'){
+      errors.push(`${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`)
+    }
+
+    if (!allowedValues.includes(value)) {
+
+      const filterNumber = allowedValues.filter((val) => typeof val === 'number');
+  
+      errors.push(
+        `${field} ${ErrorMessage.INVALID_RANGE_NUMBER} ${filterNumber.join(', ')}`
+      );
+    }
+
   }
 
   return errors;

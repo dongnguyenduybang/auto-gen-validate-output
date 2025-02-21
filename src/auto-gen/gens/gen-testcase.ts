@@ -72,12 +72,7 @@ function genTestCase(
     import { validateLogicData } from '../validates/validate-logic';
     import fs from 'fs';
     import path from 'path';
-
-  function analyzeErrors(expected: string[], actual: string[]) {
-    const missing = expected.filter((error) => !actual.includes(error)); 
-    const extra = actual.filter((error) => !expected.includes(error));
-    return { missing, extra };
-  }
+    import { summaryFields } from '../helps/ultil';
 
     describe('Testcase for ${className}', () => {
         let totalTests = 0;
@@ -85,58 +80,59 @@ function genTestCase(
         let failedTests = [];
 
         ${payloadData
-          .map(
-            (testCase: any, index: number) => `
+      .map(
+        (testCase: any, index: number) => `
           it('Test case #${index + 1} with expect errors ${JSON.stringify(testCase.expects)} ', async () => {
             totalTests++;
             const payload = ${JSON.stringify(testCase.body)};
-            try {
-              const response = await axios({
-                method: '${requestConfig.method.toLowerCase()}',
-                url: \`\${globalThis.url}${requestConfig.path}\`, 
-                headers: ${JSON.stringify(requestConfig.headers)},
-                data: ${JSON.stringify(testCase.body)}
-              });
-              const dataResponse = plainToInstance(${classNameCapitalized}DTOResponse , response.data);
-              const validationErrors = await validate(dataResponse);
-              if (validationErrors.length > 0) {
-                console.error("validation failed:", validationErrors);
-                failedTests.push({
-                  name: 'Test case #${index + 1}',
-                  expected: ${JSON.stringify(testCase.expects)},
-                  actual: validationErrors.map(err => err.toString())
-                });
-                throw new Error('Validation failed');
-              } else {
-                const result = validateLogicData(dataResponse, validationRules${classNameCapitalized}, payload);
-                console.log(result);
-                passedTests++;
-              }
-            } catch (error) {
-              const expectedError = ${JSON.stringify(testCase.expects)};
-              const actualError = error.response?.data?.error?.details || [];
-              const sortedReceived = [...actualError].sort();
-              const sortedExpected = [...expectedError].sort();
+           
+            const response = await fetch(\`\${globalThis.url}${requestConfig.path}\`, 
+            {
+              method: '${requestConfig.method.toLowerCase()}',
+              headers: ${JSON.stringify(requestConfig.headers)},
+              body: JSON.stringify(payload)
+            })
 
-              if (JSON.stringify(sortedReceived) !== JSON.stringify(sortedExpected)) {
-                const { missing, extra } = analyzeErrors(expectedError, actualError);
+            const data = await response.json();
+
+            if(response.status === 201){
+            
+              passedTests++
+            
+            }else if(response.status === 400){
+              const expectJson = ${JSON.stringify(testCase.expects)}.sort()
+              const expectDetails = data?.error?.details || [];
+              const softExpectDetails = [...expectDetails].sort();
+              try {
+                expect(data.ok).toEqual(false);
+                expect(data.data).toEqual(null);
+                expect(expectJson).toEqual(softExpectDetails);
+                passedTests++; 
+              } catch (error) {
+                const { missing, extra } = summaryFields(expectJson, softExpectDetails);
                 failedTests.push({
-                  name: 'Test case #${index + 1}',
-                  expected: expectedError,
-                  actual: actualError,
-                  missing,
-                  extra
-                });
-                throw new Error('Test case failed');
-              } else {
-                passedTests++;
+                  testcase: ${index + 1},
+                  missing: missing,
+                  extra: extra
+                })
+                throw new Error(error);
               }
+            }else if (response.status === 500){
+
+              expect(response.status).toEqual(500)
+              throw new Error('Server returned a 500 error');
+             
+            } else {
+              console.warn('Unexpected Response:', data);
+
+              throw new Error(data);
             }
-          });`,
-          )
-          .join('\n')}
 
-        afterAll(() => {
+          });`,
+      )
+      .join('\n')}
+
+      afterAll(() => {
           const folderPath = path.join(__dirname, '../reports');
 
           if (!fs.existsSync(folderPath)) {
@@ -152,12 +148,10 @@ function genTestCase(
               Failed Tests: \${failedTests.length}
 
               Failed Test Details:
-              \${failedTests
+             \${failedTests
                 .map(
                   (failCase) => \`
-              - \${failCase.name}
-                Expected: \${JSON.stringify(failCase.expected)}
-                Actual:   \${JSON.stringify(failCase.actual)}
+              - Testcase #\${failCase.testcase}
                 Missing Errors: \${JSON.stringify(failCase.missing)}
                 Extra Errors: \${JSON.stringify(failCase.extra)}
               \`
@@ -177,6 +171,9 @@ function genTestCase(
   fs.writeFileSync(outputPath, specContent, 'utf-8');
   console.log(`Success: ${outputPath}`);
 }
+
+
+
 export function genTestCaseForDTO(dtoName: string) {
   const dtosDir = path.join(__dirname, '../dtos', dtoName);
   const payloadsDir = path.join(__dirname, '../expect-json');

@@ -165,3 +165,9 @@ export const getMockUser = async () => {
       throw new Error("Failed to get getMockUser");
   }
 };
+
+export function summaryFields(expectJson: string[], receivedResponse: string[]): { missing: string[], extra: string[] } {
+  const missing = expectJson.filter(field => !receivedResponse.includes(field)); 
+  const extra = receivedResponse.filter(field => !expectJson.includes(field)); 
+  return { missing, extra };
+}

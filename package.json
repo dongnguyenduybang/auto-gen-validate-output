@@ -8,14 +8,8 @@
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-
-    "gen:body": "npx ts-node src/auto-gen/gens/gen-body.ts",
-    "gen:testcase": "npx ts-node src/auto-gen/gens/gen-testcase.ts",
-    "test": "jest folder-gen",
-
     "gen": "npx ts-node src/auto-gen/test.index.ts gen ",
-    "test:": "npx ts-node src/auto-gen/test.index.ts test "
-
+    "test": "npx ts-node  src/auto-gen/test.index.ts test"
   },
   "engines": {
     "npm": ">=8.0.0",
@@ -54,6 +48,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
     "jest": "^29.7.0",
+    "jest-summary-reporter": "^0.0.2",
     "prettier": "^3.2.5",
     "source-map-support": "^0.5.21",
     "supertest": "^6.3.4",
