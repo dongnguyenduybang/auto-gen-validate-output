@@ -5,8 +5,6 @@ export const validationRulesMockUser: ValidationRule[] = [
     field: 'userId',
     type: 'string',
     required: true,
-    minLength: 10,
-    maxLength: 50,
   },
   {
     field: 'username',
@@ -24,22 +22,16 @@ export const validationRulesMockUser: ValidationRule[] = [
     field: 'token',
     type: 'string',
     required: true,
-    minLength: 50,
-    maxLength: 200,
   },
   {
     field: 'securityKey',
     type: 'string',
     required: true,
-    minLength: 64,
-    maxLength: 64,
   },
   {
     field: 'recoverKey',
     type: 'string',
     required: true,
-    minLength: 64,
-    maxLength: 64,
   },
   {
     field: 'badge',
