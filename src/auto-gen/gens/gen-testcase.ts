@@ -72,7 +72,6 @@ function genTestCase(
         let totalTests = 0;
         let passedTests = 0;
         let failedTests = [];
-
         ${payloadData
           .map(
             (testCase: any, index: number) => `
@@ -166,21 +165,21 @@ function genTestCase(
             fs.mkdirSync(folderPath, { recursive: true });
           }
           const resultContent = \`
-                  === Test Reports for DTO "${className}" ===
-                  Host: \${globalThis.url}
-                  Endpoint: ${requestConfig.path}
-                  Total Tests: \${totalTests}
-                  Passed Tests: \${passedTests}
-                  Failed Tests: \${failedTests.length}
-                  Failed Test Details:
-                  \${failedTests
-                    .map(
-                      (failCase) => \`
-                  - Testcase #\${failCase.testcase}
-                    Missing Errors: \${failCase.missing ? JSON.stringify(failCase.missing) : "''"}
-                    Status Code: \${failCase.code ? JSON.stringify(failCase.code) : "''"}
-                    Extra Errors: \${failCase.extra ? JSON.stringify(failCase.extra) : "''"}
-                    Detail Errors: \${failCase.errorDetails ? JSON.stringify(failCase.errorDetails) : "''"}
+=== Test Reports for DTO "${className}" ===
+Host: \${globalThis.url}
+Endpoint: ${requestConfig.path}
+Total Tests: \${totalTests}
+Passed Tests: \${passedTests}
+Failed Tests: \${failedTests.length}
+Failed Test Details:
+\${failedTests
+  .map(
+    (failCase) => \`
+- Testcase #\${failCase.testcase}
+  Missing Errors: \${failCase.missing ? JSON.stringify(failCase.missing) : "''"}
+  Status Code: \${failCase.code ? JSON.stringify(failCase.code) : "''"}
+  Extra Errors: \${failCase.extra ? JSON.stringify(failCase.extra) : "''"}
+  Detail Errors: \${failCase.errorDetails ? JSON.stringify(failCase.errorDetails) : "''"}
                   \`
                     )
                     .join('')}

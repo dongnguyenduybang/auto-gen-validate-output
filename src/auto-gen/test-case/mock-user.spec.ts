@@ -10,7 +10,7 @@
         let passedTests = 0;
         let failedTests = [];
 
-        
+    
           it('Test case #1 with expect errors ["prefix should not be empty","prefix should not be null or undefined","prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"] ', async () => {
             totalTests++;
             const payload = {};
@@ -9738,21 +9738,21 @@
             fs.mkdirSync(folderPath, { recursive: true });
           }
           const resultContent = `
-                  === Test Reports for DTO "mock-user" ===
-                  Host: ${globalThis.url}
-                  Endpoint: /InternalFaker/MockUsers
-                  Total Tests: ${totalTests}
-                  Passed Tests: ${passedTests}
-                  Failed Tests: ${failedTests.length}
-                  Failed Test Details:
-                  ${failedTests
-                    .map(
-                      (failCase) => `
-                  - Testcase #${failCase.testcase}
-                    Missing Errors: ${failCase.missing ? JSON.stringify(failCase.missing) : "''"}
-                    Status Code: ${failCase.code ? JSON.stringify(failCase.code) : "''"}
-                    Extra Errors: ${failCase.extra ? JSON.stringify(failCase.extra) : "''"}
-                    Detail Errors: ${failCase.errorDetails ? JSON.stringify(failCase.errorDetails) : "''"}
+=== Test Reports for DTO "mock-user" ===
+Host: ${globalThis.url}
+Endpoint: /InternalFaker/MockUsers
+Total Tests: ${totalTests}
+Passed Tests: ${passedTests}
+Failed Tests: ${failedTests.length}
+Failed Test Details:
+${failedTests
+  .map(
+    (failCase) => `
+- Testcase #${failCase.testcase}
+  Missing Errors: ${failCase.missing ? JSON.stringify(failCase.missing) : "''"}
+  Status Code: ${failCase.code ? JSON.stringify(failCase.code) : "''"}
+  Extra Errors: ${failCase.extra ? JSON.stringify(failCase.extra) : "''"}
+  Detail Errors: ${failCase.errorDetails ? JSON.stringify(failCase.errorDetails) : "''"}
                   `
                     )
                     .join('')}

@@ -1,10 +1,10 @@
 
-                  === Test Reports for DTO "mock-user" ===
-                  Host: https://api-sb11.rpc.ziichat.dev
-                  Endpoint: /InternalFaker/MockUsers
-                  Total Tests: 120
-                  Passed Tests: 120
-                  Failed Tests: 0
-                  Failed Test Details:
-                  
+=== Test Reports for DTO "mock-user" ===
+Host: https://api-sb11.rpc.ziichat.dev
+Endpoint: /InternalFaker/MockUsers
+Total Tests: 120
+Passed Tests: 120
+Failed Tests: 0
+Failed Test Details:
+
                   
