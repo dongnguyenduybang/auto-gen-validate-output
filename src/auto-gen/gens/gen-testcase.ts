@@ -12,7 +12,6 @@ function getAllFiles(dirPath: string): string[] {
   let files: string[] = [];
   const items = fs.readdirSync(dirPath);
   items.forEach((item) => {
-
     const itemPath = path.join(dirPath, item);
     if (fs.statSync(itemPath).isDirectory()) {
       files = files.concat(getAllFiles(itemPath));
@@ -26,7 +25,6 @@ function getAllFiles(dirPath: string): string[] {
 function pairFiles(
   files: string[],
 ): { dtoPath: string; requestPath: string; className: string }[] {
-
   const fileMap: Record<string, { dtoPath?: string; requestPath?: string }> =
     {};
   files.forEach((filePath) => {
@@ -64,10 +62,6 @@ function genTestCase(
     .join('');
 
   const specContent = `
-    import axios from 'axios';
-    import { plainToInstance } from 'class-transformer';
-    import { ${classNameCapitalized}DTOResponse } from '../dto-response/${className}.response.dto';
-    import { validate } from 'class-validator';
     import { validationRules${classNameCapitalized} } from '../validates/${className}/validate-${className}';
     import { validateLogicData } from '../validates/validate-logic';
     import fs from 'fs';
@@ -80,13 +74,13 @@ function genTestCase(
         let failedTests = [];
 
         ${payloadData
-      .map(
-        (testCase: any, index: number) => `
+          .map(
+            (testCase: any, index: number) => `
           it('Test case #${index + 1} with expect errors ${JSON.stringify(testCase.expects)} ', async () => {
             totalTests++;
             const payload = ${JSON.stringify(testCase.body)};
-           
-            const response = await fetch(\`\${globalThis.url}${requestConfig.path}\`, 
+           try {
+            const response = await fetch(\`\${globalThis.url}/InternalFaker/MockUsers\`, 
             {
               method: '${requestConfig.method.toLowerCase()}',
               headers: ${JSON.stringify(requestConfig.headers)},
@@ -97,40 +91,73 @@ function genTestCase(
 
             if(response.status === 201){
             
-              passedTests++
-            
+                expect(data.ok).toEqual(true)
+                expect(data.data).not.toBeNull()
+                
+                const validateLogic = validateLogicData(data, validationRules${classNameCapitalized},payload )
+                
+                if(validateLogic.isValid === true){
+                  expect(validateLogic.isValid).toEqual(true)
+                  passedTests++
+                }else {
+                  failedTests.push({
+                    testcase:${index + 1},
+                    errorDetails: validateLogic.errors
+                  })
+                  throw new Error('Validate logic failed')
+              
+                }
+             
             }else if(response.status === 400){
-              const expectJson = ${JSON.stringify(testCase.expects)}.sort()
-              const expectDetails = data?.error?.details || [];
+              const expectJson =  ${JSON.stringify(testCase.expects)}.sort()
+              const expectDetails = Array.isArray(data?.error?.details)
+                ? data.error.details
+                : [];
               const softExpectDetails = [...expectDetails].sort();
               try {
                 expect(data.ok).toEqual(false);
                 expect(data.data).toEqual(null);
                 expect(expectJson).toEqual(softExpectDetails);
-                passedTests++; 
+                passedTests++;
               } catch (error) {
-                const { missing, extra } = summaryFields(expectJson, softExpectDetails);
+                 const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
                 failedTests.push({
                   testcase: ${index + 1},
+                  code: 400,
                   missing: missing,
                   extra: extra
                 })
                 throw new Error(error);
               }
             }else if (response.status === 500){
-
-              expect(response.status).toEqual(500)
-              throw new Error('Server returned a 500 error');
-             
-            } else {
-              console.warn('Unexpected Response:', data);
-
+              const errorMessage = data.error?.details;
+              failedTests.push({
+                testcase: ${index + 1},
+                code: 500,
+                errorDetails: errorMessage,
+              });
+              throw new Error(errorMessage);
+            }else {
+              console.log('unexpected:', data);
               throw new Error(data);
             }
+          }catch (error){
 
+            if (error.message.includes('fetch failed')) {
+             console.error('Network or server error:', error.message);
+              failedTests.push({
+                testcase: ${index + 1},
+                errorDetails: 'Server down',
+              });
+              throw new Error('Server down');
+            } else {
+             
+            throw new Error(error.message);
+            }
+          }
           });`,
-      )
-      .join('\n')}
+          )
+          .join('\n')}
 
       afterAll(() => {
           const folderPath = path.join(__dirname, '../reports');
@@ -138,26 +165,26 @@ function genTestCase(
           if (!fs.existsSync(folderPath)) {
             fs.mkdirSync(folderPath, { recursive: true });
           }
-
           const resultContent = \`
-              === Test Reports for DTO "${className}" ===
-              Host: \${globalThis.url}\
-              Endpoint: ${requestConfig.path}
-              Total Tests: \${totalTests}
-              Passed Tests: \${passedTests}
-              Failed Tests: \${failedTests.length}
-
-              Failed Test Details:
-             \${failedTests
-                .map(
-                  (failCase) => \`
-              - Testcase #\${failCase.testcase}
-                Missing Errors: \${JSON.stringify(failCase.missing)}
-                Extra Errors: \${JSON.stringify(failCase.extra)}
-              \`
-                )
-                .join('')}
-              \`;
+                  === Test Reports for DTO "${className}" ===
+                  Host: \${globalThis.url}
+                  Endpoint: ${requestConfig.path}
+                  Total Tests: \${totalTests}
+                  Passed Tests: \${passedTests}
+                  Failed Tests: \${failedTests.length}
+                  Failed Test Details:
+                  \${failedTests
+                    .map(
+                      (failCase) => \`
+                  - Testcase #\${failCase.testcase}
+                    Missing Errors: \${failCase.missing ? JSON.stringify(failCase.missing) : "''"}
+                    Status Code: \${failCase.code ? JSON.stringify(failCase.code) : "''"}
+                    Extra Errors: \${failCase.extra ? JSON.stringify(failCase.extra) : "''"}
+                    Detail Errors: \${failCase.errorDetails ? JSON.stringify(failCase.errorDetails) : "''"}
+                  \`
+                    )
+                    .join('')}
+                  \`;
 
                const resultFilePath = path.join(folderPath, '${className}.txt');
 
@@ -171,8 +198,6 @@ function genTestCase(
   fs.writeFileSync(outputPath, specContent, 'utf-8');
   console.log(`Success: ${outputPath}`);
 }
-
-
 
 export function genTestCaseForDTO(dtoName: string) {
   const dtosDir = path.join(__dirname, '../dtos', dtoName);

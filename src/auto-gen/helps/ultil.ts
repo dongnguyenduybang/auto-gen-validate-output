@@ -141,33 +141,40 @@ export function replaceClassName(input: string): any {
 
 export const getMockUser = async () => {
   if (!globalThis.url) {
-    throw new Error("globalThis.url is not defined...");
+    throw new Error('globalThis.url is not defined...');
   }
   try {
-      const baseUrl =  `${globalThis.url}/InternalFaker/MockUsers`;
-      const payload = { prefix: 'fakedata', quantity: 1, badge: 0 }
-      console.log(baseUrl)
-      const response = await axios.post(baseUrl, payload);
+    const baseUrl = `${globalThis.url}/InternalFaker/MockUsers`;
+    const payload = { prefix: 'fakedata', quantity: 1, badge: 0 };
+    console.log(baseUrl);
+    const response = await axios.post(baseUrl, payload);
 
-      if (response.data && Array.isArray(response.data.data) && response.data.data.length > 0) {
-          const getUser = response.data.data[0];
-          return { 
-            getUser
-          };
-      } else {
-          throw new Error("Invalid response from MockUsers API");
-      }
+    if (
+      response.data &&
+      Array.isArray(response.data.data) &&
+      response.data.data.length > 0
+    ) {
+      const getUser = response.data.data[0];
+      return {
+        getUser,
+      };
+    } else {
+      throw new Error('Invalid response from MockUsers API');
+    }
   } catch (error) {
+    console.error('Error in getMockUser:', error);
 
-      console.error("Error in getMockUser:", error);
-
-
-      throw new Error("Failed to get getMockUser");
+    throw new Error('Failed to get getMockUser');
   }
 };
 
-export function summaryFields(expectJson: string[], receivedResponse: string[]): { missing: string[], extra: string[] } {
-  const missing = expectJson.filter(field => !receivedResponse.includes(field)); 
-  const extra = receivedResponse.filter(field => !expectJson.includes(field)); 
+export function summaryFields(
+  expectJson: string[],
+  receivedResponse: string[],
+): { missing: string[]; extra: string[] } {
+  const missing = expectJson.filter(
+    (field) => !receivedResponse.includes(field),
+  ); // co trong expect gen nhung k co tren api
+  const extra = receivedResponse.filter((field) => !expectJson.includes(field)); //co tren api nhung k co tren expect gen
   return { missing, extra };
 }

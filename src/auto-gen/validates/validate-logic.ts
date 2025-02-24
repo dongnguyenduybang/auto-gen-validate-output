@@ -11,12 +11,12 @@ export function validateLogicData(
 ): ValidationResult {
   const errors: string[] = [];
 
-  if(data.ok !== true){
+  if (data.ok !== true) {
     errors.push('Field "ok" must be true');
   }
 
   if (Array.isArray(data.data)) {
-    data.forEach((item, index) => {
+    data.data.forEach((item, index) => {
       rules.forEach((rule) => {
         const value = item[rule.field];
         if (
@@ -26,15 +26,17 @@ export function validateLogicData(
           return;
         }
         if (rule.required && value === undefined) {
-          errors.push(`[${index}] Field "${rule.field}" ${ErrorMessage.UNDEFINED}`);
+          errors.push(
+            ` Field "${rule.field}" ${ErrorMessage.UNDEFINED}`,
+          );
           return;
         }
         if (rule.required && value === null) {
-          errors.push(`[${index}] Field "${rule.field}" ${ErrorMessage.NULL}`);
+          errors.push(` Field "${rule.field}" ${ErrorMessage.NULL}`);
           return;
         }
         if (rule.required && value === '') {
-          errors.push(`[${index}] Field "${rule.field}" ${ErrorMessage.EMPTY}`);
+          errors.push(`Field "${rule.field}" ${ErrorMessage.EMPTY}`);
           return;
         }
 
@@ -48,7 +50,7 @@ export function validateLogicData(
             }
           } else if (typeof value !== rule.type) {
             errors.push(
-              `[${index}] Field "${rule.field}" ${ErrorMessage.INVALID_TYPE} "${rule.type}", but got "${typeof value}"`,
+              ` Field "${rule.field}" ${ErrorMessage.INVALID_TYPE} "${rule.type}", but got "${typeof value}"`,
             );
             return;
           }
@@ -57,12 +59,12 @@ export function validateLogicData(
         if (rule.type === 'string') {
           if (rule.minLength && value.length < rule.minLength) {
             errors.push(
-              `[${index}] Field "${rule.field}" ${ErrorMessage.MIN_LENGTH} ${rule.minLength}`,
+              ` Field "${rule.field}" ${ErrorMessage.MIN_LENGTH} ${rule.minLength}`,
             );
           }
           if (rule.maxLength && value.length > rule.maxLength) {
             errors.push(
-              `[${index}] Field "${rule.field}" ${ErrorMessage.MAX_LENGTH} ${rule.maxLength}`,
+              ` Field "${rule.field}" ${ErrorMessage.MAX_LENGTH} ${rule.maxLength}`,
             );
           }
         }
@@ -70,12 +72,12 @@ export function validateLogicData(
         if (rule.type === 'number') {
           if (rule.min && value < rule.min) {
             errors.push(
-              `[${index}] Field "${rule.field}" ${ErrorMessage.MIN} ${rule.min}`,
+              `Field "${rule.field}" ${ErrorMessage.MIN} ${rule.min}`,
             );
           }
           if (rule.max && value > rule.max) {
             errors.push(
-              `[${index}] Field "${rule.field}" ${ErrorMessage.MAX} ${rule.max}`,
+              ` Field "${rule.field}" ${ErrorMessage.MAX} ${rule.max}`,
             );
           }
         }
@@ -83,7 +85,7 @@ export function validateLogicData(
         if (rule.customValidation) {
           const customError = rule.customValidation(value, payload, item);
           if (customError) {
-            errors.push(`[${index}] ${customError}`);
+            errors.push(` ${customError}`);
           }
         }
       });

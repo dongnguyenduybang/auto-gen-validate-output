@@ -62,7 +62,7 @@ export interface FailResponse {
 
 export interface ValidationRule {
   field?: string;
-  type?: 'string' | 'number' | 'boolean' | 'array' | 'object' | 'date'| 'any';
+  type?: 'string' | 'number' | 'boolean' | 'array' | 'object' | 'date' | 'any';
   required?: boolean;
   minLength?: number;
   maxLength?: number;

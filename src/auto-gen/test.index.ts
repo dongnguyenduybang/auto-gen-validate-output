@@ -1,7 +1,5 @@
-import path from 'path';
 import { genBodyPayload } from './gens/gen-body';
 import { genTestCaseForDTO } from './gens/gen-testcase';
-import { getMockUser } from './helps/ultil';
 
 const args = process.argv.slice(2);
 
@@ -45,34 +43,30 @@ function handleTest(dtoName) {
   try {
     const { execSync } = require('child_process');
     const jestCommand = `jest  src/auto-gen/test-case/${dtoName}`;
-    const result = execSync(jestCommand, { stdio: 'inherit' });
+    execSync(jestCommand, { stdio: 'inherit' });
   } catch (error) {
     console.error(`"${dtoName}":`, error.message);
     process.exit(1);
   }
 }
-function handleFake(dtoName) {
+// function handleFake(dtoName) {
+//   const mockFunctions = {
+//     'mock-user': mockUser,
+//     'mock-channel': mockChannel,
+//   };
 
-  const mockFunctions = {
-    'mock-user': mockUser,
-    'mock-channel': mockChannel
-  };
+//   if (mockFunctions[dtoName]) {
+//     return mockFunctions[dtoName]();
+//   } else {
+//     throw new Error(`No mock function found for dtoName: ${dtoName}`);
+//   }
+// }
 
-  if (mockFunctions[dtoName]) {
-    return mockFunctions[dtoName]();
-  } else {
-    throw new Error(`No mock function found for dtoName: ${dtoName}`);
-  }
-}
+// async function mockUser() {
+//   console.log('Current globalThis.url:', globalThis.url); // Debugging
 
+//   const dataMockUser = await getMockUser();
+//   console.log(dataMockUser);
+// }
 
-async function mockUser() {
-    console.log("Current globalThis.url:", globalThis.url); // Debugging
-
-  const dataMockUser = await getMockUser()
-  console.log(dataMockUser)
-}
-
-function mockChannel() {
-  
-}
+// function mockChannel() {}

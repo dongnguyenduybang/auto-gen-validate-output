@@ -1,14 +1,12 @@
 import 'reflect-metadata';
 import {
   IsNotEmpty,
-  IsNotNull,
   MinLength,
   IsNumber,
   IsString,
   Max,
   Min,
   IsEnum,
-  IsIn,
   IsDefined,
 } from '../../decorator/dto-decorator';
 import { BadgeEnum } from '../../enums/badge.enum';
@@ -18,15 +16,15 @@ export class MockUserDTO {
   @IsNotEmpty()
   @IsDefined()
   @MinLength(5)
-  prefix?: string = ''
+  prefix?: string = '';
 
   @IsNumber()
   @IsNotEmpty()
   @Min(1)
   @Max(100)
-  quantity?: number = 0
+  quantity?: number = 0;
 
   @IsNotEmpty()
   @IsEnum(BadgeEnum)
-  badge?: BadgeEnum = 0
+  badge?: BadgeEnum = 0;
 }

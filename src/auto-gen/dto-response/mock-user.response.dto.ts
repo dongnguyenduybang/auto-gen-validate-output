@@ -1,4 +1,4 @@
-import { IsDefined, IsString, IsNotEmpty, IsNumber, Min, Max, IsArray, IsBoolean } from 'class-validator';
+import { IsDefined, IsArray, IsBoolean } from 'class-validator';
 
 export class MockUserDTOResponse {
   @IsDefined()

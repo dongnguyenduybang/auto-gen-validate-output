@@ -1,9 +1,4 @@
 import 'reflect-metadata';
-import {
-  registerDecorator,
-  ValidationOptions,
-  ValidationArguments,
-} from 'class-validator';
 
 export function Min(value: number) {
   return (target: any, propertyKey: string) => {
@@ -55,11 +50,15 @@ export function IsNotNull() {
 
 export function IsNotEmpty(options?: { message?: string }) {
   return (target: any, propertyKey: string) => {
-
     Reflect.defineMetadata('notEmpty', true, target, propertyKey);
 
     if (options?.message) {
-      Reflect.defineMetadata('notEmptyMessage', options.message, target, propertyKey);
+      Reflect.defineMetadata(
+        'notEmptyMessage',
+        options.message,
+        target,
+        propertyKey,
+      );
     }
   };
 }

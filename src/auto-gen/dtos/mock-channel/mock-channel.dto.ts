@@ -1,13 +1,11 @@
-import { TypeChannelEnum } from '../../enums/type-channel.enum';
 import {
   IsNotEmpty,
-  IsNotNull,
   MinLength,
   IsNumber,
   IsString,
   Max,
   Min,
-  IsDefined
+  IsDefined,
 } from '../../decorator/dto-decorator';
 
 export class MockChannelDTO {

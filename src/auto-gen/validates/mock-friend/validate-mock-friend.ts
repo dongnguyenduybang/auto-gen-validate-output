@@ -1,5 +1,3 @@
 import { ValidationRule } from '../../helps/structures/responses';
 
-export const validationRulesMockFriend: ValidationRule[] = [
- 
-];
+export const validationRulesMockFriend: ValidationRule[] = [];

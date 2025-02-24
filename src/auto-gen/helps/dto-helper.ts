@@ -1,6 +1,5 @@
 import 'reflect-metadata';
 import { ErrorMessage } from '../enums/error-message.enum';
-import { getLength } from './ultil';
 
 export function getDecorators(
   target: any,
@@ -133,82 +132,96 @@ export function mapError(
 ): string[] {
   const errors: string[] = [];
 
-
-  if(decorators['notEmpty'] && (value === undefined || value === null || value === "") && !decorators['notEmptyMessage']){
-    errors.push(`${field} ${ErrorMessage.EMPTY}`)
-  } 
-
-  if(decorators['isDefined'] && (value === undefined || value === null)) {
-    errors.push(`${field} ${ErrorMessage.DEFINED}`)
-    
+  if (
+    decorators['notEmpty'] &&
+    (value === undefined || value === null || value === '') &&
+    !decorators['notEmptyMessage']
+  ) {
+    errors.push(`${field} ${ErrorMessage.EMPTY}`);
   }
 
-  if(decorators['notEmptyMessage'] && ( value === undefined || value === null || value === "" )){
-    errors.push(decorators['notEmptyMessage'])
+  if (decorators['isDefined'] && (value === undefined || value === null)) {
+    errors.push(`${field} ${ErrorMessage.DEFINED}`);
   }
 
-  if(decorators['type'] === 'string'){
-    
-    if(typeof value !== 'string') errors.push(`${field} ${ErrorMessage.INVALID_TYPE_STRING}`)
+  if (
+    decorators['notEmptyMessage'] &&
+    (value === undefined || value === null || value === '')
+  ) {
+    errors.push(decorators['notEmptyMessage']);
+  }
 
-    
-    if(value === "" || value === null || value === undefined || typeof value !== 'string'){
-      value = -1
-      if(decorators['minLength'] && value < decorators['minLength']) errors.push(`${field} ${ErrorMessage.MIN_LENGTH} ${decorators['minLength']} characters`)
-    }else {
-      
-      if(decorators['minLength'] && value.length < decorators['minLength']) errors.push(`${field} ${ErrorMessage.MIN_LENGTH} ${decorators['minLength']} characters`)
+  if (decorators['type'] === 'string') {
+    if (typeof value !== 'string')
+      errors.push(`${field} ${ErrorMessage.INVALID_TYPE_STRING}`);
 
+    if (
+      value === '' ||
+      value === null ||
+      value === undefined ||
+      typeof value !== 'string'
+    ) {
+      value = -1;
+      if (decorators['minLength'] && value < decorators['minLength'])
+        errors.push(
+          `${field} ${ErrorMessage.MIN_LENGTH} ${decorators['minLength']} characters`,
+        );
+    } else {
+      if (decorators['minLength'] && value.length < decorators['minLength'])
+        errors.push(
+          `${field} ${ErrorMessage.MIN_LENGTH} ${decorators['minLength']} characters`,
+        );
     }
   }
 
-  if(decorators['type'] === 'number'){
+  if (decorators['type'] === 'number') {
+    if (typeof value !== 'number')
+      errors.push(`${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`);
 
-    if(typeof value !== 'number') errors.push(`${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`)
-
-  
-    if(value < decorators['min']){
-
-      errors.push(`${field} ${ErrorMessage.MIN} ${decorators['min']}`)
-
-    }else if (( value === undefined || value === "" || value === null || typeof value !== 'number' )) {
-      
-      errors.push(`${field} ${ErrorMessage.MIN} ${decorators['min']}`)
+    if (value < decorators['min']) {
+      errors.push(`${field} ${ErrorMessage.MIN} ${decorators['min']}`);
+    } else if (
+      value === undefined ||
+      value === '' ||
+      value === null ||
+      typeof value !== 'number'
+    ) {
+      errors.push(`${field} ${ErrorMessage.MIN} ${decorators['min']}`);
     }
 
-    if(decorators['max'] && value > decorators['max']){
-
-      errors.push(`${field} ${ErrorMessage.MAX} ${decorators['max']}`)
-
-    }else if (( value === undefined || value === "" || value === null || typeof value !== 'number' ) && decorators['max']) {
-
-      errors.push(`${field} ${ErrorMessage.MAX} ${decorators['max']}`)
+    if (decorators['max'] && value > decorators['max']) {
+      errors.push(`${field} ${ErrorMessage.MAX} ${decorators['max']}`);
+    } else if (
+      (value === undefined ||
+        value === '' ||
+        value === null ||
+        typeof value !== 'number') &&
+      decorators['max']
+    ) {
+      errors.push(`${field} ${ErrorMessage.MAX} ${decorators['max']}`);
     }
-
   }
 
-  if(decorators['type'] === 'enum'){
-    
+  if (decorators['type'] === 'enum') {
     const allowedValues = Object.values(decorators['enumType']);
 
-    if(typeof value !== 'number'){
-      errors.push(`${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`)
+    if (typeof value !== 'number') {
+      errors.push(`${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`);
     }
 
     if (!allowedValues.includes(value)) {
+      const filterNumber = allowedValues.filter(
+        (val) => typeof val === 'number',
+      );
 
-      const filterNumber = allowedValues.filter((val) => typeof val === 'number');
-  
       errors.push(
-        `${field} ${ErrorMessage.INVALID_RANGE_NUMBER} ${filterNumber.join(', ')}`
+        `${field} ${ErrorMessage.INVALID_RANGE_NUMBER} ${filterNumber.join(', ')}`,
       );
     }
-
   }
 
   return errors;
 }
-
 
 function validatePayloadType(payload: any, dtoClass: any) {
   const errors = [];
