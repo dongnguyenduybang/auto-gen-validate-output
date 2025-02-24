@@ -26,9 +26,7 @@ export function validateLogicData(
           return;
         }
         if (rule.required && value === undefined) {
-          errors.push(
-            ` Field "${rule.field}" ${ErrorMessage.UNDEFINED}`,
-          );
+          errors.push(` Field "${rule.field}" ${ErrorMessage.UNDEFINED}`);
           return;
         }
         if (rule.required && value === null) {
