@@ -1,13 +1,11 @@
 import * as path from 'path';
 import * as fs from 'fs';
+import { readJsonFile } from '../helps/utils';
+import { resolveJsonVariables } from '../helps/get-resolve-variables';
 
 const outputDir = path.join(__dirname, '../test-case');
 
-function readJsonFile(filePath: string): any {
-  const fileContent = fs.readFileSync(filePath, 'utf-8');
-  return JSON.parse(fileContent);
-}
-
+//get tất cả các file từ dirpath và trả về đường dẫn
 function getAllFiles(dirPath: string): string[] {
   let files: string[] = [];
   const items = fs.readdirSync(dirPath);
@@ -22,9 +20,9 @@ function getAllFiles(dirPath: string): string[] {
   return files;
 }
 
-function pairFiles(
-  files: string[],
-): { dtoPath: string; requestPath: string; className: string }[] {
+//foreach qua tất cả các file và lấy các cặp file có đuôi .dto.ts và .request.json có tên giống nhau thành 1 object 
+function pairFiles(files: string[] ): { dtoPath: string; requestPath: string; className: string }[] {
+
   const fileMap: Record<string, { dtoPath?: string; requestPath?: string }> =
     {};
   files.forEach((filePath) => {
@@ -56,22 +54,25 @@ function genTestCase(
 ) {
   const payloadData = readJsonFile(payloadPath);
   const requestConfig = readJsonFile(requestPath);
+  //chuyển đổi string có dấu - thành chuỗi viết liền 
   const classNameCapitalized = className
     .split('-')
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join('');
-
+  const resolvedHeaders = resolveJsonVariables(requestConfig.headers);
   const specContent = `
     import { validationRules${classNameCapitalized} } from '../validates/${className}/validate-${className}';
     import { validateLogicData } from '../validates/validate-logic';
     import fs from 'fs';
     import path from 'path';
-    import { summaryFields } from '../helps/ultil';
+    import { summarizeErrors, summaryFields } from '../helps/utils';
 
     describe('Testcase for ${className}', () => {
         let totalTests = 0;
-        let passedTests = 0;
+        let passedLogic = 0;
         let failedTests = [];
+        let passedTests = 0
+
         ${payloadData
           .map(
             (testCase: any, index: number) => `
@@ -79,10 +80,10 @@ function genTestCase(
             totalTests++;
             const payload = ${JSON.stringify(testCase.body)};
            try {
-            const response = await fetch(\`\${globalThis.url}/InternalFaker/MockUsers\`, 
+            const response = await fetch(\`\${globalThis.url}${requestConfig.path}\`, 
             {
               method: '${requestConfig.method.toLowerCase()}',
-              headers: ${JSON.stringify(requestConfig.headers)},
+              headers: ${JSON.stringify(resolvedHeaders)},
               body: JSON.stringify(payload)
             })
 
@@ -97,11 +98,11 @@ function genTestCase(
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
-                  passedTests++
+                  passedLogic++
                 }else {
                   failedTests.push({
                     testcase:${index + 1},
-                    errorDetails: validateLogic.errors
+                    errorDetails: validateLogic.errors || []
                   })
                   throw new Error('Validate logic failed')
               
@@ -123,8 +124,8 @@ function genTestCase(
                 failedTests.push({
                   testcase: ${index + 1},
                   code: 400,
-                  missing: missing,
-                  extra: extra
+                  missing: missing || [],
+                  extra: extra || []
                 })
                 throw new Error(error);
               }
@@ -136,7 +137,14 @@ function genTestCase(
                 errorDetails: errorMessage,
               });
               throw new Error(errorMessage);
-            }else {
+            }else if (response.status === 404){
+              const errorMessage = data.error?.details;
+              failedTests.push({
+                testcase: ${index + 1},
+                code: 404,
+                errorDetails: errorMessage,
+              });
+            } else {
               console.log('unexpected:', data);
               throw new Error(data);
             }
@@ -151,7 +159,7 @@ function genTestCase(
               throw new Error('Server down');
             } else {
              
-            throw new Error(error.message);
+            throw new Error(error.message || 'unknown error');
             }
           }
           });`,
@@ -164,13 +172,25 @@ function genTestCase(
           if (!fs.existsSync(folderPath)) {
             fs.mkdirSync(folderPath, { recursive: true });
           }
+          const summary = summarizeErrors(failedTests, totalTests, passedLogic);
           const resultContent = \`
 === Test Reports for DTO "${className}" ===
 Host: \${globalThis.url}
 Endpoint: ${requestConfig.path}
+Summary: 
 Total Tests: \${totalTests}
 Passed Tests: \${passedTests}
 Failed Tests: \${failedTests.length}
+Status Code:
+  201: \${summary.statusCodes[201] || 0}
+  400: \${summary.statusCodes[400] || 0}
+  404: \${summary.statusCodes[404] || 0}
+  500: \${summary.statusCodes[500] || 0}
+Uniques Error:
+  \${Array.from(summary.uniqueErrors.entries())
+          .map(([error, count]) =>  \`\${error}: \${count}\`)
+          .join('')
+  }
 Failed Test Details:
 \${failedTests
   .map(
@@ -203,7 +223,7 @@ export function genTestCaseForDTO(dtoName: string) {
   const payloadsDir = path.join(__dirname, '../expect-json');
   const allFiles = getAllFiles(dtosDir);
   const pairedFiles = pairFiles(allFiles);
-
+  //foreach các cặp file và gen testcase
   pairedFiles.forEach(({ dtoPath, requestPath, className }) => {
     if (dtoPath && requestPath) {
       const payloadPath = path.join(payloadsDir, `${className}.payload.json`);

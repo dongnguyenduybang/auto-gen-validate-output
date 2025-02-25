@@ -1,0 +1,20 @@
+{
+    "method": "POST",
+    "path": "/Message/SendMessage",
+    "headers": {
+      "Content-Type": "application/json",
+      "x-session-token": "{{token0}}",
+      "x-country-code": "VN"
+    },
+    "payload": {
+      "workspaceId": "0",
+      "channelId": "{{channelId0}}",
+      "content": "test123",
+      "ref": "ref"
+    },
+
+    "saga": [
+      "mockUser('testSaga',2, 0)", 
+      "createChannel({{token0}}, 'group_1')"
+    ]
+  }

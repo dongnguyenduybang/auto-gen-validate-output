@@ -3,15 +3,18 @@
     "path": "/InternalFaker/MockChannels",
     "headers": {
       "Content-Type": "application/json",
-      "x-user-id": "01JMC3WY1G8F14F6MCQPCTDP6M",
-      "x-session-token": "XFoUbsDWFmvByAcieya6wYuzHQX4UzXGc-NPuiRhS6rGoF3fM7jHTMmJzir3zsaJJ0pR5TKBTXECQ4UMRBsJqA",
+      "x-user-id": "{{userId}}",
+      "x-session-token": "{{token}}",
       "x-country-code": "VN"
     },
-    "optionals": [],
     "payload": {
       "prefix": "duy12345",
       "quantity": 1,
       "totalMessages": 1,
       "typeChannel": 0
-    }
+    },
+    "saga": [
+      "mockUser('testSaga', 1, 0)",
+      "createChannel({{userId}}, 'Test Channel')"
+  ]
   }

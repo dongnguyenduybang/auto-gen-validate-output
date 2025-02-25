@@ -1,0 +1,16 @@
+
+=== Test Reports for DTO "send-message" ===
+Host: https://api-sb11.rpc.ziichat.dev
+Endpoint: /Message/SendMessage
+Total Tests: 1
+Passed Tests: 0
+Failed Tests: 1
+Failed Test Details:
+
+- Testcase #1
+  Missing Errors: ''
+  Status Code: ''
+  Extra Errors: ''
+  Detail Errors: ["Field \"data\" must be an array"]
+                  
+                  

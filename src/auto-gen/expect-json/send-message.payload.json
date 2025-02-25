@@ -1,0 +1,1890 @@
+[
+    {
+        "body": {
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId should not be null or undefined",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "content should not be empty",
+            "content should not be null or undefined",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId should not be null or undefined",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "content should not be empty",
+            "content should not be null or undefined",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "content": "",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId should not be null or undefined",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "content should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "content": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId should not be null or undefined",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "content should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "content": "random_string",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId should not be null or undefined",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "content": "random_string",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId should not be null or undefined",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "content": "test123",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId should not be null or undefined",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "content": "test123",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId should not be null or undefined",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId should not be null or undefined",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "content should not be empty",
+            "content should not be null or undefined",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId should not be null or undefined",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "content should not be empty",
+            "content should not be null or undefined",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "content": "",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId should not be null or undefined",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "content should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "content": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId should not be null or undefined",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "content should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "content": "random_string",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId should not be null or undefined",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "content": "random_string",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId should not be null or undefined",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "content": "test123",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId should not be null or undefined",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "content": "test123",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId should not be null or undefined",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 12345,
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId should not be null or undefined",
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "content should not be empty",
+            "content should not be null or undefined",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 12345,
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId should not be null or undefined",
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "content should not be empty",
+            "content should not be null or undefined",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 12345,
+            "content": "",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId should not be null or undefined",
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "content should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 12345,
+            "content": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId should not be null or undefined",
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "content should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 12345,
+            "content": "random_string",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId should not be null or undefined",
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 12345,
+            "content": "random_string",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId should not be null or undefined",
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 12345,
+            "content": "test123",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId should not be null or undefined",
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 12345,
+            "content": "test123",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId should not be null or undefined",
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "01JMY436637XV48Q5QP9XH3GHS",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId should not be null or undefined",
+            "workspaceId must be a string",
+            "content should not be empty",
+            "content should not be null or undefined",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "01JMY436637XV48Q5QP9XH3GHS",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId should not be null or undefined",
+            "workspaceId must be a string",
+            "content should not be empty",
+            "content should not be null or undefined",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "01JMY436637XV48Q5QP9XH3GHS",
+            "content": "",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId should not be null or undefined",
+            "workspaceId must be a string",
+            "content should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "01JMY436637XV48Q5QP9XH3GHS",
+            "content": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId should not be null or undefined",
+            "workspaceId must be a string",
+            "content should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "01JMY436637XV48Q5QP9XH3GHS",
+            "content": "random_string",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId should not be null or undefined",
+            "workspaceId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "01JMY436637XV48Q5QP9XH3GHS",
+            "content": "random_string",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId should not be null or undefined",
+            "workspaceId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "01JMY436637XV48Q5QP9XH3GHS",
+            "content": "test123",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId should not be null or undefined",
+            "workspaceId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "01JMY436637XV48Q5QP9XH3GHS",
+            "content": "test123",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId should not be null or undefined",
+            "workspaceId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "content should not be empty",
+            "content should not be null or undefined",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "content should not be empty",
+            "content should not be null or undefined",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "content": "",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "content should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "content": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "content should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "content": "random_string",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "content": "random_string",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "content": "test123",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "content": "test123",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "content should not be empty",
+            "content should not be null or undefined",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "content should not be empty",
+            "content should not be null or undefined",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "content": "",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "content should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "content": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "content should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "content": "random_string",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "content": "random_string",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "content": "test123",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "content": "test123",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "content should not be empty",
+            "content should not be null or undefined",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "content should not be empty",
+            "content should not be null or undefined",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "content": "",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "content should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "content": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "content should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "content": "random_string",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "content": "random_string",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "content": "test123",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "content": "test123",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "01JMY436637XV48Q5QP9XH3GHS",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "content should not be empty",
+            "content should not be null or undefined",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "01JMY436637XV48Q5QP9XH3GHS",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "content should not be empty",
+            "content should not be null or undefined",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "01JMY436637XV48Q5QP9XH3GHS",
+            "content": "",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "content should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "01JMY436637XV48Q5QP9XH3GHS",
+            "content": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "content should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "01JMY436637XV48Q5QP9XH3GHS",
+            "content": "random_string",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "01JMY436637XV48Q5QP9XH3GHS",
+            "content": "random_string",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "01JMY436637XV48Q5QP9XH3GHS",
+            "content": "test123",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "01JMY436637XV48Q5QP9XH3GHS",
+            "content": "test123",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "content should not be empty",
+            "content should not be null or undefined",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "content should not be empty",
+            "content should not be null or undefined",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "content": "",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "content should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "content": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "content should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "content": "random_string",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "content": "random_string",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "content": "test123",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "content": "test123",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "content should not be empty",
+            "content should not be null or undefined",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "content should not be empty",
+            "content should not be null or undefined",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "content": "",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "content should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "content": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "content should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "content": "random_string",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "content": "random_string",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "content": "test123",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "content": "test123",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "content should not be empty",
+            "content should not be null or undefined",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "content should not be empty",
+            "content should not be null or undefined",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "content": "",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "content should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "content": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "content should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "content": "random_string",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "content": "random_string",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "content": "test123",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "content": "test123",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "01JMY436637XV48Q5QP9XH3GHS",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "content should not be empty",
+            "content should not be null or undefined",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "01JMY436637XV48Q5QP9XH3GHS",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "content should not be empty",
+            "content should not be null or undefined",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "01JMY436637XV48Q5QP9XH3GHS",
+            "content": "",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "content should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "01JMY436637XV48Q5QP9XH3GHS",
+            "content": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "content should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "01JMY436637XV48Q5QP9XH3GHS",
+            "content": "random_string",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "01JMY436637XV48Q5QP9XH3GHS",
+            "content": "random_string",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "01JMY436637XV48Q5QP9XH3GHS",
+            "content": "test123",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "01JMY436637XV48Q5QP9XH3GHS",
+            "content": "test123",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "ref": 12345
+        },
+        "expects": [
+            "channelId should not be empty",
+            "channelId must be a string",
+            "content should not be empty",
+            "content should not be null or undefined",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "ref": "ref"
+        },
+        "expects": [
+            "channelId should not be empty",
+            "channelId must be a string",
+            "content should not be empty",
+            "content should not be null or undefined",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "content": "",
+            "ref": 12345
+        },
+        "expects": [
+            "channelId should not be empty",
+            "channelId must be a string",
+            "content should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "content": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "channelId should not be empty",
+            "channelId must be a string",
+            "content should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "content": "random_string",
+            "ref": 12345
+        },
+        "expects": [
+            "channelId should not be empty",
+            "channelId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "content": "random_string",
+            "ref": "ref"
+        },
+        "expects": [
+            "channelId should not be empty",
+            "channelId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "content": "test123",
+            "ref": 12345
+        },
+        "expects": [
+            "channelId should not be empty",
+            "channelId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "content": "test123",
+            "ref": "ref"
+        },
+        "expects": [
+            "channelId should not be empty",
+            "channelId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "ref": 12345
+        },
+        "expects": [
+            "channelId should not be empty",
+            "content should not be empty",
+            "content should not be null or undefined",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "channelId should not be empty",
+            "content should not be empty",
+            "content should not be null or undefined",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "content": "",
+            "ref": 12345
+        },
+        "expects": [
+            "channelId should not be empty",
+            "content should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "content": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "channelId should not be empty",
+            "content should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "content": "random_string",
+            "ref": 12345
+        },
+        "expects": [
+            "channelId should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "content": "random_string",
+            "ref": "ref"
+        },
+        "expects": [
+            "channelId should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "content": "test123",
+            "ref": 12345
+        },
+        "expects": [
+            "channelId should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "content": "test123",
+            "ref": "ref"
+        },
+        "expects": [
+            "channelId should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "ref": 12345
+        },
+        "expects": [
+            "channelId must be a string",
+            "content should not be empty",
+            "content should not be null or undefined",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "ref": "ref"
+        },
+        "expects": [
+            "channelId must be a string",
+            "content should not be empty",
+            "content should not be null or undefined",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "content": "",
+            "ref": 12345
+        },
+        "expects": [
+            "channelId must be a string",
+            "content should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "content": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "channelId must be a string",
+            "content should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "content": "random_string",
+            "ref": 12345
+        },
+        "expects": [
+            "channelId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "content": "random_string",
+            "ref": "ref"
+        },
+        "expects": [
+            "channelId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "content": "test123",
+            "ref": 12345
+        },
+        "expects": [
+            "channelId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "content": "test123",
+            "ref": "ref"
+        },
+        "expects": [
+            "channelId must be a string",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "01JMY436637XV48Q5QP9XH3GHS",
+            "ref": 12345
+        },
+        "expects": [
+            "content should not be empty",
+            "content should not be null or undefined",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "01JMY436637XV48Q5QP9XH3GHS",
+            "ref": "ref"
+        },
+        "expects": [
+            "content should not be empty",
+            "content should not be null or undefined",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "01JMY436637XV48Q5QP9XH3GHS",
+            "content": "",
+            "ref": 12345
+        },
+        "expects": [
+            "content should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "01JMY436637XV48Q5QP9XH3GHS",
+            "content": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "content should not be empty",
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "01JMY436637XV48Q5QP9XH3GHS",
+            "content": "random_string",
+            "ref": 12345
+        },
+        "expects": [
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "01JMY436637XV48Q5QP9XH3GHS",
+            "content": "random_string",
+            "ref": "ref"
+        },
+        "expects": [
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "01JMY436637XV48Q5QP9XH3GHS",
+            "content": "test123",
+            "ref": 12345
+        },
+        "expects": [
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "01JMY436637XV48Q5QP9XH3GHS",
+            "content": "test123",
+            "ref": "ref"
+        },
+        "expects": [
+            "content must be a number conforming to the specified constraints",
+            "content must not be less than undefined"
+        ]
+    }
+]
