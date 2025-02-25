@@ -9,7 +9,9 @@
     "start": "nest start",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "gen": "npx ts-node src/auto-gen/test.index.ts gen ",
-    "test": "npx ts-node  src/auto-gen/test.index.ts test"
+    "test": "npx ts-node  src/auto-gen/test.index.ts test",
+
+    "template:test": "jest src/auto-gen/test-case/base-testcase.spec.ts"
   },
   "engines": {
     "npm": ">=8.0.0",
