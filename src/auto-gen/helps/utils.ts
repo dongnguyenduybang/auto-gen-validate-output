@@ -181,6 +181,7 @@ export function summaryFields(
 
 
 export function readJsonFile(filePath: string): any {
+  console.log('read', filePath)
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   return JSON.parse(fileContent);
 }
@@ -198,7 +199,7 @@ export function countTokens(): number {
 
 export function summarizeErrors(failedTests: any[], totalTests: number, passedLogic: number) {
   const summary = {
-    statusCodes: { 201: passedLogic, 400: 0, 500: 0, 404: 0 }, 
+    statusCodes: { 201: passedLogic, 400: 0, 500: 0, 403: 0,  404: 0 }, 
     uniqueErrors: new Map<string, number>(), //map lỗi 
   };
 

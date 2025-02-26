@@ -1,53 +1,22 @@
-import { ValidationRule } from '../../helps/structures/responses';
+import { ValidationResult } from '../../helps/structures/responses';
+import { validateLogicData } from '../validate-logic';
+import { validationRulesMockUser } from './validate-rule-mock-user';
 
-export const validationRulesMockUser: ValidationRule[] = [
-  {
-    field: 'userId',
-    type: 'string',
-    required: true,
-  },
-  {
-    field: 'username',
-    type: 'string',
-    required: true,
-    customValidation: (value, payload, data) => {
-      const expectedUsername = `${payload?.prefix}${data.userId}`;
-      if (value !== expectedUsername) {
-        return `Field "username" must be equal to "${expectedUsername}", but got "${value}"`;
-      }
-      return null;
-    },
-  },
-  {
-    field: 'token',
-    type: 'string',
-    required: true,
-  },
-  {
-    field: 'securityKey',
-    type: 'string',
-    required: true,
-  },
-  {
-    field: 'recoverKey',
-    type: 'string',
-    required: true,
-  },
-  {
-    field: 'badge',
-    type: 'number',
-    required: true,
-    min: 0,
-    max: 3,
-    customValidation: (value, payload) => {
-      const expectedBadge = Number(payload?.badge);
-      if (isNaN(expectedBadge)) {
-        return `Field "badge" has invalid payload value: ${payload?.badge}`;
-      }
-      if (value !== expectedBadge) {
-        return `Field "badge" must be equal to "${expectedBadge}", but got "${value}"`;
-      }
-      return null;
-    },
-  },
-];
+export function validateMockUserResponse(response: any, payload?: any): ValidationResult {
+  const errors: string[] = [];
+
+  if (response.ok !== true) {
+    errors.push('Field "ok" must be true');
+  }
+
+  const dataValidation = validateLogicData( { data: response.data }, validationRulesMockUser, payload
+  );
+  if (!dataValidation.isValid) {
+    errors.push(...dataValidation.errors.map((error) => `[data] ${error}`));
+  }
+
+  return {
+    isValid: errors.length === 0,
+    errors: errors.length > 0 ? errors : null,
+  };
+}

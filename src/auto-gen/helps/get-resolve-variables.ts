@@ -24,8 +24,6 @@ export function resolveVariables(template: string): string {
 // thay biến {{}} thành value trong global.var cho json
 export function resolveJsonVariables(json: any): any {
 
-
-
   // đệ quy 
   function resolve(value: any): any {
     if (typeof value === 'string') {

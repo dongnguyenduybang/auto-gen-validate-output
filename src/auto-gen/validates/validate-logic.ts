@@ -10,18 +10,13 @@ export function validateLogicData(
   payload?: any,
 ): ValidationResult {
   const errors: string[] = [];
-
-  if (data.ok !== true) {
-    errors.push('Field "ok" must be true');
-  }
-
-  if (Array.isArray(data.data)) {
+  if (Array.isArray(data.data) || typeof data.data === 'object' && data.data !== null ) {
     data.data.forEach((item, index) => {
       rules.forEach((rule) => {
         const value = item[rule.field];
         if (
           rule.optional === true &&
-          (value === undefined || value === null || value === '')
+          (value === undefined || value === null)
         ) {
           return;
         }
@@ -42,13 +37,13 @@ export function validateLogicData(
           if (rule.type === 'array') {
             if (!Array.isArray(value)) {
               errors.push(
-                `[${index}] Field "${rule.field}" ${ErrorMessage.INVALID_TYPE} "${rule.type}", but got "${typeof value}"`,
+                `[${index}] Field "${rule.field}" ${ErrorMessage.INVALID_TYPE} "${rule.type}"`,
               );
               return;
             }
           } else if (typeof value !== rule.type) {
             errors.push(
-              ` Field "${rule.field}" ${ErrorMessage.INVALID_TYPE} "${rule.type}", but got "${typeof value}"`,
+              ` Field "${rule.field}" ${ErrorMessage.INVALID_TYPE} "${rule.type}"`,
             );
             return;
           }

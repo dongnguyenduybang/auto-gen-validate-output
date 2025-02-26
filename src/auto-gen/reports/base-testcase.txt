@@ -1,0 +1,25 @@
+
+                === Test Reports for DTO "send-message" ===
+                Host: https://api-sb11.rpc.ziichat.dev
+                Endpoint: /Message/SendMessage
+                Summary: 
+                Total Tests: 1
+                Passed Tests: 0
+                Failed Tests: 1
+                Status Code:
+                201: 0
+                400: 0
+                403: 0
+                404: 0
+                500: 1
+                Uniques Error:
+                 Field "createTime" must not be greater than the current time: 1
+                Failed Test Details:
+                
+                - Testcase #1
+                Missing Errors: ''
+                Status Code: ''
+                Extra Errors: ''
+                Detail Errors: [" Field \"createTime\" must not be greater than the current time"]
+                                
+                                

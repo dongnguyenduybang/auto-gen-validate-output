@@ -3,18 +3,23 @@
     "path": "/Message/SendMessage",
     "headers": {
       "Content-Type": "application/json",
-      "x-session-token": "{{token0}}",
+      "x-session-token": "{{token}}",
       "x-country-code": "VN"
     },
     "payload": {
       "workspaceId": "0",
-      "channelId": "{{channelId0}}",
-      "content": "test123",
+      "channelId": "{{channelId}}",
+      "content": "test123123",
       "ref": "ref"
     },
 
-    "saga": [
-      "mockUser('testSaga',2, 0)", 
-      "createChannel({{token0}}, 'group_1')"
-    ]
+    "beforeAll": [
+      "mockUser('testSaga',1, 0)", 
+      "createChannel({{token}}, 'group_1')"
+    ],
+    "afterAll": []
   }
+
+
+
+  

@@ -54,36 +54,50 @@ function genTestCase(
 ) {
   const payloadData = readJsonFile(payloadPath);
   const requestConfig = readJsonFile(requestPath);
+  // const resolvedHeaders = resolveJsonVariables(requestConfig.headers);
   //chuyển đổi string có dấu - thành chuỗi viết liền 
   const classNameCapitalized = className
     .split('-')
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join('');
-  const resolvedHeaders = resolveJsonVariables(requestConfig.headers);
+
   const specContent = `
-    import { validationRules${classNameCapitalized} } from '../validates/${className}/validate-${className}';
+    import { validate${classNameCapitalized}Response } from '../validates/${className}/validate-${className}';
+
     import { validateLogicData } from '../validates/validate-logic';
     import fs from 'fs';
     import path from 'path';
-    import { summarizeErrors, summaryFields } from '../helps/utils';
+    import { summarizeErrors, readJsonFile, summaryFields } from '../helps/utils';
+    import { executeBeforeAllSteps } from '../functions';
+    import { resolveJsonVariables, resolveVariables } from '../helps/get-resolve-variables';
 
     describe('Testcase for ${className}', () => {
         let totalTests = 0;
         let passedLogic = 0;
         let failedTests = [];
         let passedTests = 0
+        let headerRequest
+
+        beforeAll(() => {
+
+          executeBeforeAllSteps(${JSON.stringify(requestConfig.beforeAll)})
+
+          headerRequest = ${JSON.stringify(requestConfig.headers)}
+         
+        })
 
         ${payloadData
           .map(
             (testCase: any, index: number) => `
           it('Test case #${index + 1} with expect errors ${JSON.stringify(testCase.expects)} ', async () => {
             totalTests++;
-            const payload = ${JSON.stringify(testCase.body)};
+            const payloadObj = ${JSON.stringify(testCase.body)};
+            const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(\`\${globalThis.url}${requestConfig.path}\`, 
             {
               method: '${requestConfig.method.toLowerCase()}',
-              headers: ${JSON.stringify(resolvedHeaders)},
+              headers:  resolveJsonVariables(headerRequest),
               body: JSON.stringify(payload)
             })
 
@@ -94,7 +108,7 @@ function genTestCase(
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
                 
-                const validateLogic = validateLogicData(data, validationRules${classNameCapitalized},payload )
+                const validateLogic = validate${classNameCapitalized}Response(data, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -157,9 +171,16 @@ function genTestCase(
                 errorDetails: 'Server down',
               });
               throw new Error('Server down');
-            } else {
-             
-            throw new Error(error.message || 'unknown error');
+            } else if (error.message.includes('Unexpected token')) {
+              console.error('Could not resolve permission type', error.message);
+                failedTests.push({
+                  testcase: ${index + 1},
+                  code: 403,
+                  errorDetails: 'Could not resolve permission type',
+                });
+              throw new Error(error.message || 'unknown error');
+            }else {
+              throw new Error(error.message || 'unknown error');
             }
           }
           });`,
@@ -184,12 +205,13 @@ Failed Tests: \${failedTests.length}
 Status Code:
   201: \${summary.statusCodes[201] || 0}
   400: \${summary.statusCodes[400] || 0}
+  403: \${summary.statusCodes[403] || 0}
   404: \${summary.statusCodes[404] || 0}
   500: \${summary.statusCodes[500] || 0}
 Uniques Error:
   \${Array.from(summary.uniqueErrors.entries())
-          .map(([error, count]) =>  \`\${error}: \${count}\`)
-          .join('')
+          .map(([error, count]) => \`\${error}: \${count} \n \`)
+      .join('')
   }
 Failed Test Details:
 \${failedTests

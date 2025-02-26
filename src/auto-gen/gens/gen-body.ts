@@ -1,9 +1,6 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import { generateErrorCases } from '../helps/dto-helper';
-import { resolveJsonVariables } from '../helps/get-resolve-variables';
-
-
 
 export function genBodyPayload(dtoName) {
   const dtoFolderPath = path.join(__dirname, '../dtos', dtoName);
@@ -41,8 +38,7 @@ export function genBodyPayload(dtoName) {
       const rawData = fs.readFileSync(requestPath, 'utf-8');
       const requestData = JSON.parse(rawData);
       const payload = requestData.payload;
-      const resolvedPayload = resolveJsonVariables(payload);
-      const result = generateErrorCases(dtoClass, resolvedPayload);
+      const result = generateErrorCases(dtoClass, payload);
       const testCasePayload = result.map(({ testcaseGen, expectedDetail }) => ({
         body: testcaseGen,
         expects: expectedDetail,

@@ -11,18 +11,20 @@ export class SendMessageDTO {
   @IsString()
   @IsNotEmpty()
   @IsDefined()
-  workspaceId?: string = '';
+  workspaceId?: string = ''
 
   @IsString()
-  @IsNotEmpty()
-  channelId?: string = '';
-
-  @IsNumber()
   @IsNotEmpty()
   @IsDefined()
-  content?: string = '';
+  channelId?: string = ''
 
   @IsString()
+  @IsNotEmpty()
+  @IsDefined()
+  content?: string = ''
+
+  @IsString()
+  @IsNotEmpty()
   @IsOptional()
   ref?: string = '';
 }
