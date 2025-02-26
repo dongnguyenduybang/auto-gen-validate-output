@@ -11,8 +11,7 @@ export function validateLogicData(
 ): ValidationResult {
   const errors: string[] = [];
   if (
-    Array.isArray(data.data) ||
-    (typeof data.data === 'object' && data.data !== null)
+    Array.isArray(data.data) 
   ) {
     data.data.forEach((item, index) => {
       rules.forEach((rule) => {
