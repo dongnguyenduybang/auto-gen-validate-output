@@ -63,13 +63,11 @@ function genTestCase(
 
   const specContent = `
     import { validate${classNameCapitalized}Response } from '../validates/${className}/validate-${className}';
-
-    import { validateLogicData } from '../validates/validate-logic';
     import fs from 'fs';
     import path from 'path';
-    import { summarizeErrors, readJsonFile, summaryFields } from '../helps/utils';
+    import { summarizeErrors, summaryFields } from '../helps/utils';
     import { executeBeforeAllSteps } from '../functions';
-    import { resolveJsonVariables, resolveVariables } from '../helps/get-resolve-variables';
+    import { resolveJsonVariables } from '../helps/get-resolve-variables';
 
     describe('Testcase for ${className}', () => {
         let totalTests = 0;
