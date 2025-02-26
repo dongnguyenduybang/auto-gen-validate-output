@@ -1,5 +1,4 @@
 import { validateMockUserResponse } from '../validates/mock-user/validate-mock-user';
-
 import fs from 'fs';
 import path from 'path';
 import { summarizeErrors, summaryFields } from '../helps/utils';

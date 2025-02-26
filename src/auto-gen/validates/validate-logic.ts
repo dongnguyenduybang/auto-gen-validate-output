@@ -10,9 +10,7 @@ export function validateLogicData(
   payload?: any,
 ): ValidationResult {
   const errors: string[] = [];
-  if (
-    Array.isArray(data.data) 
-  ) {
+  if (Array.isArray(data.data)) {
     data.data.forEach((item, index) => {
       rules.forEach((rule) => {
         const value = item[rule.field];
