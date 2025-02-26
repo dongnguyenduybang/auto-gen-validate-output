@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { readJsonFile, summarizeErrors, summaryFields } from '../helps/utils';
 import { resolveJsonVariables } from '../helps/get-resolve-variables';
-import { executeBeforeAllSteps } from '../functions';
+import { executeBeforeAllSteps, executeDelete } from '../functions';
 
 describe('Template testcase', () => {
   let totalTests = 0;
@@ -171,5 +171,7 @@ describe('Template testcase', () => {
 
     fs.writeFileSync(resultFilePath, resultContent, 'utf-8');
     console.log(`Success: ${resultFilePath}`);
+
+    const deleteMessageForEveryone = executeDelete(["deleteMessageForEveryone('0', {{channelId}}, {{messageId}})"])
   });
 });

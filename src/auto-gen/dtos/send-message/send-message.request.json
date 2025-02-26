@@ -17,7 +17,7 @@
       "mockUser('testSaga',1, 0)", 
       "createChannel({{token}}, 'group_1')"
     ],
-    "afterAll": []
+    "afterAll": ["deleteMessageForEveryone('0', {{channelId}}, {{messageId}})"]
   }
 
 

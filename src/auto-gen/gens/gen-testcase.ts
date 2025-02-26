@@ -66,7 +66,7 @@ function genTestCase(
     import fs from 'fs';
     import path from 'path';
     import { summarizeErrors, summaryFields } from '../helps/utils';
-    import { executeBeforeAllSteps } from '../functions';
+    import { executeBeforeAllSteps, executeDelete } from '../functions';
     import { resolveJsonVariables } from '../helps/get-resolve-variables';
 
     describe('Testcase for ${className}', () => {
@@ -229,13 +229,23 @@ Failed Test Details:
 
                         fs.writeFileSync(resultFilePath, resultContent, 'utf-8');
                         console.log(\`Success: \${resultFilePath}\`);
+                          const deleteMockUserAfterTest = executeDelete(${JSON.stringify(requestConfig.afterAll)})    
                       });
+                          
                     });
+
                 `;
 
   const outputPath = path.join(outputDir, `${className}.spec.ts`);
   fs.writeFileSync(outputPath, specContent, 'utf-8');
   console.log(`Success: ${outputPath}`);
+
+
+
+
+
+
+
 }
 
 export function genTestCaseForDTO(dtoName: string) {

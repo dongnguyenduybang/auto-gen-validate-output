@@ -709,7 +709,7 @@
     },
     {
         "body": {
-            "prefix": "duy12345"
+            "prefix": "duy123456"
         },
         "expects": [
             "quantity should not be empty",
@@ -723,7 +723,7 @@
     },
     {
         "body": {
-            "prefix": "duy12345",
+            "prefix": "duy123456",
             "badge": ""
         },
         "expects": [
@@ -738,7 +738,7 @@
     },
     {
         "body": {
-            "prefix": "duy12345",
+            "prefix": "duy123456",
             "badge": "invalid_value"
         },
         "expects": [
@@ -752,7 +752,7 @@
     },
     {
         "body": {
-            "prefix": "duy12345",
+            "prefix": "duy123456",
             "badge": 0
         },
         "expects": [
@@ -764,7 +764,7 @@
     },
     {
         "body": {
-            "prefix": "duy12345",
+            "prefix": "duy123456",
             "quantity": ""
         },
         "expects": [
@@ -779,7 +779,7 @@
     },
     {
         "body": {
-            "prefix": "duy12345",
+            "prefix": "duy123456",
             "quantity": "",
             "badge": ""
         },
@@ -795,7 +795,7 @@
     },
     {
         "body": {
-            "prefix": "duy12345",
+            "prefix": "duy123456",
             "quantity": "",
             "badge": "invalid_value"
         },
@@ -810,7 +810,7 @@
     },
     {
         "body": {
-            "prefix": "duy12345",
+            "prefix": "duy123456",
             "quantity": "",
             "badge": 0
         },
@@ -823,7 +823,7 @@
     },
     {
         "body": {
-            "prefix": "duy12345",
+            "prefix": "duy123456",
             "quantity": "random_string"
         },
         "expects": [
@@ -837,7 +837,7 @@
     },
     {
         "body": {
-            "prefix": "duy12345",
+            "prefix": "duy123456",
             "quantity": "random_string",
             "badge": ""
         },
@@ -852,7 +852,7 @@
     },
     {
         "body": {
-            "prefix": "duy12345",
+            "prefix": "duy123456",
             "quantity": "random_string",
             "badge": "invalid_value"
         },
@@ -866,7 +866,7 @@
     },
     {
         "body": {
-            "prefix": "duy12345",
+            "prefix": "duy123456",
             "quantity": "random_string",
             "badge": 0
         },
@@ -878,7 +878,7 @@
     },
     {
         "body": {
-            "prefix": "duy12345",
+            "prefix": "duy123456",
             "quantity": 1
         },
         "expects": [
@@ -889,7 +889,7 @@
     },
     {
         "body": {
-            "prefix": "duy12345",
+            "prefix": "duy123456",
             "quantity": 1,
             "badge": ""
         },
@@ -901,7 +901,7 @@
     },
     {
         "body": {
-            "prefix": "duy12345",
+            "prefix": "duy123456",
             "quantity": 1,
             "badge": "invalid_value"
         },
@@ -912,7 +912,7 @@
     },
     {
         "body": {
-            "prefix": "duy12345",
+            "prefix": "duy123456",
             "quantity": 1,
             "badge": 0
         },
@@ -920,7 +920,7 @@
     },
     {
         "body": {
-            "prefix": "duy12345",
+            "prefix": "duy123456",
             "quantity": 0
         },
         "expects": [
@@ -932,7 +932,7 @@
     },
     {
         "body": {
-            "prefix": "duy12345",
+            "prefix": "duy123456",
             "quantity": 0,
             "badge": ""
         },
@@ -945,7 +945,7 @@
     },
     {
         "body": {
-            "prefix": "duy12345",
+            "prefix": "duy123456",
             "quantity": 0,
             "badge": "invalid_value"
         },
@@ -957,7 +957,7 @@
     },
     {
         "body": {
-            "prefix": "duy12345",
+            "prefix": "duy123456",
             "quantity": 0,
             "badge": 0
         },
@@ -967,7 +967,7 @@
     },
     {
         "body": {
-            "prefix": "duy12345",
+            "prefix": "duy123456",
             "quantity": 101
         },
         "expects": [
@@ -979,7 +979,7 @@
     },
     {
         "body": {
-            "prefix": "duy12345",
+            "prefix": "duy123456",
             "quantity": 101,
             "badge": ""
         },
@@ -992,7 +992,7 @@
     },
     {
         "body": {
-            "prefix": "duy12345",
+            "prefix": "duy123456",
             "quantity": 101,
             "badge": "invalid_value"
         },
@@ -1004,7 +1004,7 @@
     },
     {
         "body": {
-            "prefix": "duy12345",
+            "prefix": "duy123456",
             "quantity": 101,
             "badge": 0
         },

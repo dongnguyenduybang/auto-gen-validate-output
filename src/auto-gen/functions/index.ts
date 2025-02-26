@@ -1,5 +1,7 @@
 import { resolveVariables } from '../helps/get-resolve-variables';
 import { createChannel } from './create-channel';
+import { deleteMessageForEveryone } from './delete-message-for-everyone';
+import { deleteMockUser } from './delete-mock-user';
 import { mockUser } from './mock-user';
 
 export async function executeBeforeAllSteps(request) {
@@ -27,6 +29,41 @@ export async function executeBeforeAllSteps(request) {
             const [token, name] = args;
             await createChannel(token, name);
             break;
+          }
+          default:
+            console.log('Invalid step:', step);
+            break;
+        }
+      } else {
+        console.log('Invalid step format:', step);
+      }
+    }
+  }
+}
+
+export async function executeDelete(prefix){
+  if (Array.isArray(prefix)) {
+    for (const step of prefix) {
+      const match = step.match(/([a-zA-Z]+)\((.*)\)/);
+
+      if (match) {
+        const functionName = match[1];
+        const payload = match[2].trim();
+
+        const args = payload
+          .split(',')
+          .map((arg) => resolveVariables(arg.trim()));
+
+        switch (functionName) {
+          case 'deleteMockUser': {
+            const [prefix] = args;
+      
+            await deleteMockUser(prefix);
+            break;
+          }
+          case 'deleteMessageForEveryone': {
+            const [workspaceId, channelId, messageId] = args
+            await deleteMessageForEveryone(workspaceId, channelId, messageId)
           }
           default:
             console.log('Invalid step:', step);

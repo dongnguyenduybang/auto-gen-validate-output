@@ -5,9 +5,10 @@
     "Content-Type": "application/json"
   },
   "payload": {
-    "prefix": "duy12345",
+    "prefix": "duy123456",
     "quantity": 1,
     "badge": 0
-  }
+  },
+  "afterAll": ["deleteMockUser(duy123456)"]
   
 }
