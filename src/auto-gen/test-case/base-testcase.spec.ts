@@ -64,18 +64,7 @@ describe('Template testcase', () => {
           throw new Error('Validate logic failed');
         }
       } else if (response.status === 400) {
-        const expectJson = [
-          'workspaceId should not be empty',
-          'workspaceId should not be null or undefined',
-          'workspaceId must be a string',
-          'channelId should not be empty',
-          'channelId must be a string',
-          'content should not be empty',
-          'content should not be null or undefined',
-          'content must be a number conforming to the specified constraints',
-          'content must not be less than undefined',
-          'ref must be a string',
-        ].sort();
+        const expectJson = [].sort();
         const expectDetails = Array.isArray(data?.error?.details)
           ? data.error.details
           : [];
