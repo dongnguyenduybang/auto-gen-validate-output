@@ -1,7 +1,5 @@
-import path from 'path';
 import { genBodyPayload } from './gens/gen-body';
 import { genTestCaseForDTO } from './gens/gen-testcase';
-import { readJsonFile } from './helps/utils';
 
 const args = process.argv.slice(2);
 if (args.length < 2) {
@@ -18,11 +16,7 @@ if (!validActions.includes(action)) {
 }
 
 console.log(`Running "${action}" for DTO: ${dtoName}`);
-const requestPath = path.join(__dirname, './dtos', dtoName, `${dtoName}.request.json`);
-const requestConfig = readJsonFile(requestPath);
-
 async function handleAction(action: string, dtoName: string) {
-
   try {
     switch (action) {
       case 'gen':
@@ -37,7 +31,6 @@ async function handleAction(action: string, dtoName: string) {
       default:
         process.exit(1);
     }
-
   } catch (error) {
     console.error('error in handleAction:', error);
     process.exit(1);
@@ -46,11 +39,9 @@ async function handleAction(action: string, dtoName: string) {
 
 function handleBody(dtoName: string) {
   try {
-
     genBodyPayload(dtoName);
     console.log(`gen body for DTO: ${dtoName}`);
   } catch (error) {
-
     console.error('error in handleBody:', error);
     process.exit(1);
   }
@@ -58,27 +49,21 @@ function handleBody(dtoName: string) {
 
 function handleTestCase(dtoName: string) {
   try {
-
     genTestCaseForDTO(dtoName);
     console.log(`gen test case for DTO: ${dtoName}`);
   } catch (error) {
-
     console.error('error in handleTestCase:', error);
     process.exit(1);
   }
 }
 
-
 function handleTest(dtoName: string) {
-
   console.log(`Running test for DTO "${dtoName}"...`);
   try {
-
     const { execSync } = require('child_process');
     const jestCommand = `jest src/auto-gen/test-case/${dtoName}`;
     execSync(jestCommand, { stdio: 'inherit' });
   } catch (error) {
-
     console.error(`"${dtoName}":`, error.message);
     process.exit(1);
   }
@@ -86,10 +71,8 @@ function handleTest(dtoName: string) {
 
 (async () => {
   try {
-
     await handleAction(action, dtoName);
   } catch (error) {
-
     console.error('error:', error);
     process.exit(1);
   }

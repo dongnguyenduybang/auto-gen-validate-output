@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 // export async function mockUser(prefix: string, quantity: number, badge: number) {
 
@@ -32,6 +32,13 @@ import axios from "axios";
 //   }
 // }
 
-export async function mockUser(prefix?: string, quantity?: number, badge?: number){
-  return  globalThis.globalVar.set('token', 'si_zbMf_u9EJBZjanH-mWW6ZNMh-vosAW89owMWwC8bFUMtUNXdddIiSRasITgdFnvA5OFohcydLgsZwb7YG9g' );
+export async function mockUser(
+  prefix?: string,
+  quantity?: number,
+  badge?: number,
+) {
+  return globalThis.globalVar.set(
+    'token',
+    'si_zbMf_u9EJBZjanH-mWW6ZNMh-vosAW89owMWwC8bFUMtUNXdddIiSRasITgdFnvA5OFohcydLgsZwb7YG9g',
+  );
 }

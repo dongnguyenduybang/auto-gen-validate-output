@@ -1,7 +1,6 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import { readJsonFile } from '../helps/utils';
-import { resolveJsonVariables } from '../helps/get-resolve-variables';
 
 const outputDir = path.join(__dirname, '../test-case');
 
@@ -20,9 +19,10 @@ function getAllFiles(dirPath: string): string[] {
   return files;
 }
 
-//foreach qua tất cả các file và lấy các cặp file có đuôi .dto.ts và .request.json có tên giống nhau thành 1 object 
-function pairFiles(files: string[] ): { dtoPath: string; requestPath: string; className: string }[] {
-
+//foreach qua tất cả các file và lấy các cặp file có đuôi .dto.ts và .request.json có tên giống nhau thành 1 object
+function pairFiles(
+  files: string[],
+): { dtoPath: string; requestPath: string; className: string }[] {
   const fileMap: Record<string, { dtoPath?: string; requestPath?: string }> =
     {};
   files.forEach((filePath) => {
@@ -55,7 +55,7 @@ function genTestCase(
   const payloadData = readJsonFile(payloadPath);
   const requestConfig = readJsonFile(requestPath);
   // const resolvedHeaders = resolveJsonVariables(requestConfig.headers);
-  //chuyển đổi string có dấu - thành chuỗi viết liền 
+  //chuyển đổi string có dấu - thành chuỗi viết liền
   const classNameCapitalized = className
     .split('-')
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))

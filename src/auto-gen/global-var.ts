@@ -1,6 +1,5 @@
-
 import { setupConfiguration, getOrThrow } from './helps/get-config';
-setupConfiguration()
+setupConfiguration();
 
 export function initializeGlobalVariables() {
   try {

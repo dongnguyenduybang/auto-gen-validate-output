@@ -6,7 +6,7 @@
 //   try {
 
 //     const quantityUser = countTokens();
-//     //nếu số lượng token từ mock user = 1 => k thêm index phía sau  và ngược lại 
+//     //nếu số lượng token từ mock user = 1 => k thêm index phía sau  và ngược lại
 //     if (quantityUser === 1) {
 
 //       const token = globalThis.globalVar.get('token');
@@ -15,7 +15,7 @@
 //       }
 
 //       const baseUrl = `${globalThis.urls}/Channel/CreateChannel`;
-//       const payload = { workspaceId: "0", name: name }; 
+//       const payload = { workspaceId: "0", name: name };
 //       const headers = { 'x-session-token': token };
 
 //       const response = await axios.post(baseUrl, payload, { headers });
@@ -23,7 +23,7 @@
 //       if ( response.data.data.channel) {
 
 //         const channelId = response.data.data.channel.channelId;
-//         globalThis.globalVar.set('channelId', channelId); 
+//         globalThis.globalVar.set('channelId', channelId);
 
 //       } else {
 
@@ -35,7 +35,7 @@
 
 //       while (globalThis.globalVar.has(`token${index}`)) {
 //         const token = globalThis.globalVar.get(`token${index}`);
-//         const channelName = `${name}${index}`; 
+//         const channelName = `${name}${index}`;
 
 //         const baseUrl = `${globalThis.urls}/Channel/CreateChannel`;
 //         const payload = { workspaceId: "0", name: channelName };
@@ -65,5 +65,5 @@
 export async function createChannel(token, name) {
   // Giả lập logic tạo channel và trả về channelId
   const channelId = `01JN06Z01F2NFGM30P4NGQ2QKB`;
-  globalThis.globalVar.set('channelId', channelId); 
+  globalThis.globalVar.set('channelId', channelId);
 }

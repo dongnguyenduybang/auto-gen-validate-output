@@ -10,14 +10,14 @@ export function validateLogicData(
   payload?: any,
 ): ValidationResult {
   const errors: string[] = [];
-  if (Array.isArray(data.data) || typeof data.data === 'object' && data.data !== null ) {
+  if (
+    Array.isArray(data.data) ||
+    (typeof data.data === 'object' && data.data !== null)
+  ) {
     data.data.forEach((item, index) => {
       rules.forEach((rule) => {
         const value = item[rule.field];
-        if (
-          rule.optional === true &&
-          (value === undefined || value === null)
-        ) {
+        if (rule.optional === true && (value === undefined || value === null)) {
           return;
         }
         if (rule.required && value === undefined) {

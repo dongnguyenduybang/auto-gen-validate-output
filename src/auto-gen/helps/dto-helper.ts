@@ -24,36 +24,36 @@ export function generateErrorCases(
   const instance = new dtoClass();
   const keys = Object.keys(instance);
   if (keys.length === 0) {
-      console.warn(`No found keys in DTO class: ${dtoClass.name}`);
-      return [];
+    console.warn(`No found keys in DTO class: ${dtoClass.name}`);
+    return [];
   }
 
   const errorCasesByField: Record<string, any[]> = {};
   keys.forEach((field) => {
-      const decorators = getDecorators(instance, field);
-      const fieldValue =
-          payload[field] !== undefined ? payload[field] : instance[field];
-      const variants = generateErrorVariantsForField(fieldValue, decorators);
+    const decorators = getDecorators(instance, field);
+    const fieldValue =
+      payload[field] !== undefined ? payload[field] : instance[field];
+    const variants = generateErrorVariantsForField(fieldValue, decorators);
 
-      // Đảm bảo rằng variants luôn là một mảng
-      errorCasesByField[field] = Array.isArray(variants) ? variants : [];
+    // Đảm bảo rằng variants luôn là một mảng
+    errorCasesByField[field] = Array.isArray(variants) ? variants : [];
   });
 
   const fields = Object.keys(errorCasesByField);
   if (fields.length === 0) {
-      console.warn(`No error cases generated for DTO class: ${dtoClass.name}`);
-      return [];
+    console.warn(`No error cases generated for DTO class: ${dtoClass.name}`);
+    return [];
   }
 
   const allErrorCombinations = generateCombinations(fields, errorCasesByField);
   return allErrorCombinations.map((combination) => {
-      const testcaseGen = { ...combination };
-      const expectedDetail = fields.flatMap((field) => {
-          const value = testcaseGen[field];
-          const decorators = getDecorators(instance, field);
-          return mapError(field, value, decorators);
-      });
-      return { testcaseGen, expectedDetail };
+    const testcaseGen = { ...combination };
+    const expectedDetail = fields.flatMap((field) => {
+      const value = testcaseGen[field];
+      const decorators = getDecorators(instance, field);
+      return mapError(field, value, decorators);
+    });
+    return { testcaseGen, expectedDetail };
   });
 }
 export function generateErrorVariantsForField(
@@ -104,7 +104,9 @@ export function generateErrorVariantsForField(
 
 export function combineFields(arrays: any[][]): any[][] {
   if (!Array.isArray(arrays) || arrays.some((arr) => !Array.isArray(arr))) {
-      throw new Error('Invalid input for combineFields: Expected an array of arrays');
+    throw new Error(
+      'Invalid input for combineFields: Expected an array of arrays',
+    );
   }
 
   return arrays.reduce((a, b) => a.flatMap((d) => b.map((e) => [d, e].flat())));
@@ -115,13 +117,13 @@ export function generateCombinations(
   errorCasesByField: Record<string, any[]>,
 ): any[] {
   const fieldErrorVariants = fields.map((field) => {
-      return errorCasesByField[field].map((errorVariant) => ({
-          [field]: errorVariant,
-      }));
+    return errorCasesByField[field].map((errorVariant) => ({
+      [field]: errorVariant,
+    }));
   });
 
   return combineFields(fieldErrorVariants).map((combination) => {
-      return combination.reduce((acc, curr) => ({ ...acc, ...curr }), {});
+    return combination.reduce((acc, curr) => ({ ...acc, ...curr }), {});
   });
 }
 export function mapError(

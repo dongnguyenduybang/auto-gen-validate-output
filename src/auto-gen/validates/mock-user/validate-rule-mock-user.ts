@@ -2,7 +2,18 @@ import { ValidationRule } from '../../helps/structures/responses';
 
 export const validationRulesMockUser: ValidationRule[] = [
   { field: 'userId', type: 'string', required: true },
-  { field: 'username', type: 'string', required: true },
+  {
+    field: 'username',
+    type: 'string',
+    required: true,
+    customValidation: (value, payload, data) => {
+      const expectedUsername = `${payload.prefix}${data.userId}`;
+      if (value !== expectedUsername) {
+        return `Field "username" must be match with prefix + userId`;
+      }
+      return null;
+    },
+  },
   { field: 'token', type: 'string', required: true },
   { field: 'securityKey', type: 'string', required: true },
   { field: 'recoverKey', type: 'string', required: true },
@@ -10,15 +21,9 @@ export const validationRulesMockUser: ValidationRule[] = [
     field: 'badge',
     type: 'number',
     required: true,
-    min: 0,
-    max: 3,
     customValidation: (value, payload) => {
-      const expectedBadge = Number(payload?.badge);
-      if (isNaN(expectedBadge)) {
-        return `Field "badge" has invalid payload value: ${payload?.badge}`;
-      }
-      if (value !== expectedBadge) {
-        return `Field "badge" must be equal to "${expectedBadge}"`;
+      if (value !== payload.badge) {
+        return `Field "badge" must be match with payload`;
       }
       return null;
     },

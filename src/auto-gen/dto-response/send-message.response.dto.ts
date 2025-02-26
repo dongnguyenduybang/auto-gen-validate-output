@@ -1,1 +1,1 @@
-export class SendMessageResponse{}
+export class SendMessageResponse {}

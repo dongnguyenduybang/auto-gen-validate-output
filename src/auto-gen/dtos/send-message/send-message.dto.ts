@@ -1,27 +1,25 @@
-
 import {
   IsNotEmpty,
-  IsNumber,
   IsString,
   IsDefined,
-  IsOptional
+  IsOptional,
 } from '../../decorator/dto-decorator';
 
 export class SendMessageDTO {
   @IsString()
   @IsNotEmpty()
   @IsDefined()
-  workspaceId?: string = ''
+  workspaceId?: string = '';
 
   @IsString()
   @IsNotEmpty()
   @IsDefined()
-  channelId?: string = ''
+  channelId?: string = '';
 
   @IsString()
   @IsNotEmpty()
   @IsDefined()
-  content?: string = ''
+  content?: string = '';
 
   @IsString()
   @IsNotEmpty()
