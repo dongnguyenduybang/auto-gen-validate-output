@@ -52,11 +52,6 @@ export const validationRulesMessage: ValidationRule[] = [
         return `Field "createTime" is not a valid date`;
       }
 
-      const now = new Date();
-      if (createTime > now) {
-        return `Field "createTime" must not be greater than the current time`;
-      }
-  
       return null; 
     },
   },

@@ -5,21 +5,15 @@
                 Summary: 
                 Total Tests: 1
                 Passed Tests: 0
-                Failed Tests: 1
+                Failed Tests: 0
                 Status Code:
-                201: 0
+                201: 1
                 400: 0
                 403: 0
                 404: 0
-                500: 1
+                500: 0
                 Uniques Error:
-                 Field "createTime" must not be greater than the current time: 1
+                
                 Failed Test Details:
                 
-                - Testcase #1
-                Missing Errors: ''
-                Status Code: ''
-                Extra Errors: ''
-                Detail Errors: [" Field \"createTime\" must not be greater than the current time"]
-                                
                                 
