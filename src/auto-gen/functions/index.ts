@@ -28,9 +28,14 @@ export async function executeBeforeAllSteps(request) {
 
           case 'createChannel': {
             const [token, name] = args;
-
             await createChannel(token, name);
             break;
+          }
+
+          case 'updateMessage': {
+            const [token, channelId, messageId, name] = args
+
+            // await updateMessage(token, channelId, messageId, name)
           }
           default:
             console.log('Invalid step:', step);

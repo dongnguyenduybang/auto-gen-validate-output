@@ -15,7 +15,7 @@
 
         beforeAll( async () => {
 
-          await executeBeforeAllSteps(["mockUser('testSaga',3, 0)","createChannel({{token_1}}, 'group_1')"])
+          await executeBeforeAllSteps(["mockUser('duy123456',3, 0)","createChannel({{token_1}}, 'channel 1')"])
 
           headerRequest = {"Content-Type":"application/json","x-session-token":"{{token_1}}","x-country-code":"VN"}
          
@@ -10651,7 +10651,7 @@ ${failedTests
 
                         fs.writeFileSync(resultFilePath, resultContent, 'utf-8');
                         console.log(`Success: ${resultFilePath}`);
-                        await executeDelete(["deleteMessageForEveryone('0', {{channelId_1}}, {{messageId}})"], headerRequest)    
+                        await executeDelete(undefined, headerRequest)    
                       });
                           
                     });

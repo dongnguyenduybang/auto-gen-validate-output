@@ -1,6 +1,4 @@
 import { ValidationRule } from '../../helps/structures/responses';
-
-// Quy tắc validation cho message
 export const validationRulesMessage: ValidationRule[] = [
   { field: 'workspaceId', type: 'string', required: true },
   { field: 'channelId', type: 'string', required: true },
@@ -39,12 +37,12 @@ export const validationRulesMessage: ValidationRule[] = [
     customValidation: (value, data) => {
       const dateRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/;
       if (!dateRegex.test(value)) {
-        return `Field "updateTime" must be format ISO string`;
+        return `"updateTime" must be format ISO string`;
       }
       const updateTime = new Date(value);
       const createTime = new Date(data.createTime);
       if (updateTime < createTime) {
-        return `Field "updateTime" must not be less than "createTime"`;
+        return `"updateTime" must not be less than "createTime"`;
       }
       return null;
     },
@@ -63,11 +61,11 @@ export const validationRulesIncludes: Record<string, ValidationRule[]> = {
       customValidation: (value) => {
         const dateRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/;
         if (!dateRegex.test(value)) {
-          return `Field "createTime" must be format ISO string`;
+          return `"createTime" must be format ISO string`;
         }
         const createTime = new Date(value);
         if (isNaN(createTime.getTime())) {
-          return `Field "createTime" is not a valid date`;
+          return `"createTime" is not a valid date`;
         }
         return null;
       },
@@ -79,12 +77,12 @@ export const validationRulesIncludes: Record<string, ValidationRule[]> = {
       customValidation: (value, data) => {
         const dateRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/;
         if (!dateRegex.test(value)) {
-          return `Field "updateTime" must be format ISO string`;
+          return `"updateTime" must be format ISO string`;
         }
         const updateTime = new Date(value);
         const createTime = new Date(data.createTime);
         if (updateTime < createTime) {
-          return `Field "updateTime" must not be less than "createTime"`;
+          return `"updateTime" must not be less than "createTime"`;
         }
         return null;
       },

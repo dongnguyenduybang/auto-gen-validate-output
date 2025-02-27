@@ -4,18 +4,16 @@ Host: https://api-sb11.rpc.ziichat.dev
 Endpoint: /Message/SendMessage
 Summary: 
 Total Tests: 108
-Passed Tests: 3
-Failed Tests: 105
+Passed Tests: 0
+Failed Tests: 72
 Status Code:
-  201: 2
-  400: 3
-  403: 96
+  201: 0
+  400: 0
+  403: 72
   404: 0
-  500: 6
+  500: 0
 Uniques Error:
-  Could not resolve permission type: 96 
- content's byte length must fall into (1, 6000) range: 3 
- TypeError: value.trim is not a function: 6 
+  Could not resolve permission type: 72 
  
 Failed Test Details:
 
@@ -158,78 +156,6 @@ Failed Test Details:
   Detail Errors: "Could not resolve permission type"
                   
 - Testcase #24
-  Missing Errors: ''
-  Status Code: 403
-  Extra Errors: ''
-  Detail Errors: "Could not resolve permission type"
-                  
-- Testcase #25
-  Missing Errors: ''
-  Status Code: 403
-  Extra Errors: ''
-  Detail Errors: "Could not resolve permission type"
-                  
-- Testcase #26
-  Missing Errors: ''
-  Status Code: 403
-  Extra Errors: ''
-  Detail Errors: "Could not resolve permission type"
-                  
-- Testcase #27
-  Missing Errors: ''
-  Status Code: 403
-  Extra Errors: ''
-  Detail Errors: "Could not resolve permission type"
-                  
-- Testcase #28
-  Missing Errors: ''
-  Status Code: 403
-  Extra Errors: ''
-  Detail Errors: "Could not resolve permission type"
-                  
-- Testcase #29
-  Missing Errors: ''
-  Status Code: 403
-  Extra Errors: ''
-  Detail Errors: "Could not resolve permission type"
-                  
-- Testcase #30
-  Missing Errors: ''
-  Status Code: 403
-  Extra Errors: ''
-  Detail Errors: "Could not resolve permission type"
-                  
-- Testcase #31
-  Missing Errors: ''
-  Status Code: 403
-  Extra Errors: ''
-  Detail Errors: "Could not resolve permission type"
-                  
-- Testcase #32
-  Missing Errors: ''
-  Status Code: 403
-  Extra Errors: ''
-  Detail Errors: "Could not resolve permission type"
-                  
-- Testcase #33
-  Missing Errors: ''
-  Status Code: 403
-  Extra Errors: ''
-  Detail Errors: "Could not resolve permission type"
-                  
-- Testcase #34
-  Missing Errors: ''
-  Status Code: 403
-  Extra Errors: ''
-  Detail Errors: "Could not resolve permission type"
-                  
-- Testcase #35
-  Missing Errors: ''
-  Status Code: 403
-  Extra Errors: ''
-  Detail Errors: "Could not resolve permission type"
-                  
-- Testcase #36
   Missing Errors: ''
   Status Code: 403
   Extra Errors: ''
@@ -379,78 +305,6 @@ Failed Test Details:
   Extra Errors: ''
   Detail Errors: "Could not resolve permission type"
                   
-- Testcase #61
-  Missing Errors: ''
-  Status Code: 403
-  Extra Errors: ''
-  Detail Errors: "Could not resolve permission type"
-                  
-- Testcase #62
-  Missing Errors: ''
-  Status Code: 403
-  Extra Errors: ''
-  Detail Errors: "Could not resolve permission type"
-                  
-- Testcase #63
-  Missing Errors: ''
-  Status Code: 403
-  Extra Errors: ''
-  Detail Errors: "Could not resolve permission type"
-                  
-- Testcase #64
-  Missing Errors: ''
-  Status Code: 403
-  Extra Errors: ''
-  Detail Errors: "Could not resolve permission type"
-                  
-- Testcase #65
-  Missing Errors: ''
-  Status Code: 403
-  Extra Errors: ''
-  Detail Errors: "Could not resolve permission type"
-                  
-- Testcase #66
-  Missing Errors: ''
-  Status Code: 403
-  Extra Errors: ''
-  Detail Errors: "Could not resolve permission type"
-                  
-- Testcase #67
-  Missing Errors: ''
-  Status Code: 403
-  Extra Errors: ''
-  Detail Errors: "Could not resolve permission type"
-                  
-- Testcase #68
-  Missing Errors: ''
-  Status Code: 403
-  Extra Errors: ''
-  Detail Errors: "Could not resolve permission type"
-                  
-- Testcase #69
-  Missing Errors: ''
-  Status Code: 403
-  Extra Errors: ''
-  Detail Errors: "Could not resolve permission type"
-                  
-- Testcase #70
-  Missing Errors: ''
-  Status Code: 403
-  Extra Errors: ''
-  Detail Errors: "Could not resolve permission type"
-                  
-- Testcase #71
-  Missing Errors: ''
-  Status Code: 403
-  Extra Errors: ''
-  Detail Errors: "Could not resolve permission type"
-                  
-- Testcase #72
-  Missing Errors: ''
-  Status Code: 403
-  Extra Errors: ''
-  Detail Errors: "Could not resolve permission type"
-                  
 - Testcase #73
   Missing Errors: ''
   Status Code: 403
@@ -594,59 +448,5 @@ Failed Test Details:
   Status Code: 403
   Extra Errors: ''
   Detail Errors: "Could not resolve permission type"
-                  
-- Testcase #97
-  Missing Errors: []
-  Status Code: 400
-  Extra Errors: ["content's byte length must fall into (1, 6000) range"]
-  Detail Errors: ''
-                  
-- Testcase #98
-  Missing Errors: []
-  Status Code: 400
-  Extra Errors: ["content's byte length must fall into (1, 6000) range"]
-  Detail Errors: ''
-                  
-- Testcase #99
-  Missing Errors: ''
-  Status Code: 500
-  Extra Errors: ''
-  Detail Errors: ["TypeError: value.trim is not a function"]
-                  
-- Testcase #100
-  Missing Errors: []
-  Status Code: 400
-  Extra Errors: ["content's byte length must fall into (1, 6000) range"]
-  Detail Errors: ''
-                  
-- Testcase #101
-  Missing Errors: ''
-  Status Code: 500
-  Extra Errors: ''
-  Detail Errors: ["TypeError: value.trim is not a function"]
-                  
-- Testcase #102
-  Missing Errors: ''
-  Status Code: 500
-  Extra Errors: ''
-  Detail Errors: ["TypeError: value.trim is not a function"]
-                  
-- Testcase #103
-  Missing Errors: ''
-  Status Code: 500
-  Extra Errors: ''
-  Detail Errors: ["TypeError: value.trim is not a function"]
-                  
-- Testcase #104
-  Missing Errors: ''
-  Status Code: 500
-  Extra Errors: ''
-  Detail Errors: ["TypeError: value.trim is not a function"]
-                  
-- Testcase #107
-  Missing Errors: ''
-  Status Code: 500
-  Extra Errors: ''
-  Detail Errors: ["TypeError: value.trim is not a function"]
                   
                   

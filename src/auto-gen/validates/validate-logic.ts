@@ -84,10 +84,6 @@ export function validateLogicData(
     errors.push('Field "data" must be an array');
   }
 
-  if (data.message?.messageId) {
-    console.log(data.message.messageId);
-  }
-
   return {
     isValid: errors.length === 0,
     errors: errors.length > 0 ? errors : null,

@@ -14,11 +14,3 @@ try {
   console.error('Error:', error.message);
   
 }
-
-
-jest.spyOn(console, 'error').mockImplementation((...args) => {
-  if (args[0].includes('Test case')) {
-    return; 
-  }
-  console.error(...args); 
-});

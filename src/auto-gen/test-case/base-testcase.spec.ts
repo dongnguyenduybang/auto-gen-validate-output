@@ -30,7 +30,7 @@ describe('Template testcase', () => {
     totalTests++;
     const payloadObj = {
       workspaceId: '0',
-      channelId: '{{channelId_0}}',
+      channelId: '{{channelId}}',
       content: 'test123',
       ref: 'ref',
     };
@@ -174,7 +174,7 @@ describe('Template testcase', () => {
     console.log(`Success: ${resultFilePath}`);
 
     await executeDelete(
-      ["deleteMessageForEveryone('0', {{channelId_0}}, {{messageId}})"],
+      ["deleteMessageForEveryone('0', {{channelId}}, {{messageId}})"],
       headersRequest,
     );
   });
