@@ -3,23 +3,23 @@
     "path": "/Message/SendMessage",
     "headers": {
       "Content-Type": "application/json",
-      "x-session-token": "{{token}}",
+      "x-session-token": "{{token_1}}",
       "x-country-code": "VN"
     },
     "payload": {
       "workspaceId": "0",
-      "channelId": "{{channelId}}",
+      "channelId": "{{channelId_1}}",
       "content": "test123123",
       "ref": "ref"
     },
 
     "beforeAll": [
-      "mockUser('testSaga',1, 0)", 
-      "createChannel({{token}}, 'group_1')"
+      "mockUser('testSaga',3, 0)", 
+      "createChannel({{token_1}}, 'group_1')"
     ],
-    "afterAll": ["deleteMessageForEveryone('0', {{channelId}}, {{messageId}})"]
+    "afterAll": ["deleteMessageForEveryone('0', {{channelId_1}}, {{messageId}})"]
   }
 
 
 
-  
+   

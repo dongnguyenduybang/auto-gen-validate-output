@@ -8,9 +8,7 @@
         "expects": [
             "workspaceId should not be empty",
             "channelId should not be empty",
-            "content should not be empty",
-            "ref should not be empty",
-            "ref must be a string"
+            "content should not be empty"
         ]
     },
     {
@@ -63,9 +61,7 @@
         "expects": [
             "workspaceId should not be empty",
             "channelId should not be empty",
-            "content must be a string",
-            "ref should not be empty",
-            "ref must be a string"
+            "content must be a string"
         ]
     },
     {
@@ -117,9 +113,7 @@
         },
         "expects": [
             "workspaceId should not be empty",
-            "channelId should not be empty",
-            "ref should not be empty",
-            "ref must be a string"
+            "channelId should not be empty"
         ]
     },
     {
@@ -169,9 +163,7 @@
         "expects": [
             "workspaceId should not be empty",
             "channelId must be a string",
-            "content should not be empty",
-            "ref should not be empty",
-            "ref must be a string"
+            "content should not be empty"
         ]
     },
     {
@@ -224,9 +216,7 @@
         "expects": [
             "workspaceId should not be empty",
             "channelId must be a string",
-            "content must be a string",
-            "ref should not be empty",
-            "ref must be a string"
+            "content must be a string"
         ]
     },
     {
@@ -278,9 +268,7 @@
         },
         "expects": [
             "workspaceId should not be empty",
-            "channelId must be a string",
-            "ref should not be empty",
-            "ref must be a string"
+            "channelId must be a string"
         ]
     },
     {
@@ -324,20 +312,18 @@
     {
         "body": {
             "workspaceId": "",
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": ""
         },
         "expects": [
             "workspaceId should not be empty",
-            "content should not be empty",
-            "ref should not be empty",
-            "ref must be a string"
+            "content should not be empty"
         ]
     },
     {
         "body": {
             "workspaceId": "",
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": "",
             "ref": ""
         },
@@ -350,7 +336,7 @@
     {
         "body": {
             "workspaceId": "",
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": "",
             "ref": 12345
         },
@@ -363,7 +349,7 @@
     {
         "body": {
             "workspaceId": "",
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": "",
             "ref": "ref"
         },
@@ -375,20 +361,18 @@
     {
         "body": {
             "workspaceId": "",
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": 12345
         },
         "expects": [
             "workspaceId should not be empty",
-            "content must be a string",
-            "ref should not be empty",
-            "ref must be a string"
+            "content must be a string"
         ]
     },
     {
         "body": {
             "workspaceId": "",
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": 12345,
             "ref": ""
         },
@@ -401,7 +385,7 @@
     {
         "body": {
             "workspaceId": "",
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": 12345,
             "ref": 12345
         },
@@ -414,7 +398,7 @@
     {
         "body": {
             "workspaceId": "",
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": 12345,
             "ref": "ref"
         },
@@ -426,19 +410,17 @@
     {
         "body": {
             "workspaceId": "",
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": "test123123"
         },
         "expects": [
-            "workspaceId should not be empty",
-            "ref should not be empty",
-            "ref must be a string"
+            "workspaceId should not be empty"
         ]
     },
     {
         "body": {
             "workspaceId": "",
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": "test123123",
             "ref": ""
         },
@@ -450,7 +432,7 @@
     {
         "body": {
             "workspaceId": "",
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": "test123123",
             "ref": 12345
         },
@@ -462,7 +444,7 @@
     {
         "body": {
             "workspaceId": "",
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": "test123123",
             "ref": "ref"
         },
@@ -479,9 +461,7 @@
         "expects": [
             "workspaceId must be a string",
             "channelId should not be empty",
-            "content should not be empty",
-            "ref should not be empty",
-            "ref must be a string"
+            "content should not be empty"
         ]
     },
     {
@@ -534,9 +514,7 @@
         "expects": [
             "workspaceId must be a string",
             "channelId should not be empty",
-            "content must be a string",
-            "ref should not be empty",
-            "ref must be a string"
+            "content must be a string"
         ]
     },
     {
@@ -588,9 +566,7 @@
         },
         "expects": [
             "workspaceId must be a string",
-            "channelId should not be empty",
-            "ref should not be empty",
-            "ref must be a string"
+            "channelId should not be empty"
         ]
     },
     {
@@ -640,9 +616,7 @@
         "expects": [
             "workspaceId must be a string",
             "channelId must be a string",
-            "content should not be empty",
-            "ref should not be empty",
-            "ref must be a string"
+            "content should not be empty"
         ]
     },
     {
@@ -695,9 +669,7 @@
         "expects": [
             "workspaceId must be a string",
             "channelId must be a string",
-            "content must be a string",
-            "ref should not be empty",
-            "ref must be a string"
+            "content must be a string"
         ]
     },
     {
@@ -749,9 +721,7 @@
         },
         "expects": [
             "workspaceId must be a string",
-            "channelId must be a string",
-            "ref should not be empty",
-            "ref must be a string"
+            "channelId must be a string"
         ]
     },
     {
@@ -795,20 +765,18 @@
     {
         "body": {
             "workspaceId": 12345,
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": ""
         },
         "expects": [
             "workspaceId must be a string",
-            "content should not be empty",
-            "ref should not be empty",
-            "ref must be a string"
+            "content should not be empty"
         ]
     },
     {
         "body": {
             "workspaceId": 12345,
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": "",
             "ref": ""
         },
@@ -821,7 +789,7 @@
     {
         "body": {
             "workspaceId": 12345,
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": "",
             "ref": 12345
         },
@@ -834,7 +802,7 @@
     {
         "body": {
             "workspaceId": 12345,
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": "",
             "ref": "ref"
         },
@@ -846,20 +814,18 @@
     {
         "body": {
             "workspaceId": 12345,
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": 12345
         },
         "expects": [
             "workspaceId must be a string",
-            "content must be a string",
-            "ref should not be empty",
-            "ref must be a string"
+            "content must be a string"
         ]
     },
     {
         "body": {
             "workspaceId": 12345,
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": 12345,
             "ref": ""
         },
@@ -872,7 +838,7 @@
     {
         "body": {
             "workspaceId": 12345,
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": 12345,
             "ref": 12345
         },
@@ -885,7 +851,7 @@
     {
         "body": {
             "workspaceId": 12345,
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": 12345,
             "ref": "ref"
         },
@@ -897,19 +863,17 @@
     {
         "body": {
             "workspaceId": 12345,
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": "test123123"
         },
         "expects": [
-            "workspaceId must be a string",
-            "ref should not be empty",
-            "ref must be a string"
+            "workspaceId must be a string"
         ]
     },
     {
         "body": {
             "workspaceId": 12345,
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": "test123123",
             "ref": ""
         },
@@ -921,7 +885,7 @@
     {
         "body": {
             "workspaceId": 12345,
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": "test123123",
             "ref": 12345
         },
@@ -933,7 +897,7 @@
     {
         "body": {
             "workspaceId": 12345,
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": "test123123",
             "ref": "ref"
         },
@@ -949,9 +913,7 @@
         },
         "expects": [
             "channelId should not be empty",
-            "content should not be empty",
-            "ref should not be empty",
-            "ref must be a string"
+            "content should not be empty"
         ]
     },
     {
@@ -1000,9 +962,7 @@
         },
         "expects": [
             "channelId should not be empty",
-            "content must be a string",
-            "ref should not be empty",
-            "ref must be a string"
+            "content must be a string"
         ]
     },
     {
@@ -1050,9 +1010,7 @@
             "content": "test123123"
         },
         "expects": [
-            "channelId should not be empty",
-            "ref should not be empty",
-            "ref must be a string"
+            "channelId should not be empty"
         ]
     },
     {
@@ -1098,9 +1056,7 @@
         },
         "expects": [
             "channelId must be a string",
-            "content should not be empty",
-            "ref should not be empty",
-            "ref must be a string"
+            "content should not be empty"
         ]
     },
     {
@@ -1149,9 +1105,7 @@
         },
         "expects": [
             "channelId must be a string",
-            "content must be a string",
-            "ref should not be empty",
-            "ref must be a string"
+            "content must be a string"
         ]
     },
     {
@@ -1199,9 +1153,7 @@
             "content": "test123123"
         },
         "expects": [
-            "channelId must be a string",
-            "ref should not be empty",
-            "ref must be a string"
+            "channelId must be a string"
         ]
     },
     {
@@ -1242,19 +1194,17 @@
     {
         "body": {
             "workspaceId": "0",
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": ""
         },
         "expects": [
-            "content should not be empty",
-            "ref should not be empty",
-            "ref must be a string"
+            "content should not be empty"
         ]
     },
     {
         "body": {
             "workspaceId": "0",
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": "",
             "ref": ""
         },
@@ -1266,7 +1216,7 @@
     {
         "body": {
             "workspaceId": "0",
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": "",
             "ref": 12345
         },
@@ -1278,7 +1228,7 @@
     {
         "body": {
             "workspaceId": "0",
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": "",
             "ref": "ref"
         },
@@ -1289,19 +1239,17 @@
     {
         "body": {
             "workspaceId": "0",
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": 12345
         },
         "expects": [
-            "content must be a string",
-            "ref should not be empty",
-            "ref must be a string"
+            "content must be a string"
         ]
     },
     {
         "body": {
             "workspaceId": "0",
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": 12345,
             "ref": ""
         },
@@ -1313,7 +1261,7 @@
     {
         "body": {
             "workspaceId": "0",
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": 12345,
             "ref": 12345
         },
@@ -1325,7 +1273,7 @@
     {
         "body": {
             "workspaceId": "0",
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": 12345,
             "ref": "ref"
         },
@@ -1336,18 +1284,15 @@
     {
         "body": {
             "workspaceId": "0",
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": "test123123"
         },
-        "expects": [
-            "ref should not be empty",
-            "ref must be a string"
-        ]
+        "expects": []
     },
     {
         "body": {
             "workspaceId": "0",
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": "test123123",
             "ref": ""
         },
@@ -1358,7 +1303,7 @@
     {
         "body": {
             "workspaceId": "0",
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": "test123123",
             "ref": 12345
         },
@@ -1369,7 +1314,7 @@
     {
         "body": {
             "workspaceId": "0",
-            "channelId": "{{channelId}}",
+            "channelId": "{{channelId_1}}",
             "content": "test123123",
             "ref": "ref"
         },

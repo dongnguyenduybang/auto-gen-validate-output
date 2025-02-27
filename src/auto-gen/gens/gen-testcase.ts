@@ -76,9 +76,9 @@ function genTestCase(
         let passedTests = 0
         let headerRequest
 
-        beforeAll(() => {
+        beforeAll( async () => {
 
-          executeBeforeAllSteps(${JSON.stringify(requestConfig.beforeAll)})
+          await executeBeforeAllSteps(${JSON.stringify(requestConfig.beforeAll)})
 
           headerRequest = ${JSON.stringify(requestConfig.headers)}
          
@@ -111,6 +111,7 @@ function genTestCase(
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
                   passedLogic++
+                  passedTests++
                 }else {
                   failedTests.push({
                     testcase:${index + 1},
@@ -185,7 +186,7 @@ function genTestCase(
           )
           .join('\n')}
 
-      afterAll(() => {
+      afterAll(async () => {
           const folderPath = path.join(__dirname, '../reports');
 
           if (!fs.existsSync(folderPath)) {
@@ -229,7 +230,7 @@ Failed Test Details:
 
                         fs.writeFileSync(resultFilePath, resultContent, 'utf-8');
                         console.log(\`Success: \${resultFilePath}\`);
-                          const deleteMockUserAfterTest = executeDelete(${JSON.stringify(requestConfig.afterAll)})    
+                        await executeDelete(${JSON.stringify(requestConfig.afterAll)}, headerRequest)    
                       });
                           
                     });
@@ -239,13 +240,6 @@ Failed Test Details:
   const outputPath = path.join(outputDir, `${className}.spec.ts`);
   fs.writeFileSync(outputPath, specContent, 'utf-8');
   console.log(`Success: ${outputPath}`);
-
-
-
-
-
-
-
 }
 
 export function genTestCaseForDTO(dtoName: string) {

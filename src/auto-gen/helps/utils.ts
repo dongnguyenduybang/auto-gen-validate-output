@@ -180,7 +180,6 @@ export function summaryFields(
 }
 
 export function readJsonFile(filePath: string): any {
-  console.log('read', filePath);
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   return JSON.parse(fileContent);
 }
@@ -202,7 +201,7 @@ export function summarizeErrors(
 ) {
   const summary = {
     statusCodes: { 201: passedLogic, 400: 0, 500: 0, 403: 0, 404: 0 },
-    uniqueErrors: new Map<string, number>(), //map lỗi
+    uniqueErrors: new Map<string, number>(),
   };
 
   failedTests.forEach((failCase) => {
@@ -210,7 +209,6 @@ export function summarizeErrors(
     summary.statusCodes[statusCode] =
       (summary.statusCodes[statusCode] || 0) + 1;
 
-    //missing error
     if (failCase.missing && Array.isArray(failCase.missing)) {
       failCase.missing.forEach((error) => {
         summary.uniqueErrors.set(
@@ -220,7 +218,6 @@ export function summarizeErrors(
       });
     }
 
-    //missing eror
     if (failCase.extra && Array.isArray(failCase.extra)) {
       failCase.extra.forEach((error) => {
         summary.uniqueErrors.set(
@@ -229,8 +226,6 @@ export function summarizeErrors(
         );
       });
     }
-
-    //detail error
     if (failCase.errorDetails) {
       const detailErrors = Array.isArray(failCase.errorDetails)
         ? failCase.errorDetails
@@ -245,4 +240,18 @@ export function summarizeErrors(
   });
 
   return summary;
+}
+
+export function getValueByRecursion(obj: any, path: string): any {
+  if (!obj || typeof obj !== 'object') return undefined;
+  const keys = path.split('.');
+  let current = obj;
+  for (const key of keys) {
+    if (current && current[key] !== undefined) {
+      current = current[key];
+    } else {
+      return undefined;
+    }
+  }
+  return current;
 }

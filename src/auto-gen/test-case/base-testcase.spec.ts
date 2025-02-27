@@ -10,42 +10,41 @@ describe('Template testcase', () => {
   let passedLogic = 0;
   const failedTests = [];
   let passedTests = 0;
-  let headers;
+  let headersRequest;
 
   beforeAll(async () => {
     const requestPath =
       'src/auto-gen/dtos/send-message/send-message.request.json';
     const requestConfig = readJsonFile(requestPath);
-    console.log(requestConfig);
-    executeBeforeAllSteps(requestConfig.beforeAll);
 
-    headers = {
+    await executeBeforeAllSteps(requestConfig.beforeAll);
+
+    headersRequest = {
       'Content-Type': 'application/json',
-      'x-session-token': '{{token}}',
+      'x-session-token': '{{token_0}}',
       'x-country-code': 'VN',
     };
   });
 
-  it('Test case #1 with expect errors ', async () => {
+  it('Base Test Case', async () => {
     totalTests++;
     const payloadObj = {
       workspaceId: '0',
-      channelId: '{{channelId}}',
+      channelId: '{{channelId_0}}',
       content: 'test123',
       ref: 'ref',
     };
 
     const payload = resolveJsonVariables(payloadObj);
-    console.log(payload);
+
     try {
       const response = await fetch(`${globalThis.url}/Message/SendMessage`, {
         method: 'post',
-        headers: resolveJsonVariables(headers),
+        headers: resolveJsonVariables(headersRequest),
         body: JSON.stringify(payload),
       });
 
       const data = await response.json();
-
       if (response.status === 201) {
         expect(data.ok).toEqual(true);
         expect(data.data).not.toBeNull();
@@ -128,7 +127,7 @@ describe('Template testcase', () => {
     }
   });
 
-  afterAll(() => {
+  afterAll(async () => {
     const folderPath = path.join(__dirname, '../reports');
 
     if (!fs.existsSync(folderPath)) {
@@ -172,6 +171,9 @@ describe('Template testcase', () => {
     fs.writeFileSync(resultFilePath, resultContent, 'utf-8');
     console.log(`Success: ${resultFilePath}`);
 
-    const deleteMessageForEveryone = executeDelete(["deleteMessageForEveryone('0', {{channelId}}, {{messageId}})"])
+    await executeDelete(
+      ["deleteMessageForEveryone('0', {{channelId_0}}, {{messageId}})"],
+      headersRequest,
+    );
   });
 });

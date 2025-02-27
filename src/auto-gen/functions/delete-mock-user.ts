@@ -1,19 +1,18 @@
-import axios from "axios";
+import axios from 'axios';
 
 export async function deleteMockUser(prefix) {
   // Giả lập logic tạo channel và trả về channelId
 
-   try {
+  try {
     const baseUrl = `${globalThis.urls}/InternalFaker/DeleteMockedUsers?prefix=${prefix}`;
-    
+
     const response = await axios.delete(baseUrl, {});
 
     console.log(response.data);
     if (response.data.ok === true) {
-        return {
-            "ok": true
-        }
-    
+      return {
+        ok: true,
+      };
     } else {
       throw new Error('invalid response from MockUsers api');
     }

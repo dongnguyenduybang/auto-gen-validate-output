@@ -133,6 +133,10 @@ export function mapError(
 ): string[] {
   const errors: string[] = [];
 
+  if (decorators['optional'] && value === undefined) {
+    return errors;
+  }
+
   if (
     decorators['notEmpty'] &&
     (value === undefined || value === null || value === '') &&

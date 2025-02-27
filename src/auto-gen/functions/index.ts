@@ -25,8 +25,10 @@ export async function executeBeforeAllSteps(request) {
             await mockUser(prefix, quantity, badge);
             break;
           }
+
           case 'createChannel': {
             const [token, name] = args;
+
             await createChannel(token, name);
             break;
           }
@@ -41,7 +43,7 @@ export async function executeBeforeAllSteps(request) {
   }
 }
 
-export async function executeDelete(prefix){
+export async function executeDelete(prefix, headerRequest) {
   if (Array.isArray(prefix)) {
     for (const step of prefix) {
       const match = step.match(/([a-zA-Z]+)\((.*)\)/);
@@ -57,13 +59,19 @@ export async function executeDelete(prefix){
         switch (functionName) {
           case 'deleteMockUser': {
             const [prefix] = args;
-      
+
             await deleteMockUser(prefix);
             break;
           }
           case 'deleteMessageForEveryone': {
-            const [workspaceId, channelId, messageId] = args
-            await deleteMessageForEveryone(workspaceId, channelId, messageId)
+            const [workspaceId, channelId, messageId] = args;
+            await deleteMessageForEveryone(
+              workspaceId,
+              channelId,
+              messageId,
+              headerRequest,
+            );
+            break;
           }
           default:
             console.log('Invalid step:', step);
