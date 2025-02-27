@@ -54,6 +54,8 @@ describe('Template testcase', () => {
         if (validateLogic.isValid === true) {
           expect(validateLogic.isValid).toEqual(true);
           passedLogic++;
+          passedTests++;
+          console.log('validate successfully')
         } else {
           failedTests.push({
             testcase: 1,

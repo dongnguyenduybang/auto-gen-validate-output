@@ -112,6 +112,7 @@ function genTestCase(
                   expect(validateLogic.isValid).toEqual(true)
                   passedLogic++
                   passedTests++
+                  console.log('validate successfully')
                 }else {
                   failedTests.push({
                     testcase:${index + 1},

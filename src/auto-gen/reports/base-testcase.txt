@@ -4,7 +4,7 @@
                 Endpoint: /Message/SendMessage
                 Summary: 
                 Total Tests: 1
-                Passed Tests: 0
+                Passed Tests: 1
                 Failed Tests: 0
                 Status Code:
                 201: 1
