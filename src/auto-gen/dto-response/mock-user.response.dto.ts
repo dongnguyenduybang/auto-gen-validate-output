@@ -1,4 +1,4 @@
-import { IsDefined, IsArray, IsBoolean } from 'class-validator';
+import { IsDefined, IsArray, IsBoolean } from '../decorator/dto-decorator';
 
 export class MockUserDTOResponse {
   @IsDefined()

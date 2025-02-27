@@ -4,6 +4,10 @@ import path from 'path';
 import { readJsonFile, summarizeErrors, summaryFields } from '../helps/utils';
 import { resolveJsonVariables } from '../helps/get-resolve-variables';
 import { executeBeforeAllSteps, executeDelete } from '../functions';
+import { plainToClass } from 'class-transformer';
+import { MockUserDTOResponse } from '../dto-response/mock-user.response.dto';
+import { SendMessageResponseDTO } from '../dto-response/send-message.response.dto';
+import { validate } from 'class-validator';
 
 describe('Template testcase', () => {
   let totalTests = 0;
@@ -21,7 +25,7 @@ describe('Template testcase', () => {
 
     headersRequest = {
       'Content-Type': 'application/json',
-      'x-session-token': '{{token_0}}',
+      'x-session-token': '{{token}}',
       'x-country-code': 'VN',
     };
   });
@@ -49,21 +53,30 @@ describe('Template testcase', () => {
         expect(data.ok).toEqual(true);
         expect(data.data).not.toBeNull();
 
-        const validateLogic = validateSendMessageResponse(data, payload);
-
-        if (validateLogic.isValid === true) {
-          expect(validateLogic.isValid).toEqual(true);
-          passedLogic++;
-          passedTests++;
-          console.log('validate successfully')
-        } else {
-          failedTests.push({
-            testcase: 1,
-            errorDetails: validateLogic.errors || [],
+        const dtoInstance = plainToClass(SendMessageResponseDTO, data);
+        const validationErrors = await validate(dtoInstance);
+        if(validationErrors.length > 0 ){
+          validationErrors.forEach((error) => {
+            console.log(`Field "${error.property}" ${Object.values(error.constraints).join(', ')}`);
           });
+        }else {
+          const validateLogic = validateSendMessageResponse(dtoInstance, payload);
 
-          throw new Error('Validate logic failed');
+          if (validateLogic.isValid === true) {
+            expect(validateLogic.isValid).toEqual(true);
+            passedLogic++;
+            passedTests++;
+            console.log('validate successfully')
+          } else {
+            failedTests.push({
+              testcase: 1,
+              errorDetails: validateLogic.errors || [],
+            });
+  
+            throw new Error('Validate logic failed');
+          }
         }
+       
       } else if (response.status === 400) {
         const expectJson = [].sort();
         const expectDetails = Array.isArray(data?.error?.details)

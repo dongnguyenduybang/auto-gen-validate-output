@@ -68,6 +68,7 @@ function genTestCase(
     import { summarizeErrors, summaryFields } from '../helps/utils';
     import { executeBeforeAllSteps, executeDelete } from '../functions';
     import { resolveJsonVariables } from '../helps/get-resolve-variables';
+    import { plainToClass } from 'class-transformer';
 
     describe('Testcase for ${className}', () => {
         let totalTests = 0;
@@ -105,8 +106,8 @@ function genTestCase(
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validate${classNameCapitalized}Response(data, payload)
+                const dtoInstance = plainToClass(${classNameCapitalized}DTOResponse, response);
+                const validateLogic = validate${classNameCapitalized}Response(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
