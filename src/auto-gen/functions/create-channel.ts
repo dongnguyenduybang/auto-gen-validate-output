@@ -1,11 +1,6 @@
 import axios from 'axios';
-import { countTokens } from '../helps/utils';
-
 export async function createChannel(token: string, name: string) {
   try {
-    const quantityUser = countTokens();
-    //nếu số lượng token từ mock user = 1 => k thêm index phía sau  và ngược lại
-    if (quantityUser === 1) {
       if (!token) {
         throw new Error('token not found in global var');
       }
@@ -15,35 +10,13 @@ export async function createChannel(token: string, name: string) {
       const headers = { 'x-session-token': token };
 
       const response = await axios.post(baseUrl, payload, { headers });
-
       if (response.data.data.channel) {
         const channelId = response.data.data.channel.channelId;
         globalThis.globalVar.set('channelId', channelId);
+
       } else {
         throw new Error('invalid response CreateChannel api');
       }
-    } else {
-      let index = 0;
-
-      while (globalThis.globalVar.has(`token_${index}`)) {
-        const token = globalThis.globalVar.get(`token_${index}`);
-        const channelName = `${name}${index}`;
-        const baseUrl = `${globalThis.urls}/Channel/CreateChannel`;
-        const payload = { workspaceId: '0', name: channelName };
-        const headers = { 'x-session-token': token };
-
-        const response = await axios.post(baseUrl, payload, { headers });
-
-        if (response.data.data.channel) {
-          const channelId = response.data.data.channel.channelId;
-          globalThis.globalVar.set(`channelId_${index}`, channelId);
-        } else {
-          throw new Error('invalid response CreateChannel api');
-        }
-
-        index++;
-      }
-    }
   } catch (error) {
     console.error('error in createChannel:', error);
 
