@@ -8,7 +8,6 @@ export function validateMockChannelResponse(
 ): ValidationResult {
 
   const errors: string[] = [];
-  console.log(response)
   if (response.ok !== true) {
     errors.push('Field "ok" must be true');
   }

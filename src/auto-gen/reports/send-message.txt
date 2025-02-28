@@ -4,19 +4,18 @@ Host: https://api-sb11.rpc.ziichat.dev
 Endpoint: /Message/SendMessage
 Summary: 
 Total Tests: 108
-Passed Tests: 1
-Failed Tests: 107
+Passed Tests: 3
+Failed Tests: 105
 Status Code:
-  201: 0
+  201: 2
   400: 3
   403: 96
   404: 0
-  500: 8
+  500: 6
 Uniques Error:
   Could not resolve permission type: 96 
  content's byte length must fall into (1, 6000) range: 3 
  TypeError: value.trim is not a function: 6 
- [message] [0] Field "createTime" must be format ISO string: 2 
  
 Failed Test Details:
 
@@ -644,22 +643,10 @@ Failed Test Details:
   Extra Errors: ''
   Detail Errors: ["TypeError: value.trim is not a function"]
                   
-- Testcase #105
-  Missing Errors: ''
-  Status Code: ''
-  Extra Errors: ''
-  Detail Errors: ["[message] [0] Field \"createTime\" must be format ISO string"]
-                  
 - Testcase #107
   Missing Errors: ''
   Status Code: 500
   Extra Errors: ''
   Detail Errors: ["TypeError: value.trim is not a function"]
-                  
-- Testcase #108
-  Missing Errors: ''
-  Status Code: ''
-  Extra Errors: ''
-  Detail Errors: ["[message] [0] Field \"createTime\" must be format ISO string"]
                   
                   

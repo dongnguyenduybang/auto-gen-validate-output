@@ -10,9 +10,7 @@ export async function deleteMockUser(prefix) {
 
     console.log(response.data);
     if (response.data.ok === true) {
-      return {
-        ok: true,
-      };
+      console.log('delete mock user successfully');
     } else {
       throw new Error('invalid response from MockUsers api');
     }
