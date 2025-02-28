@@ -1,10 +1,10 @@
 
-=== Test Reports for DTO "mock-user" ===
+=== Test Reports for DTO "mock-channel" ===
 Host: https://api-sb11.rpc.ziichat.dev
-Endpoint: /InternalFaker/MockUsers
+Endpoint: /InternalFaker/MockChannels
 Summary: 
-Total Tests: 96
-Passed Tests: 95
+Total Tests: 1
+Passed Tests: 0
 Failed Tests: 1
 Status Code:
   201: 0
@@ -13,14 +13,14 @@ Status Code:
   404: 0
   500: 1
 Uniques Error:
-  Array "data" must contain exactly 1 objects: 1 
+  Field "data" must contain exactly 1 objects: 1 
  
 Failed Test Details:
 
-- Testcase #64
+- Testcase #562
   Missing Errors: ''
   Status Code: ''
   Extra Errors: ''
-  Detail Errors: ["Array \"data\" must contain exactly 1 objects"]
+  Detail Errors: ["Field \"data\" must contain exactly 1 objects"]
                   
                   

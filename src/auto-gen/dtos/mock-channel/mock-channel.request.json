@@ -13,8 +13,8 @@
       "totalMessages": 1,
       "typeChannel": 0
     },
-    "saga": [
-      "mockUser('testSaga', 1, 0)",
-      "createChannel({{userId}}, 'Test Channel')"
-  ]
-  }
+    "beforeAll": [
+      "mockUser('testMockchannel', 1, 0)"
+    ],
+    "afterAll": ["deleteMockChannel({{prefix}}, '0')"]
+  } 

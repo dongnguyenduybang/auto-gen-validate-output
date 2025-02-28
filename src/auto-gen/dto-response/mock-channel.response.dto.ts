@@ -1,42 +1,30 @@
-import {
-  IsOptional,
-  IsDefined,
-  IsString,
-  IsNotEmpty,
-  IsNumber,
-  Min,
-  Max,
-} from 'class-validator';
+import { IsString, IsBoolean, IsArray, ValidateNested, IsNotEmpty } from 'class-validator';
+import { Type } from 'class-transformer';
+
+export class ChannelDTO {
+    @IsString()
+    @IsNotEmpty()
+    channelId: string;
+
+    @IsString()
+    name?: string;
+
+    @IsString()
+    @IsNotEmpty()
+    ownerId: string;
+
+    @IsArray()
+    messageIds: string[];
+
+    @IsArray()
+    memberIds?: string[];
+}
 
 export class MockChannelDTOResponse {
-  @IsOptional()
-  @IsDefined()
-  @IsString()
-  @IsNotEmpty()
-  userId: string;
+    @IsBoolean()
+    ok: boolean;
 
-  @IsDefined()
-  @IsString()
-  @IsNotEmpty()
-  username: string;
-
-  @IsDefined()
-  @IsString()
-  @IsNotEmpty()
-  token: string;
-
-  @IsDefined()
-  @IsString()
-  @IsNotEmpty()
-  securityKey: string;
-
-  @IsDefined()
-  @IsString()
-  @IsNotEmpty()
-  recoverKey: string;
-
-  @IsNumber()
-  @Min(0)
-  @Max(3)
-  badge: number;
+    @ValidateNested({ each: true })
+    @Type(() => ChannelDTO)
+    data: ChannelDTO[];
 }

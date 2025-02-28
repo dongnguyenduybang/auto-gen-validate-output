@@ -1,6 +1,6 @@
 import {
+  IsDefined,
   IsNotEmpty,
-  IsNotNull,
   IsNumber,
   IsString,
   Max,
@@ -10,15 +10,16 @@ import {
 export class MockMessageDTO {
   @IsString()
   @IsNotEmpty()
+  @IsDefined()
   workspaceId?: string = '';
 
   @IsString()
   @IsNotEmpty()
+  @IsDefined()
   channelId?: string = '';
 
   @IsNumber()
   @IsNotEmpty()
-  @IsNotNull()
   @Min(1)
   @Max(100)
   quantity?: number = 0;

@@ -5,9 +5,12 @@ import { readJsonFile, summarizeErrors, summaryFields } from '../helps/utils';
 import { resolveJsonVariables } from '../helps/get-resolve-variables';
 import { executeBeforeAllSteps, executeDelete } from '../functions';
 import { plainToClass } from 'class-transformer';
-import { MockUserDTOResponse } from '../dto-response/mock-user.response.dto';
-import { SendMessageResponseDTO } from '../dto-response/send-message.response.dto';
 import { validate } from 'class-validator';
+import { validateMockChannelResponse } from '../validates/mock-channel/validate-mock-channel';
+import { MockMessageDTOResponse } from '../dto-response/mock-message.response.dto';
+import { validateMockMessageResponse } from '../validates/mock-message/validate-mock-message';
+import { MockUserDTOResponse } from '../dto-response/mock-user.response.dto';
+import { validateMockUserResponse } from '../validates/mock-user/validate-mock-user';
 
 describe('Template testcase', () => {
   let totalTests = 0;
@@ -15,34 +18,35 @@ describe('Template testcase', () => {
   const failedTests = [];
   let passedTests = 0;
   let headersRequest;
+  let payload
 
   beforeAll(async () => {
     const requestPath =
-      'src/auto-gen/dtos/send-message/send-message.request.json';
+      'src/auto-gen/dtos/mock-user/mock-user.request.json';
     const requestConfig = readJsonFile(requestPath);
 
     await executeBeforeAllSteps(requestConfig.beforeAll);
 
     headersRequest = {
-      'Content-Type': 'application/json',
-      'x-session-token': '{{token}}',
-      'x-country-code': 'VN',
+      "Content-Type": "application/json",
+      // "x-user-id": "{{userId}}",
+      // "x-session-token": "{{token}}",
+      // "x-country-code": "VN"
     };
   });
 
   it('Base Test Case', async () => {
     totalTests++;
     const payloadObj = {
-      workspaceId: '0',
-      channelId: '{{channelId}}',
-      content: 'test123',
-      ref: 'ref',
+      "badge": 0,
+      "prefix": "duy12345",
+      "quantity": 1
     };
 
-    const payload = resolveJsonVariables(payloadObj);
+    payload = resolveJsonVariables(payloadObj);
 
     try {
-      const response = await fetch(`${globalThis.url}/Message/SendMessage`, {
+      const response = await fetch(`${globalThis.url}/InternalFaker/MockUsers`, {
         method: 'post',
         headers: resolveJsonVariables(headersRequest),
         body: JSON.stringify(payload),
@@ -50,17 +54,19 @@ describe('Template testcase', () => {
 
       const data = await response.json();
       if (response.status === 201) {
+
         expect(data.ok).toEqual(true);
         expect(data.data).not.toBeNull();
 
-        const dtoInstance = plainToClass(SendMessageResponseDTO, data);
+        const dtoInstance = plainToClass(MockUserDTOResponse, data);
         const validationErrors = await validate(dtoInstance);
-        if(validationErrors.length > 0 ){
+        if (validationErrors.length > 0) {
           validationErrors.forEach((error) => {
             console.log(`Field "${error.property}" ${Object.values(error.constraints).join(', ')}`);
           });
-        }else {
-          const validateLogic = validateSendMessageResponse(dtoInstance, payload);
+        } else {
+
+          const validateLogic = validateMockUserResponse(dtoInstance, payload);
 
           if (validateLogic.isValid === true) {
             expect(validateLogic.isValid).toEqual(true);
@@ -72,11 +78,10 @@ describe('Template testcase', () => {
               testcase: 1,
               errorDetails: validateLogic.errors || [],
             });
-  
             throw new Error('Validate logic failed');
           }
         }
-       
+
       } else if (response.status === 400) {
         const expectJson = [].sort();
         const expectDetails = Array.isArray(data?.error?.details)
@@ -135,9 +140,10 @@ describe('Template testcase', () => {
           code: 403,
           errorDetails: 'Could not resolve permission type',
         });
-        throw new Error(error.message || 'unknown error');
+        throw new Error(error.message);
       } else {
-        throw new Error(error.message || 'unknown error');
+
+        throw new Error(error);
       }
     }
   });
@@ -165,20 +171,20 @@ describe('Template testcase', () => {
                 500: ${summary.statusCodes[500] || 0}
                 Uniques Error:
                 ${Array.from(summary.uniqueErrors.entries())
-                  .map(([error, count]) => `${error}: ${count}`)
-                  .join('')}
+        .map(([error, count]) => `${error}: ${count}`)
+        .join('')}
                 Failed Test Details:
                 ${failedTests
-                  .map(
-                    (failCase) => `
+        .map(
+          (failCase) => `
                 - Testcase #${failCase.testcase}
                 Missing Errors: ${failCase.missing ? JSON.stringify(failCase.missing) : "''"}
                 Status Code: ${failCase.code ? JSON.stringify(failCase.code) : "''"}
                 Extra Errors: ${failCase.extra ? JSON.stringify(failCase.extra) : "''"}
                 Detail Errors: ${failCase.errorDetails ? JSON.stringify(failCase.errorDetails) : "''"}
                                 `,
-                  )
-                  .join('')}
+        )
+        .join('')}
                                 `;
 
     const resultFilePath = path.join(folderPath, 'base-testcase.txt');
@@ -186,9 +192,14 @@ describe('Template testcase', () => {
     fs.writeFileSync(resultFilePath, resultContent, 'utf-8');
     console.log(`Success: ${resultFilePath}`);
 
-    await executeDelete(
-      ["deleteMessageForEveryone('0', {{channelId}}, {{messageId}})"],
-      headersRequest,
-    );
+    // if (payload.typeChannel === 0) {
+    //   await executeDelete(
+    //     ["deleteMockChannel({{prefix}}, '0')"],
+    //     headersRequest,
+    //   );
+    // } else {
+    //   console.log('type channel must be 1-n')
+    // }
+
   });
 });

@@ -1,9 +1,10 @@
-import { IsBoolean, IsArray } from 'class-validator';
+import { IsBoolean, IsArray, IsString } from 'class-validator';
 
 export class MockMessageDTOResponse {
   @IsBoolean()
-  ok?: boolean;
+  ok: boolean;
 
   @IsArray()
+  @IsString({ each: true }) 
   data: string[];
 }

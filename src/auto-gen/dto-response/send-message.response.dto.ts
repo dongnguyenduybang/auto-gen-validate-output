@@ -1,7 +1,6 @@
 import { IsBoolean, IsDefined, ValidateNested, IsArray, IsString, IsNumber, IsOptional, IsObject } from 'class-validator';
 import { Type } from 'class-transformer';
 
-// DTO cho phần profile trong users
 export class ProfileDTO {
   @IsString()
   avatar: string;
@@ -19,7 +18,6 @@ export class ProfileDTO {
   userBadgeType: number;
 }
 
-// DTO cho phần presenceData trong users
 export class PresenceDataDTO {
   @IsString()
   lastUpdateTime: string;
@@ -31,7 +29,6 @@ export class PresenceDataDTO {
   presenceState: number;
 }
 
-// DTO cho phần users trong includes
 export class UserDTO {
   @IsString()
   userId: string;
@@ -57,7 +54,6 @@ export class UserDTO {
   presenceData: PresenceDataDTO;
 }
 
-// DTO cho phần channels trong includes
 export class ChannelDTO {
   @IsString()
   workspaceId: string;
@@ -90,7 +86,6 @@ export class ChannelDTO {
   updateTime: string;
 }
 
-// DTO cho phần roles trong members
 export class RoleDTO {
   @IsString()
   role: string;
@@ -99,7 +94,6 @@ export class RoleDTO {
   weight: number;
 }
 
-// DTO cho phần members trong includes
 export class MemberDTO {
   @IsString()
   workspaceId: string;
@@ -128,7 +122,6 @@ export class MemberDTO {
   updateTime: string;
 }
 
-// DTO cho phần channelMetadata trong includes
 export class ChannelMetadataDTO {
   @IsNumber()
   unreadCount: number;
@@ -149,7 +142,6 @@ export class ChannelMetadataDTO {
   channelId: string;
 }
 
-// DTO cho phần message trong data
 export class MessageDTO {
   @IsString()
   workspaceId: string;
@@ -203,7 +195,6 @@ export class MessageDTO {
   ref: string;
 }
 
-// DTO cho phần includes
 export class IncludesDTO {
   @ValidateNested({ each: true })
   @Type(() => UserDTO)
@@ -222,15 +213,13 @@ export class IncludesDTO {
   channelMetadata: ChannelMetadataDTO[];
 }
 
-// DTO cho phần data
 export class DataDTO {
   @ValidateNested()
   @Type(() => MessageDTO)
   message: MessageDTO;
 }
 
-// DTO tổng thể cho response
-export class SendMessageResponseDTO {
+export class SendMessageDTOResponse {
   @IsBoolean()
   ok: boolean;
 

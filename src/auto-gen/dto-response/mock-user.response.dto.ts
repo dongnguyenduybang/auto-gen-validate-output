@@ -1,18 +1,32 @@
-import { IsDefined, IsArray, IsBoolean } from '../decorator/dto-decorator';
+import { Type } from 'class-transformer';
+import { IsBoolean, IsNumber, IsString, ValidateNested } from 'class-validator';
+
+export class UserDTO {
+
+    @IsString()
+    userId: string;
+
+    @IsString()
+    username?: string;
+
+    @IsString()
+    token: string;
+
+    @IsString()
+    securityKey: string;
+
+    @IsString()
+    recoverKey?: string;
+
+    @IsNumber()
+    badge: number;
+}
 
 export class MockUserDTOResponse {
-  @IsDefined()
-  @IsBoolean()
-  ok: boolean;
+    @IsBoolean()
+    ok: boolean;
 
-  @IsDefined()
-  @IsArray()
-  data: Array<{
-    userId: string;
-    username: string;
-    token: string;
-    securityKey: string;
-    recoverKey: string;
-    badge: number;
-  }>;
+    @ValidateNested({ each: true })
+    @Type(() => UserDTO)
+    data: UserDTO[];
 }

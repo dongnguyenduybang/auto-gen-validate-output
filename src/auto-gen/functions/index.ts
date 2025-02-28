@@ -1,6 +1,7 @@
 import { resolveVariables } from '../helps/get-resolve-variables';
 import { createChannel } from './create-channel';
 import { deleteMessageForEveryone } from './delete-message-for-everyone';
+import { deleteMockChannel } from './delete-mock-channel';
 import { deleteMockUser } from './delete-mock-user';
 import { mockUser } from './mock-user';
 
@@ -76,6 +77,11 @@ export async function executeDelete(prefix, headerRequest) {
               messageId,
               headerRequest,
             );
+            break;
+          }
+          case 'deleteMockChannel': {
+            const [prefix, workspaceId ] = args;
+            await deleteMockChannel(prefix, workspaceId , headerRequest)
             break;
           }
           default:

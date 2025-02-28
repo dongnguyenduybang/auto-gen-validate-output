@@ -1,0 +1,353 @@
+
+=== Test Reports for DTO "mock-message" ===
+Host: https://api-sb11.rpc.ziichat.dev
+Endpoint: /InternalFaker/MockMessages
+Summary: 
+Total Tests: 54
+Passed Tests: 0
+Failed Tests: 54
+Status Code:
+  201: 0
+  400: 54
+  403: 0
+  404: 0
+  500: 0
+Uniques Error:
+  channelId must be a string: 36 
+ channelId should not be null or undefined: 54 
+ workspaceId must be a string: 36 
+ workspaceId should not be null or undefined: 54 
+ quantity should not be empty: 36 
+ quantity must be a number conforming to the specified constraints: 27 
+ quantity must not be greater than 100: 18 
+ quantity must not be less than 1: 18 
+ channelId should not be empty: 36 
+ workspaceId should not be empty: 36 
+ 
+Failed Test Details:
+
+- Testcase #1
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be null or undefined","workspaceId must be a string","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #2
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be null or undefined","workspaceId must be a string","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #3
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be null or undefined","quantity should not be empty","workspaceId must be a string","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #4
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be null or undefined","quantity must be a number conforming to the specified constraints","quantity must not be greater than 100","quantity must not be less than 1","quantity should not be empty","workspaceId must be a string","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #5
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be null or undefined","quantity must be a number conforming to the specified constraints","quantity must not be greater than 100","quantity should not be empty","workspaceId must be a string","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #6
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be null or undefined","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity should not be empty","workspaceId must be a string","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #7
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId should not be empty","channelId should not be null or undefined","workspaceId must be a string","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #8
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId should not be empty","channelId should not be null or undefined","workspaceId must be a string","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #9
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId should not be empty","channelId should not be null or undefined","quantity should not be empty","workspaceId must be a string","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #10
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId should not be empty","channelId should not be null or undefined","quantity must be a number conforming to the specified constraints","quantity must not be greater than 100","quantity must not be less than 1","quantity should not be empty","workspaceId must be a string","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #11
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId should not be empty","channelId should not be null or undefined","quantity must be a number conforming to the specified constraints","quantity must not be greater than 100","quantity should not be empty","workspaceId must be a string","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #12
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId should not be empty","channelId should not be null or undefined","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity should not be empty","workspaceId must be a string","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #13
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be empty","channelId should not be null or undefined","workspaceId must be a string","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #14
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be empty","channelId should not be null or undefined","workspaceId must be a string","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #15
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be empty","channelId should not be null or undefined","quantity should not be empty","workspaceId must be a string","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #16
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be empty","channelId should not be null or undefined","quantity must be a number conforming to the specified constraints","quantity must not be greater than 100","quantity must not be less than 1","quantity should not be empty","workspaceId must be a string","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #17
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be empty","channelId should not be null or undefined","quantity must be a number conforming to the specified constraints","quantity must not be greater than 100","quantity should not be empty","workspaceId must be a string","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #18
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be empty","channelId should not be null or undefined","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity should not be empty","workspaceId must be a string","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #19
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be null or undefined","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #20
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be null or undefined","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #21
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be null or undefined","quantity should not be empty","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #22
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be null or undefined","quantity must be a number conforming to the specified constraints","quantity must not be greater than 100","quantity must not be less than 1","quantity should not be empty","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #23
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be null or undefined","quantity must be a number conforming to the specified constraints","quantity must not be greater than 100","quantity should not be empty","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #24
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be null or undefined","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity should not be empty","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #25
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId should not be empty","channelId should not be null or undefined","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #26
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId should not be empty","channelId should not be null or undefined","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #27
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId should not be empty","channelId should not be null or undefined","quantity should not be empty","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #28
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId should not be empty","channelId should not be null or undefined","quantity must be a number conforming to the specified constraints","quantity must not be greater than 100","quantity must not be less than 1","quantity should not be empty","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #29
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId should not be empty","channelId should not be null or undefined","quantity must be a number conforming to the specified constraints","quantity must not be greater than 100","quantity should not be empty","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #30
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId should not be empty","channelId should not be null or undefined","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity should not be empty","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #31
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be empty","channelId should not be null or undefined","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #32
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be empty","channelId should not be null or undefined","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #33
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be empty","channelId should not be null or undefined","quantity should not be empty","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #34
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be empty","channelId should not be null or undefined","quantity must be a number conforming to the specified constraints","quantity must not be greater than 100","quantity must not be less than 1","quantity should not be empty","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #35
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be empty","channelId should not be null or undefined","quantity must be a number conforming to the specified constraints","quantity must not be greater than 100","quantity should not be empty","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #36
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be empty","channelId should not be null or undefined","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity should not be empty","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #37
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be null or undefined","workspaceId must be a string","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #38
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be null or undefined","workspaceId must be a string","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #39
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be null or undefined","quantity should not be empty","workspaceId must be a string","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #40
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be null or undefined","quantity must be a number conforming to the specified constraints","quantity must not be greater than 100","quantity must not be less than 1","quantity should not be empty","workspaceId must be a string","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #41
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be null or undefined","quantity must be a number conforming to the specified constraints","quantity must not be greater than 100","quantity should not be empty","workspaceId must be a string","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #42
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be null or undefined","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity should not be empty","workspaceId must be a string","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #43
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId should not be empty","channelId should not be null or undefined","workspaceId must be a string","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #44
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId should not be empty","channelId should not be null or undefined","workspaceId must be a string","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #45
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId should not be empty","channelId should not be null or undefined","quantity should not be empty","workspaceId must be a string","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #46
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId should not be empty","channelId should not be null or undefined","quantity must be a number conforming to the specified constraints","quantity must not be greater than 100","quantity must not be less than 1","quantity should not be empty","workspaceId must be a string","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #47
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId should not be empty","channelId should not be null or undefined","quantity must be a number conforming to the specified constraints","quantity must not be greater than 100","quantity should not be empty","workspaceId must be a string","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #48
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId should not be empty","channelId should not be null or undefined","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity should not be empty","workspaceId must be a string","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #49
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be empty","channelId should not be null or undefined","workspaceId must be a string","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #50
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be empty","channelId should not be null or undefined","workspaceId must be a string","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #51
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be empty","channelId should not be null or undefined","quantity should not be empty","workspaceId must be a string","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #52
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be empty","channelId should not be null or undefined","quantity must be a number conforming to the specified constraints","quantity must not be greater than 100","quantity must not be less than 1","quantity should not be empty","workspaceId must be a string","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #53
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be empty","channelId should not be null or undefined","quantity must be a number conforming to the specified constraints","quantity must not be greater than 100","quantity should not be empty","workspaceId must be a string","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+- Testcase #54
+  Missing Errors: []
+  Status Code: 400
+  Extra Errors: ["channelId must be a string","channelId should not be empty","channelId should not be null or undefined","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity should not be empty","workspaceId must be a string","workspaceId should not be empty","workspaceId should not be null or undefined"]
+  Detail Errors: ''
+                  
+                  

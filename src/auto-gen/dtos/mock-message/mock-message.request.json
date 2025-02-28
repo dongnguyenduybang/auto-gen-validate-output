@@ -2,13 +2,16 @@
     "method": "POST",
     "path": "/InternalFaker/MockMessages",
     "headers": {
-        "x-country-code": "VN"
+     
 
     },
     "payload": {
-        "workspaceId": "{{workspaceId}}",
+        "workspaceId": "0",
         "channelId":  "{{channelId}}",
         "quantity": 1
     },
-    "saga": [ "mockChannel('duy12345',1, 1, 1)"] 
+    "beforeAll": [
+        "mockUser('duy123456',1, 0)", 
+        "createChannel({{token}}, 'channel 1')"
+      ]
   }

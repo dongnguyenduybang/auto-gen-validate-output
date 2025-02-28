@@ -5,6 +5,8 @@
     import { summarizeErrors, summaryFields } from '../helps/utils';
     import { executeBeforeAllSteps, executeDelete } from '../functions';
     import { resolveJsonVariables } from '../helps/get-resolve-variables';
+    import { plainToClass } from 'class-transformer';
+    import { SendMessageDTOResponse } from '../dto-response/send-message.response.dto';
 
     describe('Testcase for send-message', () => {
         let totalTests = 0;
@@ -15,9 +17,9 @@
 
         beforeAll( async () => {
 
-          await executeBeforeAllSteps(["mockUser('duy123456',3, 0)","createChannel({{token_1}}, 'channel 1')"])
+          await executeBeforeAllSteps(["mockUser('duy123456',1, 0)","createChannel({{token}}, 'channel 1')"])
 
-          headerRequest = {"Content-Type":"application/json","x-session-token":"{{token_1}}","x-country-code":"VN"}
+          headerRequest = {"Content-Type":"application/json","x-session-token":"{{token}}","x-country-code":"VN"}
          
         })
 
@@ -40,8 +42,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -138,8 +140,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -236,8 +238,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -334,8 +336,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -432,8 +434,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -530,8 +532,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -628,8 +630,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -726,8 +728,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -824,8 +826,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -922,8 +924,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -1020,8 +1022,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -1118,8 +1120,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -1216,8 +1218,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -1314,8 +1316,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -1412,8 +1414,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -1510,8 +1512,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -1608,8 +1610,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -1706,8 +1708,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -1804,8 +1806,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -1902,8 +1904,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -2000,8 +2002,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -2098,8 +2100,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -2196,8 +2198,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -2294,8 +2296,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -2376,7 +2378,7 @@
 
           it('Test case #25 with expect errors ["workspaceId should not be empty","content should not be empty"] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":"","channelId":"{{channelId_1}}","content":""};
+            const payloadObj = {"workspaceId":"","channelId":"{{channelId}}","content":""};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -2392,8 +2394,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -2474,7 +2476,7 @@
 
           it('Test case #26 with expect errors ["workspaceId should not be empty","content should not be empty","ref should not be empty"] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":"","channelId":"{{channelId_1}}","content":"","ref":""};
+            const payloadObj = {"workspaceId":"","channelId":"{{channelId}}","content":"","ref":""};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -2490,8 +2492,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -2572,7 +2574,7 @@
 
           it('Test case #27 with expect errors ["workspaceId should not be empty","content should not be empty","ref must be a string"] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":"","channelId":"{{channelId_1}}","content":"","ref":12345};
+            const payloadObj = {"workspaceId":"","channelId":"{{channelId}}","content":"","ref":12345};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -2588,8 +2590,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -2670,7 +2672,7 @@
 
           it('Test case #28 with expect errors ["workspaceId should not be empty","content should not be empty"] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":"","channelId":"{{channelId_1}}","content":"","ref":"ref"};
+            const payloadObj = {"workspaceId":"","channelId":"{{channelId}}","content":"","ref":"ref"};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -2686,8 +2688,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -2768,7 +2770,7 @@
 
           it('Test case #29 with expect errors ["workspaceId should not be empty","content must be a string"] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":"","channelId":"{{channelId_1}}","content":12345};
+            const payloadObj = {"workspaceId":"","channelId":"{{channelId}}","content":12345};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -2784,8 +2786,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -2866,7 +2868,7 @@
 
           it('Test case #30 with expect errors ["workspaceId should not be empty","content must be a string","ref should not be empty"] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":"","channelId":"{{channelId_1}}","content":12345,"ref":""};
+            const payloadObj = {"workspaceId":"","channelId":"{{channelId}}","content":12345,"ref":""};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -2882,8 +2884,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -2964,7 +2966,7 @@
 
           it('Test case #31 with expect errors ["workspaceId should not be empty","content must be a string","ref must be a string"] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":"","channelId":"{{channelId_1}}","content":12345,"ref":12345};
+            const payloadObj = {"workspaceId":"","channelId":"{{channelId}}","content":12345,"ref":12345};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -2980,8 +2982,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -3062,7 +3064,7 @@
 
           it('Test case #32 with expect errors ["workspaceId should not be empty","content must be a string"] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":"","channelId":"{{channelId_1}}","content":12345,"ref":"ref"};
+            const payloadObj = {"workspaceId":"","channelId":"{{channelId}}","content":12345,"ref":"ref"};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -3078,8 +3080,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -3160,7 +3162,7 @@
 
           it('Test case #33 with expect errors ["workspaceId should not be empty"] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":"","channelId":"{{channelId_1}}","content":"test123123"};
+            const payloadObj = {"workspaceId":"","channelId":"{{channelId}}","content":"test123123"};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -3176,8 +3178,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -3258,7 +3260,7 @@
 
           it('Test case #34 with expect errors ["workspaceId should not be empty","ref should not be empty"] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":"","channelId":"{{channelId_1}}","content":"test123123","ref":""};
+            const payloadObj = {"workspaceId":"","channelId":"{{channelId}}","content":"test123123","ref":""};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -3274,8 +3276,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -3356,7 +3358,7 @@
 
           it('Test case #35 with expect errors ["workspaceId should not be empty","ref must be a string"] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":"","channelId":"{{channelId_1}}","content":"test123123","ref":12345};
+            const payloadObj = {"workspaceId":"","channelId":"{{channelId}}","content":"test123123","ref":12345};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -3372,8 +3374,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -3454,7 +3456,7 @@
 
           it('Test case #36 with expect errors ["workspaceId should not be empty"] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":"","channelId":"{{channelId_1}}","content":"test123123","ref":"ref"};
+            const payloadObj = {"workspaceId":"","channelId":"{{channelId}}","content":"test123123","ref":"ref"};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -3470,8 +3472,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -3568,8 +3570,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -3666,8 +3668,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -3764,8 +3766,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -3862,8 +3864,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -3960,8 +3962,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -4058,8 +4060,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -4156,8 +4158,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -4254,8 +4256,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -4352,8 +4354,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -4450,8 +4452,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -4548,8 +4550,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -4646,8 +4648,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -4744,8 +4746,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -4842,8 +4844,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -4940,8 +4942,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -5038,8 +5040,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -5136,8 +5138,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -5234,8 +5236,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -5332,8 +5334,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -5430,8 +5432,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -5528,8 +5530,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -5626,8 +5628,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -5724,8 +5726,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -5822,8 +5824,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -5904,7 +5906,7 @@
 
           it('Test case #61 with expect errors ["workspaceId must be a string","content should not be empty"] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":12345,"channelId":"{{channelId_1}}","content":""};
+            const payloadObj = {"workspaceId":12345,"channelId":"{{channelId}}","content":""};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -5920,8 +5922,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -6002,7 +6004,7 @@
 
           it('Test case #62 with expect errors ["workspaceId must be a string","content should not be empty","ref should not be empty"] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":12345,"channelId":"{{channelId_1}}","content":"","ref":""};
+            const payloadObj = {"workspaceId":12345,"channelId":"{{channelId}}","content":"","ref":""};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -6018,8 +6020,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -6100,7 +6102,7 @@
 
           it('Test case #63 with expect errors ["workspaceId must be a string","content should not be empty","ref must be a string"] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":12345,"channelId":"{{channelId_1}}","content":"","ref":12345};
+            const payloadObj = {"workspaceId":12345,"channelId":"{{channelId}}","content":"","ref":12345};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -6116,8 +6118,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -6198,7 +6200,7 @@
 
           it('Test case #64 with expect errors ["workspaceId must be a string","content should not be empty"] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":12345,"channelId":"{{channelId_1}}","content":"","ref":"ref"};
+            const payloadObj = {"workspaceId":12345,"channelId":"{{channelId}}","content":"","ref":"ref"};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -6214,8 +6216,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -6296,7 +6298,7 @@
 
           it('Test case #65 with expect errors ["workspaceId must be a string","content must be a string"] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":12345,"channelId":"{{channelId_1}}","content":12345};
+            const payloadObj = {"workspaceId":12345,"channelId":"{{channelId}}","content":12345};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -6312,8 +6314,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -6394,7 +6396,7 @@
 
           it('Test case #66 with expect errors ["workspaceId must be a string","content must be a string","ref should not be empty"] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":12345,"channelId":"{{channelId_1}}","content":12345,"ref":""};
+            const payloadObj = {"workspaceId":12345,"channelId":"{{channelId}}","content":12345,"ref":""};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -6410,8 +6412,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -6492,7 +6494,7 @@
 
           it('Test case #67 with expect errors ["workspaceId must be a string","content must be a string","ref must be a string"] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":12345,"channelId":"{{channelId_1}}","content":12345,"ref":12345};
+            const payloadObj = {"workspaceId":12345,"channelId":"{{channelId}}","content":12345,"ref":12345};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -6508,8 +6510,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -6590,7 +6592,7 @@
 
           it('Test case #68 with expect errors ["workspaceId must be a string","content must be a string"] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":12345,"channelId":"{{channelId_1}}","content":12345,"ref":"ref"};
+            const payloadObj = {"workspaceId":12345,"channelId":"{{channelId}}","content":12345,"ref":"ref"};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -6606,8 +6608,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -6688,7 +6690,7 @@
 
           it('Test case #69 with expect errors ["workspaceId must be a string"] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":12345,"channelId":"{{channelId_1}}","content":"test123123"};
+            const payloadObj = {"workspaceId":12345,"channelId":"{{channelId}}","content":"test123123"};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -6704,8 +6706,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -6786,7 +6788,7 @@
 
           it('Test case #70 with expect errors ["workspaceId must be a string","ref should not be empty"] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":12345,"channelId":"{{channelId_1}}","content":"test123123","ref":""};
+            const payloadObj = {"workspaceId":12345,"channelId":"{{channelId}}","content":"test123123","ref":""};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -6802,8 +6804,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -6884,7 +6886,7 @@
 
           it('Test case #71 with expect errors ["workspaceId must be a string","ref must be a string"] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":12345,"channelId":"{{channelId_1}}","content":"test123123","ref":12345};
+            const payloadObj = {"workspaceId":12345,"channelId":"{{channelId}}","content":"test123123","ref":12345};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -6900,8 +6902,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -6982,7 +6984,7 @@
 
           it('Test case #72 with expect errors ["workspaceId must be a string"] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":12345,"channelId":"{{channelId_1}}","content":"test123123","ref":"ref"};
+            const payloadObj = {"workspaceId":12345,"channelId":"{{channelId}}","content":"test123123","ref":"ref"};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -6998,8 +7000,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -7096,8 +7098,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -7194,8 +7196,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -7292,8 +7294,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -7390,8 +7392,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -7488,8 +7490,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -7586,8 +7588,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -7684,8 +7686,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -7782,8 +7784,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -7880,8 +7882,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -7978,8 +7980,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -8076,8 +8078,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -8174,8 +8176,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -8272,8 +8274,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -8370,8 +8372,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -8468,8 +8470,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -8566,8 +8568,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -8664,8 +8666,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -8762,8 +8764,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -8860,8 +8862,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -8958,8 +8960,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -9056,8 +9058,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -9154,8 +9156,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -9252,8 +9254,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -9350,8 +9352,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -9432,7 +9434,7 @@
 
           it('Test case #97 with expect errors ["content should not be empty"] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":"0","channelId":"{{channelId_1}}","content":""};
+            const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","content":""};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -9448,8 +9450,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -9530,7 +9532,7 @@
 
           it('Test case #98 with expect errors ["content should not be empty","ref should not be empty"] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":"0","channelId":"{{channelId_1}}","content":"","ref":""};
+            const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","content":"","ref":""};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -9546,8 +9548,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -9628,7 +9630,7 @@
 
           it('Test case #99 with expect errors ["content should not be empty","ref must be a string"] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":"0","channelId":"{{channelId_1}}","content":"","ref":12345};
+            const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","content":"","ref":12345};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -9644,8 +9646,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -9726,7 +9728,7 @@
 
           it('Test case #100 with expect errors ["content should not be empty"] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":"0","channelId":"{{channelId_1}}","content":"","ref":"ref"};
+            const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","content":"","ref":"ref"};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -9742,8 +9744,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -9824,7 +9826,7 @@
 
           it('Test case #101 with expect errors ["content must be a string"] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":"0","channelId":"{{channelId_1}}","content":12345};
+            const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","content":12345};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -9840,8 +9842,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -9922,7 +9924,7 @@
 
           it('Test case #102 with expect errors ["content must be a string","ref should not be empty"] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":"0","channelId":"{{channelId_1}}","content":12345,"ref":""};
+            const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","content":12345,"ref":""};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -9938,8 +9940,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -10020,7 +10022,7 @@
 
           it('Test case #103 with expect errors ["content must be a string","ref must be a string"] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":"0","channelId":"{{channelId_1}}","content":12345,"ref":12345};
+            const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","content":12345,"ref":12345};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -10036,8 +10038,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -10118,7 +10120,7 @@
 
           it('Test case #104 with expect errors ["content must be a string"] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":"0","channelId":"{{channelId_1}}","content":12345,"ref":"ref"};
+            const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","content":12345,"ref":"ref"};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -10134,8 +10136,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -10216,7 +10218,7 @@
 
           it('Test case #105 with expect errors [] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":"0","channelId":"{{channelId_1}}","content":"test123123"};
+            const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","content":"test123123"};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -10232,8 +10234,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -10314,7 +10316,7 @@
 
           it('Test case #106 with expect errors ["ref should not be empty"] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":"0","channelId":"{{channelId_1}}","content":"test123123","ref":""};
+            const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","content":"test123123","ref":""};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -10330,8 +10332,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -10412,7 +10414,7 @@
 
           it('Test case #107 with expect errors ["ref must be a string"] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":"0","channelId":"{{channelId_1}}","content":"test123123","ref":12345};
+            const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","content":"test123123","ref":12345};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -10428,8 +10430,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -10510,7 +10512,7 @@
 
           it('Test case #108 with expect errors [] ', async () => {
             totalTests++;
-            const payloadObj = {"workspaceId":"0","channelId":"{{channelId_1}}","content":"test123123","ref":"ref"};
+            const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","content":"test123123","ref":"ref"};
             const payload = resolveJsonVariables(payloadObj)
            try {
             const response = await fetch(`${globalThis.url}/Message/SendMessage`, 
@@ -10526,8 +10528,8 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                
-                const validateLogic = validateSendMessageResponse(data, payload)
+                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
+                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
                 
                 if(validateLogic.isValid === true){
                   expect(validateLogic.isValid).toEqual(true)
@@ -10651,7 +10653,7 @@ ${failedTests
 
                         fs.writeFileSync(resultFilePath, resultContent, 'utf-8');
                         console.log(`Success: ${resultFilePath}`);
-                        await executeDelete(undefined, headerRequest)    
+                        await executeDelete(["deleteMessageForEveryone('0', {{channelId}}, {{messageId}})"], headerRequest)    
                       });
                           
                     });

@@ -312,7 +312,7 @@
     {
         "body": {
             "workspaceId": "",
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": ""
         },
         "expects": [
@@ -323,7 +323,7 @@
     {
         "body": {
             "workspaceId": "",
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": "",
             "ref": ""
         },
@@ -336,7 +336,7 @@
     {
         "body": {
             "workspaceId": "",
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": "",
             "ref": 12345
         },
@@ -349,7 +349,7 @@
     {
         "body": {
             "workspaceId": "",
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": "",
             "ref": "ref"
         },
@@ -361,7 +361,7 @@
     {
         "body": {
             "workspaceId": "",
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": 12345
         },
         "expects": [
@@ -372,7 +372,7 @@
     {
         "body": {
             "workspaceId": "",
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": 12345,
             "ref": ""
         },
@@ -385,7 +385,7 @@
     {
         "body": {
             "workspaceId": "",
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": 12345,
             "ref": 12345
         },
@@ -398,7 +398,7 @@
     {
         "body": {
             "workspaceId": "",
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": 12345,
             "ref": "ref"
         },
@@ -410,7 +410,7 @@
     {
         "body": {
             "workspaceId": "",
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": "test123123"
         },
         "expects": [
@@ -420,7 +420,7 @@
     {
         "body": {
             "workspaceId": "",
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": "test123123",
             "ref": ""
         },
@@ -432,7 +432,7 @@
     {
         "body": {
             "workspaceId": "",
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": "test123123",
             "ref": 12345
         },
@@ -444,7 +444,7 @@
     {
         "body": {
             "workspaceId": "",
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": "test123123",
             "ref": "ref"
         },
@@ -765,7 +765,7 @@
     {
         "body": {
             "workspaceId": 12345,
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": ""
         },
         "expects": [
@@ -776,7 +776,7 @@
     {
         "body": {
             "workspaceId": 12345,
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": "",
             "ref": ""
         },
@@ -789,7 +789,7 @@
     {
         "body": {
             "workspaceId": 12345,
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": "",
             "ref": 12345
         },
@@ -802,7 +802,7 @@
     {
         "body": {
             "workspaceId": 12345,
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": "",
             "ref": "ref"
         },
@@ -814,7 +814,7 @@
     {
         "body": {
             "workspaceId": 12345,
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": 12345
         },
         "expects": [
@@ -825,7 +825,7 @@
     {
         "body": {
             "workspaceId": 12345,
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": 12345,
             "ref": ""
         },
@@ -838,7 +838,7 @@
     {
         "body": {
             "workspaceId": 12345,
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": 12345,
             "ref": 12345
         },
@@ -851,7 +851,7 @@
     {
         "body": {
             "workspaceId": 12345,
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": 12345,
             "ref": "ref"
         },
@@ -863,7 +863,7 @@
     {
         "body": {
             "workspaceId": 12345,
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": "test123123"
         },
         "expects": [
@@ -873,7 +873,7 @@
     {
         "body": {
             "workspaceId": 12345,
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": "test123123",
             "ref": ""
         },
@@ -885,7 +885,7 @@
     {
         "body": {
             "workspaceId": 12345,
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": "test123123",
             "ref": 12345
         },
@@ -897,7 +897,7 @@
     {
         "body": {
             "workspaceId": 12345,
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": "test123123",
             "ref": "ref"
         },
@@ -1194,7 +1194,7 @@
     {
         "body": {
             "workspaceId": "0",
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": ""
         },
         "expects": [
@@ -1204,7 +1204,7 @@
     {
         "body": {
             "workspaceId": "0",
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": "",
             "ref": ""
         },
@@ -1216,7 +1216,7 @@
     {
         "body": {
             "workspaceId": "0",
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": "",
             "ref": 12345
         },
@@ -1228,7 +1228,7 @@
     {
         "body": {
             "workspaceId": "0",
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": "",
             "ref": "ref"
         },
@@ -1239,7 +1239,7 @@
     {
         "body": {
             "workspaceId": "0",
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": 12345
         },
         "expects": [
@@ -1249,7 +1249,7 @@
     {
         "body": {
             "workspaceId": "0",
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": 12345,
             "ref": ""
         },
@@ -1261,7 +1261,7 @@
     {
         "body": {
             "workspaceId": "0",
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": 12345,
             "ref": 12345
         },
@@ -1273,7 +1273,7 @@
     {
         "body": {
             "workspaceId": "0",
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": 12345,
             "ref": "ref"
         },
@@ -1284,7 +1284,7 @@
     {
         "body": {
             "workspaceId": "0",
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": "test123123"
         },
         "expects": []
@@ -1292,7 +1292,7 @@
     {
         "body": {
             "workspaceId": "0",
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": "test123123",
             "ref": ""
         },
@@ -1303,7 +1303,7 @@
     {
         "body": {
             "workspaceId": "0",
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": "test123123",
             "ref": 12345
         },
@@ -1314,7 +1314,7 @@
     {
         "body": {
             "workspaceId": "0",
-            "channelId": "{{channelId_1}}",
+            "channelId": "{{channelId}}",
             "content": "test123123",
             "ref": "ref"
         },
