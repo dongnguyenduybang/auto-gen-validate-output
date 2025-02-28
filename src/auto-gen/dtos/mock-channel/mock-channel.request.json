@@ -16,5 +16,5 @@
     "beforeAll": [
       "mockUser('testMockchannel', 1, 0)"
     ],
-    "afterAll": ["deleteMockChannel({{prefix}}, '0')"]
+    "afterAll": ["deleteMockChannel({{prefix}}, '0', '0')"]
   } 

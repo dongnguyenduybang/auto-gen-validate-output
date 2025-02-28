@@ -80,8 +80,13 @@ export async function executeDelete(prefix, headerRequest) {
             break;
           }
           case 'deleteMockChannel': {
-            const [prefix, workspaceId ] = args;
-            await deleteMockChannel(prefix, workspaceId , headerRequest)
+            const [prefix, workspaceId, typeChannel ] = args;
+            if(typeChannel === '0'){
+              await deleteMockChannel(prefix, workspaceId , headerRequest)
+            }else{
+              console.log('type channel must be 1-n')
+            }
+            
             break;
           }
           default:

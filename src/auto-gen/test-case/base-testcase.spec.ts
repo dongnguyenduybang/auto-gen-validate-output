@@ -11,6 +11,7 @@ import { MockMessageDTOResponse } from '../dto-response/mock-message.response.dt
 import { validateMockMessageResponse } from '../validates/mock-message/validate-mock-message';
 import { MockUserDTOResponse } from '../dto-response/mock-user.response.dto';
 import { validateMockUserResponse } from '../validates/mock-user/validate-mock-user';
+import { MockChannelDTOResponse } from '../dto-response/mock-channel.response.dto';
 
 describe('Template testcase', () => {
   let totalTests = 0;
@@ -22,31 +23,32 @@ describe('Template testcase', () => {
 
   beforeAll(async () => {
     const requestPath =
-      'src/auto-gen/dtos/mock-user/mock-user.request.json';
+      'src/auto-gen/dtos/mock-channel/mock-channel.request.json';
     const requestConfig = readJsonFile(requestPath);
 
     await executeBeforeAllSteps(requestConfig.beforeAll);
 
     headersRequest = {
       "Content-Type": "application/json",
-      // "x-user-id": "{{userId}}",
-      // "x-session-token": "{{token}}",
-      // "x-country-code": "VN"
+      "x-user-id": "{{userId}}",
+      "x-session-token": "{{token}}",
+      "x-country-code": "VN"
     };
   });
 
   it('Base Test Case', async () => {
     totalTests++;
-    const payloadObj = {
-      "badge": 0,
+    const payloadObj =  {
       "prefix": "duy12345",
-      "quantity": 1
+      "quantity": 2,
+      "totalMessages": 1,
+      "typeChannel": 1
     };
 
     payload = resolveJsonVariables(payloadObj);
 
     try {
-      const response = await fetch(`${globalThis.url}/InternalFaker/MockUsers`, {
+      const response = await fetch(`${globalThis.url}/InternalFaker/MockChannels`, {
         method: 'post',
         headers: resolveJsonVariables(headersRequest),
         body: JSON.stringify(payload),
@@ -58,7 +60,7 @@ describe('Template testcase', () => {
         expect(data.ok).toEqual(true);
         expect(data.data).not.toBeNull();
 
-        const dtoInstance = plainToClass(MockUserDTOResponse, data);
+        const dtoInstance = plainToClass(MockChannelDTOResponse, data);
         const validationErrors = await validate(dtoInstance);
         if (validationErrors.length > 0) {
           validationErrors.forEach((error) => {
@@ -66,7 +68,7 @@ describe('Template testcase', () => {
           });
         } else {
 
-          const validateLogic = validateMockUserResponse(dtoInstance, payload);
+          const validateLogic = validateMockChannelResponse(dtoInstance, payload);
 
           if (validateLogic.isValid === true) {
             expect(validateLogic.isValid).toEqual(true);
@@ -192,14 +194,11 @@ describe('Template testcase', () => {
     fs.writeFileSync(resultFilePath, resultContent, 'utf-8');
     console.log(`Success: ${resultFilePath}`);
 
-    // if (payload.typeChannel === 0) {
-    //   await executeDelete(
-    //     ["deleteMockChannel({{prefix}}, '0')"],
-    //     headersRequest,
-    //   );
-    // } else {
-    //   console.log('type channel must be 1-n')
-    // }
+
+      await executeDelete(
+        ["deleteMockChannel({{prefix}}, '0', '1')"],
+        headersRequest,
+      )
 
   });
 });

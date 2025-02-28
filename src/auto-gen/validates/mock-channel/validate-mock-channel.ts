@@ -23,10 +23,13 @@ export function validateMockChannelResponse(
   if (!dataValidation.isValid) {
     errors.push(...dataValidation.errors.map((error) => `[data] ${error}`));
   }
-  const [firstChannel] = response.data;
+  const [firstChannel] = response.data || []
   if (errors.length === 0 && firstChannel?.name) {
     globalThis.globalVar.set('prefix', firstChannel.name);
+  }else {
+    console.log('No valid "prefix" found in channel');
   }
+
   return {
     isValid: errors.length === 0,
     errors: errors.length > 0 ? errors : null,

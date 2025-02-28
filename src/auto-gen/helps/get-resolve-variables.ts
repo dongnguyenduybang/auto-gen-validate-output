@@ -9,7 +9,8 @@ export function resolveVariables(template: string): string {
   let result = template.replace(regex, (match, content) => {
     const value = globalThis.globalVar.get(content.trim());
     if (!value) {
-      throw new Error(`Variable {{${content}}} not found`);
+      // console.warn(`Variable {{${content}}} not found. Using default value ''`);
+      return '';
     }
     return value;
   });
