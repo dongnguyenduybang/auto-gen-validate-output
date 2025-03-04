@@ -1,16 +1,31 @@
-import { IsString, IsBoolean, IsArray, ValidateNested, IsNotEmpty } from 'class-validator';
+
 import { Type } from 'class-transformer';
+import { IsArray, IsBoolean, IsDefined, IsNotEmpty, IsString, StartWith, ValidIf } from '../decorator/dto-decorator';
+
+
+export class MockChannelResponse {
+    @IsBoolean()
+    ok: boolean;
+
+    @IsArray()
+    @Type(() => ChannelDTO)
+    data: ChannelDTO[];
+}
+
 
 export class ChannelDTO {
+
     @IsString()
-    @IsNotEmpty()
     channelId: string;
 
     @IsString()
+    @IsDefined()
+    @IsNotEmpty()
+    @StartWith('prefix')
+    @ValidIf('typeChannel', '0')
     name?: string;
 
     @IsString()
-    @IsNotEmpty()
     ownerId: string;
 
     @IsArray()
@@ -20,11 +35,3 @@ export class ChannelDTO {
     memberIds?: string[];
 }
 
-export class MockChannelDTOResponse {
-    @IsBoolean()
-    ok: boolean;
-
-    @ValidateNested({ each: true })
-    @Type(() => ChannelDTO)
-    data: ChannelDTO[];
-}

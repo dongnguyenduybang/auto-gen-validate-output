@@ -62,14 +62,14 @@ function genTestCase(
     .join('');
 
   const specContent = `
-    import { validate${classNameCapitalized}Response } from '../validates/${className}/validate-${className}';
+    import { validate${classNameCapitalized} } from '../validates/${className}/validate-${className}';
     import fs from 'fs';
     import path from 'path';
     import { summarizeErrors, summaryFields } from '../helps/utils';
     import { executeBeforeAllSteps, executeDelete } from '../functions';
     import { resolveJsonVariables } from '../helps/get-resolve-variables';
     import { plainToClass } from 'class-transformer';
-    import { ${classNameCapitalized}DTOResponse } from '../dto-response/${className}.response.dto';
+    import { ${classNameCapitalized}Response } from '../dto-response/${className}.response.dto';
 
     describe('Testcase for ${className}', () => {
         let totalTests = 0;
@@ -107,23 +107,9 @@ function genTestCase(
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(${classNameCapitalized}DTOResponse, data);
-                const validateLogic = validate${classNameCapitalized}Response(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:${index + 1},
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(${classNameCapitalized}Response, data);
+                const validateLogic = await validate${classNameCapitalized}(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ${JSON.stringify(testCase.expects)}.sort()
               const expectDetails = Array.isArray(data?.error?.details)

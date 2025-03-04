@@ -1,10 +1,9 @@
-import { IsBoolean, IsArray, IsString } from 'class-validator';
+import { IsBoolean, IsArray } from '../decorator/dto-decorator';
 
-export class MockMessageDTOResponse {
+export class MockMessageResponse {
   @IsBoolean()
   ok: boolean;
 
   @IsArray()
-  @IsString({ each: true }) 
   data: string[];
 }

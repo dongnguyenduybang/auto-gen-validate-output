@@ -1,12 +1,12 @@
 
-    import { validateSendMessageResponse } from '../validates/send-message/validate-send-message';
+    import { validateSendMessage } from '../validates/send-message/validate-send-message';
     import fs from 'fs';
     import path from 'path';
     import { summarizeErrors, summaryFields } from '../helps/utils';
     import { executeBeforeAllSteps, executeDelete } from '../functions';
     import { resolveJsonVariables } from '../helps/get-resolve-variables';
     import { plainToClass } from 'class-transformer';
-    import { SendMessageDTOResponse } from '../dto-response/send-message.response.dto';
+    import { SendMessageResponse } from '../dto-response/send-message.response.dto';
 
     describe('Testcase for send-message', () => {
         let totalTests = 0;
@@ -23,7 +23,6 @@
          
         })
 
-        
           it('Test case #1 with expect errors ["workspaceId should not be empty","channelId should not be empty","content should not be empty"] ', async () => {
             totalTests++;
             const payloadObj = {"workspaceId":"","channelId":"","content":""};
@@ -42,23 +41,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:1,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty","channelId should not be empty","content should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -140,23 +125,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:2,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty","channelId should not be empty","content should not be empty","ref should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -238,23 +209,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:3,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty","channelId should not be empty","content should not be empty","ref must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -336,23 +293,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:4,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty","channelId should not be empty","content should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -434,23 +377,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:5,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty","channelId should not be empty","content must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -532,23 +461,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:6,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty","channelId should not be empty","content must be a string","ref should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -630,23 +545,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:7,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty","channelId should not be empty","content must be a string","ref must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -728,23 +629,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:8,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty","channelId should not be empty","content must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -826,23 +713,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:9,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty","channelId should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -924,23 +797,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:10,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty","channelId should not be empty","ref should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1022,23 +881,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:11,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty","channelId should not be empty","ref must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1120,23 +965,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:12,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty","channelId should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1218,23 +1049,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:13,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty","channelId must be a string","content should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1316,23 +1133,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:14,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty","channelId must be a string","content should not be empty","ref should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1414,23 +1217,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:15,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty","channelId must be a string","content should not be empty","ref must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1512,23 +1301,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:16,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty","channelId must be a string","content should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1610,23 +1385,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:17,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty","channelId must be a string","content must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1708,23 +1469,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:18,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty","channelId must be a string","content must be a string","ref should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1806,23 +1553,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:19,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty","channelId must be a string","content must be a string","ref must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1904,23 +1637,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:20,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty","channelId must be a string","content must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2002,23 +1721,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:21,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty","channelId must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2100,23 +1805,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:22,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty","channelId must be a string","ref should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2198,23 +1889,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:23,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty","channelId must be a string","ref must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2296,23 +1973,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:24,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty","channelId must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2394,23 +2057,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:25,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty","content should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2492,23 +2141,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:26,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty","content should not be empty","ref should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2590,23 +2225,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:27,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty","content should not be empty","ref must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2688,23 +2309,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:28,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty","content should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2786,23 +2393,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:29,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty","content must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2884,23 +2477,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:30,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty","content must be a string","ref should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2982,23 +2561,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:31,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty","content must be a string","ref must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3080,23 +2645,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:32,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty","content must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3178,23 +2729,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:33,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3276,23 +2813,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:34,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty","ref should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3374,23 +2897,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:35,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty","ref must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3472,23 +2981,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:36,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3570,23 +3065,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:37,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string","channelId should not be empty","content should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3668,23 +3149,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:38,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string","channelId should not be empty","content should not be empty","ref should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3766,23 +3233,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:39,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string","channelId should not be empty","content should not be empty","ref must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3864,23 +3317,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:40,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string","channelId should not be empty","content should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3962,23 +3401,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:41,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string","channelId should not be empty","content must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4060,23 +3485,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:42,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string","channelId should not be empty","content must be a string","ref should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4158,23 +3569,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:43,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string","channelId should not be empty","content must be a string","ref must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4256,23 +3653,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:44,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string","channelId should not be empty","content must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4354,23 +3737,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:45,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string","channelId should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4452,23 +3821,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:46,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string","channelId should not be empty","ref should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4550,23 +3905,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:47,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string","channelId should not be empty","ref must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4648,23 +3989,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:48,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string","channelId should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4746,23 +4073,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:49,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string","channelId must be a string","content should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4844,23 +4157,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:50,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string","channelId must be a string","content should not be empty","ref should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4942,23 +4241,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:51,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string","channelId must be a string","content should not be empty","ref must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5040,23 +4325,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:52,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string","channelId must be a string","content should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5138,23 +4409,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:53,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string","channelId must be a string","content must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5236,23 +4493,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:54,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string","channelId must be a string","content must be a string","ref should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5334,23 +4577,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:55,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string","channelId must be a string","content must be a string","ref must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5432,23 +4661,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:56,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string","channelId must be a string","content must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5530,23 +4745,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:57,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string","channelId must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5628,23 +4829,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:58,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string","channelId must be a string","ref should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5726,23 +4913,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:59,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string","channelId must be a string","ref must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5824,23 +4997,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:60,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string","channelId must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5922,23 +5081,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:61,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string","content should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6020,23 +5165,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:62,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string","content should not be empty","ref should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6118,23 +5249,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:63,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string","content should not be empty","ref must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6216,23 +5333,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:64,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string","content should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6314,23 +5417,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:65,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string","content must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6412,23 +5501,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:66,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string","content must be a string","ref should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6510,23 +5585,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:67,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string","content must be a string","ref must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6608,23 +5669,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:68,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string","content must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6706,23 +5753,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:69,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6804,23 +5837,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:70,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string","ref should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6902,23 +5921,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:71,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string","ref must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7000,23 +6005,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:72,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["workspaceId must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7098,23 +6089,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:73,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["channelId should not be empty","content should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7196,23 +6173,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:74,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["channelId should not be empty","content should not be empty","ref should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7294,23 +6257,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:75,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["channelId should not be empty","content should not be empty","ref must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7392,23 +6341,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:76,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["channelId should not be empty","content should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7490,23 +6425,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:77,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["channelId should not be empty","content must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7588,23 +6509,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:78,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["channelId should not be empty","content must be a string","ref should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7686,23 +6593,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:79,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["channelId should not be empty","content must be a string","ref must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7784,23 +6677,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:80,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["channelId should not be empty","content must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7882,23 +6761,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:81,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["channelId should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7980,23 +6845,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:82,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["channelId should not be empty","ref should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -8078,23 +6929,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:83,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["channelId should not be empty","ref must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -8176,23 +7013,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:84,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["channelId should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -8274,23 +7097,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:85,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["channelId must be a string","content should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -8372,23 +7181,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:86,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["channelId must be a string","content should not be empty","ref should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -8470,23 +7265,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:87,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["channelId must be a string","content should not be empty","ref must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -8568,23 +7349,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:88,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["channelId must be a string","content should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -8666,23 +7433,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:89,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["channelId must be a string","content must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -8764,23 +7517,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:90,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["channelId must be a string","content must be a string","ref should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -8862,23 +7601,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:91,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["channelId must be a string","content must be a string","ref must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -8960,23 +7685,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:92,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["channelId must be a string","content must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -9058,23 +7769,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:93,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["channelId must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -9156,23 +7853,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:94,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["channelId must be a string","ref should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -9254,23 +7937,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:95,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["channelId must be a string","ref must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -9352,23 +8021,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:96,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["channelId must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -9450,23 +8105,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:97,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["content should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -9548,23 +8189,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:98,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["content should not be empty","ref should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -9646,23 +8273,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:99,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["content should not be empty","ref must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -9744,23 +8357,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:100,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["content should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -9842,23 +8441,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:101,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["content must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -9940,23 +8525,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:102,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["content must be a string","ref should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -10038,23 +8609,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:103,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["content must be a string","ref must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -10136,23 +8693,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:104,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["content must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -10234,23 +8777,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:105,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  [].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -10332,23 +8861,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:106,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["ref should not be empty"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -10430,23 +8945,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:107,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["ref must be a string"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -10528,23 +9029,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(SendMessageDTOResponse, data);
-                const validateLogic = validateSendMessageResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:108,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(SendMessageResponse, data);
+                const validateLogic = await validateSendMessage(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  [].sort()
               const expectDetails = Array.isArray(data?.error?.details)

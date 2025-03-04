@@ -1,39 +1,76 @@
-import { ValidationResult } from '../../helps/structures/responses';
-import { validateLogicData } from '../validate-logic';
-import { validationRulesMockChannel } from './validate-rule-mock-channel';
+import 'reflect-metadata';
+import { getDecorators } from '../../helps/dto-helper';
 
-export function validateMockChannelResponse(
-  response: any,
-  payload?: any,
-): ValidationResult {
+export function validateMockChannel(instance: any, payload: any): string[] {
+    const errors: string[] = [];
 
-  const errors: string[] = [];
-  if (response.ok !== true) {
-    errors.push('Field "ok" must be true');
-  }
+    function validateObject(obj: any, prototype: any, path: string = ''): void {
 
-  if (payload?.quantity !== undefined && response.data.length !== payload.quantity) {
-    errors.push(`Array "data" must contain exactly ${payload.quantity} objects`);
-  }
-  const dataValidation = validateLogicData(
-    { data: response.data },
-    validationRulesMockChannel,
-    payload
-  );
-  if (!dataValidation.isValid) {
-    errors.push(...dataValidation.errors.map((error) => `[data] ${error}`));
-  }
-  const [firstChannel] = response.data || []
-  if (errors.length === 0 && firstChannel?.name) {
-    globalThis.globalVar.set('prefix', firstChannel.name);
-  }else {
-    console.log('No valid "prefix" found in channel');
-  }
+        const keys = Object.keys(obj);
 
-  return {
-    isValid: errors.length === 0,
-    errors: errors.length > 0 ? errors : null,
-  };
+        for (const key of keys) {
+            const value = obj[key];
+            const field = path ? `${path}.${key}` : key;
+
+            const decorators = getDecorators(prototype, key);
+            if (decorators.type === 'array' && Array.isArray(value)) {
+
+                if (key === 'data') {
+                    const quantityArray = payload?.quantity;
+                    if (quantityArray !== undefined && value.length !== quantityArray) {
+                        errors.push(`${field} must have exactly ${quantityArray} obj`);
+                    }
+                }
+
+                // đệ quy
+                value.forEach((item: any, index: number) => {
+
+                    const itemPrototype = Object.getPrototypeOf(item);
+                    validateObject(item, itemPrototype, `${field}[${index}]`);
+
+                });
+            }
+
+
+            //check valid if
+            if (decorators.validIf) {
+                
+                const { condition, value: expectedValue } = decorators.validIf; 
+                const payloadValue = payload[condition];
+                if (payloadValue === expectedValue) {
+
+                    if (decorators.startWith && typeof value === 'string') {
+
+                        const startWithValue = payload.prefix
+                        if (!startWithValue || !value.startsWith(startWithValue)) {
+
+                            errors.push(`${field} must start with ${startWithValue}`);
+                        }
+                    }
+                }
+            }
+
+            //check start with
+            if (decorators.startWith && typeof value === 'string') {
+                const startWithValue = payload.prefix
+                if (!startWithValue || !value.startsWith(startWithValue)) {
+                    errors.push(`${field} must start with ${startWithValue}`);
+                }
+            }
+
+            //check end with
+            if (decorators.endWith && typeof value === 'string') {
+                const endWithValue = obj[decorators.endWith];
+                if (!endWithValue || !value.endsWith(endWithValue)) {
+                    errors.push(`${field} must end with ${endWithValue}`);
+                }
+            }
+
+        }
+    }
+
+    const prototype = Object.getPrototypeOf(instance);
+    validateObject(instance, prototype);
+
+    return errors;
 }
-
-

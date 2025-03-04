@@ -1,13 +1,27 @@
+
 import { Type } from 'class-transformer';
-import { IsBoolean, IsNumber, IsString, ValidateNested } from 'class-validator';
+import { IsBoolean, IsArray, IsString, IsNumber, StartWith, EndWith, IsEnum } from '../decorator/dto-decorator';
 
-export class UserDTO {
+import { BadgeEnum } from '../enums/badge.enum';
 
+
+export class MockUserResponse {
+    @IsBoolean()
+    ok: boolean;
+
+    @IsArray()
+    @Type(() => UserData)
+    data: UserData[];
+}
+
+export class UserData {
     @IsString()
     userId: string;
 
     @IsString()
-    username?: string;
+    @StartWith('prefix')
+    @EndWith('userId')
+    username: string;
 
     @IsString()
     token: string;
@@ -16,17 +30,9 @@ export class UserDTO {
     securityKey: string;
 
     @IsString()
-    recoverKey?: string;
+    recoverKey: string;
 
-    @IsNumber()
-    badge: number;
+    @IsEnum(BadgeEnum)
+    badge: BadgeEnum;
 }
 
-export class MockUserDTOResponse {
-    @IsBoolean()
-    ok: boolean;
-
-    @ValidateNested({ each: true })
-    @Type(() => UserDTO)
-    data: UserDTO[];
-}

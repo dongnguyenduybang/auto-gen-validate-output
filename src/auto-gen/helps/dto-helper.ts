@@ -22,6 +22,7 @@ export function generateErrorCases(
   payload: Record<string, any>,
 ): any[] {
   const instance = new dtoClass();
+  console.log(instance)
   const keys = Object.keys(instance);
   if (keys.length === 0) {
     console.warn(`No found keys in DTO class: ${dtoClass.name}`);
@@ -35,7 +36,6 @@ export function generateErrorCases(
       payload[field] !== undefined ? payload[field] : instance[field];
     const variants = generateErrorVariantsForField(fieldValue, decorators);
 
-    // Đảm bảo rằng variants luôn là một mảng
     errorCasesByField[field] = Array.isArray(variants) ? variants : [];
   });
 
@@ -361,3 +361,4 @@ export function extractDTO(dtoClass: any) {
 
   return { optionals, payload };
 }
+

@@ -1,28 +1,49 @@
-import { ValidationResult } from '../../helps/structures/responses';
-import { validateLogicData } from '../validate-logic';
-import { validationRulesMockMessage } from './validate-rule-mock-message';
 
-export function validateMockMessageResponse(
-  response: any,
-  payload?: any,
-): ValidationResult {
+import { getDecorators } from '../../helps/dto-helper';
+import { getMessage } from '../../functions/get-message';
+
+
+export async function validateMockMessage(instance: any, payload: any): Promise<string[]> {
     const errors: string[] = [];
-    if (response.ok !== true) {
-        errors.push('Field "ok" must be true');
+
+    async function validateObject(obj: any, prototype: any, path: string = ''): Promise<void> {
+        const keys = Object.keys(obj);
+
+        for (const key of keys) {
+            const value = obj[key];
+            const field = path ? `${path}.${key}` : key;
+
+            const decorators = getDecorators(prototype, key);
+            if (decorators.type === 'array' && Array.isArray(value)) {
+                const quantityArray = payload?.quantity;
+
+                if (quantityArray !== undefined && value.length !== quantityArray) {
+                    errors.push(`${field} must have exactly ${quantityArray} obj`);
+                }
+            }
+
+            if (key === 'data') {
+                const params = { token: '{{token}}', channelId: '{{channelId}}' };
+                try {
+                    const dataMessage = await getMessage(params, value);
+                   
+                    const messageIdCheck = dataMessage?.data?.data?.message?.messageId;
+                    const expectedMessageId = Array.isArray(value) ? value[0] : value;
+
+                    if (messageIdCheck === expectedMessageId) {
+                       continue
+                    } else {
+                        errors.push(`${field} messageId must be equal to ${expectedMessageId}`);
+                    }
+                } catch (error) {
+                    console.error('Error in getMessage:', error);
+                    errors.push(`${field} failed to validate`);
+                }
+            }
+        }
     }
-    if (payload?.quantity !== undefined && response.data.length !== payload.quantity) {
-        errors.push(`Array "data" must contain exactly ${payload.quantity} objects`);
-      }
-    const dataValidation = validateLogicData(
-        { data: response.data },
-        validationRulesMockMessage,
-        payload
-    );
-    if (!dataValidation.isValid) {
-        errors.push(...dataValidation.errors.map((error) => `[data] ${error}`));
-    }
-    return {
-        isValid: errors.length === 0,
-        errors: errors.length > 0 ? errors : null,
-    };
+
+    const prototype = Object.getPrototypeOf(instance);
+    await validateObject(instance, prototype);
+    return errors;
 }

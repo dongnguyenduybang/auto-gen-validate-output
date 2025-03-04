@@ -1,10 +1,7 @@
 {
     "method": "POST",
     "path": "/InternalFaker/MockMessages",
-    "headers": {
-     
-
-    },
+    "headers": {},
     "payload": {
         "workspaceId": "0",
         "channelId":  "{{channelId}}",

@@ -1,6 +1,20 @@
 import { IsBoolean, IsDefined, ValidateNested, IsArray, IsString, IsNumber, IsOptional, IsObject } from 'class-validator';
 import { Type } from 'class-transformer';
 
+
+export class SendMessageResponse {
+  @IsBoolean()
+  ok: boolean;
+
+  @ValidateNested()
+  @Type(() => DataDTO)
+  data: DataDTO;
+
+  @ValidateNested()
+  @Type(() => IncludesDTO)
+  includes: IncludesDTO;
+}
+
 export class ProfileDTO {
   @IsString()
   avatar: string;
@@ -219,15 +233,3 @@ export class DataDTO {
   message: MessageDTO;
 }
 
-export class SendMessageDTOResponse {
-  @IsBoolean()
-  ok: boolean;
-
-  @ValidateNested()
-  @Type(() => DataDTO)
-  data: DataDTO;
-
-  @ValidateNested()
-  @Type(() => IncludesDTO)
-  includes: IncludesDTO;
-}

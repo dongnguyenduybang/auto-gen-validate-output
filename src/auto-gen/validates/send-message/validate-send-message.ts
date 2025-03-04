@@ -1,65 +1,83 @@
-import { ValidationResult } from '../../helps/structures/responses';
-import { validateLogicData } from '../validate-logic';
-import {
-  validationRulesMessage,
-  validationRulesIncludes,
-} from './validate-rule-send-message';
+import 'reflect-metadata';
+import { getDecorators } from '../../helps/dto-helper';
+import { ErrorMessage } from '../../enums/error-message.enum';
 
-export function validateSendMessageResponse(
-  response: any,
-  payload?: any,
-): ValidationResult {
-  const errors: string[] = [];
+export function validateSendMessage(instance: any, payload: any): string[] {
+    const errors: string[] = [];
 
-  if (response.ok !== true) {
-    errors.push('Field "ok" must be true');
-  }
+    function validateObject(obj: any, prototype: any, path: string = ''): void {
 
-  const messageValidation = validateLogicData(
-    { data: [response.data?.message] },
-    validationRulesMessage,
-    payload,
-  );
-  if (!messageValidation.isValid) {
-    errors.push(
-      ...messageValidation.errors.map((error) => `[message] ${error}`),
-    );
-  }
+        const keys = Object.keys(obj);
 
-  if (response.includes) {
-    for (const [key, rules] of Object.entries(validationRulesIncludes)) {
-      const dataArray = response.includes[key];
-      console.log(key, rules)
-      if (Array.isArray(dataArray)) {
-        dataArray.forEach((item, index) => {
-          const validationResult = validateLogicData(
-            { data: [item] },
-            rules,
-            payload,
-          );
-          
-          if (!validationResult.isValid) {
-            errors.push(
-              ...validationResult.errors.map(
-                (error) => `[${key}[${index}]] ${error}`,
-              ),
-            );
-          }
-        });
-      } else {
-        errors.push(`"${key}" in includes must be an array`);
-      }
+        for (const key of keys) {
+            const value = obj[key];
+            const field = path ? `${path}.${key}` : key;
+
+            const decorators = getDecorators(prototype, key);
+
+            if (decorators.type === 'array' && Array.isArray(value)) {
+                const quantityArray = payload?.quantity;
+                if (quantityArray !== undefined && value.length !== quantityArray) {
+                    errors.push(`${field} must have exactly ${quantityArray} obj`);
+                }
+
+                //check ulid 
+                if (key === 'data') {
+                    const userIds = value.map((item: any) => item.userId);
+                    userIds.forEach((userId: string, index: number) => {
+                        const regexULID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+                        if (typeof userId !== 'string' || userId.length !== 26) {
+                            errors.push(`data[${index}].userId must be a valid ULID with 26 characters`);
+                        } else if (regexULID.test(userId)) {
+                            errors.push(`data[${index}].userId must only contain uppercase letters and numbers`);
+                        }
+                    });
+                }
+                // đệ quy
+                value.forEach((item: any, index: number) => {
+
+                    const itemPrototype = Object.getPrototypeOf(item);
+                    validateObject(item, itemPrototype, `${field}[${index}]`);
+
+                });
+            }
+
+            //check start with
+            if (decorators.startWith && typeof value === 'string') {
+                const startWithValue = payload.prefix
+                if (!startWithValue || !value.startsWith(startWithValue)) {
+                    errors.push(`${field} must end with ${startWithValue}`);
+                }
+            }
+
+            //check end with
+            if (decorators.endWith && typeof value === 'string') {
+                const endWithValue = obj[decorators.endWith];
+                if (!endWithValue || !value.endsWith(endWithValue)) {
+                    errors.push(`${field} must end with ${endWithValue}`);
+                }
+            }
+
+            //check value enum
+            if (decorators.type === 'enum') {
+                const enumValues = Object.values(decorators.enumType);
+                if (!enumValues.includes(value)) {
+                    const filterNumber = enumValues.filter(
+                        (val) => typeof val === 'number',
+                    );
+                    errors.push(`${field} ${ErrorMessage.INVALID_RANGE_NUMBER} ${filterNumber.join(', ')}`,
+                    );
+                }
+            }
+
+
+
+
+        }
     }
-  } else {
-    errors.push('"includes" is missing');
-  }
 
-  if (errors.length === 0 && response.data?.message?.messageId) {
-    globalThis.globalVar.set('messageId', response.data.message.messageId);
-  }
+    const prototype = Object.getPrototypeOf(instance);
+    validateObject(instance, prototype);
 
-  return {
-    isValid: errors.length === 0,
-    errors: errors.length > 0 ? errors : null,
-  };
+    return errors;
 }

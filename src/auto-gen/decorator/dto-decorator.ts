@@ -1,4 +1,5 @@
 import 'reflect-metadata';
+import { registerDecorator, ValidationOptions, ValidationArguments } from 'class-validator';
 
 export function Min(value: number) {
   return (target: any, propertyKey: string) => {
@@ -122,3 +123,43 @@ export function IsDefined() {
     Reflect.defineMetadata('isDefined', true, target, propertyKey);
   };
 }
+
+export function ValidIf(condition: string, value: string) {
+  return function (target: any, propertyKey: string) {
+      Reflect.defineMetadata('validIf', { condition, value }, target, propertyKey);
+  };
+}
+
+export function StartWith(prefix: string) {
+    return function (target: any, propertyKey: string) {
+        Reflect.defineMetadata('startWith', prefix, target, propertyKey);
+    };
+}
+
+export function EndWith(field: string) {
+    return function (target: any, propertyKey: string) {
+        Reflect.defineMetadata('endWith', field, target, propertyKey);
+    };
+}
+
+// export function StartWith(prefix: string, validationOptions?: ValidationOptions) {
+//     return function (object: Object, propertyName: string) {
+//         registerDecorator({
+//             name: 'StartWith',
+//             target: object.constructor,
+//             propertyName: propertyName,
+//             constraints: [prefix],
+//             options: validationOptions,
+//             validator: {
+//                 validate(value: any, args: ValidationArguments) {
+//                     const [requiredPrefix] = args.constraints;
+//                     return typeof value === 'string' && value.startsWith(requiredPrefix);
+//                 },
+//                 defaultMessage(args: ValidationArguments) {
+//                     const [requiredPrefix] = args.constraints;
+//                     return `${args.property} must start with ${requiredPrefix}`;
+//                 }
+//             }
+//         });
+//     };
+// }

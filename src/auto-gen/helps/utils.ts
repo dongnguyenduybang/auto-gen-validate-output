@@ -255,3 +255,38 @@ export function getValueByRecursion(obj: any, path: string): any {
   }
   return current;
 }
+
+export function getAllFiles(dirPath: string): string[] {
+  let files: string[] = [];
+  const items = fs.readdirSync(dirPath);
+  items.forEach((item) => {
+    const itemPath = path.join(dirPath, item);
+    if (fs.statSync(itemPath).isDirectory()) {
+      files = files.concat(getAllFiles(itemPath));
+    } else {
+      files.push(itemPath);
+    }
+  });
+
+  return files;
+}
+
+export function groupFilesByName(
+  files: string[],
+): Record<string, { dtoPath?: string; requestPath?: string }> {
+  const fileMap: Record<string, { dtoPath?: string; requestPath?: string }> =
+    {};
+  files.forEach((filePath) => {
+    const fileName = path.basename(filePath, path.extname(filePath));
+    if (filePath.endsWith('.dto.ts')) {
+      const className = fileName.replace('.dto', '');
+      fileMap[className] = fileMap[className] || {};
+      fileMap[className].dtoPath = filePath;
+    } else if (filePath.endsWith('.request.json')) {
+      const className = fileName.replace('.request', '');
+      fileMap[className] = fileMap[className] || {};
+      fileMap[className].requestPath = filePath;
+    }
+  });
+  return fileMap;
+}

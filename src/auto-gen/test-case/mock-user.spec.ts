@@ -1,12 +1,12 @@
 
-    import { validateMockUserResponse } from '../validates/mock-user/validate-mock-user';
+    import { validateMockUser } from '../validates/mock-user/validate-mock-user';
     import fs from 'fs';
     import path from 'path';
     import { summarizeErrors, summaryFields } from '../helps/utils';
     import { executeBeforeAllSteps, executeDelete } from '../functions';
     import { resolveJsonVariables } from '../helps/get-resolve-variables';
     import { plainToClass } from 'class-transformer';
-    import { MockUserDTOResponse } from '../dto-response/mock-user.response.dto';
+    import { MockUserResponse } from '../dto-response/mock-user.response.dto';
 
     describe('Testcase for mock-user', () => {
         let totalTests = 0;
@@ -42,23 +42,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:1,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -140,23 +126,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:2,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -238,23 +210,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:3,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -336,23 +294,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:4,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -434,23 +378,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:5,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -532,23 +462,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:6,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -630,23 +546,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:7,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -728,23 +630,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:8,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -826,23 +714,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:9,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -924,23 +798,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:10,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1022,23 +882,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:11,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1120,23 +966,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:12,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1218,23 +1050,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:13,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1316,23 +1134,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:14,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1414,23 +1218,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:15,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1512,23 +1302,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:16,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1610,23 +1386,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:17,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1708,23 +1470,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:18,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1806,23 +1554,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:19,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1904,23 +1638,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:20,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2002,23 +1722,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:21,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2100,23 +1806,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:22,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2198,23 +1890,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:23,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2296,23 +1974,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:24,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2394,23 +2058,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:25,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2492,23 +2142,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:26,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2590,23 +2226,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:27,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2688,23 +2310,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:28,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2786,23 +2394,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:29,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2884,23 +2478,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:30,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2982,23 +2562,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:31,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3080,23 +2646,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:32,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3178,23 +2730,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:33,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3276,23 +2814,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:34,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3374,23 +2898,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:35,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3472,23 +2982,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:36,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3570,23 +3066,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:37,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3668,23 +3150,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:38,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3766,23 +3234,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:39,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3864,23 +3318,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:40,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3962,23 +3402,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:41,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4060,23 +3486,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:42,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4158,23 +3570,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:43,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4256,23 +3654,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:44,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4354,23 +3738,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:45,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4452,23 +3822,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:46,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4550,23 +3906,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:47,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4648,23 +3990,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:48,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4746,23 +4074,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:49,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4844,23 +4158,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:50,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4942,23 +4242,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:51,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5040,23 +4326,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:52,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5138,23 +4410,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:53,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5236,23 +4494,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:54,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5334,23 +4578,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:55,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5432,23 +4662,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:56,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5530,23 +4746,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:57,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5628,23 +4830,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:58,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5726,23 +4914,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:59,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5824,23 +4998,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:60,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5922,23 +5082,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:61,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6020,23 +5166,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:62,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6118,23 +5250,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:63,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6216,23 +5334,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:64,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  [].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6314,23 +5418,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:65,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6412,23 +5502,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:66,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6510,23 +5586,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:67,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6608,23 +5670,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:68,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6706,23 +5754,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:69,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6804,23 +5838,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:70,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6902,23 +5922,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:71,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7000,23 +6006,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:72,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7098,23 +6090,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:73,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7196,23 +6174,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:74,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7294,23 +6258,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:75,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7392,23 +6342,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:76,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7490,23 +6426,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:77,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7588,23 +6510,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:78,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7686,23 +6594,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:79,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7784,23 +6678,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:80,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7882,23 +6762,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:81,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7980,23 +6846,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:82,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -8078,23 +6930,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:83,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -8176,23 +7014,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:84,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -8274,23 +7098,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:85,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -8372,23 +7182,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:86,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -8470,23 +7266,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:87,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -8568,23 +7350,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:88,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -8666,23 +7434,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:89,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -8764,23 +7518,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:90,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -8862,23 +7602,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:91,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -8960,23 +7686,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:92,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -9058,23 +7770,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:93,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -9156,23 +7854,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:94,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -9254,23 +7938,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:95,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -9352,23 +8022,9 @@
             
                 expect(data.ok).toEqual(true)
                 expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(MockUserDTOResponse, data);
-                const validateLogic = validateMockUserResponse(dtoInstance, payload)
-                
-                if(validateLogic.isValid === true){
-                  expect(validateLogic.isValid).toEqual(true)
-                  passedLogic++
-                  passedTests++
-                  console.log('validate successfully')
-                }else {
-                  failedTests.push({
-                    testcase:96,
-                    errorDetails: validateLogic.errors || []
-                  })
-                  throw new Error('Validate logic failed')
-              
-                }
-             
+                const dtoInstance = plainToClass(MockUserResponse, data);
+                const validateLogic = await validateMockUser(dtoInstance, payload);
+                expect(validateLogic).toHaveLength(0); 
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
