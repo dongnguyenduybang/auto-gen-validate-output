@@ -45,6 +45,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -129,6 +130,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -213,6 +215,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -297,6 +300,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -381,6 +385,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -465,6 +470,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -549,6 +555,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -633,6 +640,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -717,6 +725,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -801,6 +810,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -885,6 +895,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -969,6 +980,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1053,6 +1065,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1137,6 +1150,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1221,6 +1235,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1305,6 +1320,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1389,6 +1405,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1473,6 +1490,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1557,6 +1575,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1641,6 +1660,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1725,6 +1745,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1809,6 +1830,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1893,6 +1915,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1977,6 +2000,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2061,6 +2085,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2145,6 +2170,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2229,6 +2255,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2313,6 +2340,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2397,6 +2425,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2481,6 +2510,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2565,6 +2595,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2649,6 +2680,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2733,6 +2765,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2817,6 +2850,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2901,6 +2935,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2985,6 +3020,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3069,6 +3105,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3153,6 +3190,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3237,6 +3275,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3321,6 +3360,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3405,6 +3445,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3489,6 +3530,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3573,6 +3615,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3657,6 +3700,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3741,6 +3785,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3825,6 +3870,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3909,6 +3955,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3993,6 +4040,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4077,6 +4125,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4161,6 +4210,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4245,6 +4295,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4329,6 +4380,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4413,6 +4465,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4497,6 +4550,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4581,6 +4635,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4665,6 +4720,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4749,6 +4805,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4833,6 +4890,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4917,6 +4975,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5001,6 +5060,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5085,6 +5145,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5169,6 +5230,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5253,6 +5315,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5337,6 +5400,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5421,6 +5485,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5505,6 +5570,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5589,6 +5655,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5673,6 +5740,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5757,6 +5825,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5841,6 +5910,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5925,6 +5995,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6009,6 +6080,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6093,6 +6165,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6177,6 +6250,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6261,6 +6335,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6345,6 +6420,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6429,6 +6505,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6513,6 +6590,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6597,6 +6675,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6681,6 +6760,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6765,6 +6845,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6849,6 +6930,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6933,6 +7015,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7017,6 +7100,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7101,6 +7185,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7185,6 +7270,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7269,6 +7355,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7353,6 +7440,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7437,6 +7525,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7521,6 +7610,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7605,6 +7695,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7689,6 +7780,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7773,6 +7865,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7857,6 +7950,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7941,6 +8035,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -8025,6 +8120,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -8109,6 +8205,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -8193,6 +8290,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -8277,6 +8375,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -8361,6 +8460,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -8445,6 +8545,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -8529,6 +8630,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -8613,6 +8715,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -8697,6 +8800,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -8781,6 +8885,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -8865,6 +8970,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -8949,6 +9055,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -9033,6 +9140,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -9117,6 +9225,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -9201,6 +9310,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -9285,6 +9395,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -9369,6 +9480,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -9453,6 +9565,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -9537,6 +9650,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -9621,6 +9735,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -9705,6 +9820,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -9789,6 +9905,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -9873,6 +9990,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -9957,6 +10075,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -10041,6 +10160,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -10125,6 +10245,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -10209,6 +10330,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -10293,6 +10415,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -10377,6 +10500,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -10461,6 +10585,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -10545,6 +10670,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -10629,6 +10755,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -10713,6 +10840,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -10797,6 +10925,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -10881,6 +11010,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -10965,6 +11095,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -11049,6 +11180,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -11133,6 +11265,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -11217,6 +11350,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -11301,6 +11435,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","totalMessages must not be less than 0","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -11385,6 +11520,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","totalMessages must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -11469,6 +11605,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","totalMessages must not be less than 0","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -11553,6 +11690,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","totalMessages must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -11637,6 +11775,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -11721,6 +11860,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -11805,6 +11945,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -11889,6 +12030,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -11973,6 +12115,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -12057,6 +12200,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -12141,6 +12285,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -12225,6 +12370,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -12309,6 +12455,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -12393,6 +12540,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -12477,6 +12625,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -12561,6 +12710,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -12645,6 +12795,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -12729,6 +12880,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -12813,6 +12965,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -12897,6 +13050,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -12981,6 +13135,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -13065,6 +13220,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -13149,6 +13305,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -13233,6 +13390,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -13317,6 +13475,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -13401,6 +13560,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -13485,6 +13645,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -13569,6 +13730,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -13653,6 +13815,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -13737,6 +13900,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -13821,6 +13985,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -13905,6 +14070,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -13989,6 +14155,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -14073,6 +14240,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -14157,6 +14325,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -14241,6 +14410,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -14325,6 +14495,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be less than 0","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -14409,6 +14580,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -14493,6 +14665,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be less than 0","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -14577,6 +14750,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -14661,6 +14835,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -14745,6 +14920,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -14829,6 +15005,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -14913,6 +15090,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -14997,6 +15175,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -15081,6 +15260,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -15165,6 +15345,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -15249,6 +15430,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -15333,6 +15515,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -15417,6 +15600,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -15501,6 +15685,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -15585,6 +15770,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -15669,6 +15855,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -15753,6 +15940,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -15837,6 +16025,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -15921,6 +16110,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -16005,6 +16195,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -16089,6 +16280,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -16173,6 +16365,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -16257,6 +16450,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -16341,6 +16535,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -16425,6 +16620,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -16509,6 +16705,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -16593,6 +16790,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -16677,6 +16875,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -16761,6 +16960,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -16845,6 +17045,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -16929,6 +17130,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -17013,6 +17215,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -17097,6 +17300,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -17181,6 +17385,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -17265,6 +17470,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -17349,6 +17555,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -17433,6 +17640,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -17517,6 +17725,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -17601,6 +17810,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -17685,6 +17895,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -17769,6 +17980,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -17853,6 +18065,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -17937,6 +18150,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -18021,6 +18235,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -18105,6 +18320,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -18189,6 +18405,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -18273,6 +18490,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -18357,6 +18575,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -18441,6 +18660,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -18525,6 +18745,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -18609,6 +18830,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -18693,6 +18915,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -18777,6 +19000,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -18861,6 +19085,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -18945,6 +19170,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -19029,6 +19255,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -19113,6 +19340,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -19197,6 +19425,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -19281,6 +19510,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -19365,6 +19595,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -19449,6 +19680,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -19533,6 +19765,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -19617,6 +19850,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -19701,6 +19935,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -19785,6 +20020,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -19869,6 +20105,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -19953,6 +20190,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -20037,6 +20275,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -20121,6 +20360,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -20205,6 +20445,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -20289,6 +20530,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -20373,6 +20615,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -20457,6 +20700,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -20541,6 +20785,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -20625,6 +20870,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -20709,6 +20955,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -20793,6 +21040,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -20877,6 +21125,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -20961,6 +21210,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -21045,6 +21295,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -21129,6 +21380,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -21213,6 +21465,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -21297,6 +21550,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -21381,6 +21635,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -21465,6 +21720,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -21549,6 +21805,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -21633,6 +21890,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -21717,6 +21975,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -21801,6 +22060,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -21885,6 +22145,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -21969,6 +22230,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -22053,6 +22315,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -22137,6 +22400,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -22221,6 +22485,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -22305,6 +22570,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -22389,6 +22655,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -22473,6 +22740,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -22557,6 +22825,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -22641,6 +22910,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -22725,6 +22995,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -22809,6 +23080,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -22893,6 +23165,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -22977,6 +23250,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -23061,6 +23335,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -23145,6 +23420,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -23229,6 +23505,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -23313,6 +23590,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -23397,6 +23675,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -23481,6 +23760,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -23565,6 +23845,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -23649,6 +23930,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -23733,6 +24015,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -23817,6 +24100,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -23901,6 +24185,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -23985,6 +24270,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -24069,6 +24355,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -24153,6 +24440,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -24237,6 +24525,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -24321,6 +24610,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -24405,6 +24695,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -24489,6 +24780,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -24573,6 +24865,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -24657,6 +24950,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -24741,6 +25035,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -24825,6 +25120,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -24909,6 +25205,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -24993,6 +25290,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -25077,6 +25375,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -25161,6 +25460,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -25245,6 +25545,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -25329,6 +25630,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -25413,6 +25715,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -25497,6 +25800,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -25581,6 +25885,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -25665,6 +25970,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -25749,6 +26055,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -25833,6 +26140,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -25917,6 +26225,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -26001,6 +26310,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -26085,6 +26395,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -26169,6 +26480,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -26253,6 +26565,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -26337,6 +26650,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -26421,6 +26735,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -26505,6 +26820,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -26589,6 +26905,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -26673,6 +26990,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -26757,6 +27075,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -26841,6 +27160,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -26925,6 +27245,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -27009,6 +27330,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -27093,6 +27415,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -27177,6 +27500,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -27261,6 +27585,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -27345,6 +27670,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -27429,6 +27755,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -27513,6 +27840,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -27597,6 +27925,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -27681,6 +28010,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -27765,6 +28095,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -27849,6 +28180,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -27933,6 +28265,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -28017,6 +28350,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -28101,6 +28435,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -28185,6 +28520,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -28269,6 +28605,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -28353,6 +28690,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -28437,6 +28775,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -28521,6 +28860,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -28605,6 +28945,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -28689,6 +29030,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -28773,6 +29115,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -28857,6 +29200,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -28941,6 +29285,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -29025,6 +29370,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -29109,6 +29455,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -29193,6 +29540,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -29277,6 +29625,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -29361,6 +29710,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -29445,6 +29795,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","totalMessages must not be less than 0","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -29529,6 +29880,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","totalMessages must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -29613,6 +29965,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","totalMessages must not be less than 0","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -29697,6 +30050,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","totalMessages must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -29781,6 +30135,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -29865,6 +30220,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -29949,6 +30305,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -30033,6 +30390,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -30117,6 +30475,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -30201,6 +30560,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -30285,6 +30645,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -30369,6 +30730,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -30453,6 +30815,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -30537,6 +30900,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -30621,6 +30985,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -30705,6 +31070,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -30789,6 +31155,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -30873,6 +31240,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -30957,6 +31325,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -31041,6 +31410,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -31125,6 +31495,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -31209,6 +31580,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -31293,6 +31665,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -31377,6 +31750,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -31461,6 +31835,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -31545,6 +31920,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -31629,6 +32005,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -31713,6 +32090,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -31797,6 +32175,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -31881,6 +32260,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -31965,6 +32345,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -32049,6 +32430,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -32133,6 +32515,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -32217,6 +32600,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -32301,6 +32685,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -32385,6 +32770,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -32469,6 +32855,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be less than 0","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -32553,6 +32940,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -32637,6 +33025,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be less than 0","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -32721,6 +33110,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -32805,6 +33195,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -32889,6 +33280,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -32973,6 +33365,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -33057,6 +33450,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -33141,6 +33535,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -33225,6 +33620,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -33309,6 +33705,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -33393,6 +33790,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -33477,6 +33875,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -33561,6 +33960,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -33645,6 +34045,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -33729,6 +34130,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -33813,6 +34215,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -33897,6 +34300,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -33981,6 +34385,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -34065,6 +34470,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -34149,6 +34555,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -34233,6 +34640,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -34317,6 +34725,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -34401,6 +34810,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -34485,6 +34895,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -34569,6 +34980,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -34653,6 +35065,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -34737,6 +35150,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -34821,6 +35235,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -34905,6 +35320,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -34989,6 +35405,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -35073,6 +35490,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -35157,6 +35575,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -35241,6 +35660,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -35325,6 +35745,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -35409,6 +35830,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -35493,6 +35915,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -35577,6 +36000,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -35661,6 +36085,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -35745,6 +36170,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -35829,6 +36255,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -35913,6 +36340,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -35997,6 +36425,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -36081,6 +36510,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -36165,6 +36595,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -36249,6 +36680,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -36333,6 +36765,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -36417,6 +36850,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -36501,6 +36935,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -36585,6 +37020,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -36669,6 +37105,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -36753,6 +37190,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -36837,6 +37275,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -36921,6 +37360,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -37005,6 +37445,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -37089,6 +37530,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -37173,6 +37615,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -37257,6 +37700,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -37341,6 +37785,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -37425,6 +37870,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -37509,6 +37955,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -37593,6 +38040,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -37677,6 +38125,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -37761,6 +38210,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -37845,6 +38295,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -37929,6 +38380,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -38013,6 +38465,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -38097,6 +38550,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -38181,6 +38635,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -38265,6 +38720,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -38349,6 +38805,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -38433,6 +38890,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -38517,6 +38975,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -38601,6 +39060,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -38685,6 +39145,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -38769,6 +39230,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -38853,6 +39315,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -38937,6 +39400,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -39021,6 +39485,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -39105,6 +39570,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -39189,6 +39655,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -39273,6 +39740,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -39357,6 +39825,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -39441,6 +39910,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -39525,6 +39995,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -39609,6 +40080,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -39693,6 +40165,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -39777,6 +40250,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -39861,6 +40335,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -39945,6 +40420,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -40029,6 +40505,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -40113,6 +40590,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -40197,6 +40675,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -40281,6 +40760,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -40365,6 +40845,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -40449,6 +40930,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -40533,6 +41015,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -40617,6 +41100,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -40701,6 +41185,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -40785,6 +41270,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -40869,6 +41355,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -40953,6 +41440,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -41037,6 +41525,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -41121,6 +41610,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -41205,6 +41695,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -41289,6 +41780,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -41373,6 +41865,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -41457,6 +41950,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -41541,6 +42035,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -41625,6 +42120,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -41709,6 +42205,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -41793,6 +42290,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -41877,6 +42375,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -41961,6 +42460,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -42045,6 +42545,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -42129,6 +42630,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -42213,6 +42715,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -42297,6 +42800,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -42381,6 +42885,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -42465,6 +42970,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -42549,6 +43055,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -42633,6 +43140,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -42717,6 +43225,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -42801,6 +43310,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -42885,6 +43395,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -42969,6 +43480,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -43053,6 +43565,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -43137,6 +43650,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -43221,6 +43735,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -43305,6 +43820,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -43389,6 +43905,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -43473,6 +43990,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -43557,6 +44075,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -43641,6 +44160,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -43725,6 +44245,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -43809,6 +44330,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -43893,6 +44415,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -43977,6 +44500,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -44061,6 +44585,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -44145,6 +44670,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -44229,6 +44755,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -44313,6 +44840,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -44397,6 +44925,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -44481,6 +45010,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -44565,6 +45095,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -44649,6 +45180,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -44733,6 +45265,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -44817,6 +45350,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -44901,6 +45435,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -44985,6 +45520,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -45069,6 +45605,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -45153,6 +45690,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -45237,6 +45775,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -45321,6 +45860,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -45405,6 +45945,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -45489,6 +46030,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -45573,6 +46115,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -45657,6 +46200,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -45741,6 +46285,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -45825,6 +46370,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -45909,6 +46455,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -45993,6 +46540,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -46077,6 +46625,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -46161,6 +46710,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -46245,6 +46795,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -46329,6 +46880,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -46413,6 +46965,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -46497,6 +47050,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -46581,6 +47135,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -46665,6 +47220,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -46749,6 +47305,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -46833,6 +47390,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -46917,6 +47475,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -47001,6 +47560,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -47085,6 +47645,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -47169,6 +47730,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  [].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -47253,6 +47815,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -47337,6 +47900,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -47421,6 +47985,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -47505,6 +48070,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -47589,6 +48155,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["totalMessages must not be less than 0","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -47673,6 +48240,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["totalMessages must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -47757,6 +48325,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["totalMessages must not be less than 0","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -47841,6 +48410,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["totalMessages must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -47925,6 +48495,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -48009,6 +48580,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -48093,6 +48665,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -48177,6 +48750,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -48261,6 +48835,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -48345,6 +48920,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -48429,6 +49005,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -48513,6 +49090,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -48597,6 +49175,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -48681,6 +49260,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -48765,6 +49345,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -48849,6 +49430,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -48933,6 +49515,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -49017,6 +49600,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -49101,6 +49685,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -49185,6 +49770,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -49269,6 +49855,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -49353,6 +49940,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -49437,6 +50025,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -49521,6 +50110,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -49605,6 +50195,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -49689,6 +50280,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -49773,6 +50365,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -49857,6 +50450,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -49941,6 +50535,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -50025,6 +50620,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -50109,6 +50705,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -50193,6 +50790,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -50277,6 +50875,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -50361,6 +50960,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -50445,6 +51045,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -50529,6 +51130,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -50613,6 +51215,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","totalMessages must not be less than 0","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -50697,6 +51300,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","totalMessages must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -50781,6 +51385,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","totalMessages must not be less than 0","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -50865,6 +51470,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","totalMessages must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -50949,6 +51555,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -51033,6 +51640,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -51117,6 +51725,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -51201,6 +51810,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -51285,6 +51895,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -51369,6 +51980,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -51453,6 +52065,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -51537,6 +52150,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -51621,6 +52235,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -51705,6 +52320,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -51789,6 +52405,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -51873,6 +52490,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -51957,6 +52575,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -52041,6 +52660,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -52125,6 +52745,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -52209,6 +52830,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -52293,6 +52915,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -52377,6 +53000,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -52461,6 +53085,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -52545,6 +53170,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -52629,6 +53255,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -52713,6 +53340,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -52797,6 +53425,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -52881,6 +53510,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -52965,6 +53595,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -53049,6 +53680,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -53133,6 +53765,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -53217,6 +53850,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -53301,6 +53935,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -53385,6 +54020,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -53469,6 +54105,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -53553,6 +54190,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -53637,6 +54275,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -53721,6 +54360,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","totalMessages must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -53805,6 +54445,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -53889,6 +54530,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -53973,6 +54615,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -54057,6 +54700,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -54141,6 +54785,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -54225,6 +54870,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -54309,6 +54955,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -54393,6 +55040,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -54477,6 +55125,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -54561,6 +55210,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -54645,6 +55295,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -54729,6 +55380,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -54813,6 +55465,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -54897,6 +55550,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -54981,6 +55635,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -55065,6 +55720,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -55149,6 +55805,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -55233,6 +55890,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -55317,6 +55975,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -55401,6 +56060,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -55485,6 +56145,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -55569,6 +56230,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -55653,6 +56315,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -55737,6 +56400,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -55821,6 +56485,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -55905,6 +56570,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -55989,6 +56655,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -56073,6 +56740,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -56157,6 +56825,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -56241,6 +56910,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -56325,6 +56995,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -56409,6 +57080,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -56493,6 +57165,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -56577,6 +57250,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -56661,6 +57335,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -56745,6 +57420,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -56829,6 +57505,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -56913,6 +57590,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -56997,6 +57675,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -57081,6 +57760,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -57165,6 +57845,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -57249,6 +57930,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -57333,6 +58015,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -57417,6 +58100,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -57501,6 +58185,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -57585,6 +58270,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -57669,6 +58355,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -57753,6 +58440,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -57837,6 +58525,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -57921,6 +58610,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -58005,6 +58695,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -58089,6 +58780,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -58173,6 +58865,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -58257,6 +58950,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -58341,6 +59035,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -58425,6 +59120,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -58509,6 +59205,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -58593,6 +59290,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -58677,6 +59375,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -58761,6 +59460,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -58845,6 +59545,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -58929,6 +59630,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -59013,6 +59715,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -59097,6 +59800,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -59181,6 +59885,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -59265,6 +59970,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -59349,6 +60055,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -59433,6 +60140,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -59517,6 +60225,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -59601,6 +60310,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -59685,6 +60395,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -59769,6 +60480,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -59853,6 +60565,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -59937,6 +60650,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -60021,6 +60735,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -60105,6 +60820,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -60189,6 +60905,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -60273,6 +60990,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -60357,6 +61075,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -60441,6 +61160,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -60525,6 +61245,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -60609,6 +61330,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -60693,6 +61415,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -60777,6 +61500,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -60861,6 +61585,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -60945,6 +61670,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -61029,6 +61755,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -61113,6 +61840,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -61197,6 +61925,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -61281,6 +62010,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -61365,6 +62095,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -61449,6 +62180,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -61533,6 +62265,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -61617,6 +62350,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -61701,6 +62435,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -61785,6 +62520,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -61869,6 +62605,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -61953,6 +62690,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -62037,6 +62775,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -62121,6 +62860,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -62205,6 +62945,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -62289,6 +63030,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -62373,6 +63115,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -62457,6 +63200,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -62541,6 +63285,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -62625,6 +63370,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -62709,6 +63455,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -62793,6 +63540,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -62877,6 +63625,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -62961,6 +63710,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -63045,6 +63795,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -63129,6 +63880,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -63213,6 +63965,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -63297,6 +64050,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -63381,6 +64135,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -63465,6 +64220,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -63549,6 +64305,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -63633,6 +64390,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -63717,6 +64475,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -63801,6 +64560,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -63885,6 +64645,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -63969,6 +64730,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -64053,6 +64815,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -64137,6 +64900,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -64221,6 +64985,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -64305,6 +65070,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -64389,6 +65155,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -64473,6 +65240,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -64557,6 +65325,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -64641,6 +65410,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -64725,6 +65495,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -64809,6 +65580,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -64893,6 +65665,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -64977,6 +65750,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -65061,6 +65835,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -65145,6 +65920,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -65229,6 +66005,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -65313,6 +66090,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -65397,6 +66175,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -65481,6 +66260,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -65565,6 +66345,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -65649,6 +66430,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -65733,6 +66515,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","totalMessages must not be less than 0","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -65817,6 +66600,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","totalMessages must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -65901,6 +66685,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","totalMessages must not be less than 0","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -65985,6 +66770,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","totalMessages must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -66069,6 +66855,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -66153,6 +66940,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -66237,6 +67025,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -66321,6 +67110,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -66405,6 +67195,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -66489,6 +67280,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -66573,6 +67365,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -66657,6 +67450,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -66741,6 +67535,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -66825,6 +67620,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -66909,6 +67705,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -66993,6 +67790,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -67077,6 +67875,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -67161,6 +67960,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -67245,6 +68045,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -67329,6 +68130,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -67413,6 +68215,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -67497,6 +68300,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -67581,6 +68385,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -67665,6 +68470,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -67749,6 +68555,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -67833,6 +68640,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -67917,6 +68725,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -68001,6 +68810,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -68085,6 +68895,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -68169,6 +68980,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -68253,6 +69065,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -68337,6 +69150,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -68421,6 +69235,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -68505,6 +69320,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -68589,6 +69405,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -68673,6 +69490,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -68757,6 +69575,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be less than 0","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -68841,6 +69660,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -68925,6 +69745,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be less than 0","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -69009,6 +69830,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -69093,6 +69915,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -69177,6 +70000,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -69261,6 +70085,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -69345,6 +70170,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -69429,6 +70255,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -69513,6 +70340,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -69597,6 +70425,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -69681,6 +70510,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -69765,6 +70595,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -69849,6 +70680,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -69933,6 +70765,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -70017,6 +70850,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -70101,6 +70935,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -70185,6 +71020,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -70269,6 +71105,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -70353,6 +71190,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -70437,6 +71275,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -70521,6 +71360,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages should not be empty","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -70605,6 +71445,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -70689,6 +71530,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -70773,6 +71615,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -70857,6 +71700,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -70941,6 +71785,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -71025,6 +71870,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must be a number conforming to the specified constraints","totalMessages must not be less than 0","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -71109,6 +71955,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -71193,6 +72040,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -71277,6 +72125,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -71361,6 +72210,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -71445,6 +72295,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -71529,6 +72380,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -71613,6 +72465,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -71697,6 +72550,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be less than 0","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -71781,6 +72635,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -71865,6 +72720,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -71949,6 +72805,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -72033,6 +72890,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -72117,6 +72975,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -72201,6 +73060,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be greater than 1000","\n   0: channel 1-n\n   1: channel 1-1\n   2: incoming message request\n   3: outgoing message request","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -72285,6 +73145,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must be a number conforming to the specified constraints","typeChannel must not be less than 0","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -72369,6 +73230,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be greater than 1000"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -72453,6 +73315,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must not be less than 0"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -72537,6 +73400,7 @@
                 const dtoInstance = plainToClass(MockChannelResponse, data);
                 const validateLogic = await validateMockChannel(dtoInstance, payload);
                 expect(validateLogic).toHaveLength(0); 
+                console.log(dtoInstance)
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","totalMessages must not be greater than 1000","typeChannel must not be greater than 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)

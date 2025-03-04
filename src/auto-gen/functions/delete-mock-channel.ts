@@ -7,6 +7,8 @@ export async function deleteMockChannel(
     headerRequest: string
 ) {
 
+    console.log(prefix,workspaceId )
+
     const headers = resolveJsonVariables(headerRequest);
 
     try {

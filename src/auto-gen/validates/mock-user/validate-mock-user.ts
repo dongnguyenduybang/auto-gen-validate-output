@@ -2,10 +2,10 @@ import 'reflect-metadata';
 import { getDecorators } from '../../helps/dto-helper';
 import { ErrorMessage } from '../../enums/error-message.enum';
 
-export function validateMockUser(instance: any, payload: any): string[] {
+export async function validateMockUser(instance: any, payload: any): Promise<string[]> {
     const errors: string[] = [];
 
-    function validateObject(obj: any, prototype: any, path: string = ''): void {
+    async function validateObject(obj: any, prototype: any, path: string = ''): Promise<void>  {
 
         const keys = Object.keys(obj);
 
@@ -69,15 +69,11 @@ export function validateMockUser(instance: any, payload: any): string[] {
                     );
                 }
             }
-
-
-
-
         }
     }
 
     const prototype = Object.getPrototypeOf(instance);
-    validateObject(instance, prototype);
+    await validateObject(instance, prototype);
 
     return errors;
 }

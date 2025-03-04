@@ -4,10 +4,10 @@ Host: https://api-sb11.rpc.ziichat.dev
 Endpoint: /InternalFaker/MockChannels
 Summary: 
 Total Tests: 864
-Passed Tests: 864
+Passed Tests: 863
 Failed Tests: 0
 Status Code:
-  201: 1
+  201: 0
   400: 0
   403: 0
   404: 0
