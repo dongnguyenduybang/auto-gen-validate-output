@@ -6,7 +6,7 @@
     import { executeBeforeAllSteps, executeDelete } from '../functions';
     import { resolveJsonVariables } from '../helps/get-resolve-variables';
     import { plainToClass } from 'class-transformer';
-    import { MockChannelResponse } from '../dto-response/mock-channel.response.dto';
+    import { MockChannelResponse } from '../dto-response/mock-channel.response';
 
     describe('Testcase for mock-channel', () => {
         let totalTests = 0;

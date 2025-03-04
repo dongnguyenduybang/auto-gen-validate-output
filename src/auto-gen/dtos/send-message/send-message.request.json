@@ -14,7 +14,7 @@
     },
 
     "beforeAll": [
-      "mockUser('duy123456',1, 0)", 
+      "mockUser('duybang12345',1, 0)", 
       "createChannel({{token}}, 'channel 1')"
     ],
     "afterAll": ["deleteMessageForEveryone('0', {{channelId}}, {{messageId}})"]

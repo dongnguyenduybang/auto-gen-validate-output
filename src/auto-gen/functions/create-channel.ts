@@ -9,7 +9,7 @@ export async function createChannel(token: string, name: string) {
       const payload = { workspaceId: '0', name: name };
       const headers = { 'x-session-token': token };
 
-      const response = await axios.post(baseUrl, payload, { headers });
+      const response = await axios.post(baseUrl, payload, { headers: headers });
       if (response.data.data.channel) {
         const channelId = response.data.data.channel.channelId;
         globalThis.globalVar.set('channelId', channelId);

@@ -8,74 +8,122 @@ export function validateSendMessage(instance: any, payload: any): string[] {
     function validateObject(obj: any, prototype: any, path: string = ''): void {
 
         const keys = Object.keys(obj);
-
         for (const key of keys) {
-            const value = obj[key];
+            const valueResponse = obj[key];
             const field = path ? `${path}.${key}` : key;
 
             const decorators = getDecorators(prototype, key);
 
-            if (decorators.type === 'array' && Array.isArray(value)) {
-                const quantityArray = payload?.quantity;
-                if (quantityArray !== undefined && value.length !== quantityArray) {
-                    errors.push(`${field} must have exactly ${quantityArray} obj`);
-                }
-
-                //check ulid 
-                if (key === 'data') {
-                    const userIds = value.map((item: any) => item.userId);
-                    userIds.forEach((userId: string, index: number) => {
-                        const regexULID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
-                        if (typeof userId !== 'string' || userId.length !== 26) {
-                            errors.push(`data[${index}].userId must be a valid ULID with 26 characters`);
-                        } else if (regexULID.test(userId)) {
-                            errors.push(`data[${index}].userId must only contain uppercase letters and numbers`);
-                        }
-                    });
-                }
-                // đệ quy
-                value.forEach((item: any, index: number) => {
-
+            //check nếu thuộc tính array lồng nhau
+            if (decorators.type === 'array' && Array.isArray(valueResponse)) {
+                valueResponse.forEach((item: any, index: number) => {
                     const itemPrototype = Object.getPrototypeOf(item);
                     validateObject(item, itemPrototype, `${field}[${index}]`);
-
                 });
             }
 
-            //check start with
-            if (decorators.startWith && typeof value === 'string') {
-                const startWithValue = payload.prefix
-                if (!startWithValue || !value.startsWith(startWithValue)) {
-                    errors.push(`${field} must end with ${startWithValue}`);
-                }
+            // check nếu thuộc tính obj lồng nhau
+            else if (decorators.type === 'object' && typeof valueResponse === 'object' && valueResponse !== null) {
+                const nestedPrototype = Object.getPrototypeOf(valueResponse);
+                validateObject(valueResponse, nestedPrototype, field);
             }
 
-            //check end with
-            if (decorators.endWith && typeof value === 'string') {
-                const endWithValue = obj[decorators.endWith];
-                if (!endWithValue || !value.endsWith(endWithValue)) {
-                    errors.push(`${field} must end with ${endWithValue}`);
+            // check kiểu dữ liệu khác
+            else {
+                if (decorators.type === 'string' && typeof valueResponse !== 'string') {
+                    errors.push(`${field} must be a string but got ${typeof valueResponse}`);
+                }
+                if (decorators.type === 'number' && typeof valueResponse !== 'number') {
+                    errors.push(`${field} must be a number but got ${typeof valueResponse}`);
+                }
+                if (decorators.type === 'boolean' && typeof valueResponse !== 'boolean') {
+                    errors.push(`${field} must be a boolean but got ${typeof valueResponse}`);
+                }
+
+                // check startWith
+                if (decorators.startWith && typeof valueResponse === 'string') {
+                    const startWithValue = payload.prefix;
+                    if (!startWithValue || !valueResponse.startsWith(startWithValue)) {
+                        errors.push(`${field} must start with ${startWithValue}`);
+                    }
+                }
+
+                // check endWith
+                if (decorators.endWith && typeof valueResponse === 'string') {
+                    const endWithValue = obj[decorators.endWith];
+                    if (!endWithValue || !valueResponse.endsWith(endWithValue)) {
+                        errors.push(`${field} must end with ${endWithValue}`);
+                    }
+                }
+
+                // check enum
+                if (decorators.type === 'enum') {
+                    const enumValues = Object.values(decorators.enumType);
+                    if (!enumValues.includes(valueResponse)) {
+                        const filterNumber = enumValues.filter((val) => typeof val === 'number');
+                        errors.push(
+                            `${field} ${ErrorMessage.INVALID_RANGE_NUMBER} ${filterNumber.join(', ')}`,
+                        );
+                    }
+                }
+
+                //check validIf
+                if (decorators.validIf) {
+                    const { condition, condition2 } = decorators.validIf
+
+                    if(condition === 'channelId'){
+                        const channelIdResponse = valueResponse
+                        const channelIdPayload = payload?.channelId
+                        if(channelIdPayload !== channelIdResponse){
+                            errors.push(`${field} must equal ${condition2} payload with value ${channelIdPayload}`)
+                        }
+                    }
+
+                    if(condition === 'workspaceId'){
+                        const workspaceIdResponse = valueResponse
+                        const workspaceIdPayload = payload?.workspaceId
+                        if(workspaceIdPayload !== workspaceIdResponse){
+                            errors.push(`${field} must equal ${condition2} payload with value ${workspaceIdPayload}`)
+                        }
+                    }
+
+                    if (condition === 'createTime') {
+                        const updateTime = obj[condition2]
+                        const createTime = valueResponse
+                        if (updateTime !== createTime) {
+                            errors.push(`${field} must equal with ${condition2}`)
+                        }
+                    }
+
+                    if(condition === 'channelId'){
+                        const channelIdResponse = valueResponse
+                        const channelIdPayload = obj[condition2]
+                        if(channelIdPayload !== channelIdResponse){
+                            errors.push(`${field} must equal ${condition2} payload with value ${channelIdPayload}`)
+                        }
+                    }
+
+                    if(condition === 'content'){
+                        const contentResponse = valueResponse
+                        const contentPayload = payload?.content
+                        if(contentPayload !== contentResponse){
+                            errors.push(`${field} must equal ${condition2} payload with value ${contentPayload}`)
+                        }
+                    }
+
+                    if(condition === 'ref'){
+                        const refResponse = valueResponse
+                        const refPayload = payload?.ref
+                        if(refPayload !== refResponse){
+                            errors.push(`${field} must equal ${condition2} payload with value ${refPayload}`)
+                        }
+                    }
                 }
             }
-
-            //check value enum
-            if (decorators.type === 'enum') {
-                const enumValues = Object.values(decorators.enumType);
-                if (!enumValues.includes(value)) {
-                    const filterNumber = enumValues.filter(
-                        (val) => typeof val === 'number',
-                    );
-                    errors.push(`${field} ${ErrorMessage.INVALID_RANGE_NUMBER} ${filterNumber.join(', ')}`,
-                    );
-                }
-            }
-
-
-
-
         }
     }
 
+    // Bắt đầu validate từ instance gốc
     const prototype = Object.getPrototypeOf(instance);
     validateObject(instance, prototype);
 
