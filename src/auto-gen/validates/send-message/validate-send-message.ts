@@ -6,15 +6,21 @@ export function validateSendMessage(instance: any, payload: any): string[] {
     const errors: string[] = [];
 
     function validateObject(obj: any, prototype: any, path: string = ''): void {
-
         const keys = Object.keys(obj);
+
         for (const key of keys) {
             const valueResponse = obj[key];
             const field = path ? `${path}.${key}` : key;
 
             const decorators = getDecorators(prototype, key);
 
-            //check nếu thuộc tính array lồng nhau
+            // check IsDefined
+            if (decorators.isDefined && (valueResponse === undefined || valueResponse === null)) {
+                errors.push(`${field} is required but got ${valueResponse}`);
+                continue; // Bỏ qua các kiểm tra khác nếu trường này không được định nghĩa
+            }
+
+            //check mảng
             if (decorators.type === 'array' && Array.isArray(valueResponse)) {
                 valueResponse.forEach((item: any, index: number) => {
                     const itemPrototype = Object.getPrototypeOf(item);
@@ -22,13 +28,13 @@ export function validateSendMessage(instance: any, payload: any): string[] {
                 });
             }
 
-            // check nếu thuộc tính obj lồng nhau
+            // check obj
             else if (decorators.type === 'object' && typeof valueResponse === 'object' && valueResponse !== null) {
                 const nestedPrototype = Object.getPrototypeOf(valueResponse);
                 validateObject(valueResponse, nestedPrototype, field);
             }
 
-            // check kiểu dữ liệu khác
+            // check type
             else {
                 if (decorators.type === 'string' && typeof valueResponse !== 'string') {
                     errors.push(`${field} must be a string but got ${typeof valueResponse}`);
@@ -48,7 +54,7 @@ export function validateSendMessage(instance: any, payload: any): string[] {
                     }
                 }
 
-                // check endWith
+                //check endWith
                 if (decorators.endWith && typeof valueResponse === 'string') {
                     const endWithValue = obj[decorators.endWith];
                     if (!endWithValue || !valueResponse.endsWith(endWithValue)) {
@@ -67,55 +73,55 @@ export function validateSendMessage(instance: any, payload: any): string[] {
                     }
                 }
 
-                //check validIf
+                // check validIf
                 if (decorators.validIf) {
-                    const { condition, condition2 } = decorators.validIf
+                    const { condition, condition2 } = decorators.validIf;
 
-                    if(condition === 'channelId'){
-                        const channelIdResponse = valueResponse
-                        const channelIdPayload = payload?.channelId
-                        if(channelIdPayload !== channelIdResponse){
-                            errors.push(`${field} must equal ${condition2} payload with value ${channelIdPayload}`)
+                    if (condition === 'channelId') {
+                        const channelIdResponse = valueResponse;
+                        const channelIdPayload = payload?.channelId;
+                        if (channelIdPayload !== channelIdResponse) {
+                            errors.push(`${field} must equal ${condition2} payload with value ${channelIdPayload}`);
                         }
                     }
 
-                    if(condition === 'workspaceId'){
-                        const workspaceIdResponse = valueResponse
-                        const workspaceIdPayload = payload?.workspaceId
-                        if(workspaceIdPayload !== workspaceIdResponse){
-                            errors.push(`${field} must equal ${condition2} payload with value ${workspaceIdPayload}`)
+                    if (condition === 'workspaceId') {
+                        const workspaceIdResponse = valueResponse;
+                        const workspaceIdPayload = payload?.workspaceId;
+                        if (workspaceIdPayload !== workspaceIdResponse) {
+                            errors.push(`${field} must equal ${condition2} payload with value ${workspaceIdPayload}`);
                         }
                     }
 
                     if (condition === 'createTime') {
-                        const updateTime = obj[condition2]
-                        const createTime = valueResponse
-                        if (updateTime !== createTime) {
-                            errors.push(`${field} must equal with ${condition2}`)
+                        const updateTime = obj[condition2];
+                        const createTime = valueResponse;
+                        if (createTime !== updateTime) {
+                            errors.push(`${field} must equal with ${condition2}`);
                         }
                     }
 
-                    if(condition === 'channelId'){
-                        const channelIdResponse = valueResponse
-                        const channelIdPayload = obj[condition2]
-                        if(channelIdPayload !== channelIdResponse){
-                            errors.push(`${field} must equal ${condition2} payload with value ${channelIdPayload}`)
+                    if (condition === 'content') {
+                        const contentResponse = valueResponse;
+                        const contentPayload = payload?.content;
+                        if (contentPayload !== contentResponse) {
+                            errors.push(`${field} must equal ${condition2} payload with value ${contentPayload}`);
                         }
                     }
 
-                    if(condition === 'content'){
-                        const contentResponse = valueResponse
-                        const contentPayload = payload?.content
-                        if(contentPayload !== contentResponse){
-                            errors.push(`${field} must equal ${condition2} payload with value ${contentPayload}`)
+                    if (condition === 'ref') {
+                        const refResponse = valueResponse;
+                        const refPayload = payload?.ref;
+                        if (refPayload !== refResponse) {
+                            errors.push(`${field} must equal ${condition2} payload with value ${refPayload}`);
                         }
                     }
 
-                    if(condition === 'ref'){
-                        const refResponse = valueResponse
-                        const refPayload = payload?.ref
-                        if(refPayload !== refResponse){
-                            errors.push(`${field} must equal ${condition2} payload with value ${refPayload}`)
+                    if (condition === 'updateTime') {
+                        const updateTime = valueResponse;
+                        const timeNow = condition2;
+                        if (updateTime > timeNow) {
+                            errors.push(`${field} with ${updateTime} must be less than or equal to ${condition2}`);
                         }
                     }
                 }
@@ -123,7 +129,6 @@ export function validateSendMessage(instance: any, payload: any): string[] {
         }
     }
 
-    // Bắt đầu validate từ instance gốc
     const prototype = Object.getPrototypeOf(instance);
     validateObject(instance, prototype);
 

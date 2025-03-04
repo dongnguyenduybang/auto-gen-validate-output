@@ -28,7 +28,7 @@ describe('Testcase for send-message', () => {
     const payloadObj = {
       "workspaceId": "0",
       "channelId": "01JNFXFERG0874MNQS7MTYV7FH",
-      "content": "test123123",
+      "content": "test123",
       "ref": "ref"
     }
     const payload = resolveJsonVariables(payloadObj)
@@ -47,8 +47,8 @@ describe('Testcase for send-message', () => {
           "message": {
               "workspaceId": "0",
               "channelId": "01JNFXFERG0874MNQS7MTYV7FH",
-              "messageId": "01JNFZV58FZPZYNF2JZDBP6FM4",
-              "userId": "01JNFKSPA48YFGEX7X1A7KT9F0",
+              // "messageId": "01JNG8WWVYZRYQNT9QAA27DV0A",
+              // "userId": "01JNFKSPA48YFGEX7X1A7KT9F0",
               "content": "test123",
               "messageType": 0,
               "messageStatus": 1,
@@ -59,15 +59,15 @@ describe('Testcase for send-message', () => {
               "attachmentCount": 0,
               "contentLocale": "UNS",
               "isPinned": false,
-              "createTime": "2025-03-04T07:10:09.167Z",
-              "updateTime": "2023-03-04T07:10:09.167Z",
+              "createTime": "2025-03-04T09:48:23.294Z",
+              "updateTime": "2025-03-04T09:48:23.294Z",
               "ref": "ref"
           }
       },
       "includes": {
           "users": [
               {
-                  "userId": 1,
+                  "userId": "01JNFKSPA48YFGEX7X1A7KT9F0",
                   "username": "duybang1234501JNFKSPA48YFGEX7X1A7KT9F0",
                   "createTime": "2025-03-04T03:39:38.181Z",
                   "updateTime": "2025-03-04T03:39:38.181Z",
@@ -81,7 +81,7 @@ describe('Testcase for send-message', () => {
                   "userType": 0,
                   "presenceData": {
                       "lastUpdateTime": "2025-03-04T03:39:38.181Z",
-                      "lastUpdateInSeconds": "12631",
+                      // "lastUpdateInSeconds": 22125,  
                       "presenceState": 4
                   }
               }
@@ -103,13 +103,13 @@ describe('Testcase for send-message', () => {
           "members": [
               {
                   "workspaceId": "0",
-                  "channelId": 1,
+                  "channelId": "01JNFXFERG0874MNQS7MTYV7FH",
                   "userId": "01JNFKSPA48YFGEX7X1A7KT9F0",
                   "nickname": "",
                   "role": "owner",
                   "roles": [
                       {
-                          "role": 1234,
+                          "role": "owner",
                           "weight": 0
                       },
                       {
@@ -124,19 +124,22 @@ describe('Testcase for send-message', () => {
           "channelMetadata": [
               {
                   "unreadCount": 0,
-                  "lastMessageId": "01JNFZV58FZPZYNF2JZDBP6FM4",
+                  "lastMessageId": "01JNG8WWVYZRYQNT9QAA27DV0A",
                   "notificationStatus": true,
                   "mediaPermissionSetting": 0,
                   "workspaceId": "0",
-                  "channelId": 1
+                  "channelId": "01JNFXFERG0874MNQS7MTYV7FH"
               }
           ]
       }
   }
-
-    const dtoInstance = plainToClass(SendMessageResponse, fakedata);
-    const validateLogic = await validateSendMessage(dtoInstance, payload);
-    console.log(validateLogic)
+  
+  // Chuyển đổi plain object thành class instance
+  const sendMessageResponse = plainToClass(SendMessageResponse, fakedata);
+  
+  // Validate dữ liệu
+  const errors = validateSendMessage(sendMessageResponse,payload);
+  console.log(errors);
 
     //   if(response.status === 201){
 

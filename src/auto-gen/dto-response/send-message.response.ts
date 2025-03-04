@@ -1,235 +1,304 @@
 import {  ValidateNested} from 'class-validator';
-import { Type } from 'class-transformer';
-import { IsArray,ValidIf, IsBoolean, IsString, IsNumber, IsObject } from '../decorator/dto-decorator';
+import { Transform, Type } from 'class-transformer';
+import { IsDefined, IsArray,ValidIf, IsBoolean, IsString, IsNumber, IsObject } from '../decorator/dto-decorator';
 
 export class Message {
   @IsString()
-  workspaceId: string;
+  @IsDefined()
+  @ValidIf("workspaceId", "workspaceId")
+  workspaceId?: string = undefined;
 
   @IsString()
+  @IsDefined()
   @ValidIf("channelId", "channelId")
-  channelId: string;
+  channelId?: string = undefined;
 
   @IsString()
-  messageId: string;
+  @IsDefined()
+  messageId?: string = undefined;
 
   @IsString()
-  userId: string;
+  @IsDefined()
+  userId?: string = undefined;
 
   @IsString()
+  @IsDefined()
   @ValidIf("content", "content")
-  content: string;
+  content?: string = undefined;
 
   @IsNumber()
-  messageType: number;
+  @IsDefined()
+  messageType?: string = undefined;
 
   @IsNumber()
-  messageStatus: number;
+  @IsDefined()
+  messageStatus?: string = undefined;
 
   @IsNumber()
-  attachmentType: number;
+  @IsDefined()
+  attachmentType?: string = undefined;
 
   @IsBoolean()
-  isThread: boolean;
+  @IsDefined()
+  isThread?: string = undefined;
 
   @IsNumber()
-  reportCount: number;
+  @IsDefined()
+  reportCount?: string = undefined;
 
   @IsBoolean()
-  isReported: boolean;
+  @IsDefined()
+  isReported?: string = undefined;
 
   @IsNumber()
-  attachmentCount: number;
+  @IsDefined()
+  attachmentCount?: string = undefined;
 
   @IsString()
-  contentLocale: string;
+  @IsDefined()
+  contentLocale?: string = undefined;
 
   @IsBoolean()
-  isPinned: boolean;
+  @IsDefined()
+  isPinned?: string = undefined;
 
   @IsString()
+  @IsDefined()
   @ValidIf("createTime", "updateTime")
-  createTime: string;
+  createTime?: string = undefined;
 
   @IsString()
-  updateTime: string;
+  @IsDefined()
+  @ValidIf("updateTime", new Date().toISOString())
+  updateTime?: string = undefined;
 
   @IsString()
+  @IsDefined()
   @ValidIf("ref", "ref")
-  ref: string;
+  ref?: string = undefined;
 }
 
 export class Profile {
   @IsString()
-  avatar: string;
+  @IsDefined()
+  avatar?: string = undefined;
 
   @IsString()
-  displayName: string;
+  @IsDefined()
+  displayName?: string = undefined;
 
   @IsString()
-  originalAvatar: string;
+  @IsDefined()
+  originalAvatar?: string = undefined;
 
   @IsNumber()
-  avatarType: number;
+  @IsDefined()
+  avatarType?: string = undefined;
 
   @IsNumber()
-  userBadgeType: number;
+  @IsDefined()
+  userBadgeType?: string = undefined;
 }
 
 export class PresenceData {
   @IsString()
-  lastUpdateTime: string;
+  @IsDefined()
+  @ValidIf("updateTime", new Date().toISOString())
+  lastUpdateTime?: string = undefined;
 
   @IsNumber()
-  lastUpdateInSeconds: number;
+  @IsDefined()
+  lastUpdateInSeconds?: string = undefined;
 
   @IsNumber()
-  presenceState: number;
+  @IsDefined()
+  presenceState?: string = undefined;
 }
 
 export class Role {
   @IsString()
-  role: string;
+  @IsDefined()
+  role?: string = undefined;
 
   @IsNumber()
-  weight: number;
+  @IsDefined()
+  weight?: string = undefined;
 }
 
 export class ChannelMetadata {
   @IsNumber()
-  unreadCount: number;
+  @IsDefined()
+  unreadCount?: string = undefined;
 
   @IsString()
-  lastMessageId: string;
+  @IsDefined()
+  lastMessageId?: string = undefined;
 
   @IsBoolean()
-  notificationStatus: boolean;
+  @IsDefined()
+  notificationStatus?: string = undefined;
 
   @IsNumber()
-  mediaPermissionSetting: number;
+  @IsDefined()
+  mediaPermissionSetting?: string = undefined;
 
   @IsString()
+  @IsDefined()
   @ValidIf("workspaceId", "workspaceId")
-  workspaceId: string;
+  workspaceId?: string = undefined;
 
   @IsString()
+  @IsDefined()
   @ValidIf("channelId", "channelId")
-  channelId: string;
+  channelId?: string = undefined;
 }
 
 export class ChannelDTO {
   @IsString()
+  @IsDefined()
   @ValidIf("workspaceId", "workspaceId")
-  workspaceId: string;
+  workspaceId?: string = undefined;
 
   @IsString()
+  @IsDefined()
   @ValidIf("channelId", "channelId")
-  channelId: string;
+  channelId?: string = undefined;
 
   @IsString()
-  userId: string;
+  @IsDefined()
+  userId?: string = undefined;
 
   @IsString()
-  name: string;
+  @IsDefined()
+  name?: string = undefined;
 
   @IsBoolean()
-  isPrivate: boolean;
+  @IsDefined()
+  isPrivate?: string = undefined;
 
   @IsNumber()
-  type: number;
+  @IsDefined()
+  type?: string = undefined;
 
   @IsString()
-  invitationLink: string;
+  @IsDefined()
+  invitationLink?: string = undefined;
 
   @IsNumber()
-  totalMembers: number;
+  @IsDefined()
+  totalMembers?: string = undefined;
 
   @IsString()
+  @IsDefined()
   @ValidIf("createTime", "updateTime")
-  createTime: string;
+  createTime?: string = undefined;
 
   @IsString()
-  updateTime: string;
+  @IsDefined()
+  @ValidIf("updateTime", new Date().toISOString())
+  updateTime?: string = undefined;
 }
 
 export class User {
   @IsString()
-  userId: string;
+  @IsDefined()
+  userId?: string = undefined;
 
   @IsString()
-  username: string;
+  @IsDefined()
+  username?: string = undefined;
 
   @IsString()
+  @IsDefined()
   @ValidIf("createTime", "updateTime")
-  createTime: string;
+  createTime?: string = undefined;
 
   @IsString()
-  updateTime: string;
+  @IsDefined()
+  @ValidIf("updateTime", new Date().toISOString())
+  updateTime?: string = undefined;
 
   @ValidateNested({ each: true })
   @IsObject()
+  @IsDefined()
   @Type(() => Profile)
   profile: Profile;
 
   @IsNumber()
-  userType: number;
+  @IsDefined()
+  userType?: string = undefined;
 
   @ValidateNested({ each: true })
   @IsObject()
+  @IsDefined()
   @Type(() => PresenceData)
   presenceData: PresenceData;
 }
 
 export class Member {
+
   @IsString()
+  @IsDefined()
   @ValidIf("workspaceId", "workspaceId")
-  workspaceId: string;
+  workspaceId?: string = undefined;
 
   @IsString()
+  @IsDefined()
   @ValidIf("channelId", "channelId")
-  channelId: string;
+  channelId?: string = undefined;
 
   @IsString()
-  userId: string;
+  @IsDefined()
+  userId?: string = undefined;
 
   @IsString()
-  nickname: string;
+  @IsDefined()
+  nickname?: string = undefined;
 
   @IsString()
-  role: string;
+  @IsDefined()
+  role?: string = undefined;
 
   @ValidateNested({ each: true })
   @IsArray()
+  @IsDefined()
   @Type(() => Role)
   roles: Role[];
 
   @IsString()
+  @IsDefined()
   @ValidIf("createTime", "updateTime")
-  createTime: string;
+  createTime?: string = undefined;
 
   @IsString()
-  updateTime: string;
+  @IsDefined()
+  @ValidIf("updateTime", new Date().toISOString())
+  updateTime?: string = undefined;
 }
 
 export class IncludesMessage {
 
   @ValidateNested({ each: true })
   @IsArray()
+  @IsDefined()
   @Type(() => User)
   users: User[];
 
   @ValidateNested({ each: true })
   @IsArray()
+  @IsDefined()
   @Type(() => ChannelDTO)
   channels: ChannelDTO[];
 
   @ValidateNested({ each: true })
   @IsArray()
+  @IsDefined()
   @Type(() => Member)
   members: Member[];
 
   @ValidateNested({ each: true })
   @IsArray()
+  @IsDefined()
   @Type(() => ChannelMetadata)
   channelMetadata: ChannelMetadata[];
 }
@@ -238,21 +307,25 @@ export class DataMessage {
 
   @ValidateNested({ each: true })
   @IsObject()
+  @IsDefined()
   @Type(() => Message)
   message: Message;
 }
 
 export class SendMessageResponse {
   @IsBoolean()
-  ok: boolean;
+  @IsDefined()
+  ok?: boolean = undefined;
 
   @ValidateNested({ each: true })
   @IsObject()
+  @IsDefined()
   @Type(() => DataMessage)
   data: DataMessage;
 
   @ValidateNested({ each: true })
   @IsObject()
+  @IsDefined()
   @Type(() => IncludesMessage)
   includes: IncludesMessage;
 }

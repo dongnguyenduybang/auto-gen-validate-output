@@ -124,7 +124,7 @@ export function IsDefined() {
   };
 }
 
-export function ValidIf(condition: string, condition2: string) {
+export function ValidIf(condition: string, condition2: any) {
   return function (target: any, propertyKey: string) {
       Reflect.defineMetadata('validIf', { condition, condition2 }, target, propertyKey);
   };
