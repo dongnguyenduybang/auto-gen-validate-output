@@ -1,0 +1,3328 @@
+[
+    {
+        "body": {},
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "messageId": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "messageId": "",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "messageId": "",
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "messageId": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "messageId": 12345,
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "messageId": 12345,
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "messageId": 12345,
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "messageId": "{{messageId}}"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "messageId": "{{messageId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "messageId": "{{messageId}}",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "messageId": "{{messageId}}",
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "messageId should not be empty",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "messageId": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "messageId should not be empty",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "messageId should not be empty",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "messageId": "",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "messageId should not be empty",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "messageId": "",
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "messageId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "messageId": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "messageId": 12345,
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "messageId": 12345,
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "messageId": 12345,
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "messageId": "{{messageId}}"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "messageId": "{{messageId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "messageId": "{{messageId}}",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "messageId": "{{messageId}}",
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 12345,
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 12345,
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 12345,
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 12345,
+            "messageId": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 12345,
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 12345,
+            "messageId": "",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 12345,
+            "messageId": "",
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "messageId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 12345,
+            "messageId": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 12345,
+            "messageId": 12345,
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 12345,
+            "messageId": 12345,
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 12345,
+            "messageId": 12345,
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 12345,
+            "messageId": "{{messageId}}"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 12345,
+            "messageId": "{{messageId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 12345,
+            "messageId": "{{messageId}}",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 12345,
+            "messageId": "{{messageId}}",
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "channelId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "messageId": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "messageId should not be empty",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "messageId should not be empty",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "messageId": "",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "messageId should not be empty",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "messageId": "",
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "messageId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "messageId": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "messageId": 12345,
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "messageId": 12345,
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "messageId": 12345,
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "workspaceId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "messageId": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "messageId": "",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "messageId": "",
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "messageId": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "messageId": 12345,
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "messageId": 12345,
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "messageId": 12345,
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "messageId": "{{messageId}}"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "messageId": "{{messageId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "messageId": "{{messageId}}",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "messageId": "{{messageId}}",
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "channelId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "messageId should not be empty",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "messageId": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "messageId should not be empty",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "messageId should not be empty",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "messageId": "",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "messageId should not be empty",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "messageId": "",
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "messageId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "messageId": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "messageId": 12345,
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "messageId": 12345,
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "messageId": 12345,
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "messageId": "{{messageId}}"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "messageId": "{{messageId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "messageId": "{{messageId}}",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "messageId": "{{messageId}}",
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "messageId": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "messageId": "",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "messageId": "",
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "messageId": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "messageId": 12345,
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "messageId": 12345,
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "messageId": 12345,
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "messageId": "{{messageId}}"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "messageId": "{{messageId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "messageId": "{{messageId}}",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "messageId": "{{messageId}}",
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "messageId should not be empty",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "messageId": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "messageId should not be empty",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "messageId should not be empty",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "messageId": "",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "messageId should not be empty",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "messageId": "",
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "messageId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "messageId": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "messageId": 12345,
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "messageId": 12345,
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "messageId": 12345,
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "messageId": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "messageId": "",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "messageId": "",
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "messageId": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "messageId": 12345,
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "messageId": 12345,
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "messageId": 12345,
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "messageId": "{{messageId}}"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "messageId": "{{messageId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "messageId": "{{messageId}}",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "messageId": "{{messageId}}",
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "channelId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "messageId should not be empty",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "messageId": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "messageId should not be empty",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "messageId should not be empty",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "messageId": "",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "messageId should not be empty",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "messageId": "",
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "messageId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "messageId": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "messageId": 12345,
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "messageId": 12345,
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "messageId": 12345,
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "messageId": "{{messageId}}"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "messageId": "{{messageId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "messageId": "{{messageId}}",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "messageId": "{{messageId}}",
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "messageId": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "messageId": "",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "messageId": "",
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "messageId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "messageId": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "messageId": 12345,
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "messageId": 12345,
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "messageId": 12345,
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "messageId": "{{messageId}}"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "messageId": "{{messageId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "messageId": "{{messageId}}",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "messageId": "{{messageId}}",
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "messageId": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "messageId should not be empty",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "messageId should not be empty",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "messageId": "",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "messageId should not be empty",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "messageId": "",
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "messageId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "messageId": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "messageId": 12345,
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "messageId": 12345,
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "messageId": 12345,
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": "😟"
+        },
+        "expects": [
+            "workspaceId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0"
+        },
+        "expects": [
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "emoji": ""
+        },
+        "expects": [
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "emoji": 12345
+        },
+        "expects": [
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "emoji": "😟"
+        },
+        "expects": [
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "messageId": ""
+        },
+        "expects": [
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "messageId": "",
+            "emoji": 12345
+        },
+        "expects": [
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "messageId": "",
+            "emoji": "😟"
+        },
+        "expects": [
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "messageId": 12345
+        },
+        "expects": [
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "messageId": 12345,
+            "emoji": ""
+        },
+        "expects": [
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "messageId": 12345,
+            "emoji": 12345
+        },
+        "expects": [
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "messageId": 12345,
+            "emoji": "😟"
+        },
+        "expects": [
+            "channelId should not be empty",
+            "channelId must be a string",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "messageId": "{{messageId}}"
+        },
+        "expects": [
+            "channelId should not be empty",
+            "channelId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "messageId": "{{messageId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "channelId should not be empty",
+            "channelId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "messageId": "{{messageId}}",
+            "emoji": 12345
+        },
+        "expects": [
+            "channelId should not be empty",
+            "channelId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "messageId": "{{messageId}}",
+            "emoji": "😟"
+        },
+        "expects": [
+            "channelId should not be empty",
+            "channelId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": ""
+        },
+        "expects": [
+            "channelId should not be empty",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "channelId should not be empty",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "emoji": 12345
+        },
+        "expects": [
+            "channelId should not be empty",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "emoji": "😟"
+        },
+        "expects": [
+            "channelId should not be empty",
+            "messageId should not be empty",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "messageId": ""
+        },
+        "expects": [
+            "channelId should not be empty",
+            "messageId should not be empty",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "channelId should not be empty",
+            "messageId should not be empty",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "messageId": "",
+            "emoji": 12345
+        },
+        "expects": [
+            "channelId should not be empty",
+            "messageId should not be empty",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "messageId": "",
+            "emoji": "😟"
+        },
+        "expects": [
+            "channelId should not be empty",
+            "messageId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "messageId": 12345
+        },
+        "expects": [
+            "channelId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "messageId": 12345,
+            "emoji": ""
+        },
+        "expects": [
+            "channelId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "messageId": 12345,
+            "emoji": 12345
+        },
+        "expects": [
+            "channelId should not be empty",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "messageId": 12345,
+            "emoji": "😟"
+        },
+        "expects": [
+            "channelId should not be empty",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "messageId": "{{messageId}}"
+        },
+        "expects": [
+            "channelId should not be empty",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "messageId": "{{messageId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "channelId should not be empty",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "messageId": "{{messageId}}",
+            "emoji": 12345
+        },
+        "expects": [
+            "channelId should not be empty",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "messageId": "{{messageId}}",
+            "emoji": "😟"
+        },
+        "expects": [
+            "channelId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345
+        },
+        "expects": [
+            "channelId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "emoji": ""
+        },
+        "expects": [
+            "channelId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "emoji": 12345
+        },
+        "expects": [
+            "channelId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "emoji": "😟"
+        },
+        "expects": [
+            "channelId must be a string",
+            "messageId should not be empty",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "messageId": ""
+        },
+        "expects": [
+            "channelId must be a string",
+            "messageId should not be empty",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "channelId must be a string",
+            "messageId should not be empty",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "messageId": "",
+            "emoji": 12345
+        },
+        "expects": [
+            "channelId must be a string",
+            "messageId should not be empty",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "messageId": "",
+            "emoji": "😟"
+        },
+        "expects": [
+            "channelId must be a string",
+            "messageId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "messageId": 12345
+        },
+        "expects": [
+            "channelId must be a string",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "messageId": 12345,
+            "emoji": ""
+        },
+        "expects": [
+            "channelId must be a string",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "messageId": 12345,
+            "emoji": 12345
+        },
+        "expects": [
+            "channelId must be a string",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "messageId": 12345,
+            "emoji": "😟"
+        },
+        "expects": [
+            "channelId must be a string",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "messageId": "{{messageId}}"
+        },
+        "expects": [
+            "channelId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "messageId": "{{messageId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "channelId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "messageId": "{{messageId}}",
+            "emoji": 12345
+        },
+        "expects": [
+            "channelId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "messageId": "{{messageId}}",
+            "emoji": "😟"
+        },
+        "expects": [
+            "channelId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}"
+        },
+        "expects": [
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "emoji": 12345
+        },
+        "expects": [
+            "messageId should not be empty",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "emoji": "😟"
+        },
+        "expects": [
+            "messageId should not be empty",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": ""
+        },
+        "expects": [
+            "messageId should not be empty",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "messageId should not be empty",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "",
+            "emoji": 12345
+        },
+        "expects": [
+            "messageId should not be empty",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "",
+            "emoji": "😟"
+        },
+        "expects": [
+            "messageId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": 12345
+        },
+        "expects": [
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": 12345,
+            "emoji": ""
+        },
+        "expects": [
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": 12345,
+            "emoji": 12345
+        },
+        "expects": [
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": 12345,
+            "emoji": "😟"
+        },
+        "expects": [
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}"
+        },
+        "expects": [
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": 12345
+        },
+        "expects": [
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": "😟"
+        },
+        "expects": []
+    }
+]

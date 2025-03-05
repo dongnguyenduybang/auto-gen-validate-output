@@ -17,6 +17,9 @@ export enum ErrorMessage {
   INVALID_TYPE_OBJ = 'must be an object',
   INVALID_ENUM = 'should not be invalid enum',
   INVALID_DATE_OVER_CURRENT = 'must not dates greater than or equal to the current date',
+  INVALID_DATE_EQUAL_CURRENT = 'must not dates equal to the current date',
   INVALID_RANGE_NUMBER = 'must be one of the following values:',
   INVALID_TYPE = 'must be a type',
+  START_WITH = 'must start with',
+  END_WITH = 'must end with'
 }

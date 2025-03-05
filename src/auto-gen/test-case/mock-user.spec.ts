@@ -2,7 +2,7 @@
     import { validateMockUser } from '../validates/mock-user/validate-mock-user';
     import fs from 'fs';
     import path from 'path';
-    import { summarizeErrors, summaryFields } from '../helps/utils';
+    import { summarizeErrors, summaryFields, getTime } from '../helps/utils';
     import { executeBeforeAllSteps, executeDelete } from '../functions';
     import { resolveJsonVariables } from '../helps/get-resolve-variables';
     import { plainToClass } from 'class-transformer';
@@ -12,6 +12,7 @@
         let totalTests = 0;
         let passedLogic = 0;
         let failedTests = [];
+        let logicTests = [];
         let passedTests = 0
         let headerRequest
 
@@ -44,7 +45,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 1,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -128,7 +136,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 2,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -212,7 +227,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 3,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -296,7 +318,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 4,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -380,7 +409,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 5,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -464,7 +500,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 6,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -548,7 +591,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 7,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -632,7 +682,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 8,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -716,7 +773,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 9,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -800,7 +864,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 10,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -884,7 +955,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 11,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -968,7 +1046,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 12,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1052,7 +1137,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 13,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1136,7 +1228,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 14,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1220,7 +1319,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 15,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1304,7 +1410,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 16,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1388,7 +1501,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 17,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1472,7 +1592,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 18,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1556,7 +1683,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 19,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1640,7 +1774,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 20,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be less than 1"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1724,7 +1865,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 21,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1808,7 +1956,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 22,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1892,7 +2047,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 23,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -1976,7 +2138,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 24,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix should not be empty","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2060,7 +2229,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 25,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2144,7 +2320,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 26,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2228,7 +2411,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 27,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2312,7 +2502,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 28,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2396,7 +2593,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 29,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2480,7 +2684,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 30,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2564,7 +2775,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 31,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2648,7 +2866,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 32,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2732,7 +2957,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 33,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2816,7 +3048,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 34,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2900,7 +3139,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 35,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -2984,7 +3230,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 36,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3068,7 +3321,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 37,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3152,7 +3412,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 38,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3236,7 +3503,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 39,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3320,7 +3594,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 40,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3404,7 +3685,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 41,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3488,7 +3776,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 42,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3572,7 +3867,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 43,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3656,7 +3958,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 44,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be less than 1"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3740,7 +4049,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 45,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3824,7 +4140,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 46,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3908,7 +4231,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 47,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -3992,7 +4322,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 48,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be a string","prefix must be longer than or equal to 5 characters","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4076,7 +4413,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 49,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4160,7 +4504,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 50,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4244,7 +4595,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 51,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4328,7 +4686,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 52,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4412,7 +4777,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 53,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4496,7 +4868,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 54,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4580,7 +4959,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 55,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4664,7 +5050,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 56,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4748,7 +5141,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 57,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4832,7 +5232,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 58,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -4916,7 +5323,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 59,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5000,7 +5414,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 60,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5084,7 +5505,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 61,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5168,7 +5596,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 62,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5252,7 +5687,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 63,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5336,7 +5778,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 64,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  [].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5420,7 +5869,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 65,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5504,7 +5960,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 66,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5588,7 +6051,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 67,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5672,7 +6142,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 68,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be less than 1"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5756,7 +6233,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 69,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5840,7 +6324,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 70,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -5924,7 +6415,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 71,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6008,7 +6506,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 72,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6092,7 +6597,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 73,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6176,7 +6688,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 74,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6260,7 +6779,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 75,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6344,7 +6870,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 76,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6428,7 +6961,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 77,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6512,7 +7052,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 78,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6596,7 +7143,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 79,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6680,7 +7234,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 80,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity should not be empty","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6764,7 +7325,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 81,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6848,7 +7416,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 82,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -6932,7 +7507,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 83,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7016,7 +7598,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 84,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must be a number conforming to the specified constraints","quantity must not be less than 1","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7100,7 +7689,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 85,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7184,7 +7780,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 86,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7268,7 +7871,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 87,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7352,7 +7962,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 88,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7436,7 +8053,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 89,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7520,7 +8144,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 90,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7604,7 +8235,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 91,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7688,7 +8326,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 92,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be less than 1"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7772,7 +8417,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 93,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7856,7 +8508,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 94,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","badge should not be empty","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -7940,7 +8599,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 95,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100","badge must be a number conforming to the specified constraints","badge must be one of the following values: 0, 1, 2, 3"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -8024,7 +8690,14 @@
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(MockUserResponse, data);
                 const validateLogic = await validateMockUser(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: 96,
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ["prefix must be longer than or equal to 5 characters","quantity must not be greater than 100"].sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -8089,13 +8762,17 @@
           });
 
       afterAll(async () => {
-          const folderPath = path.join(__dirname, '../reports');
+        const folderPath = path.join(__dirname, '../reports');
 
-          if (!fs.existsSync(folderPath)) {
-            fs.mkdirSync(folderPath, { recursive: true });
-          }
-          const summary = summarizeErrors(failedTests, totalTests, passedLogic);
-          const resultContent = `
+        const folderPathLogic = path.join(__dirname, '../reports/mock-user');
+        if (!fs.existsSync(folderPath)) {
+          fs.mkdirSync(folderPath, { recursive: true });
+        }
+        if (!fs.existsSync(folderPathLogic)) {
+          fs.mkdirSync(folderPathLogic, { recursive: true });
+        }
+        const summary = summarizeErrors(failedTests, totalTests, passedLogic);
+        const resultContent = `
 === Test Reports for DTO "mock-user" ===
 Host: ${globalThis.url}
 Endpoint: /InternalFaker/MockUsers
@@ -8116,25 +8793,31 @@ Uniques Error:
       .join('')
   }
 Failed Test Details:
-${failedTests
-  .map(
-    (failCase) => `
-- Testcase #${failCase.testcase}
-  Missing Errors: ${failCase.missing ? JSON.stringify(failCase.missing) : "''"}
-  Status Code: ${failCase.code ? JSON.stringify(failCase.code) : "''"}
-  Extra Errors: ${failCase.extra ? JSON.stringify(failCase.extra) : "''"}
-  Detail Errors: ${failCase.errorDetails ? JSON.stringify(failCase.errorDetails) : "''"}
-                  `
-                    )
-                    .join('')}
-                  `;
+${failedTests.map((failCase) => `
+  - Testcase #${failCase.testcase}
+    Missing Errors: ${failCase.missing ? JSON.stringify(failCase.missing) : "''"}
+    Status Code: ${failCase.code ? JSON.stringify(failCase.code) : "''"}
+    Extra Errors: ${failCase.extra ? JSON.stringify(failCase.extra) : "''"}
+    Detail Errors: ${failCase.errorDetails ? JSON.stringify(failCase.errorDetails) : "''"}`).join('')}`;
 
-               const resultFilePath = path.join(folderPath, 'mock-user.txt');
 
-                        fs.writeFileSync(resultFilePath, resultContent, 'utf-8');
-                        console.log(`Success: ${resultFilePath}`);
-                        await executeDelete(["deleteMockUser(duy123456)"], headerRequest)    
-                      });
+    const resultLogicError = `
+    === Test Reports Logic for DTO "mock-user" ===
+    Host: ${globalThis.url}
+    Endpoint: /InternalFaker/MockUsers
+    Error: 
+    ${logicTests.map((logicCaseFail) => `
+    - Testcase #${logicCaseFail.testcase}
+      Logic Errors: ${logicCaseFail.errorLogic ? JSON.stringify(logicCaseFail.errorLogic) : "''"}` ).join('')}}`
+
+
+const resultFilePath = path.join(folderPath, 'mock-user.txt');
+const resultFilePathLogic = path.join(folderPathLogic, `mock-user.${getTime()}.txt`);
+fs.writeFileSync(resultFilePath, resultContent, 'utf-8');
+fs.writeFileSync(resultFilePathLogic, resultLogicError, 'utf-8');
+console.log(`Success: ${resultFilePath}`);
+await executeDelete(["deleteMockUser(duy123456)"], headerRequest)    
+});
                           
                     });
 

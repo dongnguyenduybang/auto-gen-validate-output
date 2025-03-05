@@ -194,53 +194,53 @@ export function countTokens(): number {
   return count;
 }
 
-  export function summarizeErrors(
-    failedTests: any[],
-    totalTests: number,
-    passedLogic: number,
-  ) {
-    const summary = {
-      statusCodes: { 201: passedLogic, 400: 0, 500: 0, 403: 0, 404: 0 },
-      uniqueErrors: new Map<string, number>(),
-    };
+export function summarizeErrors(
+  failedTests: any[],
+  totalTests: number,
+  passedLogic: number,
+) {
+  const summary = {
+    statusCodes: { 201: passedLogic, 400: 0, 500: 0, 403: 0, 404: 0 },
+    uniqueErrors: new Map<string, number>(),
+  };
 
-    failedTests.forEach((failCase) => {
-      const statusCode = failCase.code || 500;
-      summary.statusCodes[statusCode] =
-        (summary.statusCodes[statusCode] || 0) + 1;
+  failedTests.forEach((failCase) => {
+    const statusCode = failCase.code || 500;
+    summary.statusCodes[statusCode] =
+      (summary.statusCodes[statusCode] || 0) + 1;
 
-      if (failCase.missing && Array.isArray(failCase.missing)) {
-        failCase.missing.forEach((error) => {
-          summary.uniqueErrors.set(
-            error,
-            (summary.uniqueErrors.get(error) || 0) + 1,
-          );
-        });
-      }
+    if (failCase.missing && Array.isArray(failCase.missing)) {
+      failCase.missing.forEach((error) => {
+        summary.uniqueErrors.set(
+          error,
+          (summary.uniqueErrors.get(error) || 0) + 1,
+        );
+      });
+    }
 
-      if (failCase.extra && Array.isArray(failCase.extra)) {
-        failCase.extra.forEach((error) => {
-          summary.uniqueErrors.set(
-            error,
-            (summary.uniqueErrors.get(error) || 0) + 1,
-          );
-        });
-      }
-      if (failCase.errorDetails) {
-        const detailErrors = Array.isArray(failCase.errorDetails)
-          ? failCase.errorDetails
-          : [failCase.errorDetails];
-        detailErrors.forEach((error) => {
-          summary.uniqueErrors.set(
-            error,
-            (summary.uniqueErrors.get(error) || 0) + 1,
-          );
-        });
-      }
-    });
+    if (failCase.extra && Array.isArray(failCase.extra)) {
+      failCase.extra.forEach((error) => {
+        summary.uniqueErrors.set(
+          error,
+          (summary.uniqueErrors.get(error) || 0) + 1,
+        );
+      });
+    }
+    if (failCase.errorDetails) {
+      const detailErrors = Array.isArray(failCase.errorDetails)
+        ? failCase.errorDetails
+        : [failCase.errorDetails];
+      detailErrors.forEach((error) => {
+        summary.uniqueErrors.set(
+          error,
+          (summary.uniqueErrors.get(error) || 0) + 1,
+        );
+      });
+    }
+  });
 
-    return summary;
-  }
+  return summary;
+}
 
 export function getValueByRecursion(obj: any, path: string): any {
   if (!obj || typeof obj !== 'object') return undefined;
@@ -289,4 +289,15 @@ export function groupFilesByName(
     }
   });
   return fileMap;
+}
+
+export function getTime() {
+  const now = new Date();
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, '0');
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const year = now.getFullYear();
+  const formattedDate = `${hours}${minutes}-${day}${month}${year}`;
+  return formattedDate
 }

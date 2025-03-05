@@ -3,7 +3,9 @@ import { createChannel } from './create-channel';
 import { deleteMessageForEveryone } from './delete-message-for-everyone';
 import { deleteMockChannel } from './delete-mock-channel';
 import { deleteMockUser } from './delete-mock-user';
+import { getMessage } from './get-message';
 import { mockUser } from './mock-user';
+import { sendMessage } from './send-message';
 
 export async function executeBeforeAllSteps(request) {
   if (Array.isArray(request)) {
@@ -37,6 +39,20 @@ export async function executeBeforeAllSteps(request) {
             const [token, channelId, messageId, name] = args
 
             // await updateMessage(token, channelId, messageId, name)
+          }
+
+          case 'sendMessage' : {
+            const [token, workspaceId, channelId, content, ref ] = args
+
+            await sendMessage(token, workspaceId, channelId, content, ref)
+            break;
+          }
+
+          case 'getMessage': {
+            const [token, channelId, messageId] = args
+
+            await getMessage(token, channelId, messageId)
+            break;
           }
           default:
             console.log('Invalid step:', step);

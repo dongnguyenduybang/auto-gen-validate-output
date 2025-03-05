@@ -1,6 +1,6 @@
 export enum BadgeEnum {
-  ZERO = 0,
-  ONE = 1,
-  TWO = 2,
-  THREE = 3,
+  USER_BADGE_TYPE_DEFAULT = 0,
+  USER_BADGE_TYPE_BLUE = 1,
+  USER_BADGE_TYPE_GRAY = 2,
+  USER_BADGE_TYPE_YELLOW = 3
 }

@@ -25,7 +25,7 @@ export async function validateMockMessage(instance: any, payload: any): Promise<
             if (key === 'data') {
                 const params = { token: '{{token}}', channelId: '{{channelId}}' };
                 try {
-                    const dataMessage = await getMessage(params, value);
+                    const dataMessage = await getMessage(params.token, params.channelId, value);
                    
                     const messageIdCheck = dataMessage?.data?.data?.message?.messageId;
                     const expectedMessageId = Array.isArray(value) ? value[0] : value;

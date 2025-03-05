@@ -54,8 +54,6 @@ function genTestCase(
 ) {
   const payloadData = readJsonFile(payloadPath);
   const requestConfig = readJsonFile(requestPath);
-  // const resolvedHeaders = resolveJsonVariables(requestConfig.headers);
-  //chuyển đổi string có dấu - thành chuỗi viết liền
   const classNameCapitalized = className
     .split('-')
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
@@ -65,16 +63,17 @@ function genTestCase(
     import { validate${classNameCapitalized} } from '../validates/${className}/validate-${className}';
     import fs from 'fs';
     import path from 'path';
-    import { summarizeErrors, summaryFields } from '../helps/utils';
+    import { summarizeErrors, summaryFields, getTime } from '../helps/utils';
     import { executeBeforeAllSteps, executeDelete } from '../functions';
     import { resolveJsonVariables } from '../helps/get-resolve-variables';
     import { plainToClass } from 'class-transformer';
-    import { ${classNameCapitalized}Response } from '../dto-response/${className}.response.dto';
+    import { ${classNameCapitalized}Response } from '../dto-response/${className}.response';
 
     describe('Testcase for ${className}', () => {
         let totalTests = 0;
         let passedLogic = 0;
         let failedTests = [];
+        let logicTests = [];
         let passedTests = 0
         let headerRequest
 
@@ -109,7 +108,14 @@ function genTestCase(
                 expect(data.data).not.toBeNull()
                 const dtoInstance = plainToClass(${classNameCapitalized}Response, data);
                 const validateLogic = await validate${classNameCapitalized}(dtoInstance, payload);
-                expect(validateLogic).toHaveLength(0); 
+                if (validateLogic.length === 0) {
+                  passedLogic++
+                } else {
+                  logicTests.push({
+                    testcase: ${index + 1},
+                    errorLogic: validateLogic,
+                  })
+                }
             }else if(response.status === 400){
               const expectJson =  ${JSON.stringify(testCase.expects)}.sort()
               const expectDetails = Array.isArray(data?.error?.details)
@@ -176,13 +182,17 @@ function genTestCase(
           .join('\n')}
 
       afterAll(async () => {
-          const folderPath = path.join(__dirname, '../reports');
+        const folderPath = path.join(__dirname, '../reports');
 
-          if (!fs.existsSync(folderPath)) {
-            fs.mkdirSync(folderPath, { recursive: true });
-          }
-          const summary = summarizeErrors(failedTests, totalTests, passedLogic);
-          const resultContent = \`
+        const folderPathLogic = path.join(__dirname, '../reports/${className}');
+        if (!fs.existsSync(folderPath)) {
+          fs.mkdirSync(folderPath, { recursive: true });
+        }
+        if (!fs.existsSync(folderPathLogic)) {
+          fs.mkdirSync(folderPathLogic, { recursive: true });
+        }
+        const summary = summarizeErrors(failedTests, totalTests, passedLogic);
+        const resultContent = \`
 === Test Reports for DTO "${className}" ===
 Host: \${globalThis.url}
 Endpoint: ${requestConfig.path}
@@ -202,25 +212,31 @@ Uniques Error:
       .join('')
   }
 Failed Test Details:
-\${failedTests
-  .map(
-    (failCase) => \`
-- Testcase #\${failCase.testcase}
-  Missing Errors: \${failCase.missing ? JSON.stringify(failCase.missing) : "''"}
-  Status Code: \${failCase.code ? JSON.stringify(failCase.code) : "''"}
-  Extra Errors: \${failCase.extra ? JSON.stringify(failCase.extra) : "''"}
-  Detail Errors: \${failCase.errorDetails ? JSON.stringify(failCase.errorDetails) : "''"}
-                  \`
-                    )
-                    .join('')}
-                  \`;
+\${failedTests.map((failCase) => \`
+  - Testcase #\${failCase.testcase}
+    Missing Errors: \${failCase.missing ? JSON.stringify(failCase.missing) : "''"}
+    Status Code: \${failCase.code ? JSON.stringify(failCase.code) : "''"}
+    Extra Errors: \${failCase.extra ? JSON.stringify(failCase.extra) : "''"}
+    Detail Errors: \${failCase.errorDetails ? JSON.stringify(failCase.errorDetails) : "''"}\`).join('')}\`;
 
-               const resultFilePath = path.join(folderPath, '${className}.txt');
 
-                        fs.writeFileSync(resultFilePath, resultContent, 'utf-8');
-                        console.log(\`Success: \${resultFilePath}\`);
-                        await executeDelete(${JSON.stringify(requestConfig.afterAll)}, headerRequest)    
-                      });
+    const resultLogicError = \`
+    === Test Reports Logic for DTO "${className}" ===
+    Host: \${globalThis.url}
+    Endpoint: ${requestConfig.path}
+    Error: 
+    \${logicTests.map((logicCaseFail) => \`
+    - Testcase #\${logicCaseFail.testcase}
+      Logic Errors: \${logicCaseFail.errorLogic ? JSON.stringify(logicCaseFail.errorLogic) : "''"}\` ).join('')}\`
+
+
+const resultFilePath = path.join(folderPath, '${className}.txt');
+const resultFilePathLogic = path.join(folderPathLogic, \`${className}.\${getTime()}.txt\`);
+fs.writeFileSync(resultFilePath, resultContent, 'utf-8');
+fs.writeFileSync(resultFilePathLogic, resultLogicError, 'utf-8');
+console.log(\`Success: \${resultFilePath}\`);
+await executeDelete(${JSON.stringify(requestConfig.afterAll)}, headerRequest)    
+});
                           
                     });
 

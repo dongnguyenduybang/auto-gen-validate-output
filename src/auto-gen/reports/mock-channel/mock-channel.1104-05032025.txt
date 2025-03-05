@@ -1,0 +1,6 @@
+
+    === Test Reports Logic for DTO "mock-channel" ===
+    Host: https://api-hono.rpc.ziichat.dev/
+    Endpoint: /InternalFaker/MockChannels
+    Error: 
+    }
