@@ -6,7 +6,7 @@
     import { executeBeforeAllSteps, executeDelete } from '../functions';
     import { resolveJsonVariables } from '../helps/get-resolve-variables';
     import { plainToClass } from 'class-transformer';
-    import { DeleteMessagesOnlyMeResponse } from '../dto-response/delete-messages-only-me.response';
+    import { DeleteMessagesOnlyMeResponse } from '../response/delete-messages-only-me.response';
     import { validateAfterLogic } from '../validates/send-location/validate-send-location-after';
 
     describe('Testcase for delete-messages-only-me', () => {

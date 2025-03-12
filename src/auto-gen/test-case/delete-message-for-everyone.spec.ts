@@ -6,7 +6,7 @@
     import { executeBeforeAllSteps, executeDelete } from '../functions';
     import { resolveJsonVariables } from '../helps/get-resolve-variables';
     import { plainToClass } from 'class-transformer';
-    import { DeleteMessageForEveryoneResponse } from '../dto-response/delete-message-for-everyone.response';
+    import { DeleteMessageForEveryoneResponse } from '../response/delete-message-for-everyone.response';
     import { validateAfterLogic } from '../validates/send-location/validate-send-location-after';
 
     describe('Testcase for delete-message-for-everyone', () => {

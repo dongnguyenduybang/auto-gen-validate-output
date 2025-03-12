@@ -6,7 +6,7 @@
     import { executeBeforeAllSteps, executeDelete } from '../functions';
     import { resolveJsonVariables } from '../helps/get-resolve-variables';
     import { plainToClass } from 'class-transformer';
-    import { ReportMessageResponse } from '../dto-response/report-message.response';
+    import { ReportMessageResponse } from '../response/report-message.response';
     import { validateAfterLogic } from '../validates/send-location/validate-send-location-after';
 
     describe('Testcase for report-message', () => {

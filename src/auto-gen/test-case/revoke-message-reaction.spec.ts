@@ -6,7 +6,7 @@ import { summarizeErrors, summaryFields, getTime } from '../helps/utils';
 import { executeBeforeAllSteps, executeDelete } from '../functions';
 import { resolveJsonVariables, resolveVariables } from '../helps/get-resolve-variables';
 import { plainToClass } from 'class-transformer';
-import { RevokeMessageReactionResponse } from '../dto-response/revoke-message-reaction.response';
+import { RevokeMessageReactionResponse } from '../response/revoke-message-reaction.response';
 import { validateAfterLogic } from '../validates/revoke-message-reaction/validate-revoke-message-reaction-after';
 
 describe('Testcase for revoke-message-reaction', () => {

@@ -1,7 +1,7 @@
 import { getDecorators } from "../../helps/dto-helper";
 import { ErrorMessage } from "../../enums/error-message.enum";
 import { plainToClass } from "class-transformer";
-import { MediaAttachments } from "../../dto-response/send-message-sticker.response";
+import { MediaAttachments } from "../../response/send-message-sticker.response";
 import { executeBeforeAllSteps } from "../../functions";
 
 export async function validateSendMessageSticker(instance: any, payload: any): Promise<string[]> {

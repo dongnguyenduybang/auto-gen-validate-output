@@ -6,7 +6,7 @@
     import { executeBeforeAllSteps, executeDelete } from '../functions';
     import { resolveJsonVariables,resolveVariables } from '../helps/get-resolve-variables';
     import { plainToClass } from 'class-transformer';
-    import { SendMessageStickerResponse } from '../dto-response/send-message-sticker.response';
+    import { SendMessageStickerResponse } from '../response/send-message-sticker.response';
     import { validateAfterLogic } from '../validates/send-ticket-message/validate-send-sticker-message-after';
 
     describe('Testcase for send-message-sticker', () => {

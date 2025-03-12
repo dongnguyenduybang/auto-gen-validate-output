@@ -6,7 +6,7 @@
     import { executeBeforeAllSteps, executeDelete } from '../functions';
     import { resolveJsonVariables } from '../helps/get-resolve-variables';
     import { plainToClass } from 'class-transformer';
-    import { AddMessageReactionResponse } from '../dto-response/add-message-reaction.response';
+    import { AddMessageReactionResponse } from '../response/add-message-reaction.response';
     import { validateAfterLogic } from '../validates/send-location/validate-send-location-after';
 
     describe('Testcase for add-message-reaction', () => {

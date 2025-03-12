@@ -6,7 +6,7 @@
     import { executeBeforeAllSteps, executeDelete } from '../functions';
     import { resolveJsonVariables } from '../helps/get-resolve-variables';
     import { plainToClass } from 'class-transformer';
-    import { MarkAllChannelAsReadResponse } from '../dto-response/mark-all-channel-as-read.response';
+    import { MarkAllChannelAsReadResponse } from '../response/mark-all-channel-as-read.response';
     import { validateAfterLogic } from '../validates/send-location/validate-send-location-after';
 
     describe('Testcase for mark-all-channel-as-read', () => {

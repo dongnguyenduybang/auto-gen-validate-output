@@ -6,7 +6,7 @@
     import { executeBeforeAllSteps, executeDelete } from '../functions';
     import { resolveJsonVariables } from '../helps/get-resolve-variables';
     import { plainToClass } from 'class-transformer';
-    import { MarkAsReadResponse } from '../dto-response/mark-as-read.response';
+    import { MarkAsReadResponse } from '../response/mark-as-read.response';
     import { validateAfterLogic } from '../validates/send-location/validate-send-location-after';
 
     describe('Testcase for mark-as-read', () => {

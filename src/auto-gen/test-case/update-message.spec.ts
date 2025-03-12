@@ -6,7 +6,7 @@ import { summarizeErrors, summaryFields, getTime } from '../helps/utils';
 import { executeBeforeAllSteps, executeDelete } from '../functions';
 import { resolveJsonVariables, resolveVariables } from '../helps/get-resolve-variables';
 import { plainToClass } from 'class-transformer';
-import { UpdateMessageResponse } from '../dto-response/update-message.response';
+import { UpdateMessageResponse } from '../response/update-message.response';
 
 describe('Testcase for update-message', () => {
   let totalTests = 0;

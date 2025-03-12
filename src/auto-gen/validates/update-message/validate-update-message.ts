@@ -1,7 +1,7 @@
 import { getDecorators } from "../../helps/dto-helper";
 import { ErrorMessage } from "../../enums/error-message.enum";
 import { plainToClass } from "class-transformer";
-import { Reaction } from "../../dto-response/add-message-reaction.response";
+import { Reaction } from "../../response/add-message-reaction.response";
 import { resolveVariables } from "../../helps/get-resolve-variables";
 
 export function validateUpdateMessage(instance: any, payload: any): string[] {
