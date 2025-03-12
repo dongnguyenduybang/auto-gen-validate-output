@@ -93,12 +93,9 @@ function genTestCase(
         })
         afterEach(async () => {
 
-
           if (!resolveVariables("{{messageId}}")) {
               return; 
            }
-        
-
             const result = await executeBeforeAllSteps(${JSON.stringify(requestConfig.afterEach)})
             const validateAfter = await validateAfterLogic(result, resolvedData)
             if (validateAfter.length === 0) {
@@ -154,9 +151,23 @@ function genTestCase(
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(${classNameCapitalized}Response, data);
+                  const validateLogic = await validate${classNameCapitalized}(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  }else {
+                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                  }
+                }else{
+                  expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ${JSON.stringify(testCase.expects)}.sort()
                 const expectDetails = Array.isArray(data?.error?.details)
