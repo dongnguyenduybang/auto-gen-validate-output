@@ -25,6 +25,7 @@ export class Message {
 
   @IsString()
   @IsDefined()
+  @ValidIf("messageId", "messageId")
   messageId?: string = undefined;
 
   @IsString()

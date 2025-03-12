@@ -3,17 +3,15 @@ import { getDecorators } from '../../helps/dto-helper';
 import { ErrorMessage } from '../../enums/error-message.enum';
 import { plainToClass } from 'class-transformer';
 import { Reaction } from '../../dto-response/revoke-message-reaction.response';
-import { Console } from 'console';
 
 export function validateRevokeMessageReaction(instance: any, payload: any): string[] {
     const errors: string[] = [];
-   
+
     function validateObject(obj: any, prototype: any, path: string = ''): void {
         const keys = Object.keys(obj);
         for (const key of keys) {
             const valueResponse = obj[key];
-            const field = path ? `${path}.${key}` : key;
-
+            const field = path ? `${path}.${key}` : key
             const decorators = getDecorators(prototype, key);
 
             // check IsDefined
@@ -35,7 +33,7 @@ export function validateRevokeMessageReaction(instance: any, payload: any): stri
 
                 if (key === 'reactions') {
                     const emojiPayload = payload.emoji;
-                   
+
                     Object.entries(valueResponse || {}).forEach(([reactionKey, reactionValue]) => {
 
                         if (!/^\p{Emoji}$/u.test(reactionKey)) {
@@ -95,32 +93,46 @@ export function validateRevokeMessageReaction(instance: any, payload: any): stri
                     }
                 }
 
-                // check validIf
-                if (decorators?.validIf) {
-                    const { condition, condition2 } = decorators.validIf;
+                if (path === 'data.message') {
+                    // check validIf
+                    if (decorators?.validIf) {
+                        const { condition, condition2 } = decorators.validIf;
 
-                    if (condition === 'channelId') {
-                        const channelIdResponse = valueResponse;
-                        const channelIdPayload = payload?.channelId;
-                        if (channelIdPayload !== channelIdResponse) {
-                            errors.push(`${field} must equal ${condition2} payload with value ${channelIdPayload}`);
+                        if (condition === 'channelId') {
+                            const channelIdResponse = valueResponse;
+                            const channelIdPayload = payload?.condition2;
+                            if (channelIdPayload !== channelIdResponse) {
+                                errors.push(`${field} must equal ${condition2} payload with value ${channelIdPayload}`);
+                            }
+                        }
+
+                        if (condition === 'workspaceId') {
+                            const workspaceIdResponse = valueResponse;
+                            const workspaceIdPayload = payload?.condition2;
+                            if (workspaceIdPayload !== workspaceIdResponse) {
+                                errors.push(`${field} must equal ${condition2} payload with value ${workspaceIdPayload}`);
+                            }
+                        }
+
+                        if (condition === 'messageId') {
+                            const messageIdResponse = valueResponse;
+                            const messageIdPayload = payload?.condition2;
+                            if (messageIdPayload !== messageIdResponse) {
+                                errors.push(`${field} must equal ${condition2} payload with value ${messageIdPayload}`);
+                            }
+                        }
+
+                        if (condition === 'updateTime') {
+                            const updateTime = valueResponse;
+                            const timeNow = condition2;
+                            if (updateTime > timeNow) {
+                                errors.push(`${field} with ${updateTime} must be less to timeNow ${timeNow}`);
+                            }
                         }
                     }
 
-                    if (condition === 'workspaceId') {
-                        const workspaceIdResponse = valueResponse;
-                        const workspaceIdPayload = payload?.workspaceId;
-                        if (workspaceIdPayload !== workspaceIdResponse) {
-                            errors.push(`${field} must equal ${condition2} payload with value ${workspaceIdPayload}`);
-                        }
-                    }
-
-                    if (condition === 'updateTime') {
-                        const updateTime = valueResponse;
-                        const timeNow = condition2;
-                        if (updateTime > timeNow) {
-                            errors.push(`${field} with ${updateTime} must be less to timeNow ${timeNow}`);
-                        }
+                    if(key === 'reactions'){
+                        errors.push(`Field 'reactions' must be undefined`);
                     }
                 }
             }

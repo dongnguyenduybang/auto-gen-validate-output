@@ -27,9 +27,9 @@ export async function validateMockUser(instance: any, payload: any): Promise<str
                     userIds.forEach((userId: string, index: number) => {
                         const regexULID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
                         if (typeof userId !== 'string' || userId.length !== 26) {
-                            errors.push(`data[${index}].userId must be a valid ULID with 26 characters`);
+                            errors.push(`${field} must be a valid ULID with 26 characters`);
                         } else if (regexULID.test(userId)) {
-                            errors.push(`data[${index}].userId must only contain uppercase letters and numbers`);
+                            errors.push(`${field} must only contain uppercase letters and numbers`);
                         }
                     });
                 }
