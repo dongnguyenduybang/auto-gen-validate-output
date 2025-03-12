@@ -1,22 +1,22 @@
-import { getDecorators } from "../../helps/dto-helper";
-import { ErrorMessage } from "../../enums/error-message.enum";
-import { plainToClass } from "class-transformer";
-import { Reaction } from "../../dto-response/add-message-reaction.response";
+import 'reflect-metadata';
+import { getDecorators } from '../../helps/dto-helper';
+import { ErrorMessage } from '../../enums/error-message.enum';
+import { plainToClass } from 'class-transformer';
+import { Reaction } from '../../dto-response/revoke-message-reaction.response';
+import { Console } from 'console';
 
-export function validateAddMessageReaction(instance: any, payload: any): string[] {
+export function validateRevokeMessageReaction(instance: any, payload: any): string[] {
     const errors: string[] = [];
-
+   
     function validateObject(obj: any, prototype: any, path: string = ''): void {
-
         const keys = Object.keys(obj);
-
         for (const key of keys) {
             const valueResponse = obj[key];
             const field = path ? `${path}.${key}` : key;
 
             const decorators = getDecorators(prototype, key);
 
-            // check isDefined
+            // check IsDefined
             if (decorators?.isDefined && (valueResponse === undefined || valueResponse === null)) {
                 errors.push(`${field} is required but got ${valueResponse}`);
                 continue;
@@ -30,21 +30,19 @@ export function validateAddMessageReaction(instance: any, payload: any): string[
                 });
             }
 
-            //check obj
+            // check object
             else if (decorators?.type === 'object' && typeof valueResponse === 'object' && valueResponse !== null) {
-                // check field reactions
+
                 if (key === 'reactions') {
-
-                   const emojiPayload = payload?.emoji;
-                   console.log(emojiPayload)
-
+                    const emojiPayload = payload.emoji;
+                   
                     Object.entries(valueResponse || {}).forEach(([reactionKey, reactionValue]) => {
 
                         if (!/^\p{Emoji}$/u.test(reactionKey)) {
                             return;
                         }
-                        if (!reactionKey.includes(emojiPayload)) {
-                            errors.push(`Emoji '${emojiPayload}' in payload does not exist in ${field}`);
+                        if (reactionKey.includes(emojiPayload)) {
+                            errors.push(`Emoji '${emojiPayload}' still unable to revoke ${field}`);
                             return;
                         }
                         const reactionInstance = plainToClass(Reaction, reactionValue);
@@ -52,29 +50,29 @@ export function validateAddMessageReaction(instance: any, payload: any): string[
                         validateObject(reactionInstance, nestedPrototype, `${field}.${reactionKey}`);
                     });
                 } else {
-                    
+
                     const nestedPrototype = Object.getPrototypeOf(valueResponse);
                     validateObject(valueResponse, nestedPrototype, field);
                 }
             }
 
-            // check other
+            // check type
             else {
-                if (decorators?.type === 'string' && typeof valueResponse !== 'string' && valueResponse !== undefined) {
-                    errors.push(`${field} ${ErrorMessage.INVALID_TYPE_STRING}`);
+                if (decorators?.type === 'string' && typeof valueResponse !== 'string') {
+                    errors.push(`${field} must be a string but got ${typeof valueResponse}`);
                 }
-                if (decorators?.type === 'number' && typeof valueResponse !== 'number' && valueResponse !== undefined) {
-                    errors.push(`${field}  ${ErrorMessage.INVALID_TYPE_NUMBER}`);
+                if (decorators?.type === 'number' && typeof valueResponse !== 'number') {
+                    errors.push(`${field} must be a number but got ${typeof valueResponse}`);
                 }
-                if (decorators?.type === 'boolean' && typeof valueResponse !== 'boolean' && valueResponse !== undefined) {
-                    errors.push(`${field}  ${ErrorMessage.INVALID_TYPE_BOOLEAN}`);
+                if (decorators?.type === 'boolean' && typeof valueResponse !== 'boolean') {
+                    errors.push(`${field} must be a boolean but got ${typeof valueResponse}`);
                 }
 
                 // check startWith
                 if (decorators?.startWith && typeof valueResponse === 'string') {
                     const startWithValue = payload.prefix;
                     if (!startWithValue || !valueResponse.startsWith(startWithValue)) {
-                        errors.push(`${field} ${ErrorMessage.START_WITH} ${startWithValue}`);
+                        errors.push(`${field} must start with ${startWithValue}`);
                     }
                 }
 
@@ -82,7 +80,7 @@ export function validateAddMessageReaction(instance: any, payload: any): string[
                 if (decorators?.endWith && typeof valueResponse === 'string') {
                     const endWithValue = obj[decorators.endWith];
                     if (!endWithValue || !valueResponse.endsWith(endWithValue)) {
-                        errors.push(`${field} ${ErrorMessage.END_WITH} ${endWithValue}`);
+                        errors.push(`${field} must end with ${endWithValue}`);
                     }
                 }
 
@@ -99,7 +97,7 @@ export function validateAddMessageReaction(instance: any, payload: any): string[
 
                 // check validIf
                 if (decorators?.validIf) {
-                    const { condition, condition2, condition3 } = decorators.validIf;
+                    const { condition, condition2 } = decorators.validIf;
 
                     if (condition === 'channelId') {
                         const channelIdResponse = valueResponse;
@@ -117,44 +115,14 @@ export function validateAddMessageReaction(instance: any, payload: any): string[
                         }
                     }
 
-                    if (condition === 'createTime') {
-                        const updateTime = obj[condition2];
-                        const createTime = valueResponse;
-                        if (createTime > updateTime) {
-                            errors.push(`${field} must greater than with ${condition2}`);
-                        }
-                    }
-
-                    if (condition === 'editTime' && valueResponse !== undefined) {
-                        const editTime = valueResponse;
-                        const updateTime = obj[condition2];
-                        const timeNow = condition3;
-
-                        if (editTime !== updateTime) {
-                            errors.push(`${field} must different with ${updateTime}`);
-                        } else if (editTime < timeNow) {
-                            errors.push(`${field} must less be than with ${timeNow}`);
-                        }
-                    }
-
                     if (condition === 'updateTime') {
                         const updateTime = valueResponse;
                         const timeNow = condition2;
-                       
-                        if (updateTime === timeNow) {
-                            errors.push(`${field} with ${updateTime} ${ErrorMessage.INVALID_DATE_EQUAL_CURRENT}`);
+                        if (updateTime > timeNow) {
+                            errors.push(`${field} with ${updateTime} must be less to timeNow ${timeNow}`);
                         }
                     }
                 }
-
-                //check min
-                if(decorators?.min){
-                    const minDecorator = decorators?.min
-                    if(valueResponse < minDecorator){
-                        errors.push(`${field} ${ErrorMessage.MIN} ${minDecorator}`)
-                    }
-                }
-
             }
         }
     }

@@ -15,12 +15,10 @@ export class OriginalMessage{
 
     @IsString()
     @IsDefined()
-    @ValidIf("messageIdOriginal", "messageId")
     messageId?: string = undefined;
   
     @IsString()
     @IsDefined()
-    @ValidIf("contentOriginal", "{{contentBefore}}")
     content?: string = undefined;
 
     @IsDefined()

@@ -1,0 +1,31 @@
+{
+    "method": "POST",
+    "path": "/Message/ReportMessage",
+    "headers": {
+      "Content-Type": "application/json",
+      "x-session-token": "{{token_0}}",
+      "x-country-code": "VN"
+    },
+    "payload": {
+      "workspaceId": "0",
+      "channelId": "{{channelId}}",
+      "messageId": "{{messageId}}",
+      "reportCategory": 1,
+      "pretendingTo": 2,
+      "reportReason": "reportReason"
+  },
+
+    "beforeAll": [
+      "mockUser('duybang_report',2, 0)", 
+      "createChannel({{token_0}}, 'channel_report')",
+      "acceptLinkInvitation({{token_1}}, {{invitationLink}})",
+      "sendMessage({{token_1}}, 0, {{channelId}}, 'test123', 'ref')"
+    ],
+    "afterEach" : [
+      "getMessage({{token}}, {{channelId}}, {{messageId}})"
+    ]
+  }
+
+
+
+   

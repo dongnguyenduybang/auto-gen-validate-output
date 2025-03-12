@@ -1,6 +1,6 @@
 {
-    "method": "POST",
-    "path": "/Message/QuoteMessage",
+    "method": "PUT",
+    "path": "/Message/RevokeMessageReaction",
     "headers": {
       "Content-Type": "application/json",
       "x-session-token": "{{token}}",
@@ -10,14 +10,14 @@
       "workspaceId": "0",
       "channelId": "{{channelId}}",
       "messageId": "{{messageId}}",
-      "content": "test123_quote",
-      "ref": "ref"
-    },
+      "emoji": "{{emoji}}"
+  },
 
     "beforeAll": [
       "mockUser('duybang12345',1, 0)", 
       "createChannel({{token}}, 'channel 1')",
-      "sendMessage({{token}}, 0, {{channelId}}, 'test123', 'ref')"
+      "sendMessage({{token}}, 0, {{channelId}}, 'test123', 'ref')",
+      "addMessageReaction({{token}}, 0, {{channelId}}, {{messageId}}, '💀')"
     ],
     "afterEach" : [
       "getMessage({{token}}, {{channelId}}, {{messageId}})"

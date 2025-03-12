@@ -1,0 +1,298 @@
+[
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "messageId": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "messageId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "messageId": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "messageId": "{{messageId}}"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "messageId": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "messageId": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "messageId": "{{messageId}}"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "messageId": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "messageId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "messageId": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}"
+        },
+        "expects": [
+            "workspaceId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "messageId": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "messageId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "messageId": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "messageId": "{{messageId}}"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "messageId": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "messageId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "messageId": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "messageId": "{{messageId}}"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "messageId": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "messageId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "messageId": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}"
+        },
+        "expects": [
+            "workspaceId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "messageId": ""
+        },
+        "expects": [
+            "channelId should not be empty",
+            "messageId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "messageId": 12345
+        },
+        "expects": [
+            "channelId should not be empty",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "messageId": "{{messageId}}"
+        },
+        "expects": [
+            "channelId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "messageId": ""
+        },
+        "expects": [
+            "channelId must be a string",
+            "messageId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "messageId": 12345
+        },
+        "expects": [
+            "channelId must be a string",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "messageId": "{{messageId}}"
+        },
+        "expects": [
+            "channelId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": ""
+        },
+        "expects": [
+            "messageId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": 12345
+        },
+        "expects": [
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}"
+        },
+        "expects": []
+    }
+]

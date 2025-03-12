@@ -1,7 +1,17 @@
-import {  ValidateNested} from 'class-validator';
+import { ValidateNested } from 'class-validator';
 import { Transform, Type } from 'class-transformer';
-import { IsDefined, IsArray,ValidIf, IsBoolean, IsString, IsNumber, IsObject, IsOptional } from '../decorator/dto-decorator';
+import { IsDefined, IsArray, ValidIf, IsBoolean, IsString, IsNumber, IsObject } from '../decorator/dto-decorator';
 
+export class Reaction {
+
+  @IsBoolean()
+  @IsDefined()
+  isReacted?: boolean = undefined;
+
+  @IsNumber()
+  @IsDefined()
+  total?: number = undefined;
+}
 export class Message {
   @IsString()
   @IsDefined()
@@ -32,13 +42,17 @@ export class Message {
 
   @IsNumber()
   @IsDefined()
-  @ValidIf("messageStatus", "1")
   messageStatus?: string = undefined;
 
   @IsNumber()
   @IsDefined()
-  @ValidIf("attachmentType", "0")
   attachmentType?: string = undefined;
+
+  @ValidateNested({ each: true })
+  @IsObject()
+  @IsDefined()
+  @Type(() => Reaction)
+  reactions: Reaction
 
   @IsBoolean()
   @IsDefined()
@@ -46,17 +60,14 @@ export class Message {
 
   @IsNumber()
   @IsDefined()
-  @ValidIf("reportCount", "0")
   reportCount?: string = undefined;
 
   @IsBoolean()
   @IsDefined()
-  @ValidIf("isReported", "false")
   isReported?: string = undefined;
 
   @IsNumber()
   @IsDefined()
-  @ValidIf("attachmentCount", "0")
   attachmentCount?: string = undefined;
 
   @IsString()
@@ -76,12 +87,6 @@ export class Message {
   @IsDefined()
   @ValidIf("updateTime", new Date().toISOString)
   updateTime?: string = undefined;
-
-  @IsString()
-  @IsDefined()
-  @ValidIf("ref", "ref")
-  @IsOptional()
-  ref?: string = undefined;
 }
 
 export class Profile {
@@ -318,7 +323,7 @@ export class DataMessage {
   message: Message;
 }
 
-export class SendMessageResponse {
+export class RevokeMessageReactionResponse {
   @IsBoolean()
   @IsDefined()
   ok?: boolean = undefined;

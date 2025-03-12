@@ -1,12 +1,15 @@
 import { getDecorators } from "../../helps/dto-helper";
 import { ErrorMessage } from "../../enums/error-message.enum";
 import { plainToClass } from "class-transformer";
-import { Reaction } from "../../dto-response/add-message-reaction.response";
+import { MediaAttachments } from "../../dto-response/send-message-sticker.response";
+import { executeBeforeAllSteps } from "../../functions";
+import { resolveVariables } from "../../helps/get-resolve-variables";
+import { resolveDeep } from "../../helps/utils";
 
-export function validateAddMessageReaction(instance: any, payload: any): string[] {
+export function validateReportMessage(instance: any, payload: any): string[] {
     const errors: string[] = [];
 
-    function validateObject(obj: any, prototype: any, path: string = ''): void {
+    async function validateObject(obj: any, prototype: any, path: string = ''): Promise<void> {
 
         const keys = Object.keys(obj);
 
@@ -15,7 +18,6 @@ export function validateAddMessageReaction(instance: any, payload: any): string[
             const field = path ? `${path}.${key}` : key;
 
             const decorators = getDecorators(prototype, key);
-
             // check isDefined
             if (decorators?.isDefined && (valueResponse === undefined || valueResponse === null)) {
                 errors.push(`${field} is required but got ${valueResponse}`);
@@ -32,27 +34,12 @@ export function validateAddMessageReaction(instance: any, payload: any): string[
 
             //check obj
             else if (decorators?.type === 'object' && typeof valueResponse === 'object' && valueResponse !== null) {
-                // check field reactions
-                if (key === 'reactions') {
-
-                   const emojiPayload = payload?.emoji;
-                   console.log(emojiPayload)
-
-                    Object.entries(valueResponse || {}).forEach(([reactionKey, reactionValue]) => {
-
-                        if (!/^\p{Emoji}$/u.test(reactionKey)) {
-                            return;
-                        }
-                        if (!reactionKey.includes(emojiPayload)) {
-                            errors.push(`Emoji '${emojiPayload}' in payload does not exist in ${field}`);
-                            return;
-                        }
-                        const reactionInstance = plainToClass(Reaction, reactionValue);
-                        const nestedPrototype = Object.getPrototypeOf(reactionInstance);
-                        validateObject(reactionInstance, nestedPrototype, `${field}.${reactionKey}`);
-                    });
+                // check field sticker
+                if (key === 'sticker') {
+                    const stickerInstance = plainToClass(MediaAttachments, valueResponse);
+                    const nestedPrototype = Object.getPrototypeOf(stickerInstance);
+                    validateObject(stickerInstance, nestedPrototype, field);
                 } else {
-                    
                     const nestedPrototype = Object.getPrototypeOf(valueResponse);
                     validateObject(valueResponse, nestedPrototype, field);
                 }
@@ -103,7 +90,7 @@ export function validateAddMessageReaction(instance: any, payload: any): string[
 
                     if (condition === 'channelId') {
                         const channelIdResponse = valueResponse;
-                        const channelIdPayload = payload?.channelId;
+                        const channelIdPayload = payload?.[condition2];
                         if (channelIdPayload !== channelIdResponse) {
                             errors.push(`${field} must equal ${condition2} payload with value ${channelIdPayload}`);
                         }
@@ -111,7 +98,7 @@ export function validateAddMessageReaction(instance: any, payload: any): string[
 
                     if (condition === 'workspaceId') {
                         const workspaceIdResponse = valueResponse;
-                        const workspaceIdPayload = payload?.workspaceId;
+                        const workspaceIdPayload = payload?.[condition2];
                         if (workspaceIdPayload !== workspaceIdResponse) {
                             errors.push(`${field} must equal ${condition2} payload with value ${workspaceIdPayload}`);
                         }
@@ -145,6 +132,30 @@ export function validateAddMessageReaction(instance: any, payload: any): string[
                             errors.push(`${field} with ${updateTime} ${ErrorMessage.INVALID_DATE_EQUAL_CURRENT}`);
                         }
                     }
+
+                    if(condition === 'stickerId'){
+                        const stickerIdResponse = valueResponse;
+                        const stickerIdPayload = payload?.[condition2]
+                        if(stickerIdResponse !== stickerIdPayload){
+                            errors.push(`${field} must equal ${condition2} payload with value ${stickerIdPayload}`);
+                        }
+
+                        const getSticker = await executeBeforeAllSteps([`checkSticker('${stickerIdResponse}')`])
+                        const sticker = getSticker[0].data
+                        if(stickerIdResponse !== sticker.stickerId){
+                            errors.push(`${field} is undefined sticker with stickerId ${stickerIdResponse}`);
+                        }
+                        
+                    }
+
+                    if(condition === 'collectionId'){
+                        const collectionId = valueResponse
+                        const getStickerCollection = await executeBeforeAllSteps([`checkCollection('${collectionId}')`])
+                        const collectionSticker = getStickerCollection[0].data
+                       if(collectionId !== collectionSticker ){
+                        errors.push(`${field} is undefined collection with collectionId ${collectionId}`);
+                       }
+                    }
                 }
 
                 //check min
@@ -155,7 +166,12 @@ export function validateAddMessageReaction(instance: any, payload: any): string[
                     }
                 }
 
+                if(valueResponse !== true){
+                    errors.push(`${field} must be equal with value true`);
+                }
+
             }
+
         }
     }
 

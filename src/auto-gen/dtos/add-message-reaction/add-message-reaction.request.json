@@ -17,6 +17,9 @@
       "mockUser('duybang12345',1, 0)", 
       "createChannel({{token}}, 'channel 1')",
       "sendMessage({{token}}, 0, {{channelId}}, 'test123', 'ref')"
+    ],
+    "afterEach" : [
+      "getMessage({{token}}, {{channelId}}, {{messageId}})"
     ]
   }
 

@@ -1,0 +1,1027 @@
+[
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "messageId should not be empty",
+            "emoji should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "messageId": "",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "messageId should not be empty",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "messageId": "",
+            "emoji": "{{emoji}}"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "messageId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "messageId": 12345,
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "messageId must be a string",
+            "emoji should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "messageId": 12345,
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "messageId": 12345,
+            "emoji": "{{emoji}}"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "messageId": "{{messageId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "emoji should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "messageId": "{{messageId}}",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "messageId": "{{messageId}}",
+            "emoji": "{{emoji}}"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "emoji should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "messageId": "",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "messageId": "",
+            "emoji": "{{emoji}}"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "messageId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "messageId": 12345,
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "messageId must be a string",
+            "emoji should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "messageId": 12345,
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "messageId": 12345,
+            "emoji": "{{emoji}}"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "messageId": "{{messageId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "emoji should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "messageId": "{{messageId}}",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "messageId": "{{messageId}}",
+            "emoji": "{{emoji}}"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "messageId should not be empty",
+            "emoji should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "messageId": "",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "messageId should not be empty",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "messageId": "",
+            "emoji": "{{emoji}}"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "messageId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "messageId": 12345,
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "messageId must be a string",
+            "emoji should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "messageId": 12345,
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "messageId": 12345,
+            "emoji": "{{emoji}}"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "emoji should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": "{{emoji}}"
+        },
+        "expects": [
+            "workspaceId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "messageId should not be empty",
+            "emoji should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "messageId": "",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "messageId should not be empty",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "messageId": "",
+            "emoji": "{{emoji}}"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "messageId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "messageId": 12345,
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "messageId must be a string",
+            "emoji should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "messageId": 12345,
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "messageId": 12345,
+            "emoji": "{{emoji}}"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "messageId": "{{messageId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "emoji should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "messageId": "{{messageId}}",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "messageId": "{{messageId}}",
+            "emoji": "{{emoji}}"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "emoji should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "messageId": "",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "messageId should not be empty",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "messageId": "",
+            "emoji": "{{emoji}}"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "messageId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "messageId": 12345,
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "messageId must be a string",
+            "emoji should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "messageId": 12345,
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "messageId": 12345,
+            "emoji": "{{emoji}}"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "messageId": "{{messageId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "emoji should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "messageId": "{{messageId}}",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "messageId": "{{messageId}}",
+            "emoji": "{{emoji}}"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "messageId should not be empty",
+            "emoji should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "messageId": "",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "messageId should not be empty",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "messageId": "",
+            "emoji": "{{emoji}}"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "messageId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "messageId": 12345,
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "messageId must be a string",
+            "emoji should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "messageId": 12345,
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "messageId": 12345,
+            "emoji": "{{emoji}}"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "emoji should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": "{{emoji}}"
+        },
+        "expects": [
+            "workspaceId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "channelId should not be empty",
+            "messageId should not be empty",
+            "emoji should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "messageId": "",
+            "emoji": 12345
+        },
+        "expects": [
+            "channelId should not be empty",
+            "messageId should not be empty",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "messageId": "",
+            "emoji": "{{emoji}}"
+        },
+        "expects": [
+            "channelId should not be empty",
+            "messageId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "messageId": 12345,
+            "emoji": ""
+        },
+        "expects": [
+            "channelId should not be empty",
+            "messageId must be a string",
+            "emoji should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "messageId": 12345,
+            "emoji": 12345
+        },
+        "expects": [
+            "channelId should not be empty",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "messageId": 12345,
+            "emoji": "{{emoji}}"
+        },
+        "expects": [
+            "channelId should not be empty",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "messageId": "{{messageId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "channelId should not be empty",
+            "emoji should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "messageId": "{{messageId}}",
+            "emoji": 12345
+        },
+        "expects": [
+            "channelId should not be empty",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "messageId": "{{messageId}}",
+            "emoji": "{{emoji}}"
+        },
+        "expects": [
+            "channelId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "channelId must be a string",
+            "messageId should not be empty",
+            "emoji should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "messageId": "",
+            "emoji": 12345
+        },
+        "expects": [
+            "channelId must be a string",
+            "messageId should not be empty",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "messageId": "",
+            "emoji": "{{emoji}}"
+        },
+        "expects": [
+            "channelId must be a string",
+            "messageId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "messageId": 12345,
+            "emoji": ""
+        },
+        "expects": [
+            "channelId must be a string",
+            "messageId must be a string",
+            "emoji should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "messageId": 12345,
+            "emoji": 12345
+        },
+        "expects": [
+            "channelId must be a string",
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "messageId": 12345,
+            "emoji": "{{emoji}}"
+        },
+        "expects": [
+            "channelId must be a string",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "messageId": "{{messageId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "channelId must be a string",
+            "emoji should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "messageId": "{{messageId}}",
+            "emoji": 12345
+        },
+        "expects": [
+            "channelId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "messageId": "{{messageId}}",
+            "emoji": "{{emoji}}"
+        },
+        "expects": [
+            "channelId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "messageId should not be empty",
+            "emoji should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "",
+            "emoji": 12345
+        },
+        "expects": [
+            "messageId should not be empty",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "",
+            "emoji": "{{emoji}}"
+        },
+        "expects": [
+            "messageId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": 12345,
+            "emoji": ""
+        },
+        "expects": [
+            "messageId must be a string",
+            "emoji should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": 12345,
+            "emoji": 12345
+        },
+        "expects": [
+            "messageId must be a string",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": 12345,
+            "emoji": "{{emoji}}"
+        },
+        "expects": [
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "emoji should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": 12345
+        },
+        "expects": [
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": "{{emoji}}"
+        },
+        "expects": []
+    }
+]

@@ -1,7 +1,32 @@
-import {  ValidateNested} from 'class-validator';
+import {  ValidateNested } from 'class-validator';
 import { Transform, Type } from 'class-transformer';
-import { IsDefined, IsArray,ValidIf, IsBoolean, IsString, IsNumber, IsObject, IsOptional } from '../decorator/dto-decorator';
+import { IsEnum,IsDefined, IsArray, ValidIf, IsBoolean, IsString, IsNumber, IsObject, IsOptional } from '../decorator/dto-decorator';
+import { EmbedTypeEnum } from '../enums/embed-type.enum';
+import { AttachmentTypeEnum } from '../enums/attachment-type.enum';
 
+export class LocationData {
+  @IsString()
+  @IsDefined()
+  latitude?: string = undefined;
+
+  @IsString()
+  @IsDefined()
+  longitude?: string = undefined;
+}
+
+export class EmbedItem {
+
+  @IsEnum(EmbedTypeEnum)
+  @IsDefined()
+  @ValidIf("type", "6")
+  type?: EmbedTypeEnum;
+
+  @ValidateNested()
+  @IsObject()
+  @Type(() => LocationData)
+  locationData?: LocationData;
+
+}
 export class Message {
   @IsString()
   @IsDefined()
@@ -22,42 +47,44 @@ export class Message {
   userId?: string = undefined;
 
   @IsString()
-  @IsDefined()
+  @IsOptional()
   @ValidIf("content", "content")
   content?: string = undefined;
 
   @IsNumber()
   @IsDefined()
-  messageType?: string = undefined;
+  messageType?: number = undefined;
 
   @IsNumber()
   @IsDefined()
-  @ValidIf("messageStatus", "1")
-  messageStatus?: string = undefined;
+  messageStatus?: number = undefined;
 
-  @IsNumber()
+  @ValidateNested()
+  @IsArray()
   @IsDefined()
-  @ValidIf("attachmentType", "0")
-  attachmentType?: string = undefined;
+  @Type(() => EmbedItem)
+  embed?: EmbedItem[]
+
+  @IsEnum(AttachmentTypeEnum)
+  @IsDefined()
+  @ValidIf("attachmentType", "10")
+  attachmentType?: AttachmentTypeEnum
 
   @IsBoolean()
   @IsDefined()
-  isThread?: string = undefined;
+  isThread?: boolean = undefined;
 
   @IsNumber()
   @IsDefined()
-  @ValidIf("reportCount", "0")
-  reportCount?: string = undefined;
+  reportCount?: number = undefined;
 
   @IsBoolean()
   @IsDefined()
-  @ValidIf("isReported", "false")
-  isReported?: string = undefined;
+  isReported?: boolean = undefined;
 
   @IsNumber()
   @IsDefined()
-  @ValidIf("attachmentCount", "0")
-  attachmentCount?: string = undefined;
+  attachmentCount?: number = undefined;
 
   @IsString()
   @IsDefined()
@@ -65,7 +92,7 @@ export class Message {
 
   @IsBoolean()
   @IsDefined()
-  isPinned?: string = undefined;
+  isPinned?: boolean = undefined;
 
   @IsString()
   @IsDefined()
@@ -74,13 +101,12 @@ export class Message {
 
   @IsString()
   @IsDefined()
-  @ValidIf("updateTime", new Date().toISOString)
+  @ValidIf("updateTime", "editTime")
   updateTime?: string = undefined;
 
   @IsString()
-  @IsDefined()
-  @ValidIf("ref", "ref")
   @IsOptional()
+  @ValidIf("ref", "ref")
   ref?: string = undefined;
 }
 
@@ -109,7 +135,7 @@ export class Profile {
 export class PresenceData {
   @IsString()
   @IsDefined()
-  @ValidIf("updateTime", new Date().toISOString())
+  // @ValidIf("updateTime", new Date().toISOString())
   lastUpdateTime?: string = undefined;
 
   @IsNumber()
@@ -150,24 +176,24 @@ export class ChannelMetadata {
 
   @IsString()
   @IsDefined()
-  @ValidIf("workspaceId", "workspaceId")
+  // @ValidIf("workspaceId", "workspaceId")
   workspaceId?: string = undefined;
 
   @IsString()
   @IsDefined()
-  @ValidIf("channelId", "channelId")
+  // @ValidIf("channelId", "channelId")
   channelId?: string = undefined;
 }
 
 export class ChannelDTO {
   @IsString()
   @IsDefined()
-  @ValidIf("workspaceId", "workspaceId")
+  // @ValidIf("workspaceId", "workspaceId")
   workspaceId?: string = undefined;
 
   @IsString()
   @IsDefined()
-  @ValidIf("channelId", "channelId")
+  // @ValidIf("channelId", "channelId")
   channelId?: string = undefined;
 
   @IsString()
@@ -196,12 +222,12 @@ export class ChannelDTO {
 
   @IsString()
   @IsDefined()
-  @ValidIf("createTime", "updateTime")
+  // @ValidIf("createTime", "updateTime")
   createTime?: string = undefined;
 
   @IsString()
   @IsDefined()
-  @ValidIf("updateTime", new Date().toISOString())
+  // @ValidIf("updateTime", new Date().toISOString())
   updateTime?: string = undefined;
 }
 
@@ -216,15 +242,15 @@ export class User {
 
   @IsString()
   @IsDefined()
-  @ValidIf("createTime", "updateTime")
+  // @ValidIf("createTime", "updateTime")
   createTime?: string = undefined;
 
   @IsString()
   @IsDefined()
-  @ValidIf("updateTime", new Date().toISOString())
+  // @ValidIf("updateTime", new Date().toISOString())
   updateTime?: string = undefined;
 
-  @ValidateNested({ each: true })
+  @ValidateNested()
   @IsObject()
   @IsDefined()
   @Type(() => Profile)
@@ -234,7 +260,7 @@ export class User {
   @IsDefined()
   userType?: string = undefined;
 
-  @ValidateNested({ each: true })
+  @ValidateNested()
   @IsObject()
   @IsDefined()
   @Type(() => PresenceData)
@@ -265,7 +291,7 @@ export class Member {
   @IsDefined()
   role?: string = undefined;
 
-  @ValidateNested({ each: true })
+  @ValidateNested()
   @IsArray()
   @IsDefined()
   @Type(() => Role)
@@ -273,36 +299,36 @@ export class Member {
 
   @IsString()
   @IsDefined()
-  @ValidIf("createTime", "updateTime")
+  // @ValidIf("createTime", "updateTime")
   createTime?: string = undefined;
 
   @IsString()
   @IsDefined()
-  @ValidIf("updateTime", new Date().toISOString)
+  // @ValidIf("updateTime", new Date().toISOString)
   updateTime?: string = undefined;
 }
 
 export class IncludesMessage {
 
-  @ValidateNested({ each: true })
+  @ValidateNested()
   @IsArray()
   @IsDefined()
   @Type(() => User)
   users: User[];
 
-  @ValidateNested({ each: true })
+  @ValidateNested()
   @IsArray()
   @IsDefined()
   @Type(() => ChannelDTO)
   channels: ChannelDTO[];
 
-  @ValidateNested({ each: true })
+  @ValidateNested()
   @IsArray()
   @IsDefined()
   @Type(() => Member)
   members: Member[];
 
-  @ValidateNested({ each: true })
+  @ValidateNested()
   @IsArray()
   @IsDefined()
   @Type(() => ChannelMetadata)
@@ -311,25 +337,25 @@ export class IncludesMessage {
 
 export class DataMessage {
 
-  @ValidateNested({ each: true })
+  @ValidateNested()
   @IsObject()
   @IsDefined()
   @Type(() => Message)
   message: Message;
 }
 
-export class SendMessageResponse {
+export class SendLocationResponse {
   @IsBoolean()
   @IsDefined()
   ok?: boolean = undefined;
 
-  @ValidateNested({ each: true })
+  @ValidateNested()
   @IsObject()
   @IsDefined()
   @Type(() => DataMessage)
   data: DataMessage;
 
-  @ValidateNested({ each: true })
+  @ValidateNested()
   @IsObject()
   @IsDefined()
   @Type(() => IncludesMessage)

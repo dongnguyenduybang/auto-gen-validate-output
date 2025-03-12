@@ -1,6 +1,46 @@
 import {  ValidateNested} from 'class-validator';
-import { Transform, Type } from 'class-transformer';
-import { IsDefined, IsArray,ValidIf, IsBoolean, IsString, IsNumber, IsObject, IsOptional } from '../decorator/dto-decorator';
+import { Type } from 'class-transformer';
+import { IsDefined, IsArray,ValidIf, IsBoolean, IsString, IsNumber, IsObject, IsEnum, IsOptional } from '../decorator/dto-decorator';
+import { MessageTypeEnum } from '../enums/message-type.enum';
+import { MessageStatusEnum } from '../enums/message-status.enum';
+import { AttachmentTypeEnum } from '../enums/attachment-type.enum';
+import { UserAvatarTypeEnum } from '../enums/user-avatar-type.enum';
+import { BadgeEnum } from '../enums/badge.enum';
+import { UserTypeEnum } from '../enums/user-type.enum';
+import { PresenceStateEnum } from '../enums/presence-state.enum';
+import { ChannelTypeEnum } from '../enums/channel-type.enum';
+import { MediaPermissionSettingEnum } from '../enums/media-permission-setting.enum';
+
+export class MediaAttachments {
+
+    @IsString()
+    @IsDefined()
+    @ValidIf("collectionId")
+    collectionId?: string = undefined
+
+    @IsString()
+    @IsDefined()
+    @ValidIf("stickerId", "stickerId")
+    stickerId?: string = undefined
+
+    @IsDefined()
+    @IsEnum(AttachmentTypeEnum)
+    @ValidIf("attachmentType", "7")
+    attachmentType?: AttachmentTypeEnum
+
+    @IsString()
+    @IsDefined()
+    stickerUrl?: string = undefined
+
+}
+
+export class MediaAttachmentItem {
+
+    @ValidateNested()
+    @IsObject()
+    @Type(() => MediaAttachments)
+    sticker: MediaAttachments;
+}
 
 export class Message {
   @IsString()
@@ -26,19 +66,17 @@ export class Message {
   @ValidIf("content", "content")
   content?: string = undefined;
 
-  @IsNumber()
   @IsDefined()
-  messageType?: string = undefined;
+  @IsEnum(MessageTypeEnum)
+  messageType?: MessageTypeEnum = undefined;
 
-  @IsNumber()
   @IsDefined()
-  @ValidIf("messageStatus", "1")
-  messageStatus?: string = undefined;
+  @IsEnum(MessageStatusEnum)
+  messageStatus?: MessageStatusEnum = undefined;
 
-  @IsNumber()
   @IsDefined()
-  @ValidIf("attachmentType", "0")
-  attachmentType?: string = undefined;
+  @IsEnum(AttachmentTypeEnum)
+  attachmentType?: AttachmentTypeEnum = undefined;
 
   @IsBoolean()
   @IsDefined()
@@ -46,18 +84,21 @@ export class Message {
 
   @IsNumber()
   @IsDefined()
-  @ValidIf("reportCount", "0")
   reportCount?: string = undefined;
 
   @IsBoolean()
   @IsDefined()
-  @ValidIf("isReported", "false")
   isReported?: string = undefined;
 
   @IsNumber()
   @IsDefined()
-  @ValidIf("attachmentCount", "0")
   attachmentCount?: string = undefined;
+
+  @ValidateNested({ each: true })
+  @IsArray()
+  @IsDefined()
+  @Type(() => MediaAttachmentItem)
+  mediaAttachments: MediaAttachmentItem[];
 
   @IsString()
   @IsDefined()
@@ -74,12 +115,11 @@ export class Message {
 
   @IsString()
   @IsDefined()
-  @ValidIf("updateTime", new Date().toISOString)
+  @ValidIf("updateTime", new Date().toISOString())
   updateTime?: string = undefined;
 
   @IsString()
-  @IsDefined()
-  @ValidIf("ref", "ref")
+  @ValidIf("ref", "{{ref}}")
   @IsOptional()
   ref?: string = undefined;
 }
@@ -97,13 +137,13 @@ export class Profile {
   @IsDefined()
   originalAvatar?: string = undefined;
 
-  @IsNumber()
   @IsDefined()
-  avatarType?: string = undefined;
+  @IsEnum(UserAvatarTypeEnum)
+  avatarType?: UserAvatarTypeEnum = undefined;
 
-  @IsNumber()
   @IsDefined()
-  userBadgeType?: string = undefined;
+  @IsEnum(BadgeEnum)
+  userBadgeType?: BadgeEnum = undefined;
 }
 
 export class PresenceData {
@@ -116,9 +156,9 @@ export class PresenceData {
   @IsDefined()
   lastUpdateInSeconds?: string = undefined;
 
-  @IsNumber()
   @IsDefined()
-  presenceState?: string = undefined;
+  @IsEnum(PresenceStateEnum)
+  presenceState?: PresenceStateEnum = undefined;
 }
 
 export class Role {
@@ -144,9 +184,9 @@ export class ChannelMetadata {
   @IsDefined()
   notificationStatus?: string = undefined;
 
-  @IsNumber()
   @IsDefined()
-  mediaPermissionSetting?: string = undefined;
+  @IsEnum(MediaPermissionSettingEnum)
+  mediaPermissionSetting?: MediaPermissionSettingEnum = undefined;
 
   @IsString()
   @IsDefined()
@@ -182,9 +222,9 @@ export class ChannelDTO {
   @IsDefined()
   isPrivate?: string = undefined;
 
-  @IsNumber()
   @IsDefined()
-  type?: string = undefined;
+  @IsEnum(ChannelTypeEnum)
+  type?: ChannelTypeEnum = undefined;
 
   @IsString()
   @IsDefined()
@@ -230,9 +270,9 @@ export class User {
   @Type(() => Profile)
   profile: Profile;
 
-  @IsNumber()
   @IsDefined()
-  userType?: string = undefined;
+  @IsEnum(UserTypeEnum)
+  userType?: UserTypeEnum = undefined;
 
   @ValidateNested({ each: true })
   @IsObject()
@@ -278,7 +318,7 @@ export class Member {
 
   @IsString()
   @IsDefined()
-  @ValidIf("updateTime", new Date().toISOString)
+  @ValidIf("updateTime", new Date().toISOString())
   updateTime?: string = undefined;
 }
 
@@ -318,7 +358,7 @@ export class DataMessage {
   message: Message;
 }
 
-export class SendMessageResponse {
+export class SendMessageStickerResponse {
   @IsBoolean()
   @IsDefined()
   ok?: boolean = undefined;

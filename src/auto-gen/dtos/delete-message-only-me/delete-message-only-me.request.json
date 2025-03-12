@@ -1,6 +1,6 @@
 {
-    "method": "POST",
-    "path": "/Message/QuoteMessage",
+    "method": "DELETE",
+    "path": "/Message/DeleteMessageOnlyMe",
     "headers": {
       "Content-Type": "application/json",
       "x-session-token": "{{token}}",
@@ -9,9 +9,7 @@
     "payload": {
       "workspaceId": "0",
       "channelId": "{{channelId}}",
-      "messageId": "{{messageId}}",
-      "content": "test123_quote",
-      "ref": "ref"
+      "messageId": "{{messageId}}"
     },
 
     "beforeAll": [

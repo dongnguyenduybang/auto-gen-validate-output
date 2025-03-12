@@ -4,7 +4,10 @@ import { ErrorMessage } from '../../enums/error-message.enum';
 
 export function validateSendMessage(instance: any, payload: any): string[] {
     const errors: string[] = [];
+    let isUser: string
 
+
+    // đệ quy lặp vào từng mảng và obj
     function validateObject(obj: any, prototype: any, path: string = ''): void {
         const keys = Object.keys(obj);
 
@@ -16,11 +19,11 @@ export function validateSendMessage(instance: any, payload: any): string[] {
 
             // check IsDefined
             if (decorators.isDefined && (valueResponse === undefined || valueResponse === null)) {
-                errors.push(`${field} is required but got ${valueResponse}`);
-                continue; // Bỏ qua các kiểm tra khác nếu trường này không được định nghĩa
+                errors.push(`${field} is required`);
+                continue;
             }
 
-            //check mảng
+            // mảng
             if (decorators.type === 'array' && Array.isArray(valueResponse)) {
                 valueResponse.forEach((item: any, index: number) => {
                     const itemPrototype = Object.getPrototypeOf(item);
@@ -28,7 +31,7 @@ export function validateSendMessage(instance: any, payload: any): string[] {
                 });
             }
 
-            // check obj
+            // obj
             else if (decorators.type === 'object' && typeof valueResponse === 'object' && valueResponse !== null) {
                 const nestedPrototype = Object.getPrototypeOf(valueResponse);
                 validateObject(valueResponse, nestedPrototype, field);
@@ -72,60 +75,118 @@ export function validateSendMessage(instance: any, payload: any): string[] {
                         );
                     }
                 }
-
-                // check validIf
-                if (decorators.validIf) {
-                    const { condition, condition2 } = decorators.validIf;
-
-                    if (condition === 'channelId') {
-                        const channelIdResponse = valueResponse;
-                        const channelIdPayload = payload?.channelId;
-                        if (channelIdPayload !== channelIdResponse) {
-                            errors.push(`${field} must equal ${condition2} payload with value ${channelIdPayload}`);
-                        }
-                    }
-
-                    if (condition === 'workspaceId') {
-                        const workspaceIdResponse = valueResponse;
-                        const workspaceIdPayload = payload?.workspaceId;
-                        if (workspaceIdPayload !== workspaceIdResponse) {
-                            errors.push(`${field} must equal ${condition2} payload with value ${workspaceIdPayload}`);
-                        }
-                    }
-
-                    if (condition === 'createTime') {
-                        const updateTime = obj[condition2];
-                        const createTime = valueResponse;
-                        if (createTime !== updateTime) {
-                            errors.push(`${field} must equal with ${condition2}`);
-                        }
-                    }
-
-                    if (condition === 'content') {
-                        const contentResponse = valueResponse;
-                        const contentPayload = payload?.content;
-                        if (contentPayload !== contentResponse) {
-                            errors.push(`${field} must equal ${condition2} payload with value ${contentPayload}`);
-                        }
-                    }
-
-                    if (condition === 'ref') {
-                        const refResponse = valueResponse;
-                        const refPayload = payload?.ref;
-                        if (refPayload !== refResponse) {
-                            errors.push(`${field} must equal ${condition2} payload with value ${refPayload}`);
-                        }
-                    }
-
-                    if (condition === 'updateTime') {
-                        const updateTime = valueResponse;
-                        const timeNow = condition2;
-                        if (updateTime > timeNow) {
-                            errors.push(`${field} with ${updateTime} must be less than or equal to ${condition2}`);
-                        }
+                //get userType
+                if(path === 'includes.users[0]'){
+                    if(key === 'userType'){
+                        isUser = valueResponse
                     }
                 }
+                //check path data.message
+                if (path === 'data.message') {
+                    // check validIf
+                    if (decorators.validIf) {
+
+                        const { condition, condition2 } = decorators.validIf;
+                        //check channelId = payload.channelId
+                        if (condition === 'channelId') {
+                            const channelIdResponse = valueResponse;
+                            const channelIdPayload = payload?.channelId;
+                            if (channelIdPayload !== channelIdResponse) {
+                                errors.push(`${field} must equal ${condition2} payload with value ${channelIdPayload}`);
+                            }
+                        }
+                        //check workspaceId = payload.workspaceId
+                        if (condition === 'workspaceId') {
+                            const workspaceIdResponse = valueResponse;
+                            const workspaceIdPayload = payload?.workspaceId;
+                            if (workspaceIdPayload !== workspaceIdResponse) {
+                                errors.push(`${field} must equal ${condition2} payload with value ${workspaceIdPayload}`);
+                            }
+                        }
+                        //check createTime != updateTime
+                        if (condition === 'createTime') {
+                            const updateTime = obj[condition2];
+                            const createTime = valueResponse;
+
+                            if (createTime !== updateTime) {
+                                errors.push(`${field} must equal with ${obj[condition2]}`);
+                            }
+                        }
+                        //check content = payload.content
+                        if (condition === 'content' && decorators.optional !== true) {
+                            const contentResponse = valueResponse;
+                            const contentPayload = payload?.content;
+                            if (contentPayload !== contentResponse) {
+                                errors.push(`${field} must equal ${condition2} payload with value ${contentPayload}`);
+                            }
+                        }
+
+                        if (condition === 'ref' && decorators.optional !== true) {
+                            const refResponse = valueResponse;
+                            const refPayload = payload?.ref;
+                            if (refPayload !== refResponse) {
+                                errors.push(`${field} must equal ${condition2} payload with value ${refPayload}`);
+                            }
+                        }
+                        //check updateTime > time now 
+                        if (condition === 'updateTime') {
+                            const updateTime = valueResponse;
+                            const timeNow = condition2;
+                            if (updateTime > timeNow) {
+                                errors.push(`${field} with ${updateTime} must be less or equal timeNow ${timeNow}`);
+                            }
+                        }
+                        //check messageStatus = 1
+                        if (condition === 'messageStatus') {
+                            if (String(valueResponse).trim() !== String(condition2).trim()) {
+                                errors.push(`${field} must be equal ${condition2}`);
+                            }
+                        }
+
+                        if(key !== 'mediaAttachments'){
+                             //check attachmentType = 0 nếu field mediaAttachments = undefined
+                            if(condition === 'attachmentType'){
+                                if(String(valueResponse).trim() !== String(condition2).trim()){
+                                    errors.push(`${field} must be equal ${condition2}`);
+                                   }
+                                    //check attachmentCount = 0 nếu field mediaAttachments = undefined
+                            }else if( condition === 'attachmentCount'){
+                                if(String(valueResponse).trim() !== String(condition2).trim()){
+                                    errors.push(`${field} must be equal ${condition2}`);
+                                   }
+                            }
+                        }
+                        
+                        if(key !== 'reports'){
+                             //check isReported = 0 nếu field reports = undefined
+                            if(condition === 'isReported'){
+                                if(String(valueResponse).trim() !== String(condition2).trim()){
+                                    errors.push(`${field} must be equal ${condition2}`);
+                                }
+                                 //check reportCount = 0 nếu field reports = undefined
+                            }else if(condition === 'reportCount') {
+                                if(String(valueResponse).trim() !== String(condition2).trim()){
+                                    errors.push(`${field} must be equal ${condition2}`);
+                                }
+                            }
+                        }
+                       
+                       
+                    }    
+
+                    //check messageType là user send. nếu userType = 0 thì messageType = 0 
+                    if(key === 'messageType'){
+                        if(Number(isUser) === 0 && valueResponse !== 0 ){
+                            errors.push(`${field} must be equal 0`);
+                        }
+                    }
+
+                    
+                    
+                }
             }
+
+
         }
     }
 

@@ -1,0 +1,1323 @@
+[
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "stickerId": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "stickerId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "stickerId": "",
+            "ref": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "stickerId should not be empty",
+            "ref should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "stickerId": "",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "stickerId should not be empty",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "stickerId": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "stickerId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "stickerId": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "stickerId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "stickerId": 12345,
+            "ref": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "stickerId must be a string",
+            "ref should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "stickerId": 12345,
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "stickerId must be a string",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "stickerId": 12345,
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "stickerId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9",
+            "ref": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "ref should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "stickerId": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "stickerId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "stickerId": "",
+            "ref": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "stickerId should not be empty",
+            "ref should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "stickerId": "",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "stickerId should not be empty",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "stickerId": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "stickerId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "stickerId": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "stickerId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "stickerId": 12345,
+            "ref": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "stickerId must be a string",
+            "ref should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "stickerId": 12345,
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "stickerId must be a string",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "stickerId": 12345,
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "stickerId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9",
+            "ref": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "ref should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 12345,
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "channelId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "stickerId": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "stickerId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "stickerId": "",
+            "ref": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "stickerId should not be empty",
+            "ref should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "stickerId": "",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "stickerId should not be empty",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "stickerId": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "stickerId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "stickerId": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "stickerId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "stickerId": 12345,
+            "ref": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "stickerId must be a string",
+            "ref should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "stickerId": 12345,
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "stickerId must be a string",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "stickerId": 12345,
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "stickerId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9"
+        },
+        "expects": [
+            "workspaceId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9",
+            "ref": ""
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "ref should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId should not be empty",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "stickerId": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "stickerId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "stickerId": "",
+            "ref": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "stickerId should not be empty",
+            "ref should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "stickerId": "",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "stickerId should not be empty",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "stickerId": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "stickerId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "stickerId": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "stickerId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "stickerId": 12345,
+            "ref": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "stickerId must be a string",
+            "ref should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "stickerId": 12345,
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "stickerId must be a string",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "stickerId": 12345,
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "stickerId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9",
+            "ref": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "ref should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "",
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "stickerId": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "stickerId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "stickerId": "",
+            "ref": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "stickerId should not be empty",
+            "ref should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "stickerId": "",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "stickerId should not be empty",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "stickerId": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "stickerId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "stickerId": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "stickerId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "stickerId": 12345,
+            "ref": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "stickerId must be a string",
+            "ref should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "stickerId": 12345,
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "stickerId must be a string",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "stickerId": 12345,
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "stickerId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9",
+            "ref": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "ref should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": 12345,
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "channelId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "stickerId": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "stickerId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "stickerId": "",
+            "ref": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "stickerId should not be empty",
+            "ref should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "stickerId": "",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "stickerId should not be empty",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "stickerId": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "stickerId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "stickerId": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "stickerId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "stickerId": 12345,
+            "ref": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "stickerId must be a string",
+            "ref should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "stickerId": 12345,
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "stickerId must be a string",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "stickerId": 12345,
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "stickerId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9"
+        },
+        "expects": [
+            "workspaceId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9",
+            "ref": ""
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "ref should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9",
+            "ref": 12345
+        },
+        "expects": [
+            "workspaceId must be a string",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 12345,
+            "channelId": "{{channelId}}",
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9",
+            "ref": "ref"
+        },
+        "expects": [
+            "workspaceId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "stickerId": ""
+        },
+        "expects": [
+            "channelId should not be empty",
+            "stickerId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "stickerId": "",
+            "ref": ""
+        },
+        "expects": [
+            "channelId should not be empty",
+            "stickerId should not be empty",
+            "ref should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "stickerId": "",
+            "ref": 12345
+        },
+        "expects": [
+            "channelId should not be empty",
+            "stickerId should not be empty",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "stickerId": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "channelId should not be empty",
+            "stickerId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "stickerId": 12345
+        },
+        "expects": [
+            "channelId should not be empty",
+            "stickerId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "stickerId": 12345,
+            "ref": ""
+        },
+        "expects": [
+            "channelId should not be empty",
+            "stickerId must be a string",
+            "ref should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "stickerId": 12345,
+            "ref": 12345
+        },
+        "expects": [
+            "channelId should not be empty",
+            "stickerId must be a string",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "stickerId": 12345,
+            "ref": "ref"
+        },
+        "expects": [
+            "channelId should not be empty",
+            "stickerId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9"
+        },
+        "expects": [
+            "channelId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9",
+            "ref": ""
+        },
+        "expects": [
+            "channelId should not be empty",
+            "ref should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9",
+            "ref": 12345
+        },
+        "expects": [
+            "channelId should not be empty",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9",
+            "ref": "ref"
+        },
+        "expects": [
+            "channelId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "stickerId": ""
+        },
+        "expects": [
+            "channelId must be a string",
+            "stickerId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "stickerId": "",
+            "ref": ""
+        },
+        "expects": [
+            "channelId must be a string",
+            "stickerId should not be empty",
+            "ref should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "stickerId": "",
+            "ref": 12345
+        },
+        "expects": [
+            "channelId must be a string",
+            "stickerId should not be empty",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "stickerId": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "channelId must be a string",
+            "stickerId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "stickerId": 12345
+        },
+        "expects": [
+            "channelId must be a string",
+            "stickerId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "stickerId": 12345,
+            "ref": ""
+        },
+        "expects": [
+            "channelId must be a string",
+            "stickerId must be a string",
+            "ref should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "stickerId": 12345,
+            "ref": 12345
+        },
+        "expects": [
+            "channelId must be a string",
+            "stickerId must be a string",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "stickerId": 12345,
+            "ref": "ref"
+        },
+        "expects": [
+            "channelId must be a string",
+            "stickerId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9"
+        },
+        "expects": [
+            "channelId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9",
+            "ref": ""
+        },
+        "expects": [
+            "channelId must be a string",
+            "ref should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9",
+            "ref": 12345
+        },
+        "expects": [
+            "channelId must be a string",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 12345,
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9",
+            "ref": "ref"
+        },
+        "expects": [
+            "channelId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "stickerId": ""
+        },
+        "expects": [
+            "stickerId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "stickerId": "",
+            "ref": ""
+        },
+        "expects": [
+            "stickerId should not be empty",
+            "ref should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "stickerId": "",
+            "ref": 12345
+        },
+        "expects": [
+            "stickerId should not be empty",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "stickerId": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "stickerId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "stickerId": 12345
+        },
+        "expects": [
+            "stickerId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "stickerId": 12345,
+            "ref": ""
+        },
+        "expects": [
+            "stickerId must be a string",
+            "ref should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "stickerId": 12345,
+            "ref": 12345
+        },
+        "expects": [
+            "stickerId must be a string",
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "stickerId": 12345,
+            "ref": "ref"
+        },
+        "expects": [
+            "stickerId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9"
+        },
+        "expects": []
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9",
+            "ref": ""
+        },
+        "expects": [
+            "ref should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9",
+            "ref": 12345
+        },
+        "expects": [
+            "ref must be a string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "stickerId": "01JEQ2DG91SQX0P3VCEH4DZVA9",
+            "ref": "ref"
+        },
+        "expects": []
+    }
+]
