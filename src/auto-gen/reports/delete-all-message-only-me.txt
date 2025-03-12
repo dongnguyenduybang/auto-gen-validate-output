@@ -1,0 +1,60 @@
+
+=== Test Reports for DTO "delete-all-message-only-me" ===
+Host: https://api-sb11.rpc.ziichat.dev
+Endpoint: /Message/DeleteAllMessagesOnlyMe
+Summary: 
+Total Tests: 9
+Passed Tests: 0
+Failed Tests: 8
+Status Code:
+  200: 1
+  201: 0
+  400: 0
+  403: 8
+  404: 0
+  500: 0
+Uniques Error:
+  Could not resolve permission type: 8 
+ 
+Failed Test Details:
+
+  - Testcase #1
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #2
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #3
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #4
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #5
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #6
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #7
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #8
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"

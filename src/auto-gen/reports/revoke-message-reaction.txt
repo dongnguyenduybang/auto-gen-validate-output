@@ -1,0 +1,423 @@
+
+=== Test Reports for DTO "revoke-message-reaction" ===
+Host: https://api-sb11.rpc.ziichat.dev
+Endpoint: /Message/RevokeMessageReaction
+Summary: 
+Total Tests: 81
+Passed Tests: 0
+Failed Tests: 80
+Status Code:
+  200: 1
+  201: 0
+  400: 5
+  403: 72
+  404: 0
+  500: 3
+Uniques Error:
+  Could not resolve permission type: 72 
+ emoji is invalid, only 1 emoji: 3 
+ messageId must be an ULID: 4 
+ TypeError: value.trim is not a function: 3 
+ 
+Failed Test Details:
+
+  - Testcase #1
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #2
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #3
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #4
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #5
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #6
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #7
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #8
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #9
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #10
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #11
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #12
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #13
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #14
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #15
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #16
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #17
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #18
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #19
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #20
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #21
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #22
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #23
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #24
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #25
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #26
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #27
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #28
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #29
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #30
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #31
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #32
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #33
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #34
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #35
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #36
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #37
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #38
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #39
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #40
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #41
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #42
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #43
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #44
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #45
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #46
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #47
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #48
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #49
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #50
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #51
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #52
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #53
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #54
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #55
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #56
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #57
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #58
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #59
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #60
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #61
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #62
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #63
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #64
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #65
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #66
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #67
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #68
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #69
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #70
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #71
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #72
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #73
+    Missing Errors: []
+    Status Code: 400
+    Extra Errors: ["emoji is invalid, only 1 emoji","messageId must be an ULID"]
+    Detail Errors: ''
+  - Testcase #74
+    Missing Errors: ''
+    Status Code: 500
+    Extra Errors: ''
+    Detail Errors: ["TypeError: value.trim is not a function"]
+  - Testcase #75
+    Missing Errors: []
+    Status Code: 400
+    Extra Errors: ["messageId must be an ULID"]
+    Detail Errors: ''
+  - Testcase #76
+    Missing Errors: []
+    Status Code: 400
+    Extra Errors: ["emoji is invalid, only 1 emoji","messageId must be an ULID"]
+    Detail Errors: ''
+  - Testcase #77
+    Missing Errors: ''
+    Status Code: 500
+    Extra Errors: ''
+    Detail Errors: ["TypeError: value.trim is not a function"]
+  - Testcase #78
+    Missing Errors: []
+    Status Code: 400
+    Extra Errors: ["messageId must be an ULID"]
+    Detail Errors: ''
+  - Testcase #79
+    Missing Errors: []
+    Status Code: 400
+    Extra Errors: ["emoji is invalid, only 1 emoji"]
+    Detail Errors: ''
+  - Testcase #80
+    Missing Errors: ''
+    Status Code: 500
+    Extra Errors: ''
+    Detail Errors: ["TypeError: value.trim is not a function"]

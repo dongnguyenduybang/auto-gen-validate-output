@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 export async function sendMessage(token: string, workspaceIdField: string, channelIdField: string, contentField: string, refField: string) {
   try {
       if (!token) {
@@ -25,3 +26,4 @@ export async function sendMessage(token: string, workspaceIdField: string, chann
     throw new Error('fail to send message');
   }
 }
+  

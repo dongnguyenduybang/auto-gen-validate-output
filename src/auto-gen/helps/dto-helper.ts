@@ -83,6 +83,9 @@ export function generateErrorVariantsForField(
   } else if (decorators['type'] === 'enum') {
     variants.push('invalid_value');
     variants.push(fieldValue);
+  } else if (decorators['type'] === 'array') {
+    variants.push(['invalid_value']); 
+    variants.push(fieldValue);
   }
 
   if (decorators['min'] !== undefined) {

@@ -59,15 +59,19 @@ function genTestCase(
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join('');
 
+
+  const isDeleteMethod = requestConfig.method.toLowerCase() === 'delete';
+  const isPostOrPut = ['post', 'put'].includes(requestConfig.method.toLowerCase());
   const specContent = `
     import { validate${classNameCapitalized} } from '../validates/${className}/validate-${className}';
     import fs from 'fs';
     import path from 'path';
     import { summarizeErrors, summaryFields, getTime } from '../helps/utils';
     import { executeBeforeAllSteps, executeDelete } from '../functions';
-    import { resolveJsonVariables } from '../helps/get-resolve-variables';
+    import { resolveJsonVariables,resolveVariables } from '../helps/get-resolve-variables';
     import { plainToClass } from 'class-transformer';
     import { ${classNameCapitalized}Response } from '../dto-response/${className}.response';
+    import { validateAfterLogic } from '../validates/${className}/validate-${className}-after';
 
     describe('Testcase for ${className}', () => {
         let totalTests = 0;
@@ -75,7 +79,10 @@ function genTestCase(
         let failedTests = [];
         let logicTests = [];
         let passedTests = 0
+        let passed200 = 0
         let headerRequest
+        let testNumber
+        let resolvedData
 
         beforeAll( async () => {
 
@@ -84,102 +91,135 @@ function genTestCase(
           headerRequest = ${JSON.stringify(requestConfig.headers)}
          
         })
+        afterEach(async () => {
+
+
+          if (!resolveVariables("{{messageId}}")) {
+              return; 
+           }
+        
+
+            const result = await executeBeforeAllSteps(${JSON.stringify(requestConfig.afterEach)})
+            const validateAfter = await validateAfterLogic(result, resolvedData)
+            if (validateAfter.length === 0) {
+              passedLogic++;
+            
+            } else {
+              logicTests.push({ 
+                testcase: testNumber,
+                errorLogic: validateAfter
+              });
+            }
+         
+        })
 
         ${payloadData
-          .map(
-            (testCase: any, index: number) => `
-          it('Test case #${index + 1} with expect errors ${JSON.stringify(testCase.expects)} ', async () => {
-            totalTests++;
-            const payloadObj = ${JSON.stringify(testCase.body)};
-            const payload = resolveJsonVariables(payloadObj)
-           try {
-            const response = await fetch(\`\${globalThis.url}${requestConfig.path}\`, 
-            {
-              method: '${requestConfig.method.toLowerCase()}',
-              headers:  resolveJsonVariables(headerRequest),
-              body: JSON.stringify(payload)
-            })
+      .map(
+        (testCase: any, index: number) => `
+           
+            it('Test case # ${index + 1} with expect errors ${JSON.stringify(testCase.expects)} ', async () => {
+             testNumber = ${index + 1};
+              totalTests++;
+              const payloadObj = ${JSON.stringify(testCase.body)};
+              resolvedData = resolveJsonVariables(payloadObj);
+              ${isDeleteMethod ? `
+              const urlParams = new URLSearchParams(resolvedData).toString();
+              const requestUrl = \`\${globalThis.url}${requestConfig.path}?\${urlParams}\`;
+            ` : `
+              const requestUrl = \`\${globalThis.url}${requestConfig.path}\`;
+            `}
+            try {
+              const response = await fetch(requestUrl, {
+                method: '${requestConfig.method.toLowerCase()}',
+                headers: resolveJsonVariables(headerRequest),
+                body: ${isPostOrPut ? 'JSON.stringify(resolvedData)' : 'undefined'}
+              });
 
-            const data = await response.json();
+              const data = await response.json();
 
-            if(response.status === 201){
-            
+              if(response.status === 201){
+              
+                  expect(data.ok).toEqual(true)
+                  expect(data.data).not.toBeNull()
+                  const dtoInstance = plainToClass(${classNameCapitalized}Response, data);
+                  const validateLogic = await validate${classNameCapitalized}(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  }else {
+                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                  }
+              }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                expect(data.data).not.toBeNull()
-                const dtoInstance = plainToClass(${classNameCapitalized}Response, data);
-                const validateLogic = await validate${classNameCapitalized}(dtoInstance, payload);
-                if (validateLogic.length === 0) {
-                  passedLogic++
-                } else {
-                  logicTests.push({
-                    testcase: ${index + 1},
-                    errorLogic: validateLogic,
+                passed200++
+                passedTests++
+              
+              }else if(response.status === 400){
+                const expectJson =  ${JSON.stringify(testCase.expects)}.sort()
+                const expectDetails = Array.isArray(data?.error?.details)
+                  ? data.error.details
+                  : [];
+                const softExpectDetails = [...expectDetails].sort();
+                try {
+                  expect(data.ok).toEqual(false);
+                  expect(data.data).toEqual(null);
+                  expect(expectJson).toEqual(softExpectDetails);
+                  passedTests++;
+                } catch (error) {
+                  const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  failedTests.push({
+                    testcase: testNumber,
+                    code: 400,
+                    missing: missing || [],
+                    extra: extra || []
                   })
+                  throw new Error(error);
                 }
-            }else if(response.status === 400){
-              const expectJson =  ${JSON.stringify(testCase.expects)}.sort()
-              const expectDetails = Array.isArray(data?.error?.details)
-                ? data.error.details
-                : [];
-              const softExpectDetails = [...expectDetails].sort();
-              try {
-                expect(data.ok).toEqual(false);
-                expect(data.data).toEqual(null);
-                expect(expectJson).toEqual(softExpectDetails);
-                passedTests++;
-              } catch (error) {
-                 const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+              }else if (response.status === 500){
+                const errorMessage = data.error?.details;
                 failedTests.push({
-                  testcase: ${index + 1},
-                  code: 400,
-                  missing: missing || [],
-                  extra: extra || []
-                })
-                throw new Error(error);
-              }
-            }else if (response.status === 500){
-              const errorMessage = data.error?.details;
-              failedTests.push({
-                testcase: ${index + 1},
-                code: 500,
-                errorDetails: errorMessage,
-              });
-              throw new Error(errorMessage);
-            }else if (response.status === 404){
-              const errorMessage = data.error?.details;
-              failedTests.push({
-                testcase: ${index + 1},
-                code: 404,
-                errorDetails: errorMessage,
-              });
-            } else {
-              console.log('unexpected:', data);
-              throw new Error(data);
-            }
-          }catch (error){
-
-            if (error.message.includes('fetch failed')) {
-             console.error('Network or server error:', error.message);
-              failedTests.push({
-                testcase: ${index + 1},
-                errorDetails: 'Server down',
-              });
-              throw new Error('Server down');
-            } else if (error.message.includes('Unexpected token')) {
-              console.error('Could not resolve permission type', error.message);
-                failedTests.push({
-                  testcase: ${index + 1},
-                  code: 403,
-                  errorDetails: 'Could not resolve permission type',
+                  testcase:testNumber,
+                  code: 500,
+                  errorDetails: errorMessage,
                 });
-              throw new Error(error.message || 'unknown error');
-            }else {
-              throw new Error(error.message || 'unknown error');
+                throw new Error(errorMessage);
+              }else if (response.status === 404){
+                const errorMessage = data.error?.details;
+                failedTests.push({
+                  testcase:testNumber,
+                  code: 404,
+                  errorDetails: errorMessage,
+                });
+              } else {
+                console.log('unexpected:', data);
+                throw new Error(data);
+              }
+            }catch (error){
+
+              if (error.message.includes('fetch failed')) {
+              console.error('Network or server error:', error.message);
+                failedTests.push({
+                  testcase:testNumber,
+                  errorDetails: 'Server down',
+                });
+                throw new Error('Server down');
+              } else if (error.message.includes('Unexpected token')) {
+                console.error('Could not resolve permission type', error.message);
+                  failedTests.push({
+                    testcase: testNumber,
+                    code: 403,
+                    errorDetails: 'Could not resolve permission type',
+                  });
+                throw new Error(error.message || 'unknown error');
+              }else {
+                throw new Error(error.message || 'unknown error');
+              }
             }
-          }
-          });`,
-          )
-          .join('\n')}
+            });`,
+      )
+      .join('\n')}
 
       afterAll(async () => {
         const folderPath = path.join(__dirname, '../reports');
@@ -191,7 +231,7 @@ function genTestCase(
         if (!fs.existsSync(folderPathLogic)) {
           fs.mkdirSync(folderPathLogic, { recursive: true });
         }
-        const summary = summarizeErrors(failedTests, totalTests, passedLogic);
+        const summary = summarizeErrors(failedTests, totalTests, passedLogic, passed200);
         const resultContent = \`
 === Test Reports for DTO "${className}" ===
 Host: \${globalThis.url}
@@ -201,6 +241,7 @@ Total Tests: \${totalTests}
 Passed Tests: \${passedTests}
 Failed Tests: \${failedTests.length}
 Status Code:
+  200: \${summary.statusCodes[200] || 0}
   201: \${summary.statusCodes[201] || 0}
   400: \${summary.statusCodes[400] || 0}
   403: \${summary.statusCodes[403] || 0}
@@ -227,7 +268,7 @@ Failed Test Details:
     Error: 
     \${logicTests.map((logicCaseFail) => \`
     - Testcase #\${logicCaseFail.testcase}
-      Logic Errors: \${logicCaseFail.errorLogic ? JSON.stringify(logicCaseFail.errorLogic) : "''"}\` ).join('')}\`
+      Logic Errors: \${logicCaseFail.errorLogic ? JSON.stringify(logicCaseFail.errorLogic) : "''"}\n  \` ).join('')}\`
 
 
 const resultFilePath = path.join(folderPath, '${className}.txt');

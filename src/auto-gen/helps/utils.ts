@@ -5,6 +5,7 @@ import 'reflect-metadata';
 import { getMetadataStorage } from 'class-validator';
 import { ValidationRule } from './structures/responses';
 import axios from 'axios';
+import { resolveVariables } from './get-resolve-variables';
 
 function getFileNameWithoutExtension(filePath: string): string {
   const fileName = path.basename(filePath);
@@ -198,9 +199,10 @@ export function summarizeErrors(
   failedTests: any[],
   totalTests: number,
   passedLogic: number,
+  passed200 : number
 ) {
   const summary = {
-    statusCodes: { 201: passedLogic, 400: 0, 500: 0, 403: 0, 404: 0 },
+    statusCodes: { 201: passedLogic, 200: passed200, 400: 0, 500: 0, 403: 0, 404: 0 },
     uniqueErrors: new Map<string, number>(),
   };
 
@@ -300,4 +302,30 @@ export function getTime() {
   const year = now.getFullYear();
   const formattedDate = `${hours}${minutes}-${day}${month}${year}`;
   return formattedDate
+}
+
+export function resolveDeep(input: any): any {
+  // Nếu là array, resolve từng phần tử
+  if (Array.isArray(input)) {
+    return input.map((item) => resolveDeep(item));
+  }
+
+  // Nếu là object, resolve từng thuộc tính
+  if (typeof input === 'object' && input !== null) {
+    const resolvedObject: { [key: string]: any } = {};
+    for (const key in input) {
+      if (input.hasOwnProperty(key)) {
+        resolvedObject[key] = resolveDeep(input[key]);
+      }
+    }
+    return resolvedObject;
+  }
+
+  // Nếu là string, resolve placeholder
+  if (typeof input === 'string') {
+    return resolveVariables(input);
+  }
+
+  // Trường hợp còn lại (number, boolean, null, undefined), trả về nguyên trạng
+  return input;
 }

@@ -1,0 +1,151 @@
+
+=== Test Reports for DTO "mark-as-read" ===
+Host: https://api-sb11.rpc.ziichat.dev
+Endpoint: /Message/MarkAsRead
+Summary: 
+Total Tests: 27
+Passed Tests: 1
+Failed Tests: 26
+Status Code:
+  200: 0
+  201: 1
+  400: 2
+  403: 24
+  404: 0
+  500: 0
+Uniques Error:
+  Could not resolve permission type: 24 
+ messageId must be an ULID: 2 
+ 
+Failed Test Details:
+
+  - Testcase #1
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #2
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #3
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #4
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #5
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #6
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #7
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #8
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #9
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #10
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #11
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #12
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #13
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #14
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #15
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #16
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #17
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #18
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #19
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #20
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #21
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #22
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #23
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #24
+    Missing Errors: ''
+    Status Code: 403
+    Extra Errors: ''
+    Detail Errors: "Could not resolve permission type"
+  - Testcase #25
+    Missing Errors: []
+    Status Code: 400
+    Extra Errors: ["messageId must be an ULID"]
+    Detail Errors: ''
+  - Testcase #26
+    Missing Errors: []
+    Status Code: 400
+    Extra Errors: ["messageId must be an ULID"]
+    Detail Errors: ''

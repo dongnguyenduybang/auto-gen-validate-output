@@ -1,0 +1,18 @@
+
+=== Test Reports for DTO "delete-messages-only-me" ===
+Host: https://api-sb11.rpc.ziichat.dev
+Endpoint: /Message/DeleteMessagesOnlyMe
+Summary: 
+Total Tests: 1
+Passed Tests: 0
+Failed Tests: 0
+Status Code:
+  200: 1
+  201: 0
+  400: 0
+  403: 0
+  404: 0
+  500: 0
+Uniques Error:
+  
+Failed Test Details:

@@ -5,17 +5,16 @@ export async function getMessage(tokenParam: string, channelIdParam: string,  me
         const token = resolveVariables(tokenParam);
         const channelId = resolveVariables(channelIdParam);
         const messageId = resolveVariables(messageIdParam);
-        console.log(token, channelId, messageId)
         const baseUrl = `${globalThis.urls}/MessageView/GetMessage?workspaceId=0&channelId=${channelId}&messageId=${messageId}`;
         const header = { 'x-session-token': token };
 
         const response = await axios.get(baseUrl, { headers: header });
-        const content = response?.data?.data?.message?.content || []
-        const ref = response?.data?.data?.message?.ref || []
         if (response.data) {
+            const content = response?.data?.data?.message?.content || []
+            const ref = response?.data?.data?.message?.ref || []
             globalThis.globalVar.set('content', content)
             globalThis.globalVar.set('ref', ref)
-            return { data: response.data }; 
+            return response.data;
         } else {
             throw new Error('No data in response');
         }
