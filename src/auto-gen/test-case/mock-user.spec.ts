@@ -6,7 +6,7 @@
     import { executeBeforeAllSteps, executeDelete } from '../functions';
     import { resolveJsonVariables,resolveVariables } from '../helps/get-resolve-variables';
     import { plainToClass } from 'class-transformer';
-    import { MockUserResponse } from '../dto-response/mock-user.response';
+    import { MockUserResponse } from '../response/mock-user.response';
     import { validateAfterLogic } from '../validates/mock-user/validate-mock-user-after';
 
     describe('Testcase for mock-user', () => {
