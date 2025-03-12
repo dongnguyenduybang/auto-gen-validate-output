@@ -1,0 +1,21 @@
+{
+    "method": "POST",
+    "path": "/InternalFaker/MockUsers",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "payload": {
+      "prefix": "duy123456",
+      "quantity": 1,
+      "badge": 0
+    },
+    "beforeAll": [
+        "mockUser('duybang12345',1, 0)"
+      ],
+    "afterEach" : [
+      "getUser({{token}}, {{userId}})"
+    ],
+    "afterAll": ["deleteMockUser(duy123456)"]
+    
+    
+  }
