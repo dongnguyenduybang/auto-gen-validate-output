@@ -1,8 +1,0 @@
-
-    === Test Reports Logic for DTO "quote-message" ===
-    Host: https://api-sb11.rpc.ziichat.dev
-    Endpoint: /Message/QuoteMessage
-    Error: 
-    
-    - Testcase #324
-      Logic Errors: ["data.message must be different with data.message.originalMessage.messageId"]}
