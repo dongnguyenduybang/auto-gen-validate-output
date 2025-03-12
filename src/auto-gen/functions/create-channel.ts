@@ -12,7 +12,9 @@ export async function createChannel(token: string, name: string) {
       const response = await axios.post(baseUrl, payload, { headers: headers });
       if (response.data.data.channel) {
         const channelId = response.data.data.channel.channelId;
+        const invitationLink = response.data.data.channel.invitationLink;
         globalThis.globalVar.set('channelId', channelId);
+        globalThis.globalVar.set('invitationLink', invitationLink);
 
       } else {
         throw new Error('invalid response CreateChannel api');
