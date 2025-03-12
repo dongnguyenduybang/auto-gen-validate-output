@@ -208,8 +208,7 @@ export function summarizeErrors(
 
   failedTests.forEach((failCase) => {
     const statusCode = failCase.code || 500;
-    summary.statusCodes[statusCode] =
-      (summary.statusCodes[statusCode] || 0) + 1;
+    summary.statusCodes[statusCode] = (summary.statusCodes[statusCode] || 0) + 1;
 
     if (failCase.missing && Array.isArray(failCase.missing)) {
       failCase.missing.forEach((error) => {
@@ -300,7 +299,7 @@ export function getTime() {
   const day = String(now.getDate()).padStart(2, '0');
   const month = String(now.getMonth() + 1).padStart(2, '0');
   const year = now.getFullYear();
-  const formattedDate = `${hours}${minutes}-${day}${month}${year}`;
+  const formattedDate = `${hours}-${minutes}-${day}-${month}-${year}`;
   return formattedDate
 }
 

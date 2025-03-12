@@ -103,6 +103,7 @@ function genTestCase(
             const validateAfter = await validateAfterLogic(result, resolvedData)
             if (validateAfter.length === 0) {
               passedLogic++;
+              passedTests++
             
             } else {
               logicTests.push({ 

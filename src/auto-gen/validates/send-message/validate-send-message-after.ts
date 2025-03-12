@@ -4,6 +4,7 @@ export async function validateAfterLogic(data, payload) {
   
       const responseData = data[0]?.data  
       
+      console.log(responseData)
 
     
       if (errors.length > 0) {
