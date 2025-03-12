@@ -19,7 +19,6 @@ export function genBodyPayload(dtoName) {
     }
 
     try {
-      
       const dtoModule = require(dtoPath);
       const classNameCapitalized =
         className

@@ -154,8 +154,21 @@ function genTestCase(
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
+                       if (data.data) {
+                              const dtoInstance = plainToClass(${classNameCapitalized}Response, data);
+                  const validateLogic = await validate${classNameCapitalized}(dtoInstance, resolvedData);
+                         if (validateLogic.length !== 0) {
+                           logicTests.push({
+                             testcase: testNumber,
+                             errorLogic: validateLogic,
+                           })
+                         } else {
+                           globalThis.globalVar.set('messageId', data.data.message.messageId)
+                         }
+                       }else{
+                         passed200++
+                         passedTests++
+                       }
               
               }else if(response.status === 400){
                 const expectJson =  ${JSON.stringify(testCase.expects)}.sort()
