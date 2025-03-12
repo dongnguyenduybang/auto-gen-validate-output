@@ -36,9 +36,9 @@ export function validateMockChannel(instance: any, payload: any): string[] {
 
             // check validIf
             if (decorators.validIf) {
-                const { condition, value: expectedValue } = decorators.validIf;
+                const { condition, condition2 } = decorators.validIf;
                 const payloadValue = payload[condition];
-                if (payloadValue === expectedValue) {
+                if (payloadValue === condition2) {
                     if (decorators.startWith && typeof value === 'string') {
                         const startWithValue = payload.prefix;
                         if (!startWithValue || !value.startsWith(startWithValue)) {
@@ -66,22 +66,10 @@ export function validateMockChannel(instance: any, payload: any): string[] {
            
         }
     }
-
-    if (errors.length === 0) {
-       
-        if (Array.isArray(instance.data) && instance.data.length > 0) {
-            const firstItem = instance.data[0]; 
-            if (firstItem && firstItem.name) {
-                globalThis.globalVar.set('prefix', firstItem.name);
-            } else {
-                console.error('name is undefined in the first item of data');
-            }
-        } else {
-            console.error('data is empty or not an array');
-        }
-    }
     const prototype = Object.getPrototypeOf(instance);
     validateObject(instance, prototype);
-
+    if(errors.length === 0 ){
+        globalThis.globalVar.set('channelId', instance.data[0].channelId)
+    }
     return errors;
 }

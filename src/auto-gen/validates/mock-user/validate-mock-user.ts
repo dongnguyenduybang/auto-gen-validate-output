@@ -4,7 +4,6 @@ import { ErrorMessage } from '../../enums/error-message.enum';
 
 export async function validateMockUser(instance: any, payload: any): Promise<string[]> {
     const errors: string[] = [];
-
     async function validateObject(obj: any, prototype: any, path: string = ''): Promise<void>  {
 
         const keys = Object.keys(obj);
@@ -74,6 +73,8 @@ export async function validateMockUser(instance: any, payload: any): Promise<str
 
     const prototype = Object.getPrototypeOf(instance);
     await validateObject(instance, prototype);
-
+    if(errors.length === 0 ){
+        globalThis.globalVar.set('userId', instance.data[0].userId)
+    }
     return errors;
 }

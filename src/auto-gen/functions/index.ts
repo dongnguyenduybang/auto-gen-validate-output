@@ -5,9 +5,11 @@ import { createChannel } from './create-channel';
 import { deleteMessageForEveryone } from './delete-message-for-everyone';
 import { deleteMockChannel } from './delete-mock-channel';
 import { deleteMockUser } from './delete-mock-user';
+import { getChannel } from './get-channel';
 import { getMessage } from './get-message';
 import { getSticker } from './get-sticker';
 import { getStickerCollection } from './get-sticker-collection';
+import { getUser } from './get-user';
 import { mockUser } from './mock-user';
 import { sendInvitation } from './send-invitation';
 import { sendMessage } from './send-message';
@@ -107,6 +109,20 @@ export async function executeBeforeAllSteps(request: string[]): Promise<any[]> {
             result = await getSticker(stickerId)
             break;
 
+          }
+
+          case 'getUser': {
+            const [token, userId] = args
+
+            result = await getUser(token, userId)
+            break;
+          }
+
+          case 'getChannel': {
+            const [token, channelId] = args
+
+            result = await getChannel(token, channelId)
+            break;
           }
           default:
             console.log('Invalid step:', step);
