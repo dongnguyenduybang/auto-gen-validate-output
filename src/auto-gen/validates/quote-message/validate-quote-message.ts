@@ -31,33 +31,10 @@ export function validateQuoteMessage(instance: any, payload: any): string[] {
 
             //check obj
             else if (decorators?.type === 'object' && typeof valueResponse === 'object' && valueResponse !== null) {
-                // check field reactions
-                if (key === 'message') {
-                    const messageId = valueResponse.messageId;
-                    const originalMessage = valueResponse.originalMessage;
-                    const originalMessageId = originalMessage?.messageId;
-                    if (messageId && originalMessageId) {
-                        if (messageId === originalMessageId && (typeof messageId === 'string' || typeof originalMessageId === 'string')) {
-                            errors.push(`${field} must be different with data.message.originalMessage.messageId`);
-                        }
-
-                    } else {
-                        errors.push(`messageId or originalMessageId is missing`);
-                    }
-
-                    const updateTimeOriginal = originalMessage.updateTime
-                    const createTimeOriginal = originalMessage.createTime
-
-                    if(updateTimeOriginal !== createTimeOriginal){
-                        errors.push(`${field}.originalMessage.createTime must be equal with ${field}.originalMessage.updateTime`);
-                    }
-
-                }
-
                 // check object other
                 const nestedPrototype = Object.getPrototypeOf(valueResponse);
                 validateObject(valueResponse, nestedPrototype, field);
-            
+
             }
 
             // check other
@@ -100,89 +77,107 @@ export function validateQuoteMessage(instance: any, payload: any): string[] {
                 }
 
                 // check validIf
-                if (decorators?.validIf) {
-                    const { condition, condition2, condition3 } = decorators.validIf;
+                if (path === 'data.message') {
 
-                    if (condition === 'channelId') {
-                        const channelIdResponse = valueResponse;
-                        const channelIdPayload = payload?.channelId;
-                        if (channelIdPayload !== channelIdResponse) {
-                            errors.push(`${field} must equal ${condition2} payload with value ${channelIdPayload}`);
+
+                    if (decorators?.validIf) {
+                        const { condition, condition2, condition3 } = decorators.validIf;
+
+                        if (condition === 'channelId') {
+                            const channelIdResponse = valueResponse;
+                            const channelIdPayload = payload?.channelId;
+                            if (channelIdPayload !== channelIdResponse) {
+                                errors.push(`${field} must equal ${condition2} payload with value ${channelIdPayload}`);
+                            }
                         }
+
+                        if (condition === 'workspaceId') {
+                            const workspaceIdResponse = valueResponse;
+                            const workspaceIdPayload = payload.workspaceId;
+                            if (workspaceIdPayload !== workspaceIdResponse) {
+                                errors.push(`${field} must equal ${condition2} payload with value ${workspaceIdPayload}`);
+                            }
+                        }
+
+                        if (condition === 'createTime') {
+                            const updateTime = obj[condition2];
+                            const createTime = valueResponse;
+                            if (createTime > updateTime) {
+                                errors.push(`${field} must less than with ${condition2}`);
+                            }
+                        }
+
+                        if (condition === 'editTime' && valueResponse !== undefined) {
+                            const editTime = valueResponse;
+                            const updateTime = obj[condition2];
+                            const timeNow = condition3;
+
+                            if (editTime === updateTime) {
+                                errors.push(`${field} must different with ${condition2}`);
+                            } else if (editTime < timeNow) {
+                                errors.push(`${field} must less be than with ${timeNow}`);
+                            }
+                        }
+
+                        // if (condition === 'updateTime') {
+                        //     const updateTime = valueResponse;
+                        //     const timeNow = condition2;
+
+                        //     if (updateTime === timeNow) {
+                        //         errors.push(`${field} with ${updateTime} ${ErrorMessage.INVALID_DATE_EQUAL_CURRENT}`);
+                        //     }
+                        // }
+
+                        //check content 
+                        if (condition === 'content') {
+                            const contentPayload = payload?.content
+                            if (valueResponse !== contentPayload) {
+                                errors.push(`${field} must be equal with payload ${contentPayload}`)
+                            }
+
+                        }
+
+                        if (condition === 'contentOriginal') {
+                            const contentBefore = resolveVariables(condition2)
+                            if (valueResponse !== contentBefore) {
+                                errors.push(`${field} must be equal with payload ${contentBefore}`)
+                            }
+                        }
+
+                        if (condition === 'ref' && valueResponse !== undefined) {
+                            const refBefore = resolveVariables(condition2)
+                            const refPayload = payload?.ref
+
+                            if (valueResponse !== refPayload && refPayload !== undefined) {
+                                errors.push(`${field} must be equal with payload ${refPayload}`)
+                            }
+                            if (valueResponse === refBefore) {
+                                errors.push(`${field} must be different with old "ref"`)
+                            }
+
+                        }
+
+                        if (condition === 'messageIdOriginal') {
+                            const messageIdBefore = resolveVariables(condition2)
+                            if (valueResponse !== messageIdBefore) {
+                                errors.push(`${field} must be equal with payload ${messageIdBefore}`)
+                            }
+                        }
+
+                        if (condition === 'userId') {
+                            const userId = resolveVariables(condition2)
+                            if (valueResponse !== userId) {
+                                errors.push(`${field} must be equal with payload ${userId}`)
+                            }
+                        }
+
                     }
-
-                    if (condition === 'workspaceId') {
-                        const workspaceIdResponse = valueResponse;
-                        const workspaceIdPayload = payload?.workspaceId;
-                        if (workspaceIdPayload !== workspaceIdResponse) {
-                            errors.push(`${field} must equal ${condition2} payload with value ${workspaceIdPayload}`);
-                        }
-                    }
-
-                    if (condition === 'createTime') {
-                        const updateTime = obj[condition2];
-                        const createTime = valueResponse;
-                        if (createTime > updateTime) {
-                            errors.push(`${field} must less than with ${condition2}`);
-                        }
-                    }
-
-                    if (condition === 'editTime' && valueResponse !== undefined) {
-                        const editTime = valueResponse;
-                        const updateTime = obj[condition2];
-                        const timeNow = condition3;
-
-                        if (editTime === updateTime) {
-                            errors.push(`${field} must different with ${condition2}`);
-                        } else if (editTime < timeNow) {
-                            errors.push(`${field} must less be than with ${timeNow}`);
-                        }
-                    }
-
-                    if (condition === 'updateTime') {
-                        const updateTime = valueResponse;
-                        const timeNow = condition2;
-                       
-                        if (updateTime === timeNow) {
-                            errors.push(`${field} with ${updateTime} ${ErrorMessage.INVALID_DATE_EQUAL_CURRENT}`);
-                        }
-                    }
-
-                    //check content 
-                    if(condition === 'content'){
-                        const contentPayload = payload?.content
-                        if(valueResponse !== contentPayload){
-                            errors.push(`${field} must be equal with payload ${contentPayload}`)
-                        }
-      
-                    }
-
-                    if(condition === 'contentOriginal'){
-                        const contentBefore = resolveVariables(condition2)
-                        if(valueResponse !== contentBefore){
-                            errors.push(`${field} must be equal with payload ${contentBefore}`)
-                        }
-                    }
-
-                    if(condition === 'ref' && valueResponse !== undefined){
-                        const refBefore = resolveVariables(condition2)
-                        const refPayload = payload?.ref
-
-                        if(valueResponse !== refPayload && refPayload !== undefined){
-                            errors.push(`${field} must be equal with payload ${refPayload}`)
-                        }
-                        if(valueResponse === refBefore){
-                            errors.push(`${field} must be different with old "ref"`)
-                        }
-      
-                    }
-
                 }
 
                 //check min
-                if(decorators?.min){
+                if (decorators?.min) {
                     const minDecorator = decorators?.min
-                    if(valueResponse < minDecorator){
+                    if (valueResponse < minDecorator) {
                         errors.push(`${field} ${ErrorMessage.MIN} ${minDecorator}`)
                     }
                 }
@@ -193,6 +188,8 @@ export function validateQuoteMessage(instance: any, payload: any): string[] {
 
     const prototype = Object.getPrototypeOf(instance);
     validateObject(instance, prototype);
-
+    if (errors.length === 0) {
+        globalThis.globalVar.set('messageId', instance.data.message.messageId)
+    }
     return errors;
 }

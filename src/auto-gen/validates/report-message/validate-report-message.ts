@@ -1,10 +1,9 @@
 import { getDecorators } from "../../helps/dto-helper";
 import { ErrorMessage } from "../../enums/error-message.enum";
 import { plainToClass } from "class-transformer";
-import { MediaAttachments } from "../../response/send-message-sticker.response";
+import { MediaAttachments } from "../../response/send-sticker-message.response";
 import { executeBeforeAllSteps } from "../../functions";
-import { resolveVariables } from "../../helps/get-resolve-variables";
-import { resolveDeep } from "../../helps/utils";
+
 
 export function validateReportMessage(instance: any, payload: any): string[] {
     const errors: string[] = [];
@@ -177,6 +176,5 @@ export function validateReportMessage(instance: any, payload: any): string[] {
 
     const prototype = Object.getPrototypeOf(instance);
     validateObject(instance, prototype);
-
     return errors;
 }

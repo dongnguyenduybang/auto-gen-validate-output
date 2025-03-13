@@ -15,17 +15,17 @@ export class Reaction {
 export class Message {
   @IsString()
   @IsDefined()
-  @ValidIf("workspaceId", "workspaceId")
+  @ValidIf("workspaceId")
   workspaceId?: string = undefined;
 
   @IsString()
   @IsDefined()
-  @ValidIf("channelId", "channelId")
+  @ValidIf("channelId")
   channelId?: string = undefined;
 
   @IsString()
   @IsDefined()
-  @ValidIf("messageId", "messageId")
+  @ValidIf("messageId")
   messageId?: string = undefined;
 
   @IsString()

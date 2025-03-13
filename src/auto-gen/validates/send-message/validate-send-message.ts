@@ -192,6 +192,8 @@ export function validateSendMessage(instance: any, payload: any): string[] {
 
     const prototype = Object.getPrototypeOf(instance);
     validateObject(instance, prototype);
-
+    if(errors.length === 0 ){
+        globalThis.globalVar.set('messageId', instance.data.message.messageId )
+    }
     return errors;
 }

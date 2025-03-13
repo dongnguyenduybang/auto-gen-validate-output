@@ -67,7 +67,6 @@ export async function executeBeforeAllSteps(request: string[]): Promise<any[]> {
 
           case 'getMessage': {
             const [token, channelId, messageId] = args
-
             result = await getMessage(token, channelId, messageId)
             break;
           }

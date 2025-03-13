@@ -16,6 +16,7 @@ export async function mockUser(
           globalThis.globalVar.set('userId', user.userId);
           globalThis.globalVar.set('token', user.token);
         } else {
+
           globalThis.globalVar.set(`userId_${index}`, user.userId);
           globalThis.globalVar.set(`token_${index}`, user.token);
         }

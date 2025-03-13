@@ -100,7 +100,7 @@ export function validateRevokeMessageReaction(instance: any, payload: any): stri
 
                         if (condition === 'channelId') {
                             const channelIdResponse = valueResponse;
-                            const channelIdPayload = payload?.condition2;
+                            const channelIdPayload = payload?.channelId;
                             if (channelIdPayload !== channelIdResponse) {
                                 errors.push(`${field} must equal ${condition2} payload with value ${channelIdPayload}`);
                             }
@@ -108,7 +108,7 @@ export function validateRevokeMessageReaction(instance: any, payload: any): stri
 
                         if (condition === 'workspaceId') {
                             const workspaceIdResponse = valueResponse;
-                            const workspaceIdPayload = payload?.condition2;
+                            const workspaceIdPayload = payload?.workspaceId;
                             if (workspaceIdPayload !== workspaceIdResponse) {
                                 errors.push(`${field} must equal ${condition2} payload with value ${workspaceIdPayload}`);
                             }
@@ -116,7 +116,7 @@ export function validateRevokeMessageReaction(instance: any, payload: any): stri
 
                         if (condition === 'messageId') {
                             const messageIdResponse = valueResponse;
-                            const messageIdPayload = payload?.condition2;
+                            const messageIdPayload = payload?.messageId;
                             if (messageIdPayload !== messageIdResponse) {
                                 errors.push(`${field} must equal ${condition2} payload with value ${messageIdPayload}`);
                             }
@@ -130,10 +130,6 @@ export function validateRevokeMessageReaction(instance: any, payload: any): stri
                             }
                         }
                     }
-
-                    if(key === 'reactions'){
-                        errors.push(`Field 'reactions' must be undefined`);
-                    }
                 }
             }
         }
@@ -141,6 +137,8 @@ export function validateRevokeMessageReaction(instance: any, payload: any): stri
 
     const prototype = Object.getPrototypeOf(instance);
     validateObject(instance, prototype);
-
+    if(errors.length === 0 ){
+        globalThis.globalVar.set('messageId', instance.data.message.messageId )
+    }
     return errors;
 }

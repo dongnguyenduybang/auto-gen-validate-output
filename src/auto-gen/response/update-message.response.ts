@@ -11,17 +11,6 @@ import { PresenceStateEnum } from '../enums/presence-state.enum';
 import { ChannelTypeEnum } from '../enums/channel-type.enum';
 import { MediaPermissionSettingEnum } from '../enums/media-permission-setting.enum';
 
-export class Reaction {
-
-  @IsBoolean()
-  @IsDefined()
-  isReacted?: boolean = undefined;
-
-  @IsNumber()
-  @IsDefined()
-  total?: number = undefined;
-}
-
 export class Message {
   @IsString()
   @IsDefined()
@@ -56,12 +45,8 @@ export class Message {
 
   @IsDefined()
   @IsEnum(AttachmentTypeEnum)
+  @ValidIf("attachmentType")
   attachmentType?: AttachmentTypeEnum = undefined;
-
-  @ValidateNested({ each: true })
-  @IsObject()
-  @Type(() => Reaction)
-  reactions: Reaction
 
   @IsBoolean()
   @IsDefined()
@@ -99,11 +84,11 @@ export class Message {
 
   @IsString()
   @IsDefined()
-  @ValidIf("updateTime", new Date().toISOString())
+  @ValidIf("updateTime", "createTime")
   updateTime?: string = undefined;
 
   @IsString()
-  @ValidIf("ref", "{{ref}}")
+  @ValidIf("ref")
   ref?: string = undefined;
 }
 
@@ -132,7 +117,6 @@ export class Profile {
 export class PresenceData {
   @IsString()
   @IsDefined()
-  @ValidIf("updateTime", new Date().toISOString())
   lastUpdateTime?: string = undefined;
 
   @IsNumber()

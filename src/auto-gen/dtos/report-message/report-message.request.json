@@ -22,7 +22,7 @@
       "sendMessage({{token_1}}, 0, {{channelId}}, 'test123', 'ref')"
     ],
     "afterEach" : [
-      "getMessage({{token}}, {{channelId}}, {{messageId}})"
+      "getMessage({{token_1}}, {{channelId}}, {{messageId}})"
     ]
   }
 

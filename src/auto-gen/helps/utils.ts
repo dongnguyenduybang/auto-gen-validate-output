@@ -2,6 +2,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 import 'reflect-metadata';
 import axios from 'axios';
+import { AttachmentTypeEnum } from '../enums/attachment-type.enum';
 
 
 function getFileNameWithoutExtension(filePath: string): string {
@@ -175,4 +176,59 @@ export function getTime() {
   const year = now.getFullYear();
   const formattedDate = `${hours}-${minutes}-${day}-${month}-${year}`;
   return formattedDate
+}
+
+export function classifyContent(content: string): AttachmentTypeEnum {
+  // Biểu thức chính quy để kiểm tra URL hợp lệ
+  const urlRegex = /^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/.*)?$/;
+
+  const attachmentTypes = {
+    [AttachmentTypeEnum.ATTACHMENT_TYPE_ENUM_PHOTO]: [".jpg", ".jpeg", ".png", ".bmp", ".webp"],
+    [AttachmentTypeEnum.ATTACHMENT_TYPE_ENUM_VIDEO]: [".mp4", ".avi", ".mov", ".mkv"],
+    [AttachmentTypeEnum.ATTACHMENT_TYPE_ENUM_AUDIO]: [".mp3", ".wav", ".flac", ".aac"],
+    [AttachmentTypeEnum.ATTACHMENT_TYPE_ENUM_STICKER]: [".gif"], 
+    [AttachmentTypeEnum.ATTACHMENT_TYPE_ENUM_FILE]: [".pdf", ".doc", ".docx", ".xls", ".xlsx", ".ppt", ".pptx", ".zip", ".rar"]
+  };
+
+  // Kiểm tra xem content có phải là URL hợp lệ không
+  if (!urlRegex.test(content)) {
+    // Nếu không phải URL, kiểm tra xem có phải là mention hay không
+    if (content.startsWith("@")) {
+      return AttachmentTypeEnum.ATTACHMENT_TYPE_ENUM_MENTION;
+    }
+
+    return AttachmentTypeEnum.ATTACHMENT_TYPE_ENUM_UNSPECIFIED;
+  }
+
+  // Lấy phần mở rộng của URL
+  const urlParts = content.split(".");
+  const lastPart = urlParts.pop()?.toLowerCase();
+  const extension = lastPart ? `.${lastPart}` : "";
+
+  // Kiểm tra từng loại nội dung dựa trên phần mở rộng
+  for (const [typeKey, extensions] of Object.entries(attachmentTypes)) {
+    if (extensions.includes(extension)) {
+      return parseInt(typeKey, 10) as AttachmentTypeEnum;
+    }
+  }
+
+  // Nếu URL không có phần mở rộng cụ thể, coi là liên kết thông thường
+  return AttachmentTypeEnum.ATTACHMENT_TYPE_ENUM_LINKS;
+}
+
+
+function dmsToDecimal(degrees, minutes, seconds) {
+  return degrees + (minutes / 60) + (seconds / 3600);
+}
+
+export function extractCoordinates(description) {
+  const regex = /([0-9]+)°([0-9]+)′([0-9.]+)″[NS]\s([0-9]+)°([0-9]+)′([0-9.]+)″[EW]/;
+  const match = description.match(regex);
+
+  if (match) {
+    const latitude = dmsToDecimal(parseInt(match[1]), parseInt(match[2]), parseFloat(match[3]));
+    const longitude = dmsToDecimal(parseInt(match[4]), parseInt(match[5]), parseFloat(match[6]));
+    return { latitude, longitude };
+  }
+  return null;
 }

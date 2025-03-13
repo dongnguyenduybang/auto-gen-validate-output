@@ -36,7 +36,6 @@ export function validateAddMessageReaction(instance: any, payload: any): string[
                 if (key === 'reactions') {
 
                    const emojiPayload = payload?.emoji;
-                   console.log(emojiPayload)
 
                     Object.entries(valueResponse || {}).forEach(([reactionKey, reactionValue]) => {
 
@@ -161,6 +160,8 @@ export function validateAddMessageReaction(instance: any, payload: any): string[
 
     const prototype = Object.getPrototypeOf(instance);
     validateObject(instance, prototype);
-
+    if(errors.length === 0 ){
+        globalThis.globalVar.set('messageId', instance.data.message.messageId )
+    }
     return errors;
 }

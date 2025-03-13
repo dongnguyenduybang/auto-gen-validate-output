@@ -7,8 +7,8 @@ Total Tests: 1
 Passed Tests: 1
 Failed Tests: 0
 Status Code:
-  200: 1
-  201: 0
+  200: 0
+  201: 1
   400: 0
   403: 0
   404: 0

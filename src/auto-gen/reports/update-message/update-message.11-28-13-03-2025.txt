@@ -1,0 +1,654 @@
+
+    === Test Reports Logic for DTO "update-message" ===
+    Host: https://api-sb11.rpc.ziichat.dev
+    Endpoint: /Message/UpdateMessage
+    Error: 
+    
+    - Testcase #1
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #2
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #3
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #4
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #5
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #6
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #7
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #8
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #13
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #14
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #15
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #16
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #17
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #18
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #19
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #20
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #25
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #26
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #27
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #28
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #29
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #30
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #31
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #32
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #37
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #38
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #39
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #40
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #41
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #42
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #43
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #44
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #49
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #50
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #51
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #52
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #53
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #54
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #55
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #56
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #61
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #62
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #63
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #64
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #65
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #66
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #67
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #68
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #73
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #74
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #75
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #76
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #77
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #78
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #79
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #80
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #85
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #86
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #87
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #88
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #89
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #90
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #91
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #92
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #97
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #98
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #99
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #100
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #101
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #102
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #103
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #104
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #109
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #110
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #111
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #112
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #113
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #114
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #115
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #116
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #121
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #122
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #123
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #124
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #125
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #126
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #127
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #128
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #133
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #134
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #135
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #136
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #137
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #138
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #139
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #140
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #145
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #146
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #147
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #148
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #149
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #150
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #151
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #152
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #157
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #158
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #159
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #160
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #161
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #162
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #163
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #164
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #169
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #170
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #171
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #172
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #173
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #174
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #175
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #176
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #181
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #182
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #183
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #184
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #185
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #186
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #187
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #188
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #193
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #194
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #195
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #196
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #197
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #198
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #199
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #200
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #205
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #206
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #207
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #208
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #209
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #210
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #211
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #212
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #217
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #218
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #219
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #220
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #221
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #222
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #223
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #224
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #229
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #230
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #231
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #232
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #233
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #234
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #235
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #236
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #241
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #242
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #243
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #244
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #245
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #246
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #247
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #248
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #253
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #254
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #255
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #256
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #257
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #258
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #259
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #260
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #265
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #266
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #267
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #268
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #269
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #270
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #271
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #272
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #277
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #278
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #279
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #280
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #281
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #282
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #283
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #284
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #289
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #290
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #291
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #292
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #293
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #294
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #295
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #296
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #301
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #302
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #303
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #304
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #305
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #306
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #307
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #308
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #313
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #314
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #315
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #316
+      Logic Errors: ["Field 'content' must be equal with payload "]
+  
+    - Testcase #317
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #318
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #319
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  
+    - Testcase #320
+      Logic Errors: ["Field 'content' must be equal with payload 12345"]
+  

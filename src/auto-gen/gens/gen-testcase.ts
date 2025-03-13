@@ -70,7 +70,7 @@ function genTestCase(
     import { executeBeforeAllSteps, executeDelete } from '../functions';
     import { resolveJsonVariables,resolveVariables } from '../helps/get-resolve-variables';
     import { plainToClass } from 'class-transformer';
-    import { ${classNameCapitalized}Response } from '../dto-response/${className}.response';
+    import { ${classNameCapitalized}Response } from '../response/${className}.response';
     import { validateAfterLogic } from '../validates/${className}/validate-${className}-after';
 
     describe('Testcase for ${className}', () => {
@@ -83,6 +83,7 @@ function genTestCase(
         let headerRequest
         let testNumber
         let resolvedData
+        let nextStep = false
 
         beforeAll( async () => {
 
@@ -93,6 +94,7 @@ function genTestCase(
         })
         afterEach(async () => {
 
+        if(nextStep === true){
           if (!resolveVariables("{{messageId}}")) {
               return; 
            }
@@ -100,7 +102,11 @@ function genTestCase(
             const validateAfter = await validateAfterLogic(result, resolvedData)
             if (validateAfter.length === 0) {
               passedLogic++;
-              passedTests++
+              passedTests++;
+            
+              logicTests.push({ 
+                testcase: testNumber,
+              });
             
             } else {
               logicTests.push({ 
@@ -108,6 +114,7 @@ function genTestCase(
                 errorLogic: validateAfter
               });
             }
+          }
          
         })
 
@@ -142,12 +149,13 @@ function genTestCase(
                   const dtoInstance = plainToClass(${classNameCapitalized}Response, data);
                   const validateLogic = await validate${classNameCapitalized}(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
@@ -155,15 +163,18 @@ function genTestCase(
                   const dtoInstance = plainToClass(${classNameCapitalized}Response, data);
                   const validateLogic = await validate${classNameCapitalized}(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
-                  }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                  
+                  }else{
+                    nextStep = true
                   }
-                }else{
-                  expect(data.ok).toEqual(true)
+
+                }else {
+                 expect(data.ok).toEqual(true)
                   passed200++
                   passedTests++
                 }
@@ -178,9 +189,11 @@ function genTestCase(
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
+                  passedTests++
+                   nextStep = false
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -191,6 +204,7 @@ function genTestCase(
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -199,6 +213,7 @@ function genTestCase(
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -212,6 +227,7 @@ function genTestCase(
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -219,6 +235,7 @@ function genTestCase(
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,

@@ -18,14 +18,14 @@ export function validateSendLocation(instance: any, payload: any): string[] {
                 continue;
             }
 
-            // Check array of objects or simple arrays
+            // Check array 
             if (decorators?.type === 'object' && typeof valueResponse === 'object' && valueResponse !== null) {
 
                 const nestedPrototype = Object.getPrototypeOf(valueResponse);
                 validateObject(valueResponse, nestedPrototype, field);
 
             } else if (decorators?.type === 'array' && Array.isArray(valueResponse)) {
-                // Validate other arrays
+               
                 valueResponse.forEach((item: any, index: number) => {
                     validateObject(item, Object.getPrototypeOf(item), `${field}[${index}]`);
                 });
@@ -68,7 +68,7 @@ export function validateSendLocation(instance: any, payload: any): string[] {
                     }
                 }
 
-                // Check specific conditions for 'userType' and 'messageType'
+                // get user
                 if (path === 'includes.users[0]' && key === 'userType') {
                     isUser = valueResponse;
                 }
@@ -79,7 +79,7 @@ export function validateSendLocation(instance: any, payload: any): string[] {
                     //     return;
                     // }
                     
-                    // Check validIf conditions (specific checks)
+                    // Check validIf
                     if (decorators?.validIf) {
                         const { condition, condition2 } = decorators.validIf;
                         if (condition === 'channelId') {
@@ -133,7 +133,7 @@ export function validateSendLocation(instance: any, payload: any): string[] {
                             }
                         }
 
-                        // Validate attachmentType = 10 if embed contains locationData
+                        // check attachmentType = 10 if embed has locationData
                         if (condition === 'attachmentType') {
                             if (String(valueResponse).trim() !== String(condition2).trim()) {
                                 errors.push(`${field} must be equal ${condition2}`);
@@ -147,7 +147,7 @@ export function validateSendLocation(instance: any, payload: any): string[] {
                         }
                     }
 
-                    // Check userType and messageType consistency
+                    // check messageType
                     if (key === 'messageType') {
                         if (Number(isUser) === 0 && valueResponse !== 0) {
                             errors.push(`${field} must be equal 0`);
@@ -160,6 +160,8 @@ export function validateSendLocation(instance: any, payload: any): string[] {
 
     const prototype = Object.getPrototypeOf(instance);
     validateObject(instance, prototype);
-
+    if(errors.length === 0 ){
+        globalThis.globalVar.set('messageId', instance.data.message.messageId )
+    }
     return errors;
 }

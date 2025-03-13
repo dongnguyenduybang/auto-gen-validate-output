@@ -20,6 +20,7 @@ export async function sendMessages(token: string, workspaceIdField: string, chan
           globalThis.globalVar.set(`messageId${index}`, messageId);
 
         } else {
+          
           throw new Error('Invalid response from send message API');
         }
       }

@@ -19,6 +19,7 @@
         let headerRequest
         let testNumber
         let resolvedData
+        let nextStep = false
 
         beforeAll( async () => {
 
@@ -29,16 +30,20 @@
         })
         afterEach(async () => {
 
-
+        if(nextStep === true){
           if (!resolveVariables("{{messageId}}")) {
               return; 
            }
-        
-
             const result = await executeBeforeAllSteps(["getMessage({{token}}, {{channelId}}, {{messageId}})"])
             const validateAfter = await validateAfterLogic(result, resolvedData)
             if (validateAfter.length === 0) {
               passedLogic++;
+              passedTests++;
+            
+              logicTests.push({ 
+                testcase: testNumber,
+              
+              });
             
             } else {
               logicTests.push({ 
@@ -46,6 +51,7 @@
                 errorLogic: validateAfter
               });
             }
+          }
          
         })
 
@@ -75,18 +81,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty","channelId should not be empty","content should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -97,9 +121,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -110,6 +134,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -118,6 +143,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -131,6 +157,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -138,6 +165,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -175,18 +203,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty","channelId should not be empty","content should not be empty","ref should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -197,9 +243,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -210,6 +256,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -218,6 +265,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -231,6 +279,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -238,6 +287,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -275,18 +325,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty","channelId should not be empty","content should not be empty","ref must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -297,9 +365,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -310,6 +378,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -318,6 +387,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -331,6 +401,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -338,6 +409,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -375,18 +447,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty","channelId should not be empty","content should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -397,9 +487,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -410,6 +500,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -418,6 +509,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -431,6 +523,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -438,6 +531,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -475,18 +569,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty","channelId should not be empty","content must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -497,9 +609,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -510,6 +622,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -518,6 +631,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -531,6 +645,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -538,6 +653,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -575,18 +691,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty","channelId should not be empty","content must be a string","ref should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -597,9 +731,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -610,6 +744,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -618,6 +753,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -631,6 +767,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -638,6 +775,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -675,18 +813,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty","channelId should not be empty","content must be a string","ref must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -697,9 +853,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -710,6 +866,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -718,6 +875,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -731,6 +889,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -738,6 +897,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -775,18 +935,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty","channelId should not be empty","content must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -797,9 +975,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -810,6 +988,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -818,6 +997,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -831,6 +1011,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -838,6 +1019,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -875,18 +1057,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty","channelId should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -897,9 +1097,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -910,6 +1110,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -918,6 +1119,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -931,6 +1133,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -938,6 +1141,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -975,18 +1179,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty","channelId should not be empty","ref should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -997,9 +1219,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -1010,6 +1232,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -1018,6 +1241,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -1031,6 +1255,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -1038,6 +1263,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -1075,18 +1301,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty","channelId should not be empty","ref must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -1097,9 +1341,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -1110,6 +1354,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -1118,6 +1363,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -1131,6 +1377,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -1138,6 +1385,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -1175,18 +1423,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty","channelId should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -1197,9 +1463,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -1210,6 +1476,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -1218,6 +1485,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -1231,6 +1499,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -1238,6 +1507,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -1275,18 +1545,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty","channelId must be a string","content should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -1297,9 +1585,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -1310,6 +1598,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -1318,6 +1607,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -1331,6 +1621,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -1338,6 +1629,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -1375,18 +1667,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty","channelId must be a string","content should not be empty","ref should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -1397,9 +1707,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -1410,6 +1720,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -1418,6 +1729,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -1431,6 +1743,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -1438,6 +1751,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -1475,18 +1789,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty","channelId must be a string","content should not be empty","ref must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -1497,9 +1829,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -1510,6 +1842,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -1518,6 +1851,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -1531,6 +1865,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -1538,6 +1873,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -1575,18 +1911,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty","channelId must be a string","content should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -1597,9 +1951,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -1610,6 +1964,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -1618,6 +1973,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -1631,6 +1987,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -1638,6 +1995,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -1675,18 +2033,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty","channelId must be a string","content must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -1697,9 +2073,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -1710,6 +2086,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -1718,6 +2095,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -1731,6 +2109,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -1738,6 +2117,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -1775,18 +2155,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty","channelId must be a string","content must be a string","ref should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -1797,9 +2195,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -1810,6 +2208,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -1818,6 +2217,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -1831,6 +2231,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -1838,6 +2239,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -1875,18 +2277,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty","channelId must be a string","content must be a string","ref must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -1897,9 +2317,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -1910,6 +2330,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -1918,6 +2339,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -1931,6 +2353,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -1938,6 +2361,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -1975,18 +2399,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty","channelId must be a string","content must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -1997,9 +2439,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -2010,6 +2452,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -2018,6 +2461,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -2031,6 +2475,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -2038,6 +2483,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -2075,18 +2521,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty","channelId must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -2097,9 +2561,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -2110,6 +2574,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -2118,6 +2583,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -2131,6 +2597,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -2138,6 +2605,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -2175,18 +2643,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty","channelId must be a string","ref should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -2197,9 +2683,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -2210,6 +2696,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -2218,6 +2705,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -2231,6 +2719,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -2238,6 +2727,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -2275,18 +2765,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty","channelId must be a string","ref must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -2297,9 +2805,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -2310,6 +2818,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -2318,6 +2827,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -2331,6 +2841,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -2338,6 +2849,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -2375,18 +2887,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty","channelId must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -2397,9 +2927,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -2410,6 +2940,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -2418,6 +2949,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -2431,6 +2963,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -2438,6 +2971,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -2475,18 +3009,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty","content should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -2497,9 +3049,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -2510,6 +3062,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -2518,6 +3071,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -2531,6 +3085,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -2538,6 +3093,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -2575,18 +3131,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty","content should not be empty","ref should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -2597,9 +3171,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -2610,6 +3184,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -2618,6 +3193,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -2631,6 +3207,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -2638,6 +3215,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -2675,18 +3253,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty","content should not be empty","ref must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -2697,9 +3293,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -2710,6 +3306,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -2718,6 +3315,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -2731,6 +3329,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -2738,6 +3337,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -2775,18 +3375,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty","content should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -2797,9 +3415,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -2810,6 +3428,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -2818,6 +3437,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -2831,6 +3451,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -2838,6 +3459,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -2875,18 +3497,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty","content must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -2897,9 +3537,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -2910,6 +3550,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -2918,6 +3559,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -2931,6 +3573,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -2938,6 +3581,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -2975,18 +3619,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty","content must be a string","ref should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -2997,9 +3659,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -3010,6 +3672,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -3018,6 +3681,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -3031,6 +3695,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -3038,6 +3703,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -3075,18 +3741,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty","content must be a string","ref must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -3097,9 +3781,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -3110,6 +3794,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -3118,6 +3803,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -3131,6 +3817,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -3138,6 +3825,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -3175,18 +3863,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty","content must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -3197,9 +3903,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -3210,6 +3916,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -3218,6 +3925,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -3231,6 +3939,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -3238,6 +3947,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -3275,18 +3985,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -3297,9 +4025,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -3310,6 +4038,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -3318,6 +4047,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -3331,6 +4061,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -3338,6 +4069,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -3375,18 +4107,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty","ref should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -3397,9 +4147,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -3410,6 +4160,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -3418,6 +4169,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -3431,6 +4183,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -3438,6 +4191,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -3475,18 +4229,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty","ref must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -3497,9 +4269,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -3510,6 +4282,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -3518,6 +4291,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -3531,6 +4305,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -3538,6 +4313,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -3575,18 +4351,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -3597,9 +4391,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -3610,6 +4404,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -3618,6 +4413,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -3631,6 +4427,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -3638,6 +4435,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -3675,18 +4473,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string","channelId should not be empty","content should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -3697,9 +4513,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -3710,6 +4526,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -3718,6 +4535,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -3731,6 +4549,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -3738,6 +4557,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -3775,18 +4595,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string","channelId should not be empty","content should not be empty","ref should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -3797,9 +4635,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -3810,6 +4648,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -3818,6 +4657,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -3831,6 +4671,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -3838,6 +4679,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -3875,18 +4717,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string","channelId should not be empty","content should not be empty","ref must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -3897,9 +4757,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -3910,6 +4770,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -3918,6 +4779,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -3931,6 +4793,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -3938,6 +4801,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -3975,18 +4839,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string","channelId should not be empty","content should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -3997,9 +4879,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -4010,6 +4892,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -4018,6 +4901,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -4031,6 +4915,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -4038,6 +4923,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -4075,18 +4961,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string","channelId should not be empty","content must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -4097,9 +5001,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -4110,6 +5014,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -4118,6 +5023,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -4131,6 +5037,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -4138,6 +5045,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -4175,18 +5083,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string","channelId should not be empty","content must be a string","ref should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -4197,9 +5123,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -4210,6 +5136,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -4218,6 +5145,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -4231,6 +5159,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -4238,6 +5167,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -4275,18 +5205,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string","channelId should not be empty","content must be a string","ref must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -4297,9 +5245,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -4310,6 +5258,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -4318,6 +5267,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -4331,6 +5281,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -4338,6 +5289,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -4375,18 +5327,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string","channelId should not be empty","content must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -4397,9 +5367,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -4410,6 +5380,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -4418,6 +5389,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -4431,6 +5403,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -4438,6 +5411,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -4475,18 +5449,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string","channelId should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -4497,9 +5489,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -4510,6 +5502,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -4518,6 +5511,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -4531,6 +5525,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -4538,6 +5533,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -4575,18 +5571,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string","channelId should not be empty","ref should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -4597,9 +5611,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -4610,6 +5624,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -4618,6 +5633,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -4631,6 +5647,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -4638,6 +5655,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -4675,18 +5693,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string","channelId should not be empty","ref must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -4697,9 +5733,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -4710,6 +5746,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -4718,6 +5755,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -4731,6 +5769,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -4738,6 +5777,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -4775,18 +5815,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string","channelId should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -4797,9 +5855,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -4810,6 +5868,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -4818,6 +5877,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -4831,6 +5891,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -4838,6 +5899,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -4875,18 +5937,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string","channelId must be a string","content should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -4897,9 +5977,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -4910,6 +5990,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -4918,6 +5999,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -4931,6 +6013,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -4938,6 +6021,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -4975,18 +6059,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string","channelId must be a string","content should not be empty","ref should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -4997,9 +6099,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -5010,6 +6112,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -5018,6 +6121,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -5031,6 +6135,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -5038,6 +6143,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -5075,18 +6181,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string","channelId must be a string","content should not be empty","ref must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -5097,9 +6221,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -5110,6 +6234,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -5118,6 +6243,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -5131,6 +6257,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -5138,6 +6265,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -5175,18 +6303,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string","channelId must be a string","content should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -5197,9 +6343,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -5210,6 +6356,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -5218,6 +6365,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -5231,6 +6379,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -5238,6 +6387,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -5275,18 +6425,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string","channelId must be a string","content must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -5297,9 +6465,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -5310,6 +6478,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -5318,6 +6487,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -5331,6 +6501,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -5338,6 +6509,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -5375,18 +6547,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string","channelId must be a string","content must be a string","ref should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -5397,9 +6587,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -5410,6 +6600,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -5418,6 +6609,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -5431,6 +6623,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -5438,6 +6631,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -5475,18 +6669,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string","channelId must be a string","content must be a string","ref must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -5497,9 +6709,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -5510,6 +6722,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -5518,6 +6731,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -5531,6 +6745,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -5538,6 +6753,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -5575,18 +6791,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string","channelId must be a string","content must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -5597,9 +6831,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -5610,6 +6844,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -5618,6 +6853,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -5631,6 +6867,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -5638,6 +6875,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -5675,18 +6913,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string","channelId must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -5697,9 +6953,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -5710,6 +6966,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -5718,6 +6975,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -5731,6 +6989,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -5738,6 +6997,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -5775,18 +7035,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string","channelId must be a string","ref should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -5797,9 +7075,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -5810,6 +7088,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -5818,6 +7097,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -5831,6 +7111,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -5838,6 +7119,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -5875,18 +7157,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string","channelId must be a string","ref must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -5897,9 +7197,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -5910,6 +7210,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -5918,6 +7219,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -5931,6 +7233,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -5938,6 +7241,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -5975,18 +7279,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string","channelId must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -5997,9 +7319,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -6010,6 +7332,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -6018,6 +7341,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -6031,6 +7355,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -6038,6 +7363,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -6075,18 +7401,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string","content should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -6097,9 +7441,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -6110,6 +7454,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -6118,6 +7463,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -6131,6 +7477,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -6138,6 +7485,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -6175,18 +7523,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string","content should not be empty","ref should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -6197,9 +7563,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -6210,6 +7576,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -6218,6 +7585,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -6231,6 +7599,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -6238,6 +7607,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -6275,18 +7645,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string","content should not be empty","ref must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -6297,9 +7685,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -6310,6 +7698,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -6318,6 +7707,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -6331,6 +7721,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -6338,6 +7729,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -6375,18 +7767,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string","content should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -6397,9 +7807,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -6410,6 +7820,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -6418,6 +7829,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -6431,6 +7843,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -6438,6 +7851,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -6475,18 +7889,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string","content must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -6497,9 +7929,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -6510,6 +7942,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -6518,6 +7951,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -6531,6 +7965,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -6538,6 +7973,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -6575,18 +8011,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string","content must be a string","ref should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -6597,9 +8051,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -6610,6 +8064,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -6618,6 +8073,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -6631,6 +8087,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -6638,6 +8095,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -6675,18 +8133,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string","content must be a string","ref must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -6697,9 +8173,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -6710,6 +8186,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -6718,6 +8195,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -6731,6 +8209,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -6738,6 +8217,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -6775,18 +8255,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string","content must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -6797,9 +8295,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -6810,6 +8308,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -6818,6 +8317,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -6831,6 +8331,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -6838,6 +8339,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -6875,18 +8377,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -6897,9 +8417,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -6910,6 +8430,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -6918,6 +8439,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -6931,6 +8453,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -6938,6 +8461,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -6975,18 +8499,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string","ref should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -6997,9 +8539,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -7010,6 +8552,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -7018,6 +8561,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -7031,6 +8575,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -7038,6 +8583,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -7075,18 +8621,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string","ref must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -7097,9 +8661,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -7110,6 +8674,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -7118,6 +8683,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -7131,6 +8697,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -7138,6 +8705,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -7175,18 +8743,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["workspaceId must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -7197,9 +8783,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -7210,6 +8796,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -7218,6 +8805,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -7231,6 +8819,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -7238,6 +8827,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -7275,18 +8865,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["channelId should not be empty","content should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -7297,9 +8905,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -7310,6 +8918,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -7318,6 +8927,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -7331,6 +8941,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -7338,6 +8949,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -7375,18 +8987,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["channelId should not be empty","content should not be empty","ref should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -7397,9 +9027,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -7410,6 +9040,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -7418,6 +9049,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -7431,6 +9063,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -7438,6 +9071,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -7475,18 +9109,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["channelId should not be empty","content should not be empty","ref must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -7497,9 +9149,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -7510,6 +9162,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -7518,6 +9171,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -7531,6 +9185,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -7538,6 +9193,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -7575,18 +9231,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["channelId should not be empty","content should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -7597,9 +9271,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -7610,6 +9284,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -7618,6 +9293,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -7631,6 +9307,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -7638,6 +9315,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -7675,18 +9353,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["channelId should not be empty","content must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -7697,9 +9393,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -7710,6 +9406,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -7718,6 +9415,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -7731,6 +9429,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -7738,6 +9437,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -7775,18 +9475,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["channelId should not be empty","content must be a string","ref should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -7797,9 +9515,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -7810,6 +9528,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -7818,6 +9537,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -7831,6 +9551,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -7838,6 +9559,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -7875,18 +9597,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["channelId should not be empty","content must be a string","ref must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -7897,9 +9637,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -7910,6 +9650,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -7918,6 +9659,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -7931,6 +9673,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -7938,6 +9681,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -7975,18 +9719,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["channelId should not be empty","content must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -7997,9 +9759,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -8010,6 +9772,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -8018,6 +9781,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -8031,6 +9795,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -8038,6 +9803,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -8075,18 +9841,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["channelId should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -8097,9 +9881,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -8110,6 +9894,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -8118,6 +9903,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -8131,6 +9917,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -8138,6 +9925,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -8175,18 +9963,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["channelId should not be empty","ref should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -8197,9 +10003,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -8210,6 +10016,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -8218,6 +10025,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -8231,6 +10039,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -8238,6 +10047,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -8275,18 +10085,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["channelId should not be empty","ref must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -8297,9 +10125,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -8310,6 +10138,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -8318,6 +10147,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -8331,6 +10161,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -8338,6 +10169,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -8375,18 +10207,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["channelId should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -8397,9 +10247,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -8410,6 +10260,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -8418,6 +10269,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -8431,6 +10283,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -8438,6 +10291,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -8475,18 +10329,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["channelId must be a string","content should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -8497,9 +10369,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -8510,6 +10382,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -8518,6 +10391,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -8531,6 +10405,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -8538,6 +10413,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -8575,18 +10451,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["channelId must be a string","content should not be empty","ref should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -8597,9 +10491,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -8610,6 +10504,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -8618,6 +10513,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -8631,6 +10527,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -8638,6 +10535,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -8675,18 +10573,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["channelId must be a string","content should not be empty","ref must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -8697,9 +10613,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -8710,6 +10626,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -8718,6 +10635,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -8731,6 +10649,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -8738,6 +10657,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -8775,18 +10695,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["channelId must be a string","content should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -8797,9 +10735,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -8810,6 +10748,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -8818,6 +10757,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -8831,6 +10771,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -8838,6 +10779,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -8875,18 +10817,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["channelId must be a string","content must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -8897,9 +10857,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -8910,6 +10870,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -8918,6 +10879,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -8931,6 +10893,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -8938,6 +10901,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -8975,18 +10939,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["channelId must be a string","content must be a string","ref should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -8997,9 +10979,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -9010,6 +10992,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -9018,6 +11001,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -9031,6 +11015,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -9038,6 +11023,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -9075,18 +11061,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["channelId must be a string","content must be a string","ref must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -9097,9 +11101,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -9110,6 +11114,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -9118,6 +11123,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -9131,6 +11137,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -9138,6 +11145,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -9175,18 +11183,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["channelId must be a string","content must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -9197,9 +11223,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -9210,6 +11236,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -9218,6 +11245,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -9231,6 +11259,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -9238,6 +11267,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -9275,18 +11305,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["channelId must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -9297,9 +11345,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -9310,6 +11358,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -9318,6 +11367,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -9331,6 +11381,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -9338,6 +11389,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -9375,18 +11427,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["channelId must be a string","ref should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -9397,9 +11467,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -9410,6 +11480,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -9418,6 +11489,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -9431,6 +11503,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -9438,6 +11511,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -9475,18 +11549,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["channelId must be a string","ref must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -9497,9 +11589,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -9510,6 +11602,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -9518,6 +11611,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -9531,6 +11625,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -9538,6 +11633,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -9575,18 +11671,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["channelId must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -9597,9 +11711,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -9610,6 +11724,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -9618,6 +11733,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -9631,6 +11747,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -9638,6 +11755,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -9675,18 +11793,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["content should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -9697,9 +11833,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -9710,6 +11846,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -9718,6 +11855,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -9731,6 +11869,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -9738,6 +11877,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -9775,18 +11915,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["content should not be empty","ref should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -9797,9 +11955,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -9810,6 +11968,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -9818,6 +11977,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -9831,6 +11991,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -9838,6 +11999,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -9875,18 +12037,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["content should not be empty","ref must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -9897,9 +12077,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -9910,6 +12090,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -9918,6 +12099,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -9931,6 +12113,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -9938,6 +12121,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -9975,18 +12159,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["content should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -9997,9 +12199,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -10010,6 +12212,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -10018,6 +12221,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -10031,6 +12235,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -10038,6 +12243,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -10075,18 +12281,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["content must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -10097,9 +12321,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -10110,6 +12334,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -10118,6 +12343,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -10131,6 +12357,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -10138,6 +12365,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -10175,18 +12403,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["content must be a string","ref should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -10197,9 +12443,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -10210,6 +12456,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -10218,6 +12465,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -10231,6 +12479,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -10238,6 +12487,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -10275,18 +12525,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["content must be a string","ref must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -10297,9 +12565,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -10310,6 +12578,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -10318,6 +12587,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -10331,6 +12601,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -10338,6 +12609,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -10375,18 +12647,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["content must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -10397,9 +12687,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -10410,6 +12700,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -10418,6 +12709,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -10431,6 +12723,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -10438,6 +12731,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -10475,18 +12769,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  [].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -10497,9 +12809,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -10510,6 +12822,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -10518,6 +12831,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -10531,6 +12845,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -10538,6 +12853,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -10575,18 +12891,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["ref should not be empty"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -10597,9 +12931,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -10610,6 +12944,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -10618,6 +12953,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -10631,6 +12967,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -10638,6 +12975,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -10675,18 +13013,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  ["ref must be a string"].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -10697,9 +13053,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -10710,6 +13066,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -10718,6 +13075,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -10731,6 +13089,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -10738,6 +13097,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,
@@ -10775,18 +13135,36 @@
                   const dtoInstance = plainToClass(SendMessageResponse, data);
                   const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
+                  nextStep = false
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
                   }else {
-                    globalThis.globalVar.set('messageId', data.data.message.messageId)
+                    nextStep = true
                   }
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
-                passed200++
-                passedTests++
-              
+                if(data.data){
+                  const dtoInstance = plainToClass(SendMessageResponse, data);
+                  const validateLogic = await validateSendMessage(dtoInstance, resolvedData);
+                  if (validateLogic.length !== 0) {
+                  nextStep = false
+                     logicTests.push({
+                      testcase:testNumber,
+                      errorLogic: validateLogic,
+                    })
+                  
+                  }else{
+                    nextStep = true
+                  }
+
+                }else {
+                 expect(data.ok).toEqual(true)
+                  passed200++
+                  passedTests++
+                }
+               
               }else if(response.status === 400){
                 const expectJson =  [].sort()
                 const expectDetails = Array.isArray(data?.error?.details)
@@ -10797,9 +13175,9 @@
                   expect(data.ok).toEqual(false);
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++;
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
@@ -10810,6 +13188,7 @@
                 }
               }else if (response.status === 500){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 500,
@@ -10818,6 +13197,7 @@
                 throw new Error(errorMessage);
               }else if (response.status === 404){
                 const errorMessage = data.error?.details;
+                nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
@@ -10831,6 +13211,7 @@
 
               if (error.message.includes('fetch failed')) {
               console.error('Network or server error:', error.message);
+              nextStep = false
                 failedTests.push({
                   testcase:testNumber,
                   errorDetails: 'Server down',
@@ -10838,6 +13219,7 @@
                 throw new Error('Server down');
               } else if (error.message.includes('Unexpected token')) {
                 console.error('Could not resolve permission type', error.message);
+                nextStep = false
                   failedTests.push({
                     testcase: testNumber,
                     code: 403,

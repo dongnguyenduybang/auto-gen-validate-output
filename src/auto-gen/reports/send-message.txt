@@ -4,11 +4,11 @@ Host: https://api-sb11.rpc.ziichat.dev
 Endpoint: /Message/SendMessage
 Summary: 
 Total Tests: 108
-Passed Tests: 1
+Passed Tests: 3
 Failed Tests: 105
 Status Code:
   200: 0
-  201: 4
+  201: 3
   400: 3
   403: 96
   404: 0

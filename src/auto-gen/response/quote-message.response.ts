@@ -15,10 +15,12 @@ export class OriginalMessage{
 
     @IsString()
     @IsDefined()
+    @ValidIf("messageIdOriginal", "{{messageId}}")
     messageId?: string = undefined;
   
     @IsString()
     @IsDefined()
+    @ValidIf("contentOriginal", "{{contentBefore}}" )
     content?: string = undefined;
 
     @IsDefined()
@@ -35,6 +37,7 @@ export class OriginalMessage{
     
     @IsString()
     @IsDefined()
+    @ValidIf("userId", "{{userId}}")
     userId?: string = undefined;
 
     @IsString()
@@ -44,7 +47,6 @@ export class OriginalMessage{
   
     @IsString()
     @IsDefined()
-    @ValidIf("updateTime", new Date().toISOString())
     updateTime?: string = undefined;
 
 }
@@ -52,12 +54,12 @@ export class OriginalMessage{
 export class Message {
   @IsString()
   @IsDefined()
-  @ValidIf("workspaceId", "workspaceId")
+  @ValidIf("workspaceId")
   workspaceId?: string = undefined;
 
   @IsString()
   @IsDefined()
-  @ValidIf("channelId", "channelId")
+  @ValidIf("channelId")
   channelId?: string = undefined;
 
   @IsString()
@@ -122,7 +124,6 @@ export class Message {
 
   @IsString()
   @IsDefined()
-  @ValidIf("updateTime", new Date().toISOString())
   updateTime?: string = undefined;
 
   @IsString()

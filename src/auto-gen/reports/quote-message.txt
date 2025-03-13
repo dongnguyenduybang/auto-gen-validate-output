@@ -3,10 +3,11 @@
 Host: https://api-sb11.rpc.ziichat.dev
 Endpoint: /Message/QuoteMessage
 Summary: 
-Total Tests: 2
+Total Tests: 1
 Passed Tests: 1
 Failed Tests: 0
 Status Code:
+  200: 0
   201: 1
   400: 0
   403: 0
