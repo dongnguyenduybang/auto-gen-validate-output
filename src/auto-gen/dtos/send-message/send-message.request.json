@@ -18,10 +18,15 @@
       "createChannel({{token}}, 'channel 1')"
     ],  
     "afterEach" : [
-      "getMessage({{token}}, {{channelId}}, {{messageId}})"
+      "getMessage({{token}}, {{channelId}}, {{messageId}})",
+      "getChannel({{token}}, {{channelId}})",
+      "getUser({{token}}, {{userId}})",
+      "getListMessage({{token}}, {{channelId}})"
     ],
 
-    "afterAll": ["deleteMessageForEveryone('0', {{channelId}}, {{messageId}})"]
+    "afterAll": [
+      "deleteMessageForEveryone('0', {{channelId}}, {{messageId}})"
+    ]
   }
 
 

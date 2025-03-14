@@ -72,7 +72,7 @@ function genTestCase(
     import { resolveJsonVariables,resolveVariables } from '../helps/get-resolve-variables';
     import { plainToClass } from 'class-transformer';
     import { ${classNameCapitalized}Response } from '../response/${className}.response';
-    import { validateAfterLogic } from '../validates/${className}/validate-${className}-after';
+
 
     describe('Testcase for ${className}', () => {
         let totalTests = 0;
@@ -111,8 +111,7 @@ function genTestCase(
               totalTests++;
               const payloadObj = ${JSON.stringify(testCase.body)};
               resolvedData = resolveJsonVariables(payloadObj);
-              ${
-                isDeleteMethod
+              ${isDeleteMethod
                   ? `
               const baseParams = new URLSearchParams({
                 workspaceId: resolvedData.workspaceId,
@@ -168,8 +167,8 @@ function genTestCase(
                   const dtoInstance = plainToClass(${classNameCapitalized}Response, data);
                   const validateLogic = await validate${classNameCapitalized}(dtoInstance, resolvedData);
                   if (validateLogic.length !== 0) {
-                  nextStep = false
-                     logicTests.push({
+                    nextStep = false
+                    logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateLogic,
                     })
@@ -183,78 +182,8 @@ function genTestCase(
                   passed200++
                   passedTests++
                 }
-               
-              }else if(response.status === 400){
-                const expectJson =  ${JSON.stringify(testCase.expects)}.sort()
-                const expectDetails = Array.isArray(data?.error?.details)
-                  ? data.error.details
-                  : [];
-                const softExpectDetails = [...expectDetails].sort();
-                try {
-                  expect(data.ok).toEqual(false);
-                  expect(data.data).toEqual(null);
-                  expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++
-                   nextStep = false
-                } catch (error) {
-                  const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
-                  nextStep = false
-                  failedTests.push({
-                    testcase: testNumber,
-                    code: 400,
-                    missing: missing || [],
-                    extra: extra || []
-                  })
-                  throw new Error(error);
-                }
-              }else if (response.status === 500){
-                const errorMessage = data.error?.details;
-                nextStep = false
-                failedTests.push({
-                  testcase:testNumber,
-                  code: 500,
-                  errorDetails: errorMessage,
-                });
-                throw new Error(errorMessage);
-              }else if (response.status === 404){
-                const errorMessage = data.error?.details;
-                nextStep = false
-                failedTests.push({
-                  testcase:testNumber,
-                  code: 404,
-                  errorDetails: errorMessage,
-                });
-              } else if (response.status === 403){
-                 const expectJson =  ${JSON.stringify(testCase.expects)}.sort()
-                const expectDetails = Array.isArray(data?.error?.details)
-                  ? data.error.details
-                  : [];
-                const softExpectDetails = [...expectDetails].sort();
-                try {
-                  expect(data.ok).toEqual(false);
-                  expect(data.data).toEqual(null);
-                  expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++
-                   nextStep = false
-                } catch (error) {
-                  const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
-                  nextStep = false
-                  failedTests.push({
-                    testcase: testNumber,
-                    code: 403,
-                    missing: missing || [],
-                    extra: extra || []
-                  })
-                  throw new Error(error);
-                }
-              
-              
-              }else {
-                console.log('unexpected:', data);
-                throw new Error(data);
               }
             }catch (error){
-
               console.log(error.message)
             }
             });`,

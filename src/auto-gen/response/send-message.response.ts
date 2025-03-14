@@ -1,5 +1,4 @@
 import { BaseResponse } from './general-response';
-
 import {
   IsEnum,
   IsString,
