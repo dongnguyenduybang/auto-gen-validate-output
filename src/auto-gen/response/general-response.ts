@@ -1,16 +1,25 @@
 import { ValidateNested } from 'class-validator';
 import { Transform, Type } from 'class-transformer';
-import { IsDefined, IsArray, IsBoolean, IsString, IsNumber, IsObject, IsOptional, ValidIf } from '../decorator/dto-decorator';
+import {
+  IsDefined,
+  IsArray,
+  IsBoolean,
+  IsString,
+  IsNumber,
+  IsObject,
+  IsOptional,
+  ValidIf,
+} from '../decorator/dto-decorator';
 
 export class Message {
   @IsString()
   @IsDefined()
-  @ValidIf("workspaceId", "workspaceId")
+  @ValidIf('workspaceId', 'workspaceId')
   workspaceId?: string = undefined;
 
   @IsString()
   @IsDefined()
-  @ValidIf("channelId", "channelId")
+  @ValidIf('channelId', 'channelId')
   channelId?: string = undefined;
 
   @IsString()
@@ -23,7 +32,7 @@ export class Message {
 
   @IsString()
   @IsDefined()
-  @ValidIf("content", "content")
+  @ValidIf('content', 'content')
   content?: string = undefined;
 
   @IsNumber()
@@ -32,7 +41,7 @@ export class Message {
 
   @IsNumber()
   @IsDefined()
-  @ValidIf("messageStatus", "1")
+  @ValidIf('messageStatus', '1')
   messageStatus?: number = undefined;
 
   @IsString()
@@ -42,7 +51,7 @@ export class Message {
   @IsObject()
   @IsOptional()
   @Transform(({ value }) => value || {})
-  reactions?: object = {}; 
+  reactions?: object = {};
 
   @IsArray()
   @IsOptional()
@@ -62,12 +71,12 @@ export class Message {
 
   @IsNumber()
   @IsDefined()
-  @ValidIf("reportCount", "0")
+  @ValidIf('reportCount', '0')
   reportCount?: number = undefined;
 
   @IsBoolean()
   @IsDefined()
-  @ValidIf("isReported", "false")
+  @ValidIf('isReported', 'false')
   isReported?: boolean = undefined;
 
   @IsNumber()
@@ -84,7 +93,7 @@ export class Message {
 
   @IsArray()
   @IsOptional()
-  contentArguments?: any[] = []; 
+  contentArguments?: any[] = [];
 
   @IsBoolean()
   @IsDefined()
@@ -92,17 +101,17 @@ export class Message {
 
   @IsString()
   @IsDefined()
-  @ValidIf("createTime", "updateTime")
+  @ValidIf('createTime', 'updateTime')
   createTime?: string = undefined;
 
   @IsString()
   @IsDefined()
-  @ValidIf("updateTime", new Date().toISOString())
+  @ValidIf('updateTime', new Date().toISOString())
   updateTime?: string = undefined;
 
   @IsString()
   @IsDefined()
-  @ValidIf("ref", "ref")
+  @ValidIf('ref', 'ref')
   @IsOptional()
   ref?: string = undefined;
 }
@@ -132,7 +141,7 @@ export class Profile {
 export class PresenceData {
   @IsString()
   @IsDefined()
-  @ValidIf("updateTime", new Date().toISOString())
+  @ValidIf('updateTime', new Date().toISOString())
   lastUpdateTime?: string = undefined;
 
   @IsNumber()
@@ -173,12 +182,12 @@ export class ChannelMetadata {
 
   @IsString()
   @IsDefined()
-  @ValidIf("workspaceId", "workspaceId")
+  @ValidIf('workspaceId', 'workspaceId')
   workspaceId?: string = undefined;
 
   @IsString()
   @IsDefined()
-  @ValidIf("channelId", "channelId")
+  @ValidIf('channelId', 'channelId')
   channelId?: string = undefined;
 
   @IsString()
@@ -189,12 +198,12 @@ export class ChannelMetadata {
 export class ChannelDTO {
   @IsString()
   @IsDefined()
-  @ValidIf("workspaceId", "workspaceId")
+  @ValidIf('workspaceId', 'workspaceId')
   workspaceId?: string = undefined;
 
   @IsString()
   @IsDefined()
-  @ValidIf("channelId", "channelId")
+  @ValidIf('channelId', 'channelId')
   channelId?: string = undefined;
 
   @IsString()
@@ -223,12 +232,12 @@ export class ChannelDTO {
 
   @IsString()
   @IsDefined()
-  @ValidIf("createTime", "updateTime")
+  @ValidIf('createTime', 'updateTime')
   createTime?: string = undefined;
 
   @IsString()
   @IsDefined()
-  @ValidIf("updateTime", new Date().toISOString())
+  @ValidIf('updateTime', new Date().toISOString())
   updateTime?: string = undefined;
 
   @IsArray()
@@ -247,12 +256,12 @@ export class User {
 
   @IsString()
   @IsDefined()
-  @ValidIf("createTime", "updateTime")
+  @ValidIf('createTime', 'updateTime')
   createTime?: string = undefined;
 
   @IsString()
   @IsDefined()
-  @ValidIf("updateTime", new Date().toISOString())
+  @ValidIf('updateTime', new Date().toISOString())
   updateTime?: string = undefined;
 
   @ValidateNested({ each: true })
@@ -277,15 +286,14 @@ export class User {
 }
 
 export class Member {
-
   @IsString()
   @IsDefined()
-  @ValidIf("workspaceId", "workspaceId")
+  @ValidIf('workspaceId', 'workspaceId')
   workspaceId?: string = undefined;
 
   @IsString()
   @IsDefined()
-  @ValidIf("channelId", "channelId")
+  @ValidIf('channelId', 'channelId')
   channelId?: string = undefined;
 
   @IsString()
@@ -308,17 +316,16 @@ export class Member {
 
   @IsString()
   @IsDefined()
-  @ValidIf("createTime", "updateTime")
+  @ValidIf('createTime', 'updateTime')
   createTime?: string = undefined;
 
   @IsString()
   @IsDefined()
-  @ValidIf("updateTime", new Date().toISOString())
+  @ValidIf('updateTime', new Date().toISOString())
   updateTime?: string = undefined;
 }
 
 export class IncludesMessage {
-
   @ValidateNested({ each: true })
   @IsArray()
   @IsDefined()
@@ -345,7 +352,6 @@ export class IncludesMessage {
 }
 
 export class DataMessage {
-
   @ValidateNested({ each: true })
   @IsObject()
   @IsDefined()

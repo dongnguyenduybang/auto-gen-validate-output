@@ -4,37 +4,39 @@ import { ErrorMessage } from '../enums/error-message.enum';
 import { createChannel } from '../functions/create-channel';
 
 export function validateDecorators(instance: any, payload: any): string[] {
-    const errors: string[] = [];
+  const errors: string[] = [];
 
-    const channelId = '01JNDQSGVJBQ8NH66MKFJ9A37C'
-    const userId = '01JNDQS267EPQMAE82DGVQ19RB'
-    const token = 'f5XsbEauqO4LlCnKO5TFPqQ7-hBIxYPgkHkNKpTM1OYe8HNRFlPOXMdue6oQubAc5z6FWjjzj0spu4zeL4CDlw'
+  const channelId = '01JNDQSGVJBQ8NH66MKFJ9A37C';
+  const userId = '01JNDQS267EPQMAE82DGVQ19RB';
+  const token =
+    'f5XsbEauqO4LlCnKO5TFPqQ7-hBIxYPgkHkNKpTM1OYe8HNRFlPOXMdue6oQubAc5z6FWjjzj0spu4zeL4CDlw';
 
-    async function validateObject(obj: any, prototype: any, path: string = ''): Promise<void> {
+  async function validateObject(
+    obj: any,
+    prototype: any,
+    path: string = '',
+  ): Promise<void> {
+    const keys = Object.keys(obj);
 
-        const keys = Object.keys(obj);
+    for (const key of keys) {
+      const value = obj[key];
+      const field = path ? `${path}.${key}` : key;
 
-        for (const key of keys) {
-            const value = obj[key];
-            const field = path ? `${path}.${key}` : key;
+      const decorators = getDecorators(prototype, key);
+      if (decorators.type === 'array' && Array.isArray(value)) {
+        const quantityArray = payload?.quantity;
 
-            const decorators = getDecorators(prototype, key);
-            if (decorators.type === 'array' && Array.isArray(value)) {
-                const quantityArray = payload?.quantity;
-
-                if (quantityArray !== undefined && value.length !== quantityArray) {
-
-                    errors.push(`${field} must have exactly ${quantityArray} obj`);
-                }
-            }
-
-            console.log()
-
+        if (quantityArray !== undefined && value.length !== quantityArray) {
+          errors.push(`${field} must have exactly ${quantityArray} obj`);
         }
+      }
+
+      console.log();
     }
+  }
 
-    const prototype = Object.getPrototypeOf(instance);
-    validateObject(instance, prototype);
+  const prototype = Object.getPrototypeOf(instance);
+  validateObject(instance, prototype);
 
-    return errors;
+  return errors;
 }

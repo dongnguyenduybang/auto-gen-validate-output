@@ -6,9 +6,10 @@ import {
   MaxLength,
 } from '../../decorator/dto-decorator';
 
-export class SendMessageDTO {
+export class SendDmMessageDTO {
   @IsString({
-    message: `Could not resolve permission type`,
+    message: `Unauthorized request`,
+    value: '{{userId_1}}',
   })
   @IsNotEmpty({
     message: `Could not resolve permission type`,
@@ -16,19 +17,7 @@ export class SendMessageDTO {
   @IsDefined({
     message: `Could not resolve permission type`,
   })
-  workspaceId: string = '';
-
-  @IsString({
-    message: `Invalid channelId`,
-    value: '{{channelId}}',
-  })
-  @IsNotEmpty({
-    message: `Could not resolve permission type`,
-  })
-  @IsDefined({
-    message: `Unsupported permission type`,
-  })
-  channelId: string = '';
+  userId: string = '';
 
   @IsString()
   @IsNotEmpty()

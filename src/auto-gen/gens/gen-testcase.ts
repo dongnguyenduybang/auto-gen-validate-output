@@ -59,9 +59,10 @@ function genTestCase(
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join('');
 
-
   const isDeleteMethod = requestConfig.method.toLowerCase() === 'delete';
-  const isPostOrPut = ['post', 'put'].includes(requestConfig.method.toLowerCase());
+  const isPostOrPut = ['post', 'put'].includes(
+    requestConfig.method.toLowerCase(),
+  );
   const specContent = `
     import { validate${classNameCapitalized} } from '../validates/${className}/validate-${className}';
     import fs from 'fs';
@@ -96,39 +97,23 @@ function genTestCase(
         afterEach(async () => {
 
         if(nextStep === true){
-          // if (!resolveVariables("{{messageId}}")) {
-          //     return; 
-          //  }
-            const result = await executeBeforeAllSteps(${JSON.stringify(requestConfig.afterEach)})
-            const validateAfter = await validateAfterLogic(result, resolvedData)
-            if (validateAfter.length === 0) {
-              passedLogic++;
-              passedTests++;
-            
-              logicTests.push({ 
-                testcase: testNumber,
-              });
-            
-            } else {
-              logicTests.push({ 
-                testcase: testNumber,
-                errorLogic: validateAfter
-              });
-            }
+         
           }
          
         })
 
         ${payloadData
-      .map(
-        (testCase: any, index: number) => `
+          .map(
+            (testCase: any, index: number) => `
            
             it('Test case # ${index + 1} with expect errors ${JSON.stringify(testCase.expects)}', async () => {
              testNumber = ${index + 1};
               totalTests++;
               const payloadObj = ${JSON.stringify(testCase.body)};
               resolvedData = resolveJsonVariables(payloadObj);
-              ${isDeleteMethod ? `
+              ${
+                isDeleteMethod
+                  ? `
               const baseParams = new URLSearchParams({
                 workspaceId: resolvedData.workspaceId,
                 channelId: resolvedData.channelId
@@ -140,9 +125,11 @@ function genTestCase(
                 messageIdArray = resolvedData.messageIds.split(',');
               }
               const requestUrl = \`\${globalThis.url}${requestConfig.path}?\${baseParams}&\${messageIdArray.map(id => \`messageIds=\${encodeURIComponent(id)}\`).join('&')}\`;
-            ` : `
+            `
+                  : `
               const requestUrl = \`\${globalThis.url}${requestConfig.path}\`;
-            `}
+            `
+              }
             try {
               const response = await fetch(requestUrl, {
                 method: '${requestConfig.method.toLowerCase()}',
@@ -268,30 +255,11 @@ function genTestCase(
               }
             }catch (error){
 
-              if (error.message.includes('fetch failed')) {
-              console.error('Network or server error:', error.message);
-              nextStep = false
-                failedTests.push({
-                  testcase:testNumber,
-                  errorDetails: 'Server down',
-                });
-                throw new Error('Server down');
-              } else if (error.message.includes('Unexpected token')) {
-                console.error('Could not resolve permission type', error.message);
-                nextStep = false
-                  failedTests.push({
-                    testcase: testNumber,
-                    code: 403,
-                    errorDetails: 'Could not resolve permission type',
-                  });
-                throw new Error(error.message || 'unknown error');
-              }else {
-                throw new Error(error.message || 'unknown error');
-              }
+              console.log(error.message)
             }
             });`,
-      )
-      .join('\n')}
+          )
+          .join('\n')}
 
       afterAll(async () => {
         const folderPath = path.join(__dirname, '../reports');

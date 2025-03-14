@@ -1,0 +1,23 @@
+{
+    "method": "POST",
+    "path": "/Message/SendDMMessage",
+    "headers": {
+      "Content-Type": "application/json",
+      "x-session-token": "{{token}}",
+      "x-country-code": "VN"
+    },
+    "payload": {
+      "userId": "{{userId_1}}",
+      "content": "abc123"
+
+    },
+
+    "beforeAll": [
+      "mockUser('duybang12345',2, 0)"
+    ],
+    "afterAll": ["deleteMessageForEveryone('0', {{channelId}}, {{messageId}})"]
+  }
+
+
+
+   

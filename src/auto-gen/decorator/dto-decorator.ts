@@ -62,12 +62,20 @@ export function IsNotEmpty(options?: { message?: string }) {
     }
   };
 }
-export function IsString(options?: { message?: string; value?: any }): PropertyDecorator {
+export function IsString(options?: {
+  message?: string;
+  value?: any;
+}): PropertyDecorator {
   return (target: any, propertyKey: string) => {
     Reflect.defineMetadata('type', 'string', target, propertyKey);
 
     if (options?.message) {
-      Reflect.defineMetadata('customErrorString', options.message, target, propertyKey);
+      Reflect.defineMetadata(
+        'customErrorString',
+        options.message,
+        target,
+        propertyKey,
+      );
     }
 
     if (options?.value !== undefined) {
@@ -136,24 +144,28 @@ export function IsDefined(options?: { message?: string }) {
         propertyKey,
       );
     }
-   
   };
 }
 
 export function ValidIf(condition: string, condition2?: any, condition3?: any) {
   return function (target: any, propertyKey: string) {
-      Reflect.defineMetadata('validIf', { condition, condition2, condition3 }, target, propertyKey);
+    Reflect.defineMetadata(
+      'validIf',
+      { condition, condition2, condition3 },
+      target,
+      propertyKey,
+    );
   };
 }
 
 export function StartWith(prefix: string) {
-    return function (target: any, propertyKey: string) {
-        Reflect.defineMetadata('startWith', prefix, target, propertyKey);
-    };
+  return function (target: any, propertyKey: string) {
+    Reflect.defineMetadata('startWith', prefix, target, propertyKey);
+  };
 }
 
 export function EndWith(field: string) {
-    return function (target: any, propertyKey: string) {
-        Reflect.defineMetadata('endWith', field, target, propertyKey);
-    };
+  return function (target: any, propertyKey: string) {
+    Reflect.defineMetadata('endWith', field, target, propertyKey);
+  };
 }

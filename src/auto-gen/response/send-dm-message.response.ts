@@ -10,7 +10,7 @@ import {
 import { MessageTypeEnum } from '../enums/message-type.enum';
 import { AttachmentTypeEnum } from '../enums/attachment-type.enum';
 
-export class SendMessageResponse extends BaseResponse {
+export class SendDmMessageResponse extends BaseResponse {
   @IsString()
   @IsDefined()
   workspaceId: string;

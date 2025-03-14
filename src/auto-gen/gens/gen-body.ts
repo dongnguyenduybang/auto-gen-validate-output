@@ -19,7 +19,6 @@ export function genBodyPayload(dtoName) {
     }
 
     try {
-      
       const dtoModule = require(dtoPath);
       const classNameCapitalized =
         className
@@ -28,7 +27,7 @@ export function genBodyPayload(dtoName) {
           .join('') + 'DTO';
 
       const dtoClass = dtoModule[classNameCapitalized];
-      
+
       if (
         typeof dtoClass !== 'function' ||
         !/^\s*class\s/.test(dtoClass.toString())
@@ -59,4 +58,3 @@ export function genBodyPayload(dtoName) {
     }
   });
 }
-

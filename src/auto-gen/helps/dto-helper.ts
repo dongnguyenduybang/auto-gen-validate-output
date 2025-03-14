@@ -22,7 +22,7 @@ export function generateErrorCases(
   payload: Record<string, any>,
 ): any[] {
   const instance = new dtoClass();
-  console.log(instance)
+  console.log(instance);
   const keys = Object.keys(instance);
   if (keys.length === 0) {
     console.warn(`No found keys in DTO class: ${dtoClass.name}`);
@@ -83,7 +83,6 @@ export function generateErrorVariantsForField(
     variants.push(fieldValue);
   } else if (decorators['type'] === 'number') {
     variants.push('random_string');
-
   } else if (decorators['type'] === 'enum') {
     variants.push('invalid_value');
     variants.push(fieldValue);
@@ -151,11 +150,16 @@ export function mapError(
     return errors;
   }
 
-  if (decorators['notEmpty'] && (value === undefined || value === null || value === '')) {
+  if (
+    decorators['notEmpty'] &&
+    (value === undefined || value === null || value === '')
+  ) {
     if (field === 'content') {
       errors.push(`${field} ${ErrorMessage.EMPTY}`);
     } else {
-      return addErrorAndReturn(decorators['notEmptyMessage'] || `${field} ${ErrorMessage.EMPTY}`);
+      return addErrorAndReturn(
+        decorators['notEmptyMessage'] || `${field} ${ErrorMessage.EMPTY}`,
+      );
     }
   }
 
@@ -163,7 +167,9 @@ export function mapError(
     if (field === 'content') {
       errors.push(`${field} ${ErrorMessage.DEFINED}`);
     } else {
-      return addErrorAndReturn(decorators['notUndefinedMessage'] || `${field} ${ErrorMessage.DEFINED}`);
+      return addErrorAndReturn(
+        decorators['notUndefinedMessage'] || `${field} ${ErrorMessage.DEFINED}`,
+      );
     }
   }
 
@@ -172,24 +178,29 @@ export function mapError(
       if (field === 'content') {
         errors.push(`${field} ${ErrorMessage.INVALID_TYPE_STRING}`);
       } else {
-        const notEmptyMessage = decorators['notEmptyMessage'] || 'Could not resolve permission type';
+        const notEmptyMessage =
+          decorators['notEmptyMessage'] || 'Could not resolve permission type';
         return addErrorAndReturn(notEmptyMessage);
       }
     }
 
-    if ((decorators['minLength'] && value.length < decorators['minLength']) ||
-      (decorators['maxLength'] && value.length > decorators['maxLength'])) {
-      return addErrorAndReturn(`${field} ${ErrorMessage.INVALID_RANGE_STRING_LENGTH}`);
+    if (
+      (decorators['minLength'] && value.length < decorators['minLength']) ||
+      (decorators['maxLength'] && value.length > decorators['maxLength'])
+    ) {
+      return addErrorAndReturn(
+        `${field} ${ErrorMessage.INVALID_RANGE_STRING_LENGTH}`,
+      );
     }
 
     if (field === 'channelId') {
       if (value === '') {
-        const notEmptyMessage = decorators['notEmptyMessage'] 
+        const notEmptyMessage = decorators['notEmptyMessage'];
         return addErrorAndReturn(notEmptyMessage);
       }
 
       const fieldValue = decorators['fieldValue'];
-      const customErrorString = decorators['customErrorString'] 
+      const customErrorString = decorators['customErrorString'];
       if (value !== fieldValue) {
         return addErrorAndReturn(customErrorString);
       }
@@ -202,11 +213,15 @@ export function mapError(
     }
 
     if (value < decorators['min']) {
-      return addErrorAndReturn(`${field} ${ErrorMessage.MIN} ${decorators['min']}`);
+      return addErrorAndReturn(
+        `${field} ${ErrorMessage.MIN} ${decorators['min']}`,
+      );
     }
 
     if (decorators['max'] && value > decorators['max']) {
-      return addErrorAndReturn(`${field} ${ErrorMessage.MAX} ${decorators['max']}`);
+      return addErrorAndReturn(
+        `${field} ${ErrorMessage.MAX} ${decorators['max']}`,
+      );
     }
   }
 
@@ -216,11 +231,15 @@ export function mapError(
     }
 
     if (decorators['minArray'] && value.length < decorators['minArray']) {
-      return addErrorAndReturn(`${field} ${ErrorMessage.MIN_ARRAY} ${decorators['minArray']} items`);
+      return addErrorAndReturn(
+        `${field} ${ErrorMessage.MIN_ARRAY} ${decorators['minArray']} items`,
+      );
     }
 
     if (decorators['maxArray'] && value.length > decorators['maxArray']) {
-      return addErrorAndReturn(`${field} ${ErrorMessage.MAX_ARRAY} ${decorators['maxArray']} items`);
+      return addErrorAndReturn(
+        `${field} ${ErrorMessage.MAX_ARRAY} ${decorators['maxArray']} items`,
+      );
     }
   }
 
@@ -232,14 +251,17 @@ export function mapError(
     }
 
     if (!allowedValues.includes(value)) {
-      const filterNumber = allowedValues.filter((val) => typeof val === 'number');
-      return addErrorAndReturn(`${field} ${ErrorMessage.INVALID_RANGE_NUMBER} ${filterNumber.join(', ')}`);
+      const filterNumber = allowedValues.filter(
+        (val) => typeof val === 'number',
+      );
+      return addErrorAndReturn(
+        `${field} ${ErrorMessage.INVALID_RANGE_NUMBER} ${filterNumber.join(', ')}`,
+      );
     }
   }
 
   return errors;
 }
-
 
 export function validateSingleError(dto: any): string[] {
   const errors: string[] = [];
@@ -250,7 +272,7 @@ export function validateSingleError(dto: any): string[] {
 
     const fieldErrors = mapError(field, value, decorators);
     if (fieldErrors.length > 0) {
-      return fieldErrors; 
+      return fieldErrors;
     }
   }
 

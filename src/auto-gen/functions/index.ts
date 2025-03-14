@@ -52,72 +52,76 @@ export async function executeBeforeAllSteps(request: string[]): Promise<any[]> {
           }
 
           case 'updateMessage': {
-            const [token, channelId, messageId, name] = args
+            const [token, channelId, messageId, name] = args;
 
             // await updateMessage(token, channelId, messageId, name)
           }
 
           case 'sendMessage': {
-            const [token, workspaceId, channelId, content, ref] = args
+            const [token, workspaceId, channelId, content, ref] = args;
 
-            await sendMessage(token, workspaceId, channelId, content, ref)
+            await sendMessage(token, workspaceId, channelId, content, ref);
             break;
           }
 
           case 'sendMessages': {
-            const [token, workspaceId, channelId, content, ref] = args
+            const [token, workspaceId, channelId, content, ref] = args;
 
-            await sendMessages(token, workspaceId, channelId, content, ref)
+            await sendMessages(token, workspaceId, channelId, content, ref);
             break;
           }
 
           case 'getMessage': {
-            const [token, channelId, messageId] = args
-            result = await getMessage(token, channelId, messageId)
+            const [token, channelId, messageId] = args;
+            result = await getMessage(token, channelId, messageId);
             break;
           }
 
           case 'sendLinkInvitation': {
-            const [token, linkInvitation, userId] = args
+            const [token, linkInvitation, userId] = args;
 
-            await sendInvitation(token, linkInvitation, userId)
+            await sendInvitation(token, linkInvitation, userId);
             break;
           }
 
           case 'acceptLinkInvitation': {
-            const [token, linkInvitation] = args
+            const [token, linkInvitation] = args;
 
-            await acceptInvitation(token, linkInvitation)
+            await acceptInvitation(token, linkInvitation);
             break;
           }
 
           case 'checkCollection': {
-            const [collectionId] = args
+            const [collectionId] = args;
 
-            result = await getStickerCollection(collectionId)
+            result = await getStickerCollection(collectionId);
             break;
-
           }
 
           case 'addMessageReaction': {
-            const [token, workspaceId, channelId, messageId, emoji] = args
+            const [token, workspaceId, channelId, messageId, emoji] = args;
 
-            await addMessageReaction(token, workspaceId, channelId, messageId, emoji)
+            await addMessageReaction(
+              token,
+              workspaceId,
+              channelId,
+              messageId,
+              emoji,
+            );
             break;
           }
 
           case 'checkSticker': {
-            const [stickerId] = args
+            const [stickerId] = args;
 
-            result = await getSticker(stickerId)
+            result = await getSticker(stickerId);
             break;
-
           }
 
           case 'getListMessages': {
-            const [token, channelId] = args
+            const [token, channelId] = args;
 
-            result = await getListMessages(token, channelId)
+            result = await getListMessages(token, channelId);
             break;
           }
           default:
@@ -131,7 +135,7 @@ export async function executeBeforeAllSteps(request: string[]): Promise<any[]> {
     }
   }
 
-  return results
+  return results;
 }
 
 export async function executeDelete(prefix, headerRequest) {
@@ -167,9 +171,9 @@ export async function executeDelete(prefix, headerRequest) {
           case 'deleteMockChannel': {
             const [prefix, workspaceId, typeChannel] = args;
             if (typeChannel === '0') {
-              await deleteMockChannel(prefix, workspaceId, headerRequest)
+              await deleteMockChannel(prefix, workspaceId, headerRequest);
             } else {
-              console.log('type channel must be 1-n')
+              console.log('type channel must be 1-n');
             }
 
             break;
