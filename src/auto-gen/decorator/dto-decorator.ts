@@ -1,5 +1,4 @@
 import 'reflect-metadata';
-import { registerDecorator, ValidationOptions, ValidationArguments } from 'class-validator';
 
 export function Min(value: number) {
   return (target: any, propertyKey: string) => {
@@ -63,9 +62,17 @@ export function IsNotEmpty(options?: { message?: string }) {
     }
   };
 }
-export function IsString() {
+export function IsString(options?: { message?: string; value?: any }): PropertyDecorator {
   return (target: any, propertyKey: string) => {
     Reflect.defineMetadata('type', 'string', target, propertyKey);
+
+    if (options?.message) {
+      Reflect.defineMetadata('customErrorString', options.message, target, propertyKey);
+    }
+
+    if (options?.value !== undefined) {
+      Reflect.defineMetadata('fieldValue', options.value, target, propertyKey);
+    }
   };
 }
 
@@ -118,9 +125,18 @@ export function IsIn(values: any[]) {
   };
 }
 
-export function IsDefined() {
+export function IsDefined(options?: { message?: string }) {
   return (target: any, propertyKey: string) => {
     Reflect.defineMetadata('isDefined', true, target, propertyKey);
+    if (options?.message) {
+      Reflect.defineMetadata(
+        'notUndefinedMessage',
+        options.message,
+        target,
+        propertyKey,
+      );
+    }
+   
   };
 }
 
@@ -141,25 +157,3 @@ export function EndWith(field: string) {
         Reflect.defineMetadata('endWith', field, target, propertyKey);
     };
 }
-
-// export function StartWith(prefix: string, validationOptions?: ValidationOptions) {
-//     return function (object: Object, propertyName: string) {
-//         registerDecorator({
-//             name: 'StartWith',
-//             target: object.constructor,
-//             propertyName: propertyName,
-//             constraints: [prefix],
-//             options: validationOptions,
-//             validator: {
-//                 validate(value: any, args: ValidationArguments) {
-//                     const [requiredPrefix] = args.constraints;
-//                     return typeof value === 'string' && value.startsWith(requiredPrefix);
-//                 },
-//                 defaultMessage(args: ValidationArguments) {
-//                     const [requiredPrefix] = args.constraints;
-//                     return `${args.property} must start with ${requiredPrefix}`;
-//                 }
-//             }
-//         });
-//     };
-// }

@@ -48,12 +48,17 @@ export function generateErrorCases(
   const allErrorCombinations = generateCombinations(fields, errorCasesByField);
   return allErrorCombinations.map((combination) => {
     const testcaseGen = { ...combination };
-    const expectedDetail = fields.flatMap((field) => {
+    for (const field of fields) {
       const value = testcaseGen[field];
       const decorators = getDecorators(instance, field);
-      return mapError(field, value, decorators);
-    });
-    return { testcaseGen, expectedDetail };
+      const errors = mapError(field, value, decorators);
+
+      if (errors.length > 0) {
+        return { testcaseGen, expectedDetail: errors }; // Stop at the first error
+      }
+    }
+
+    return { testcaseGen, expectedDetail: [] }; // No errors found
   });
 }
 export function generateErrorVariantsForField(
@@ -78,12 +83,12 @@ export function generateErrorVariantsForField(
     variants.push(fieldValue);
   } else if (decorators['type'] === 'number') {
     variants.push('random_string');
-    variants.push(fieldValue);
+
   } else if (decorators['type'] === 'enum') {
     variants.push('invalid_value');
     variants.push(fieldValue);
   } else if (decorators['type'] === 'array') {
-    variants.push(['invalid_value']); 
+    variants.push(['invalid_value']);
     variants.push(fieldValue);
   }
 
@@ -128,6 +133,7 @@ export function generateCombinations(
     return combination.reduce((acc, curr) => ({ ...acc, ...curr }), {});
   });
 }
+
 export function mapError(
   field: string,
   value: any,
@@ -135,248 +141,118 @@ export function mapError(
 ): string[] {
   const errors: string[] = [];
 
+  // Helper function to add error and stop further checks
+  const addErrorAndReturn = (message: string): string[] => {
+    errors.push(message);
+    return errors; // Return immediately after adding the first error
+  };
+
   if (decorators['optional'] && value === undefined) {
     return errors;
   }
 
-  if (
-    decorators['notEmpty'] &&
-    (value === undefined || value === null || value === '') &&
-    !decorators['notEmptyMessage']
-  ) {
-    errors.push(`${field} ${ErrorMessage.EMPTY}`);
+  if (decorators['notEmpty'] && (value === undefined || value === null || value === '')) {
+    if (field === 'content') {
+      errors.push(`${field} ${ErrorMessage.EMPTY}`);
+    } else {
+      return addErrorAndReturn(decorators['notEmptyMessage'] || `${field} ${ErrorMessage.EMPTY}`);
+    }
   }
 
   if (decorators['isDefined'] && (value === undefined || value === null)) {
-    errors.push(`${field} ${ErrorMessage.DEFINED}`);
-  }
-
-  if (
-    decorators['notEmptyMessage'] &&
-    (value === undefined || value === null || value === '')
-  ) {
-    errors.push(decorators['notEmptyMessage']);
+    if (field === 'content') {
+      errors.push(`${field} ${ErrorMessage.DEFINED}`);
+    } else {
+      return addErrorAndReturn(decorators['notUndefinedMessage'] || `${field} ${ErrorMessage.DEFINED}`);
+    }
   }
 
   if (decorators['type'] === 'string') {
-    if (typeof value !== 'string')
-      errors.push(`${field} ${ErrorMessage.INVALID_TYPE_STRING}`);
+    if (typeof value !== 'string') {
+      if (field === 'content') {
+        errors.push(`${field} ${ErrorMessage.INVALID_TYPE_STRING}`);
+      } else {
+        const notEmptyMessage = decorators['notEmptyMessage'] || 'Could not resolve permission type';
+        return addErrorAndReturn(notEmptyMessage);
+      }
+    }
 
-    if (
-      value === '' ||
-      value === null ||
-      value === undefined ||
-      typeof value !== 'string'
-    ) {
-      value = -1;
-      if (decorators['minLength'] && value < decorators['minLength'])
-        errors.push(
-          `${field} ${ErrorMessage.MIN_LENGTH} ${decorators['minLength']} characters`,
-        );
-    } else {
-      if (decorators['minLength'] && value.length < decorators['minLength'])
-        errors.push(
-          `${field} ${ErrorMessage.MIN_LENGTH} ${decorators['minLength']} characters`,
-        );
+    if ((decorators['minLength'] && value.length < decorators['minLength']) ||
+      (decorators['maxLength'] && value.length > decorators['maxLength'])) {
+      return addErrorAndReturn(`${field} ${ErrorMessage.INVALID_RANGE_STRING_LENGTH}`);
+    }
+
+    if (field === 'channelId') {
+      if (value === '') {
+        const notEmptyMessage = decorators['notEmptyMessage'] 
+        return addErrorAndReturn(notEmptyMessage);
+      }
+
+      const fieldValue = decorators['fieldValue'];
+      const customErrorString = decorators['customErrorString'] 
+      if (value !== fieldValue) {
+        return addErrorAndReturn(customErrorString);
+      }
     }
   }
 
   if (decorators['type'] === 'number') {
-    if (typeof value !== 'number')
-      errors.push(`${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`);
+    if (typeof value !== 'number') {
+      return addErrorAndReturn(`${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`);
+    }
 
     if (value < decorators['min']) {
-      errors.push(`${field} ${ErrorMessage.MIN} ${decorators['min']}`);
-    } else if (
-      value === undefined ||
-      value === '' ||
-      value === null ||
-      typeof value !== 'number'
-    ) {
-      errors.push(`${field} ${ErrorMessage.MIN} ${decorators['min']}`);
+      return addErrorAndReturn(`${field} ${ErrorMessage.MIN} ${decorators['min']}`);
     }
 
     if (decorators['max'] && value > decorators['max']) {
-      errors.push(`${field} ${ErrorMessage.MAX} ${decorators['max']}`);
-    } else if (
-      (value === undefined ||
-        value === '' ||
-        value === null ||
-        typeof value !== 'number') &&
-      decorators['max']
-    ) {
-      errors.push(`${field} ${ErrorMessage.MAX} ${decorators['max']}`);
+      return addErrorAndReturn(`${field} ${ErrorMessage.MAX} ${decorators['max']}`);
     }
   }
 
   if (decorators['type'] === 'array') {
     if (!Array.isArray(value)) {
-      errors.push(`${field} ${ErrorMessage.INVALID_TYPE_ARRAY}`);
-    } else {
-      if (decorators['minArray'] && value.length < decorators['minArray']) {
-        errors.push(
-          `${field} ${ErrorMessage.MIN_ARRAY} ${decorators['minArray']} items`,
-        );
-      }
-      if (decorators['maxArray'] && value.length > decorators['maxArray']) {
-        errors.push(
-          `${field} ${ErrorMessage.MAX_ARRAY} ${decorators['maxArray']} items`,
-        );
-      }
+      return addErrorAndReturn(`${field} ${ErrorMessage.INVALID_TYPE_ARRAY}`);
+    }
+
+    if (decorators['minArray'] && value.length < decorators['minArray']) {
+      return addErrorAndReturn(`${field} ${ErrorMessage.MIN_ARRAY} ${decorators['minArray']} items`);
+    }
+
+    if (decorators['maxArray'] && value.length > decorators['maxArray']) {
+      return addErrorAndReturn(`${field} ${ErrorMessage.MAX_ARRAY} ${decorators['maxArray']} items`);
     }
   }
+
   if (decorators['type'] === 'enum') {
     const allowedValues = Object.values(decorators['enumType']);
 
     if (typeof value !== 'number') {
-      errors.push(`${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`);
+      return addErrorAndReturn(`${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`);
     }
 
     if (!allowedValues.includes(value)) {
-      const filterNumber = allowedValues.filter(
-        (val) => typeof val === 'number',
-      );
-
-      errors.push(
-        `${field} ${ErrorMessage.INVALID_RANGE_NUMBER} ${filterNumber.join(', ')}`,
-      );
+      const filterNumber = allowedValues.filter((val) => typeof val === 'number');
+      return addErrorAndReturn(`${field} ${ErrorMessage.INVALID_RANGE_NUMBER} ${filterNumber.join(', ')}`);
     }
   }
 
   return errors;
 }
 
-function validatePayloadType(payload: any, dtoClass: any) {
-  const errors = [];
-  let valueDate;
-  const dtoInstance = new dtoClass();
-  Object.keys(payload).forEach((key) => {
-    const isOptional = Reflect.getMetadata('optional', dtoClass.prototype, key);
-    const defaultValue = dtoInstance[key];
-    if (isOptional && payload[key] === undefined) {
-      payload[key] = defaultValue;
-    } else if (payload[key] === '') {
-      errors.push(`"${key}" ${ErrorMessage.EMPTY}`);
-    } else if (payload[key] === undefined) {
-      errors.push(`"${key}" ${ErrorMessage.UNDEFINED}`);
-    } else if (payload[key] === null) {
-      errors.push(`"${key}" ${ErrorMessage.NULL}`);
-    }
 
-    const metadata = Reflect.getMetadata('type', dtoClass.prototype, key);
-    if (metadata) {
-      if (metadata === 'string' && typeof payload[key] !== 'string') {
-        errors.push(`"${key}" ${ErrorMessage.INVALID_TYPE_STRING}`);
-      } else if (metadata === 'number' && typeof payload[key] !== 'number') {
-        errors.push(`"${key}" ${ErrorMessage.INVALID_TYPE_NUMBER}`);
-      } else if (metadata === 'boolean' && typeof payload[key] !== 'boolean') {
-        errors.push(`"${key}" ${ErrorMessage.INVALID_TYPE_BOOLEAN}`);
-      } else if (metadata === 'array' && !Array.isArray(payload[key])) {
-        errors.push(`"${key}" ${ErrorMessage.INVALID_TYPE_ARRAY}`);
-      } else if (
-        metadata === 'object' &&
-        typeof payload[key] !== 'object' &&
-        !Array.isArray(payload[key])
-      ) {
-        errors.push(`"${key}" ${ErrorMessage.INVALID_TYPE_OBJ}`);
-      } else if (metadata === 'date') {
-        if (!(payload[key] instanceof Date)) {
-          valueDate = new Date(payload[key]);
-        }
-        if (isNaN(valueDate.getTime())) {
-          errors.push(`"${key}" ${ErrorMessage.INVALID_TYPE_DATE}`);
-        }
-      } else if (metadata === 'enum') {
-        const enumType = Reflect.getMetadata(
-          'enumType',
-          dtoClass.prototype,
-          key,
-        );
-        if (enumType && !Object.values(enumType).includes(payload[key])) {
-          errors.push(`"${key}" ${ErrorMessage.INVALID_ENUM}`);
-        }
-      }
-    }
+export function validateSingleError(dto: any): string[] {
+  const errors: string[] = [];
 
-    const minLength = Reflect.getMetadata('minLength', dtoClass.prototype, key);
-    if (minLength && payload[key]?.length <= minLength) {
-      errors.push(
-        `"${key}" ${ErrorMessage.MIN_LENGTH} ${minLength} characters. But got ${payload[key]?.length}`,
-      );
-    }
+  for (const field in dto) {
+    const value = dto[field];
+    const decorators = Reflect.getMetadata(field, dto) || {};
 
-    const maxLength = Reflect.getMetadata('maxLength', dtoClass.prototype, key);
-    if (maxLength && payload[key]?.length > maxLength) {
-      errors.push(
-        `"${key}" ${ErrorMessage.MAX_LENGTH} ${maxLength} characters. But got ${payload[key]?.length}`,
-      );
+    const fieldErrors = mapError(field, value, decorators);
+    if (fieldErrors.length > 0) {
+      return fieldErrors; 
     }
+  }
 
-    const min = Reflect.getMetadata('min', dtoClass.prototype, key);
-    if (min && payload[key] < min) {
-      errors.push(
-        `"${key}" ${ErrorMessage.MIN} ${min}. But got ${payload[key]}`,
-      );
-    }
-
-    const max = Reflect.getMetadata('max', dtoClass.prototype, key);
-    if (max && payload[key] > max) {
-      errors.push(
-        `"${key}" ${ErrorMessage.MAX} ${max}. But got ${payload[key]}`,
-      );
-    }
-
-    const minArray = Reflect.getMetadata('minArray', dtoClass.prototype, key);
-    if (minArray && payload[key]?.length < minArray) {
-      errors.push(
-        `"${key}" ${ErrorMessage.MIN_ARRAY} ${minArray}. But got ${payload[key]?.length}`,
-      );
-    }
-
-    const maxArray = Reflect.getMetadata('maxArray', dtoClass.prototype, key);
-    if (maxArray && payload[key]?.length > maxArray) {
-      errors.push(
-        `"${key}" ${ErrorMessage.MAX_ARRAY} ${maxArray}. But got ${payload[key]?.length}`,
-      );
-    }
-  });
   return errors;
 }
-
-export async function validateTestCase(testCasePayload: any, dtoClass: any) {
-  // let result = comparePayload(inputPayload, testCasePayload);
-
-  // if (!result.isTestCaseValid) {
-
-  //     return { valid: false, errors: result.errors };
-  // }
-
-  const typeErrors = validatePayloadType(testCasePayload, dtoClass);
-  if (typeErrors.length > 0) {
-    return { valid: false, errors: typeErrors };
-  }
-
-  return { valid: true, errors: [] };
-}
-
-export function extractDTO(dtoClass: any) {
-  const optionals: string[] = [];
-  const payload: Record<string, any> = {};
-
-  const prototype = dtoClass.prototype;
-  const instance = new dtoClass();
-
-  for (const key of Object.keys(instance)) {
-    const isOptional = Reflect.getMetadata('optional', prototype, key);
-    const defaultValue = instance[key];
-
-    if (isOptional) {
-      optionals.push(key);
-    }
-
-    payload[key] = defaultValue;
-  }
-
-  return { optionals, payload };
-}
-

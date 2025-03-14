@@ -21,5 +21,6 @@ export enum ErrorMessage {
   INVALID_RANGE_NUMBER = 'must be one of the following values:',
   INVALID_TYPE = 'must be a type',
   START_WITH = 'must start with',
-  END_WITH = 'must end with'
+  END_WITH = 'must end with',
+  INVALID_RANGE_STRING_LENGTH = "byte length must fall into (1, 6000) range"
 }

@@ -123,7 +123,7 @@ function genTestCase(
       .map(
         (testCase: any, index: number) => `
            
-            it('Test case # ${index + 1} with expect errors ${JSON.stringify(testCase.expects)} ', async () => {
+            it('Test case # ${index + 1} with expect errors ${JSON.stringify(testCase.expects)}', async () => {
              testNumber = ${index + 1};
               totalTests++;
               const payloadObj = ${JSON.stringify(testCase.body)};
@@ -237,7 +237,32 @@ function genTestCase(
                   code: 404,
                   errorDetails: errorMessage,
                 });
-              } else {
+              } else if (response.status === 403){
+                 const expectJson =  ${JSON.stringify(testCase.expects)}.sort()
+                const expectDetails = Array.isArray(data?.error?.details)
+                  ? data.error.details
+                  : [];
+                const softExpectDetails = [...expectDetails].sort();
+                try {
+                  expect(data.ok).toEqual(false);
+                  expect(data.data).toEqual(null);
+                  expect(expectJson).toEqual(softExpectDetails);
+                  passedTests++
+                   nextStep = false
+                } catch (error) {
+                  const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                  nextStep = false
+                  failedTests.push({
+                    testcase: testNumber,
+                    code: 403,
+                    missing: missing || [],
+                    extra: extra || []
+                  })
+                  throw new Error(error);
+                }
+              
+              
+              }else {
                 console.log('unexpected:', data);
                 throw new Error(data);
               }

@@ -2,27 +2,38 @@ import {
   IsNotEmpty,
   IsString,
   IsDefined,
-  IsOptional,
+  MinLength,
+  MaxLength
 } from '../../decorator/dto-decorator';
 
 export class SendMessageDTO {
-  @IsString()
-  @IsNotEmpty()
-  @IsDefined()
+  @IsString({
+    message: `Could not resolve permission type`
+  })
+  @IsNotEmpty({
+    message: `Could not resolve permission type`
+  })
+  @IsDefined({
+    message: `Could not resolve permission type`
+  })
   workspaceId: string = '';
 
-  @IsString()
-  @IsNotEmpty()
-  @IsDefined()
+  @IsString({
+    message: `Invalid channelId`,
+    value: '{{channelId}}' 
+  })
+  @IsNotEmpty({
+    message: `Could not resolve permission type`
+  })
+  @IsDefined({
+    message: `Unsupported permission type`
+  })
   channelId: string = '';
 
   @IsString()
   @IsNotEmpty()
   @IsDefined()
+  @MinLength(1)
+  @MaxLength(6000)
   content: string = '';
-
-  @IsString()
-  @IsNotEmpty()
-  @IsOptional()
-  ref?: string = '';
 }
