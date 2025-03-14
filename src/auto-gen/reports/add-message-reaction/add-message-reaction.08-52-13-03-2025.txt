@@ -1,9 +1,0 @@
-
-    === Test Reports Logic for DTO "add-message-reaction" ===
-    Host: https://api-sb11.rpc.ziichat.dev
-    Endpoint: /Message/AddMessageReaction
-    Error: 
-    
-    - Testcase #256
-      Logic Errors: ["Cannot read properties of undefined (reading 'total')"]
-  

@@ -2,12 +2,14 @@ import { resolveVariables } from '../helps/get-resolve-variables';
 import { acceptInvitation } from './accept-link-invitation';
 import { addMessageReaction } from './add-message-reaction';
 import { createChannel } from './create-channel';
+import { createChannels } from './create-channels';
 import { deleteMessageForEveryone } from './delete-message-for-everyone';
 import { deleteMockChannel } from './delete-mock-channel';
 import { deleteMockUser } from './delete-mock-user';
 import { getMessage } from './get-message';
 import { getSticker } from './get-sticker';
 import { getStickerCollection } from './get-sticker-collection';
+import { getListMessages } from './list-messages';
 import { mockUser } from './mock-user';
 import { sendInvitation } from './send-invitation';
 import { sendMessage } from './send-message';
@@ -28,8 +30,6 @@ export async function executeBeforeAllSteps(request: string[]): Promise<any[]> {
           .split(',')
           .map((arg) => resolveVariables(arg.trim()));
 
-
-
         switch (functionName) {
           case 'mockUser': {
             const [prefix, quantityStr, badgeStr] = args;
@@ -42,6 +42,12 @@ export async function executeBeforeAllSteps(request: string[]): Promise<any[]> {
           case 'createChannel': {
             const [token, name] = args;
             await createChannel(token, name);
+            break;
+          }
+
+          case 'createChannels': {
+            const [token, name] = args;
+            await createChannels(token, name);
             break;
           }
 
@@ -106,6 +112,13 @@ export async function executeBeforeAllSteps(request: string[]): Promise<any[]> {
             result = await getSticker(stickerId)
             break;
 
+          }
+
+          case 'getListMessages': {
+            const [token, channelId] = args
+
+            result = await getListMessages(token, channelId)
+            break;
           }
           default:
             console.log('Invalid step:', step);

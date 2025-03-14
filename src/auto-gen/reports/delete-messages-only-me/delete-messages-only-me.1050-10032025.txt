@@ -1,6 +1,0 @@
-
-    === Test Reports Logic for DTO "delete-messages-only-me" ===
-    Host: https://api-sb11.rpc.ziichat.dev
-    Endpoint: /Message/DeleteMessagesOnlyMe
-    Error: 
-    

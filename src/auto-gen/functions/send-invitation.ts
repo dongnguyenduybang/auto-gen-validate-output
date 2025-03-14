@@ -6,7 +6,7 @@ export async function sendInvitation(token: string, linkInvitation: string, user
         throw new Error('token not found in global var');
       }
 
-      console.log(token, linkInvitation, userId)
+      // console.log(token, linkInvitation, userId)
 
       const baseUrl = `${globalThis.urls}/Invitation/SendInvitation`;
       const payload = { invitationLink: linkInvitation , userIds: userId};

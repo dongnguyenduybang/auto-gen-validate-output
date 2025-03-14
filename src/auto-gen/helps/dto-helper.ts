@@ -60,7 +60,6 @@ export function generateErrorVariantsForField(
   fieldValue: any,
   decorators: Record<string, any>,
 ): any[] {
-  console.log(fieldValue);
   const variants: any[] = [];
 
   if (!decorators['isDefined']) {
@@ -210,6 +209,22 @@ export function mapError(
     }
   }
 
+  if (decorators['type'] === 'array') {
+    if (!Array.isArray(value)) {
+      errors.push(`${field} ${ErrorMessage.INVALID_TYPE_ARRAY}`);
+    } else {
+      if (decorators['minArray'] && value.length < decorators['minArray']) {
+        errors.push(
+          `${field} ${ErrorMessage.MIN_ARRAY} ${decorators['minArray']} items`,
+        );
+      }
+      if (decorators['maxArray'] && value.length > decorators['maxArray']) {
+        errors.push(
+          `${field} ${ErrorMessage.MAX_ARRAY} ${decorators['maxArray']} items`,
+        );
+      }
+    }
+  }
   if (decorators['type'] === 'enum') {
     const allowedValues = Object.values(decorators['enumType']);
 

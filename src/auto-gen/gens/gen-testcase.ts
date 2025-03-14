@@ -84,6 +84,7 @@ function genTestCase(
         let testNumber
         let resolvedData
         let nextStep = false
+        let messageIdArray;
 
         beforeAll( async () => {
 
@@ -95,9 +96,9 @@ function genTestCase(
         afterEach(async () => {
 
         if(nextStep === true){
-          if (!resolveVariables("{{messageId}}")) {
-              return; 
-           }
+          // if (!resolveVariables("{{messageId}}")) {
+          //     return; 
+          //  }
             const result = await executeBeforeAllSteps(${JSON.stringify(requestConfig.afterEach)})
             const validateAfter = await validateAfterLogic(result, resolvedData)
             if (validateAfter.length === 0) {
@@ -128,8 +129,17 @@ function genTestCase(
               const payloadObj = ${JSON.stringify(testCase.body)};
               resolvedData = resolveJsonVariables(payloadObj);
               ${isDeleteMethod ? `
-              const urlParams = new URLSearchParams(resolvedData).toString();
-              const requestUrl = \`\${globalThis.url}${requestConfig.path}?\${urlParams}\`;
+              const baseParams = new URLSearchParams({
+                workspaceId: resolvedData.workspaceId,
+                channelId: resolvedData.channelId
+              }).toString();
+              
+              if (typeof resolvedData.messageIds !== 'string') {
+                messageIdArray = [resolvedData.messageIds.toString()];
+              } else {
+                messageIdArray = resolvedData.messageIds.split(',');
+              }
+              const requestUrl = \`\${globalThis.url}${requestConfig.path}?\${baseParams}&\${messageIdArray.map(id => \`messageIds=\${encodeURIComponent(id)}\`).join('&')}\`;
             ` : `
               const requestUrl = \`\${globalThis.url}${requestConfig.path}\`;
             `}
@@ -144,6 +154,8 @@ function genTestCase(
 
               if(response.status === 201){
               
+                if(data.data){
+
                   expect(data.ok).toEqual(true)
                   expect(data.data).not.toBeNull()
                   const dtoInstance = plainToClass(${classNameCapitalized}Response, data);
@@ -155,8 +167,14 @@ function genTestCase(
                       errorLogic: validateLogic,
                     })
                   }else {
+
                     nextStep = true
                   }
+                }else {
+
+                  nextStep = true
+                }
+
               }else if(response.status === 200){
                 expect(data.ok).toEqual(true)
                 if(data.data){
