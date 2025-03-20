@@ -188,9 +188,7 @@ export function mapError(
       (decorators['minLength'] && value.length < decorators['minLength']) ||
       (decorators['maxLength'] && value.length > decorators['maxLength'])
     ) {
-      return addErrorAndReturn(
-        `${field} ${ErrorMessage.INVALID_RANGE_STRING_LENGTH}`,
-      );
+      return addErrorAndReturn(`${ErrorMessage.INVALID_RANGE_STRING_LENGTH}`);
     }
 
     if (field === 'channelId') {
@@ -257,22 +255,6 @@ export function mapError(
       return addErrorAndReturn(
         `${field} ${ErrorMessage.INVALID_RANGE_NUMBER} ${filterNumber.join(', ')}`,
       );
-    }
-  }
-
-  return errors;
-}
-
-export function validateSingleError(dto: any): string[] {
-  const errors: string[] = [];
-
-  for (const field in dto) {
-    const value = dto[field];
-    const decorators = Reflect.getMetadata(field, dto) || {};
-
-    const fieldErrors = mapError(field, value, decorators);
-    if (fieldErrors.length > 0) {
-      return fieldErrors;
     }
   }
 
