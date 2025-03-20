@@ -1,6 +1,6 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import { readJsonFile } from '../helps/utils';
+import { formatExpectErrors, readJsonFile } from '../helps/utils';
 
 const outputDir = path.join(__dirname, '../test-case');
 
@@ -54,17 +54,15 @@ function genTestCase(
 ) {
   const payloadData = readJsonFile(payloadPath);
   const requestConfig = readJsonFile(requestPath);
+  const requestMethod = requestConfig.method.toLowerCase();
   const classNameCapitalized = className
     .split('-')
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join('');
 
-  const isDeleteMethod = requestConfig.method.toLowerCase() === 'delete';
-  const isPostOrPut = ['post', 'put'].includes(
-    requestConfig.method.toLowerCase(),
-  );
+  const isDeleteMethod = requestMethod === 'delete';
   const specContent = `
-    import { validate${classNameCapitalized} } from '../validates/${className}/validate-${className}';
+    import { validateResponses } from '../validates/validate-response';
     import fs from 'fs';
     import path from 'path';
     import { summarizeErrors, summaryFields, getTime } from '../helps/utils';
@@ -72,6 +70,7 @@ function genTestCase(
     import { resolveJsonVariables,resolveVariables } from '../helps/get-resolve-variables';
     import { plainToClass } from 'class-transformer';
     import { ${classNameCapitalized}Response } from '../response/${className}.response';
+    import axios from 'axios';
 
 
     describe('Testcase for ${className}', () => {
@@ -85,20 +84,27 @@ function genTestCase(
         let testNumber
         let resolvedData
         let nextStep = false
+        let failedStep = []
         let messageIdArray;
 
         beforeAll( async () => {
 
-          await executeBeforeAllSteps(${JSON.stringify(requestConfig.beforeAll)})
+          const beforeStep = await executeBeforeAllSteps(${JSON.stringify(requestConfig.beforeAll)})
+          const hasError = beforeStep.some((step) => step.error);
+          if (hasError) {
+            for (const step of beforeStep) {
+              if (step.ok !== 'true') {
+                failedStep.push({
+                  function: step.function,
+                  error: step.error,
+                });
+                throw new Error(\`Failed at step: \${step.function}. Error: \${step.error}\`);
+              }
+            }
+          }
+
 
           headerRequest = ${JSON.stringify(requestConfig.headers)}
-         
-        })
-        afterEach(async () => {
-
-        if(nextStep === true){
-         
-          }
          
         })
 
@@ -106,12 +112,13 @@ function genTestCase(
           .map(
             (testCase: any, index: number) => `
            
-            it('Test case # ${index + 1} with expect errors ${JSON.stringify(testCase.expects)}', async () => {
+            it('Test case # ${index + 1} with expect errors ${formatExpectErrors(testCase.expects)}', async () => {
              testNumber = ${index + 1};
               totalTests++;
               const payloadObj = ${JSON.stringify(testCase.body)};
               resolvedData = resolveJsonVariables(payloadObj);
-              ${isDeleteMethod
+              ${
+                isDeleteMethod
                   ? `
               const baseParams = new URLSearchParams({
                 workspaceId: resolvedData.workspaceId,
@@ -130,14 +137,8 @@ function genTestCase(
             `
               }
             try {
-              const response = await fetch(requestUrl, {
-                method: '${requestConfig.method.toLowerCase()}',
-                headers: resolveJsonVariables(headerRequest),
-                body: ${isPostOrPut ? 'JSON.stringify(resolvedData)' : 'undefined'}
-              });
-
-              const data = await response.json();
-
+            const response = await axios.${requestMethod}(requestUrl, resolvedData, {headers: resolveJsonVariables(headerRequest), validateStatus: () => true})
+            const data = response.data
               if(response.status === 201){
               
                 if(data.data){
@@ -145,12 +146,12 @@ function genTestCase(
                   expect(data.ok).toEqual(true)
                   expect(data.data).not.toBeNull()
                   const dtoInstance = plainToClass(${classNameCapitalized}Response, data);
-                  const validateLogic = await validate${classNameCapitalized}(dtoInstance, resolvedData);
-                  if (validateLogic.length !== 0) {
+                  const validateResponse = await validateResponses(response, resolvedData, dtoInstance);
+                  if (validateResponse.length !== 0) {
                   nextStep = false
                      logicTests.push({
                       testcase:testNumber,
-                      errorLogic: validateLogic,
+                      errorLogic: validateResponse,
                     })
                   }else {
 
@@ -162,29 +163,60 @@ function genTestCase(
                 }
 
               }else if(response.status === 200){
-                expect(data.ok).toEqual(true)
                 if(data.data){
-                  const dtoInstance = plainToClass(${classNameCapitalized}Response, data);
-                  const validateLogic = await validate${classNameCapitalized}(dtoInstance, resolvedData);
-                  if (validateLogic.length !== 0) {
-                    nextStep = false
-                    logicTests.push({
-                      testcase:testNumber,
-                      errorLogic: validateLogic,
-                    })
-                  
-                  }else{
-                    nextStep = true
-                  }
 
-                }else {
-                 expect(data.ok).toEqual(true)
-                  passed200++
+                    expect(data.ok).toEqual(true)
+                    expect(data.data).not.toBeNull()
+                    const dtoInstance = plainToClass(${classNameCapitalized}Response, data);
+                    const validateResponse = await validateResponses(response, resolvedData, dtoInstance);
+                    if (validateResponse.length !== 0) {
+                    nextStep = false
+                      logicTests.push({
+                        testcase:testNumber,
+                        errorLogic: validateResponse,
+                      })
+                    }else {
+
+                      nextStep = true
+                    }
+                  }else {
+
+                    nextStep = true
+                  } 
+              }else if (response.status === 400){
+                 const expectJson =  ${JSON.stringify(testCase.expects)}.sort()
+                  const expectDetails = Array.isArray(response?.data?.error?.details)
+                  ? response.data.error.details
+                  : [];
+                  const softExpectDetails = [...expectDetails].sort();
+                  try {
+                    expect(data.ok).toEqual(false);
+                    expect(data.data).toEqual(null);
+                    expect(expectJson).toEqual(softExpectDetails);
+                    passedTests++
+                    nextStep = false
+                  } catch (error) {
+                    const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                    nextStep = false
+                    failedTests.push({
+                      testcase: testNumber,
+                      code: 400,
+                      missing: missing || [],
+                      extra: extra || []
+                    })
+                    throw new Error(error);
+                  }
+                }else if (response.status === 403){
+                  const expectJson =  ${JSON.stringify(testCase.expects)}.sort()
+                  const expectDetails = response.data
+
+                  expect(expectDetails).toEqual(expectJson.join(" "))
                   passedTests++
+                  nextStep = false
+                
                 }
-              }
             }catch (error){
-              console.log(error.message)
+              console.log(error)
             }
             });`,
           )
@@ -209,6 +241,13 @@ Summary:
 Total Tests: \${totalTests}
 Passed Tests: \${passedTests}
 Failed Tests: \${failedTests.length}
+
+Step Log: \${failedStep
+      .map(
+        (failStep) => \`- Function: \${failStep.function || "''" }
+        Detail: \${failStep.error ? JSON.stringify(failStep.error) : "''"}\`
+      ).join('')}
+
 Status Code:
   200: \${summary.statusCodes[200] || 0}
   201: \${summary.statusCodes[201] || 0}
