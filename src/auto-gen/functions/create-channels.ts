@@ -21,13 +21,10 @@ export async function createChannels(token: string, name: string) {
         console.log(`invitationLink_${index}`, invitationLink);
         globalThis.globalVar.set(`channelId_${index}`, channelId);
         globalThis.globalVar.set(`invitationLink_${index}`, invitationLink);
-      } else {
-        throw new Error('invalid response CreateChannels api');
       }
     }
   } catch (error) {
-    console.error('error in createChannels:', error);
-
-    throw new Error('fail to createChannels');
+    console.log(error.data);
+    return 'fail to create channels';
   }
 }

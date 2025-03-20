@@ -60,6 +60,7 @@ function handleTestCase(dtoName: string) {
 function handleTest(dtoName: string) {
   console.log(`Running test for DTO "${dtoName}"...`);
   try {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     const { execSync } = require('child_process');
     const jestCommand = `jest src/auto-gen/test-case/${dtoName}`;
     execSync(jestCommand, { stdio: 'inherit' });

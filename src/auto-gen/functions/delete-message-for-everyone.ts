@@ -20,7 +20,6 @@ export async function deleteMessageForEveryone(
       throw new Error('invalid response from api');
     }
   } catch (error) {
-    console.error('error in delete message:', error);
-    throw new Error('fail to delete message');
+    // console.log('error in delete message:', error)
   }
 }

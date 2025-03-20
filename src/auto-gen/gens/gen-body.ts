@@ -19,6 +19,7 @@ export function genBodyPayload(dtoName) {
     }
 
     try {
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
       const dtoModule = require(dtoPath);
       const classNameCapitalized =
         className
