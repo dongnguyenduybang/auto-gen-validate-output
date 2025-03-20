@@ -1,80 +1,135 @@
-import { BaseResponse } from './general-response';
+import { ValidateNested } from 'class-validator';
+import { Type } from 'class-transformer';
 import {
-  IsEnum,
+  IsDefined,
+  IsBoolean,
   IsString,
   IsNumber,
-  IsBoolean,
-  IsDefined,
+  IsObject,
+  IsEnum,
+  IsOptional,
+  ValidIf,
 } from '../decorator/dto-decorator';
+import { BaseResponse, IncludesResponse } from './general-response';
 import { MessageTypeEnum } from '../enums/message-type.enum';
+import { MessageStatusEnum } from '../enums/message-status.enum';
 import { AttachmentTypeEnum } from '../enums/attachment-type.enum';
 
-export class SendMessageResponse extends BaseResponse {
+export class SendMessageData {
   @IsString()
   @IsDefined()
-  workspaceId: string;
+  @IsOptional()
+  @ValidIf('workspaceId', '===', 'payload.workspaceId')
+  workspaceId?: string = undefined;
 
   @IsString()
   @IsDefined()
-  channelId: string;
+  @ValidIf('channelId', '===', 'payload.channelId')
+  channelId?: string = undefined;
 
   @IsString()
   @IsDefined()
-  messageId: string;
+  messageId?: string = undefined;
 
   @IsString()
   @IsDefined()
-  userId: string;
+  userId?: string = undefined;
 
   @IsString()
   @IsDefined()
-  content: string;
+  @ValidIf('content', '===', 'payload.content')
+  content?: string = undefined;
 
   @IsEnum(MessageTypeEnum)
   @IsDefined()
-  messageType: MessageTypeEnum;
+  messageType?: MessageTypeEnum;
 
-  @IsNumber()
+  @IsEnum(MessageStatusEnum)
   @IsDefined()
-  messageStatus: number;
+  messageStatus?: MessageStatusEnum;
 
   @IsEnum(AttachmentTypeEnum)
   @IsDefined()
-  attachmentType: AttachmentTypeEnum;
+  attachmentType?: AttachmentTypeEnum;
 
   @IsBoolean()
   @IsDefined()
-  isThread: boolean;
+  isThread?: boolean = undefined;
 
   @IsNumber()
   @IsDefined()
-  reportCount: number;
+  reportCount?: number = undefined;
 
   @IsBoolean()
   @IsDefined()
-  isReported: boolean;
+  isReported?: boolean = undefined;
 
   @IsNumber()
   @IsDefined()
-  attachmentCount: number;
+  attachmentCount?: number = undefined;
 
   @IsString()
   @IsDefined()
-  contentLocale: string;
+  contentLocale?: string = undefined;
 
   @IsBoolean()
   @IsDefined()
-  isPinned: boolean;
+  isPinned?: boolean = undefined;
 
   @IsString()
   @IsDefined()
-  createTime: string;
+  @ValidIf('createTime', '===', 'response.updateTime')
+  createTime?: string = undefined;
 
   @IsString()
   @IsDefined()
-  updateTime: string;
+  updateTime?: string = undefined;
 
   @IsString()
   @IsDefined()
-  ref: string;
+  @IsOptional()
+  ref?: string = undefined;
+}
+
+export class SendMessageDataWrapper {
+  @ValidateNested({ each: true })
+  @IsObject()
+  @IsDefined()
+  @Type(() => SendMessageData)
+  message: SendMessageData;
+}
+
+export class SendMessageResponse extends BaseResponse {
+  @ValidateNested({ each: true })
+  @IsObject()
+  @IsDefined()
+  @Type(() => SendMessageDataWrapper)
+  data: SendMessageDataWrapper;
+
+  @ValidateNested({ each: true })
+  @IsObject()
+  @IsDefined()
+  @Type(() => IncludesResponse)
+  includes: IncludesResponse;
+
+  constructor() {
+    super();
+
+    if (this.includes) {
+      const { users, members, channels, channelMetadata } = this.includes;
+
+      this.includes = {
+        users,
+        members,
+        channels,
+        channelMetadata,
+        messages: [],
+      } as IncludesResponse;
+    }
+
+    if (this.data) {
+      const { message } = this.data;
+      this.data = { message } as SendMessageDataWrapper;
+    }
+  }
 }

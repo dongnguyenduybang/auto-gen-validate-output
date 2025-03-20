@@ -1,5 +1,5 @@
 import { ValidateNested } from 'class-validator';
-import { Transform, Type } from 'class-transformer';
+import { Type } from 'class-transformer';
 import {
   IsDefined,
   IsArray,
@@ -9,17 +9,63 @@ import {
   IsObject,
   IsOptional,
   ValidIf,
+  IsEnum,
 } from '../decorator/dto-decorator';
+import { ChannelTypeEnum } from '../enums/channel-type.enum';
+import { MessageTypeEnum } from '../enums/message-type.enum';
+import { AttachmentTypeEnum } from '../enums/attachment-type.enum';
+import { UserAvatarTypeEnum } from '../enums/user-avatar-type.enum';
+import { BadgeEnum } from '../enums/badge.enum';
+import { DirectMessageStatusEnum } from '../enums/direct-message-status.enum';
+import { MediaPermissionSettingEnum } from '../enums/media-permission-setting.enum';
+import { ChannelPermissionEnum } from '../enums/channel-permissions.enum';
+import { UserStatusExpireAfterTimeEnum } from '../enums/user-status-expire-after-time.enum';
+
+export class Reaction {
+  @IsBoolean()
+  @IsDefined()
+  isReacted?: boolean = undefined;
+
+  @IsNumber()
+  @IsDefined()
+  total?: number = undefined;
+}
+
+export class StatusData {
+  @IsString()
+  @IsOptional()
+  content?: string = undefined;
+
+  @IsBoolean()
+  @IsOptional()
+  status?: boolean = undefined;
+
+  @IsEnum(UserStatusExpireAfterTimeEnum)
+  @IsDefined()
+  expireAfterTime?: UserStatusExpireAfterTimeEnum;
+
+  @IsString()
+  @IsDefined()
+  createTime?: string = undefined;
+
+  @IsString()
+  @IsDefined()
+  updateTime?: string = undefined;
+
+  @IsString()
+  @IsDefined()
+  endTime?: string = undefined;
+}
 
 export class Message {
   @IsString()
   @IsDefined()
-  @ValidIf('workspaceId', 'workspaceId')
+  @ValidIf('workspaceId', '===', 'workspaceId')
   workspaceId?: string = undefined;
 
   @IsString()
   @IsDefined()
-  @ValidIf('channelId', 'channelId')
+  @ValidIf('channelId', '===', 'response.channelId')
   channelId?: string = undefined;
 
   @IsString()
@@ -32,26 +78,27 @@ export class Message {
 
   @IsString()
   @IsDefined()
-  @ValidIf('content', 'content')
+  @ValidIf('content', '===', 'payload.content')
   content?: string = undefined;
 
-  @IsNumber()
+  @IsEnum(MessageTypeEnum)
   @IsDefined()
-  messageType?: number = undefined;
+  messageType?: MessageTypeEnum;
 
   @IsNumber()
   @IsDefined()
-  @ValidIf('messageStatus', '1')
+  @ValidIf('messageStatus', '===', '1')
   messageStatus?: number = undefined;
 
   @IsString()
   @IsOptional()
   originalMessage?: string = undefined;
 
+  @ValidateNested({ each: true })
   @IsObject()
-  @IsOptional()
-  @Transform(({ value }) => value || {})
-  reactions?: object = {};
+  @IsDefined()
+  @Type(() => Reaction)
+  reactions?: Reaction;
 
   @IsArray()
   @IsOptional()
@@ -61,9 +108,9 @@ export class Message {
   @IsOptional()
   embed?: any[] = [];
 
-  @IsNumber()
+  @IsEnum(AttachmentTypeEnum)
   @IsDefined()
-  attachmentType?: number = undefined;
+  attachmentType?: AttachmentTypeEnum;
 
   @IsBoolean()
   @IsDefined()
@@ -71,12 +118,12 @@ export class Message {
 
   @IsNumber()
   @IsDefined()
-  @ValidIf('reportCount', '0')
+  @ValidIf('reportCount', '===', '0')
   reportCount?: number = undefined;
 
   @IsBoolean()
   @IsDefined()
-  @ValidIf('isReported', 'false')
+  @ValidIf('isReported', '===', 'false')
   isReported?: boolean = undefined;
 
   @IsNumber()
@@ -85,7 +132,7 @@ export class Message {
 
   @IsArray()
   @IsOptional()
-  mediaAttachments?: any[] = [];
+  mediaAttachments?: string[] = [];
 
   @IsString()
   @IsDefined()
@@ -93,7 +140,7 @@ export class Message {
 
   @IsArray()
   @IsOptional()
-  contentArguments?: any[] = [];
+  contentArguments?: string[] = [];
 
   @IsBoolean()
   @IsDefined()
@@ -101,17 +148,16 @@ export class Message {
 
   @IsString()
   @IsDefined()
-  @ValidIf('createTime', 'updateTime')
+  @ValidIf('createTime', '===', 'response.updateTime')
   createTime?: string = undefined;
 
   @IsString()
   @IsDefined()
-  @ValidIf('updateTime', new Date().toISOString())
   updateTime?: string = undefined;
 
   @IsString()
   @IsDefined()
-  @ValidIf('ref', 'ref')
+  @ValidIf('ref', '===', 'payload.ref')
   @IsOptional()
   ref?: string = undefined;
 }
@@ -129,19 +175,18 @@ export class Profile {
   @IsDefined()
   originalAvatar?: string = undefined;
 
-  @IsNumber()
+  @IsEnum(UserAvatarTypeEnum)
   @IsDefined()
-  avatarType?: number = undefined;
+  avatarType?: UserAvatarTypeEnum;
 
-  @IsNumber()
+  @IsEnum(BadgeEnum)
   @IsDefined()
-  userBadgeType?: number = undefined;
+  userBadgeType?: BadgeEnum;
 }
 
 export class PresenceData {
   @IsString()
   @IsDefined()
-  @ValidIf('updateTime', new Date().toISOString())
   lastUpdateTime?: string = undefined;
 
   @IsNumber()
@@ -176,18 +221,22 @@ export class ChannelMetadata {
   @IsDefined()
   notificationStatus?: boolean = undefined;
 
-  @IsNumber()
+  @IsEnum(MediaPermissionSettingEnum)
   @IsDefined()
-  mediaPermissionSetting?: number = undefined;
+  mediaPermissionSetting?: MediaPermissionSettingEnum;
+
+  @IsEnum(ChannelPermissionEnum)
+  @IsDefined()
+  permissions?: ChannelPermissionEnum;
 
   @IsString()
   @IsDefined()
-  @ValidIf('workspaceId', 'workspaceId')
+  @ValidIf('workspaceId', '===', 'payload.workspaceId')
   workspaceId?: string = undefined;
 
   @IsString()
   @IsDefined()
-  @ValidIf('channelId', 'channelId')
+  @ValidIf('channelId', '===', 'response.channelId')
   channelId?: string = undefined;
 
   @IsString()
@@ -195,15 +244,15 @@ export class ChannelMetadata {
   dmId?: string = undefined;
 }
 
-export class ChannelDTO {
+export class Channel {
   @IsString()
   @IsDefined()
-  @ValidIf('workspaceId', 'workspaceId')
+  @ValidIf('workspaceId', '===', 'payload.workspaceId')
   workspaceId?: string = undefined;
 
   @IsString()
   @IsDefined()
-  @ValidIf('channelId', 'channelId')
+  @ValidIf('channelId', '===', 'response.channelId')
   channelId?: string = undefined;
 
   @IsString()
@@ -214,35 +263,60 @@ export class ChannelDTO {
   @IsDefined()
   name?: string = undefined;
 
+  @IsString()
+  @IsDefined()
+  avatar?: string = undefined;
+
   @IsBoolean()
   @IsDefined()
   isPrivate?: boolean = undefined;
 
-  @IsNumber()
+  @IsEnum(ChannelTypeEnum)
   @IsDefined()
-  type?: number = undefined;
+  type?: ChannelTypeEnum;
 
   @IsString()
   @IsDefined()
   invitationLink?: string = undefined;
 
+  @IsString()
+  @IsDefined()
+  originalAvatar?: string = undefined;
+
   @IsNumber()
   @IsDefined()
   totalMembers?: number = undefined;
 
-  @IsString()
+  @IsEnum(DirectMessageStatusEnum)
   @IsDefined()
-  @ValidIf('createTime', 'updateTime')
-  createTime?: string = undefined;
+  dmStatus?: DirectMessageStatusEnum;
 
-  @IsString()
+  @ValidateNested({ each: true })
+  @IsArray()
   @IsDefined()
-  @ValidIf('updateTime', new Date().toISOString())
-  updateTime?: string = undefined;
+  @Type(() => Message)
+  pinnedMessage?: Message;
 
   @IsArray()
   @IsOptional()
   participantIds?: string[] = [];
+
+  @IsString()
+  @IsDefined()
+  rejectTime?: string = undefined;
+
+  @IsString()
+  @IsDefined()
+  acceptTime?: string = undefined;
+
+  @IsString()
+  @IsDefined()
+  @ValidIf('createTime', '<', 'response.updateTime')
+  createTime?: string = undefined;
+
+  @IsString()
+  @IsDefined()
+  updateTime?: string = undefined;
 }
 
 export class User {
@@ -256,12 +330,11 @@ export class User {
 
   @IsString()
   @IsDefined()
-  @ValidIf('createTime', 'updateTime')
+  @ValidIf('createTime', '===', 'response.updateTime')
   createTime?: string = undefined;
 
   @IsString()
   @IsDefined()
-  @ValidIf('updateTime', new Date().toISOString())
   updateTime?: string = undefined;
 
   @ValidateNested({ each: true })
@@ -280,20 +353,22 @@ export class User {
   @Type(() => PresenceData)
   presenceData: PresenceData;
 
+  @ValidateNested({ each: true })
   @IsObject()
-  @IsOptional()
-  statusData?: any = null;
+  @IsDefined()
+  @Type(() => StatusData)
+  statusData: StatusData;
 }
 
 export class Member {
   @IsString()
   @IsDefined()
-  @ValidIf('workspaceId', 'workspaceId')
+  @ValidIf('workspaceId', '===', 'payload.workspaceId')
   workspaceId?: string = undefined;
 
   @IsString()
   @IsDefined()
-  @ValidIf('channelId', 'channelId')
+  @ValidIf('channelId', '===', 'response.channelId')
   channelId?: string = undefined;
 
   @IsString()
@@ -316,16 +391,15 @@ export class Member {
 
   @IsString()
   @IsDefined()
-  @ValidIf('createTime', 'updateTime')
+  @ValidIf('createTime', '===', 'response.updateTime')
   createTime?: string = undefined;
 
   @IsString()
   @IsDefined()
-  @ValidIf('updateTime', new Date().toISOString())
   updateTime?: string = undefined;
 }
 
-export class IncludesMessage {
+export class IncludesResponse {
   @ValidateNested({ each: true })
   @IsArray()
   @IsDefined()
@@ -335,8 +409,8 @@ export class IncludesMessage {
   @ValidateNested({ each: true })
   @IsArray()
   @IsDefined()
-  @Type(() => ChannelDTO)
-  channels: ChannelDTO[];
+  @Type(() => Message)
+  messages: Message[];
 
   @ValidateNested({ each: true })
   @IsArray()
@@ -347,16 +421,34 @@ export class IncludesMessage {
   @ValidateNested({ each: true })
   @IsArray()
   @IsDefined()
+  @Type(() => Channel)
+  channels: Channel[];
+
+  @ValidateNested({ each: true })
+  @IsArray()
+  @IsDefined()
   @Type(() => ChannelMetadata)
   channelMetadata: ChannelMetadata[];
 }
 
-export class DataMessage {
+export class DataResponse {
   @ValidateNested({ each: true })
   @IsObject()
   @IsDefined()
   @Type(() => Message)
-  message: Message;
+  message?: Message;
+
+  @ValidateNested({ each: true })
+  @IsObject()
+  @IsDefined()
+  @Type(() => Channel)
+  channel?: Channel;
+
+  @ValidateNested({ each: true })
+  @IsObject()
+  @IsDefined()
+  @Type(() => ChannelMetadata)
+  channelMetadata?: ChannelMetadata;
 }
 
 export class BaseResponse {
@@ -367,12 +459,12 @@ export class BaseResponse {
   @ValidateNested({ each: true })
   @IsObject()
   @IsDefined()
-  @Type(() => DataMessage)
-  data: DataMessage;
+  @Type(() => DataResponse)
+  data?: DataResponse;
 
   @ValidateNested({ each: true })
   @IsObject()
   @IsDefined()
-  @Type(() => IncludesMessage)
-  includes: IncludesMessage;
+  @Type(() => IncludesResponse)
+  includes?: IncludesResponse;
 }
