@@ -14,16 +14,15 @@
     },
 
     "beforeAll": [
-      "mockUser('duybang12345',1, 0)", 
-      "createChannel({{token}}, 'channel 1')"
-    ],  
-    "afterEach" : [
-      "getMessage({{token}}, {{channelId}}, {{messageId}})",
-      "getChannel({{token}}, {{channelId}})",
-      "getUser({{token}}, {{userId}})",
-      "getListMessage({{token}}, {{channelId}})"
+        "mockUser(body: { prefix: 'duy12345',quantity: 1,badge: 0 }, expect: {})",
+        "createChannel(body: {name: 'channel 1', workspaceId: '0'}, header: {token: '{{mockUser.token}}'}, expect: {isContent: '%s created this channel', isOwner: '{{mockUser.userId}}'})",
+        "getChannel(body: {workspaceId: '0', channelId: '{{createChannel.channelId}}'}, header: {token: '{{mockUser.token}}'}, expect: {countMember: 1, countMessage: 1, isChannelId: '{{createChannel.channelId}}',isLastMessage: '{{createChannel.messageId}}', isContent: '{{createChannel.contentChannel}}', isOwner: '{{mockUser.userId}}'})"
     ],
-
+    "saga" : [
+      "acceptLinkInvitation({{token_1}}, {{invitationLink}})",
+      "sendMessage({{token_1}}, 0, {{channelId}}, 'test123')",
+      "getListMessage({{token_1}}, {{channelId}})"
+    ],
     "afterAll": [
       "deleteMessageForEveryone('0', {{channelId}}, {{messageId}})"
     ]
