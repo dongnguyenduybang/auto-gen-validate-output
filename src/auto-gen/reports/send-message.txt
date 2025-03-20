@@ -3,9 +3,28 @@
 Host: https://api-sb11.rpc.ziichat.dev
 Endpoint: /Message/SendMessage
 Summary: 
-Total Tests: 1
+
+Total Tests: 0
 Passed Tests: 0
 Failed Tests: 0
+
+Step Log: Error: [
+  {
+    "success": true,
+    "functionName": "mockUser"
+  },
+  {
+    "success": true,
+    "functionName": "createChannel"
+  },
+  {
+    "success": false,
+    "functionName": "getChannel",
+    "error": "ChannelId mismatch: Expected: \"01JPRPG1A8FF0X0QFP1Q33A2KC\" Received: \"01JPRPG1A8FF0X0QFP1Q33A2KC\"LastMessage mismatch: Expected: \"01JPRPG1GX65VBT9Y4D67TFDAV\" Received: \"01JPRPG1GX65VBT9Y4D67TFDAV\""
+  }
+]
+
+
 Status Code:
   200: 0
   201: 0
