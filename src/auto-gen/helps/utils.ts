@@ -1,8 +1,8 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import 'reflect-metadata';
-import axios from 'axios';
 import { AttachmentTypeEnum } from '../enums/attachment-type.enum';
+import { TestContext } from '../text-context';
 
 function getFileNameWithoutExtension(filePath: string): string {
   const fileName = path.basename(filePath);
@@ -66,6 +66,26 @@ export function summaryFields(
   ); // co trong expect gen nhung k co tren api
   const extra = receivedResponse.filter((field) => !expectJson.includes(field)); //co tren api nhung k co tren expect gen
   return { missing, extra };
+}
+
+export function formatErrors(stepLog: { Error: any[] }): string {
+  let formattedOutput = '';
+
+  stepLog.Error.forEach((log) => {
+    if (!log.success && log.error) {
+      // Loại bỏ dấu \ trong chuỗi lỗi
+      const errorString = log.error.replace(/\\/g, '');
+
+      // Tách lỗi thành nhiều dòng
+      const errors = errorString.split(/(?=[A-Z][a-z]+ mismatch)/); // Tách theo từ khóa "Mismatch"
+      const formattedErrors = errors.join('\n'); // Thêm xuống dòng giữa các lỗi
+
+      // Thêm vào kết quả cuối cùng
+      formattedOutput += `Function: ${log.functionName}\nErrors:\n${formattedErrors}\n\n`;
+    }
+  });
+
+  return formattedOutput;
 }
 
 export function readJsonFile(filePath: string): any {
@@ -272,4 +292,145 @@ export function extractCoordinates(description) {
     return { latitude, longitude };
   }
   return null;
+}
+
+export function resolveValidIf(
+  field,
+  validIfMetadata: { condition: string; operators: string; condition2: string },
+  valueResponse: any,
+  obj: any,
+  payload: any,
+): { isValid: boolean; errorMessage?: string } {
+  const { condition, operators, condition2 } = validIfMetadata;
+
+  // Lấy giá trị của condition1
+  let value1: any;
+  if (obj.hasOwnProperty(condition)) {
+    value1 = obj[condition]; // Lấy từ response nếu tồn tại
+  }
+
+  // Lấy giá trị của condition2
+  let value2: any;
+  if (condition2.startsWith('response.')) {
+    const key = condition2.replace('response.', '');
+    value2 = obj[key]; // Lấy từ response[key]
+  } else if (condition2.startsWith('payload.')) {
+    const key = condition2.replace('payload.', '');
+    value2 = payload[key]; // Lấy từ payload[key]
+  } else {
+    value2 = condition2; // Giá trị cố định
+  }
+
+  // So sánh hai giá trị dựa trên toán tử
+  let isValid = false;
+  switch (operators) {
+    case '>':
+      isValid = value1 > value2;
+      break;
+    case '<':
+      isValid = value1 < value2;
+      break;
+    case '===':
+      isValid = value1 === value2;
+      break;
+    case '!==':
+      isValid = value1 !== value2;
+      break;
+    case '>=':
+      isValid = value1 >= value2;
+      break;
+    case '<=':
+      isValid = value1 <= value2;
+      break;
+    default:
+      return { isValid: false, errorMessage: `${operators}: Unsupported` };
+  }
+
+  if (!isValid) {
+    return {
+      isValid: false,
+      errorMessage: `${field}: ${condition} must ${operators} ${value2} (current value: ${value1}, expected value: ${value2})`,
+    };
+  }
+
+  return { isValid: true };
+}
+
+export const formatExpectErrors = (expects) => {
+  return JSON.stringify(expects)
+    .replace(/'/g, "\\'")
+    .replace(/\\"/g, '"')
+    .replace(/\s*,\s*/g, ',')
+    .trim();
+};
+
+export function validateExpectations(
+  expectConfig: any,
+  context: TestContext,
+): string[] {
+  const errors: string[] = [];
+  const getChannelContext = context.getStepContext('getChannel');
+
+  if (expectConfig.countMember !== undefined) {
+    const expectedMemberCount = parseInt(expectConfig.countMember);
+    const actualMemberCount = getChannelContext.includes?.members?.length || 0;
+    if (actualMemberCount !== expectedMemberCount) {
+      errors.push(
+        `Member count mismatch. Expected: ${expectedMemberCount}, Actual: ${actualMemberCount}`,
+      );
+    }
+  }
+
+  if (expectConfig.countMessage !== undefined) {
+    const expectedMessageCount = parseInt(expectConfig.countMessage);
+    const actualMessageCount =
+      getChannelContext.includes?.messages?.length || 0;
+    if (actualMessageCount !== expectedMessageCount) {
+      errors.push(
+        `Message count mismatch: Expected: ${expectedMessageCount} Actual: ${actualMessageCount}`,
+      );
+    }
+  }
+
+  if (expectConfig.isContent !== undefined) {
+    const expectedContent = expectConfig.isContent;
+    const actualContent = getChannelContext.includes.messages[0]?.content;
+    if (actualContent !== expectedContent) {
+      errors.push(
+        `Content mismatch: Expected: "${expectedContent}" Actual: "${actualContent}"`,
+      );
+    }
+  }
+
+  if (expectConfig.isOwner !== undefined) {
+    const expectedOwner = expectConfig.isOwner;
+    const actualOwner = getChannelContext.channel.userId;
+    if (actualOwner !== expectedOwner) {
+      errors.push(
+        `OwnerId mismatch: Expected: "${expectedOwner}" Actual: "${actualOwner}"`,
+      );
+    }
+  }
+
+  if (expectConfig.isChannelId !== undefined) {
+    const expectedChannelId = expectConfig.isChannelId;
+    const actualChannelId = getChannelContext.channel.channelId;
+    if (actualChannelId === expectedChannelId) {
+      errors.push(
+        `ChannelId mismatch: Expected: "${expectedChannelId}" Actual: "${actualChannelId}"`,
+      );
+    }
+  }
+
+  if (expectConfig.isLastMessage !== undefined) {
+    const expectedLastMessage = expectConfig.isLastMessage;
+    const actualLastMessage = getChannelContext.includes.messages[0]?.messageId;
+    if (actualLastMessage === expectedLastMessage) {
+      errors.push(
+        `LastMessage mismatch: Expected: "${expectedLastMessage}" Actual: "${actualLastMessage}"`,
+      );
+    }
+  }
+
+  return errors;
 }
