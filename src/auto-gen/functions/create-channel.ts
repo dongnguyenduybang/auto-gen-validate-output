@@ -1,34 +1,34 @@
 import axios from 'axios';
-export async function createChannel(token: string, name: string) {
+
+export async function createChannel(header, body) {
   try {
-    if (!token) {
-      throw new Error('token not found in global var');
+    if (!header.token) {
+      return { error: 'Token not found to create channel' };
     }
 
     const baseUrl = `${globalThis.urls}/Channel/CreateChannel`;
-    const payload = { workspaceId: '0', name: name };
-    const headers = { 'x-session-token': token };
+    const payload = body;
+    const headers = header.token;
 
-    const response = await axios.post(baseUrl, payload, { headers: headers });
-    if (response.data.data.channel) {
-      const channelId = response.data.data.channel.channelId;
-      const invitationLink = response.data.data.channel.invitationLink;
-      globalThis.globalVar.set('channelId', channelId);
-      globalThis.globalVar.set('invitationLink', invitationLink);
+    const response = await axios.post(baseUrl, payload, {
+      headers: { 'x-session-token': headers },
+    });
+    if (!response.data || !response.data.data || !response.data.data.channel) {
+      return { error: 'Invalid data create channel returned from API' };
     } else {
-      throw new Error('invalid response CreateChannel api');
+      // const channelId = response.data.data.channel.channelId;
+      // const invitationLink = response.data.data.channel.invitationLink;
+      // const lastMessageId = response.data.includes.messages[0].lastMessageId;
+      // const content = response.data.includes.messages[0].content;
+      // const messageId = response.data.includes.messages[0].messageId;
+      // globalThis.globalVar.set('channelId', channelId);
+      // globalThis.globalVar.set('invitationLink', invitationLink);
+      // globalThis.globalVar.set('lastMessageId', lastMessageId);
+      // globalThis.globalVar.set('contentChannel', content);
+      // globalThis.globalVar.set('messageIdChannel', messageId);
+      return { response: response.data };
     }
   } catch (error) {
-    console.error('error in createChannel:', error);
-
-    throw new Error('fail to create channels');
+    return { ok: false, result: error.response.data.error.details };
   }
 }
-
-// export async function createChannel(token, name) {
-//   // Giả lập logic tạo channel và trả về channelId
-//   const channelId = `01JN2FK2KRJMJA7G54MTW1J240`;
-//   const messageId = `01JN2FK7JMX8M6693KJZW8SJJ5`;
-//   globalThis.globalVar.set('channelId', channelId);
-//   globalThis.globalVar.set('messageId', messageId);
-// }
