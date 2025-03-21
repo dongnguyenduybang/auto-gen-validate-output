@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import * as path from 'path';
 import * as fs from 'fs';
 import 'reflect-metadata';
 import { AttachmentTypeEnum } from '../enums/attachment-type.enum';
 import { TestContext } from '../text-context';
+import { resolveVariable } from './get-resolve-variables';
 
 function getFileNameWithoutExtension(filePath: string): string {
   const fileName = path.basename(filePath);
