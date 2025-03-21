@@ -10,11 +10,6 @@ export class TestContext {
   getStepContext(stepName: string): Record<string, any> {
     return this.stepData[stepName] || {};
   }
-
-  resolveVariable(key: string): string {
-    const [step, field] = key.split('.');
-    return this.stepData[step]?.[field]?.toString() || '';
-  }
   debug() {
     console.log("Context:", JSON.stringify(this.stepData, null, 2));
   }
