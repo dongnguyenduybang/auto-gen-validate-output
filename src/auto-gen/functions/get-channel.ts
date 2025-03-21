@@ -11,9 +11,11 @@ export async function getChannel(header,body) {
         if (!response.data || !response.data.data || !response.data.data.channel) {
             return { error: 'Invalid data get channel returned from API' };
         } else {
-            return { ok: true, result: response.data };
+            return { response: response.data };
         }
     } catch (error) {
-        return { ok: false, result: error.response.data.error.details };
+        
+        console.log(error.response.data);
+        return { ok: false,result: error?.response?.data?.error?.details || error?.response?.data || 'Default error message' };
     }
 }

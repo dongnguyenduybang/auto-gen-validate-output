@@ -1,21 +1,26 @@
 import axios from 'axios';
 
-export async function getListMessages(token, channelId: string) {
+export async function getListMessages(header, body) {
   try {
-    console.log(token, 'sss', channelId);
-    const baseUrl = `${globalThis.urls}/MessageView/ListMessages?workspaceId=0&channelId=${channelId}`;
+    if (!header.token) {
+      return { error: 'Token not found to get list message' };
+    }
+    const baseUrl = `${globalThis.urls}/MessageView/ListMessages?workspaceId=${body.workspaceId}&channelId=${body.channelId}`;
     const headers = {
       'Content-Type': 'application/json',
-      'x-session-token': token,
+      'x-session-token': header.token,
     };
 
     const response = await axios.get(baseUrl, { headers: headers });
-    return {
-      data: response.data.data,
-    };
+    return { response: response.data };
   } catch (error) {
-    console.error('error in get list messages:', error);
-
-    throw new Error('fail to  get list messages');
+    console.log(error.response.data);
+    return {
+      ok: false,
+      result:
+        error?.response?.data?.error?.details ||
+        error?.response?.data ||
+        'Default error get message',
+    };
   }
 }

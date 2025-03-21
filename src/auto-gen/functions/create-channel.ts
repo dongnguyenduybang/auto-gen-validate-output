@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export async function createChannel(header, body) {
   try {
+    console.log(header);
     if (!header.token) {
       return { error: 'Token not found to create channel' };
     }
@@ -16,19 +17,10 @@ export async function createChannel(header, body) {
     if (!response.data || !response.data.data || !response.data.data.channel) {
       return { error: 'Invalid data create channel returned from API' };
     } else {
-      // const channelId = response.data.data.channel.channelId;
-      // const invitationLink = response.data.data.channel.invitationLink;
-      // const lastMessageId = response.data.includes.messages[0].lastMessageId;
-      // const content = response.data.includes.messages[0].content;
-      // const messageId = response.data.includes.messages[0].messageId;
-      // globalThis.globalVar.set('channelId', channelId);
-      // globalThis.globalVar.set('invitationLink', invitationLink);
-      // globalThis.globalVar.set('lastMessageId', lastMessageId);
-      // globalThis.globalVar.set('contentChannel', content);
-      // globalThis.globalVar.set('messageIdChannel', messageId);
       return { response: response.data };
     }
   } catch (error) {
+    console.log(error);
     return { ok: false, result: error.response.data.error.details };
   }
 }
