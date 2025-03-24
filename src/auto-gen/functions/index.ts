@@ -99,6 +99,7 @@ function getMappedData(functionName: string, apiResult: any, body: any): any {
     if (typeof pathOrFn === 'function') {
       acc[key] = pathOrFn(apiResult, body);
     } else {
+      console.log(pathOrFn);
       acc[key] = pathOrFn.split('.').reduce((obj, pathPart) => {
         const match = pathPart.match(/(\w+)\[(\d+)\]/);
         return match ? obj?.[match[1]]?.[Number(match[2])] : obj?.[pathPart];
