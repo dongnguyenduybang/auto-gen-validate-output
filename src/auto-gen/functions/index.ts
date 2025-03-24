@@ -9,22 +9,30 @@ import { deleteMockChannel } from './delete-mock-channel';
 import { deleteMockUser } from './delete-mock-user';
 import { count } from 'console';
 import { getListMessages } from './list-messages';
+import { API_RESULT_MAPPINGS } from '../helps/mapping';
+import { sendMessage } from './send-message';
+import { acceptInvitation } from './accept-link-invitation';
 
 function parseStep(step: string) {
   const stepPattern =
-    /(\w+)\(\s*body:\s*({[\s\S]*?})\s*(?:,\s*header:\s*({[\s\S]*?})\s*)?,\s*expect:\s*({[\s\S]*?})\s*\)/;
-
+    /^(\w+?)(_\d+)?\(\s*body:\s*({[\s\S]*?})\s*(?:,\s*header:\s*({[\s\S]*?})\s*)?,\s*expect:\s*({[\s\S]*?})\s*\)$/;
   const match = step.match(stepPattern);
   if (!match) throw new Error(`Invalid step format: ${step}`);
 
+  const functionName = match[1];
+  const suffix = match[2] || '';
+  const stepName = functionName + suffix;
+
   return {
-    functionName: match[1],
-    body: match[2].trim(),
-    header: match[3]?.trim(),
-    expect: match[4].trim(),
+    stepName,
+    functionName,
+    body: match[3].trim(),
+    header: match[4]?.trim(),
+    expect: match[5].trim(),
   };
 }
 async function executeStep(
+  stepName: string,
   functionName: string,
   body: any,
   header: any,
@@ -32,97 +40,82 @@ async function executeStep(
   expectData: any,
 ): Promise<StepResult> {
   try {
+    console.log(functionName, stepName);
     let apiResult: any;
     switch (functionName) {
       case 'mockUser':
-        apiResult = (await mockUser(body)).response;
+        apiResult = await mockUser(body);
         break;
       case 'createChannel':
-        apiResult = (await createChannel(header, body)).response;
+        apiResult = await createChannel(header, body);
         break;
       case 'getChannel':
-        apiResult = (await getChannel(header, body)).response;
+        apiResult = await getChannel(header, body);
         break;
       case 'getListMessage':
-        apiResult = (await getListMessages(header, body)).response;
+        apiResult = await getListMessages(header, body);
+        break;
+      case 'sendMessage':
+        apiResult = await sendMessage(header, body);
+        break;
+      case 'acceptChannel':
+        apiResult = await acceptInvitation(header, body);
         break;
       default:
         throw new Error(`Unsupported function: ${functionName}`);
     }
-
-    if (!apiResult?.ok) {
+    if (apiResult.ok === false) {
       return {
         success: false,
-        functionName,
-        error: apiResult?.result || 'API request failed',
+        stepName,
+        error: apiResult?.response || 'API request failed',
       };
+    } else {
+      apiResult = apiResult.response;
     }
 
-    const actualData = getActualData(functionName, apiResult, body);
-    context.setStepContext(functionName, {
-      ...actualData,
-      expect: expectData,
-    });
+    const actualData = getMappedData(functionName, apiResult, body);
+    context.setStepContext(stepName, { ...actualData, expect: expectData });
 
     if (Object.keys(expectData).length > 0) {
       validateData(actualData, expectData, context);
     }
 
-    return { success: true, functionName };
+    return { success: true, stepName };
   } catch (error) {
     return {
       success: false,
-      functionName,
+      stepName,
       error: error.message,
     };
   }
 }
 
-function getActualData(functionName: string, apiResult: any, body: any) {
-  switch (functionName) {
-    case 'mockUser':
-      return {
-        token: apiResult.data[0].token,
-        userId: apiResult.data[0].userId,
-        username: body.prefix,
-      };
-    case 'createChannel':
-      return {
-        isChannelId: apiResult.data.channel.channelId,
-        messageId: apiResult.includes.messages[0].messageId,
-        isContent: apiResult.includes.messages[0].content,
-        role: apiResult.includes.members[0].role,
-        isOwner: apiResult.includes.members[0].userId,
-      };
-    case 'getChannel':
-      return {
-        countMember: apiResult.includes.members.length,
-        countMessage: apiResult.includes.messages.length,
-        isContent: apiResult.includes.messages[0].content,
-        isLastMessage: apiResult.includes.messages[0].messageId,
-        isChannelId: apiResult.data.channel.channelId,
-        isOwner: apiResult.data.channel.userId,
-      };
-    case 'getListMessage':
-      return {
-        isLastMessage: apiResult.data[0].message.messageId,
-        isLastContent: apiResult.data[0].message.content,
-        isSender: apiResult.data[0].message.channelId,
-      };
+function getMappedData(functionName: string, apiResult: any, body: any): any {
+  const mapping = API_RESULT_MAPPINGS[functionName];
+  if (!mapping) throw new Error(`Unsupported function: ${functionName}`);
+  return Object.keys(mapping).reduce((acc, key) => {
+    const pathOrFn = mapping[key];
+    if (typeof pathOrFn === 'function') {
+      acc[key] = pathOrFn(apiResult, body);
+    } else {
+      acc[key] = pathOrFn.split('.').reduce((obj, pathPart) => {
+        const match = pathPart.match(/(\w+)\[(\d+)\]/);
+        return match ? obj?.[match[1]]?.[Number(match[2])] : obj?.[pathPart];
+      }, apiResult);
+    }
 
-    default:
-      throw new Error(`Unsupported function: ${functionName}`);
-  }
+    return acc;
+  }, {} as any);
 }
-export async function executeBeforeAllSteps(
-  steps: string[],
-  globalContext: any,
-) {
+
+export async function executeAllSteps(steps: string[], globalContext: any) {
   const results: StepResult[] = [];
 
   for (const step of steps) {
     try {
       const {
+        stepName,
         functionName,
         body: rawBody,
         header: rawHeader,
@@ -135,8 +128,8 @@ export async function executeBeforeAllSteps(
       const resolvedExpect = JSON.parse(
         resolveVariable(rawExpect, globalContext),
       );
-
       const result = await executeStep(
+        stepName,
         functionName,
         resolvedBody,
         resolvedHeader,
@@ -168,38 +161,21 @@ export function validateData(
 ): void {
   const errors: string[] = [];
 
-  const resolveValue = (value: any): any => {
-    if (typeof value === 'string') {
-      return value.replace(/{{([\w.\[\]\d]+)}}/g, (_, key) => {
-        const arrayMatch = key.match(/(\w+)\[(\d+)\]\.(\w+)/);
-        if (arrayMatch) {
-          const [_, step, index, field] = arrayMatch;
-          const users = context.getStepContext(step)?.users;
-          return users?.[parseInt(index)]?.[field] || '';
-        } else {
-          const [step, field] = key.split('.');
-          const contextValue = context.getStepContext(step);
-          if (contextValue?.users) return contextValue.users[0]?.[field] || '';
-          return contextValue?.[field] || '';
-        }
-      });
-    }
-    return value;
-  };
-
   for (const [key, expectedValue] of Object.entries(expect)) {
-    const resolvedExpected = resolveValue(expectedValue);
-    const actualValue = actual[key];
-    if (JSON.stringify(actualValue) !== JSON.stringify(resolvedExpected)) {
+    const resolvedExpected =
+      typeof expectedValue === 'string'
+        ? resolveVariable(expectedValue, context)
+        : expectedValue;
+
+    if (JSON.stringify(actual[key]) !== JSON.stringify(resolvedExpected)) {
       errors.push(
-        `[${key}] Expected: ${resolvedExpected}, Actual: ${actualValue}`,
+        `'${key}' Expected: ${resolvedExpected}, Actual: ${actual[key]}`,
       );
     }
   }
 
-  if (errors.length > 0) {
-    throw new Error(`Validation failed:\n${errors.join('\n')}`);
-  }
+  if (errors.length > 0)
+    throw new Error(`Validation failed: ${errors.join('\n')}`);
 }
 
 // export async function executeDelete(prefix, headerRequest) {
