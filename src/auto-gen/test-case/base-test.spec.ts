@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prettier/prettier */
 /* eslint-disable prefer-const */
-import { executeBeforeAllSteps } from '../functions';
+import { executeAllSteps } from '../functions';
 import { TestContext } from '../text-context';
 import path from 'path';
 import fs from 'fs';
@@ -18,20 +18,24 @@ let nextStep;
 
 beforeAll(async () => {
   globalContext = new TestContext();
-  const beforeStep = await executeBeforeAllSteps(
+  const beforeStep = await executeAllSteps(
     [
-      "mockUser(body: { prefix: 'duy12345',quantity: 1,badge: 0 }, expect: {})",
-      "createChannel(body: {name: 'channel 1', workspaceId: '0'}, header: {token: '{{mockUser.token}}'}, expect: {isOwner: '{{mockUser.userId}}' } )",
-      "getChannel(body: {workspaceId: '0', channelId: '{{createChannel.isChannelId}}'}, header: {token: '{{mockUser.token}}'}, expect: {countMember: 1, countMessage: 1, isChannelId: '{{createChannel.isChannelId}}',isLastMessage: '{{createChannel.messageId}}', isContent: '{{createChannel.isContent}}', isOwner: '{{mockUser.userId}}'})"
+     "mockUser(body: { prefix: 'duy12345',quantity: 2,badge: 0 }, expect: {})",
+    "createChannel(body: {name: 'channel 1', workspaceId: '0'}, header: {token: '{{mockUser[0].token}}'}, expect: {isOwner: '{{mockUser[0].userId}}' } )",
+    "getChannel_1(body: {workspaceId: '0', channelId: '{{createChannel.isChannelId}}'}, header: {token: '{{mockUser[0].token}}'}, expect: {countMember: 1, countMessage: 1, isChannelId: '{{createChannel.isChannelId}}',isLastMessage: '{{createChannel.messageId}}', isContent: '{{createChannel.isContent}}', isOwner: '{{mockUser[0].userId}}'})"
     ],
     globalContext
   );
   failedStep.push({
     error: beforeStep,
   });
+  if (beforeStep.some(step => !step.success)) {
+    throw new Error(`Setup failed: ${JSON.stringify(beforeStep)}`);
+  }
+ 
   headerRequest = {
     'Content-Type': 'application/json',
-    'x-session-token': '{{mockUser.token}}',
+    'x-session-token': '{{mockUser[0].token}}',
     'x-country-code': 'VN',
   };
 });
@@ -39,13 +43,12 @@ beforeAll(async () => {
 it('Test case # 43 with expect errors []', async () => {
   const payloadObj: any = {
     workspaceId: '0',
-    channelId: '{{getChannel.isChannelId}}',
+    channelId: '{{getChannel_1.isChannelId}}',
     content: 'test123123',
   };
 
   const resolvedPayload = resolveObject(payloadObj, globalContext);
   const resolvedHeader = resolveObject(headerRequest, globalContext);
-  console.log(resolvedHeader);
   const response = await axios.post(
     `${globalThis.url}/Message/SendMessage`,
     resolvedPayload,
@@ -66,18 +69,24 @@ it('Test case # 43 with expect errors []', async () => {
       content: response.content,
       channelId: response.channelId,
       senderId: response.userId,
+      abc: 1,
       expect: {},
     };
-    globalContext.setStepContext('sendMessage', sendMessageContext);
+    globalContext.setStepContext('sendMessage_1', sendMessageContext);
     nextStep = true;
   };
 });
 afterAll(async () => {
-
   if(nextStep === true){
-    const afterAllStep = await executeBeforeAllSteps(
-      [
-         "getListMessage(body: { workspaceId: '0', channelId: '{{sendMessage.channelId}}' }, header: {token: '{{mockUser.token}}' }, expect: {isLastMessage: '{{sendMessage.messageId}}', isLastContent: '{{sendMessage.content}}', isSender: '{{sendMessage.senderId}}' })"
+    const afterAllStep = await executeAllSteps(
+      [ 
+        "acceptChannel_1(body: {\"linkInvitation\": \"{{getChannel_1.invitationLink}}\"}, header: {token: '{{mockUser[1].token}}'}, expect: {countMember: 2, countMessage: 1, isChannelId: '{{createChannel.isChannelId}}', isContent: '%s joined this channel' })",
+        "getChannel_2(body: {workspaceId: '0', channelId: '{{createChannel.isChannelId}}'}, header: {token: '{{mockUser[0].token}}'}, expect: {countMember: 2, countMessage: 1, isChannelId: '{{createChannel.isChannelId}}',isLastMessage: '{{acceptChannel_1.isLastMessage}}', isContent: '{{acceptChannel_1.isContent}}', isOwner: '{{mockUser[0].userId}}'})",
+        "sendMessage_2(body: {workspaceId: '0', channelId: '{{createChannel.isChannelId}}', content: 'user send message'}, header: {token: '{{mockUser[1].token}}'}, expect: {})",
+        "getListMessage(body: { workspaceId: '0', channelId: '{{createChannel.isChannelId}}' }, header: {token: '{{mockUser[0].token}}' }, expect: {isLastMessage: '{{sendMessage_2.messageId}}', isLastContent: '{{sendMessage_2.content}}', isSender: '{{sendMessage_2.senderId}}' })",
+        "deleteMessageOnlyMe_1(body: {channelId: '{{createChannel.isChannelId}}', messageId: '{{sendMessage_1.messageId}}'}, header: {token: '{{mockUser[0].token}}'})",
+        "getMessage(body: {channelId: '{{createChannel.isChannelId}}', messageId: '{{sendMessage_1.messageId}}' }, header: {token: '{{mockUser[0].token}}' }, expect: {})",
+        "getListMessage(body: { workspaceId: '0', channelId: '{{createChannel.isChannelId}}' }, header: {token: '{{mockUser[0].token}}' }, expect: {})",
       ],
       globalContext
     );
@@ -96,7 +105,7 @@ afterAll(async () => {
     fs.mkdirSync(folderPathLogic, { recursive: true });
   }
   const resultContent = `
-=== Test Reports for DTO "send-message" ===
+=== Test Reports for Logic "send-message" ===
 Host: ${globalThis.url}
 Endpoint: /Message/SendMessage
 Step Log: ${failedStep
@@ -112,8 +121,5 @@ Step Log: ${failedStep
   const resultFilePath = path.join(folderPath, 'send-message.txt');
   fs.writeFileSync(resultFilePath, resultContent, 'utf-8');
   console.log(`Success: ${resultFilePath}`);
-  // await executeDelete(
-  //   ["deleteMessageForEveryone('0', {{channelId}}, {{messageId}})"],
-  //   headerRequest,
-  // );
+
 });
