@@ -1,37 +1,36 @@
 
-=== Test Reports for DTO "send-message" ===
+=== Test Reports for Logic "send-message" ===
 Host: https://api-sb11.rpc.ziichat.dev
 Endpoint: /Message/SendMessage
-Summary: 
-
-Total Tests: 0
-Passed Tests: 0
-Failed Tests: 0
-
 Step Log: Error: [
   {
     "success": true,
-    "functionName": "mockUser"
+    "stepName": "mockUser"
   },
   {
     "success": true,
-    "functionName": "createChannel"
+    "stepName": "createChannel"
   },
   {
-    "success": false,
-    "functionName": "getChannel",
-    "error": "ChannelId mismatch: Expected: \"01JPRPG1A8FF0X0QFP1Q33A2KC\" Received: \"01JPRPG1A8FF0X0QFP1Q33A2KC\"LastMessage mismatch: Expected: \"01JPRPG1GX65VBT9Y4D67TFDAV\" Received: \"01JPRPG1GX65VBT9Y4D67TFDAV\""
+    "success": true,
+    "stepName": "getChannel_1"
+  }
+]Error: [
+  {
+    "success": true,
+    "stepName": "acceptChannel_1"
+  },
+  {
+    "success": true,
+    "stepName": "getChannel_2"
+  },
+  {
+    "success": true,
+    "stepName": "sendMessage_2"
+  },
+  {
+    "success": true,
+    "stepName": "getListMessage"
   }
 ]
-
-
-Status Code:
-  200: 0
-  201: 0
-  400: 0
-  403: 0
-  404: 0
-  500: 0
-Uniques Error:
-  
-Failed Test Details:
+    
