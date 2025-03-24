@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-export async function mockUser(body) {
+export async function mockUser() {
   try {
+    const payload = { prefix: 'test12345', quantity: 2, badge: 0 };
     const response = await axios.post(
       `${globalThis.urls}/InternalFaker/MockUsers`,
       {
-        ...body,
-        quantity: body.quantity || 1,
+        ...payload,
       },
     );
 
@@ -16,10 +16,12 @@ export async function mockUser(body) {
         response: 'Invalid data mock user returned from API',
       };
     }
-    return {
-      response: response.data,
-    };
+    response.data.data.forEach((user: any, index: number) => {
+      globalThis.globalVar.set(`userId${index}`, user.userId);
+      globalThis.globalVar.set(`token${index}`, user.token);
+    });
+    return { response: response.data };
   } catch (error) {
-    return { response: false, result: error.response?.data?.error?.details };
+    return { ok: false, response: error.response?.data?.error?.details };
   }
 }

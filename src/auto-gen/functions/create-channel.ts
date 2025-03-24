@@ -1,15 +1,14 @@
 import axios from 'axios';
 
-export async function createChannel(header, body) {
+export async function createChannel() {
   try {
-    if (!header.token) {
-      return { error: 'Token not found to create channel' };
+    if (!globalThis.globalVar.get('token0')) {
+      return { ok: false, response: 'Token not found to create channel' };
     }
 
     const baseUrl = `${globalThis.urls}/Channel/CreateChannel`;
-    const payload = body;
-    const headers = header.token;
-
+    const payload = { workspaceId: '0', name: 'sb11_test' };
+    const headers = globalThis.globalVar.get('token0');
     const response = await axios.post(baseUrl, payload, {
       headers: { 'x-session-token': headers },
     });
