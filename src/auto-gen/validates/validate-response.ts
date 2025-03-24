@@ -75,11 +75,5 @@ export function validateResponses(
 
   const prototype = Object.getPrototypeOf(instance);
   validateObject(instance, prototype);
-
-  if (errors.length === 0) {
-    if (instance.data?.message?.messageId) {
-      globalThis.globalVar.set('messageId', instance.data.message.messageId);
-    }
-  }
   return errors;
 }
