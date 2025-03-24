@@ -17,7 +17,7 @@ export class TestContext {
 
 export interface StepResult {
   success: boolean;
-  functionName?: string;
+  stepName?: string;
   error?: any;
   context?: Record<string, any>;
 }
