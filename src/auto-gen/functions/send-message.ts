@@ -1,38 +1,33 @@
 import axios from 'axios';
 
-export async function sendMessage(
-  token: string,
-  workspaceIdField: string,
-  channelIdField: string,
-  contentField: string,
-  refField: string,
-) {
+export async function sendMessage(header, body) {
   try {
-    if (!token) {
-      throw new Error('token not found in global var');
+    if (!header.token) {
+      return { error: 'Token not found to send message' };
     }
-
     const baseUrl = `${globalThis.urls}/Message/SendMessage`;
     const payload = {
-      workspaceId: workspaceIdField,
-      channelId: channelIdField,
-      content: contentField,
-      ref: refField,
+      workspaceId: body.workspaceId,
+      channelId: body.channelId,
+      content: body.content,
     };
-    const headers = { 'x-session-token': token };
-
+    const headers = { 'x-session-token': header.token };
     const response = await axios.post(baseUrl, payload, { headers: headers });
-    if (response.data.data.message) {
-      const messageId = response.data.data.message.messageId;
-      const content = response.data.data.message.content;
-      globalThis.globalVar.set('messageId', messageId);
-      globalThis.globalVar.set('contentBefore', content);
+    if (!response.data || !response.data.data || !response.data.data.message) {
+      return {
+        ok: false,
+        response: 'Invalid data send message returned from API',
+      };
     } else {
-      throw new Error('invalid response send message api');
+      return { response: response.data };
     }
   } catch (error) {
-    console.error('error in send message:', error);
-
-    throw new Error('fail to send message');
+    return {
+      ok: false,
+      response:
+        error?.response?.data?.error?.details ||
+        error?.response?.data ||
+        'Unauthorized request',
+    };
   }
 }

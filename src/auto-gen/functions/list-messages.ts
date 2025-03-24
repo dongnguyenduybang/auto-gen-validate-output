@@ -12,7 +12,14 @@ export async function getListMessages(header, body) {
     };
 
     const response = await axios.get(baseUrl, { headers: headers });
-    return { response: response.data };
+    if (!response.data || !response.data.data) {
+      return {
+        ok: false,
+        response: 'Invalid data get list message returned from API',
+      };
+    } else {
+      return { response: response.data };
+    }
   } catch (error) {
     console.log(error.response.data);
     return {

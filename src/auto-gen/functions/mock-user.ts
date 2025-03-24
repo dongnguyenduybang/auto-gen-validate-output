@@ -2,20 +2,24 @@ import axios from 'axios';
 
 export async function mockUser(body) {
   try {
-    const baseUrl = `${globalThis.urls}/InternalFaker/MockUsers`;
-    const payload = body;
-    const response = await axios.post(baseUrl, payload);
-    if (
-      !response.data ||
-      !Array.isArray(response.data.data) ||
-      response.data.data.length === 0
-    ) {
-      return { error: 'No valid data returned from the server' };
-    }
+    const response = await axios.post(
+      `${globalThis.urls}/InternalFaker/MockUsers`,
+      {
+        ...body,
+        quantity: body.quantity || 1,
+      },
+    );
 
-    console.log(response);
-    return { response: response.data };
+    if (!response.data?.data?.length) {
+      return {
+        ok: false,
+        response: 'Invalid data mock user returned from API',
+      };
+    }
+    return {
+      response: response.data,
+    };
   } catch (error) {
-    return { ok: false, result: error.response.data.error.details };
+    return { response: false, result: error.response?.data?.error?.details };
   }
 }

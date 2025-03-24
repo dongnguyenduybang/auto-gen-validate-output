@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import axios from 'axios';
-export async function getChannel(header,body) {
+export async function getChannel(header, body) {
     try {
         if (!header.token) {
             return { error: 'Token not found to get channel' };
@@ -9,13 +9,20 @@ export async function getChannel(header,body) {
         const headers = { 'x-session-token': header.token };
         const response = await axios.get(baseUrl, { headers: headers });
         if (!response.data || !response.data.data || !response.data.data.channel) {
-            return { error: 'Invalid data get channel returned from API' };
+            return {
+                ok: false,
+                response: 'Invalid data get channel returned from API',
+              };
         } else {
             return { response: response.data };
         }
     } catch (error) {
-        
-        console.log(error.response.data);
-        return { ok: false,result: error?.response?.data?.error?.details || error?.response?.data || 'Default error message' };
+        return {
+            ok: false,
+            response:
+                error?.response?.data?.error?.details ||
+                error?.response?.data ||
+                'Unauthorized request',
+        };
     }
 }

@@ -2,7 +2,6 @@ import axios from 'axios';
 
 export async function createChannel(header, body) {
   try {
-    console.log(header);
     if (!header.token) {
       return { error: 'Token not found to create channel' };
     }
@@ -15,12 +14,20 @@ export async function createChannel(header, body) {
       headers: { 'x-session-token': headers },
     });
     if (!response.data || !response.data.data || !response.data.data.channel) {
-      return { error: 'Invalid data create channel returned from API' };
+      return {
+        ok: false,
+        response: 'Invalid data create channel returned from API',
+      };
     } else {
-      return { response: response.data };
+      return { ok: true, response: response.data };
     }
   } catch (error) {
-    console.log(error);
-    return { ok: false, result: error.response.data.error.details };
+    return {
+      ok: false,
+      response:
+        error?.response?.data?.error?.details ||
+        error?.response?.data ||
+        'Unauthorized request',
+    };
   }
 }
