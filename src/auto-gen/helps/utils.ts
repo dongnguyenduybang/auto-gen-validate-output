@@ -5,6 +5,7 @@ import 'reflect-metadata';
 import { AttachmentTypeEnum } from '../enums/attachment-type.enum';
 import { TestContext } from '../text-context';
 import { resolveVariable } from './get-resolve-variables';
+import { StepConfig } from '../decorator/request-decorator';
 
 function getFileNameWithoutExtension(filePath: string): string {
   const fileName = path.basename(filePath);
@@ -207,70 +208,6 @@ export function getTime() {
   return formattedDate;
 }
 
-export function classifyContent(content: string): AttachmentTypeEnum {
-  // Biểu thức chính quy để kiểm tra URL hợp lệ
-  const urlRegex = /^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/.*)?$/;
-
-  const attachmentTypes = {
-    [AttachmentTypeEnum.ATTACHMENT_TYPE_ENUM_PHOTO]: [
-      '.jpg',
-      '.jpeg',
-      '.png',
-      '.bmp',
-      '.webp',
-    ],
-    [AttachmentTypeEnum.ATTACHMENT_TYPE_ENUM_VIDEO]: [
-      '.mp4',
-      '.avi',
-      '.mov',
-      '.mkv',
-    ],
-    [AttachmentTypeEnum.ATTACHMENT_TYPE_ENUM_AUDIO]: [
-      '.mp3',
-      '.wav',
-      '.flac',
-      '.aac',
-    ],
-    [AttachmentTypeEnum.ATTACHMENT_TYPE_ENUM_STICKER]: ['.gif'],
-    [AttachmentTypeEnum.ATTACHMENT_TYPE_ENUM_FILE]: [
-      '.pdf',
-      '.doc',
-      '.docx',
-      '.xls',
-      '.xlsx',
-      '.ppt',
-      '.pptx',
-      '.zip',
-      '.rar',
-    ],
-  };
-
-  // Kiểm tra xem content có phải là URL hợp lệ không
-  if (!urlRegex.test(content)) {
-    // Nếu không phải URL, kiểm tra xem có phải là mention hay không
-    if (content.startsWith('@')) {
-      return AttachmentTypeEnum.ATTACHMENT_TYPE_ENUM_MENTION;
-    }
-
-    return AttachmentTypeEnum.ATTACHMENT_TYPE_ENUM_UNSPECIFIED;
-  }
-
-  // Lấy phần mở rộng của URL
-  const urlParts = content.split('.');
-  const lastPart = urlParts.pop()?.toLowerCase();
-  const extension = lastPart ? `.${lastPart}` : '';
-
-  // Kiểm tra từng loại nội dung dựa trên phần mở rộng
-  for (const [typeKey, extensions] of Object.entries(attachmentTypes)) {
-    if (extensions.includes(extension)) {
-      return parseInt(typeKey, 10) as AttachmentTypeEnum;
-    }
-  }
-
-  // Nếu URL không có phần mở rộng cụ thể, coi là liên kết thông thường
-  return AttachmentTypeEnum.ATTACHMENT_TYPE_ENUM_LINKS;
-}
-
 function dmsToDecimal(degrees, minutes, seconds) {
   return degrees + minutes / 60 + seconds / 3600;
 }
@@ -366,73 +303,29 @@ export const formatExpectErrors = (expects) => {
     .trim();
 };
 
-export function validateExpectations(
-  expectConfig: any,
-  context: TestContext,
-): string[] {
-  const errors: string[] = [];
-  const getChannelContext = context.getStepContext('getChannel');
+export function parseSaga(sagaClass: any): string[] {
+  console.log(sagaClass);
+  if (!sagaClass) throw new Error('Saga class is undefined');
 
-  if (expectConfig.countMember !== undefined) {
-    const expectedMemberCount = parseInt(expectConfig.countMember);
-    const actualMemberCount = getChannelContext.includes?.members?.length || 0;
-    if (actualMemberCount !== expectedMemberCount) {
-      errors.push(
-        `Member count mismatch. Expected: ${expectedMemberCount}, Actual: ${actualMemberCount}`,
-      );
+  const steps: string[] = [];
+
+  const metadataKeys = Reflect.getMetadataKeys(sagaClass);
+
+  metadataKeys.forEach((key: string) => {
+    if (key.startsWith('step_')) {
+      const config: StepConfig = Reflect.getMetadata(key, sagaClass);
+
+      const bodyStr = JSON.stringify(config.body).replace(/"(\w+)":/g, '$1:');
+      const headerStr = config.header
+        ? `, header: ${JSON.stringify(config.header).replace(/"(\w+)":/g, '$1:')}`
+        : '';
+      const expectStr = config.expect
+        ? `, expect: ${JSON.stringify(config.expect).replace(/"(\w+)":/g, '$1:')}`
+        : '';
+
+      steps.push(`${config.action}(body: ${bodyStr}${headerStr}${expectStr})`);
     }
-  }
+  });
 
-  if (expectConfig.countMessage !== undefined) {
-    const expectedMessageCount = parseInt(expectConfig.countMessage);
-    const actualMessageCount =
-      getChannelContext.includes?.messages?.length || 0;
-    if (actualMessageCount !== expectedMessageCount) {
-      errors.push(
-        `Message count mismatch: Expected: ${expectedMessageCount} Actual: ${actualMessageCount}`,
-      );
-    }
-  }
-
-  if (expectConfig.isContent !== undefined) {
-    const expectedContent = expectConfig.isContent;
-    const actualContent = getChannelContext.includes.messages[0]?.content;
-    if (actualContent !== expectedContent) {
-      errors.push(
-        `Content mismatch: Expected: "${expectedContent}" Actual: "${actualContent}"`,
-      );
-    }
-  }
-
-  if (expectConfig.isOwner !== undefined) {
-    const expectedOwner = expectConfig.isOwner;
-    const actualOwner = getChannelContext.channel.userId;
-    if (actualOwner !== expectedOwner) {
-      errors.push(
-        `OwnerId mismatch: Expected: "${expectedOwner}" Actual: "${actualOwner}"`,
-      );
-    }
-  }
-
-  if (expectConfig.isChannelId !== undefined) {
-    const expectedChannelId = expectConfig.isChannelId;
-    const actualChannelId = getChannelContext.channel.channelId;
-    if (actualChannelId === expectedChannelId) {
-      errors.push(
-        `ChannelId mismatch: Expected: "${expectedChannelId}" Actual: "${actualChannelId}"`,
-      );
-    }
-  }
-
-  if (expectConfig.isLastMessage !== undefined) {
-    const expectedLastMessage = expectConfig.isLastMessage;
-    const actualLastMessage = getChannelContext.includes.messages[0]?.messageId;
-    if (actualLastMessage === expectedLastMessage) {
-      errors.push(
-        `LastMessage mismatch: Expected: "${expectedLastMessage}" Actual: "${actualLastMessage}"`,
-      );
-    }
-  }
-
-  return errors;
+  return steps;
 }
