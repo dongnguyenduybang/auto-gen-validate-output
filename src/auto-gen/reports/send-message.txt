@@ -31,6 +31,10 @@ Step Log: Error: [
   {
     "success": true,
     "stepName": "getListMessage"
+  },
+  {
+    "success": false,
+    "error": "Invalid step format: deleteMessageOnlyMe_1(body: {channelId: '{{createChannel.isChannelId}}', messageId: '{{sendMessage_1.messageId}}'}, header: {token: '{{mockUser[0].token}}'})"
   }
 ]
     
