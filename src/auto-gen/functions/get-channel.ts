@@ -5,7 +5,7 @@ export async function getChannel(header, body) {
         if (!header.token) {
             return { error: 'Token not found to get channel' };
         }
-        const baseUrl = `${globalThis.urls}/ChannelView/GetChannel?workspaceId=${body.workspaceId}&channelId=${body.channelId}`;
+        const baseUrl = `${globalThis.urls}/ChannelView/GetChannel?workspaceId=0&channelId=${body.channelId}`;
         const headers = { 'x-session-token': header.token };
         const response = await axios.get(baseUrl, { headers: headers });
         if (!response.data || !response.data.data || !response.data.data.channel) {

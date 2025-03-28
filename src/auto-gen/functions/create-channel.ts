@@ -1,16 +1,17 @@
 import axios from 'axios';
+import { TestContext } from '../test-execute-step/text-context';
 
-export async function createChannel() {
+export async function createChannel(context: TestContext) {
   try {
-    if (!globalThis.globalVar.get('token0')) {
+    const token = context.getValue('token');
+    if (!token) {
       return { ok: false, response: 'Token not found to create channel' };
     }
 
     const baseUrl = `${globalThis.urls}/Channel/CreateChannel`;
     const payload = { workspaceId: '0', name: 'sb11_test' };
-    const headers = globalThis.globalVar.get('token0');
     const response = await axios.post(baseUrl, payload, {
-      headers: { 'x-session-token': headers },
+      headers: { 'x-session-token': token },
     });
     if (!response.data || !response.data.data || !response.data.data.channel) {
       return {
@@ -18,7 +19,7 @@ export async function createChannel() {
         response: 'Invalid data create channel returned from API',
       };
     } else {
-      return { ok: true, response: response.data };
+      return { response: response.data };
     }
   } catch (error) {
     return {

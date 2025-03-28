@@ -21,10 +21,9 @@ export async function getListMessages(header, body) {
       return { response: response.data };
     }
   } catch (error) {
-    console.log(error.response.data);
     return {
       ok: false,
-      result:
+      response:
         error?.response?.data?.error?.details ||
         error?.response?.data ||
         'Default error get message',
