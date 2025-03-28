@@ -1,7 +1,7 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import { formatExpectErrors, readJsonFile } from '../helps/utils';
-import { HeaderRequest } from '../dtos/send-message.request';
+import { HeaderRequest } from '../dtos/send-message/send-message.request';
 
 const outputDir = path.join(__dirname, '../test-case');
 
