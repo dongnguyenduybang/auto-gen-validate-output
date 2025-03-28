@@ -59,7 +59,8 @@ it('Test case # 43 with expect errors []', async () => {
     },
   );
   const validatedResponse = plainToClass(SendMessageResponse, response.data);
-  const result = validateResponses(validatedResponse, SendMessageResponse);
+  const result = await validateResponses(resolvedPayload, validatedResponse);
+  console.log(result)
   if (result.length !== 0) {
     
   } else {

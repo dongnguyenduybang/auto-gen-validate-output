@@ -2,6 +2,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { generateErrorCases } from '../helps/dto-helper';
 import { getAllFiles, groupFilesByName } from '../helps/utils';
+import { HeaderRequest } from '../dtos/send-message/send-message.request';
 
 export function genBodyPayload(dtoName) {
   const dtoFolderPath = path.join(__dirname, '../dtos', dtoName);
@@ -12,9 +13,9 @@ export function genBodyPayload(dtoName) {
   const files = getAllFiles(dtoFolderPath);
   const fileMap = groupFilesByName(files);
 
-  Object.entries(fileMap).forEach(([className, { dtoPath, requestPath }]) => {
-    if (!dtoPath || !requestPath) {
-      console.warn(`Missing .dto or .request.json for class: ${className}`);
+  Object.entries(fileMap).forEach(([className, { dtoPath }]) => {
+    if (!dtoPath) {
+      console.warn(`Missing .dto file for class: ${className}`);
       return;
     }
 
@@ -37,9 +38,9 @@ export function genBodyPayload(dtoName) {
         return;
       }
 
-      const rawData = fs.readFileSync(requestPath, 'utf-8');
-      const requestData = JSON.parse(rawData);
-      const payload = requestData.payload;
+      // Lấy payload trực tiếp từ HeaderRequest thay vì đọc từ file
+      const payload = HeaderRequest.payload;
+      console.log('Using payload from HeaderRequest:', payload);
 
       const result = generateErrorCases(dtoClass, payload);
       const testCasePayload = result.map(({ testcaseGen, expectedDetail }) => ({
