@@ -3,9 +3,11 @@ import * as path from 'path';
 import * as fs from 'fs';
 import 'reflect-metadata';
 import { AttachmentTypeEnum } from '../enums/attachment-type.enum';
-import { TestContext } from '../text-context';
+import { TestContext } from '../test-execute-step/text-context';
 import { resolveVariable } from './get-resolve-variables';
 import { StepConfig } from '../decorator/request-decorator';
+import { SendMessageResponse } from '../response/send-message.response';
+import { extractMessageData } from '../test-execute-step/test-executor';
 
 function getFileNameWithoutExtension(filePath: string): string {
   const fileName = path.basename(filePath);
@@ -241,7 +243,7 @@ export function resolveValidIf(
   payload: any,
 ): { isValid: boolean; errorMessage?: string } {
   const { condition, operators, condition2 } = validIfMetadata;
-
+  console.log(condition, operators, condition2)
   // Lấy giá trị của condition1
   let value1: any;
   if (obj.hasOwnProperty(condition)) {
@@ -303,29 +305,18 @@ export const formatExpectErrors = (expects) => {
     .trim();
 };
 
-export function parseSaga(sagaClass: any): string[] {
-  console.log(sagaClass);
-  if (!sagaClass) throw new Error('Saga class is undefined');
+export async function handleSendMessageResponse(
+  response: SendMessageResponse,
+  context: TestContext,
+): Promise<boolean> {
+  const messageData = extractMessageData(response);
 
-  const steps: string[] = [];
+  if (Object.keys(messageData).length === 0) {
+    console.error('No message data extracted');
+    return false;
+  }
+  context.mergeData(messageData);
+  context.debug();
 
-  const metadataKeys = Reflect.getMetadataKeys(sagaClass);
-
-  metadataKeys.forEach((key: string) => {
-    if (key.startsWith('step_')) {
-      const config: StepConfig = Reflect.getMetadata(key, sagaClass);
-
-      const bodyStr = JSON.stringify(config.body).replace(/"(\w+)":/g, '$1:');
-      const headerStr = config.header
-        ? `, header: ${JSON.stringify(config.header).replace(/"(\w+)":/g, '$1:')}`
-        : '';
-      const expectStr = config.expect
-        ? `, expect: ${JSON.stringify(config.expect).replace(/"(\w+)":/g, '$1:')}`
-        : '';
-
-      steps.push(`${config.action}(body: ${bodyStr}${headerStr}${expectStr})`);
-    }
-  });
-
-  return steps;
+  return true;
 }

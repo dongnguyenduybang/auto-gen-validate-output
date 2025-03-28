@@ -1,60 +1,58 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { initializeGlobalVariables } from '../global-var';
-import { TestContext } from '../text-context';
+import { TestContext } from '../test-execute-step/text-context';
 
 initializeGlobalVariables();
 
 // thay biến {{}} thành value trong global.var cho chuỗi
-export function resolveVariable(
-  template: string,
-  context: TestContext,
-): string {
-  const resolved = template.replace(/{{([\w.\[\]]+)}}/g, (_, key) => {
-    const parts = key.match(/(\w+)(_\d+)?\[(\d+)\]\.(\w+)|(\w+)(_\d+)?\.(\w+)/);
+export function resolveVariable(template: string, context: TestContext): any {
+  // Kiểm tra nếu template không phải string
+  if (typeof template !== 'string') return template;
 
-    if (!parts) return '';
-    if (parts[1]) {
-      const step = parts[1] + (parts[2] || '');
-      const index = Number(parts[3]);
-      const field = parts[4];
-      const users = context.getStepContext(step)?.users || [];
-      return users[index]?.[field] || '';
+  // Handle equal() functions
+  const equalMatch = template.match(/^equal\(([^)]+)\)$/);
+  if (equalMatch) {
+    const resolvedContent = resolveVariable(equalMatch[1], context);
+    return {
+      __type: 'equal',
+      value: resolvedContent,
+    };
+  }
+
+  // Handle template variables
+  const varMatch = template.match(/\{\{([^}]+)\}\}/g);
+  if (varMatch) {
+    let result = template;
+    for (const match of varMatch) {
+      const key = match.slice(2, -2).trim();
+      const value = context.getValue(key);
+      result = result.replace(match, value !== undefined ? value : '');
     }
 
-    const step = parts[5] + (parts[6] || '');
-    const field = parts[7];
-    return context.getStepContext(step)?.[field] || '';
-  });
-  try {
-    return JSON.stringify(JSON.parse(resolved), null, 2);
-  } catch {
-    return resolved
-      .replace(/'/g, '"')
-      .replace(/(\w+)(?=\s*:)/g, '"$1"')
-      .replace(/([{,]\s*)(\w+)(\s*:)/g, '$1"$2"$3');
+    if (result !== template && result.match(/\{\{/)) {
+      return resolveVariable(result, context);
+    }
+    return result;
   }
+  return template;
 }
-export function resolveObject(obj: any, context: any): any {
-  if (typeof obj !== 'object' || obj === null) {
+export function resolveObject(obj: any, context: TestContext): any {
+  try {
+    if (typeof obj === 'string') {
+      return resolveVariable(obj, context);
+    } else if (Array.isArray(obj)) {
+      return obj.map((item) => resolveObject(item, context));
+    } else if (obj && typeof obj === 'object') {
+      const result: any = {};
+      for (const key in obj) {
+        result[key] = resolveObject(obj[key], context);
+      }
+      return result;
+    }
+
+    return obj;
+  } catch (error) {
+    console.error('Error resolving object:', error);
     return obj;
   }
-
-  if (Array.isArray(obj)) {
-    return obj.map((item) => resolveObject(item, context));
-  }
-
-  const resolvedObj: any = {};
-  for (const key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      const value = obj[key];
-
-      if (typeof value === 'string' && value.includes('{{')) {
-        resolvedObj[key] = resolveVariable(value, context);
-      } else {
-        resolvedObj[key] = resolveObject(value, context);
-      }
-    }
-  }
-
-  return resolvedObj;
 }
