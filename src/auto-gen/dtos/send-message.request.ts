@@ -1,82 +1,149 @@
 /* eslint-disable prettier/prettier */
-import { Step } from '../decorator/request-decorator';
-/* eslint-disable prettier/prettier */
-export class BeforeSendMessage {
-    //step1
-    //default: prefix: 'test12345', quantity: 2, badge: 0 
-    @Step({
-        action: 'mockUser',
-        body: {},
-        header: {},
-        expect: {},
-    })
-    mockUserStep() { }
+export const BeforeSendMessage = {
+  steps: [
+    {
+      action: 'mockUser',
+    },
+    {
+      action: 'createChannel',
+    },
+    {
+      action: 'getChannel',
+      body: { channelId: '{{channelId}}' },
+      header: { token: '{{token}}' },
+      expect: {
+        ok: { operator: 'equal', expect: true },
+        data: {
+          channel: {
+            channelId: { operator: 'equal', expect: '{{channelId}}' },
+            userId: { operator: 'equal', expect: '{{userId}}' },
+            totalMembers: { operator: 'equal', expect: 1 },
+          },
+          channelMetadata: {
+            channelId: { operator: 'equal', expect: '{{channelId}}' },
+            lastMessageId: { operator: 'equal', expect: '{{lastMessageId}}' },
+          }
+        },
+        includes: {
+          users: [
+           
+          ],
+          channelMetadata: [],
+          messages: [
+            // {
+            //   content: 'equal(%s created this channel)',
+            //   messageId: 'equal({{messageId}})',
+            //   channelId: 'equal({{channelId}})',
+            //   userId: 'equal({{userId}})'
+            // }
+          ]
+        }
+      }
+    }
+  ]
+};
 
-    //step2
-    //default: createChannel => token = mockUser[0]
-    @Step({
-        action: 'createChannel',
-        body: {},
-        header: {},
-        expect: {},
-    })
-    createChannelStep() { }
 
-    //step3
-    @Step({
-        action: 'getChannel',
-        body: { workspaceId: '0', channelId: '{{createChannel.isChannelId}}' },
-        header: { token: '{{mockUser[0].token}}' },
-        expect: {
-            countMember: 1,
-            countMessage: 1,
-            isChannelId: '{{createChannel.isChannelId}}',
-            isLastMessage: '{{createChannel.messageId}}',
-            isContent: '{{createChannel.isContent}}',
-            isOwner: '{{mockUser[0].userId}}',
+export const SendMessageSaga = {
+  steps: [
+    {
+      action: 'acceptInvitation',
+      body: { linkInvitation: '{{invitationLink}}' },
+      header: { token: '{{token1}}' },
+      expect: {
+        ok: { operator: 'equal', expect: true },
+        data: {
+          channel: {
+            channelId: { operator: 'equal', expect: '{{channelId}}' },
+            userId: { operator: 'equal', expect: '{{userId}}' },
+            totalMembers: { operator: 'equal', expect: 2 },
+          },
+          channelMetadata: {
+            channelId: { operator: 'equal', expect: '{{channelId}}' },
+          }
         },
-    })
-    getChannelStep() { }
-    
-}
-export class SendMessageSaga {
-    //step5
-    @Step({
-        action: 'acceptInvitation',
-        body: { linkInvitation: '{{getChannel.invitationLink}}' },
-        header: { token: '{{mockUser[1].token}}' },
-        expect: {
-            countMember: 2,
-            countMessage: 1,
-            isChannelId: '{{createChannel.isChannelId}}',
-            isContent: '%s joined this channel',
+        includes: {
+          users: [
+            {
+              operator: 'include',
+              expect: ['{{userId}}', '{{userId1}}'],
+              element: 'all',
+              field: 'userId'
+            },
+            {
+              operator: 'equal',  
+              expect: 0,          
+              element: 'all',    
+              field: 'userType'  
+            },
+            {
+              operator: 'equal',  
+              expect: 1 ,          
+              element: 'all',    
+              field: 'profile.avatarType'  
+            }
+          ],
+          messages: [
+          ],
+          members: [{
+          }]
+        }
+      }
+    },
+    {
+      action: 'getChannel',
+      body: { channelId: '{{channelId}}' },
+      header: { token: '{{token}}' },
+      expect: {
+        ok: { operator: 'equal', expect: true },
+        data: {
+          channel: {
+            channelId: { operator: 'equal', expect: '{{channelId}}' },
+            userId: { operator: 'equal', expect: '{{userId}}' },
+            totalMembers: { operator: 'equal', expect: 2},
+          },
+          channelMetadata: {
+            channelId: { operator: 'equal', expect: '{{channelId}}' },
+          }
         },
-    })
-    acceptInvitationStep() { }
-    //step6
-    @Step({
-        action: 'getChannel',
-        body: { workspaceId: '0', channelId: '{{createChannel.isChannelId}}' },
-        header: { token: '{{mockUser[0].token}}' },
-        expect: {
-            countMember: 2,
-            countMessage: 1,
-            isChannelId: '{{createChannel.isChannelId}}',
-            isLastMessage: '{{acceptInvitation.isLastMessage}}',
-            isContent: '{{acceptInvitation.isContent}}',
-            isOwner: '{{mockUser[0].userId}}',
-        },
-    })
-    getChannelStep() { }
-    //step7
-    @Step({
-        action: 'sendMessage_2',
-        body: {
-            workspaceId: '0',
-            channelId: '{{createChannel.isChannelId}}',
-            content: 'user send message',
-        },
-        header: { token: '{{mockUser[1].token}}' },
-    })
-    sendMessageStep() { }
-}
+        includes: {
+          users: [
+            {
+              operator: 'include',
+              expect: ['{{userId}}', '{{userId1}}'],
+              element: 'all',
+              field: 'userId'
+            },
+            {
+              operator: 'equal',  
+              expect: 0,          
+              element: 'all',    
+              field: 'userType'  
+            },
+            {
+              operator: 'equal',  
+              expect: 1 ,          
+              element: 'all',    
+              field: 'profile.avatarType'  
+            }
+          ],
+          channelMetadata: [],
+          messages: [],
+          members: [
+
+          ]
+        }
+      }
+    },
+    // {
+    //   action: 'sendMessage',
+    //   body: {
+    //     workspaceId: '0',
+    //     channelId: '{{createChannel.isChannelId}}',
+    //     content: 'user send message',
+    //   },
+    //   header: { token: '{{mockUser[1].token}}' },
+    //   expect: {}
+    // },
+  ],
+};
