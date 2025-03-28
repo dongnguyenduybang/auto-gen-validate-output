@@ -70,7 +70,7 @@ async function executeStep(
             ResponseClass as ClassConstructor<BaseResponse>, 
             response.response
           );
-        const result = validateResponses(validatedResponse, ResponseClass);
+        const result = validateResponses(resolvedBody,validatedResponse);
         console.log(result)
 
         const extractedData = extractData(action, response, context);
