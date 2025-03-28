@@ -1,6 +1,7 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import { formatExpectErrors, readJsonFile } from '../helps/utils';
+import { HeaderRequest } from '../dtos/send-message.request';
 
 const outputDir = path.join(__dirname, '../test-case');
 
@@ -53,8 +54,7 @@ function genTestCase(
   outputDir: string,
 ) {
   const payloadData = readJsonFile(payloadPath);
-  const requestConfig = readJsonFile(requestPath);
-  const requestMethod = requestConfig.method.toLowerCase();
+  const requestMethod = HeaderRequest.method.toLowerCase();
   const classNameCapitalized = className
     .split('-')
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
@@ -65,9 +65,10 @@ function genTestCase(
     import { validateResponses } from '../validates/validate-response';
     import fs from 'fs';
     import path from 'path';
+    import { TestContext } from '../test-execute-step/text-context';
+    import { BeforeSendMessage, SendMessageSaga, HeaderRequest } from '../dtos/send-message.request';
     import { summarizeErrors, summaryFields, getTime } from '../helps/utils';
-    import { executeBeforeAllSteps, executeDelete } from '../functions';
-    import { resolveJsonVariables,resolveVariables } from '../helps/get-resolve-variables';
+    import { executeAllSteps, resolveVariables } from '../test-execute-step/test-executor';
     import { plainToClass } from 'class-transformer';
     import { ${classNameCapitalized}Response } from '../response/${className}.response';
     import axios from 'axios';
@@ -80,32 +81,29 @@ function genTestCase(
         let logicTests = [];
         let passedTests = 0
         let passed200 = 0
-        let headerRequest
+        let headerRequest, resolvedHeader,pathRequest,payloadRequest,methodRequest
         let testNumber
-        let resolvedData
+        let resolvedPayload
         let nextStep = false
+        let globalContext
         let failedStep = []
         let messageIdArray;
 
         beforeAll( async () => {
+          globalContext = new TestContext();
 
-          const beforeStep = await executeBeforeAllSteps(${JSON.stringify(requestConfig.beforeAll)})
-          const hasError = beforeStep.some((step) => step.error);
-          if (hasError) {
-            for (const step of beforeStep) {
-              if (step.ok !== 'true') {
-                failedStep.push({
-                  function: step.function,
-                  error: step.error,
-                });
-                throw new Error(\`Failed at step: \${step.function}. Error: \${step.error}\`);
-              }
-            }
-          }
-
-
-          headerRequest = ${JSON.stringify(requestConfig.headers)}
-         
+          const results = await executeAllSteps(BeforeSendMessage.steps, globalContext);
+          results.map((step, index) => {
+            failedStep.push({
+              success: step.success,
+              stepName: step.stepName,
+              error: step.error
+            });
+          })
+          headerRequest = ${JSON.stringify(HeaderRequest.headers, null, 2)}
+          payloadRequest = ${JSON.stringify(HeaderRequest.payload, null, 2)}
+          pathRequest = ${JSON.stringify(HeaderRequest.path, null, 2)}
+          methodRequest = ${JSON.stringify(HeaderRequest.method, null, 2)}
         })
 
         ${payloadData
@@ -115,38 +113,37 @@ function genTestCase(
             it('Test case # ${index + 1} with expect errors ${formatExpectErrors(testCase.expects)}', async () => {
              testNumber = ${index + 1};
               totalTests++;
-              const payloadObj = ${JSON.stringify(testCase.body)};
-              resolvedData = resolveJsonVariables(payloadObj);
+              const payloadObj = payloadRequest
+              resolvedPayload = resolveVariables(payloadObj,globalContext );
+              resolvedHeader = resolveVariables(headerRequest, globalContext);
               ${
                 isDeleteMethod
                   ? `
               const baseParams = new URLSearchParams({
-                workspaceId: resolvedData.workspaceId,
-                channelId: resolvedData.channelId
+                workspaceId: resolvedPayload.workspaceId,
+                channelId: resolvedPayload.channelId
               }).toString();
               
-              if (typeof resolvedData.messageIds !== 'string') {
-                messageIdArray = [resolvedData.messageIds.toString()];
+              if (typeof resolvedPayload.messageIds !== 'string') {
+                messageIdArray = [resolvedPayload.messageIds.toString()];
               } else {
-                messageIdArray = resolvedData.messageIds.split(',');
+                messageIdArray = resolvedPayload.messageIds.split(',');
               }
-              const requestUrl = \`\${globalThis.url}${requestConfig.path}?\${baseParams}&\${messageIdArray.map(id => \`messageIds=\${encodeURIComponent(id)}\`).join('&')}\`;
+              const requestUrl = \`\${globalThis.url}\${pathRequest}?\${baseParams}&\${messageIdArray.map(id => \`messageIds=\${encodeURIComponent(id)}\`).join('&')}\`;
             `
                   : `
-              const requestUrl = \`\${globalThis.url}${requestConfig.path}\`;
+              const requestUrl = \`\${globalThis.url}\${pathRequest}\`;
             `
               }
             try {
-            const response = await axios.${requestMethod}(requestUrl, resolvedData, {headers: resolveJsonVariables(headerRequest), validateStatus: () => true})
+            const response = await axios.${requestMethod}(requestUrl, resolvedPayload,{ headers: { ...resolvedHeader} , validateStatus: () => true})
             const data = response.data
               if(response.status === 201){
-              
                 if(data.data){
-
                   expect(data.ok).toEqual(true)
                   expect(data.data).not.toBeNull()
                   const dtoInstance = plainToClass(${classNameCapitalized}Response, data);
-                  const validateResponse = await validateResponses(response, resolvedData, dtoInstance);
+                  const validateResponse = await validateResponses(resolvedPayload, dtoInstance);
                   if (validateResponse.length !== 0) {
                   nextStep = false
                      logicTests.push({
@@ -154,7 +151,6 @@ function genTestCase(
                       errorLogic: validateResponse,
                     })
                   }else {
-
                     nextStep = true
                   }
                 }else {
@@ -168,7 +164,7 @@ function genTestCase(
                     expect(data.ok).toEqual(true)
                     expect(data.data).not.toBeNull()
                     const dtoInstance = plainToClass(${classNameCapitalized}Response, data);
-                    const validateResponse = await validateResponses(response, resolvedData, dtoInstance);
+                    const validateResponse = await validateResponses(resolvedPayload, dtoInstance);
                     if (validateResponse.length !== 0) {
                     nextStep = false
                       logicTests.push({
@@ -223,6 +219,18 @@ function genTestCase(
           .join('\n')}
 
       afterAll(async () => {
+        if(nextStep === true) {
+          const results = await executeAllSteps(SendMessageSaga.steps, globalContext);
+          console.log(results)
+          results.map((step, index) => {
+            failedStep.push({
+              success: step.success,
+              stepName: step.stepName,
+              error: step.error
+            });
+          })
+        }
+      
         const folderPath = path.join(__dirname, '../reports');
 
         const folderPathLogic = path.join(__dirname, '../reports/${className}');
@@ -236,7 +244,7 @@ function genTestCase(
         const resultContent = \`
 === Test Reports for DTO "${className}" ===
 Host: \${globalThis.url}
-Endpoint: ${requestConfig.path}
+Endpoint: pathRequest
 Summary: 
 Total Tests: \${totalTests}
 Passed Tests: \${passedTests}
@@ -272,7 +280,7 @@ Failed Test Details:
     const resultLogicError = \`
     === Test Reports Logic for DTO "${className}" ===
     Host: \${globalThis.url}
-    Endpoint: ${requestConfig.path}
+    Endpoint: pathRequest
     Error: 
     \${logicTests.map((logicCaseFail) => \`
     - Testcase #\${logicCaseFail.testcase}
@@ -284,7 +292,7 @@ const resultFilePathLogic = path.join(folderPathLogic, \`${className}.\${getTime
 fs.writeFileSync(resultFilePath, resultContent, 'utf-8');
 fs.writeFileSync(resultFilePathLogic, resultLogicError, 'utf-8');
 console.log(\`Success: \${resultFilePath}\`);
-await executeDelete(${JSON.stringify(requestConfig.afterAll)}, headerRequest)    
+
 });
                           
                     });
