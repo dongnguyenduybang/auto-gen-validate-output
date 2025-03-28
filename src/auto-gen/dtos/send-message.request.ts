@@ -1,4 +1,20 @@
 /* eslint-disable prettier/prettier */
+export const HeaderRequest =
+{
+  method: "POST",
+  path: "/Message/SendMessage",
+  headers: {
+    "Content-Type": "application/json",
+    "x-session-token": "{{token}}",
+    "x-country-code": "VN"
+  },
+  payload: {
+    "workspaceId": "0",
+    "channelId": "{{channelId}}",
+    "content": "test123123",
+    "ref": "ref"
+  }
+}
 export const BeforeSendMessage = {
   steps: [
     {
