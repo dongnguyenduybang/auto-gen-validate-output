@@ -8,6 +8,7 @@ export function validateResponses(
   payload: any,
   instance: any,
 ): string[] {
+  console.log(1)
   const errors: string[] = [];
   async function validateObject(
     obj: any,
@@ -58,6 +59,7 @@ export function validateResponses(
         continue;
       } else {
         if (decorators.validIf) {
+          console.log(valueResponse, decorators.validIf)
           const isValid = resolveValidIf(
             field,
             decorators.validIf,

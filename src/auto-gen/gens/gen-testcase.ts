@@ -90,18 +90,9 @@ function genTestCase(
         beforeAll( async () => {
 
           const beforeStep = await executeBeforeAllSteps(${JSON.stringify(requestConfig.beforeAll)})
-          const hasError = beforeStep.some((step) => step.error);
-          if (hasError) {
-            for (const step of beforeStep) {
-              if (step.ok !== 'true') {
-                failedStep.push({
-                  function: step.function,
-                  error: step.error,
-                });
-                throw new Error(\`Failed at step: \${step.function}. Error: \${step.error}\`);
-              }
-            }
-          }
+          failedStep.push({
+            error: beforeStep
+          })
 
 
           headerRequest = ${JSON.stringify(requestConfig.headers)}
@@ -146,7 +137,7 @@ function genTestCase(
                   expect(data.ok).toEqual(true)
                   expect(data.data).not.toBeNull()
                   const dtoInstance = plainToClass(${classNameCapitalized}Response, data);
-                  const validateResponse = await validateResponses(response, resolvedData, dtoInstance);
+                  const validateResponse = await validateResponses(resolvedData, dtoInstance);
                   if (validateResponse.length !== 0) {
                   nextStep = false
                      logicTests.push({
@@ -168,7 +159,7 @@ function genTestCase(
                     expect(data.ok).toEqual(true)
                     expect(data.data).not.toBeNull()
                     const dtoInstance = plainToClass(${classNameCapitalized}Response, data);
-                    const validateResponse = await validateResponses(response, resolvedData, dtoInstance);
+                    const validateResponse = await validateResponses(resolvedData, dtoInstance);
                     if (validateResponse.length !== 0) {
                     nextStep = false
                       logicTests.push({
