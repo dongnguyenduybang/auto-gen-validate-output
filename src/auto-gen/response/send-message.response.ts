@@ -99,7 +99,7 @@ export class SendMessageDataWrapper {
   message: SendMessageData;
 }
 
-export class SendMessageResponse extends BaseResponse {
+export class SendMessageResponse extends BaseResponse<SendMessageDataWrapper> {
   @ValidateNested({ each: true })
   @IsObject()
   @IsDefined()

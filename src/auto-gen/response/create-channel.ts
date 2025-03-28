@@ -17,10 +17,9 @@ import { BaseResponse, IncludesResponse } from './general-response';
 import { ChannelTypeEnum } from '../enums/channel-type.enum';
 
 export class Channel {
-    @IsString()
+    @IsNumber()
     @IsDefined()
-    @IsOptional()
-    @ValidIf('workspaceId', '===', 'payload.workspaceId')
+    @ValidIf('workspaceId', '>', 'payload.workspaceId')
     workspaceId?: string = undefined;
 
     @IsString()
@@ -116,7 +115,7 @@ export class CreateChannelDataWrapper {
     channelMetadata: ChannelMetadata;
 }
 
-export class CreateChannelResponse extends BaseResponse {
+export class CreateChannelResponse extends BaseResponse<CreateChannelDataWrapper> {
     @ValidateNested({ each: true })
     @IsObject()
     @IsDefined()

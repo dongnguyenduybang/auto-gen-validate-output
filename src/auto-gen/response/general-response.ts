@@ -451,7 +451,7 @@ export class DataResponse {
   channelMetadata?: ChannelMetadata;
 }
 
-export class BaseResponse {
+export class BaseResponse<T = any> {
   @IsBoolean()
   @IsDefined()
   ok?: boolean = undefined;
