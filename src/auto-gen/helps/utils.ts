@@ -190,7 +190,7 @@ export function groupFilesByName(
       const className = fileName.replace('.dto', '');
       fileMap[className] = fileMap[className] || {};
       fileMap[className].dtoPath = filePath;
-    } else if (filePath.endsWith('.request.json')) {
+    } else if (filePath.endsWith('.request.ts')) {
       const className = fileName.replace('.request', '');
       fileMap[className] = fileMap[className] || {};
       fileMap[className].requestPath = filePath;
