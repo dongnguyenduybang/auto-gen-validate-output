@@ -17,8 +17,6 @@ export async function mockChannel(
     const response = await axios.post(baseUrl, payload, {
       headers: globalThis.geoCode,
     });
-
-    console.log(response);
     // if (response.data && response.data.data.length > 0) {
 
     //   response.data.data.forEach((channel: any, index: number) => {

@@ -2,9 +2,9 @@ import { ValidateNested } from 'class-validator';
 import {  IsBoolean, IsString, IsNumber, IsDefined, IsArray } from '../decorator/dto-decorator';
 import { Type } from 'class-transformer';
 export class MockUserData {
-  @IsNumber()
+  @IsString()
   @IsDefined()
-  userId: number;
+  userId: string;
 
   @IsString()
   @IsDefined()
