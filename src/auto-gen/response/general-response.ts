@@ -10,6 +10,7 @@ import {
   IsOptional,
   ValidIf,
   IsEnum,
+  StartWith,
 } from '../decorator/dto-decorator';
 import { ChannelTypeEnum } from '../enums/channel-type.enum';
 import { MessageTypeEnum } from '../enums/message-type.enum';
@@ -20,6 +21,7 @@ import { DirectMessageStatusEnum } from '../enums/direct-message-status.enum';
 import { MediaPermissionSettingEnum } from '../enums/media-permission-setting.enum';
 import { ChannelPermissionEnum } from '../enums/channel-permissions.enum';
 import { UserStatusExpireAfterTimeEnum } from '../enums/user-status-expire-after-time.enum';
+import { EmbedTypeEnum } from '../enums/embed-type.enum';
 
 export class Reaction {
   @IsBoolean()
@@ -60,12 +62,10 @@ export class StatusData {
 export class Message {
   @IsString()
   @IsDefined()
-  @ValidIf('workspaceId', '===', 'workspaceId')
   workspaceId?: string = undefined;
 
   @IsString()
   @IsDefined()
-  @ValidIf('channelId', '===', 'response.channelId')
   channelId?: string = undefined;
 
   @IsString()
@@ -78,7 +78,6 @@ export class Message {
 
   @IsString()
   @IsDefined()
-  @ValidIf('content', '===', 'payload.content')
   content?: string = undefined;
 
   @IsEnum(MessageTypeEnum)
@@ -87,7 +86,6 @@ export class Message {
 
   @IsNumber()
   @IsDefined()
-  @ValidIf('messageStatus', '===', '1')
   messageStatus?: number = undefined;
 
   @IsString()
@@ -101,12 +99,12 @@ export class Message {
   reactions?: Reaction;
 
   @IsArray()
-  @IsOptional()
+  @IsDefined()
   mentions?: string[] = [];
 
-  @IsArray()
-  @IsOptional()
-  embed?: any[] = [];
+  @IsEnum(EmbedTypeEnum)
+  @IsDefined()
+  embed?: EmbedTypeEnum
 
   @IsEnum(AttachmentTypeEnum)
   @IsDefined()
@@ -118,12 +116,10 @@ export class Message {
 
   @IsNumber()
   @IsDefined()
-  @ValidIf('reportCount', '===', '0')
   reportCount?: number = undefined;
 
   @IsBoolean()
   @IsDefined()
-  @ValidIf('isReported', '===', 'false')
   isReported?: boolean = undefined;
 
   @IsNumber()
@@ -136,10 +132,11 @@ export class Message {
 
   @IsString()
   @IsDefined()
+  @StartWith('contentLocale', 'UN')
   contentLocale?: string = undefined;
 
   @IsArray()
-  @IsOptional()
+  @IsDefined()
   contentArguments?: string[] = [];
 
   @IsBoolean()
@@ -148,7 +145,6 @@ export class Message {
 
   @IsString()
   @IsDefined()
-  @ValidIf('createTime', '===', 'response.updateTime')
   createTime?: string = undefined;
 
   @IsString()
@@ -157,7 +153,6 @@ export class Message {
 
   @IsString()
   @IsDefined()
-  @ValidIf('ref', '===', 'payload.ref')
   @IsOptional()
   ref?: string = undefined;
 }
@@ -231,12 +226,10 @@ export class ChannelMetadata {
 
   @IsString()
   @IsDefined()
-  @ValidIf('workspaceId', '===', 'payload.workspaceId')
   workspaceId?: string = undefined;
 
   @IsString()
   @IsDefined()
-  @ValidIf('channelId', '===', 'response.channelId')
   channelId?: string = undefined;
 
   @IsString()
@@ -247,12 +240,10 @@ export class ChannelMetadata {
 export class Channel {
   @IsString()
   @IsDefined()
-  @ValidIf('workspaceId', '===', 'payload.workspaceId')
   workspaceId?: string = undefined;
 
   @IsString()
   @IsDefined()
-  @ValidIf('channelId', '===', 'response.channelId')
   channelId?: string = undefined;
 
   @IsString()
@@ -264,7 +255,6 @@ export class Channel {
   name?: string = undefined;
 
   @IsString()
-  @IsDefined()
   avatar?: string = undefined;
 
   @IsBoolean()
@@ -277,10 +267,10 @@ export class Channel {
 
   @IsString()
   @IsDefined()
+  @StartWith('invitationLink', 'httsps://zii.cha')
   invitationLink?: string = undefined;
 
   @IsString()
-  @IsDefined()
   originalAvatar?: string = undefined;
 
   @IsNumber()
@@ -288,7 +278,6 @@ export class Channel {
   totalMembers?: number = undefined;
 
   @IsEnum(DirectMessageStatusEnum)
-  @IsDefined()
   dmStatus?: DirectMessageStatusEnum;
 
   @ValidateNested({ each: true })
@@ -302,16 +291,13 @@ export class Channel {
   participantIds?: string[] = [];
 
   @IsString()
-  @IsDefined()
   rejectTime?: string = undefined;
 
   @IsString()
-  @IsDefined()
   acceptTime?: string = undefined;
 
   @IsString()
   @IsDefined()
-  @ValidIf('createTime', '<', 'response.updateTime')
   createTime?: string = undefined;
 
   @IsString()
@@ -330,7 +316,6 @@ export class User {
 
   @IsString()
   @IsDefined()
-  @ValidIf('createTime', '===', 'response.updateTime')
   createTime?: string = undefined;
 
   @IsString()
@@ -351,24 +336,22 @@ export class User {
   @IsObject()
   @IsDefined()
   @Type(() => PresenceData)
-  presenceData: PresenceData;
+  presenceData?: PresenceData;
 
   @ValidateNested({ each: true })
   @IsObject()
   @IsDefined()
   @Type(() => StatusData)
-  statusData: StatusData;
+  statusData?: StatusData;
 }
 
 export class Member {
   @IsString()
   @IsDefined()
-  @ValidIf('workspaceId', '===', 'payload.workspaceId')
   workspaceId?: string = undefined;
 
   @IsString()
   @IsDefined()
-  @ValidIf('channelId', '===', 'response.channelId')
   channelId?: string = undefined;
 
   @IsString()
@@ -391,7 +374,6 @@ export class Member {
 
   @IsString()
   @IsDefined()
-  @ValidIf('createTime', '===', 'response.updateTime')
   createTime?: string = undefined;
 
   @IsString()
@@ -451,7 +433,7 @@ export class DataResponse {
   channelMetadata?: ChannelMetadata;
 }
 
-export class BaseResponse<T = any> {
+export class BaseResponse<T = any>{
   @IsBoolean()
   @IsDefined()
   ok?: boolean = undefined;
@@ -459,8 +441,8 @@ export class BaseResponse<T = any> {
   @ValidateNested({ each: true })
   @IsObject()
   @IsDefined()
-  @Type(() => DataResponse)
-  data?: DataResponse;
+  @Type(() => Object)
+  data?: T;
 
   @ValidateNested({ each: true })
   @IsObject()

@@ -1,114 +1,92 @@
+// send-message.response.ts
 import { ValidateNested } from 'class-validator';
-import { Type } from 'class-transformer';
+import { Exclude, Type } from 'class-transformer';
 import {
+  IsArray,
   IsDefined,
-  IsBoolean,
-  IsString,
-  IsNumber,
-  IsObject,
   IsEnum,
   IsOptional,
+  IsString,
   ValidIf,
 } from '../decorator/dto-decorator';
-import { BaseResponse, IncludesResponse } from './general-response';
-import { MessageTypeEnum } from '../enums/message-type.enum';
-import { MessageStatusEnum } from '../enums/message-status.enum';
-import { AttachmentTypeEnum } from '../enums/attachment-type.enum';
+import {
+  BaseResponse,
+  Channel as GeneralChannel,
+  IncludesResponse as GeneralIncludesResponse,
+  Message as GeneralMessage,
+  User as GeneralUser,
+  DataResponse,
+  StatusData,
+  Reaction,
+  Message
+} from './general-response';
+import { DirectMessageStatusEnum } from '../enums/direct-message-status.enum';
+import { EmbedTypeEnum } from '../enums/embed-type.enum';
+import { ChannelTypeEnum } from '../enums/channel-type.enum';
 
-export class SendMessageData {
-  @IsString()
-  @IsDefined()
+// custom Message
+export class Channel extends GeneralChannel {
+  @Exclude()
   @IsOptional()
-  @ValidIf('workspaceId', '===', 'payload.workspaceId')
-  workspaceId?: string = undefined;
+  override avatar?: string;
 
-  @IsString()
-  @IsDefined()
-  @ValidIf('channelId', '===', 'payload.channelId')
-  channelId?: string = undefined;
-
-  @IsString()
-  @IsDefined()
-  messageId?: string = undefined;
-
-  @IsString()
-  @IsDefined()
-  userId?: string = undefined;
-
-  @IsString()
-  @IsDefined()
-  @ValidIf('content', '===', 'payload.content')
-  content?: string = undefined;
-
-  @IsEnum(MessageTypeEnum)
-  @IsDefined()
-  messageType?: MessageTypeEnum;
-
-  @IsEnum(MessageStatusEnum)
-  @IsDefined()
-  messageStatus?: MessageStatusEnum;
-
-  @IsEnum(AttachmentTypeEnum)
-  @IsDefined()
-  attachmentType?: AttachmentTypeEnum;
-
-  @IsBoolean()
-  @IsDefined()
-  isThread?: boolean = undefined;
-
-  @IsNumber()
-  @IsDefined()
-  reportCount?: number = undefined;
-
-  @IsBoolean()
-  @IsDefined()
-  isReported?: boolean = undefined;
-
-  @IsNumber()
-  @IsDefined()
-  attachmentCount?: number = undefined;
-
-  @IsString()
-  @IsDefined()
-  contentLocale?: string = undefined;
-
-  @IsBoolean()
-  @IsDefined()
-  isPinned?: boolean = undefined;
-
-  @IsString()
-  @IsDefined()
-  @ValidIf('createTime', '===', 'response.updateTime')
-  createTime?: string = undefined;
-
-  @IsString()
-  @IsDefined()
-  updateTime?: string = undefined;
-
-  @IsString()
-  @IsDefined()
+  @Exclude()
   @IsOptional()
-  ref?: string = undefined;
+  override originalAvatar?: string;
+
+  @Exclude()
+  @IsOptional()
+  override rejectTime?: string;
+
+  @Exclude()
+  @IsOptional()
+  override acceptTime?: string;
+
+  @Exclude()
+  @IsOptional()
+  override dmStatus?: DirectMessageStatusEnum;
+
+  @Exclude()
+  @IsOptional()
+  override pinnedMessage?: Message;
+
+  @Exclude()
+  @IsOptional()
+  override type?: ChannelTypeEnum;
 }
 
-export class SendMessageDataWrapper {
-  @ValidateNested({ each: true })
-  @IsObject()
-  @IsDefined()
-  @Type(() => SendMessageData)
-  message: SendMessageData;
+// custom User
+export class User extends GeneralUser {
+  @Exclude()
+  override statusData?: StatusData;
+
 }
 
-export class SendMessageResponse extends BaseResponse<SendMessageDataWrapper> {
+// custom includes
+export class IncludesResponse extends GeneralIncludesResponse {
   @ValidateNested({ each: true })
-  @IsObject()
-  @IsDefined()
+  @Type(() => User)
+  override users: User[];
+
+  @ValidateNested({ each: true })
+  @Type(() => Channel)
+  override channels: Channel[];
+}
+
+// data wrapper
+export class SendMessageDataWrapper extends DataResponse {
+  @ValidateNested()
+  @Type(() => Message)
+  message?: Message;
+}
+
+// Main Response
+export class SendMessageResponse extends BaseResponse<SendMessageDataWrapper>{
+  @ValidateNested()
   @Type(() => SendMessageDataWrapper)
   data: SendMessageDataWrapper;
 
-  @ValidateNested({ each: true })
-  @IsObject()
-  @IsDefined()
+  @ValidateNested()
   @Type(() => IncludesResponse)
   includes: IncludesResponse;
 
@@ -116,20 +94,13 @@ export class SendMessageResponse extends BaseResponse<SendMessageDataWrapper> {
     super();
 
     if (this.includes) {
-      const { users, members, channels, channelMetadata } = this.includes;
-
       this.includes = {
-        users,
-        members,
-        channels,
-        channelMetadata,
-        messages: [],
-      } as IncludesResponse;
-    }
-
-    if (this.data) {
-      const { message } = this.data;
-      this.data = { message } as SendMessageDataWrapper;
+        users: this.includes.users || [],
+        channels: this.includes.channels || [],
+        members: this.includes.members || [],
+        channelMetadata: this.includes.channelMetadata || [],
+        messages: []
+      };
     }
   }
 }

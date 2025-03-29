@@ -1,151 +1,112 @@
-/* eslint-disable prettier/prettier */
 import { ValidateNested } from 'class-validator';
+import { Exclude, Type } from 'class-transformer';
 import {
-    IsBoolean,
-    IsDefined,
-    IsEnum,
-    IsNumber,
-    IsObject,
-    IsOptional,
-    IsString,
-    ValidIf,
+  IsString,
+  ValidIf,
 } from '../decorator/dto-decorator';
-import { ChannelPermissionEnum } from '../enums/channel-permissions.enum';
-import { MediaPermissionSettingEnum } from '../enums/media-permission-setting.enum';
-import { Type } from 'class-transformer';
-import { BaseResponse, IncludesResponse } from './general-response';
-import { ChannelTypeEnum } from '../enums/channel-type.enum';
+import {
+  BaseResponse,
+  Channel as GeneralChannel,
+  ChannelMetadata as GeneralMetadata,
+  IncludesResponse as GeneralIncludes,
+  Message as GeneralMessage,
+} from './general-response';
 
-export class Channel {
-    @IsNumber()
-    @IsDefined()
-    @ValidIf('workspaceId', '>', 'payload.workspaceId')
-    workspaceId?: string = undefined;
+// Custom Channel
+export class Channel extends GeneralChannel {
+  @Exclude()
+  avatar?: string;
 
-    @IsString()
-    @IsDefined()
-    @ValidIf('channelId', '===', 'payload.channelId')
-    channelId?: string = undefined;
+  @Exclude()
+  originalAvatar?: string;
 
-    @IsString()
-    @IsDefined()
-    userId?: string = undefined;
+  @Exclude()
+  pinnedMessage?: any;
 
-    @IsString()
-    @IsDefined()
-    name?: string = undefined;
+  @Exclude()
+  dmStatus?: any;
 
-    @IsBoolean()
-    @IsDefined()
-    isPrivate?: boolean = undefined;
+  @Exclude()
+  rejectTime?: string;
 
-    @IsString()
-    @IsDefined()
-    avatar?: string = undefined;
+  @Exclude()
+  acceptTime?: string;
 
-    @IsString()
-    @IsDefined()
-    originalAvatar?: string = undefined;
+  // Custom validations
+  @IsString()
+  @ValidIf('workspaceId', '===', '0')
+  override workspaceId?: string;
 
-    @IsEnum(ChannelTypeEnum)
-    @IsDefined()
-    type?: ChannelTypeEnum;
-
-    @IsString()
-    @IsDefined()
-    invitationLink?: string = undefined;
-
-    @IsNumber()
-    @IsDefined()
-    totalMembers?: number = undefined;
-
-    @IsString()
-    @IsDefined()
-    @ValidIf('createTime', '<', 'response.updateTime')
-    createTime?: string = undefined;
-
-    @IsString()
-    @IsDefined()
-    updateTime?: string = undefined;
+  @IsString()
+  @ValidIf('createTime', '<', 'response.updateTime')
+  override createTime?: string;
 }
 
-export class ChannelMetadata {
-    @IsNumber()
-    @IsDefined()
-    unreadCount?: number = undefined;
+// Custom Channel Metadata
+export class ChannelMetadata extends GeneralMetadata {
+  @Exclude()
+  dmId?: string;
 
-    @IsString()
-    @IsDefined()
-    lastMessageId?: string = undefined;
+  @Exclude()
+  deleteTime?: string;
 
-    @IsBoolean()
-    @IsDefined()
-    notificationStatus?: boolean = undefined;
-
-    @IsEnum(MediaPermissionSettingEnum)
-    @IsDefined()
-    mediaPermissionSetting?: MediaPermissionSettingEnum;
-
-    @IsEnum(ChannelPermissionEnum)
-    @IsDefined()
-    permissions?: ChannelPermissionEnum;
-
-    @IsString()
-    @IsDefined()
-    @ValidIf('workspaceId', '===', 'payload.workspaceId')
-    workspaceId?: string = undefined;
-
-    @IsString()
-    @IsDefined()
-    @ValidIf('channelId', '===', 'response.channelId')
-    channelId?: string = undefined;
+  // Custom validations
+  @IsString()
+  @ValidIf('channelId', '===', 'response.channelId')
+  override channelId?: string;
 }
 
+// Custom Includes
+export class IncludesResponse extends GeneralIncludes {
+  @ValidateNested({ each: true })
+  @Type(() => Channel)
+  override channels: Channel[];
+
+  @ValidateNested({ each: true })
+  @Type(() => GeneralMessage)
+  override messages: GeneralMessage[];
+}
+
+// Data Wrapper
 export class CreateChannelDataWrapper {
-    @ValidateNested({ each: true })
-    @IsObject()
-    @IsDefined()
-    @Type(() => Channel)
-    channel: Channel;
+  @ValidateNested()
+  @Type(() => Channel)
+  channel: Channel;
 
-    @ValidateNested({ each: true })
-    @IsObject()
-    @IsDefined()
-    @Type(() => ChannelMetadata)
-    channelMetadata: ChannelMetadata;
+  @ValidateNested()
+  @Type(() => ChannelMetadata)
+  channelMetadata: ChannelMetadata;
 }
 
-export class CreateChannelResponse extends BaseResponse<CreateChannelDataWrapper> {
-    @ValidateNested({ each: true })
-    @IsObject()
-    @IsDefined()
-    @Type(() => CreateChannelDataWrapper)
-    data: CreateChannelDataWrapper;
+// Main Response
+export class CreateChannelResponse extends BaseResponse {
+  @ValidateNested()
+  @Type(() => CreateChannelDataWrapper)
+  data: CreateChannelDataWrapper;
 
-    @ValidateNested({ each: true })
-    @IsObject()
-    @IsDefined()
-    @Type(() => IncludesResponse)
-    includes: IncludesResponse;
+  @ValidateNested()
+  @Type(() => IncludesResponse)
+  includes: IncludesResponse;
 
-    constructor() {
-        super();
-
-        if (this.includes) {
-            const { users, members, messages, channelMetadata } = this.includes;
-            this.includes = {
-                users,
-                members,
-                channels: [],
-                channelMetadata,
-                messages
-            } as IncludesResponse;
-        }
-
-        if (this.data) {
-            const { channel, channelMetadata } = this.data;
-            this.data = { channel } as CreateChannelDataWrapper;
-            this.data = { channelMetadata } as CreateChannelDataWrapper;
-        }
+  constructor() {
+    super();
+    
+    if (this.data?.channel) {
+      this.data.channel = Object.assign(new Channel(), this.data.channel);
     }
+    
+    if (this.data?.channelMetadata) {
+      this.data.channelMetadata = Object.assign(new ChannelMetadata(), this.data.channelMetadata);
+    }
+
+    if (this.includes) {
+      this.includes = {
+        users: this.includes.users || [],
+        channels: this.includes.channels?.map(c => Object.assign(new Channel(), c)) || [],
+        members: this.includes.members || [],
+        channelMetadata: this.includes.channelMetadata || [],
+        messages: this.includes.messages || []
+      };
+    }
+  }
 }
