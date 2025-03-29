@@ -1,6 +1,8 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import { formatExpectErrors, readJsonFile } from '../helps/utils';
+import { HeaderRequest } from '../dtos/send-message/send-message.request';
+
 
 const outputDir = path.join(__dirname, '../test-case');
 
@@ -31,7 +33,7 @@ function pairFiles(
       const className = fileName.replace('.dto', '');
       fileMap[className] = fileMap[className] || {};
       fileMap[className].dtoPath = filePath;
-    } else if (filePath.endsWith('.request.json')) {
+    } else if (filePath.endsWith('.request.ts')) {
       const className = fileName.replace('.request', '');
       fileMap[className] = fileMap[className] || {};
       fileMap[className].requestPath = filePath;
@@ -65,8 +67,8 @@ function genTestCase(
     import fs from 'fs';
     import path from 'path';
     import { TestContext } from '../test-execute-step/text-context';
-    import { BeforeSendMessage, SendMessageSaga, HeaderRequest } from '../dtos/send-message.request';
-    import { summarizeErrors, summaryFields, getTime } from '../helps/utils';
+    import { Before${classNameCapitalized}, ${classNameCapitalized}Saga, HeaderRequest } from '../dtos/${className}/${className}.request';
+    import { summarizeErrors, summaryFields, getTime, handleSendMessageResponse } from '../helps/utils';
     import { executeAllSteps, resolveVariables } from '../test-execute-step/test-executor';
     import { plainToClass } from 'class-transformer';
     import { ${classNameCapitalized}Response } from '../response/${className}.response';
@@ -78,12 +80,12 @@ function genTestCase(
         let passedLogic = 0;
         let failedTests = [];
         let logicTests = [];
-        let passedTests = 0
+        let passedDTO = 0
         let passed200 = 0
         let headerRequest, resolvedHeader,pathRequest,payloadRequest,methodRequest
         let testNumber
         let resolvedPayload
-        let nextStep = false
+        const testResults = [];
         let globalContext
         let failedStep = []
         let messageIdArray;
@@ -91,23 +93,18 @@ function genTestCase(
         beforeAll( async () => {
           globalContext = new TestContext();
 
-          const beforeStep = await executeBeforeAllSteps(${JSON.stringify(requestConfig.beforeAll)})
-          const hasError = beforeStep.some((step) => step.error);
-          if (hasError) {
-            for (const step of beforeStep) {
-              if (step.ok !== 'true') {
-                failedStep.push({
-                  function: step.function,
-                  error: step.error,
-                });
-                throw new Error(\`Failed at step: \${step.function}. Error: \${step.error}\`);
-              }
-            }
-          }
-
-
-          headerRequest = ${JSON.stringify(requestConfig.headers)}
-         
+          const results = await executeAllSteps(Before${classNameCapitalized}.steps, globalContext);
+          results.map((step, index) => {
+            failedStep.push({
+              success: step.success,
+              stepName: step.stepName,
+              error: step.error
+            });
+          })
+          headerRequest = ${JSON.stringify(HeaderRequest.headers, null, 2)}
+          payloadRequest = ${JSON.stringify(HeaderRequest.payload, null, 2)}
+          pathRequest = ${JSON.stringify(HeaderRequest.path, null, 2)}
+          methodRequest = ${JSON.stringify(HeaderRequest.method, null, 2)}
         })
 
         ${payloadData
@@ -116,8 +113,12 @@ function genTestCase(
            
             it('Test case # ${index + 1} with expect errors ${formatExpectErrors(testCase.expects)}', async () => {
              testNumber = ${index + 1};
+              const testResult = { 
+                testNumber: testNumber,
+                nextStep: false,
+            };
               totalTests++;
-              const payloadObj = payloadRequest
+              const payloadObj = ${JSON.stringify(testCase.body)};
               resolvedPayload = resolveVariables(payloadObj,globalContext );
               resolvedHeader = resolveVariables(headerRequest, globalContext);
               ${
@@ -143,45 +144,51 @@ function genTestCase(
             const response = await axios.${requestMethod}(requestUrl, resolvedPayload,{ headers: { ...resolvedHeader} , validateStatus: () => true})
             const data = response.data
               if(response.status === 201){
+              passedDTO++
                 if(data.data){
                   expect(data.ok).toEqual(true)
                   expect(data.data).not.toBeNull()
                   const dtoInstance = plainToClass(${classNameCapitalized}Response, data);
-                  const validateResponse = await validateResponses(response, resolvedData, dtoInstance);
+                  const validateResponse = await validateResponses(resolvedPayload, dtoInstance);
                   if (validateResponse.length !== 0) {
-                  nextStep = false
+                  testResult.nextStep = false;
                      logicTests.push({
                       testcase:testNumber,
                       errorLogic: validateResponse,
                     })
                   }else {
-                    nextStep = true
+                   const response = dtoInstance
+                    const handleSendMessage = await handleSendMessageResponse(response, globalContext);
+                    if(handleSendMessage === true){
+                      testResult.nextStep = true;
+                    }
                   }
                 }else {
 
-                  nextStep = true
+                  testResult.nextStep = true;
                 }
 
               }else if(response.status === 200){
+                passedDTO++
                 if(data.data){
 
                     expect(data.ok).toEqual(true)
                     expect(data.data).not.toBeNull()
                     const dtoInstance = plainToClass(${classNameCapitalized}Response, data);
-                    const validateResponse = await validateResponses(response, resolvedData, dtoInstance);
+                    const validateResponse = await validateResponses(resolvedPayload, dtoInstance);
                     if (validateResponse.length !== 0) {
-                    nextStep = false
+                  testResult.nextStep = false;
                       logicTests.push({
                         testcase:testNumber,
                         errorLogic: validateResponse,
                       })
                     }else {
 
-                      nextStep = true
+                  testResult.nextStep = true;
                     }
                   }else {
 
-                    nextStep = true
+                  testResult.nextStep = true;
                   } 
               }else if (response.status === 400){
                  const expectJson =  ${JSON.stringify(testCase.expects)}.sort()
@@ -193,11 +200,10 @@ function genTestCase(
                     expect(data.ok).toEqual(false);
                     expect(data.data).toEqual(null);
                     expect(expectJson).toEqual(softExpectDetails);
-                    passedTests++
-                    nextStep = false
+                  testResult.nextStep = false;
                   } catch (error) {
                     const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
-                    nextStep = false
+                  testResult.nextStep = false;
                     failedTests.push({
                       testcase: testNumber,
                       code: 400,
@@ -211,96 +217,58 @@ function genTestCase(
                   const expectDetails = response.data
 
                   expect(expectDetails).toEqual(expectJson.join(" "))
-                  passedTests++
-                  nextStep = false
+                  testResult.nextStep = false;
                 
                 }
             }catch (error){
               console.log(error)
-            }
+            } finally {
+              testResults.push(testResult);
+             }
             });`,
           )
           .join('\n')}
 
       afterAll(async () => {
-        if(nextStep === true) {
-          const results = await executeAllSteps(SendMessageSaga.steps, globalContext);
-          console.log(results)
-          results.map((step, index) => {
-            failedStep.push({
-              success: step.success,
-              stepName: step.stepName,
-              error: step.error
-            });
-          })
+      for (const result of testResults) {
+                if (result.nextStep) {
+                    const results = await executeAllSteps(${classNameCapitalized}Saga.steps, globalContext);
+                    results.forEach((step) => {
+                        failedStep.push({
+                            success: step.success,
+                            stepName: step.stepName,
+                            error: step.error
+                        });
+                    });
+                }
         }
       
-        const folderPath = path.join(__dirname, '../reports');
-
-        const folderPathLogic = path.join(__dirname, '../reports/${className}');
+        const folderPath = path.join(__dirname, '../reports/${className}');
         if (!fs.existsSync(folderPath)) {
           fs.mkdirSync(folderPath, { recursive: true });
         }
-        if (!fs.existsSync(folderPathLogic)) {
-          fs.mkdirSync(folderPathLogic, { recursive: true });
-        }
+        const classNames = \`${className}\`
         const summary = summarizeErrors(failedTests, totalTests, passedLogic, passed200);
-        const resultContent = \`
-=== Test Reports for DTO "${className}" ===
-Host: \${globalThis.url}
-Endpoint: pathRequest
-Summary: 
-Total Tests: \${totalTests}
-Passed Tests: \${passedTests}
-Failed Tests: \${failedTests.length}
-
-Step Log: \${failedStep
-      .map(
-        (failStep) => \`- Function: \${failStep.function || "''" }
-        Detail: \${failStep.error ? JSON.stringify(failStep.error) : "''"}\`
-      ).join('')}
-
-Status Code:
-  200: \${summary.statusCodes[200] || 0}
-  201: \${summary.statusCodes[201] || 0}
-  400: \${summary.statusCodes[400] || 0}
-  403: \${summary.statusCodes[403] || 0}
-  404: \${summary.statusCodes[404] || 0}
-  500: \${summary.statusCodes[500] || 0}
-Uniques Error:
-  \${Array.from(summary.uniqueErrors.entries())
-          .map(([error, count]) => \`\${error}: \${count} \n \`)
-      .join('')
-  }
-Failed Test Details:
-\${failedTests.map((failCase) => \`
-  - Testcase #\${failCase.testcase}
-    Missing Errors: \${failCase.missing ? JSON.stringify(failCase.missing) : "''"}
-    Status Code: \${failCase.code ? JSON.stringify(failCase.code) : "''"}
-    Extra Errors: \${failCase.extra ? JSON.stringify(failCase.extra) : "''"}
-    Detail Errors: \${failCase.errorDetails ? JSON.stringify(failCase.errorDetails) : "''"}\`).join('')}\`;
-
-
-    const resultLogicError = \`
-    === Test Reports Logic for DTO "${className}" ===
-    Host: \${globalThis.url}
-    Endpoint: pathRequest
-    Error: 
-    \${logicTests.map((logicCaseFail) => \`
-    - Testcase #\${logicCaseFail.testcase}
-      Logic Errors: \${logicCaseFail.errorLogic ? JSON.stringify(logicCaseFail.errorLogic) : "''"}\n  \` ).join('')}\`
-
-
-const resultFilePath = path.join(folderPath, '${className}.txt');
-const resultFilePathLogic = path.join(folderPathLogic, \`${className}.\${getTime()}.txt\`);
-fs.writeFileSync(resultFilePath, resultContent, 'utf-8');
-fs.writeFileSync(resultFilePathLogic, resultLogicError, 'utf-8');
-console.log(\`Success: \${resultFilePath}\`);
-
-});
-                          
-                    });
-
+         const reportFolder = path.join(__dirname, '../reports/combined');
+        const reportFileName = \`${className}.\${getTime()}.report.txt\`;
+        const { combinedReportTemplate } = await import('../gens/report-file');
+        const reportContent = combinedReportTemplate(
+          classNames,
+          globalThis.url,
+          pathRequest,
+          failedStep,
+          passedDTO,
+          failedTests,
+          totalTests,
+          logicTests,
+          summary
+        );
+        
+  const reportPath = path.join(folderPath, reportFileName);
+  fs.writeFileSync(reportPath, reportContent, 'utf-8');
+  console.log(\`📄 Combined report generated: \${reportPath}\`);
+        })
+        })
                 `;
 
   const outputPath = path.join(outputDir, `${className}.spec.ts`);

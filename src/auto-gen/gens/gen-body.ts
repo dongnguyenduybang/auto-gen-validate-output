@@ -4,6 +4,7 @@ import { generateErrorCases } from '../helps/dto-helper';
 import { getAllFiles, groupFilesByName } from '../helps/utils';
 import { HeaderRequest } from '../dtos/send-message/send-message.request';
 
+
 export function genBodyPayload(dtoName) {
   const dtoFolderPath = path.join(__dirname, '../dtos', dtoName);
   const outputDir = path.join(__dirname, '../expect-json');

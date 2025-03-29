@@ -243,7 +243,6 @@ export function resolveValidIf(
   payload: any,
 ): { isValid: boolean; errorMessage?: string } {
   const { condition, operators, condition2 } = validIfMetadata;
-  console.log(condition, operators, condition2)
   // Lấy giá trị của condition1
   let value1: any;
   if (obj.hasOwnProperty(condition)) {
