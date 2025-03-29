@@ -158,14 +158,14 @@ export function ValidIf(condition: string, operators: any, condition2: any) {
   };
 }
 
-export function StartWith(prefix: string) {
-  return function (target: any, propertyKey: string) {
-    Reflect.defineMetadata('startWith', prefix, target, propertyKey);
+export function StartWith(field: string, value: string) {
+  return  (target: any, propertyKey: string) => {
+    Reflect.defineMetadata('startWith', { field, value }, target, propertyKey);
   };
 }
 
-export function EndWith(field: string) {
-  return function (target: any, propertyKey: string) {
-    Reflect.defineMetadata('endWith', field, target, propertyKey);
+export function EndWith(field: string, value: string) {
+  return  (target: any, propertyKey: string) => {
+    Reflect.defineMetadata('endWith', { field, value }, target, propertyKey);
   };
 }
