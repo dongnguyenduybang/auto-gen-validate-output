@@ -58,12 +58,13 @@ async function executeStep(
     try {
         const { action, body, header, expect: expectConfig } = step;
 
-        // Resolve variables từ context
+        // resolve var từ  body và header
         const resolvedBody = resolveVariables(body, context);
         const resolvedHeader = resolveVariables(header, context);
-
+        //goi API function
         const apiFunction = getApiFunction(action, context);
         const response = await apiFunction(resolvedHeader, resolvedBody);
+        // validate response
         const stepName = step.action.charAt(0).toUpperCase() + step.action.slice(1) + "Response";
         const ResponseClass = responseClassMap[stepName as keyof typeof responseClassMap];
         const validatedResponse = plainToClass(
@@ -71,12 +72,18 @@ async function executeStep(
             response.response
           );
         const result = validateResponses(resolvedBody,validatedResponse);
-        console.log(result)
+        if(result.length >0){
+            return {
+                success: false,
+                stepName: `${step.action}`,
+                error: JSON.stringify(result)
+            };
+        }
 
         const extractedData = extractData(action, response, context);
         context.mergeData(extractedData);
 
-        // Validate response
+        //validate logic
         if (expectConfig) {
             const validator = createApiValidator(context);
             const resolvedExpect = resolveExpectConfig(expectConfig, context);
@@ -101,7 +108,7 @@ async function executeStep(
     }
 }
 
-// Helper functions
+// resolve var {{}}
 export function resolveVariables(obj: any, context: TestContext): any {
     if (typeof obj === 'string') {
         return obj.replace(/\{\{(.+?)\}\}/g, (_, path) => context.getValue(path.split('.')) ?? `{{${path}}}`);
@@ -139,7 +146,7 @@ function resolveExpectConfig(expectConfig: any, context: TestContext): any {
     }
     return expectConfig;
 }
-
+//get data api
 function extractData(
     action: string,
     response: any,
@@ -165,7 +172,7 @@ function extractData(
         return {};
     }
 }
-
+// thêm các trường cần thiết từ response vào context
 function extractMockUserData(response: any): Record<string, any> {
     const data: Record<string, any> = {};
     if (!response?.data) return data;
@@ -177,7 +184,7 @@ function extractMockUserData(response: any): Record<string, any> {
     });
     return data;
 }
-
+// thêm các trường cần thiết từ response vào context
 function extractCreateChannel(response: any, context: TestContext): Record<string, any> {
     const data: Record<string, any> = {};
     if (!response?.data) return data;
@@ -204,14 +211,16 @@ function extractCreateChannel(response: any, context: TestContext): Record<strin
     return data;
 }
 
+// thêm các trường cần thiết từ response vào context
 function extractGetChannel(response: any, context: TestContext): Record<string, any> {
     const data: Record<string, any> = {};
     if (!response?.data) return data;
 
-    // Thêm các trường cần thiết từ response
+
     return data;
 }
 
+// thêm các trường cần thiết từ response vào context
 function extractAcceptInvitation(response: any, context: TestContext): Record<string, any> {
     const data: Record<string, any> = {};
     if (!response?.data) return data;
@@ -232,7 +241,7 @@ function extractAcceptInvitation(response: any, context: TestContext): Record<st
 
     return data;
 }
-
+// thêm các trường cần thiết từ response vào context
 export function extractMessageData(response: SendMessageResponse): Record<string, any> {
     const data: Record<string, any> = {};
     if (!response?.data) return data;

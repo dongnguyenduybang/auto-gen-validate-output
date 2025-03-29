@@ -11,7 +11,7 @@ export interface ValidationError {
 interface OperatorConfig {
   operator: string;
   expect: any;
-  element?: 'all' | 'any' | 'none';
+  element?: 'all' | 'first' | 'last';
   field?: string;
 }
 
@@ -24,20 +24,21 @@ export const createApiValidator = (
   context: TestContext,
   options: ValidationOptions = { strictTypes: true, allowOptionalArrays: false }
 ) => {
-  const deepEqual = (a: any, b: any): boolean => {
+  //đệ quye so sánh excpect & acutal
+  const comparedValue = (a: any, b: any): boolean => {
     if (a === b) return true;
     if (typeof a !== typeof b) return false;
     if (typeof a !== 'object' || a === null || b === null) return a === b;
 
-    const aKeys = Object.keys(a);
-    const bKeys = Object.keys(b);
-    if (aKeys.length !== bKeys.length) return false;
+    const keyA = Object.keys(a);
+    const keYb = Object.keys(b);
+    if (keyA.length !== keYb.length) return false;
 
-    return aKeys.every(key => deepEqual(a[key], b[key]));
+    return keyA.every(key => comparedValue(a[key], b[key]));
   };
 
   const getNestedValue = (obj: any, path: string): any => {
-    return path.split('.').reduce((o, key) => o?.[key], obj);
+    return path.split('.').reduce((context, key) =>context?.[key], obj);
   };
 
   const resolveValue = (value: any): any => {
@@ -49,7 +50,7 @@ export const createApiValidator = (
     if (Array.isArray(value)) return value.map(item => resolveValue(item));
     if (typeof value === 'object') {
       return Object.fromEntries(
-        Object.entries(value).map(([k, v]) => [k, resolveValue(v)])
+        Object.entries(value).map(([a, b]) => [a, resolveValue(b)])
       );
     }
     return value;
@@ -76,7 +77,7 @@ export const createApiValidator = (
   ) => {
     switch (elementType) {
       case 'all':
-        if (!actualArray.every(item => deepEqual(item, expected))) {
+        if (!actualArray.every(item => comparedValue(item, expected))) {
           errors.push(createError(
             path,
             `All elements must equal ${JSON.stringify(expected)}`,
@@ -84,24 +85,37 @@ export const createApiValidator = (
           ));
         }
         break;
-      case 'any':
-        if (!actualArray.some(item => deepEqual(item, expected))) {
+      case 'first':
+        if (actualArray.length === 0) {
           errors.push(createError(
             path,
-            `Any element must equal ${JSON.stringify(expected)}`,
+            `Array is empty, first element must equal ${JSON.stringify(expected)}`,
+            actualArray
+          ));
+        } else if (!comparedValue(actualArray[0], expected)) {
+          errors.push(createError(
+            path,
+            `First element must equal ${JSON.stringify(expected)}`,
             actualArray
           ));
         }
         break;
-      case 'none':
-        if (actualArray.some(item => deepEqual(item, expected))) {
-          errors.push(createError(
-            path,
-            `No elements should equal ${JSON.stringify(expected)}`,
-            actualArray
-          ));
-        }
-        break;
+        case 'last':
+          if (actualArray.length === 0) {
+            errors.push(createError(
+              path,
+              `Array is empty, last element must equal ${JSON.stringify(expected)}`,
+              actualArray
+            ));
+          } else if (!comparedValue(actualArray.length -1, expected)) {
+            errors.push(createError(
+              path,
+              `Last element must equal ${JSON.stringify(expected)}`,
+              actualArray
+            ));
+          }
+          break;
+        
     }
   };
 
@@ -112,9 +126,19 @@ export const createApiValidator = (
     path: string[],
     errors: ValidationError[],
   ) => {
-    if (Array.isArray(actual) && elementType) {
+    const arrayElementTypes = ['all', 'first', 'last'];
+    
+    if (elementType && arrayElementTypes.includes(elementType)) {
+      if (!Array.isArray(actual)) {
+        errors.push(createError(
+          path,
+          `Expected array for element type '${elementType}'`,
+          actual
+        ));
+        return;
+      }
       validateArrayEquality(actual, expected, elementType, path, errors);
-    } else if (!deepEqual(actual, expected)) {
+    } else if (!comparedValue(actual, expected)) {
       errors.push(createError(
         path,
         `equal(${JSON.stringify(expected)})`,
@@ -122,7 +146,6 @@ export const createApiValidator = (
       ));
     }
   };
-
   const validateInclusion = (
     actual: any,
     expectedValues: any[],
@@ -135,25 +158,53 @@ export const createApiValidator = (
       return;
     }
 
-    const missing = expectedValues.filter(expected => 
-      !actual.some(item => deepEqual(item, expected))
-    );
-
-    if (elementType === 'all' && missing.length > 0) {
-      errors.push(createError(
-        path,
-        `Missing required values: ${missing.join(', ')}`,
-        actual
-      ));
-    } else if (elementType === 'any' && missing.length === expectedValues.length) {
-      errors.push(createError(
-        path,
-        `At least one value should exist: ${expectedValues.join(', ')}`,
-        actual
-      ));
+    if (elementType === 'first') {
+      if (actual.length === 0) {
+        errors.push(createError(
+          path,
+          `Expected non-array to check first element`,
+          actual
+        ));
+      } else {
+        const firstElement = actual[0];
+        if (!expectedValues.some(ev => comparedValue(firstElement, ev))) {
+          errors.push(createError(
+            path,
+            `First element ${JSON.stringify(firstElement)} not found. values ${JSON.stringify(expectedValues)}`,
+            actual
+          ));
+        }
+      }
+    } else if (elementType === 'last') {
+      if (actual.length === 0) {
+        errors.push(createError(
+          path,
+          `Expected non-array to check`,
+          actual
+        ));
+      } else {
+        const lastElement = actual[actual.length - 1]; // get array cuối
+        if (!expectedValues.some(err => comparedValue(lastElement, err))) {
+          errors.push(createError(
+            path,
+            `Last element ${JSON.stringify(lastElement)} not found. values ${JSON.stringify(expectedValues)}`,
+            actual
+          ));
+        }
+      }
+    } else {
+      const missing = expectedValues.filter(expected => 
+        !actual.some(item => comparedValue(item, expected))
+      );
+      if (elementType === 'all' && missing.length > 0) {
+        errors.push(createError(
+          path,
+          `Missing required values: ${missing.join(', ')}`,
+          actual
+        ));
+      }
     }
   };
-
   const validateOperatorObject = (
     actual: any,
     config: OperatorConfig,
@@ -276,7 +327,6 @@ export const createApiValidator = (
         validateObject(actual, expected, path, errors);
       }
     } else if (typeof expected === 'string') {
-      // Handle string expressions if needed
     }
   };
 
