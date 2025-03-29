@@ -1,0 +1,46 @@
+
+  === Test Report for send-message ===
+  • Host: https://api-sb11.rpc.ziichat.dev
+  • Endpoint: /Message/SendMessage
+  • Date: 29/03/2025, 15:33:42
+  
+  === Execution Steps ===
+    1. [✓ PASSED] mockUser
+  2. [✓ PASSED] createChannel
+  3. [✗ FAILED] getChannel
+     └─ Path: [includes.users.userId] Expected: First element must equal ["01JQGGJ0TFHRE6HTTN3WZCN0T6"] | Actual: ["01JQGGJ0N9S9ZAVZ5DEN7SRX39"]
+       Message: Validation failed at includes.users.userId
+  4. [✓ PASSED] acceptInvitation
+  5. [✓ PASSED] getChannel
+  
+  === Validation Metrics ===
+  ■ DTO Validation:
+    ✔ Passed: 1
+    ✖ Failed: 0
+    ◼ Total: 1
+  
+  ■ Logic:
+    ✔ Passed: 0
+    ✖ Failed: 0
+    ◼ Total: 0
+  
+  === Error Details ===
+  [DTO Validation Issues]
+  
+  
+  [Logic Validation Issues]
+  
+  
+  === System Metrics ===
+  ▧ Status Code Distribution:
+    200: 0
+    201: 0
+    400: 0
+    403: 0
+    404: 0
+    500: 0
+  
+  ▧ Unique Error Patterns:
+  
+  === End of Report ===
+  
