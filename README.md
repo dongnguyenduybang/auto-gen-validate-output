@@ -21,28 +21,28 @@ Note: <action>: gen, test
         <apisName>: send-message
         <folder>: send-message
 ```
-```bash
-    $ pnpm gen request send-message >gen 1 request cho send-message
+``` 
+    pnpm gen request send-message
 ```
-```bash
+``` 
     $ pnpm test response send-message >test 1 response cho send-message
 ```
-```bash
+``` 
     $ pnpm gen request test-requests >gen toàn bộ requests
 ```
-```bash
+``` 
     $ pnpm test request test-responses >test toàn bộ responses
 ```
-```bash
+``` 
     $ pnpm gen saga send-message >gen 1 saga cho send-message
 ```
-```bash
+``` 
     $ pnpm test saga send-message >test 1 saga cho send-message
 ```
-```bash
+``` 
     $ pnpm gen saga test-sagas >gen toàn bộ sagas
 ```
-```bash
+``` 
     $ pnpm test saga test-sagas >test toàn bộ sagas
 ```
 ## Requests
@@ -56,7 +56,7 @@ Note: <action>: gen, test
 
 
 **📄 send-message.request.json**
-```bash
+``` 
  {
     "method": "POST",
     "path": "/Message/SendMessage",
@@ -90,7 +90,7 @@ Note: <action>: gen, test
     - [List Action](#list-action)
 
 **📄 send-message.dto.ts**
-```bash
+``` 
 import {
   IsNotEmpty,
   IsString,
@@ -143,7 +143,7 @@ export class SendMessageDTO {
     - 📄 send-message.response.ts
 
 **📄 send-message.response.json  **   
-```bash
+```
 {
     "method": "POST",
     "path": "/Message/SendMessage",
@@ -221,7 +221,6 @@ export class SendMessageDTO {
 | IsOptional | @IsOptional() | Cho phép undefined |   @IsOptional()<br> type: string; |
 | IsNotNull | @IsNotNull() | Không cho phép null |   @IsNotNull()<br> type: string; |
 | IsNotEmpty | @IsNotEmpty(option?) | Cho phép để rỗng. option: message? custom message error trả về |   @IsNotEmpty(<br>{message: `Could not resolve permission type`,}) |
-| IsOptional | @IsOptional() | Cho phép undefined |   @IsOptional()<br> type: string; |
 | IsAny | @IsAny() | Cho phép bao hàm tất cả các kiểu |   @IsAny()<br> type: string; hoặc @IsAny()<br> type: number;  |
 | IsDefined | @IsDefined() | Bắt buộc phải xác định |   @IsDefined()<br> type: string|
 
@@ -284,7 +283,7 @@ export class SendMessageDTO {
 ## Reports
 
 ### Requests ( DTO )
-```bash
+```
 === Test Report for send-message ===
 • Host: https://api-sb11.rpc.ziichat.dev
 • Endpoint: /Message/SendMessage
@@ -402,7 +401,7 @@ Example:
 ### Action Detail
 
 #### acceptInvitation
-```bash
+``` 
   {
         action: 'getChannel',
         body: { channelId: '{{channelId}}'},
@@ -411,7 +410,7 @@ Example:
 ```
 
 #### addMessageReaction
-```bash
+``` 
   {
         action: 'addMessageReaction',
         body: { channelId: '{{channelId}}'},
@@ -420,14 +419,14 @@ Example:
 ```
 
 #### createChannel
-```bash
+``` 
   {
         action: 'createChannel',
   }
 ```
 
 #### getChannel
-```bash
+``` 
   {
         action: 'getChannel',
         body: { channelId: '{{channelId}}'},
@@ -436,7 +435,7 @@ Example:
 ```
 
 #### getMessage
-```bash
+``` 
   {
         action: 'getMessage',
         body: { messageId: '{{messageId}}'},
@@ -445,7 +444,7 @@ Example:
 ```
 
 #### getStickerCollection
-```bash
+``` 
   {
         action: 'getStickerCollection',
         body: { collectionId: '{{collectionId}}'},
@@ -454,7 +453,7 @@ Example:
 ```
 
 #### getSticker
-```bash
+``` 
   {
         action: 'stickerId',
         body: { stickerId: '{{stickerId}}'},
@@ -463,7 +462,7 @@ Example:
 ```
 
 #### getListMessages
-```bash
+``` 
   {
         action: 'getListMessages',
         body: { channelId: '{{channelId}}'},
@@ -472,14 +471,14 @@ Example:
 ```
 
 #### mockChannel
-```bash
+``` 
   {
         action: 'mockChannel',
   }
 ```
 
 #### mockUser
-```bash
+``` 
   {
         action: 'mockUser',
         body: { quantity: 2 },
@@ -487,7 +486,7 @@ Example:
 ```
 
 #### sendInvitation
-```bash
+``` 
   {
         action: 'sendInvitation',
         body: { invitationLink: '{{inviteLink}}', userIds: "['{{userId1}}','{{userId2}}']" }
@@ -495,7 +494,7 @@ Example:
 ```
 
 #### sendMessage
-```bash
+``` 
   {
         action: 'sendMessage',
         body: { channelId: '{{channelId}}', content: 'aaaaa' },
