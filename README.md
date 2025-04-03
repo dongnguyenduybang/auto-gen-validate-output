@@ -24,10 +24,12 @@
         <folder-spec>: send-message
 
   Example:
+```bash
     - $ pnpm gen request send-message
-
+```
+```bash
     - $ pnpm test response send-message
-
+```
 ```
 ## Requests
 
