@@ -146,7 +146,16 @@
   + File: send-message.dto.ts
   + Folder apis: send-message
   Example:
-    test-requests ├── send-message │ ├── send-message.request.json │ ├── send-message.dto.ts ├── send-message.spec.ts  ├── send-dm-message │ ├── send-dm-message.request.json ├── send-dm-message.dto.ts ├── send-dm-message.spec.ts
+  - 📂 test-requests
+    - 📂 send-message
+      - 📄 send-message.request.json
+      - 📄 send-message.dto.ts
+      - 📄 send-message.spec.ts
+    - 📂 send-dm-message
+      - 📄 send-dm-message.request.json
+      - 📄 send-dm-message.dto.ts
+      - 📄 send-dm-message.spec.ts
+
 
 - Response
   Example:
