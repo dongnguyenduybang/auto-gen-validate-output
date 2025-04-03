@@ -58,8 +58,8 @@ Note: <action>: gen, test
 + Headers: Định nghĩa các header
 + Payload: Định nghĩa body đầu vào
 + beforeAll: Định nghĩa các step chuẩn bị data trước khi test
- - action: Định nghĩa tên hành động
-   - [List Action](list-action)
+         - action: Định nghĩa tên hành động
+                   - [List Action](list-action)
 
 
 
@@ -215,4 +215,4 @@ Example:
       - 📄 send-dm-message.sagas.ts
       - 📄 send-dm-message.sagas.spec.ts
      
-# List Action
+## List Action
