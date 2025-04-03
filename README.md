@@ -174,15 +174,15 @@
       - 📄 send-dm-message.response.spec.ts
 
 **- Saga**
-    + Folder chung: test-sagas
-    + File: send-message.sagas.ts, send-message.sagas.spec.ts
-    + Folder apis: send-message
+  + Folder chung: test-sagas
+  + File: send-message.sagas.ts, send-message.sagas.spec.ts
+  + Folder apis: send-message
    
-    Example:
-    - 📂 test-sagas
-      - 📂 send-message
-        - 📄 send-message.sagas.ts
-        - 📄 send-message.sagas.spec.ts
-      - 📂 send-dm-message
-        - 📄 send-dm-message.sagas.ts
-        - 📄 send-dm-message.sagas.spec.ts
+Example:
+  - 📂 test-sagas
+    - 📂 send-message
+      - 📄 send-message.sagas.ts
+      - 📄 send-message.sagas.spec.ts
+    - 📂 send-dm-message
+      - 📄 send-dm-message.sagas.ts
+      - 📄 send-dm-message.sagas.spec.ts
