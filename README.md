@@ -381,9 +381,16 @@ Example:
 
 
 
-### ACtion Detail
+### Action Detail
 
 #### acceptInvitation
+```bash
+  {
+action: 'getChannel',
+            body: { channelId: '{{channelId}}' },
+            header: { token: '{{token}}' },
+}
+```
 
 #### addMessageReaction
 
