@@ -121,3 +121,15 @@
 
 
 ## NPM
+
+```bash
+  $ pnpm <action> <type> <folderName>
+
+  Note: <action>: gen, test
+        <type>: request, response, saga
+        <folderName>: send-message
+
+  Example:
+    - $ pnpm gen request send-message
+
+```
