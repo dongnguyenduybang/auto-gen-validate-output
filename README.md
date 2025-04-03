@@ -15,17 +15,35 @@
 ## NPM
 ```
 $ pnpm <action> <type> <apisName>
-$ pnpm <action> <type> <folder-spec>
+$ pnpm <action> <type> <folder>
 Note: <action>: gen, test
         <type>: request, response, saga
         <apisName>: send-message
-        <folder-spec>: send-message
+        <folder>: send-message
 ```
 ```bash
-    $ pnpm gen request send-message
+    $ pnpm gen request send-message >gen 1 request cho send-message
 ```
 ```bash
-    $ pnpm test response send-message
+    $ pnpm test response send-message >test 1 response cho send-message
+```
+```bash
+    $ pnpm gen request test-requests >gen toàn bộ requests
+```
+```bash
+    $ pnpm test request test-responses >test toàn bộ responses
+```
+```bash
+    $ pnpm gen saga send-message >gen 1 saga cho send-message
+```
+```bash
+    $ pnpm test saga send-message >test 1 saga cho send-message
+```
+```bash
+    $ pnpm gen saga test-sagas >gen toàn bộ sagas
+```
+```bash
+    $ pnpm test saga test-sagas >test toàn bộ sagas
 ```
 ## Requests
 
