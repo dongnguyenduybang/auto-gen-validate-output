@@ -41,10 +41,12 @@
 
 ## Decorators
 
-| Cột 1  | Cột 2  | Cột 3  |
+- String
+| Name  | Usage | Example  |
 |--------|--------|--------|
-| Hàng 1 | Giá trị 1 | Giá trị 2 |
-| Hàng 2 | Giá trị 3 | Giá trị 4 |
+| IsString | @IsString(option?) | Giá trị 2 |
+| MinLength | Giá trị 3 | Giá trị 4 |
+ MaxLength
 
 
 
