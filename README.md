@@ -45,10 +45,9 @@
 
 | Name  | Usage | Describe  | Example
 |--------|--------|--------|--------|
-| IsString | @IsString(option?) | Xác định là kiểu string. option?: message?, value?|   @IsString({    message: `Invalid channelId`,value: '{{channelId}}', })|
-
-| MinLength | Giá trị 3 | Giá trị 4 |
-| MaxLength | Giá trị 3 | Giá trị 4 |
+| IsString | @IsString(option?) | Xác định là kiểu string. option?: message?, value?|   @IsString({message: `Invalid channelId`,value: '{{channelId}}'})|
+| MinLength | @MinLength(value) | Xác định độ dài chuỗi ít nhất | @MinLength(1)|
+| MaxLength |  @MaxLength(value) | Xác định độ dài chuỗi nhiều nhất | @MinLength(100)|
 
 
 
