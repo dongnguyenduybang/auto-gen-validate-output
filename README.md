@@ -68,7 +68,8 @@ Note: <action>: gen, test
 + **beforeAll**: Định nghĩa các step chuẩn bị data trước khi test
   - **action**: Định nghĩa tên hành động
     - [List Action](#list-action)
-   
+
+**📄 send-message.dto.ts**
 ```bash
 import {
   IsNotEmpty,
