@@ -59,7 +59,7 @@
 
 - Array
 
-  | Name  | Usage | Describe  | Example|
+| Name  | Usage | Describe  | Example|
 |--------|--------|--------|--------|
 | IsArray | @IsArray() | Xác định là kiểu mảng|   @IsArray()<br> address: string[]; |
 | MinArray | @MinArray(value) | Xác định số lượng phần tử mảng con nhỏ nhất | @MinArray(1)<br> address: string[];|
@@ -73,7 +73,7 @@
 
 - Boolean
 
-  | Name  | Usage | Describe  | Example|
+| Name  | Usage | Describe  | Example|
 |--------|--------|--------|--------|
 | IsBoolean | @IsBoolean() | Xác định là kiểu boolean|   @IsBoolean()<br> isPinned: boolean; |
 
@@ -85,7 +85,7 @@
 
 - General
 
-  | Name  | Usage | Describe  | Example|
+| Name  | Usage | Describe  | Example|
 |--------|--------|--------|--------|
 | IsOptional | @IsOptional() | Cho phép undefined |   @IsOptional()<br> type: string; |
 | IsNotNull | @IsNotNull() | Không cho phép null |   @IsNotNull()<br> type: string; |
@@ -96,13 +96,13 @@
 
 - Enum
 
-  | Name  | Usage | Describe  | Example|
+| Name  | Usage | Describe  | Example|
 |--------|--------|--------|--------|
 | IsEnum | @IsEnum(enumType) | Xác định là kiểu enum |   @IsEnum(MessageTypeEnum)<br> messageType: MessageTypeEnum|
 
 - Condition
 
-  | Name  | Usage | Describe  | Example|
+| Name  | Usage | Describe  | Example|
 |--------|--------|--------|--------|
 | ValidIf | @ValidIf(condition, operators, condition2) | Xác định là đúng nếu thỏa mãn điều kiện  |   @ValidIf('workspaceId', '===', '0')<br> workspaceId: string|
 | StartWith | @StartWith(field, value) | Xác định kí tự bắt đầu của chuỗi  |   @StartWith('username', 'test123' )<br> username: string|
