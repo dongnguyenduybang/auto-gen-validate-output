@@ -386,31 +386,31 @@ export class IncludesResponse {
   @IsArray()
   @IsDefined()
   @Type(() => User)
-  users: User[];
+  users?: User[];
 
   @ValidateNested({ each: true })
   @IsArray()
   @IsDefined()
   @Type(() => Message)
-  messages: Message[];
+  messages?: Message[];
 
   @ValidateNested({ each: true })
   @IsArray()
   @IsDefined()
   @Type(() => Member)
-  members: Member[];
+  members?: Member[];
 
   @ValidateNested({ each: true })
   @IsArray()
   @IsDefined()
   @Type(() => Channel)
-  channels: Channel[];
+  channels?: Channel[];
 
   @ValidateNested({ each: true })
   @IsArray()
   @IsDefined()
   @Type(() => ChannelMetadata)
-  channelMetadata: ChannelMetadata[];
+  channelMetadata?: ChannelMetadata[];
 }
 
 export class DataResponse {

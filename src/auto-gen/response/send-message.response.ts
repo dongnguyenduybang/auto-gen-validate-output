@@ -3,10 +3,14 @@ import { ValidateNested } from 'class-validator';
 import { Exclude, Type } from 'class-transformer';
 import {
   IsArray,
+  IsBoolean,
   IsDefined,
   IsEnum,
+  IsNumber,
+  IsObject,
   IsOptional,
   IsString,
+  StartWith,
   ValidIf,
 } from '../decorator/dto-decorator';
 import {
@@ -23,36 +27,109 @@ import {
 import { DirectMessageStatusEnum } from '../enums/direct-message-status.enum';
 import { EmbedTypeEnum } from '../enums/embed-type.enum';
 import { ChannelTypeEnum } from '../enums/channel-type.enum';
+import { AttachmentTypeEnum } from '../enums/attachment-type.enum';
+import { MessageTypeEnum } from '../enums/message-type.enum';
 
-// custom Message
-export class Channel extends GeneralChannel {
+// custom Channel
+export class ChannelData extends GeneralChannel {
   @Exclude()
   @IsOptional()
-  override avatar?: string;
-
-  @Exclude()
-  @IsOptional()
-  override originalAvatar?: string;
+  avatar?: string;
 
   @Exclude()
   @IsOptional()
-  override rejectTime?: string;
+  originalAvatar?: string;
 
   @Exclude()
   @IsOptional()
-  override acceptTime?: string;
+  rejectTime?: string;
 
   @Exclude()
   @IsOptional()
-  override dmStatus?: DirectMessageStatusEnum;
+  acceptTime?: string;
 
   @Exclude()
   @IsOptional()
-  override pinnedMessage?: Message;
+  dmStatus?: DirectMessageStatusEnum;
 
   @Exclude()
   @IsOptional()
-  override type?: ChannelTypeEnum;
+  pinnedMessage?: Message;
+
+  @Exclude()
+  @IsOptional()
+  type?: ChannelTypeEnum;
+}
+
+// custom message
+
+export class MessageData extends GeneralMessage {
+  @IsString()
+  @IsDefined()
+  workspaceId?: string = undefined;
+
+  @IsString()
+  @IsDefined()
+  channelId?: string = undefined;
+
+  @IsString()
+  @IsDefined()
+  messageId?: string = undefined;
+
+  @IsString()
+  @IsDefined()
+  userId?: string = undefined;
+
+  @IsString()
+  @IsDefined()
+  content?: string = undefined;
+
+  @IsEnum(MessageTypeEnum)
+  @IsDefined()
+  messageType?: MessageTypeEnum;
+
+  @IsNumber()
+  @IsDefined()
+  messageStatus?: number = undefined;
+
+  @IsBoolean()
+  @IsDefined()
+  isThread?: boolean = undefined;
+
+  @IsNumber()
+  @IsDefined()
+  reportCount?: number = undefined;
+
+  @IsBoolean()
+  @IsDefined()
+  isReported?: boolean = undefined;
+
+  @IsNumber()
+  @IsDefined()
+  attachmentCount?: number = undefined;
+
+  @IsString()
+  @IsDefined()
+  @StartWith('contentLocale', 'UN')
+  contentLocale?: string = undefined;
+
+  @IsBoolean()
+  @IsDefined()
+  isPinned?: boolean = undefined;
+
+  @IsString()
+  @IsDefined()
+  createTime?: string = undefined;
+
+  @IsString()
+  @IsDefined()
+  updateTime?: string = undefined;
+
+  @IsString()
+  @IsDefined()
+  @IsOptional()
+  ref?: string = undefined;
+
 }
 
 // custom User
@@ -69,19 +146,19 @@ export class IncludesResponse extends GeneralIncludesResponse {
   override users: User[];
 
   @ValidateNested({ each: true })
-  @Type(() => Channel)
-  override channels: Channel[];
+  @Type(() => ChannelData)
+  override channels: ChannelData[];
 }
 
 // data wrapper
 export class SendMessageDataWrapper extends DataResponse {
   @ValidateNested()
-  @Type(() => Message)
-  message?: Message;
+  @Type(() => MessageData)
+  message?: MessageData;
 }
 
 // Main Response
-export class SendMessageResponse extends BaseResponse<SendMessageDataWrapper>{
+export class SendMessageResponse extends BaseResponse<SendMessageDataWrapper> {
   @ValidateNested()
   @Type(() => SendMessageDataWrapper)
   data: SendMessageDataWrapper;
@@ -92,15 +169,12 @@ export class SendMessageResponse extends BaseResponse<SendMessageDataWrapper>{
 
   constructor() {
     super();
-
-    if (this.includes) {
-      this.includes = {
-        users: this.includes.users || [],
-        channels: this.includes.channels || [],
-        members: this.includes.members || [],
-        channelMetadata: this.includes.channelMetadata || [],
-        messages: []
-      };
-    }
+    this.data = this.data || new SendMessageDataWrapper
+    this.includes = this.includes || new IncludesResponse();
+    this.includes.users = this.includes.users || [];
+    this.includes.channels = this.includes.channels || [];
+    this.includes.members = this.includes.members || [];
+    this.includes.channelMetadata = this.includes.channelMetadata || [];
   }
+
 }

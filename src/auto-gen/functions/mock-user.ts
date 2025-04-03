@@ -1,8 +1,13 @@
 import axios from 'axios';
 
-export async function mockUser() {
+export async function mockUser(header:any, body: any) {
   try {
-    const payload = { prefix: 'test12345', quantity: 2, badge: 0 };
+    let payload
+    if(!body){
+      payload = { prefix: 'test12345', quantity: 2, badge: 0 };
+    }else{
+      payload = {prefix: 'test12345', quantity: body.quantity, badge: 0}
+    }
     const response = await axios.post(
       `${globalThis.urls}/InternalFaker/MockUsers`,
       {

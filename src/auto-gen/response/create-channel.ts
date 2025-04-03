@@ -1,112 +1,86 @@
-import { ValidateNested } from 'class-validator';
-import { Exclude, Type } from 'class-transformer';
-import {
-  IsString,
-  ValidIf,
-} from '../decorator/dto-decorator';
+// create-channel.response.ts
+import { ValidateNested  } from 'class-validator';
+import { Type } from 'class-transformer';
 import {
   BaseResponse,
-  Channel as GeneralChannel,
-  ChannelMetadata as GeneralMetadata,
-  IncludesResponse as GeneralIncludes,
-  Message as GeneralMessage,
+  Channel,
+  ChannelMetadata,
+  Message,
+  User,
+  Member,
+  IncludesResponse,
 } from './general-response';
+import { DirectMessageStatusEnum } from '../enums/direct-message-status.enum';
+import { IsDefined, IsArray, IsOptional } from '../decorator/dto-decorator';
+import { ChannelPermissionEnum } from '../enums/channel-permissions.enum';
 
-// Custom Channel
-export class Channel extends GeneralChannel {
-  @Exclude()
-  avatar?: string;
+// 1. Tùy chỉnh lớp Channel cho create-channel
+export class CreateChannelChannel extends Channel {
+  @IsOptional()
+  declare avatar: string;
 
-  @Exclude()
-  originalAvatar?: string;
+  @IsOptional()
+  declare originalAvatar: string;
 
-  @Exclude()
-  pinnedMessage?: any;
+  @IsOptional()
+  declare dmStatus: DirectMessageStatusEnum;
 
-  @Exclude()
-  dmStatus?: any;
+  @IsOptional()
+  @ValidateNested()
+  @Type(() => Message)
+  declare pinnedMessage: Message;
 
-  @Exclude()
-  rejectTime?: string;
+  @IsOptional()
+  @IsArray()
+  declare participantIds: string[];
 
-  @Exclude()
-  acceptTime?: string;
+  @IsOptional()
+  declare rejectTime: string;
 
-  // Custom validations
-  @IsString()
-  @ValidIf('workspaceId', '===', '0')
-  override workspaceId?: string;
-
-  @IsString()
-  @ValidIf('createTime', '<', 'response.updateTime')
-  override createTime?: string;
+  @IsOptional()
+  declare acceptTime: string;
 }
 
-// Custom Channel Metadata
-export class ChannelMetadata extends GeneralMetadata {
-  @Exclude()
-  dmId?: string;
-
-  @Exclude()
-  deleteTime?: string;
-
-  // Custom validations
-  @IsString()
-  @ValidIf('channelId', '===', 'response.channelId')
-  override channelId?: string;
+// 2. Tùy chỉnh ChannelMetadata cho create-channel
+export class CreateChannelChannelMetadata extends ChannelMetadata {
+  @IsArray()
+  @IsDefined()
+  permissions: ChannelPermissionEnum
 }
 
-// Custom Includes
-export class IncludesResponse extends GeneralIncludes {
+// 3. Định nghĩa DataResponse cho create-channel
+export class CreateChannelDataResponse {
+  @ValidateNested()
+  @Type(() => CreateChannelChannel)
+  channel: CreateChannelChannel;
+
+  @ValidateNested()
+  @Type(() => CreateChannelChannelMetadata)
+  channelMetadata: CreateChannelChannelMetadata;
+}
+
+// 4. Tùy chỉnh IncludesResponse
+export class CreateChannelIncludesResponse extends IncludesResponse {
   @ValidateNested({ each: true })
-  @Type(() => Channel)
-  override channels: Channel[];
+  @Type(() => User)
+  users: User[];
 
   @ValidateNested({ each: true })
-  @Type(() => GeneralMessage)
-  override messages: GeneralMessage[];
+  @Type(() => Message)
+  messages: Message[];
+
+  @ValidateNested({ each: true })
+  @Type(() => Member)
+  members: Member[];
+
+  @ValidateNested({ each: true })
+  @Type(() => CreateChannelChannelMetadata)
+  channelMetadata: CreateChannelChannelMetadata[];
 }
 
-// Data Wrapper
-export class CreateChannelDataWrapper {
+// 5. Tạo response chính
+export class CreateChannelResponse extends BaseResponse<CreateChannelDataResponse> {
   @ValidateNested()
-  @Type(() => Channel)
-  channel: Channel;
-
-  @ValidateNested()
-  @Type(() => ChannelMetadata)
-  channelMetadata: ChannelMetadata;
-}
-
-// Main Response
-export class CreateChannelResponse extends BaseResponse {
-  @ValidateNested()
-  @Type(() => CreateChannelDataWrapper)
-  data: CreateChannelDataWrapper;
-
-  @ValidateNested()
-  @Type(() => IncludesResponse)
-  includes: IncludesResponse;
-
-  constructor() {
-    super();
-    
-    if (this.data?.channel) {
-      this.data.channel = Object.assign(new Channel(), this.data.channel);
-    }
-    
-    if (this.data?.channelMetadata) {
-      this.data.channelMetadata = Object.assign(new ChannelMetadata(), this.data.channelMetadata);
-    }
-
-    if (this.includes) {
-      this.includes = {
-        users: this.includes.users || [],
-        channels: this.includes.channels?.map(c => Object.assign(new Channel(), c)) || [],
-        members: this.includes.members || [],
-        channelMetadata: this.includes.channelMetadata || [],
-        messages: this.includes.messages || []
-      };
-    }
-  }
+  @Type(() => CreateChannelIncludesResponse)
+  includes: CreateChannelIncludesResponse;
 }

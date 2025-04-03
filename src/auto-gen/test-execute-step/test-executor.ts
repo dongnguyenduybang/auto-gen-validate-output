@@ -176,7 +176,7 @@ function extractData(
 function extractMockUserData(response: any): Record<string, any> {
     const data: Record<string, any> = {};
     if (!response?.data) return data;
-
+    console.log(response.data)
     response.data.forEach((user: any, index: number) => {
         const suffix = index === 0 ? '' : index;
         data[`userId${suffix}`] = user.userId;
@@ -235,7 +235,7 @@ function extractAcceptInvitation(response: any, context: TestContext): Record<st
     }
 
     if (response.includes?.messages?.[0]) {
-        data.messageId = response.includes.messages[0].messageId;
+        // data.messageId = response.includes.messages[0].messageId;
         data.content = response.includes.messages[0].content;
     }
 

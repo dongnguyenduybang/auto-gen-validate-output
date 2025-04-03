@@ -1,111 +1,71 @@
-import { ValidateNested } from 'class-validator';
-import { Exclude, Type } from 'class-transformer';
-import {
-  IsString,
-  ValidIf,
-} from '../decorator/dto-decorator';
+// accept-invitation.response.ts
+import { ValidateNested} from 'class-validator';
+import { Type } from 'class-transformer';
 import {
   BaseResponse,
-  Channel as GeneralChannel,
-  ChannelMetadata as GeneralMetadata,
-  IncludesResponse as GeneralIncludes,
-  Message as GeneralMessage,
-  User as GeneralUser,
-  Member as GeneralMember
+  Channel,
+  ChannelMetadata,
+  Message,
+  User,
+  Member,
+  IncludesResponse,
 } from './general-response';
+import { DirectMessageStatusEnum } from '../enums/direct-message-status.enum';
+import { IsArray, IsOptional } from '../decorator/dto-decorator';
 
-// Custom Channel
-export class Channel extends GeneralChannel {
-  @Exclude()
-  avatar?: string;
+// 1. Tùy chỉnh lớp Channel
+export class AcceptInvitationChannel extends Channel {
+  @IsOptional()
+  declare avatar: string;
 
-  @Exclude()
-  originalAvatar?: string;
+  @IsOptional()
+  declare originalAvatar: string;
 
-  @Exclude()
-  pinnedMessage?: any;
+  @IsOptional()
+  declare dmStatus: DirectMessageStatusEnum;
 
-  @Exclude()
-  dmStatus?: any;
-
-  @Exclude()
-  rejectTime?: string;
-
-  // Custom validations
-  @IsString()
-  @ValidIf('createTime', '<', 'response.updateTime')
-  override createTime?: string;
-}
-
-// Custom Channel Metadata
-export class ChannelMetadata extends GeneralMetadata {
-  @Exclude()
-  dmId?: string;
-
-  @Exclude()
-  deleteTime?: string;
-
-  // Custom validations
-  @IsString()
-  @ValidIf('channelId', '===', 'response.channelId')
-  override channelId?: string;
-}
-
-// Custom Includes
-export class IncludesResponse extends GeneralIncludes {
-  @ValidateNested({ each: true })
-  @Type(() => GeneralUser)
-  override users: GeneralUser[];
-
-  @ValidateNested({ each: true })
-  @Type(() => GeneralMessage)
-  override messages: GeneralMessage[];
-
-  @ValidateNested({ each: true })
-  @Type(() => GeneralMember)
-  override members: GeneralMember[];
-}
-
-// Data Wrapper 
-export class AcceptInvitationDataWrapper {
+  @IsOptional()
   @ValidateNested()
-  @Type(() => Channel)
-  channel: Channel;
+  @Type(() => Message)
+  declare pinnedMessage: Message;
+}
+
+// 2. Tùy chỉnh Message cho join notification
+export class AcceptInvitationMessage extends Message {
+  @IsArray()
+  @IsOptional()
+  declare contentArguments: string[];
+}
+
+// 3. Định nghĩa DataResponse
+export class AcceptInvitationDataResponse {
+  @ValidateNested()
+  @Type(() => AcceptInvitationChannel)
+  channel: AcceptInvitationChannel;
 
   @ValidateNested()
   @Type(() => ChannelMetadata)
   channelMetadata: ChannelMetadata;
 }
 
-// Main Response
-export class AcceptInvitationResponse extends BaseResponse {
+// 4. Tùy chỉnh IncludesResponse
+export class AcceptInvitationIncludesResponse extends IncludesResponse {
+  @ValidateNested({ each: true })
+  @Type(() => User)
+  users: User[];
+
+  @ValidateNested({ each: true })
+  @Type(() => AcceptInvitationMessage)
+  messages: AcceptInvitationMessage[];
+
+  @ValidateNested({ each: true })
+  @Type(() => Member)
+  members: Member[];
+}
+
+// 5. Tạo response chính
+export class AcceptInvitationResponse extends BaseResponse<AcceptInvitationDataResponse> {
   @ValidateNested()
-  @Type(() => AcceptInvitationDataWrapper)
-  data: AcceptInvitationDataWrapper;
-
-  @ValidateNested()
-  @Type(() => IncludesResponse)
-  includes: IncludesResponse;
-
-  constructor() {
-    super();
-    
-    if (this.data?.channel) {
-      this.data.channel = Object.assign(new Channel(), this.data.channel);
-    }
-    
-    if (this.data?.channelMetadata) {
-      this.data.channelMetadata = Object.assign(new ChannelMetadata(), this.data.channelMetadata);
-    }
-
-    if (this.includes) {
-      this.includes = {
-        users: this.includes.users || [],
-        channels: [], 
-        members: this.includes.members || [],
-        channelMetadata: this.includes.channelMetadata || [],
-        messages: this.includes.messages || []
-      };
-    }
-  }
+  @Type(() => AcceptInvitationIncludesResponse)
+  includes: AcceptInvitationIncludesResponse;
 }

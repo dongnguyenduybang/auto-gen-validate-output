@@ -9,7 +9,7 @@ import { TestContext } from './text-context';
 export function getApiFunction(action: string, context: TestContext): Function {
   // eslint-disable-next-line @typescript-eslint/ban-types
   const apiFunctions: Record<string, Function> = {
-    mockUser,
+    mockUser: (header, body) => mockUser(header, body),
     createChannel: () => createChannel(context),
     getChannel: (header, body) => getChannel(header, body),
     acceptInvitation:(header, body) => acceptInvitation(header, body)

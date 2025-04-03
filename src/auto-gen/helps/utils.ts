@@ -109,14 +109,14 @@ export function countTokens(): number {
 }
 
 export function summarizeErrors(
-  failedTests: any[],
-  totalTests: number,
-  passedLogic: number,
-  passed200: number,
+  failedTests?: any[],
+  totalTests?: number,
+  passed200?: number,
+  passed201?: number,
 ) {
   const summary = {
     statusCodes: {
-      201: passedLogic,
+      201: passed201,
       200: passed200,
       400: 0,
       500: 0,
@@ -167,6 +167,7 @@ export function summarizeErrors(
 export function getAllFiles(dirPath: string): string[] {
   let files: string[] = [];
   const items = fs.readdirSync(dirPath);
+  console.log(items)
   items.forEach((item) => {
     const itemPath = path.join(dirPath, item);
     if (fs.statSync(itemPath).isDirectory()) {
@@ -190,7 +191,7 @@ export function groupFilesByName(
       const className = fileName.replace('.dto', '');
       fileMap[className] = fileMap[className] || {};
       fileMap[className].dtoPath = filePath;
-    } else if (filePath.endsWith('.request.ts')) {
+    } else if (filePath.endsWith('.request.json')) {
       const className = fileName.replace('.request', '');
       fileMap[className] = fileMap[className] || {};
       fileMap[className].requestPath = filePath;
@@ -318,4 +319,27 @@ export async function handleSendMessageResponse(
   context.debug();
 
   return true;
+}
+export function toCamelCase(input: string): string {
+  return input
+      .split('-')
+      .map((part, index) => 
+          index === 0 
+              ? part
+              : part.charAt(0).toUpperCase() + part.slice(1) 
+      )
+      .join(''); 
+}
+export function getBodyByAction(actionName: string, actions: any): any {
+  const foundAction = actions.find(item => item.action === actionName);
+
+  if (!foundAction) {
+    throw new Error(`Action '${actionName}' not found in the array.`);
+  }
+
+  return foundAction.body;
+}
+
+export function getStepByAction(action: string, steps: any[]) {
+  return steps.find(step => step.action === action);
 }

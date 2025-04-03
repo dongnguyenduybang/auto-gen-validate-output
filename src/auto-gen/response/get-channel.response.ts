@@ -1,128 +1,111 @@
+// get-channel.response.ts
 import { ValidateNested } from 'class-validator';
-import { Exclude, Type } from 'class-transformer';
-import {
-  IsString,
-  ValidIf,
-} from '../decorator/dto-decorator';
+import { Type } from 'class-transformer';
 import {
   BaseResponse,
-  Channel as GeneralChannel,
-  ChannelMetadata as GeneralMetadata,
-  IncludesResponse as GeneralIncludes,
-  Message as GeneralMessage,
+  Channel,
+  ChannelMetadata,
+  Message,
+  User,
+  Member,
+  IncludesResponse,
 } from './general-response';
+import { IsArray, IsOptional } from '../decorator/dto-decorator';
 
-// Custom Channel
-export class Channel extends GeneralChannel {
-  @Exclude()
-  avatar?: string;
+// 1. Tùy chỉnh lớp Channel cho get-channel
+export class GetChannelChannel extends Channel {
+  @IsOptional()
+  declare avatar: string | null;
 
-  @Exclude()
-  originalAvatar?: string;
+  @IsOptional()
+  declare originalAvatar: string | null;
 
-  @Exclude()
-  pinnedMessage?: any;
-
-  @Exclude()
-  dmStatus?: any;
-
-  @Exclude()
-  rejectTime?: string;
-
-  @Exclude()
-  acceptTime?: string;
-
-  // Validation rules
-  @IsString()
-  @ValidIf('channelId', '===', 'payload.channelId')
-  override channelId?: string;
-
-  @IsString()
-  @ValidIf('createTime', '<', 'response.updateTime')
-  override createTime?: string;
-}
-
-// Custom Channel Metadata
-export class ChannelMetadata extends GeneralMetadata {
-  @Exclude()
-  dmId?: string;
-
-  @Exclude()
-  dmStatus?: any;
-
-  @Exclude()
-  deleteTime?: string;
-
-  // Validation rules
-  @IsString()
-  @ValidIf('channelId', '===', 'response.channelId')
-  override channelId?: string;
-}
-
-// Custom Message 
-export class Message extends GeneralMessage {
-  @Exclude()
-  reactions?: any;
-
-  @Exclude()
-  originalMessage?: any;
-
-  @Exclude()
-  reports?: any[];
-}
-
-// Custom Includes
-export class IncludesResponse extends GeneralIncludes {
-  @ValidateNested({ each: true })
-  @Type(() => Channel)
-  override channels: Channel[];
-
-  @ValidateNested({ each: true })
+  @IsOptional()
+  @ValidateNested()
   @Type(() => Message)
-  override messages: Message[];
+  declare pinnedMessage: Message | null;
+
+  @IsArray()
+  @IsOptional()
+  declare participantIds: string[];
 }
 
-// Data Wrapper 
-export class GetChannelDataWrapper {
-  @ValidateNested()
-  @Type(() => Channel)
-  channel: Channel;
+// 2. Tùy chỉnh ChannelMetadata cho get-channel
+export class GetChannelChannelMetadata extends ChannelMetadata {
+  @IsOptional()
+  declare userId: string;
+
+  @IsOptional()
+  declare deleteTime: string | null;
+
+  @IsOptional()
+  declare deletedMessageId: string | null;
+
+  @IsOptional()
+  declare dmId: string | null;
+
+  @IsOptional()
+  declare isIncomingMessageRequest: boolean | null;
+
+  @IsOptional()
+  declare lastSeenMessageId: string;
+
+  @IsOptional()
+  declare recipientId: string | null;
 
   @ValidateNested()
-  @Type(() => ChannelMetadata)
-  channelMetadata: ChannelMetadata;
+  @Type(() => Message)
+  declare lastMessage: Message;
 }
 
-// Main Response Class
-export class GetChannelResponse extends BaseResponse{
+// 3. Tùy chỉnh Message cho includes
+export class GetChannelMessage extends Message {
+  @IsArray()
+  @IsOptional()
+  declare reports: any[];
+
+  @IsArray()
+  @IsOptional()
+  declare onlyDeletedBy: string[];
+
+  @IsArray()
+  @IsOptional()
+  declare dataMentions: any[];
+}
+
+// 4. Định nghĩa DataResponse cho get-channel
+export class GetChannelDataResponse {
   @ValidateNested()
-  @Type(() => GetChannelDataWrapper)
-  data: GetChannelDataWrapper;
+  @Type(() => GetChannelChannel)
+  channel: GetChannelChannel;
 
   @ValidateNested()
-  @Type(() => IncludesResponse)
-  includes: IncludesResponse;
+  @Type(() => GetChannelChannelMetadata)
+  channelMetadata: GetChannelChannelMetadata;
+}
 
-  constructor() {
-    super();
-    
-    if (this.data?.channel) {
-      this.data.channel = Object.assign(new Channel(), this.data.channel);
-    }
-    
-    if (this.data?.channelMetadata) {
-      this.data.channelMetadata = Object.assign(new ChannelMetadata(), this.data.channelMetadata);
-    }
+// 5. Tùy chỉnh IncludesResponse
+export class GetChannelIncludesResponse extends IncludesResponse {
+  @ValidateNested({ each: true })
+  @Type(() => User)
+  users: User[];
 
-    // Cleanup includes
-    if (this.includes) {
-      this.includes = {
-        users: this.includes.users || [],
-        channels: this.includes.channels || [],
-        members: this.includes.members || [],
-        channelMetadata: this.includes.channelMetadata || [],
-        messages: this.includes.messages?.map(m => Object.assign(new Message(), m)) || []
-      };
-    }
-  }
+  @ValidateNested({ each: true })
+  @Type(() => GetChannelMessage)
+  messages: GetChannelMessage[];
+
+  @ValidateNested({ each: true })
+  @Type(() => Member)
+  members: Member[];
+
+  @ValidateNested({ each: true })
+  @Type(() => GetChannelChannelMetadata)
+  channelMetadata: GetChannelChannelMetadata[];
+}
+
+// 6. Tạo response chính
+export class GetChannelResponse extends BaseResponse<GetChannelDataResponse> {
+  @ValidateNested()
+  @Type(() => GetChannelIncludesResponse)
+  includes: GetChannelIncludesResponse;
 }

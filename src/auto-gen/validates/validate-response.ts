@@ -3,7 +3,7 @@ import 'reflect-metadata';
 import { getDecorators } from '../helps/dto-helper';
 import { ErrorMessage } from '../enums/error-message.enum';
 import { resolveValidIf } from '../helps/utils';
-import { StartWith } from '../decorator/dto-decorator';
+import { StartWith, ValidIf } from '../decorator/dto-decorator';
 
 export function validateResponses(
   payload: any,
@@ -22,7 +22,6 @@ export function validateResponses(
       const field = path ? `${path}.${key}` : key;
 
       const decorators = getDecorators(prototype, key);
-      console.log(decorators)
       if (
         decorators.type === 'object' &&
         typeof valueResponse === 'object' &&
@@ -68,23 +67,24 @@ export function validateResponses(
           errors.push(`${field} must be a boolean but got ${typeof valueResponse}`);
         }
         
-        if (decorators.startWith && typeof valueResponse === 'string') {
-          const [fieldCheck, value] = decorators.startWith
-          console.log(valueResponse, value)
-          if (!value || !valueResponse.startsWith(value)) {
-            errors.push(`${field} must start with ${value}`);
-          }
-        }
+        // if (decorators.startWith && typeof valueResponse === 'string') {
+        //   const [fieldCheck, value] = decorators.startWith
+        //   console.log(valueResponse, value)
+        //   if (!value || !valueResponse.startsWith(value)) {
+        //     errors.push(`${field} must start with ${value}`);
+        //   }
+        // }
 
-        //check endWith
-        if (decorators.endWith && typeof valueResponse === 'string') {
-          const [fieldCheck, value] = decorators.endWith
-          if (!value || !valueResponse.startsWith(value)) {
-            errors.push(`${field} must end with ${value}`);
-          }
-        }
+        // //check endWith
+        // if (decorators.endWith && typeof valueResponse === 'string') {
+        //   const [fieldCheck, value] = decorators.endWith
+        //   if (!value || !valueResponse.startsWith(value)) {
+        //     errors.push(`${field} must end with ${value}`);
+        //   }
+        // }
 
         if (decorators.validIf) {
+          console.log(decorators.validIf)
           const isValid = resolveValidIf(
             field,
             decorators.validIf,
