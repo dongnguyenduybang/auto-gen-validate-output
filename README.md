@@ -9,6 +9,7 @@
 - [Responses](#responses)
 - [Sagas](#sagas)
 - [Decorators](#decorators)
+- [Reports](#reports)
 - [Defined Name](#defined-name)
 
 ## NPM
@@ -28,6 +29,7 @@ Note: <action>: gen, test
 ```
 ## Requests
 
+-  📂 root
   - 📂 test-requests
     - 📂 send-message
       - 📄 send-message.request.json
@@ -114,6 +116,7 @@ export class SendMessageDTO {
 
 ## Responses
 
+-  📂 root
   - 📂 test-responses
     - 📂 send-message
       - 📄 send-message.response.json
@@ -261,6 +264,9 @@ export class SendMessageDTO {
 | StartWith | @StartWith(field, value) | Xác định kí tự bắt đầu của chuỗi  |   @StartWith('username', 'test123' )<br> username: string|
 | EndWith | @StartWith(field, value) | Xác định kí tự cuối cùng của chuỗi  |   @EndWith('username', 'test123' )<br> username: string|
 
+## Reports
+
+
 ## Defined Name
 
 **- Request ( DTO )**
@@ -269,11 +275,12 @@ export class SendMessageDTO {
   + Folder apis: send-message
     
   Example:
-  - 📂 test-requests
-    - 📂 send-message
-      - 📄 send-message.request.json
-      - 📄 send-message.dto.ts
-      - 📄 send-message.spec.ts
+  - 📂 root
+    - 📂 test-requests
+      - 📂 send-message
+        - 📄 send-message.request.json
+        - 📄 send-message.dto.ts
+        - 📄 send-message.spec.ts
     - 📂 send-dm-message
       - 📄 send-dm-message.request.json
       - 📄 send-dm-message.dto.ts
@@ -285,15 +292,18 @@ export class SendMessageDTO {
   + Folder apis: send-message
     
   Example:
-  - 📂 test-responses
-    - 📂 send-message
-      - 📄 send-message.response.json
+  - 📂 root
+    - 📂 test-responses
+      - 📂 send-message
+        - 📄 send-message.response.json
+        - 📄 send-message.response.spec.ts
+      - 📂 send-dm-message
+        - 📄 send-dm-message.response.json
+        - 📄 send-dm-message.response.spec.ts
+       
+    - 📂 responses
       - 📄 send-message.response.ts
-      - 📄 send-message.response.spec.ts
-    - 📂 send-dm-message
-      - 📄 send-dm-message.response.json
       - 📄 send-dm-message.response.ts
-      - 📄 send-dm-message.response.spec.ts
 
 **- Saga**
   + Folder chung: test-sagas
@@ -301,13 +311,18 @@ export class SendMessageDTO {
   + Folder apis: send-message
    
 Example:
-  - 📂 test-sagas
-    - 📂 send-message
-      - 📄 send-message.sagas.ts
-      - 📄 send-message.sagas.spec.ts
-    - 📂 send-dm-message
-      - 📄 send-dm-message.sagas.ts
-      - 📄 send-dm-message.sagas.spec.ts
+  - 📂 root
+    - 📂 test-sagas
+      - 📂 send-message
+        - 📄 send-message.response.json
+        - 📄 send-message.response.spec.ts
+      - 📂 send-dm-message
+        - 📄 send-dm-message.response.json
+        - 📄 send-dm-message.response.spec.ts
+       
+    - 📂 responses
+      - 📄 send-message.response.ts
+      - 📄 send-dm-message.response.ts
      
 ## List Action
 
