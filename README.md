@@ -386,40 +386,108 @@ Example:
 #### acceptInvitation
 ```bash
   {
-action: 'getChannel',
-            body: { channelId: '{{channelId}}' },
-            header: { token: '{{token}}' },
-}
+        action: 'getChannel',
+        body: { channelId: '{{channelId}}'},
+        header: { token: '{{token}}' },
+  }
 ```
 
 #### addMessageReaction
-
+```bash
+  {
+        action: 'addMessageReaction',
+        body: { channelId: '{{channelId}}'},
+        header: { token: '{{token}}' },
+  }
+```
 
 #### createChannel
-
+```bash
+  {
+        action: 'createChannel',
+  }
+```
 
 #### getChannel
-
+```bash
+  {
+        action: 'getChannel',
+        body: { channelId: '{{channelId}}'},
+        header: { token: '{{token}}' },
+  }
+```
 
 #### getMessage
-
+```bash
+  {
+        action: 'getMessage',
+        body: { messageId: '{{messageId}}'},
+        header: { token: '{{token}}' },
+  }
+```
 
 #### getStickerCollection
-
+```bash
+  {
+        action: 'getStickerCollection',
+        body: { collectionId: '{{collectionId}}'},
+        header: { token: '{{token}}' },
+  }
+```
 
 #### getSticker
-
+```bash
+  {
+        action: 'stickerId',
+        body: { stickerId: '{{stickerId}}'},
+        header: { token: '{{token}}' },
+  }
+```
 
 #### getListMessages
-
+```bash
+  {
+        action: 'getListMessages',
+        body: { channelId: '{{channelId}}'},
+        header: { token: '{{token}}' },
+  }
+```
 
 #### mockChannel
-
+```bash
+  {
+        action: 'mockChannel',
+  }
+```
 
 #### mockUser
-
+```bash
+  {
+        action: 'mockUser',
+        body: { quantity: 2 },
+  }
+```
 
 #### sendInvitation
-
+```bash
+  {
+        action: 'sendInvitation',
+        body: { invitationLink: '{{inviteLink}}', userIds: ['{{userId1}}','{{userId2}}'] }
+  }
+```
 
 #### sendMessage
+```bash
+  {
+        action: 'sendMessage',
+        body: { channelId: '{{channelId}}', content: 'aaaaa' },
+        header: { token: '{{token}}' },
+  }
+```
+
+
+
+
+
+
+
