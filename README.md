@@ -29,7 +29,7 @@ Note: <action>: gen, test
 ```
 ## Requests
 
--  📂 root
+- 📂 root
   - 📂 test-requests
     - 📂 send-message
       - 📄 send-message.request.json
@@ -116,7 +116,7 @@ export class SendMessageDTO {
 
 ## Responses
 
--  📂 root
+- 📂 root
   - 📂 test-responses
     - 📂 send-message
       - 📄 send-message.response.json
