@@ -9,7 +9,7 @@
 - [Sagas](#sagas)
 - [Decorators](#decorators)
 - [NPM](#npm)
-
+- [Defined Name](#defined-name)
 ## Requests
 
 
@@ -138,3 +138,17 @@
     - $ pnpm test response send-message
 
 ```
+
+## Defined Name
+
+- Request ( DTO )
+  + Folder chung: test-requests
+  + File: send-message.dto.ts
+  + Folder apis: send-message
+  Example:
+    test-requests ├── send-message │ ├── send-message.request.json │ ├── send-message.dto.ts ├── send-message.spec.ts  ├── send-dm-message │ ├── send-dm-message.request.json ├── send-dm-message.dto.ts ├── send-dm-message.spec.ts
+
+- Response
+  Example:
+    + file: send-message.response.ts
+    + folder: send-message
