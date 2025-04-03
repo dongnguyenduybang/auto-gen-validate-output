@@ -472,7 +472,7 @@ Example:
 ```bash
   {
         action: 'sendInvitation',
-        body: { invitationLink: '{{inviteLink}}', userIds: ['{{userId1}}','{{userId2}}'] }
+        body: { invitationLink: '{{inviteLink}}', userIds: "['{{userId1}}','{{userId2}}']" }
   }
 ```
 
