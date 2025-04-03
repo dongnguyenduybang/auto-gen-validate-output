@@ -13,7 +13,6 @@
 
 ## NPM
 
-```bash
   $ pnpm <action> <type> <apisName>
 
   $ pnpm <action> <type> <folder-spec>
@@ -29,7 +28,6 @@
 ```
 ```bash
     - $ pnpm test response send-message
-```
 ```
 ## Requests
 
