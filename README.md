@@ -2,7 +2,7 @@
 <h1>Auto Gen Testcase</h1>
 </div>
 
-## Contents
+# Contents
 
 - [NPM](#npm)
 - [Requests](#requests)
@@ -197,7 +197,7 @@ export class SendMessageDTO {
 - [Condition](#condition)
 
 
-# General
+### General
 
 | Name  | Usage | Describe  | Example|
 |--------|--------|--------|--------|
@@ -208,7 +208,7 @@ export class SendMessageDTO {
 | IsAny | @IsAny() | Cho phép bao hàm tất cả các kiểu |   @IsAny()<br> type: string; hoặc @IsAny()<br> type: number;  |
 | IsDefined | @IsDefined() | Bắt buộc phải xác định |   @IsDefined()<br> type: string|
 
-# String
+### String
 
 | Name  | Usage | Describe  | Example|
 |--------|--------|--------|--------|
@@ -216,7 +216,7 @@ export class SendMessageDTO {
 | MinLength | @MinLength(value) | Xác định độ dài chuỗi ít nhất | @MinLength(1)|
 | MaxLength |  @MaxLength(value) | Xác định độ dài chuỗi nhiều nhất | @MinLength(100)|
 
-# Number
+### Number
   
 | Name  | Usage | Describe  | Example|
 |--------|--------|--------|--------|
@@ -244,19 +244,19 @@ export class SendMessageDTO {
 |--------|--------|--------|--------|
 | IsBoolean | @IsBoolean() | Xác định là kiểu boolean|   @IsBoolean()<br> isPinned: boolean; |
 
-# Date
+### Date
 
 | Name  | Usage | Describe  | Example|
 |--------|--------|--------|--------|
 | IsDate | @IsDate() | Xác định là kiểu ngày|   @IsDate()<br> createTime: Date; |
 
-# Enum
+### Enum
 
 | Name  | Usage | Describe  | Example|
 |--------|--------|--------|--------|
 | IsEnum | @IsEnum(enumType) | Xác định là kiểu enum |   @IsEnum(MessageTypeEnum)<br> messageType: MessageTypeEnum|
 
-# Condition
+### Condition
 
 | Name  | Usage | Describe  | Example|
 |--------|--------|--------|--------|
@@ -264,10 +264,10 @@ export class SendMessageDTO {
 | StartWith | @StartWith(field, value) | Xác định kí tự bắt đầu của chuỗi  |   @StartWith('username', 'test123' )<br> username: string|
 | EndWith | @StartWith(field, value) | Xác định kí tự cuối cùng của chuỗi  |   @EndWith('username', 'test123' )<br> username: string|
 
-# Reports
+## Reports
 
 
-# Defined Name
+## Defined Name
 
 **- Request ( DTO )**
   + Folder chung: test-requests
