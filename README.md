@@ -43,7 +43,7 @@
 
 - String
 
-| Name  | Usage | Describe  | Example
+| Name  | Usage | Describe  | Example|
 |--------|--------|--------|--------|
 | IsString | @IsString(option?) | Xác định là kiểu chuỗi. option?: message?, value?|   @IsString(<br>{message: `Invalid channelId`,<br>value: '{{channelId}}'})|
 | MinLength | @MinLength(value) | Xác định độ dài chuỗi ít nhất | @MinLength(1)|
@@ -51,7 +51,7 @@
 
 - Number
   
-| Name  | Usage | Describe  | Example
+| Name  | Usage | Describe  | Example|
 |--------|--------|--------|--------|
 | IsNumber | @IsNumber() | Xác định là kiểu số|   @IsNumber()<br> age: number; |
 | Min | @Min(value) | Xác định số thấp nhất | @Min(1)<br> age: number;|
@@ -59,7 +59,7 @@
 
 - Array
 
-  | Name  | Usage | Describe  | Example
+  | Name  | Usage | Describe  | Example|
 |--------|--------|--------|--------|
 | IsArray | @IsArray() | Xác định là kiểu mảng|   @IsArray()<br> address: string[]; |
 | MinArray | @MinArray(value) | Xác định số lượng phần tử mảng con nhỏ nhất | @MinArray(1)<br> address: string[];|
@@ -67,25 +67,25 @@
 
 - Object
 
-| Name  | Usage | Describe  | Example
+| Name  | Usage | Describe  | Example|
 |--------|--------|--------|--------|
 | IsObject | @IsObject() | Xác định là kiểu object|   @IsObject()<br> includes: IncludesResponse; |
 
 - Boolean
 
-  | Name  | Usage | Describe  | Example
+  | Name  | Usage | Describe  | Example|
 |--------|--------|--------|--------|
 | IsBoolean | @IsBoolean() | Xác định là kiểu boolean|   @IsBoolean()<br> isPinned: boolean; |
 
 - Date
 
-| Name  | Usage | Describe  | Example
+| Name  | Usage | Describe  | Example|
 |--------|--------|--------|--------|
 | IsDate | @IsDate() | Xác định là kiểu ngày|   @IsDate()<br> createTime: Date; |
 
 - General
 
-  | Name  | Usage | Describe  | Example
+  | Name  | Usage | Describe  | Example|
 |--------|--------|--------|--------|
 | IsOptional | @IsOptional() | Cho phép undefined |   @IsOptional()<br> type: string; |
 | IsNotNull | @IsNotNull() | Không cho phép null |   @IsNotNull()<br> type: string; |
@@ -96,13 +96,13 @@
 
 - Enum
 
-  | Name  | Usage | Describe  | Example
+  | Name  | Usage | Describe  | Example|
 |--------|--------|--------|--------|
 | IsEnum | @IsEnum(enumType) | Xác định là kiểu enum |   @IsEnum(MessageTypeEnum)<br> messageType: MessageTypeEnum|
 
 - Condition
 
-  | Name  | Usage | Describe  | Example
+  | Name  | Usage | Describe  | Example|
 |--------|--------|--------|--------|
 | ValidIf | @ValidIf(condition, operators, condition2) | Xác định là đúng nếu thỏa mãn điều kiện  |   @ValidIf('workspaceId', '===', '0')<br> workspaceId: string|
 | StartWith | @StartWith(field, value) | Xác định kí tự bắt đầu của chuỗi  |   @StartWith('username', 'test123' )<br> username: string|
