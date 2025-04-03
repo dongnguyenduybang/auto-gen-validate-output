@@ -12,14 +12,15 @@
 - [Defined Name](#defined-name)
 
 ## NPM
-
-- $ pnpm <action> <type> <apisName>
-- $ pnpm <action> <type> <folder-spec>
-* Note: <action>: gen, test
+```
+$ pnpm <action> <type> <apisName>
+$ pnpm <action> <type> <folder-spec>
+Note: <action>: gen, test
         <type>: request, response, saga
         <apisName>: send-message
         <folder-spec>: send-message
-* Example:
+Example:
+```
 ```bash
     $ pnpm gen request send-message
 ```
