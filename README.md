@@ -42,6 +42,7 @@
 ## Decorators
 
 - String
+
 | Name  | Usage | Example  |
 |--------|--------|--------|
 | IsString | @IsString(option?) | Giá trị 2 |
