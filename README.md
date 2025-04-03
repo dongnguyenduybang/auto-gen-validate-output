@@ -365,16 +365,54 @@ Example:
      
 ## List Action
 
-- acceptInvitation
-- addMessageReaction
-- createChannel
-- getChannel
-- getMessage
-- getStickerCollection
-- getSticker
-- getListMessages
-- mockChannel
-- mockUser
-- sendInvitation
-- sendMessage
+- [acceptInvitation](#acceptInvitation)
+- [addMessageReaction](#addMessageReaction)
+- [createChannel](#createChannel)
+- [getChannel](#getChannel)
+- [getMessage](#getMessage)
+- [getStickerCollection](#getStickerCollection)
+- [getSticker](#getSticker)
+- [getListMessages](#getListMessages)
+- [mockChannel](#mockChannel)
+- [mockUser](#mockUser)
+- [sendInvitation](#sendInvitation)
+- [sendMessage](#sendMessage)
 - ...
+
+
+
+### ACtion Detail
+
+#### acceptInvitation
+
+#### addMessageReaction
+
+
+#### createChannel
+
+
+#### getChannel
+
+
+#### getMessage
+
+
+#### getStickerCollection
+
+
+#### getSticker
+
+
+#### getListMessages
+
+
+#### mockChannel
+
+
+#### mockUser
+
+
+#### sendInvitation
+
+
+#### sendMessage
