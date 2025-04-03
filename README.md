@@ -123,13 +123,18 @@
 ## NPM
 
 ```bash
-  $ pnpm <action> <type> <folderName>
+  $ pnpm <action> <type> <apisName>
+
+  $ pnpm <action> <type> <folder-spec>
 
   Note: <action>: gen, test
         <type>: request, response, saga
-        <folderName>: send-message
+        <apisName>: send-message
+        <folder-spec>: send-message
 
   Example:
     - $ pnpm gen request send-message
+
+    - $ pnpm test response send-message
 
 ```
