@@ -121,7 +121,6 @@ export class SendMessageDTO {
     - 📂 send-message
       - 📄 send-message.response.json
       - 📄 send-message.response.spec.ts
-     
   - 📂 responses
     - 📄 send-message.response.ts
 
