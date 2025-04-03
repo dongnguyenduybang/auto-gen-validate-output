@@ -4,12 +4,31 @@
 
 ## Contents
 
+- [NPM](#npm)
 - [Requests](#requests)
 - [Responses](#responses)
 - [Sagas](#sagas)
 - [Decorators](#decorators)
-- [NPM](#npm)
 - [Defined Name](#defined-name)
+
+## NPM
+
+```bash
+  $ pnpm <action> <type> <apisName>
+
+  $ pnpm <action> <type> <folder-spec>
+
+  Note: <action>: gen, test
+        <type>: request, response, saga
+        <apisName>: send-message
+        <folder-spec>: send-message
+
+  Example:
+    - $ pnpm gen request send-message
+
+    - $ pnpm test response send-message
+
+```
 ## Requests
 
 
@@ -118,26 +137,6 @@
 | ValidIf | @ValidIf(condition, operators, condition2) | Xác định là đúng nếu thỏa mãn điều kiện  |   @ValidIf('workspaceId', '===', '0')<br> workspaceId: string|
 | StartWith | @StartWith(field, value) | Xác định kí tự bắt đầu của chuỗi  |   @StartWith('username', 'test123' )<br> username: string|
 | EndWith | @StartWith(field, value) | Xác định kí tự cuối cùng của chuỗi  |   @EndWith('username', 'test123' )<br> username: string|
-
-
-## NPM
-
-```bash
-  $ pnpm <action> <type> <apisName>
-
-  $ pnpm <action> <type> <folder-spec>
-
-  Note: <action>: gen, test
-        <type>: request, response, saga
-        <apisName>: send-message
-        <folder-spec>: send-message
-
-  Example:
-    - $ pnpm gen request send-message
-
-    - $ pnpm test response send-message
-
-```
 
 ## Defined Name
 
