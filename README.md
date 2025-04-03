@@ -141,7 +141,7 @@
 
 ## Defined Name
 
-- Request ( DTO )
+**- Request ( DTO )**
   + Folder chung: test-requests
   + File: send-message.dto.ts
   + Folder apis: send-message
@@ -157,8 +157,32 @@
       - 📄 send-dm-message.dto.ts
       - 📄 send-dm-message.spec.ts
 
-
-- Response
+**- Response**
+  + Folder chung: test-responses
+  + File: send-message.response.ts, send-message.response.json, send-message.response.spec.ts
+  + Folder apis: send-message
+    
   Example:
-    + file: send-message.response.ts
-    + folder: send-message
+  - 📂 test-responses
+    - 📂 send-message
+      - 📄 send-message.response.json
+      - 📄 send-message.response.ts
+      - 📄 send-message.response.spec.ts
+    - 📂 send-dm-message
+      - 📄 send-dm-message.response.json
+      - 📄 send-dm-message.response.ts
+      - 📄 send-dm-message.response.spec.ts
+
+**  - Saga:**
+    + Folder chung: test-sagas
+    + File: send-message.sagas.ts, send-message.sagas.spec.ts
+    + Folder apis: send-message
+   
+    Example:
+    - 📂 test-sagas
+      - 📂 send-message
+        - 📄 send-message.sagas.ts
+        - 📄 send-message.sagas.spec.ts
+      - 📂 send-dm-message
+        - 📄 send-dm-message.sagas.ts
+        - 📄 send-dm-message.sagas.spec.ts
