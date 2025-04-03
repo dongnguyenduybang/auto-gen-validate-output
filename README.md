@@ -224,7 +224,7 @@ export class SendMessageDTO {
 | Min | @Min(value) | Xác định số thấp nhất | @Min(1)<br> age: number;|
 | Max |  @Max(value) | Xác định số cao nhất | @Max(100)<br> age:number;|
 
-# Array
+### Array
 
 | Name  | Usage | Describe  | Example|
 |--------|--------|--------|--------|
@@ -232,13 +232,13 @@ export class SendMessageDTO {
 | MinArray | @MinArray(value) | Xác định số lượng phần tử mảng con nhỏ nhất | @MinArray(1)<br> address: string[];|
 | Max |  @MaxArray(value) | Xác định số lượng phần tử mảng con nhỏ nhất | @MaxArray(100)<br> address: string[];|
 
-# Object
+### Object
 
 | Name  | Usage | Describe  | Example|
 |--------|--------|--------|--------|
 | IsObject | @IsObject() | Xác định là kiểu object|   @IsObject()<br> includes: IncludesResponse; |
 
-# Boolean
+### Boolean
 
 | Name  | Usage | Describe  | Example|
 |--------|--------|--------|--------|
