@@ -265,7 +265,7 @@ export class SendMessageDTO {
 
 ## Reports
 
-### Cấu trúc 
+### Requests ( DTO )
 ```bash
 === Test Report for send-message ===
 • Host: https://api-sb11.rpc.ziichat.dev
@@ -300,7 +300,11 @@ export class SendMessageDTO {
 
 === End of Report ===
 ```
-
+- Status: Status response error trả về ( 400, 403, 404, 500, 503 )
+- Missing: Có trong expect nhưng không có trên repsonse API return
+- Extra: Có trên response API return nhưng không có trong expect
+- Unique Error: Gôm lỗi
+- Detail: Chi tiết lỗi (nếu có)
 
 ## Defined Name
 
