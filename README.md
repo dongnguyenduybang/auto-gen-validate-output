@@ -19,7 +19,6 @@ Note: <action>: gen, test
         <type>: request, response, saga
         <apisName>: send-message
         <folder-spec>: send-message
-Example:
 ```
 ```bash
     $ pnpm gen request send-message
