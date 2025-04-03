@@ -14,20 +14,17 @@
 ## NPM
 
   $ pnpm <action> <type> <apisName>
-
   $ pnpm <action> <type> <folder-spec>
-
   Note: <action>: gen, test
         <type>: request, response, saga
         <apisName>: send-message
         <folder-spec>: send-message
-
   Example:
 ```bash
-    - $ pnpm gen request send-message
+    $ pnpm gen request send-message
 ```
 ```bash
-    - $ pnpm test response send-message
+    $ pnpm test response send-message
 ```
 ## Requests
 
