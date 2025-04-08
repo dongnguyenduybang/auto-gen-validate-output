@@ -8,6 +8,17 @@
 - 🔎 Auto generate log report file for each generate type.
 - 🔧 Just specify the structure to automate the generate as specified in the docs.
 
+# Contents
+
++ [Docs Decorator](docs/decorators-docs/decorator.md)
++ [Docs List Actions](docs/list-actons/list-actions.md)
++ [Docs Name Conventions](docs/name-conventions-docs/name-conventions.md)
++ [Docs Reports](docs/reports/reports.md)
++ [Docs Requests](docs/requests-docs/requests.md)
++ [Docs Responses](docs/responses-docs/response.md)
++ [Docs Sagas](docs/saga-docs/sagas.md)
+
+
 # Install
 
 ```bash 
@@ -19,20 +30,20 @@ npm install -g pnpm@latest-10
 
 # Install Dependencies
 cd auto-gen-validate-output
-pnpm install or npm install
+pnpm i or npm install
 
 ```
 # Script
 ```
-pnpm <action> <type> <apisName>
-pnpm <action> <type> <folder>
-Note: <action>: gen, test, clear
-      <type>: request, response, saga
-      <apisName>: Endpoint name (as specified in the name convention)
-      <folder>: Folder name (as specified in the name convention)
+pnpm <action> <type> <apisName/folder>
 ```
-## Flow test demo
-- Demo for endpoint send-message
+- `<action>`: `gen`, `test`, `clear`
+- `<type>`: `request`, `response`, `saga`
+- `<apisName>`: Endpoint name [name convention](docs/name-conventions-docs/name-conventions.md)
+- `<folder>`: Folder name [name convention](docs/name-conventions-docs/name-conventions.md)
+
+# Demo
+#### Script for endpoint send-message
 ```bash
 # Gen request for endpoint send-message
     pnpm gen request send-message
@@ -40,20 +51,20 @@ Note: <action>: gen, test, clear
 # Gen response for endpoint send-message
     pnpm test request send-message
 
-# Test response endpoint send-message
+# Test request for endpoint send-message
     pnpm gen response send-message
 
-# Test response endpoint send-message
+# Test response for endpoint send-message
     pnpm test response send-message
 
-# Gen sagas endpoint send-message
+# Gen saga for endpoint send-message
     pnpm gen saga send-message
 
-# Test sagas endpoint send-message
+# Test saga for endpoint send-message
     pnpm test saga send-message
 
 ```
-- Demo for folder
+#### Script for folder
 ```bash
 # Gen request for folder Requests
     pnpm gen request test-requests
@@ -73,7 +84,7 @@ Note: <action>: gen, test, clear
 # Test saga for folder Sagas
     pnpm test saga test-sagas
 ```
-- Demo for clear
+#### Script for clear
 ```bash
 # Clear request for endpoint send-message
     pnpm clear request send-message

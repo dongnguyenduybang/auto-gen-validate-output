@@ -1,4 +1,3 @@
-
 ## Reports
 
 ```
@@ -9,14 +8,14 @@
 
 === Validation Metrics ===
 ■ DTO Validation:
-  ✔ Passed: 1
-  ✖ Failed: 1
-  ◼ Total: 45
+  ✅ Passed: 1
+  ❌ Failed: 1
+  📊 Total: 45
 
 === Error Details ===
 [DTO Validation Issues]
 
-  1. Case #42
+  🔴 Case #42
      ├─ Status: 500
      ├─ Missing: None
      ├─ Extra: None
@@ -40,3 +39,25 @@
 - Extra: Có trên response API return nhưng không có trong expect
 - Unique Error: Gôm lỗi
 - Detail: Chi tiết lỗi (nếu có)
+
+
+```
+=== Response Test Report for send-message ===
+• Host: https://api-sb11.rpc.ziichat.dev
+• Endpoint: /Message/SendMessage
+• Date: 08/04/2025, 09:37:05
+
+=== Test Summary ===
+✅ Passed: 0
+❌ Failed: 1
+📊 Total: 1
+
+=== Error Details ===
+
+🔴 Case #1
+   ├─ Error: data.message.workspaceId must be a string but got number,data.message.messageId should not be null or undefined
+
+=== End of Report ===
+```
+
+- Error: Trả về chi tiết error nếu nếu API có lỗi
