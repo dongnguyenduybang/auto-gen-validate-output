@@ -1,53 +1,103 @@
 <div align="center">
-<h1>Auto Gen Testcase</h1>
+<h1>Auto Generate Testcase</h1>
 </div>
 
-# Contents
+# Introduce
 
-- [NPM](#npm)
-- [Requests](#requests)
-- [Responses](#responses)
-- [Sagas](#sagas)
-- [Decorators](#decorators)
-- [Reports](#reports)
-- [Defined Name](#defined-name)
+- ✏️ Auto generate test case for DTO/Response/Saga.
+- 🔎 Auto generate log report file for each generate type.
+- 🔧 Just specify the structure to automate the generate as specified in the docs.
 
-## NPM
+# Install
+
+```bash 
+# Clone Repo
+git clone https://github.com/dongnguyenduybang/auto-gen-validate-output
+
+# Install Packages
+npm install -g pnpm@latest-10
+
+# Install Dependencies
+cd auto-gen-validate-output
+pnpm install or npm install
+
+```
+# Script
 ```
 pnpm <action> <type> <apisName>
 pnpm <action> <type> <folder>
-Note: <action>: gen, test
-        <type>: request, response, saga
-        <apisName>: send-message
-        <folder>: send-message
+Note: <action>: gen, test, clear
+      <type>: request, response, saga
+      <apisName>: Endpoint name (as specified in the name convention)
+      <folder>: Folder name (as specified in the name convention)
 ```
-
-``` 
+## Flow test demo
+- Demo for endpoint send-message
+```bash
+# Gen request for endpoint send-message
     pnpm gen request send-message
-```
-``` 
-    $ pnpm test response send-message >test 1 response cho send-message
-```
-``` 
-    $ pnpm gen request test-requests >gen toàn bộ requests
-```
-``` 
-    $ pnpm test request test-responses >test toàn bộ responses
-```
-``` 
 
-    $ pnpm gen saga send-message >gen 1 saga cho send-message
+# Gen response for endpoint send-message
+    pnpm test request send-message
+
+# Test response endpoint send-message
+    pnpm gen response send-message
+
+# Test response endpoint send-message
+    pnpm test response send-message
+
+# Gen sagas endpoint send-message
+    pnpm gen saga send-message
+
+# Test sagas endpoint send-message
+    pnpm test saga send-message
+
 ```
-``` 
-    $ pnpm test saga send-message >test 1 saga cho send-message
+- Demo for folder
+```bash
+# Gen request for folder Requests
+    pnpm gen request test-requests
+
+# Test request for folder Requests
+    pnpm test request test-requests
+
+# Gen response for folder Responses
+    pnpm gen response test-responses
+
+# Test response for folder Responses
+    pnpm test response test-responses
+
+# Gen saga for folder Sagas
+    pnpm gen saga test-sagas
+
+# Test saga for folder Sagas
+    pnpm test saga test-sagas
 ```
-``` 
-    $ pnpm gen saga test-sagas >gen toàn bộ sagas
-```
-``` 
-    $ pnpm test saga test-sagas >test toàn bộ sagas
+- Demo for clear
+```bash
+# Clear request for endpoint send-message
+    pnpm clear request send-message
+
+# Clear response for endpoint send-message
+    pnpm clear response send-message
+
+# Clear saga for endpoint send-message
+    pnpm clear saga send-message
+
+# Clear request for folder
+    pnpm clear request test-requests
+
+# Clear response for folder
+    pnpm clear response test-responses
+
+# Clear saga for folder
+    pnpm clear saga test-sagas
+
 ```
 
+<div align="center">
+<h2>End...</h1>
+</div>
 
 
 
