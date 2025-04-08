@@ -1,17 +1,6 @@
 import { ValidateNested } from 'class-validator';
 import { Type } from 'class-transformer';
-import {
-  IsDefined,
-  IsArray,
-  IsBoolean,
-  IsString,
-  IsNumber,
-  IsObject,
-  IsOptional,
-  ValidIf,
-  IsEnum,
-  StartWith,
-} from '../decorator/dto-decorator';
+
 import { ChannelTypeEnum } from '../enums/channel-type.enum';
 import { MessageTypeEnum } from '../enums/message-type.enum';
 import { AttachmentTypeEnum } from '../enums/attachment-type.enum';
@@ -22,6 +11,14 @@ import { MediaPermissionSettingEnum } from '../enums/media-permission-setting.en
 import { ChannelPermissionEnum } from '../enums/channel-permissions.enum';
 import { UserStatusExpireAfterTimeEnum } from '../enums/user-status-expire-after-time.enum';
 import { EmbedTypeEnum } from '../enums/embed-type.enum';
+import { IsBoolean } from '../decorator/boolean-decorator';
+import { IsDefined, IsOptional } from '../decorator/general-decorator';
+import { IsNumber } from '../decorator/number-decorator';
+import { IsString } from '../decorator/string-decorator';
+import { IsEnum } from '../decorator/enum-decorator';
+import { IsObject } from '../decorator/object-decorator';
+import { IsArray } from '../decorator/array-decorator';
+import { StartWith } from '../decorator/condition-decorator';
 
 export class Reaction {
   @IsBoolean()

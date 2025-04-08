@@ -1,10 +1,6 @@
 import { ValidateNested } from 'class-validator';
 import { Exclude, Type } from 'class-transformer';
 import {
-  IsString,
-  ValidIf,
-} from '../decorator/dto-decorator';
-import {
   BaseResponse,
   Message as GeneralMessage,
   Channel as GeneralChannel,
@@ -13,6 +9,8 @@ import {
   User as GeneralUser,
   Member as GeneralMember
 } from './general-response';
+import { IsString } from '../decorator/string-decorator';
+import { ValidIf } from '../decorator/condition-decorator';
 
 // Custom Message
 export class Message extends GeneralMessage {

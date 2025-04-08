@@ -5,7 +5,6 @@ import 'reflect-metadata';
 import { AttachmentTypeEnum } from '../enums/attachment-type.enum';
 import { TestContext } from '../test-execute-step/text-context';
 import { resolveVariable } from './get-resolve-variables';
-import { StepConfig } from '../decorator/request-decorator';
 import { SendMessageResponse } from '../response/send-message.response';
 import { extractMessageData } from '../test-execute-step/test-executor';
 

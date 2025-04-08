@@ -2,18 +2,6 @@
 import { ValidateNested } from 'class-validator';
 import { Exclude, Type } from 'class-transformer';
 import {
-  IsArray,
-  IsBoolean,
-  IsDefined,
-  IsEnum,
-  IsNumber,
-  IsObject,
-  IsOptional,
-  IsString,
-  StartWith,
-  ValidIf,
-} from '../decorator/dto-decorator';
-import {
   BaseResponse,
   Channel as GeneralChannel,
   IncludesResponse as GeneralIncludesResponse,
@@ -29,6 +17,12 @@ import { EmbedTypeEnum } from '../enums/embed-type.enum';
 import { ChannelTypeEnum } from '../enums/channel-type.enum';
 import { AttachmentTypeEnum } from '../enums/attachment-type.enum';
 import { MessageTypeEnum } from '../enums/message-type.enum';
+import { IsDefined, IsOptional } from '../decorator/general-decorator';
+import { IsString } from '../decorator/string-decorator';
+import { IsEnum } from '../decorator/enum-decorator';
+import { IsNumber } from '../decorator/number-decorator';
+import { IsBoolean } from '../decorator/boolean-decorator';
+import { StartWith } from '../decorator/condition-decorator';
 
 // custom Channel
 export class ChannelData extends GeneralChannel {

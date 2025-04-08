@@ -1,10 +1,6 @@
-import {
-  IsNotEmpty,
-  IsString,
-  IsDefined,
-  MinLength,
-  MaxLength,
-} from '../../decorator/dto-decorator';
+import { IsDefined, IsNotEmpty } from "../../decorator/general-decorator";
+import { IsString, MaxLength, MinLength } from "../../decorator/string-decorator";
+
 
 export class SendMessageDTO {
   @IsString({

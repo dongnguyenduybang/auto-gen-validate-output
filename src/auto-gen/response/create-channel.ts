@@ -11,8 +11,9 @@ import {
   IncludesResponse,
 } from './general-response';
 import { DirectMessageStatusEnum } from '../enums/direct-message-status.enum';
-import { IsDefined, IsArray, IsOptional } from '../decorator/dto-decorator';
 import { ChannelPermissionEnum } from '../enums/channel-permissions.enum';
+import { IsDefined, IsOptional } from '../decorator/general-decorator';
+import { IsArray } from '../decorator/array-decorator';
 
 // 1. Tùy chỉnh lớp Channel cho create-channel
 export class CreateChannelChannel extends Channel {

@@ -11,7 +11,8 @@ import {
   IncludesResponse,
 } from './general-response';
 import { DirectMessageStatusEnum } from '../enums/direct-message-status.enum';
-import { IsArray, IsOptional } from '../decorator/dto-decorator';
+import { IsOptional } from '../decorator/general-decorator';
+import { IsArray } from '../decorator/array-decorator';
 
 // 1. Tùy chỉnh lớp Channel
 export class AcceptInvitationChannel extends Channel {

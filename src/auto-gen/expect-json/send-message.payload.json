@@ -1,18 +1,13 @@
 [
     {
-        "header": {
-            "x-session-token": null
-        },
         "body": {
             "workspaceId": "",
             "channelId": "",
             "content": ""
         },
-        "expects": {
-            "statusResponse": 503,
-            "statusName": "Forbiden"
-        }
-           
+        "expects": [
+            "Could not resolve permission type"
+        ]
     },
     {
         "body": {
