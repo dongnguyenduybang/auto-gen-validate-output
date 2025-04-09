@@ -7,23 +7,35 @@ import { EmbedTypeEnum } from '../enums/embed-type.enum';
 import { IsDefined } from '../decorator/general-decorator';
 import { IsString } from '../decorator/string-decorator';
 import { IsBoolean } from '../decorator/boolean-decorator';
-import { StartWith, ValidIf } from '../decorator/condition-decorator';
+import { EndWith, StartWith, ValidIf } from '../decorator/condition-decorator';
 import { IsObject } from '../decorator/object-decorator';
 import { IsArray } from '../decorator/array-decorator';
-import { BaseResponse,
+import {
+  BaseResponse,
   Message as GeneralMessage,
   User as GeneralUser,
   Member as GeneralMember,
   Channel as GeneralChannel,
   ChannelMetadata as GeneralChannelMetaData,
   Reaction,
+} from './general-response';
 
- } from './general-response';
-
- 
-export class Message extends GeneralMessage {
+export class Profile {
   
-  @ValidIf('workspaceId', '===', '1')
+  @StartWith('avatar', 'https://avatarss')
+  @IsString()
+  @IsDefined()
+  avatar?: string;
+
+  @StartWith('originalAvatar', 'https://avatars')
+  @IsString()
+  @IsDefined()
+  originalAvatar?: string;
+}
+
+export class Message extends GeneralMessage {
+
+  @ValidIf('workspaceId', '===', '0')
   @IsString()
   @IsDefined()
   workspaceId?: string;
@@ -38,8 +50,13 @@ export class Message extends GeneralMessage {
   @IsDefined()
   channelId?: string;
 
+  @ValidIf('createTime', '===', 'response.updateTime')
+  @IsString()
+  @IsDefined()
+  createTime?: string;
+
   @Exclude()
-  originalMessage?: string ;
+  originalMessage?: string;
 
   @Exclude()
   reactions?: Reaction;
@@ -60,19 +77,24 @@ export class Message extends GeneralMessage {
   contentArguments?: string[];
 }
 
-export class ChannelMetadata extends GeneralChannelMetaData{
+export class ChannelMetadata extends GeneralChannelMetaData {
 
 }
 
-export class Channel extends GeneralChannel{
-  
+export class Channel extends GeneralChannel {
+
   @StartWith('invitationLink', 'https://zii.chat/i/')
   @IsString()
   @IsDefined()
   invitationLink?: string;
 
+  @ValidIf('channelId', '===', 'payload.channelId')
+  @IsString()
+  @IsDefined()
+  channelId?: string;
+
   @Exclude()
-  originalAvatar?: string ;
+  originalAvatar?: string;
 
   @Exclude()
   dmStatus?: DirectMessageStatusEnum;
@@ -89,34 +111,76 @@ export class Channel extends GeneralChannel{
   @Exclude()
   acceptTime?: string;
 }
+export class Member extends GeneralMember {
+
+  @ValidIf('createTime', '===', 'response.updateTime')
+  @IsString()
+  @IsDefined()
+  createTime?: string;
+
+  @ValidIf('channelId', '===', 'payload.channelId')
+  @IsString()
+  @IsDefined()
+  channelId?: string;
+
+  @ValidIf('workspaceId', '===', '0')
+  @IsString()
+  @IsDefined()
+  workspaceId?: string;
+
+  @ValidIf('userId', '===', '{{userId1}}')
+  @IsString()
+  @IsDefined()
+  userId?: string;
+}
 
 export class User extends GeneralUser {
 
+  @ValidIf('createTime', '===', 'response.updateTime')
+  @IsString()
+  @IsDefined()
+  createTime?: string;
+
+  @EndWith('username', '{{userId}}')
+  @IsString()
+  @IsDefined()
+  username?: string;
+
+  @ValidIf('userId', '===', '{{userId}}')
+  @IsString()
+  @IsDefined()
+  userId?: string;
+
+  @ValidateNested({ each: true, always: true })
+  @IsObject()
+  @IsDefined()
+  @Type(() => Profile)
+  profile: Profile;
+
 }
 
-export class Member extends GeneralMember {
-}
 
 export class IncludesResponse {
-  @ValidateNested({ each: true })
+  @ValidateNested({ each: true,  always: true })
   @IsArray()
   @IsDefined()
   @Type(() => User)
   users?: User[];
 
-  @ValidateNested({ each: true })
-  @IsArray()
-  @IsDefined()
-  @Type(() => Member)
-  members?: Member[];
-
-  @ValidateNested({ each: true })
+  
+  @ValidateNested({ each: true,  always: true })
   @IsArray()
   @IsDefined()
   @Type(() => Channel)
   channels?: Channel[];
 
-  @ValidateNested({ each: true })
+  @ValidateNested({ each: true,  always: true })
+  @IsArray()
+  @IsDefined()
+  @Type(() => Member)
+  members?: Member[];
+
+  @ValidateNested({ each: true,  always: true })
   @IsArray()
   @IsDefined()
   @Type(() => ChannelMetadata)
@@ -124,7 +188,7 @@ export class IncludesResponse {
 }
 
 export class DataResponse {
-  @ValidateNested({ each: true })
+  @ValidateNested({ each: true,  always: true})
   @IsObject()
   @IsDefined()
   @Type(() => Message)
@@ -136,13 +200,13 @@ export class SendMessageResponse extends BaseResponse {
   @IsDefined()
   ok?: boolean = undefined;
 
-  @ValidateNested({ each: true })
+  @ValidateNested({ each: true,  always: true })
   @IsObject()
   @IsDefined()
   @Type(() => DataResponse)
   data?: DataResponse;
 
-  @ValidateNested({ each: true })
+  @ValidateNested({ each: true,  always: true })
   @IsObject()
   @IsDefined()
   @Type(() => IncludesResponse)

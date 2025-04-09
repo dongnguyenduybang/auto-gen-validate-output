@@ -1,6 +1,5 @@
 import { ValidateNested } from 'class-validator';
 import { Type } from 'class-transformer';
-
 import { ChannelTypeEnum } from '../enums/channel-type.enum';
 import { MessageTypeEnum } from '../enums/message-type.enum';
 import { AttachmentTypeEnum } from '../enums/attachment-type.enum';
@@ -96,7 +95,7 @@ export class Message {
   reactions?: Reaction;
 
   @IsArray()
-  @IsDefined()
+  @IsOptional()
   mentions?: string[] = [];
 
   @IsEnum(EmbedTypeEnum)
@@ -129,7 +128,6 @@ export class Message {
 
   @IsString()
   @IsDefined()
-  @StartWith('contentLocale', 'UN')
   contentLocale?: string = undefined;
 
   @IsArray()
@@ -252,6 +250,7 @@ export class Channel {
   name?: string = undefined;
 
   @IsString()
+  @IsOptional()
   avatar?: string = undefined;
 
   @IsBoolean()
@@ -264,10 +263,10 @@ export class Channel {
 
   @IsString()
   @IsDefined()
-  @StartWith('invitationLink', 'httsps://zii.cha')
   invitationLink?: string = undefined;
 
   @IsString()
+  @IsOptional()
   originalAvatar?: string = undefined;
 
   @IsNumber()
@@ -288,9 +287,11 @@ export class Channel {
   participantIds?: string[] = [];
 
   @IsString()
+  @IsOptional()
   rejectTime?: string = undefined;
 
   @IsString()
+  @IsOptional()
   acceptTime?: string = undefined;
 
   @IsString()
@@ -430,7 +431,7 @@ export class DataResponse {
   channelMetadata?: ChannelMetadata;
 }
 
-export class BaseResponse<T = any>{
+export class BaseResponse{
   @IsBoolean()
   @IsDefined()
   ok?: boolean = undefined;
@@ -438,8 +439,8 @@ export class BaseResponse<T = any>{
   @ValidateNested({ each: true })
   @IsObject()
   @IsDefined()
-  @Type(() => Object)
-  data?: T;
+  @Type(() => DataResponse)
+  data?: DataResponse ;
 
   @ValidateNested({ each: true })
   @IsObject()

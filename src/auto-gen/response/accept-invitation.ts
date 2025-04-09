@@ -1,72 +1,151 @@
 // accept-invitation.response.ts
 import { ValidateNested} from 'class-validator';
-import { Type } from 'class-transformer';
-import {
-  BaseResponse,
-  Channel,
-  ChannelMetadata,
-  Message,
-  User,
-  Member,
-  IncludesResponse,
-} from './general-response';
+import { Exclude, Type } from 'class-transformer';
 import { DirectMessageStatusEnum } from '../enums/direct-message-status.enum';
-import { IsOptional } from '../decorator/general-decorator';
+import { IsDefined, IsOptional } from '../decorator/general-decorator';
 import { IsArray } from '../decorator/array-decorator';
+import { IsBoolean } from '../decorator/boolean-decorator';
+import { IsObject } from '../decorator/object-decorator';
+import { BaseResponse,
+  Channel as GeneralChannel,
+  Message as GeneralMessage,
+  ChannelMetadata as GeneralChannelMetaData,
+  User as GeneralUser,
+  Member as GeneralMember,
+  Reaction
+ } from './general-response';
+import { StartWith, ValidIf } from '../decorator/condition-decorator';
+import { IsString } from '../decorator/string-decorator';
+import { EmbedTypeEnum } from '../enums/embed-type.enum';
 
-// 1. Tùy chỉnh lớp Channel
-export class AcceptInvitationChannel extends Channel {
-  @IsOptional()
-  declare avatar: string;
+export class Message extends GeneralMessage {
+  
+  @ValidIf('workspaceId', '===', '1')
+  @IsString()
+  @IsDefined()
+  workspaceId?: string;
 
-  @IsOptional()
-  declare originalAvatar: string;
+  @ValidIf('content', '===', 'payload.content')
+  @IsString()
+  @IsDefined()
+  content?: string;
 
-  @IsOptional()
-  declare dmStatus: DirectMessageStatusEnum;
+  @ValidIf('channelId', '===', 'payload.channelId')
+  @IsString()
+  @IsDefined()
+  channelId?: string;
 
-  @IsOptional()
-  @ValidateNested()
-  @Type(() => Message)
-  declare pinnedMessage: Message;
+  @Exclude()
+  originalMessage?: string ;
+
+  @Exclude()
+  reactions?: Reaction;
+
+  @Exclude()
+  mentions?: string[];
+
+  @Exclude()
+  embed?: EmbedTypeEnum
+
+  @Exclude()
+  attachmentCount?: number;
+
+  @Exclude()
+  mediaAttachments?: string[];
+
 }
 
-// 2. Tùy chỉnh Message cho join notification
-export class AcceptInvitationMessage extends Message {
+export class ChannelMetadata extends GeneralChannelMetaData{
+  
+}
+
+export class Channel extends GeneralChannel{
+  
+  @StartWith('invitationLink', 'https://zii.chat/i/')
+  @IsString()
+  @IsDefined()
+  invitationLink?: string;
+
+  @Exclude()
+  originalAvatar?: string ;
+
+  @Exclude()
+  dmStatus?: DirectMessageStatusEnum;
+
+  @Exclude()
+  pinnedMessage?: Message;
+
+  @Exclude()
+  participantIds?: string[];
+
+  @Exclude()
+  rejectTime?: string;
+
+  @Exclude()
+  acceptTime?: string;
+}
+
+export class User extends GeneralUser {
+
+}
+
+export class Member extends GeneralMember {
+}
+
+export class IncludesResponse {
+  @ValidateNested({ each: true })
   @IsArray()
-  @IsOptional()
-  declare contentArguments: string[];
-}
-
-// 3. Định nghĩa DataResponse
-export class AcceptInvitationDataResponse {
-  @ValidateNested()
-  @Type(() => AcceptInvitationChannel)
-  channel: AcceptInvitationChannel;
-
-  @ValidateNested()
-  @Type(() => ChannelMetadata)
-  channelMetadata: ChannelMetadata;
-}
-
-// 4. Tùy chỉnh IncludesResponse
-export class AcceptInvitationIncludesResponse extends IncludesResponse {
-  @ValidateNested({ each: true })
+  @IsDefined()
   @Type(() => User)
-  users: User[];
+  users?: User[];
 
   @ValidateNested({ each: true })
-  @Type(() => AcceptInvitationMessage)
-  messages: AcceptInvitationMessage[];
-
-  @ValidateNested({ each: true })
+  @IsArray()
+  @IsDefined()
   @Type(() => Member)
-  members: Member[];
+  members?: Member[];
+
+  @ValidateNested({ each: true })
+  @IsArray()
+  @IsDefined()
+  @Type(() => Message)
+  message?: Message[];
+
+  @ValidateNested({ each: true })
+  @IsArray()
+  @IsDefined()
+  @Type(() => ChannelMetadata)
+  channelMetadata?: ChannelMetadata[];
 }
 
-// 5. Tạo response chính
-export class AcceptInvitationResponse extends BaseResponse<AcceptInvitationDataResponse> {
-  @ValidateNested()
-  @Type(() => AcceptInvitationIncludesResponse)
-  includes: AcceptInvitationIncludesResponse;
+export class DataResponse {
+  @ValidateNested({ each: true })
+  @IsObject()
+  @IsDefined()
+  @Type(() => Channel)
+  channel?: Channel;
+
+  @ValidateNested({ each: true })
+  @IsObject()
+  @IsDefined()
+  @Type(() => ChannelMetadata)
+  channelMetadata?: ChannelMetadata;
+}
+
+export class AcceptInvitationResponse extends BaseResponse {
+  @IsBoolean()
+  @IsDefined()
+  ok?: boolean = undefined;
+
+  @ValidateNested({ each: true })
+  @IsObject()
+  @IsDefined()
+  @Type(() => DataResponse)
+  data?: DataResponse;
+
+  @ValidateNested({ each: true })
+  @IsObject()
+  @IsDefined()
+  @Type(() => IncludesResponse)
+  includes?: IncludesResponse;
 }
