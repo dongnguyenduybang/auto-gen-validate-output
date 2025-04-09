@@ -1,9 +1,8 @@
 /* eslint-disable prettier/prettier */
 import 'reflect-metadata';
-import { getDecorators } from '../helps/dto-helper';
 import { ErrorMessage } from '../enums/error-message.enum';
 import { resolveValidIf } from '../helps/utils';
-
+import { getDecorators } from '../helps/dto-helper';
 export function validateResponses(
   payload: any,
   instance: any,
@@ -21,6 +20,7 @@ export function validateResponses(
       const field = path ? `${path}.${key}` : key;
 
       const decorators = getDecorators(prototype, key);
+      // console.log(decorators)
       if (
         decorators.type === 'object' &&
         typeof valueResponse === 'object' &&
@@ -65,25 +65,41 @@ export function validateResponses(
         if (decorators.type === 'boolean' && typeof valueResponse !== 'boolean') {
           errors.push(`${field} must be a boolean but got ${typeof valueResponse}`);
         }
-        
-        // if (decorators.startWith && typeof valueResponse === 'string') {
-        //   const [fieldCheck, value] = decorators.startWith
-        //   console.log(valueResponse, value)
-        //   if (!value || !valueResponse.startsWith(value)) {
-        //     errors.push(`${field} must start with ${value}`);
-        //   }
-        // }
+        if (decorators.startWith && typeof valueResponse === 'string') {
 
-        // //check endWith
-        // if (decorators.endWith && typeof valueResponse === 'string') {
-        //   const [fieldCheck, value] = decorators.endWith
-        //   if (!value || !valueResponse.startsWith(value)) {
-        //     errors.push(`${field} must end with ${value}`);
-        //   }
-        // }
+          if (Array.isArray(decorators.startWith)) {
+
+            const [fieldCheck, value] = decorators.startWith;
+            if (!value || !valueResponse.startsWith(value)) {
+              errors.push(`${field} must start with ${value}`);
+            }
+          } else if (typeof decorators.startWith === 'object' && decorators.startWith !== null) {
+
+            const { field: fieldCheck, value } = decorators.startWith;
+            if (!value || !valueResponse.startsWith(value)) {
+              errors.push(`${field} must start with ${value}`);
+            }
+          } else {
+            console.log('startWith metadata format unexpected:', decorators.startWith);
+          }
+        }
+
+        //check endWith
+        if (decorators.endWith && typeof valueResponse === 'string') {
+          if (Array.isArray(decorators.endWith)) {
+            const [fieldCheck, value] = decorators.endWith;
+            if (!value || !valueResponse.endsWith(value)) { 
+              errors.push(`${field} must end with ${value}`);
+            }
+          } else if (typeof decorators.endWith === 'object' && decorators.endWith !== null) {
+            const { field: fieldCheck, value } = decorators.endWith;
+            if (!value || !valueResponse.endsWith(value)) { 
+              errors.push(`${field} must end with ${value}`);
+            }
+          }
+        }
 
         if (decorators.validIf) {
-          console.log(decorators.validIf)
           const isValid = resolveValidIf(
             field,
             decorators.validIf,
