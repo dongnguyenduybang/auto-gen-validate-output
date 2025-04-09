@@ -109,7 +109,6 @@ export function countTokens(): number {
 
 export function summarizeErrors(
   failedTests?: any[],
-  totalTests?: number,
   passed200?: number,
   passed201?: number,
 ) {
@@ -125,40 +124,45 @@ export function summarizeErrors(
     uniqueErrors: new Map<string, number>(),
   };
 
-  failedTests.forEach((failCase) => {
-    const statusCode = failCase.code || 500;
-    summary.statusCodes[statusCode] =
-      (summary.statusCodes[statusCode] || 0) + 1;
-
-    if (failCase.missing && Array.isArray(failCase.missing)) {
-      failCase.missing.forEach((error) => {
-        summary.uniqueErrors.set(
-          error,
-          (summary.uniqueErrors.get(error) || 0) + 1,
-        );
-      });
-    }
-
-    if (failCase.extra && Array.isArray(failCase.extra)) {
-      failCase.extra.forEach((error) => {
-        summary.uniqueErrors.set(
-          error,
-          (summary.uniqueErrors.get(error) || 0) + 1,
-        );
-      });
-    }
-    if (failCase.errorDetails) {
-      const detailErrors = Array.isArray(failCase.errorDetails)
-        ? failCase.errorDetails
-        : [failCase.errorDetails];
-      detailErrors.forEach((error) => {
-        summary.uniqueErrors.set(
-          error,
-          (summary.uniqueErrors.get(error) || 0) + 1,
-        );
-      });
-    }
-  });
+  if(failedTests){
+    failedTests.forEach((failCase) => {
+      const statusCode = failCase.code || 500;
+      summary.statusCodes[statusCode] =
+        (summary.statusCodes[statusCode] || 0) + 1;
+  
+      if (failCase.missing && Array.isArray(failCase.missing)) {
+        failCase.missing.forEach((error) => {
+          summary.uniqueErrors.set(
+            error,
+            (summary.uniqueErrors.get(error) || 0) + 1,
+          );
+        });
+      }
+  
+      if (failCase.extra && Array.isArray(failCase.extra)) {
+        failCase.extra.forEach((error) => {
+          summary.uniqueErrors.set(
+            error,
+            (summary.uniqueErrors.get(error) || 0) + 1,
+          );
+        });
+      }
+      if (failCase.errorDetails) {
+        const detailErrors = Array.isArray(failCase.errorDetails)
+          ? failCase.errorDetails
+          : [failCase.errorDetails];
+        detailErrors.forEach((error) => {
+          summary.uniqueErrors.set(
+            error,
+            (summary.uniqueErrors.get(error) || 0) + 1,
+          );
+        });
+      }
+    });
+  }else {
+    return;
+  }
+  
 
   return summary;
 }
