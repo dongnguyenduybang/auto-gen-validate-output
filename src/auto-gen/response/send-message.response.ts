@@ -1,174 +1,150 @@
 // send-message.response.ts
 import { ValidateNested } from 'class-validator';
 import { Exclude, Type } from 'class-transformer';
-import {
-  BaseResponse,
-  Channel as GeneralChannel,
-  IncludesResponse as GeneralIncludesResponse,
-  Message as GeneralMessage,
-  User as GeneralUser,
-  DataResponse,
-  StatusData,
-  Reaction,
-  Message
-} from './general-response';
+
 import { DirectMessageStatusEnum } from '../enums/direct-message-status.enum';
 import { EmbedTypeEnum } from '../enums/embed-type.enum';
-import { ChannelTypeEnum } from '../enums/channel-type.enum';
-import { AttachmentTypeEnum } from '../enums/attachment-type.enum';
-import { MessageTypeEnum } from '../enums/message-type.enum';
-import { IsDefined, IsOptional } from '../decorator/general-decorator';
+import { IsDefined } from '../decorator/general-decorator';
 import { IsString } from '../decorator/string-decorator';
-import { IsEnum } from '../decorator/enum-decorator';
-import { IsNumber } from '../decorator/number-decorator';
 import { IsBoolean } from '../decorator/boolean-decorator';
-import { StartWith } from '../decorator/condition-decorator';
+import { StartWith, ValidIf } from '../decorator/condition-decorator';
+import { IsObject } from '../decorator/object-decorator';
+import { IsArray } from '../decorator/array-decorator';
+import { BaseResponse,
+  Message as GeneralMessage,
+  User as GeneralUser,
+  Member as GeneralMember,
+  Channel as GeneralChannel,
+  ChannelMetadata as GeneralChannelMetaData,
+  Reaction,
 
-// custom Channel
-export class ChannelData extends GeneralChannel {
-  @Exclude()
-  @IsOptional()
-  avatar?: string;
+ } from './general-response';
+
+ 
+export class Message extends GeneralMessage {
+  
+  @ValidIf('workspaceId', '===', '1')
+  @IsString()
+  @IsDefined()
+  workspaceId?: string;
+
+  @ValidIf('content', '===', 'payload.content')
+  @IsString()
+  @IsDefined()
+  content?: string;
+
+  @ValidIf('channelId', '===', 'payload.channelId')
+  @IsString()
+  @IsDefined()
+  channelId?: string;
 
   @Exclude()
-  @IsOptional()
-  originalAvatar?: string;
+  originalMessage?: string ;
 
   @Exclude()
-  @IsOptional()
-  rejectTime?: string;
+  reactions?: Reaction;
 
   @Exclude()
-  @IsOptional()
-  acceptTime?: string;
+  mentions?: string[];
 
   @Exclude()
-  @IsOptional()
+  embed?: EmbedTypeEnum
+
+  @Exclude()
+  attachmentCount?: number;
+
+  @Exclude()
+  mediaAttachments?: string[];
+
+  @Exclude()
+  contentArguments?: string[];
+}
+
+export class ChannelMetadata extends GeneralChannelMetaData{
+
+}
+
+export class Channel extends GeneralChannel{
+  
+  @StartWith('invitationLink', 'https://zii.chat/i/')
+  @IsString()
+  @IsDefined()
+  invitationLink?: string;
+
+  @Exclude()
+  originalAvatar?: string ;
+
+  @Exclude()
   dmStatus?: DirectMessageStatusEnum;
 
   @Exclude()
-  @IsOptional()
   pinnedMessage?: Message;
 
   @Exclude()
-  @IsOptional()
-  type?: ChannelTypeEnum;
-}
+  participantIds?: string[];
 
-// custom message
-
-export class MessageData extends GeneralMessage {
-  @IsString()
-  @IsDefined()
-  workspaceId?: string = undefined;
-
-  @IsString()
-  @IsDefined()
-  channelId?: string = undefined;
-
-  @IsString()
-  @IsDefined()
-  messageId?: string = undefined;
-
-  @IsString()
-  @IsDefined()
-  userId?: string = undefined;
-
-  @IsString()
-  @IsDefined()
-  content?: string = undefined;
-
-  @IsEnum(MessageTypeEnum)
-  @IsDefined()
-  messageType?: MessageTypeEnum;
-
-  @IsNumber()
-  @IsDefined()
-  messageStatus?: number = undefined;
-
-  @IsBoolean()
-  @IsDefined()
-  isThread?: boolean = undefined;
-
-  @IsNumber()
-  @IsDefined()
-  reportCount?: number = undefined;
-
-  @IsBoolean()
-  @IsDefined()
-  isReported?: boolean = undefined;
-
-  @IsNumber()
-  @IsDefined()
-  attachmentCount?: number = undefined;
-
-  @IsString()
-  @IsDefined()
-  @StartWith('contentLocale', 'UN')
-  contentLocale?: string = undefined;
-
-  @IsBoolean()
-  @IsDefined()
-  isPinned?: boolean = undefined;
-
-  @IsString()
-  @IsDefined()
-  createTime?: string = undefined;
-
-  @IsString()
-  @IsDefined()
-  updateTime?: string = undefined;
-
-  @IsString()
-  @IsDefined()
-  @IsOptional()
-  ref?: string = undefined;
-
-}
-
-// custom User
-export class User extends GeneralUser {
   @Exclude()
-  override statusData?: StatusData;
+  rejectTime?: string;
+
+  @Exclude()
+  acceptTime?: string;
+}
+
+export class User extends GeneralUser {
 
 }
 
-// custom includes
-export class IncludesResponse extends GeneralIncludesResponse {
+export class Member extends GeneralMember {
+}
+
+export class IncludesResponse {
   @ValidateNested({ each: true })
+  @IsArray()
+  @IsDefined()
   @Type(() => User)
-  override users: User[];
+  users?: User[];
 
   @ValidateNested({ each: true })
-  @Type(() => ChannelData)
-  override channels: ChannelData[];
+  @IsArray()
+  @IsDefined()
+  @Type(() => Member)
+  members?: Member[];
+
+  @ValidateNested({ each: true })
+  @IsArray()
+  @IsDefined()
+  @Type(() => Channel)
+  channels?: Channel[];
+
+  @ValidateNested({ each: true })
+  @IsArray()
+  @IsDefined()
+  @Type(() => ChannelMetadata)
+  channelMetadata?: ChannelMetadata[];
 }
 
-// data wrapper
-export class SendMessageDataWrapper extends DataResponse {
-  @ValidateNested()
-  @Type(() => MessageData)
-  message?: MessageData;
+export class DataResponse {
+  @ValidateNested({ each: true })
+  @IsObject()
+  @IsDefined()
+  @Type(() => Message)
+  message?: Message;
 }
 
-// Main Response
-export class SendMessageResponse extends BaseResponse<SendMessageDataWrapper> {
-  @ValidateNested()
-  @Type(() => SendMessageDataWrapper)
-  data: SendMessageDataWrapper;
+export class SendMessageResponse extends BaseResponse {
+  @IsBoolean()
+  @IsDefined()
+  ok?: boolean = undefined;
 
-  @ValidateNested()
+  @ValidateNested({ each: true })
+  @IsObject()
+  @IsDefined()
+  @Type(() => DataResponse)
+  data?: DataResponse;
+
+  @ValidateNested({ each: true })
+  @IsObject()
+  @IsDefined()
   @Type(() => IncludesResponse)
-  includes: IncludesResponse;
-
-  constructor() {
-    super();
-    this.data = this.data || new SendMessageDataWrapper
-    this.includes = this.includes || new IncludesResponse();
-    this.includes.users = this.includes.users || [];
-    this.includes.channels = this.includes.channels || [];
-    this.includes.members = this.includes.members || [];
-    this.includes.channelMetadata = this.includes.channelMetadata || [];
-  }
-
+  includes?: IncludesResponse;
 }
