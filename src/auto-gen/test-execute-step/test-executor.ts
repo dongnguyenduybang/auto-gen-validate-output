@@ -77,21 +77,21 @@ async function executeStep(
         }
         
         // validate response
-        // const stepName = step.action.charAt(0).toUpperCase() + step.action.slice(1) + "Response";
-        // const ResponseClass = responseClassMap[stepName as keyof typeof responseClassMap];
-        // const validatedResponse = plainToClass(
-        //     ResponseClass as ClassConstructor<BaseResponse>, 
-        //     response.response
-        //   );
-        // const result = validateResponses(resolvedBody,validatedResponse);
-        // if(result.length >0){
-        //     return {
-        //         type: 'response',
-        //         status: false,
-        //         stepName: `${step.action}`,
-        //         error: JSON.stringify(result)
-        //     };
-        // }
+        const stepName = step.action.charAt(0).toUpperCase() + step.action.slice(1) + "Response";
+        const ResponseClass = responseClassMap[stepName as keyof typeof responseClassMap];
+        const validatedResponse = plainToClass(
+            ResponseClass as ClassConstructor<BaseResponse>, 
+            response.response
+          );
+        const result = await validateResponses(resolvedBody,validatedResponse, context);
+        if(result.length >0){
+            return {
+                type: 'response',
+                status: false,
+                stepName: `${step.action}`,
+                error: JSON.stringify(result)
+            };
+        }
 
         const extractedData = extractData(action, response, context);
         context.mergeData(extractedData);
@@ -190,7 +190,6 @@ function extractData(
 function extractMockUserData(response: any): Record<string, any> {
     const data: Record<string, any> = {};
     if (!response?.data) return data;
-    console.log(response.data)
     response.data.forEach((user: any, index: number) => {
         const suffix = index === 0 ? '' : index;
         data[`userId${suffix}`] = user.userId;
