@@ -15,11 +15,11 @@ describe('Test response for send-message', () => {
   let passedTests = 0;
   let testNumber = 0;
   let totalTests = 0;
-  let requestUrl, globalContext, resolvedHeader, pathRequest, methodRequest, headerRequest, payloadResponse, testType
+  let requestUrl, resolvedHeader, pathRequest, methodRequest, headerRequest, payloadResponse, testType, globalTestContext
   beforeAll(async () => {
     testType = 'response'
-    globalContext = new TestContext();
-    const resultStep = await executeAllSteps([{ "action": "mockUser" }, { "action": "createChannel" }], globalContext)
+    globalTestContext = new TestContext()
+    const resultStep = await executeAllSteps([{ "action": "mockUser" }, { "action": "createChannel" }], globalTestContext)
     resultStep.forEach((step, index) => {
       failedStep.push({
         type: step.type,
@@ -29,7 +29,7 @@ describe('Test response for send-message', () => {
       })
     })
     headerRequest = { "Content-Type": "application/json", "x-session-token": "{{token}}", "x-country-code": "VN" }
-    resolvedHeader = resolveVariables(headerRequest, globalContext)
+    resolvedHeader = resolveVariables(headerRequest, globalTestContext)
     pathRequest = "/Message/SendMessage"
     methodRequest = "POST"
     payloadResponse = resolveVariables({
@@ -37,7 +37,7 @@ describe('Test response for send-message', () => {
       "channelId": "{{channelId}}",
       "content": "test123123",
       "ref": "ref"
-    }, globalContext);
+    }, globalTestContext);
     requestUrl = `${globalThis.url}${pathRequest}`
   });
 
@@ -55,7 +55,7 @@ describe('Test response for send-message', () => {
       );
       const data = response.data
       const instance = plainToInstance(SendMessageResponse, data);
-      const validateResponse = validateResponses(payloadResponse, instance);
+      const validateResponse = await validateResponses(payloadResponse, instance, globalTestContext);
       if (validateResponse.length > 0) {
         failedTests.push({
           testcase: testNumber,
@@ -84,7 +84,7 @@ describe('Test response for send-message', () => {
       classNames,
       globalThis.url,
       pathRequest,
-      null,
+      failedStep,
       passedTests,
       failedTests,
       totalTests,
