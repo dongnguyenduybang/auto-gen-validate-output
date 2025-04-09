@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import 'reflect-metadata';
 import { genBodyRequest } from './utils/gen-body-request';
-import { genBodyResponse } from './utils/gen-body-response';
+import { genBodyResponse } from './utils/performane-response';
 import { genTestRequest } from './utils/gen-test-request';
 import { genTestResponse } from './utils/gen-test-response';
 import { genTestSaga } from './utils/gen-test-saga';
