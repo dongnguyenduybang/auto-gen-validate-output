@@ -13,6 +13,21 @@ export function ValidIf(condition: string, operators: any, condition2: any) {
 export function StartWith(field: string, value: string) {
     return (target: any, propertyKey: string) => {
         Reflect.defineMetadata('startWith', { field, value }, target, propertyKey);
+        if (typeof target === 'function') {
+            Reflect.defineMetadata(
+                'startWith', 
+                { field, value }, 
+                target.prototype, 
+                propertyKey
+            );
+        } else {
+            Reflect.defineMetadata(
+                'startWith', 
+                { field, value }, 
+                target.constructor.prototype, 
+                propertyKey
+            );
+        }
     };
 }
 
