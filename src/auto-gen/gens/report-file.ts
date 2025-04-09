@@ -12,7 +12,6 @@ export const combinedReportTemplate = (
   type?: string,
   responseValidations?: any[]
 ) => {
-  // Set default values
   className = className || 'Unknown Class';
   url = url || 'N/A';
   pathRequest = pathRequest || 'N/A';
@@ -31,7 +30,10 @@ export const combinedReportTemplate = (
         className,
         url,
         pathRequest,
+        passedTests,
         failedStep,
+        totalTests,
+        failedTests,
         summary
       );
     
@@ -43,7 +45,6 @@ export const combinedReportTemplate = (
           passedTests,
           failedTests,
           totalTests,
-          summary,
           responseValidations
         );
     
@@ -53,29 +54,29 @@ export const combinedReportTemplate = (
         url,
         pathRequest,
         failedStep,
-        passedTests,
-        failedTests,
-        totalTests,
-        logicTests,
-        summary
       );
     
     default:
-      return requestReportTemplate(
-        className,
-        url,
-        pathRequest,
-        failedStep,
-        summary
-      );
+      // return requestReportTemplate(
+      //   className,
+      //   url,
+      //   pathRequest,
+      //   failedStep,
+      //   failedTests,
+      //   summary
+      // );
   }
 };
 const requestReportTemplate = (
   className: string,
   url: string,
   pathRequest: string,
-  failedStep: any[],
-  summary: any
+  passedTests,
+  failedStep,
+  totalTests,
+  failedTests: any[],
+  summary: any,
+  
 ) => {
   return [
     `=== Request Test Report for ${className} ===`,
@@ -87,8 +88,13 @@ const requestReportTemplate = (
     ...failedStep.map((step, index) => {
       const errorDetails = step.error ? 
         `\n     └─ ${step.error.split('\n').join('\n       ')}` : '';
-      return `  ${index + 1}. [${step.success ? '✓ PASSED' : '✗ FAILED'}] ${step.stepName}${errorDetails}`;
+      return `  ${index + 1}. [${step.success ? '✅ PASSED' : '❌ FAILED'}] ${step.stepName}${errorDetails}`;
     }),
+    '',
+    '=== Test Summary ===',
+    `✅ Passed: ${passedTests}`,
+    `❌ Failed: ${failedTests.length}`,
+    `📊 Total: ${totalTests}`,
     '',
     '=== System Metrics ===',
     '▧ Status Code Distribution:',
@@ -98,6 +104,17 @@ const requestReportTemplate = (
     `  403: ${summary.statusCodes[403] || 0}`,
     `  404: ${summary.statusCodes[404] || 0}`,
     `  500: ${summary.statusCodes[500] || 0}`,
+    '',
+    '[DTO Validation Issues]',
+    ...failedTests.map((test, index) => [
+      '',
+      ` 🔴 ${index + 1}. Case #${test.testcase}`,
+      `     ├─ Status: ${test.code || 'N/A'}`,
+      `     ├─ Body: ${JSON.stringify(test.payload) || 'None'}`,
+      `     ├─ Missing: ${test.missing?.join(', ') || 'None'}`,
+      `     ├─ Extra: ${test.extra?.join(', ') || 'None'}`,
+      `     └─ Details: ${test.errorDetails || 'No details'}`
+    ].join('\n')),
     '',
     '=== End of Report ==='
   ].join('\n');
@@ -111,11 +128,9 @@ const responseReportTemplate = (
   passedTests: number,
   failedTests: any[],
   totalTests: number,
-  summary: any,
   responseValidations: any[]
 ) => {
   const successfulTests = responseValidations.filter(r => !r.error);
-  
   return [
     `=== Response Test Report for ${className} ===`,
     `• Host: ${url}`,
@@ -127,32 +142,14 @@ const responseReportTemplate = (
     `❌ Failed: ${failedTests.length}`,
     `📊 Total: ${totalTests}`,
     '',
-    '=== Performance Metrics ===',
-    `⏱ Average Response Time: ${summary.performance?.averageResponseTime?.toFixed(2) || 'N/A'}ms`,
-    `⚡ Fastest: ${summary.performance?.minResponseTime?.toFixed(2) || 'N/A'}ms`,
-    `🐢 Slowest: ${summary.performance?.maxResponseTime?.toFixed(2) || 'N/A'}ms`,
-    `🚀 Throughput: ${summary.performance?.throughput?.toFixed(2) || 'N/A'} req/sec`,
-    '',
-    '=== Status Code Distribution ===',
-    `🟢 200: ${summary.statusCodes[200] || 0}`,
-    `🔵 201: ${summary.statusCodes[201] || 0}`,
-    `🟠 400: ${summary.statusCodes[400] || 0}`,
-    `🔴 500: ${summary.statusCodes[500] || 0}`,
-    '',
     '=== Error Details ===',
     ...failedTests.map((test, index) => [
       '',
       `🔴 Case #${test.testcase}`,
-      `   ├─ Status: ${test.performance?.statusCode || 'N/A'}`,
-      `   ├─ Response Time: ${test.performance?.responseTime?.toFixed(2) || 'N/A'}ms`,
       `   ├─ Error: ${test.error || 'No details'}`,
       ...(test.expected ? [`   ├─ Expected: ${JSON.stringify(test.expected, null, 2).split('\n').join('\n      ')}`] : []),
       ...(test.actual ? [`   └─ Actual: ${JSON.stringify(test.actual, null, 2).split('\n').join('\n      ')}`] : [])
     ].join('\n')),
-    '',
-    '=== Performance Samples ===',
-    `Sample response times (ms):`,
-    `  ${successfulTests.slice(0, 10).map(t => t.performance?.responseTime?.toFixed(2)).join(', ')}${successfulTests.length > 10 ? '...' : ''}`,
     '',
     '=== End of Report ==='
   ].join('\n');
@@ -162,64 +159,77 @@ const responseReportTemplate = (
 const sagaReportTemplate = (
   className: string,
   url: string,
-  pathRequest: string,
+  sagaName: string,
   failedStep: any[],
-  passedTests: number,
-  failedTests: any[],
-  totalTests: number,
-  logicTests: any[],
-  summary: any
 ) => {
+  const requestErrors = failedStep.filter(step => !step.status && step.type === 'request');
+  const responseErrors = failedStep.filter(step => !step.status && step.type === 'response');
+  const logicErrors = failedStep.filter(step => !step.status && (step.type === 'logic' || step.type === ''));
   return [
     `=== Saga Test Report for ${className} ===`,
     `• Host: ${url}`,
-    `• Endpoint: ${pathRequest}`,
+    `• Sagas: ${sagaName}`,
     `• Date: ${new Date().toLocaleString()}`,
     '',
     '=== Execution Steps ===',
     ...failedStep.map((step, index) => {
-      const errorDetails = step.error ? 
-        `\n     └─ ${step.error.split('\n').join('\n       ')}` : '';
-      return `  ${index + 1}. [${step.success ? '✓ PASSED' : '✗ FAILED'}] ${step.stepName}${errorDetails}`;
+      let errorMessage = '';
+    
+      if (step.error) {
+        // Kiểm tra nếu step.error là một mảng
+        if (Array.isArray(step.error)) {
+          // Duyệt qua từng lỗi và tạo chuỗi thông báo lỗi
+          errorMessage = step.error
+            .map(err => {
+              const path = err.path || 'unknown path';
+              const expected = JSON.stringify(err.expected);
+              const actual = JSON.stringify(err.actual);
+              return `Path: ${path}`;
+            })
+            .join('\n     └─ '); // Kết hợp các lỗi bằng dấu xuống dòng và ký tự "└─"
+        } 
+        // Trường hợp step.error là một đối tượng đơn lẻ
+        else if (typeof step.error === 'object' && step.error !== null) {
+          errorMessage = step.error.message || 'No error message available';
+        } 
+        // Trường hợp step.error là một chuỗi
+        else if (typeof step.error === 'string') {
+          try {
+            const errorObj = JSON.parse(step.error);
+            errorMessage = errorObj.message || step.error;
+          } catch {
+            errorMessage = step.error;
+          }
+        }
+      }
+    
+      return `  ${index + 1}. [${step.status ? '✅ PASSED' : '❌ FAILED'}] ${step.stepName}${errorMessage ? `\n     └─ ${errorMessage}` : ''}`;
     }),
     '',
-    '=== Validation Metrics ===',
-    '■ DTO Validation:',
-    `  ✔ Passed: ${passedTests}`,
-    `  ✖ Failed: ${failedTests.length}`,
-    `  ◼ Total: ${totalTests}`,
-    '',
-    '■ Logic:',
-    `  ✔ Passed: ${logicTests.filter(t => !t.errorLogic).length}`,
-    `  ✖ Failed: ${logicTests.filter(t => t.errorLogic).length}`,
-    `  ◼ Total: ${logicTests.length}`,
-    '',
     '=== Error Details ===',
-    '[DTO Validation Issues]',
-    ...failedTests.map((test, index) => [
+    '[Request Errors]',
+    ...requestErrors.map((error, index) => [
       '',
-      `  ${index + 1}. Case #${test.testcase}`,
-      `     ├─ Status: ${test.code || 'N/A'}`,
-      `     ├─ Missing: ${test.missing?.join(', ') || 'None'}`,
-      `     ├─ Extra: ${test.extra?.join(', ') || 'None'}`,
-      `     └─ Details: ${test.errorDetails || 'No details'}`
+      ` 🔴 ${index + 1}. Step: ${error.stepName}`,
+      `     ├─ Type: ${error.type || 'N/A'}`,
+      `     └─ Error: ${typeof error.error === 'string' ? error.error : JSON.stringify(error.error)}`
     ].join('\n')),
     '',
-    '[Logic Validation Issues]',
-    ...logicTests.filter(t => t.errorLogic).map((test, index) => [
+    '[Response Errors]',
+    ...responseErrors.map((error, index) => [
       '',
-      `  ${index + 1}. Case #${test.testcase}`,
-      `     └─ Message: ${test.errorLogic}`
+      ` 🔴 ${index + 1}. Step: ${error.stepName}`,
+      `     ├─ Type: ${error.type || 'N/A'}`,
+      `     └─ Error: ${typeof error.error === 'string' ? error.error : JSON.stringify(error.error)}`
     ].join('\n')),
     '',
-    '=== System Metrics ===',
-    '▧ Status Code Distribution:',
-    `  200: ${summary.statusCodes[200] || 0}`,
-    `  201: ${summary.statusCodes[201] || 0}`,
-    `  400: ${summary.statusCodes[400] || 0}`,
-    `  403: ${summary.statusCodes[403] || 0}`,
-    `  404: ${summary.statusCodes[404] || 0}`,
-    `  500: ${summary.statusCodes[500] || 0}`,
+    '[Logic Errors]',
+    ...logicErrors.map((error, index) => [
+      '',
+      ` 🔴 ${index + 1}. Step: ${error.stepName}`,
+      `     ├─ Type: ${error.type || 'N/A'}`,
+      `     └─ Error: ${typeof error.error === 'string' ? error.error : JSON.stringify(error.error)}`
+    ].join('\n')),
     '',
     '=== End of Report ==='
   ].join('\n');
