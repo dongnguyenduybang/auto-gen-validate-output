@@ -1,4 +1,6 @@
 /* eslint-disable prettier/prettier */
+import { Element } from '../enums/element.enum';
+import { Operator } from '../enums/operator.enum';
 import { TestContext } from './text-context';
 
 export interface ValidationError {
@@ -9,10 +11,10 @@ export interface ValidationError {
 }
 
 interface OperatorConfig {
-  operator: string;
-  expect: any;
-  element?: 'all' | 'first' | 'last';
   field?: string;
+  operator: Operator;
+  element?: Element;
+  expect: any;
 }
 
 interface ValidationOptions {
@@ -26,15 +28,24 @@ export const createApiValidator = (
 ) => {
   //đệ quye so sánh excpect & acutal
   const comparedValue = (a: any, b: any): boolean => {
-    if (a === b) return true;
-    if (typeof a !== typeof b) return false;
-    if (typeof a !== 'object' || a === null || b === null) return a === b;
-
-    const keyA = Object.keys(a);
-    const keYb = Object.keys(b);
-    if (keyA.length !== keYb.length) return false;
-
-    return keyA.every(key => comparedValue(a[key], b[key]));
+    // Xử lý trường hợp string vs number
+    if (typeof a === 'string' && typeof b === 'number') {
+      return a === b.toString();
+    }
+    if (typeof a === 'number' && typeof b === 'string') {
+      return a.toString() === b;
+    }
+    
+    // So sánh array với primitive
+    if (Array.isArray(a) && !Array.isArray(b)) {
+      return a.length === 1 && comparedValue(a[0], b);
+    }
+    if (!Array.isArray(a) && Array.isArray(b)) {
+      return b.length === 1 && comparedValue(a, b[0]);
+    }
+  
+    // So sánh bình thường
+    return JSON.stringify(a) === JSON.stringify(b);
   };
 
   const getNestedValue = (obj: any, path: string): any => {
@@ -76,7 +87,7 @@ export const createApiValidator = (
     errors: ValidationError[],
   ) => {
     switch (elementType) {
-      case 'all':
+      case Element.ALL:
         if (!actualArray.every(item => comparedValue(item, expected))) {
           errors.push(createError(
             path,
@@ -85,7 +96,7 @@ export const createApiValidator = (
           ));
         }
         break;
-      case 'first':
+      case Element.FIRST:
         if (actualArray.length === 0) {
           errors.push(createError(
             path,
@@ -100,7 +111,7 @@ export const createApiValidator = (
           ));
         }
         break;
-        case 'last':
+        case Element.LAST:
           if (actualArray.length === 0) {
             errors.push(createError(
               path,
@@ -122,84 +133,120 @@ export const createApiValidator = (
   const validateEquality = (
     actual: any,
     expected: any,
-    elementType: string | undefined,
+    elementType: Element | undefined,
     path: string[],
     errors: ValidationError[],
   ) => {
-    const arrayElementTypes = ['all', 'first', 'last'];
-    
-    if (elementType && arrayElementTypes.includes(elementType)) {
-      if (!Array.isArray(actual)) {
+    // Xử lý trường hợp không phải array
+    if (!elementType) {
+      if (!comparedValue(actual, expected)) {
         errors.push(createError(
           path,
-          `Expected array for element type '${elementType}'`,
+          `equal(${JSON.stringify(expected)})`,
           actual
         ));
-        return;
       }
-      validateArrayEquality(actual, expected, elementType, path, errors);
-    } else if (!comparedValue(actual, expected)) {
-      errors.push(createError(
-        path,
-        `equal(${JSON.stringify(expected)})`,
-        actual
-      ));
-    }
-  };
-  const validateInclusion = (
-    actual: any,
-    expectedValues: any[],
-    elementType: string | undefined,
-    path: string[],
-    errors: ValidationError[],
-  ) => {
-    if (!Array.isArray(actual)) {
-      errors.push(createError(path, 'Expected array', actual));
       return;
     }
-
-    if (elementType === 'first') {
-      if (actual.length === 0) {
-        errors.push(createError(
-          path,
-          `Expected non-array to check first element`,
-          actual
-        ));
-      } else {
-        const firstElement = actual[0];
-        if (!expectedValues.some(ev => comparedValue(firstElement, ev))) {
+  
+    // Xử lý trường hợp array
+    if (!Array.isArray(actual)) {
+      errors.push(createError(
+        path,
+        `Expected array for element type '${elementType}'`,
+        actual
+      ));
+      return;
+    }
+  
+    switch (elementType) {
+      case Element.ALL:
+        if (!actual.every(item => comparedValue(item, expected))) {
           errors.push(createError(
             path,
-            `First element ${JSON.stringify(firstElement)} not found. values ${JSON.stringify(expectedValues)}`,
+            `All elements must equal ${JSON.stringify(expected)}`,
             actual
           ));
         }
-      }
-    } else if (elementType === 'last') {
-      if (actual.length === 0) {
-        errors.push(createError(
-          path,
-          `Expected non-array to check`,
-          actual
-        ));
-      } else {
-        const lastElement = actual[actual.length - 1]; // get array cuối
-        if (!expectedValues.some(err => comparedValue(lastElement, err))) {
+        break;
+      case Element.FIRST:
+        if (actual.length === 0 || !comparedValue(actual[0], expected)) {
           errors.push(createError(
             path,
-            `Last element ${JSON.stringify(lastElement)} not found. values ${JSON.stringify(expectedValues)}`,
+            `First element must equal ${JSON.stringify(expected)}`,
             actual
           ));
         }
+        break;
+      case Element.LAST:
+        if (actual.length === 0 || !comparedValue(actual[actual.length - 1], expected)) {
+          errors.push(createError(
+            path,
+            `Last element must equal ${JSON.stringify(expected)}`,
+            actual
+          ));
+        }
+        break;
+    }
+  };  const validateInclusion = (
+    actual: any,
+    expectedValues: any,
+    elementType: Element | undefined,
+    path: string[],
+    errors: ValidationError[],
+  ) => {
+    // Chuyển đổi expectedValues thành array nếu chưa phải
+    const expectedArray = Array.isArray(expectedValues) ? expectedValues : [expectedValues];
+  
+    if (!Array.isArray(actual)) {
+      // Xử lý primitive value
+      if (!expectedArray.some(ev => comparedValue(actual, ev))) {
+        errors.push(createError(
+          path,
+          `Value ${JSON.stringify(actual)} not found in expected values ${JSON.stringify(expectedArray)}`,
+          actual
+        ));
       }
-    } else {
-      const missing = expectedValues.filter(expected => 
+      return;
+    }
+  
+    // Xử lý array
+    if (elementType === Element.FIRST) {
+      if (actual.length === 0 || !expectedArray.some(ev => comparedValue(actual[0], ev))) {
+        errors.push(createError(
+          path,
+          `${JSON.stringify(expectedArray)}`,
+          actual
+        ));
+      }
+    } else if (elementType === Element.LAST) {
+      if (actual.length === 0 || !expectedArray.some(ev => comparedValue(actual[actual.length - 1], ev))) {
+        errors.push(createError(
+          path,
+          `${JSON.stringify(expectedArray)}`,
+          actual
+        ));
+      }
+    } else if (elementType === Element.ALL) {
+      const missing = expectedArray.filter(expected => 
         !actual.some(item => comparedValue(item, expected))
       );
-      if (elementType === 'all' && missing.length > 0) {
+      if (missing.length > 0) {
         errors.push(createError(
           path,
-          `Missing required values: ${missing.join(', ')}`,
+          `${missing.join(', ')}`,
+          actual
+        ));
+      }
+    } else {
+      // Không có elementType - kiểm tra bất kỳ phần tử nào
+      const missing = expectedArray.filter(expected => 
+        !actual.some(item => comparedValue(item, expected))
+      );
+      if (missing.length === expectedArray.length) {
+        errors.push(createError(
+          path,
+          `${JSON.stringify(expectedArray)}`,
           actual
         ));
       }
@@ -211,40 +258,36 @@ export const createApiValidator = (
     path: string[],
     errors: ValidationError[],
   ) => {
-    const { operator, expect, element, field } = config;
+    const { field, operator, element, expect } = config;
     const resolvedExpect = resolveValue(expect);
+    const targetValue = field ? getNestedValue(actual, field) : actual;
 
-    if (Array.isArray(actual) && field) {
-      const allFieldValues = actual
-        .map(item => field ? getNestedValue(item, field) : item)
-        .filter(val => val !== undefined);
-
-      switch (operator.toLowerCase()) {
-        case 'include':
-          validateInclusion(allFieldValues, resolvedExpect, element, path, errors);
-          break;
-        case 'equal':
-          validateEquality(allFieldValues, resolvedExpect, element, path, errors);
-          break;
-        default:
-          errors.push(createError(path, `Unknown operator: ${operator}`, allFieldValues));
-      }
+    if (element && !Array.isArray(targetValue)) {
+      errors.push(createError(
+        path,
+        `Expected array for element validation but got ${typeof targetValue}`,
+        targetValue
+      ));
       return;
     }
-
-    const targetValue = field ? getNestedValue(actual, field) : actual;
-    switch (operator.toLowerCase()) {
-      case 'equal':
-        validateEquality(targetValue, resolvedExpect, element, path, errors);
+  
+  
+    // Xử lý trường hợp expect là single value nhưng cần thành array
+    const processedExpect = operator === Operator.INCLUDE && !Array.isArray(resolvedExpect) 
+      ? [resolvedExpect] 
+      : resolvedExpect;
+  
+    switch (operator) {
+      case Operator.INCLUDE:
+        validateInclusion(targetValue, processedExpect, element, path, errors);
         break;
-      case 'include':
-        validateInclusion(targetValue, resolvedExpect, element, path, errors);
+      case Operator.EQUAL:
+        validateEquality(targetValue, processedExpect, element, path, errors);
         break;
       default:
         errors.push(createError(path, `Unknown operator: ${operator}`, targetValue));
     }
   };
-
   const isOperatorObject = (obj: any): boolean => {
     return obj && typeof obj === 'object' && 'operator' in obj && 'expect' in obj;
   };
@@ -300,11 +343,11 @@ export const createApiValidator = (
   ) => {
     const resolvedExpect = resolveValue(rule.expect);
     
-    switch (rule.operator.toLowerCase()) {
-      case 'include':
+    switch (rule.operator) {
+      case Operator.INCLUDE:
         validateInclusion(values, resolvedExpect, rule.element, path, errors);
         break;
-      case 'equal':
+      case Operator.EQUAL:
         validateEquality(values, resolvedExpect, rule.element, path, errors);
         break;
       default:
