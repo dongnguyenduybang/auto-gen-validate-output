@@ -30,10 +30,11 @@ export const combinedReportTemplate = (
         className,
         url,
         pathRequest,
-        passedTests,
         failedStep,
-        totalTests,
+        passedTests,
         failedTests,
+        totalTests,
+        logicTests,
         summary
       );
     
@@ -42,6 +43,7 @@ export const combinedReportTemplate = (
           className,
           url,
           pathRequest,
+          failedStep,
           passedTests,
           failedTests,
           totalTests,
@@ -68,16 +70,17 @@ export const combinedReportTemplate = (
   }
 };
 const requestReportTemplate = (
-  className: string,
-  url: string,
-  pathRequest: string,
-  passedTests,
+  className,
+  url,
+  pathRequest,
   failedStep,
+  passedTests,
+  failedTests,
   totalTests,
-  failedTests: any[],
-  summary: any,
-  
+  logicTests,
+  summary
 ) => {
+  console.log(summary)
   return [
     `=== Request Test Report for ${className} ===`,
     `• Host: ${url}`,
@@ -88,7 +91,7 @@ const requestReportTemplate = (
     ...failedStep.map((step, index) => {
       const errorDetails = step.error ? 
         `\n     └─ ${step.error.split('\n').join('\n       ')}` : '';
-      return `  ${index + 1}. [${step.success ? '✅ PASSED' : '❌ FAILED'}] ${step.stepName}${errorDetails}`;
+      return `  ${index + 1}. [${step.status ? '✅ PASSED' : '❌ FAILED'}] ${step.stepName}${errorDetails}`;
     }),
     '',
     '=== Test Summary ===',
@@ -98,17 +101,17 @@ const requestReportTemplate = (
     '',
     '=== System Metrics ===',
     '▧ Status Code Distribution:',
-    `  200: ${summary.statusCodes[200] || 0}`,
-    `  201: ${summary.statusCodes[201] || 0}`,
-    `  400: ${summary.statusCodes[400] || 0}`,
-    `  403: ${summary.statusCodes[403] || 0}`,
-    `  404: ${summary.statusCodes[404] || 0}`,
-    `  500: ${summary.statusCodes[500] || 0}`,
+    ` 🟢 200: ${summary.statusCodes[200] || 0}`,
+    ` 🟢 201: ${summary.statusCodes[201] || 0}`,
+    ` 🟠 400: ${summary.statusCodes[400] || 0}`,
+    ` 🟠 403: ${summary.statusCodes[403] || 0}`,
+    ` 🟠 404: ${summary.statusCodes[404] || 0}`,
+    ` 🔴 500: ${summary.statusCodes[500] || 0}`,
     '',
     '[DTO Validation Issues]',
     ...failedTests.map((test, index) => [
       '',
-      ` 🔴 ${index + 1}. Case #${test.testcase}`,
+      ` 🟣 ${index + 1}. Case #${test.testcase}`,
       `     ├─ Status: ${test.code || 'N/A'}`,
       `     ├─ Body: ${JSON.stringify(test.payload) || 'None'}`,
       `     ├─ Missing: ${test.missing?.join(', ') || 'None'}`,
@@ -125,6 +128,7 @@ const responseReportTemplate = (
   className: string,
   url: string,
   pathRequest: string,
+  failedStep: any[],
   passedTests: number,
   failedTests: any[],
   totalTests: number,
@@ -137,6 +141,13 @@ const responseReportTemplate = (
     `• Endpoint: ${pathRequest}`,
     `• Date: ${new Date().toLocaleString()}`,
     '',
+    '=== Execution Steps ===',
+    ...failedStep.map((step, index) => {
+      const errorDetails = step.error ? 
+        `\n     └─ ${step.error.split('\n').join('\n       ')}` : '';
+      return `  ${index + 1}. [${step.status ? '✅ PASSED' : '❌ FAILED'}] ${step.stepName}${errorDetails}`;
+    }),
+    '',
     '=== Test Summary ===',
     `✅ Passed: ${passedTests}`,
     `❌ Failed: ${failedTests.length}`,
@@ -145,7 +156,7 @@ const responseReportTemplate = (
     '=== Error Details ===',
     ...failedTests.map((test, index) => [
       '',
-      `🔴 Case #${test.testcase}`,
+      `🟣 Case #${test.testcase}`,
       `   ├─ Error: ${test.error || 'No details'}`,
       ...(test.expected ? [`   ├─ Expected: ${JSON.stringify(test.expected, null, 2).split('\n').join('\n      ')}`] : []),
       ...(test.actual ? [`   └─ Actual: ${JSON.stringify(test.actual, null, 2).split('\n').join('\n      ')}`] : [])
@@ -210,7 +221,7 @@ const sagaReportTemplate = (
     '[Request Errors]',
     ...requestErrors.map((error, index) => [
       '',
-      ` 🔴 ${index + 1}. Step: ${error.stepName}`,
+      ` 🟣 ${index + 1}. Step: ${error.stepName}`,
       `     ├─ Type: ${error.type || 'N/A'}`,
       `     └─ Error: ${typeof error.error === 'string' ? error.error : JSON.stringify(error.error)}`
     ].join('\n')),
@@ -218,7 +229,7 @@ const sagaReportTemplate = (
     '[Response Errors]',
     ...responseErrors.map((error, index) => [
       '',
-      ` 🔴 ${index + 1}. Step: ${error.stepName}`,
+      ` 🟣 ${index + 1}. Step: ${error.stepName}`,
       `     ├─ Type: ${error.type || 'N/A'}`,
       `     └─ Error: ${typeof error.error === 'string' ? error.error : JSON.stringify(error.error)}`
     ].join('\n')),
@@ -226,7 +237,7 @@ const sagaReportTemplate = (
     '[Logic Errors]',
     ...logicErrors.map((error, index) => [
       '',
-      ` 🔴 ${index + 1}. Step: ${error.stepName}`,
+      ` 🟣 ${index + 1}. Step: ${error.stepName}`,
       `     ├─ Type: ${error.type || 'N/A'}`,
       `     └─ Error: ${typeof error.error === 'string' ? error.error : JSON.stringify(error.error)}`
     ].join('\n')),
