@@ -6,7 +6,7 @@ import { AttachmentTypeEnum } from '../enums/attachment-type.enum';
 import { TestContext } from '../test-execute-step/text-context';
 import { resolveVariable } from './get-resolve-variables';
 import { SendMessageResponse } from '../response/send-message.response';
-import { extractMessageData } from '../test-execute-step/test-executor';
+import { extractMessageData, resolveVariables } from '../test-execute-step/test-executor';
 
 function getFileNameWithoutExtension(filePath: string): string {
   const fileName = path.basename(filePath);
@@ -109,6 +109,7 @@ export function countTokens(): number {
 
 export function summarizeErrors(
   failedTests?: any[],
+  codedTest?: any[],
   passed200?: number,
   passed201?: number,
 ) {
@@ -124,12 +125,12 @@ export function summarizeErrors(
     uniqueErrors: new Map<string, number>(),
   };
 
-  if(failedTests){
+  if (failedTests) {
     failedTests.forEach((failCase) => {
       const statusCode = failCase.code || 500;
-      summary.statusCodes[statusCode] =
-        (summary.statusCodes[statusCode] || 0) + 1;
-  
+      if (summary.statusCodes.hasOwnProperty(statusCode)) {
+        summary.statusCodes[statusCode]++;
+      }
       if (failCase.missing && Array.isArray(failCase.missing)) {
         failCase.missing.forEach((error) => {
           summary.uniqueErrors.set(
@@ -138,7 +139,7 @@ export function summarizeErrors(
           );
         });
       }
-  
+
       if (failCase.extra && Array.isArray(failCase.extra)) {
         failCase.extra.forEach((error) => {
           summary.uniqueErrors.set(
@@ -159,10 +160,20 @@ export function summarizeErrors(
         });
       }
     });
-  }else {
+  } else {
+
     return;
   }
-  
+
+  if (codedTest) {
+    codedTest.forEach((code) => {
+      const statusCode = code.code || 500;
+      summary.statusCodes[statusCode] =
+        (summary.statusCodes[statusCode] || 0) + 1;
+    })
+  } else {
+    return;
+  }
 
   return summary;
 }
@@ -245,12 +256,19 @@ export function resolveValidIf(
   valueResponse: any,
   obj: any,
   payload: any,
+  context
 ): { isValid: boolean; errorMessage?: string } {
   const { condition, operators, condition2 } = validIfMetadata;
+
   // Lấy giá trị của condition1
   let value1: any;
   if (obj.hasOwnProperty(condition)) {
     value1 = obj[condition]; // Lấy từ response nếu tồn tại
+  } else {
+    return {
+      isValid: false,
+      errorMessage: `${field}: Condition '${condition}' not found in response object.`,
+    };
   }
 
   // Lấy giá trị của condition2
@@ -261,9 +279,15 @@ export function resolveValidIf(
   } else if (condition2.startsWith('payload.')) {
     const key = condition2.replace('payload.', '');
     value2 = payload[key]; // Lấy từ payload[key]
+  } else if (condition2.startsWith('{{')) {
+    value2 = resolveVariables(condition2, context);
   } else {
     value2 = condition2; // Giá trị cố định
   }
+
+  // Chuẩn hóa kiểu dữ liệu
+  value1 = String(value1).trim();
+  value2 = String(value2).trim();
 
   // So sánh hai giá trị dựa trên toán tử
   let isValid = false;
@@ -287,19 +311,18 @@ export function resolveValidIf(
       isValid = value1 <= value2;
       break;
     default:
-      return { isValid: false, errorMessage: `${operators}: Unsupported` };
+      return { isValid: false, errorMessage: `${operators}: Unsupported operator.` };
   }
 
   if (!isValid) {
     return {
       isValid: false,
-      errorMessage: `${field}: ${condition} must ${operators} ${value2} (current value: ${value1}, expected value: ${value2})`,
+      errorMessage: `${field}: ${condition} must ${operators} ${value2} (actual value: ${value1}, expected value: ${value2})`,
     };
   }
 
   return { isValid: true };
 }
-
 export const formatExpectErrors = (expects) => {
   return JSON.stringify(expects)
     .replace(/'/g, "\\'")
@@ -325,13 +348,13 @@ export async function handleSendMessageResponse(
 }
 export function toCamelCase(input: string): string {
   return input
-      .split('-')
-      .map((part, index) => 
-          index === 0 
-              ? part
-              : part.charAt(0).toUpperCase() + part.slice(1) 
-      )
-      .join(''); 
+    .split('-')
+    .map((part, index) =>
+      index === 0
+        ? part
+        : part.charAt(0).toUpperCase() + part.slice(1)
+    )
+    .join('');
 }
 export function getBodyByAction(actionName: string, actions: any): any {
   const foundAction = actions.find(item => item.action === actionName);
