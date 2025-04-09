@@ -34,5 +34,20 @@ export function StartWith(field: string, value: string) {
 export function EndWith(field: string, value: string) {
     return (target: any, propertyKey: string) => {
         Reflect.defineMetadata('endWith', { field, value }, target, propertyKey);
+        if (typeof target === 'function') {
+            Reflect.defineMetadata(
+                'endWith', 
+                { field, value }, 
+                target.prototype, 
+                propertyKey
+            );
+        } else {
+            Reflect.defineMetadata(
+                'endWith', 
+                { field, value }, 
+                target.constructor.prototype, 
+                propertyKey
+            );
+        }
     };
 }
