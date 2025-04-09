@@ -1,8 +1,11 @@
-
+import fs from 'fs';
+import path from 'path';
+import 'reflect-metadata';
 import { genBodyRequest } from './utils/gen-body-request';
 import { genBodyResponse } from './utils/gen-body-response';
 import { genTestRequest } from './utils/gen-test-request';
 import { genTestResponse } from './utils/gen-test-response';
+import { genTestSaga } from './utils/gen-test-saga';
 // import { genTestCaseForDTO } from './gens/gen-testcase';
 
 const args = process.argv.slice(2); // Thay đổi từ slice(3) thành slice(2)
@@ -32,6 +35,8 @@ async function handleAction(type: string, dtoName: string) {
             handleBodyResponse(dtoName);
             handleGenTestResponse(dtoName);
             break;
+          case 'saga':
+            handleGenTestSaga(dtoName);
           default:
             process.exit(1);
         }
@@ -44,6 +49,23 @@ async function handleAction(type: string, dtoName: string) {
           case 'response':
             handleTestResponse(dtoName)
             break;
+          case 'saga':
+            handleTestSaga(dtoName)
+          default:
+            process.exit(1);
+
+        }
+        break;
+      case 'clear':
+        switch (type) {
+          case 'request':
+            handleClearRequest(dtoName)
+            break;
+          case 'response':
+            handleClearResponse(dtoName)
+            break;
+          case 'saga':
+            handleClearSaga(dtoName)
           default:
             process.exit(1);
 
@@ -100,14 +122,22 @@ function handleTest(dtoName: string) {
   try {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const { execSync } = require('child_process');
-    const jestCommand = `jest src/auto-gen/test-case/${dtoName}`;
+    const jestCommand = `jest src/auto-gen/test-requests/${dtoName}`;
     execSync(jestCommand, { stdio: 'inherit' });
   } catch (error) {
     console.error(`"${dtoName}":`, error.message);
     process.exit(1);
   }
 }
-
+function handleGenTestSaga(dtoName: string) {
+  try {
+    genTestSaga(dtoName)
+    console.log(`gen test case for Request: ${dtoName}`);
+  } catch (error) {
+    console.error('error in handleTestCase:', error);
+    process.exit(1);
+  }
+}
 function handleTestResponse(dtoName: string) {
   console.log(`Running test for Response "${dtoName}"...`);
   try {
@@ -121,6 +151,70 @@ function handleTestResponse(dtoName: string) {
   }
 }
 
+function handleTestSaga(dtoName: string) {
+  console.log(`Running test for Saga "${dtoName}"...`);
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const { execSync } = require('child_process');
+    const jestCommand = `jest src/auto-gen/test-sagas/${dtoName}`;
+    execSync(jestCommand, { stdio: 'inherit' });
+  } catch (error) {
+    console.error(`"${dtoName}":`, error.message);
+    process.exit(1);
+  }
+}
+
+// Xử lý clear request
+function handleClearRequest(dtoName) {
+  const sagaDir = path.join(__dirname, 'test-requests', dtoName);
+
+  if (!fs.existsSync(sagaDir)) {
+    console.error(`Requests directory not found: ${sagaDir}`);
+    process.exit(1);
+  }
+
+  deleteSpecFiles(sagaDir);
+}
+
+// Xử lý clear response
+function handleClearResponse(dtoName) {
+  const sagaDir = path.join(__dirname, 'test-responses', dtoName);
+
+  if (!fs.existsSync(sagaDir)) {
+    console.error(`Responses directory not found: ${sagaDir}`);
+    process.exit(1);
+  }
+
+  deleteSpecFiles(sagaDir);
+}
+
+// Xử lý clear saga
+function handleClearSaga(dtoName) {
+  const sagaDir = path.join(__dirname, 'test-sagas', dtoName);
+
+  if (!fs.existsSync(sagaDir)) {
+    console.error(`Sagas directory not found: ${sagaDir}`);
+    process.exit(1);
+  }
+
+  deleteSpecFiles(sagaDir);
+}
+
+function deleteSpecFiles(dirPath) {
+  if (!fs.existsSync(dirPath)) {
+    console.warn(`Directory not found: ${dirPath}`);
+    return;
+  }
+
+  const files = fs.readdirSync(dirPath);
+  files.forEach((file) => {
+    if (file.endsWith('.spec.ts')) {
+      const filePath = path.join(dirPath, file);
+      fs.unlinkSync(filePath);
+      console.log(`Deleted: ${filePath}`);
+    }
+  });
+}
 (async () => {
   try {
     await handleAction(type, dtoName);
