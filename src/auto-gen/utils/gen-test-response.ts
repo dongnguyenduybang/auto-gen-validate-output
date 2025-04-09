@@ -40,40 +40,42 @@ function genTestCase(
 
     describe('Test response for ${className}', () => {
       let failedTests = [];
+      let failedStep = []
       let passedTests = 0;
       let testNumber = 0;
       let totalTests = 0;
-      let testType
-      let resolvedData, pathRequest, methodRequest, headerRequest, payloadResponse
-      let globalContext, resolvedHeader
+      let requestUrl, globalContext, resolvedHeader, pathRequest, methodRequest, headerRequest, payloadResponse, testType
       beforeAll(async () => {
         testType = 'response'
         globalContext = new TestContext();
-        await executeAllSteps(${JSON.stringify(responseConfig.beforeAll)},globalContext)
+        const resultStep = await executeAllSteps(${JSON.stringify(responseConfig.beforeAll)},globalContext)
+        resultStep.forEach((step, index) => {
+          failedStep.push({
+            type: step.type,
+            status: step.status,
+            stepName: step.stepName,
+            error: step.error
+          })
+        })
         headerRequest = ${JSON.stringify(responseConfig.headers)}
         resolvedHeader = resolveVariables(headerRequest, globalContext)
         pathRequest = ${JSON.stringify(responseConfig.path, null, 2)}
         methodRequest = ${JSON.stringify(responseConfig.method, null, 2)}
-        payloadResponse = resolveVariables(${JSON.stringify(responseConfig.payload, null, 2)}, globalContext)
-      
+        payloadResponse = resolveVariables(${JSON.stringify(responseConfig.body, null, 2)}, globalContext);
+        requestUrl = \`\${globalThis.url}\${pathRequest}\`
         });
 
       it('should validate response structure', async () => {
         testNumber++;
-                      ${isDeleteMethod ? `
-              const urlParams = new URLSearchParams(resolvedData).toString();
-              const requestUrl = \`\${globalThis.url}${responseConfig.path}?\${urlParams}\`;
-            ` : `
-              const requestUrl = \`\${globalThis.url}${responseConfig.path}\`;
-            `}
+        totalTests++;
         try {
           const response = await axios.${responseConfig.method.toLowerCase()}(
-                requestUrl, 
-                payloadResponse,
-                {
-                  headers: {...resolvedHeader},
-                   validateStatus: () => true 
-                }
+            requestUrl, 
+            payloadResponse,
+            {
+              headers: {...resolvedHeader},
+              validateStatus: () => true 
+            }
           );
           const data = response.data
           const instance = plainToInstance(${classNameCapitalized}Response, data);
@@ -82,9 +84,11 @@ function genTestCase(
             failedTests.push({
               testcase: testNumber,
               error: validateResponse
-          })
-        }
-        passedTests++;
+            })
+          }else {
+            passedTests++;
+          }
+        
         } catch (error) {
           console.error('Test failed:', error);
         }
@@ -96,7 +100,7 @@ function genTestCase(
           fs.mkdirSync(folderPath, { recursive: true });
         }
 
-        const summary = summarizeErrors(failedTests, totalTests, null, null);
+        const summary = summarizeErrors(failedTests, null, null);
         const classNames = \`${className}\`;
         const reportFileName = \`${className}-response-\${getTime()}.report.txt\`;  
         const { combinedReportTemplate } = await import('../../gens/report-file');
@@ -105,7 +109,7 @@ function genTestCase(
             globalThis.url,
             pathRequest,
             null,
-            null,
+            passedTests,
             failedTests,
             totalTests,
             null,
@@ -113,9 +117,9 @@ function genTestCase(
             testType
         );
         
-        // const reportPath = path.join(folderPath, reportFileName);
-        // fs.writeFileSync(reportPath, reportContent, 'utf-8');
-        // console.log(\`📄 Response test report generated: \${reportPath}\`);
+        const reportPath = path.join(folderPath, reportFileName);
+        fs.writeFileSync(reportPath, reportContent, 'utf-8');
+        console.log(\`📄 Response test report generated: \${reportPath}\`);
       });
     });
   `;

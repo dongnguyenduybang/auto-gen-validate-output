@@ -99,7 +99,7 @@ function genTestCase(
         (testCase: any, index: number) => `
            
             it('Test case #${index + 1} with expect errors  ${formatExpectErrors(testCase.expects)} ', async () => {
-             testNumber = ${index + 1};
+              testNumber = ${index + 1};
               totalTests++;
               const payloadObj = ${JSON.stringify(testCase.body)};
               resolvedData = resolveVariables(payloadObj,globalContext );
