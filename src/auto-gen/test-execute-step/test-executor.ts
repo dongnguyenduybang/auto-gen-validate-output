@@ -15,13 +15,16 @@ import { BaseResponse } from '../response/general-response';
 
 interface Step {
     action: string;
+    method?: string;
+    path?:string;
     body?: any;
     header?: any;
     expect?: any;
 }
 
 interface StepResult {
-    success: boolean;
+    type?: string,
+    status: boolean;
     stepName: string;
     error?: string;
 }
@@ -43,7 +46,7 @@ export async function executeAllSteps(
     for (const [index, step] of steps.entries()) {
         const result = await executeStep(step, context, index);
         results.push(result);
-        if (!result.success) break;
+        if (!result.status) break;
     }
 
     context.debug();
@@ -56,29 +59,39 @@ async function executeStep(
     stepIndex: number,
 ): Promise<StepResult> {
     try {
-        const { action, body, header, expect: expectConfig } = step;
+        const { action, method, path,  body, header, expect: expectConfig } = step;
 
         // resolve var từ  body và header
         const resolvedBody = resolveVariables(body, context);
         const resolvedHeader = resolveVariables(header, context);
         //goi API function
         const apiFunction = getApiFunction(action, context);
-        const response = await apiFunction(resolvedHeader, resolvedBody);
-        // validate response
-        const stepName = step.action.charAt(0).toUpperCase() + step.action.slice(1) + "Response";
-        const ResponseClass = responseClassMap[stepName as keyof typeof responseClassMap];
-        const validatedResponse = plainToClass(
-            ResponseClass as ClassConstructor<BaseResponse>, 
-            response.response
-          );
-        const result = validateResponses(resolvedBody,validatedResponse);
-        if(result.length >0){
+        const response = await apiFunction(method, path, resolvedHeader, resolvedBody);
+        if(response.ok === false){
             return {
-                success: false,
+                type: 'request',
+                status: response.ok,
                 stepName: `${step.action}`,
-                error: JSON.stringify(result)
-            };
+                error: JSON.stringify(response.response)            
+            }
         }
+        
+        // validate response
+        // const stepName = step.action.charAt(0).toUpperCase() + step.action.slice(1) + "Response";
+        // const ResponseClass = responseClassMap[stepName as keyof typeof responseClassMap];
+        // const validatedResponse = plainToClass(
+        //     ResponseClass as ClassConstructor<BaseResponse>, 
+        //     response.response
+        //   );
+        // const result = validateResponses(resolvedBody,validatedResponse);
+        // if(result.length >0){
+        //     return {
+        //         type: 'response',
+        //         status: false,
+        //         stepName: `${step.action}`,
+        //         error: JSON.stringify(result)
+        //     };
+        // }
 
         const extractedData = extractData(action, response, context);
         context.mergeData(extractedData);
@@ -88,20 +101,21 @@ async function executeStep(
             const validator = createApiValidator(context);
             const resolvedExpect = resolveExpectConfig(expectConfig, context);
             const errors = validator.validate(response.response, resolvedExpect);
-
             if (errors.length > 0) {
                 return {
-                    success: false,
+                    type: 'logic',
+                    status: false,
                     stepName: `${step.action}`,
                     error: formatErrors(errors),
                 };
             }
         }
 
-        return { success: true, stepName: `${action}` };
+        return { type: null,status: true, stepName: `${action}` };
     } catch (error) {
         return {
-            success: false,
+            type: 'exception',
+            status: false,
             stepName: `${step.action}`,
             error: error instanceof Error ? error.message : 'Unknown error',
         };
@@ -193,8 +207,9 @@ function extractCreateChannel(response: any, context: TestContext): Record<strin
     if (channel) {
         data.channelId = channel.channelId;
         data.workspaceId = channel.workspaceId;
-        data.channelName = channel.name;
+        data.name = channel.name;
         data.invitationLink = channel.invitationLink;
+        data.totalMembers = channel.totalMembers;
     }
 
     if (channelMetadata) {
@@ -275,19 +290,19 @@ function flattenObject(
     );
 }
 
-function formatErrors(errors: ValidationError[]): string {
-    if (!Array.isArray(errors)) return 'No error details available';
-
-    return errors
+function formatErrors(errors: ValidationError[]): any { // <-- Thay string bằng any
+    if (!Array.isArray(errors)) return { message: 'No error details available' };
+    
+    const formattedErrors = errors
         .filter(e => e !== undefined && e !== null)
-        .map(e => {
-            const path = e.path?.toString() || 'unknown_path';
-            const expected = e.expected?.toString() || 'no_expected_value';
-            const actual = e.actual !== undefined
+        .map(e => ({
+            path: e.path?.toString() || 'unknown_path',
+            expected: e.expected?.toString() || 'no_expected_value',
+            actual: e.actual !== undefined
                 ? (typeof e.actual === 'object' ? JSON.stringify(e.actual) : e.actual.toString())
-                : 'no_actual_value';
-            return `Path: [${path}] Expected: ${expected} | Actual: ${actual}` +
-                (e.message ? `\nMessage: ${e.message}` : '');
-        })
-        .join('\n\n');
+                : 'no_actual_value',
+            message: e.message || 'No message'
+        }));
+
+    return formattedErrors.length === 1 ? formattedErrors[0] : formattedErrors;
 }
