@@ -3,10 +3,13 @@ import 'reflect-metadata';
 import { ErrorMessage } from '../enums/error-message.enum';
 import { resolveValidIf } from '../helps/utils';
 import { getDecorators } from '../helps/dto-helper';
-export function validateResponses(
+import { startWith } from 'rxjs';
+import { resolveVariables } from '../test-execute-step/test-executor';
+export async function validateResponses(
   payload: any,
   instance: any,
-): string[] {
+  context
+): Promise<string[]> {
   const errors: string[] = [];
   async function validateObject(
     obj: any,
@@ -26,12 +29,21 @@ export function validateResponses(
         typeof valueResponse === 'object' &&
         valueResponse !== null
       ) {
-        const nestedPrototype = Object.getPrototypeOf(valueResponse);
-        validateObject(valueResponse, nestedPrototype, field);
+        if (decorators.optional && valueResponse === undefined) {
+          return;
+        } else {
+          const nestedPrototype = Object.getPrototypeOf(valueResponse);
+          await validateObject(valueResponse, nestedPrototype, field);
+        }
+
       } else if (decorators.type === 'array' && Array.isArray(valueResponse)) {
-        for (const [index, item] of valueResponse.entries()) {
-          const nestedPrototype = Object.getPrototypeOf(item);
-          await validateObject(item, nestedPrototype, `${field}[${index}]`);
+        if (decorators.optional && valueResponse === undefined) {
+          return;
+        } else {
+          for (const [index, item] of valueResponse.entries()) {
+            const nestedPrototype = Object.getPrototypeOf(item);
+            await validateObject(item, nestedPrototype, `${field}[${index}]`);
+          }
         }
       } else if (decorators.optional && valueResponse === undefined) {
         return;
@@ -56,15 +68,19 @@ export function validateResponses(
         errors.push(`${field} ${ErrorMessage.EMPTY}`);
         continue;
       } else {
+        
         if (decorators.type === 'string' && typeof valueResponse !== 'string') {
-          errors.push(`${field} must be a string but got ${typeof valueResponse}`);
+          errors.push(`${field} ${ErrorMessage.INVALID_TYPE_STRING}`);
         }
+
         if (decorators.type === 'number' && typeof valueResponse !== 'number') {
-          errors.push(`${field} must be a number but got ${typeof valueResponse}`);
+          errors.push(`${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`);
         }
+
         if (decorators.type === 'boolean' && typeof valueResponse !== 'boolean') {
-          errors.push(`${field} must be a boolean but got ${typeof valueResponse}`);
+          errors.push(`${field} ${ErrorMessage.INVALID_TYPE_BOOLEAN}`);
         }
+
         if (decorators.startWith && typeof valueResponse === 'string') {
 
           if (Array.isArray(decorators.startWith)) {
@@ -75,7 +91,7 @@ export function validateResponses(
             }
           } else if (typeof decorators.startWith === 'object' && decorators.startWith !== null) {
 
-            const { field: fieldCheck, value } = decorators.startWith;
+            const { fieldCheck, value } = decorators.startWith;
             if (!value || !valueResponse.startsWith(value)) {
               errors.push(`${field} must start with ${value}`);
             }
@@ -87,13 +103,20 @@ export function validateResponses(
         //check endWith
         if (decorators.endWith && typeof valueResponse === 'string') {
           if (Array.isArray(decorators.endWith)) {
-            const [fieldCheck, value] = decorators.endWith;
-            if (!value || !valueResponse.endsWith(value)) { 
+            let [fieldCheck, value] = decorators.endWith;
+            if (value.startsWith('{{')) {
+              value = resolveVariables(value, context)
+            }
+            if (!value || !valueResponse.endsWith(value)) {
               errors.push(`${field} must end with ${value}`);
             }
           } else if (typeof decorators.endWith === 'object' && decorators.endWith !== null) {
-            const { field: fieldCheck, value } = decorators.endWith;
-            if (!value || !valueResponse.endsWith(value)) { 
+            let { field: fieldCheck, value } = decorators.endWith;
+            if (value.startsWith('{{')) {
+
+              value = resolveVariables(value, context)
+            }
+            if (!value || !valueResponse.endsWith(value)) {
               errors.push(`${field} must end with ${value}`);
             }
           }
@@ -106,6 +129,7 @@ export function validateResponses(
             valueResponse,
             obj,
             payload,
+            context
           );
           if (isValid.isValid === false) {
             errors.push(isValid.errorMessage);
@@ -116,6 +140,6 @@ export function validateResponses(
   }
 
   const prototype = Object.getPrototypeOf(instance);
-  validateObject(instance, prototype);
+  await validateObject(instance, prototype);
   return errors;
 }
