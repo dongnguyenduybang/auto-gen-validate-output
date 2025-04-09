@@ -73,6 +73,7 @@ function genTestCase(
         let totalTests = 0;
         let passed201 = 0;
         let failedTests = [];
+        let codedTest = [];
         let logicTests = [];
         let passedTests = 0
         let passed200 = 0
@@ -86,8 +87,15 @@ function genTestCase(
         beforeAll( async () => {
           testType = 'request'
           globalContext = new TestContext()
-          await executeAllSteps(${JSON.stringify(requestConfig.beforeAll)},globalContext)
-
+          const resultStep = await executeAllSteps(${JSON.stringify(requestConfig.beforeAll)},globalContext)
+          resultStep.forEach((step, index) => {
+            failedStep.push({
+              type: step.type,
+              status: step.status,
+              stepName: step.stepName,
+              error: step.error
+            })
+          })
           headerRequest = ${JSON.stringify(requestConfig.headers)}
           resolvedHeader = resolveVariables(headerRequest, globalContext)
           pathRequest = ${JSON.stringify(requestConfig.path, null, 2)}
@@ -122,10 +130,10 @@ function genTestCase(
              const data = response.data;
 
               if(response.status === 201){
-                passedDTO++;
+                passedTests++;
                 passed201++;
               }else if(response.status === 200){
-                passedDTO++;
+                passedTests++;
                 passed200++;
               }else if(response.status === 400){
                 const expectJson =  ${JSON.stringify(testCase.expects)}.sort()
@@ -138,11 +146,17 @@ function genTestCase(
                   expect(data.data).toEqual(null);
                   expect(expectJson).toEqual(softExpectDetails);
                   passedTests++
+                  codedTest.push({
+                    testcase: testNumber,
+                    code: 400,
+                    body: resolvedData,
+                  })
                 } catch (error) {
                   const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
                   failedTests.push({
                     testcase: testNumber,
                     code: 400,
+                    body: resolvedData,
                     missing: missing || [],
                     extra: extra || []
                   })
@@ -150,13 +164,30 @@ function genTestCase(
                 }
               }else if (response.status === 403) {
                   const expectJson = ${JSON.stringify(testCase.expects)}.sort();
-                  const expectDetails = response.data;
-                  expect(expectDetails).toEqual(expectJson.join(""));
+                  let expectDetails = Array.isArray(response.data) ? response.data : [response.data];
+                  expectDetails = expectDetails.sort();
+                  try {
+                  expect(expectJson).toEqual(expectDetails);
+                  passedTests++
+                  codedTest.push({
+                    testcase: testNumber,
+                    code: 403,
+                    body: resolvedData,
+                  })
+                } catch (error) {
+                  failedTests.push({
+                    testcase: testNumber,
+                    code: 403,
+                    body: resolvedData,
+                  })
+                  throw new Error(error);
+                }
                 }else if (response.status === 404){
                 const errorMessage = data.error?.details;
                 failedTests.push({
                   testcase:testNumber,
                   code: 404,
+                  body: resolvedData,
                   errorDetails: errorMessage,
                 });
               }else if (response.status === 500){
@@ -184,7 +215,7 @@ function genTestCase(
             fs.mkdirSync(folderPath, { recursive: true });
         }
         const classNames = \`${className}\`;
-        const summary = summarizeErrors(failedTests, totalTests, passed200, passed201);
+        const summary = summarizeErrors(failedTests,codedTest, passed200, passed201);
         const reportFileName = \`${className}-request-\${getTime()}.report.txt\`;  
         const { combinedReportTemplate } = await import('../../gens/report-file');
         const reportContent = combinedReportTemplate(
@@ -192,7 +223,7 @@ function genTestCase(
             globalThis.url,
             pathRequest,
             failedStep,
-            passedDTO,
+            passedTests,
             failedTests,
             totalTests,
             logicTests,
