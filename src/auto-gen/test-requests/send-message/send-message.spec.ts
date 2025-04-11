@@ -4502,7 +4502,7 @@
         const classNames = `send-message`;
         const summary = summarizeErrors(failedTests,codedTest, passed200, passed201);
         const reportFileName = `send-message-request-${getTime()}.report.txt`;  
-        const { combinedReportTemplate } = await import('../../gens/report-file');
+        const { combinedReportTemplate } = await import('../../utils/report-file');
         const reportContent = combinedReportTemplate(
             classNames,
             globalThis.url,
