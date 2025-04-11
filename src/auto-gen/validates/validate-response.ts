@@ -29,7 +29,7 @@ export async function validateResponses(
         typeof valueResponse === 'object' &&
         valueResponse !== null
       ) {
-        if (decorators.optional && valueResponse === undefined) {
+        if (decorators.optional && ( valueResponse === undefined ||  valueResponse === null)) {
           return;
         } else {
           const nestedPrototype = Object.getPrototypeOf(valueResponse);
@@ -37,7 +37,7 @@ export async function validateResponses(
         }
 
       } else if (decorators.type === 'array' && Array.isArray(valueResponse)) {
-        if (decorators.optional && valueResponse === undefined) {
+        if (decorators.optional &&  (valueResponse === undefined ||  valueResponse === null)) {
           return;
         } else {
           for (const [index, item] of valueResponse.entries()) {
@@ -45,7 +45,7 @@ export async function validateResponses(
             await validateObject(item, nestedPrototype, `${field}[${index}]`);
           }
         }
-      } else if (decorators.optional && valueResponse === undefined) {
+      } else if (decorators.optional && (valueResponse === undefined|| valueResponse === null)) {
         return;
       } else if (
         decorators.isDefined &&
