@@ -313,7 +313,7 @@ export const SendMessageSaga = {
     ```
     Defined từng filed có trong array cần expect với cấu trúc expect như trên.
       * Note
-        + Mỗi object được bao bên ngoài bởi một array được xác định là 1 filed của mảng con bên trong array đó
+        + Mỗi object được bao bên ngoài bởi một array được xác định là 1 filed của mảng con bên trong obj đó
           ```
             {
               field: 'userId',
@@ -322,11 +322,30 @@ export const SendMessageSaga = {
               expect: ['{{userId}}']
             },
           ``` 
-          Đây được xác định là một property có trong array
-          - field: Tên property có trong mảng
-          - operator: Đối với array có 2 cách sử dụng operator
+          Đây được xác định là một filed có trong obj
+          - field: Tên filed có trong obj
+          - operator: Đối với array có chỉ sử dụng operator là INCLUDE
+          ```
+          # Expect 
+           {
+              field: 'roles.role',
+              operator: Operator.INCLUDE,
+              element: Element.ALL,
+              expect: ['everyone', 'owner']
+            }
+          # Response return API
+            "roles": [
+                    {
+                        "role": "owner",
+                        "weight": 0
+                    },
+                    {
+                        "role": "everyone",
+                        "weight": 2
+                    }
+              ],
+          ```
             + Operator.INCLUDE => Phải đi kèm với element để xác định sẽ lấy mảng con thứ mấy trong mảng được bao bên ngoài.
-            + Operator.EQUAL => Chỉ đi kèm với element là ALL. 
           - element: Thứ tự mảng con được xác định 
             + ALL: Lấy tất cả các mảng con
             + FIRST: Lấy mảng con đầu tiên
@@ -337,9 +356,9 @@ export const SendMessageSaga = {
             + Var: phải để trong dấu => ['{{userId}}']
           
           * Note 2
-            - Có thể expect nhiều biến cục bộ => ['{{userId}}', '{{userId1}}']. Nhưng với điều kiện element bắt buộc là ALL
+            - Có thể expect nhiều biến cục bộ => ['{{userId}}', '{{userId1}}']. Nhưng với điều kiện element bắt buộc là ALL và operator là INCLUDE
             - Operator và Element là Enum
-            - Element cố thể undefined nếu không cần dùng
+            - Element cố thể undefined nếu không cần dùng chỉ áp dụng với đối với obj
 
 
 
