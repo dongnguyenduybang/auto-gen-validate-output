@@ -14,8 +14,8 @@ export function genTestSaga(
     import fs from 'fs';
     import path from 'path';
     import { getTime } from '../../helps/utils';
-    import { TestContext } from '../../test-execute-step/text-context';
-    import { executeAllSteps} from '../../test-execute-step/test-executor';
+    import { executeAllSteps, resolveVariables } from '../../utils/test-executor';
+    import { TestContext } from '../../utils/text-context';
     import { ${classNameCapitalized}Saga } from './${dtoName}.saga';
     describe('Test sagas for ${dtoName}', () => {
       let failedStep = [];

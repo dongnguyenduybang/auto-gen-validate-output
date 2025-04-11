@@ -3,10 +3,10 @@ import * as path from 'path';
 import * as fs from 'fs';
 import 'reflect-metadata';
 import { AttachmentTypeEnum } from '../enums/attachment-type.enum';
-import { TestContext } from '../test-execute-step/text-context';
 import { resolveVariable } from './get-resolve-variables';
 import { SendMessageResponse } from '../response/send-message.response';
-import { extractMessageData, resolveVariables } from '../test-execute-step/test-executor';
+import { extractMessageData, resolveVariables } from '../utils/test-executor';
+import { TestContext } from '../utils/text-context';
 
 function getFileNameWithoutExtension(filePath: string): string {
   const fileName = path.basename(filePath);

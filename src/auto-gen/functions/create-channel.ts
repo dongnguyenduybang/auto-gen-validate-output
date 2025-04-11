@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { TestContext } from '../test-execute-step/text-context';
+import { TestContext } from '../utils/text-context';
+
 
 export async function createChannel(context: TestContext) {
   try {

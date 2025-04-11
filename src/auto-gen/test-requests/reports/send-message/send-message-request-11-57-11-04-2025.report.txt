@@ -1,0 +1,33 @@
+=== Request Test Report for send-message ===
+• Host: https://api-sb11.rpc.ziichat.dev
+• Endpoint: /Message/SendMessage
+• Date: 11/04/2025, 11:57:11
+
+=== Execution Steps ===
+  1. [✅ PASSED] mockUser
+  2. [✅ PASSED] createChannel
+
+=== Test Summary ===
+✅ Passed: 44
+❌ Failed: 1
+📊 Total: 45
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 0
+ 🟢 201: 1
+ 🟠 400: 3
+ 🟠 403: 40
+ 🟠 404: 0
+ 🔴 500: 1
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #42
+     ├─ Status: 500
+     ├─ Body: None
+     ├─ Missing: None
+     ├─ Extra: None
+     └─ Details: TypeError: value.trim is not a function
+
+=== End of Report ===

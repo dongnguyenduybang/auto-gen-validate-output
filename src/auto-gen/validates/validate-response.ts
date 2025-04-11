@@ -3,8 +3,7 @@ import 'reflect-metadata';
 import { ErrorMessage } from '../enums/error-message.enum';
 import { resolveValidIf } from '../helps/utils';
 import { getDecorators } from '../helps/dto-helper';
-import { startWith } from 'rxjs';
-import { resolveVariables } from '../test-execute-step/test-executor';
+import { resolveVariables } from '../utils/test-executor';
 export async function validateResponses(
   payload: any,
   instance: any,

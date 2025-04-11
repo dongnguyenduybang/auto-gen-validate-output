@@ -32,11 +32,11 @@ function genTestCase(
     import path from 'path';
     import axios from 'axios';
     import { summarizeErrors, summaryFields, getTime } from '../../helps/utils';
-    import { TestContext } from '../../test-execute-step/text-context';
-    import { executeAllSteps, resolveVariables } from '../../test-execute-step/test-executor';
     import { SendMessageResponse } from '../../response/send-message.response';
     import { plainToInstance } from 'class-transformer';
     import { validateResponses } from '../../validates/validate-response';
+    import { executeAllSteps, resolveVariables } from '../../utils/test-executor';
+    import { TestContext } from '../../utils/text-context';
 
     describe('Test response for ${className}', () => {
       let failedTests = [];

@@ -1,6 +1,5 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { response } from 'express';
 import { getApiFunction } from './api-function';
 import { createApiValidator, ValidationError } from './api-validator';
 import { TestContext } from './text-context';

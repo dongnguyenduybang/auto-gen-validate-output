@@ -3,8 +3,8 @@
     import path from 'path';
     import axios from 'axios';
     import { summarizeErrors, summaryFields, getTime } from '../../helps/utils';
-    import { TestContext } from '../../test-execute-step/text-context';
-    import { executeAllSteps, resolveVariables } from '../../test-execute-step/test-executor';
+    import { executeAllSteps, resolveVariables } from '../../utils/test-executor';
+    import { TestContext } from '../../utils/text-context';
     describe('Testcase for send-message', () => {
         let totalTests = 0;
         let passed201 = 0;
