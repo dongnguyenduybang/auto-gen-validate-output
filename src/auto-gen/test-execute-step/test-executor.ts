@@ -84,7 +84,7 @@ async function executeStep(
             response.response
           );
         const result = await validateResponses(resolvedBody,validatedResponse, context);
-        if(result.length >0){
+        if(result.length > 0){
             return {
                 type: 'response',
                 status: false,

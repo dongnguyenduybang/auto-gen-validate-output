@@ -28,30 +28,49 @@ export const createApiValidator = (
 ) => {
   //đệ quye so sánh excpect & acutal
   const comparedValue = (a: any, b: any): boolean => {
-    // Xử lý trường hợp string vs number
-    if (typeof a === 'string' && typeof b === 'number') {
-      return a === b.toString();
-    }
-    if (typeof a === 'number' && typeof b === 'string') {
-      return a.toString() === b;
-    }
-    
-    // So sánh array với primitive
-    if (Array.isArray(a) && !Array.isArray(b)) {
-      return a.length === 1 && comparedValue(a[0], b);
-    }
-    if (!Array.isArray(a) && Array.isArray(b)) {
-      return b.length === 1 && comparedValue(a, b[0]);
+    // Resolve giá trị từ context nếu là template variable
+    if (typeof b === 'string' && b.startsWith('{{')) {
+      b = context.getValue(b.replace(/[{}]/g, '').split('.'));
     }
   
-    // So sánh bình thường
-    return JSON.stringify(a) === JSON.stringify(b);
+    // So sánh sau khi convert về string
+    return String(a).trim() === String(b).trim();
   };
-
-  const getNestedValue = (obj: any, path: string): any => {
-    return path.split('.').reduce((context, key) =>context?.[key], obj);
-  };
-
+  
+  function getNestedValue(obj: any, pathStr: string): any[] {
+    const parts = pathStr.split('.');
+    let current: any[] = [obj];
+  
+    for (const part of parts) {
+      console.log(`Processing part: ${part}`);
+      current = current.flatMap((item) => {
+        if (item === undefined || item === null) {
+          console.log(`Item is undefined or null at part: ${part}`);
+          return [];
+        }
+        const value = item[part];
+        if (Array.isArray(value)) {
+          console.log(`Found array at part: ${part}`);
+          return value;
+        }
+        if (value !== undefined) {
+          console.log(`Found value at part: ${part}`);
+          return [value];
+        }
+        console.log(`No value found at part: ${part}`);
+        return [];
+      });
+      console.log(`Current after part ${part}:`, current);
+    }
+  
+    // Loại bỏ các phần tử rỗng hoặc undefined/null
+    current = current.filter(value => value !== undefined && value !== null);
+  
+    console.log('Final current:', current);
+    return current;
+  }
+  
+  
   const resolveValue = (value: any): any => {
     if (typeof value === 'string') {
       return value.replace(/\{\{(.+?)\}\}/g, (_, path) =>
@@ -78,57 +97,6 @@ export const createApiValidator = (
     actual: JSON.stringify(actual),
     message: message || `Validation failed at ${path.join('.')}`
   });
-
-  const validateArrayEquality = (
-    actualArray: any[],
-    expected: any,
-    elementType: string,
-    path: string[],
-    errors: ValidationError[],
-  ) => {
-    switch (elementType) {
-      case Element.ALL:
-        if (!actualArray.every(item => comparedValue(item, expected))) {
-          errors.push(createError(
-            path,
-            `All elements must equal ${JSON.stringify(expected)}`,
-            actualArray
-          ));
-        }
-        break;
-      case Element.FIRST:
-        if (actualArray.length === 0) {
-          errors.push(createError(
-            path,
-            `Array is empty, first element must equal ${JSON.stringify(expected)}`,
-            actualArray
-          ));
-        } else if (!comparedValue(actualArray[0], expected)) {
-          errors.push(createError(
-            path,
-            `First element must equal ${JSON.stringify(expected)}`,
-            actualArray
-          ));
-        }
-        break;
-        case Element.LAST:
-          if (actualArray.length === 0) {
-            errors.push(createError(
-              path,
-              `Array is empty, last element must equal ${JSON.stringify(expected)}`,
-              actualArray
-            ));
-          } else if (!comparedValue(actualArray.length -1, expected)) {
-            errors.push(createError(
-              path,
-              `Last element must equal ${JSON.stringify(expected)}`,
-              actualArray
-            ));
-          }
-          break;
-        
-    }
-  };
 
   const validateEquality = (
     actual: any,
@@ -188,68 +156,52 @@ export const createApiValidator = (
         }
         break;
     }
-  };  const validateInclusion = (
+  };  
+
+  const validateInclusion = async (
     actual: any,
     expectedValues: any,
     elementType: Element | undefined,
     path: string[],
     errors: ValidationError[],
   ) => {
-    // Chuyển đổi expectedValues thành array nếu chưa phải
     const expectedArray = Array.isArray(expectedValues) ? expectedValues : [expectedValues];
-  
-    if (!Array.isArray(actual)) {
-      // Xử lý primitive value
-      if (!expectedArray.some(ev => comparedValue(actual, ev))) {
-        errors.push(createError(
-          path,
-          `Value ${JSON.stringify(actual)} not found in expected values ${JSON.stringify(expectedArray)}`,
-          actual
-        ));
-      }
+    const fullPath = path.join('.');
+    const targetValues = getNestedValue(actual, fullPath);
+    // targetValues = Array.isArray(targetValues) ? targetValues : [targetValues];
+    const filteredValues = actual[0]
+    let valuesToCheck = filteredValues;
+    switch(elementType) {
+      case Element.FIRST:
+        valuesToCheck = filteredValues.slice(0, 1);
+        break;
+      case Element.LAST:
+        valuesToCheck = filteredValues.slice(-1);
+        break;
+      case Element.ALL:
+      default:
+        valuesToCheck = filteredValues;
+    }
+    if (valuesToCheck.length === 0) {
+      errors.push(createError(
+        path,
+        `No values found at path '${fullPath}'`,
+        targetValues
+      ));
       return;
     }
-  
-    // Xử lý array
-    if (elementType === Element.FIRST) {
-      if (actual.length === 0 || !expectedArray.some(ev => comparedValue(actual[0], ev))) {
-        errors.push(createError(
-          path,
-          `${JSON.stringify(expectedArray)}`,
-          actual
-        ));
-      }
-    } else if (elementType === Element.LAST) {
-      if (actual.length === 0 || !expectedArray.some(ev => comparedValue(actual[actual.length - 1], ev))) {
-        errors.push(createError(
-          path,
-          `${JSON.stringify(expectedArray)}`,
-          actual
-        ));
-      }
-    } else if (elementType === Element.ALL) {
-      const missing = expectedArray.filter(expected => 
-        !actual.some(item => comparedValue(item, expected))
-      );
-      if (missing.length > 0) {
-        errors.push(createError(
-          path,
-          `${missing.join(', ')}`,
-          actual
-        ));
-      }
-    } else {
-      // Không có elementType - kiểm tra bất kỳ phần tử nào
-      const missing = expectedArray.filter(expected => 
-        !actual.some(item => comparedValue(item, expected))
-      );
-      if (missing.length === expectedArray.length) {
-        errors.push(createError(
-          path,
-          `${JSON.stringify(expectedArray)}`,
-          actual
-        ));
-      }
+    const missing = expectedArray.filter(expected => 
+      !valuesToCheck.some(val => comparedValue(val, expected))
+    );
+    if (missing.length > 0) {
+      const message = elementType 
+        ? `${elementType} elements of ${fullPath} must include ${missing.join(', ')}`
+        : `${fullPath} must include ${missing.join(', ')}`;
+      errors.push(createError(
+        path,
+        message,
+        valuesToCheck
+      ));
     }
   };
   const validateOperatorObject = (
