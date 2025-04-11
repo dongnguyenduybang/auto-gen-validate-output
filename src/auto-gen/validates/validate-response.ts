@@ -42,6 +42,7 @@ export async function validateResponses(
           for (const [index, item] of valueResponse.entries()) {
             const nestedPrototype = Object.getPrototypeOf(item);
             await validateObject(item, nestedPrototype, `${field}[${index}]`);
+            
           }
         }
       } else if (decorators.optional && (valueResponse === undefined|| valueResponse === null)) {

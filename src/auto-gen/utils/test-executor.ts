@@ -11,6 +11,7 @@ import { validateResponses } from '../validates/validate-response';
 import { MockUserResponse } from '../response/mock-user';
 import { AcceptInvitationResponse } from '../response/accept-invitation';
 import { BaseResponse } from '../response/general-response';
+import { SendDmMessageResponse } from '../response/send-dm-message.response';
 
 interface Step {
     action: string;
@@ -32,7 +33,8 @@ const responseClassMap = {
     GetChannelResponse,
     AcceptInvitationResponse,
     SendMessageResponse,
-    MockUserResponse
+    MockUserResponse,
+    SendDmMessageResponse
 
 };
 
@@ -177,6 +179,8 @@ function extractData(
                 return extractAcceptInvitation(response.response, context);
             case 'sendMessage':
                 return extractMessageData(response.response);
+            case 'sendDmMessage':
+                return extractDmMessageData(response.response);    
             default:
                 return flattenObject(response.response);
         }
@@ -263,6 +267,20 @@ export function extractMessageData(response: SendMessageResponse): Record<string
     if (message) {
         data.messageId = message.messageId;
         data.content = message.content;
+    }
+
+    return data;
+}
+
+export function extractDmMessageData(response: SendDmMessageResponse): Record<string, any> {
+    const data: Record<string, any> = {};
+    if (!response?.data) return data;
+
+    const { message } = response.data;
+    if (message) {
+        data.messageId = message.messageId;
+        data.content = message.content;
+        data.channelId = message.channelId
     }
 
     return data;

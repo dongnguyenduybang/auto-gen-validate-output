@@ -30,7 +30,7 @@ function genTestCase(
     import path from 'path';
     import axios from 'axios';
     import { getTime, summarizeErrors } from '../../utils/helper';
-    import { SendMessageResponse } from '../../response/send-message.response';
+    import { ${classNameCapitalized}Response } from '../../response/${className}.response';
     import { plainToInstance } from 'class-transformer';
     import { validateResponses } from '../../validates/validate-response';
     import { executeAllSteps, resolveVariables } from '../../utils/test-executor';

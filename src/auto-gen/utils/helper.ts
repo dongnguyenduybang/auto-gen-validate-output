@@ -183,8 +183,8 @@ export function resolveValidIf(
   context,
 ): { isValid: boolean; errorMessage?: string } {
   const { condition, operators, condition2 } = validIfMetadata;
-
-  // Lấy giá trị của condition1
+  let isValid;
+  let value2: any;
   let value1: any;
   if (obj.hasOwnProperty(condition)) {
     value1 = obj[condition]; // Lấy từ response nếu tồn tại
@@ -196,7 +196,7 @@ export function resolveValidIf(
   }
 
   // Lấy giá trị của condition2
-  let value2: any;
+
   if (condition2.startsWith('response.')) {
     const key = condition2.replace('response.', '');
     value2 = obj[key]; // Lấy từ response[key]
@@ -214,7 +214,7 @@ export function resolveValidIf(
   value2 = String(value2).trim();
 
   // So sánh hai giá trị dựa trên toán tử
-  let isValid = false;
+  isValid = false;
   switch (operators) {
     case '>':
       isValid = value1 > value2;
@@ -240,6 +240,8 @@ export function resolveValidIf(
         errorMessage: `${operators}: Unsupported operator.`,
       };
   }
+  // Lấy giá trị của condition1
+
 
   if (!isValid) {
     return {
