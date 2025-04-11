@@ -113,7 +113,7 @@ function genTestCase(
         const summary = summarizeErrors(failedTests, null, null);
         const classNames = \`${className}\`;
         const reportFileName = \`${className}-response-\${getTime()}.report.txt\`;  
-        const { combinedReportTemplate } = await import('../../gens/report-file');
+        const { combinedReportTemplate } = await import('../../utils/report-file');
         const reportContent = combinedReportTemplate(
             classNames,
             globalThis.url,

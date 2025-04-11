@@ -52,7 +52,7 @@ export function genTestSaga(
         }
         const classNames = \`${dtoName}\`;
         const reportFileName = \`${dtoName}-sagas-\${getTime()}.report.txt\`;  
-        const { combinedReportTemplate } = await import('../../gens/report-file');
+        const { combinedReportTemplate } = await import('../../utils/report-file');
         const reportContent = combinedReportTemplate(
             classNames,
             globalThis.url,

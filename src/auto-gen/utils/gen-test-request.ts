@@ -217,7 +217,7 @@ function genTestCase(
         const classNames = \`${className}\`;
         const summary = summarizeErrors(failedTests,codedTest, passed200, passed201);
         const reportFileName = \`${className}-request-\${getTime()}.report.txt\`;  
-        const { combinedReportTemplate } = await import('../../gens/report-file');
+        const { combinedReportTemplate } = await import('../../utils/report-file');
         const reportContent = combinedReportTemplate(
             classNames,
             globalThis.url,
@@ -247,7 +247,7 @@ function genTestCase(
 export function genTestRequest(dtoName: string) {
   const dtosDir = path.join(__dirname, '../test-requests', dtoName);
   console.log(dtosDir)
-  const payloadsDir = path.join(__dirname, '../expect-json');
+  const payloadsDir = path.join(__dirname, '../test-requests', dtoName);
   const allFiles = getAllFiles(dtosDir);
   const pairedFiles = pairFiles(allFiles);
   //foreach các cặp file và gen testcase
