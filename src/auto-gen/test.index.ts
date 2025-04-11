@@ -2,224 +2,149 @@ import fs from 'fs';
 import path from 'path';
 import 'reflect-metadata';
 import { genBodyRequest } from './utils/gen-body-request';
-import { genBodyResponse } from './utils/performane-response';
 import { genTestRequest } from './utils/gen-test-request';
+import { execSync } from 'child_process';
 import { genTestResponse } from './utils/gen-test-response';
 import { genTestSaga } from './utils/gen-test-saga';
-// import { genTestCaseForDTO } from './gens/gen-testcase';
 
-const args = process.argv.slice(2); // Thay đổi từ slice(3) thành slice(2)
+type ActionHandler = (dtoName: string) => Promise<void> | void;
+
+const args = process.argv.slice(2);
 if (args.length < 2) {
-  console.error('Usage: npm run <action> <type> <dtoName>');
-  console.error('Example: npm run gen request UserDTO');
+  console.error('Usage: pnpm <action> <type> <dtoName>\nExample: pnpm gen request UserDTO');
   process.exit(1);
 }
-const [action, type, dtoName] = args;
-const validTypes = ['request', 'response', 'saga'];
+
+const [action, type, ...restArgs] = args;
+let subType, dtoName;
+
+if (type === 'report') {
+  // Đối với report: pnpm clear report response send-message
+  [subType, dtoName] = restArgs;
+} else {
+  // Đối với các trường hợp khác: pnpm gen request send-message
+  dtoName = restArgs[0];
+}
+const validTypes = ['request', 'response', 'saga', 'report'];
+
 if (!validTypes.includes(type)) {
   console.error(`Invalid type. Valid types: ${validTypes.join(', ')}`);
   process.exit(1);
 }
 
-console.log(`Generating "${type}" for DTO: ${dtoName}`);
-async function handleAction(type: string, dtoName: string) {
-  try {
-    switch (action) {
-      case 'gen':
-        switch (type) {
-          case 'request':
-            handleBody(dtoName);
-            handleTestCase(dtoName);
-            break;
-          case 'response':
-            handleBodyResponse(dtoName);
-            handleGenTestResponse(dtoName);
-            break;
-          case 'saga':
-            handleGenTestSaga(dtoName);
-          default:
-            process.exit(1);
-        }
-        break;
-      case 'test':
-        switch (type) {
-          case 'request':
-            handleTest(dtoName)
-            break;
-          case 'response':
-            handleTestResponse(dtoName)
-            break;
-          case 'saga':
-            handleTestSaga(dtoName)
-          default:
-            process.exit(1);
+const actionHandlers: Record<string, Record<string, ActionHandler[]>> = {
+  gen: {
+    request: [
+      (dto) => Promise.resolve(genBodyRequest(dto)),
+      (dto) => Promise.resolve(genTestRequest(dto))
+    ],
+    response: [(dto) => Promise.resolve(genTestResponse(dto))],
+    saga: [(dto) => Promise.resolve(genTestSaga(dto))]
+  },
+  test: {
+    request: [runTests('test-requests')],
+    response: [runTests('test-responses')],
+    saga: [runTests('test-sagas')]
+  },
+  clear: {
+    request: [clearFiles('test-requests')],
+    response: [clearFiles('test-responses')],
+    saga: [clearFiles('test-sagas')],
+    report: [(dto) => {
+      // Xác định  trên subType (request/response/saga)
+      const basePath = `test-${subType}s/reports`;
+      return clearReports(basePath)(dto);
+    }]
+  }
+};
 
-        }
-        break;
-      case 'clear':
-        switch (type) {
-          case 'request':
-            handleClearRequest(dtoName)
-            break;
-          case 'response':
-            handleClearResponse(dtoName)
-            break;
-          case 'saga':
-            handleClearSaga(dtoName)
-          default:
-            process.exit(1);
+async function handleBulkAction(basePath: string, handler: ActionHandler) {
+  const directories = getSubDirectories(path.join(__dirname, basePath));
+  for (const dir of directories) {
+    console.log(`Processing ${basePath}/${dir}`);
+    await Promise.resolve(handler(dir));
+  }
+}
 
-        }
+function getSubDirectories(dirPath: string): string[] {
+  return fs.readdirSync(dirPath, { withFileTypes: true })
+    .filter(dirent => dirent.isDirectory())
+    .map(dirent => dirent.name);
+}
+
+function runTests(testType: string): ActionHandler {
+  return async (dtoName) => {
+    console.log(`Running test for ${testType} "${dtoName}"...`);
+    try {
+      const testPath = `src/auto-gen/${testType}/${dtoName}`
+      execSync(`jest ${testPath}`, { stdio: 'inherit' });
+    } catch (error) {
+      console.error(`Test failed for ${dtoName}:`, error.message);
+      process.exit(1);
     }
-
-  } catch (error) {
-    console.error('error in handleAction:', error);
-    process.exit(1);
-  }
+  };
 }
 
-function handleBody(dtoName: string) {
-  try {
-    genBodyRequest(dtoName);
-    console.log(`gen body for Request: ${dtoName}`);
-  } catch (error) {
-    console.error('error in handleBody:', error);
-    process.exit(1);
-  }
-}
-
-function handleBodyResponse(dtoName: string) {
-  try {
-    genBodyResponse(dtoName);
-    console.log(`gen body for Request: ${dtoName}`);
-  } catch (error) {
-    console.error('error in handleBody:', error);
-    process.exit(1);
-  }
-}
-
-
-function handleTestCase(dtoName: string) {
-  try {
-    genTestRequest(dtoName);
-    console.log(`gen test case for Request: ${dtoName}`);
-  } catch (error) {
-    console.error('error in handleTestCase:', error);
-    process.exit(1);
-  }
-}
-function handleGenTestResponse(dtoName: string) {
-  try {
-    genTestResponse(dtoName);
-    console.log(`gen test case for Request: ${dtoName}`);
-  } catch (error) {
-    console.error('error in handleTestCase:', error);
-    process.exit(1);
-  }
-}
-function handleTest(dtoName: string) {
-  console.log(`Running test for DTO "${dtoName}"...`);
-  try {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const { execSync } = require('child_process');
-    const jestCommand = `jest src/auto-gen/test-requests/${dtoName}`;
-    execSync(jestCommand, { stdio: 'inherit' });
-  } catch (error) {
-    console.error(`"${dtoName}":`, error.message);
-    process.exit(1);
-  }
-}
-function handleGenTestSaga(dtoName: string) {
-  try {
-    genTestSaga(dtoName)
-    console.log(`gen test case for Request: ${dtoName}`);
-  } catch (error) {
-    console.error('error in handleTestCase:', error);
-    process.exit(1);
-  }
-}
-function handleTestResponse(dtoName: string) {
-  console.log(`Running test for Response "${dtoName}"...`);
-  try {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const { execSync } = require('child_process');
-    const jestCommand = `jest src/auto-gen/test-responses/${dtoName}`;
-    execSync(jestCommand, { stdio: 'inherit' });
-  } catch (error) {
-    console.error(`"${dtoName}":`, error.message);
-    process.exit(1);
-  }
-}
-
-function handleTestSaga(dtoName: string) {
-  console.log(`Running test for Saga "${dtoName}"...`);
-  try {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const { execSync } = require('child_process');
-    const jestCommand = `jest src/auto-gen/test-sagas/${dtoName}`;
-    execSync(jestCommand, { stdio: 'inherit' });
-  } catch (error) {
-    console.error(`"${dtoName}":`, error.message);
-    process.exit(1);
-  }
-}
-
-// Xử lý clear request
-function handleClearRequest(dtoName) {
-  const sagaDir = path.join(__dirname, 'test-requests', dtoName);
-
-  if (!fs.existsSync(sagaDir)) {
-    console.error(`Requests directory not found: ${sagaDir}`);
-    process.exit(1);
-  }
-
-  deleteSpecFiles(sagaDir);
-}
-
-// Xử lý clear response
-function handleClearResponse(dtoName) {
-  const sagaDir = path.join(__dirname, 'test-responses', dtoName);
-
-  if (!fs.existsSync(sagaDir)) {
-    console.error(`Responses directory not found: ${sagaDir}`);
-    process.exit(1);
-  }
-
-  deleteSpecFiles(sagaDir);
-}
-
-// Xử lý clear saga
-function handleClearSaga(dtoName) {
-  const sagaDir = path.join(__dirname, 'test-sagas', dtoName);
-
-  if (!fs.existsSync(sagaDir)) {
-    console.error(`Sagas directory not found: ${sagaDir}`);
-    process.exit(1);
-  }
-
-  deleteSpecFiles(sagaDir);
-}
-
-function deleteSpecFiles(dirPath) {
-  if (!fs.existsSync(dirPath)) {
-    console.warn(`Directory not found: ${dirPath}`);
-    return;
-  }
-
-  const files = fs.readdirSync(dirPath);
-  files.forEach((file) => {
-    if (file.endsWith('.spec.ts')) {
-      const filePath = path.join(dirPath, file);
-      fs.unlinkSync(filePath);
-      console.log(`Deleted: ${filePath}`);
+function clearFiles(testType: string): ActionHandler {
+  return async (dtoName) => {
+    const targetDir = path.join(__dirname, testType, dtoName);
+    if (!fs.existsSync(targetDir)) {
+      console.error(`${testType} directory not found: ${targetDir}`);
+      return;
     }
-  });
+    
+    fs.readdirSync(targetDir)
+      .filter(file => file.endsWith('.spec.ts'))
+      .forEach(file => {
+        const filePath = path.join(targetDir, file);
+        fs.unlinkSync(filePath);
+        console.log(`Deleted: ${filePath}`);
+      });
+  };
 }
-(async () => {
+
+function clearReports(reportType: string): ActionHandler {
+  return async (dtoName) => {
+    const targetDir = path.join(__dirname, reportType, dtoName);
+    if (!fs.existsSync(targetDir)) {
+      console.error(`Report directory not found: ${targetDir}`);
+      return;
+    }
+    
+    fs.readdirSync(targetDir)
+      .filter(file => file.endsWith('.txt'))
+      .forEach(file => {
+        const filePath = path.join(targetDir, file);
+        fs.unlinkSync(filePath);
+        console.log(`Deleted: ${filePath}`);
+      });
+  };
+}
+async function main() {
+  console.log(`Processing "${type}${subType ? ` ${subType}` : ''}" for: ${dtoName}`);
+  
   try {
-    await handleAction(type, dtoName);
+    const handlers = actionHandlers[action]?.[type];
+    if (!handlers) throw new Error('Invalid action/type combination');
+
+    const isBulkAction = dtoName && 
+      (dtoName.includes('-requests') || 
+       dtoName.includes('-responses') || 
+       dtoName.includes('-sagas'));
+    
+    if (isBulkAction) {
+      await handleBulkAction(dtoName, handlers[0]);
+    } else if (dtoName) {
+      for (const handler of handlers) {
+        await handler(dtoName);
+      }
+    } else {
+      throw new Error('Missing dtoName parameter');
+    }
   } catch (error) {
-    console.error('error:', error);
+    console.error('Error:', error.message);
     process.exit(1);
   }
-})();
+}
+
+main();
