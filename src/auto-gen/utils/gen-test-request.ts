@@ -69,7 +69,6 @@ function genTestCase(
         let logicTests = [];
         let passedTests = 0
         let passed200 = 0
-        let passedDTO = 0;
         let headerRequest
         let testNumber
         let failedStep = [];
@@ -80,7 +79,7 @@ function genTestCase(
           testType = 'request'
           globalContext = new TestContext()
           const resultStep = await executeAllSteps(${JSON.stringify(requestConfig.beforeAll)},globalContext)
-          resultStep.forEach((step, index) => {
+          resultStep.forEach((step) => {
             failedStep.push({
               type: step.type,
               status: step.status,
@@ -207,7 +206,7 @@ function genTestCase(
 
       afterAll(async () => {
       const resultStep = await executeAllSteps(${JSON.stringify(requestConfig.afterAll)},globalContext)
-        resultStep.forEach((step, index) => {
+        resultStep.forEach((step) => {
           failedStep.push({
             type: step.type,
             status: step.status,
