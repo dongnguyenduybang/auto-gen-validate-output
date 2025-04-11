@@ -79,7 +79,7 @@ function genTestCase(
           );
           const data = response.data
           const instance = plainToInstance(${classNameCapitalized}Response, data);
-          const validateResponse = validateResponses(payloadResponse, instance);
+          const validateResponse =await validateResponses(payloadResponse, instance, globalContext );
           if (validateResponse.length > 0) {
             failedTests.push({
               testcase: testNumber,
@@ -95,6 +95,16 @@ function genTestCase(
       });
 
       afterAll(async () => {
+
+        const resultStep = await executeAllSteps(${JSON.stringify(responseConfig.afterAll)},globalContext)
+        resultStep.forEach((step, index) => {
+          failedStep.push({
+            type: step.type,
+            status: step.status,
+            stepName: step.stepName,
+            error: step.error
+          })
+        })
         const folderPath = path.join(__dirname, '../reports/${className}');
         if (!fs.existsSync(folderPath)) {
           fs.mkdirSync(folderPath, { recursive: true });
@@ -108,7 +118,7 @@ function genTestCase(
             classNames,
             globalThis.url,
             pathRequest,
-            null,
+            failedStep,
             passedTests,
             failedTests,
             totalTests,
