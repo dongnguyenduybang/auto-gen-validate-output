@@ -18,11 +18,13 @@ import {
   Channel as GeneralChannel,
   ChannelMetadata as GeneralChannelMetaData,
   Reaction,
+  Embed,
+  OriginalMessage,
 } from './general-response';
 
 export class Profile {
   
-  @StartWith('avatar', 'https://avatarss')
+  @StartWith('avatar', 'https://avatars')
   @IsString()
   @IsDefined()
   avatar?: string;
@@ -56,7 +58,7 @@ export class Message extends GeneralMessage {
   createTime?: string;
 
   @Exclude()
-  originalMessage?: string;
+  originalMessage?: OriginalMessage;
 
   @Exclude()
   reactions?: Reaction;
@@ -65,7 +67,7 @@ export class Message extends GeneralMessage {
   mentions?: string[];
 
   @Exclude()
-  embed?: EmbedTypeEnum
+  embed?: Embed
 
   @Exclude()
   attachmentCount?: number;
@@ -128,7 +130,7 @@ export class Member extends GeneralMember {
   @IsDefined()
   workspaceId?: string;
 
-  @ValidIf('userId', '===', '{{userId1}}')
+  @ValidIf('userId', '===', '{{userId}}')
   @IsString()
   @IsDefined()
   userId?: string;
@@ -198,7 +200,7 @@ export class DataResponse {
 export class SendMessageResponse extends BaseResponse {
   @IsBoolean()
   @IsDefined()
-  ok?: boolean = undefined;
+  ok?: boolean;
 
   @ValidateNested({ each: true,  always: true })
   @IsObject()

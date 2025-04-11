@@ -12,7 +12,9 @@ import { BaseResponse,
   ChannelMetadata as GeneralChannelMetaData,
   User as GeneralUser,
   Member as GeneralMember,
-  Reaction
+  Reaction,
+  Embed,
+  OriginalMessage
  } from './general-response';
 import { StartWith, ValidIf } from '../decorator/condition-decorator';
 import { IsString } from '../decorator/string-decorator';
@@ -36,7 +38,7 @@ export class Message extends GeneralMessage {
   channelId?: string;
 
   @Exclude()
-  originalMessage?: string ;
+  originalMessage?: OriginalMessage
 
   @Exclude()
   reactions?: Reaction;
@@ -45,7 +47,7 @@ export class Message extends GeneralMessage {
   mentions?: string[];
 
   @Exclude()
-  embed?: EmbedTypeEnum
+  embed?: Embed
 
   @Exclude()
   attachmentCount?: number;

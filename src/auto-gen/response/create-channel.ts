@@ -10,6 +10,8 @@ import {
   Member as GeneralMember,
   ChannelMetadata as GeneralChannelMetadata,
   Reaction,
+  Embed,
+  OriginalMessage,
 } from './general-response';
 import { DirectMessageStatusEnum } from '../enums/direct-message-status.enum';
 import { EmbedTypeEnum } from '../enums/embed-type.enum';
@@ -39,7 +41,7 @@ export class Message extends GeneralMessage {
   channelId?: string;
 
   @Exclude()
-  originalMessage?: string;
+  originalMessage?: OriginalMessage;
 
   @Exclude()
   reactions?: Reaction;
@@ -48,7 +50,7 @@ export class Message extends GeneralMessage {
   mentions?: string[];
 
   @Exclude()
-  embed?: EmbedTypeEnum
+  embed?: Embed
 
   @Exclude()
   attachmentCount?: number;

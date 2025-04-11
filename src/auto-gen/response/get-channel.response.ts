@@ -12,17 +12,18 @@ import {
 } from './general-response';
 import { DirectMessageStatusEnum } from '../enums/direct-message-status.enum';
 import { EmbedTypeEnum } from '../enums/embed-type.enum';
-import { IsDefined } from '../decorator/general-decorator';
+import { IsDefined, IsOptional } from '../decorator/general-decorator';
 import { IsString } from '../decorator/string-decorator';
 import { IsBoolean } from '../decorator/boolean-decorator';
 import { StartWith, ValidIf } from '../decorator/condition-decorator';
 import { IsObject } from '../decorator/object-decorator';
 import { IsArray } from '../decorator/array-decorator';
+import { IsEnum } from '../decorator/enum-decorator';
 
 
 export class Message extends GeneralMessage {
 
-  @ValidIf('workspaceId', '===', '1')
+  @ValidIf('workspaceId', '===', '0')
   @IsString()
   @IsDefined()
   workspaceId?: string;
@@ -38,16 +39,10 @@ export class Message extends GeneralMessage {
   channelId?: string;
 
   @Exclude()
-  originalMessage?: string;
-
-  @Exclude()
   reactions?: Reaction;
 
   @Exclude()
   mentions?: string[];
-
-  @Exclude()
-  embed?: EmbedTypeEnum
 
   @Exclude()
   attachmentCount?: number;
@@ -57,7 +52,7 @@ export class Message extends GeneralMessage {
 
 }
 
-export class ChannelMetadata extends GeneralChannelMetadata {}
+export class ChannelMetadata extends GeneralChannelMetadata { }
 
 export class Channel extends GeneralChannel {
 
@@ -85,9 +80,9 @@ export class Channel extends GeneralChannel {
   acceptTime?: string;
 }
 
-export class User extends GeneralUser {}
+export class User extends GeneralUser { }
 
-export class Member extends GeneralMember {}
+export class Member extends GeneralMember { }
 
 export class IncludesResponse extends GeneralIncludesResponse {
   @ValidateNested({ each: true })
