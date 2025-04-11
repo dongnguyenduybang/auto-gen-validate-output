@@ -6,7 +6,7 @@ import { getAllFiles, getBodyByAction, getStepByAction, groupFilesByName, toCame
 export function genBodyRequest(dtoName) {
   const dtoFolderPath = path.join(__dirname, '../test-requests', dtoName);
   console.log(dtoFolderPath)
-  const outputDir = path.join(__dirname, '../expect-json');
+  const outputDir = path.join(__dirname, '../test-requests', dtoName);
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
   }
