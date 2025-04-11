@@ -1,0 +1,18 @@
+=== Saga Test Report for send-dm-message ===
+• Host: https://api-sb11.rpc.ziichat.dev
+• Sagas: SendDmMessageSaga
+• Date: 11/04/2025, 14:47:50
+
+=== Execution Steps ===
+  1. [✅ PASSED] mockUser
+  2. [✅ PASSED] sendDmMessage
+  3. [✅ PASSED] deleteDmMessagesForEveryone
+
+=== Error Details ===
+[Request Errors]
+
+[Response Errors]
+
+[Logic Errors]
+
+=== End of Report ===
