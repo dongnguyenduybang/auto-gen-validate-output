@@ -110,12 +110,12 @@
                                 element: Element.FIRST,
                                 expect: ['owner']
                             },
-                            // {
-                            //     field: 'roles.role',
-                            //     operator: Operator.INCLUDE,
-                            //     element: Element.FIRST,
-                            //     expect: ['owner']
-                            // }
+                            {
+                                field: 'roles.role',
+                                operator: Operator.INCLUDE,
+                                element: Element.ALL,
+                                expect: ['everyone', 'owner']
+                            }
                         ],
                         channelMetadata: [
                             {
@@ -150,7 +150,14 @@
                     ok: { operator: Operator.EQUAL, expect: true },
                 }
             },
-
+            {
+                action: 'deleteMessagesForEveryone',
+                body: { "channelId": '{{channelId}}', "messageId": '{{messageId1}}' },
+                header: { "token": '{{token}}' },
+                expect: {
+                    ok: { operator: Operator.EQUAL, expect: true },
+                }
+            }
         ],
     };
 
