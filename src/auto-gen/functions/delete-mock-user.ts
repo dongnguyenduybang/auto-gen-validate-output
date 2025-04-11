@@ -1,21 +1,29 @@
 import axios from 'axios';
 
-export async function deleteMockUser(prefix) {
-  // Giả lập logic tạo channel và trả về channelId
-
+export async function deleteMockedUsers(header, prefix) {
+  if (!header.token) {
+    return { error: 'Token not found to delete mock user' };
+  }
   try {
     const baseUrl = `${globalThis.urls}/InternalFaker/DeleteMockedUsers?prefix=${prefix}`;
 
     const response = await axios.delete(baseUrl, {});
 
-    console.log(response.data);
-    if (response.data.ok === true) {
-      console.log('delete mock user successfully');
+    if (!response.data.ok === true) {
+      return {
+        ok: false,
+        response: 'Invalid data get channel returned from API',
+      };
     } else {
-      throw new Error('invalid response from MockUsers api');
+      return { response: response.data };
     }
   } catch (error) {
-    console.error('error in delete MockUser:', error);
-    throw new Error('fail to delete MockUser');
+    return {
+      ok: false,
+      response:
+        error?.response?.data?.error?.details ||
+        error?.response?.data ||
+        'Unauthorized request',
+    };
   }
 }

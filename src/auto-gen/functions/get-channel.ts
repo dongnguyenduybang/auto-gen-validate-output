@@ -12,7 +12,7 @@ export async function getChannel(header, body) {
             return {
                 ok: false,
                 response: 'Invalid data get channel returned from API',
-              };
+            };
         } else {
             return { response: response.data };
         }

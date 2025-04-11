@@ -7,7 +7,6 @@ export async function createChannel(context: TestContext) {
     if (!token) {
       return { ok: false, response: 'Token not found to create channel' };
     }
-
     const baseUrl = `${globalThis.urls}/Channel/CreateChannel`;
     const payload = { workspaceId: '0', name: 'sb11_test' };
     const response = await axios.post(baseUrl, payload, {
