@@ -1,9 +1,9 @@
 /* eslint-disable prettier/prettier */
 import 'reflect-metadata';
 import { ErrorMessage } from '../enums/error-message.enum';
-import { resolveValidIf } from '../helps/utils';
-import { getDecorators } from '../helps/dto-helper';
+import { getDecorators } from '../utils/dto-helper';
 import { resolveVariables } from '../utils/test-executor';
+import { resolveValidIf } from '../utils/helper';
 export async function validateResponses(
   payload: any,
   instance: any,

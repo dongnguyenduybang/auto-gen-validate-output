@@ -1,8 +1,6 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import { formatExpectErrors, readJsonFile } from '../helps/utils';
-
-
+import { formatExpectErrors, readJsonFile } from './helper';
 
 //get tất cả các file từ dirpath và trả về đường dẫn
 function getAllFiles(dirPath: string): string[] {
@@ -54,19 +52,13 @@ function genTestCase(
 ) {
   const payloadData = readJsonFile(payloadPath);
   const requestConfig = readJsonFile(requestPath);
-  const classNameCapitalized = className
-    .split('-')
-    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-    .join('');
-
-
   const isDeleteMethod = requestConfig.method.toLowerCase() === 'delete';
-  const isPostOrPut = ['post', 'put'].includes(requestConfig.method.toLowerCase());
+
   const specContent = `
     import fs from 'fs';
     import path from 'path';
     import axios from 'axios';
-    import { summarizeErrors, summaryFields, getTime } from '../../helps/utils';
+    import { getTime, summarizeErrors, summaryFields } from '../../utils/helper';
     import { executeAllSteps, resolveVariables } from '../../utils/test-executor';
     import { TestContext } from '../../utils/text-context';
     describe('Testcase for ${className}', () => {
@@ -103,20 +95,24 @@ function genTestCase(
         })
 
         ${payloadData
-      .map(
-        (testCase: any, index: number) => `
+          .map(
+            (testCase: any, index: number) => `
            
             it('Test case #${index + 1} with expect errors  ${formatExpectErrors(testCase.expects)} ', async () => {
               testNumber = ${index + 1};
               totalTests++;
               const payloadObj = ${JSON.stringify(testCase.body)};
               resolvedData = resolveVariables(payloadObj,globalContext );
-              ${isDeleteMethod ? `
+              ${
+                isDeleteMethod
+                  ? `
               const urlParams = new URLSearchParams(resolvedData).toString();
               const requestUrl = \`\${globalThis.url}${requestConfig.path}?\${urlParams}\`;
-            ` : `
+            `
+                  : `
               const requestUrl = \`\${globalThis.url}${requestConfig.path}\`;
-            `}
+            `
+              }
             try {
               const response = await axios.${requestConfig.method.toLowerCase()}(
                 requestUrl, 
@@ -206,10 +202,19 @@ function genTestCase(
               console.log(error)
             }
             });`,
-      )
-      .join('\n')}
+          )
+          .join('\n')}
 
       afterAll(async () => {
+      const resultStep = await executeAllSteps(${JSON.stringify(requestConfig.afterAll)},globalContext)
+        resultStep.forEach((step, index) => {
+          failedStep.push({
+            type: step.type,
+            status: step.status,
+            stepName: step.stepName,
+            error: step.error
+          })
+        })
         const folderPath = path.join(__dirname, '../reports/${className}');
         if (!fs.existsSync(folderPath)) {
             fs.mkdirSync(folderPath, { recursive: true });
@@ -246,7 +251,7 @@ function genTestCase(
 
 export function genTestRequest(dtoName: string) {
   const dtosDir = path.join(__dirname, '../test-requests', dtoName);
-  console.log(dtosDir)
+  console.log(dtosDir);
   const payloadsDir = path.join(__dirname, '../test-requests', dtoName);
   const allFiles = getAllFiles(dtosDir);
   const pairedFiles = pairFiles(allFiles);

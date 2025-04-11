@@ -11,7 +11,9 @@ type ActionHandler = (dtoName: string) => Promise<void> | void;
 
 const args = process.argv.slice(2);
 if (args.length < 2) {
-  console.error('Usage: pnpm <action> <type> <dtoName>\nExample: pnpm gen request UserDTO');
+  console.error(
+    'Usage: pnpm <action> <type> <dtoName>\nExample: pnpm gen request UserDTO',
+  );
   process.exit(1);
 }
 
@@ -36,26 +38,28 @@ const actionHandlers: Record<string, Record<string, ActionHandler[]>> = {
   gen: {
     request: [
       (dto) => Promise.resolve(genBodyRequest(dto)),
-      (dto) => Promise.resolve(genTestRequest(dto))
+      (dto) => Promise.resolve(genTestRequest(dto)),
     ],
     response: [(dto) => Promise.resolve(genTestResponse(dto))],
-    saga: [(dto) => Promise.resolve(genTestSaga(dto))]
+    saga: [(dto) => Promise.resolve(genTestSaga(dto))],
   },
   test: {
     request: [runTests('test-requests')],
     response: [runTests('test-responses')],
-    saga: [runTests('test-sagas')]
+    saga: [runTests('test-sagas')],
   },
   clear: {
     request: [clearFiles('test-requests')],
     response: [clearFiles('test-responses')],
     saga: [clearFiles('test-sagas')],
-    report: [(dto) => {
-      // Xác định  trên subType (request/response/saga)
-      const basePath = `test-${subType}s/reports`;
-      return clearReports(basePath)(dto);
-    }]
-  }
+    report: [
+      (dto) => {
+        // Xác định  trên subType (request/response/saga)
+        const basePath = `test-${subType}s/reports`;
+        return clearReports(basePath)(dto);
+      },
+    ],
+  },
 };
 
 async function handleBulkAction(basePath: string, handler: ActionHandler) {
@@ -67,16 +71,17 @@ async function handleBulkAction(basePath: string, handler: ActionHandler) {
 }
 
 function getSubDirectories(dirPath: string): string[] {
-  return fs.readdirSync(dirPath, { withFileTypes: true })
-    .filter(dirent => dirent.isDirectory())
-    .map(dirent => dirent.name);
+  return fs
+    .readdirSync(dirPath, { withFileTypes: true })
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => dirent.name);
 }
 
 function runTests(testType: string): ActionHandler {
   return async (dtoName) => {
     console.log(`Running test for ${testType} "${dtoName}"...`);
     try {
-      const testPath = `src/auto-gen/${testType}/${dtoName}`
+      const testPath = `src/auto-gen/${testType}/${dtoName}`;
       execSync(`jest ${testPath}`, { stdio: 'inherit' });
     } catch (error) {
       console.error(`Test failed for ${dtoName}:`, error.message);
@@ -92,10 +97,10 @@ function clearFiles(testType: string): ActionHandler {
       console.error(`${testType} directory not found: ${targetDir}`);
       return;
     }
-    
+
     fs.readdirSync(targetDir)
-      .filter(file => file.endsWith('.spec.ts'))
-      .forEach(file => {
+      .filter((file) => file.endsWith('.spec.ts'))
+      .forEach((file) => {
         const filePath = path.join(targetDir, file);
         fs.unlinkSync(filePath);
         console.log(`Deleted: ${filePath}`);
@@ -110,10 +115,10 @@ function clearReports(reportType: string): ActionHandler {
       console.error(`Report directory not found: ${targetDir}`);
       return;
     }
-    
+
     fs.readdirSync(targetDir)
-      .filter(file => file.endsWith('.txt'))
-      .forEach(file => {
+      .filter((file) => file.endsWith('.txt'))
+      .forEach((file) => {
         const filePath = path.join(targetDir, file);
         fs.unlinkSync(filePath);
         console.log(`Deleted: ${filePath}`);
@@ -121,17 +126,20 @@ function clearReports(reportType: string): ActionHandler {
   };
 }
 async function main() {
-  console.log(`Processing "${type}${subType ? ` ${subType}` : ''}" for: ${dtoName}`);
-  
+  console.log(
+    `Processing "${type}${subType ? ` ${subType}` : ''}" for: ${dtoName}`,
+  );
+
   try {
     const handlers = actionHandlers[action]?.[type];
     if (!handlers) throw new Error('Invalid action/type combination');
 
-    const isBulkAction = dtoName && 
-      (dtoName.includes('-requests') || 
-       dtoName.includes('-responses') || 
-       dtoName.includes('-sagas'));
-    
+    const isBulkAction =
+      dtoName &&
+      (dtoName.includes('-requests') ||
+        dtoName.includes('-responses') ||
+        dtoName.includes('-sagas'));
+
     if (isBulkAction) {
       await handleBulkAction(dtoName, handlers[0]);
     } else if (dtoName) {

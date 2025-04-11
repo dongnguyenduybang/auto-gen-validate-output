@@ -31,11 +31,11 @@ export class MockUserData {
   badge: number;
 }
 
-export class MockUserResponse  {
+export class MockUserResponse {
   @IsBoolean()
   @IsDefined()
   ok?: boolean = undefined;
-  
+
   @ValidateNested({ each: true })
   @IsArray()
   @IsDefined()

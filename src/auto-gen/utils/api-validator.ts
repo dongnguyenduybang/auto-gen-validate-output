@@ -17,14 +17,8 @@ interface OperatorConfig {
   expect: any;
 }
 
-interface ValidationOptions {
-  strictTypes?: boolean;
-  allowOptionalArrays?: boolean;
-}
-
 export const createApiValidator = (
   context: TestContext,
-  options: ValidationOptions = { strictTypes: true, allowOptionalArrays: false }
 ) => {
   //đệ quye so sánh excpect & acutal
   const comparedValue = (a: any, b: any): boolean => {

@@ -7,7 +7,7 @@ import {
   ChannelMetadata as GeneralMetadata,
   IncludesResponse as GeneralIncludes,
   User as GeneralUser,
-  Member as GeneralMember
+  Member as GeneralMember,
 } from './general-response';
 import { IsString } from '../decorator/string-decorator';
 import { ValidIf } from '../decorator/condition-decorator';
@@ -79,7 +79,7 @@ export class GetMessageDataWrapper {
 }
 
 // Main Response
-export class GetMessageResponse extends BaseResponse{
+export class GetMessageResponse extends BaseResponse {
   @ValidateNested()
   @Type(() => GetMessageDataWrapper)
   data: GetMessageDataWrapper;
@@ -90,18 +90,26 @@ export class GetMessageResponse extends BaseResponse{
 
   constructor() {
     super();
-    
+
     if (this.data?.message) {
       this.data.message = Object.assign(new Message(), this.data.message);
     }
 
     if (this.includes) {
       this.includes = {
-        users: this.includes.users?.map(u => Object.assign(new GeneralUser(), u)) || [],
-        channels: this.includes.channels?.map(c => Object.assign(new Channel(), c)) || [],
+        users:
+          this.includes.users?.map((u) =>
+            Object.assign(new GeneralUser(), u),
+          ) || [],
+        channels:
+          this.includes.channels?.map((c) => Object.assign(new Channel(), c)) ||
+          [],
         members: this.includes.members || [],
-        channelMetadata: this.includes.channelMetadata?.map(m => Object.assign(new ChannelMetadata(), m)) || [],
-        messages: []
+        channelMetadata:
+          this.includes.channelMetadata?.map((m) =>
+            Object.assign(new ChannelMetadata(), m),
+          ) || [],
+        messages: [],
       };
     }
   }

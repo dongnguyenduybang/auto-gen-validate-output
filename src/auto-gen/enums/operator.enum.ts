@@ -1,5 +1,4 @@
 export enum Operator {
-    EQUAL = 'equal',
-    INCLUDE = 'include'
+  EQUAL = 'equal',
+  INCLUDE = 'include',
 }
-

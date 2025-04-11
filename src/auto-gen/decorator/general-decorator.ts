@@ -1,14 +1,13 @@
 import 'reflect-metadata';
 
-
 /*
    check có phải là kiểu optional hay không 
 
 */
 export function IsOptional() {
-    return function (target: any, propertyKey: string) {
-        Reflect.defineMetadata('optional', true, target, propertyKey);
-    };
+  return function (target: any, propertyKey: string) {
+    Reflect.defineMetadata('optional', true, target, propertyKey);
+  };
 }
 
 /*
@@ -16,27 +15,27 @@ export function IsOptional() {
    
 */
 export function IsNotNull() {
-    return (target: any, propertyKey: string) => {
-        Reflect.defineMetadata('notNull', true, target, propertyKey);
-    };
+  return (target: any, propertyKey: string) => {
+    Reflect.defineMetadata('notNull', true, target, propertyKey);
+  };
 }
 /*
    check property đó không được rỗng
    
 */
 export function IsNotEmpty(options?: { message?: string }) {
-    return (target: any, propertyKey: string) => {
-        Reflect.defineMetadata('notEmpty', true, target, propertyKey);
+  return (target: any, propertyKey: string) => {
+    Reflect.defineMetadata('notEmpty', true, target, propertyKey);
 
-        if (options?.message) {
-            Reflect.defineMetadata(
-                'notEmptyMessage',
-                options.message,
-                target,
-                propertyKey,
-            );
-        }
-    };
+    if (options?.message) {
+      Reflect.defineMetadata(
+        'notEmptyMessage',
+        options.message,
+        target,
+        propertyKey,
+      );
+    }
+  };
 }
 
 /*
@@ -44,17 +43,17 @@ export function IsNotEmpty(options?: { message?: string }) {
    
 */
 export function IsDefined(options?: { message?: string }) {
-    return (target: any, propertyKey: string) => {
-        Reflect.defineMetadata('isDefined', true, target, propertyKey);
-        if (options?.message) {
-            Reflect.defineMetadata(
-                'notUndefinedMessage',
-                options.message,
-                target,
-                propertyKey,
-            );
-        }
-    };
+  return (target: any, propertyKey: string) => {
+    Reflect.defineMetadata('isDefined', true, target, propertyKey);
+    if (options?.message) {
+      Reflect.defineMetadata(
+        'notUndefinedMessage',
+        options.message,
+        target,
+        propertyKey,
+      );
+    }
+  };
 }
 
 /*
@@ -62,10 +61,7 @@ export function IsDefined(options?: { message?: string }) {
    
 */
 export function IsAny() {
-    return function (target: any, propertyKey: string) {
-        Reflect.defineMetadata('isAny', true, target, propertyKey);
-    };
+  return function (target: any, propertyKey: string) {
+    Reflect.defineMetadata('isAny', true, target, propertyKey);
+  };
 }
-
-
-

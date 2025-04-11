@@ -10,7 +10,7 @@ export const combinedReportTemplate = (
   logicTests?: any[],
   summary?: any,
   type?: string,
-  responseValidations?: any[]
+  responseValidations?: any[],
 ) => {
   className = className || 'Unknown Class';
   url = url || 'N/A';
@@ -21,7 +21,7 @@ export const combinedReportTemplate = (
   totalTests = totalTests || 0;
   logicTests = logicTests || [];
   summary = summary || { statusCodes: {} };
-  type = type
+  type = type;
   responseValidations = responseValidations || [];
 
   switch (type) {
@@ -35,38 +35,33 @@ export const combinedReportTemplate = (
         failedTests,
         totalTests,
         logicTests,
-        summary
+        summary,
       );
-    
-      case 'response':
-        return responseReportTemplate(
-          className,
-          url,
-          pathRequest,
-          failedStep,
-          passedTests,
-          failedTests,
-          totalTests,
-          responseValidations
-        );
-    
-    case 'saga':
-      return sagaReportTemplate(
+
+    case 'response':
+      return responseReportTemplate(
         className,
         url,
         pathRequest,
         failedStep,
+        passedTests,
+        failedTests,
+        totalTests,
+        responseValidations,
       );
-    
+
+    case 'saga':
+      return sagaReportTemplate(className, url, pathRequest, failedStep);
+
     default:
-      // return requestReportTemplate(
-      //   className,
-      //   url,
-      //   pathRequest,
-      //   failedStep,
-      //   failedTests,
-      //   summary
-      // );
+    // return requestReportTemplate(
+    //   className,
+    //   url,
+    //   pathRequest,
+    //   failedStep,
+    //   failedTests,
+    //   summary
+    // );
   }
 };
 const requestReportTemplate = (
@@ -78,9 +73,9 @@ const requestReportTemplate = (
   failedTests,
   totalTests,
   logicTests,
-  summary
+  summary,
 ) => {
-  console.log(summary)
+  console.log(summary);
   return [
     `=== Request Test Report for ${className} ===`,
     `• Host: ${url}`,
@@ -89,8 +84,9 @@ const requestReportTemplate = (
     '',
     '=== Execution Steps ===',
     ...failedStep.map((step, index) => {
-      const errorDetails = step.error ? 
-        `\n     └─ ${step.error.split('\n').join('\n       ')}` : '';
+      const errorDetails = step.error
+        ? `\n     └─ ${step.error.split('\n').join('\n       ')}`
+        : '';
       return `  ${index + 1}. [${step.status ? '✅ PASSED' : '❌ FAILED'}] ${step.stepName}${errorDetails}`;
     }),
     '',
@@ -109,17 +105,19 @@ const requestReportTemplate = (
     ` 🔴 500: ${summary.statusCodes[500] || 0}`,
     '',
     '[DTO Validation Issues]',
-    ...failedTests.map((test, index) => [
-      '',
-      ` 🟣 ${index + 1}. Case #${test.testcase}`,
-      `     ├─ Status: ${test.code || 'N/A'}`,
-      `     ├─ Body: ${JSON.stringify(test.payload) || 'None'}`,
-      `     ├─ Missing: ${test.missing?.join(', ') || 'None'}`,
-      `     ├─ Extra: ${test.extra?.join(', ') || 'None'}`,
-      `     └─ Details: ${test.errorDetails || 'No details'}`
-    ].join('\n')),
+    ...failedTests.map((test, index) =>
+      [
+        '',
+        ` 🟣 ${index + 1}. Case #${test.testcase}`,
+        `     ├─ Status: ${test.code || 'N/A'}`,
+        `     ├─ Body: ${JSON.stringify(test.payload) || 'None'}`,
+        `     ├─ Missing: ${test.missing?.join(', ') || 'None'}`,
+        `     ├─ Extra: ${test.extra?.join(', ') || 'None'}`,
+        `     └─ Details: ${test.errorDetails || 'No details'}`,
+      ].join('\n'),
+    ),
     '',
-    '=== End of Report ==='
+    '=== End of Report ===',
   ].join('\n');
 };
 
@@ -132,9 +130,8 @@ const responseReportTemplate = (
   passedTests: number,
   failedTests: any[],
   totalTests: number,
-  responseValidations: any[]
+  responseValidations: any[],
 ) => {
-  const successfulTests = responseValidations.filter(r => !r.error);
   return [
     `=== Response Test Report for ${className} ===`,
     `• Host: ${url}`,
@@ -143,8 +140,9 @@ const responseReportTemplate = (
     '',
     '=== Execution Steps ===',
     ...failedStep.map((step, index) => {
-      const errorDetails = step.error ? 
-        `\n     └─ ${step.error.split('\n').join('\n       ')}` : '';
+      const errorDetails = step.error
+        ? `\n     └─ ${step.error.split('\n').join('\n       ')}`
+        : '';
       return `  ${index + 1}. [${step.status ? '✅ PASSED' : '❌ FAILED'}] ${step.stepName}${errorDetails}`;
     }),
     '',
@@ -154,15 +152,25 @@ const responseReportTemplate = (
     `📊 Total: ${totalTests}`,
     '',
     '=== Error Details ===',
-    ...failedTests.map((test, index) => [
-      '',
-      `🟣 Case #${test.testcase}`,
-      `   ├─ Error: ${test.error || 'No details'}`,
-      ...(test.expected ? [`   ├─ Expected: ${JSON.stringify(test.expected, null, 2).split('\n').join('\n      ')}`] : []),
-      ...(test.actual ? [`   └─ Actual: ${JSON.stringify(test.actual, null, 2).split('\n').join('\n      ')}`] : [])
-    ].join('\n')),
+    ...failedTests.map((test) =>
+      [
+        '',
+        `🟣 Case #${test.testcase}`,
+        `   ├─ Error: ${test.error || 'No details'}`,
+        ...(test.expected
+          ? [
+              `   ├─ Expected: ${JSON.stringify(test.expected, null, 2).split('\n').join('\n      ')}`,
+            ]
+          : []),
+        ...(test.actual
+          ? [
+              `   └─ Actual: ${JSON.stringify(test.actual, null, 2).split('\n').join('\n      ')}`,
+            ]
+          : []),
+      ].join('\n'),
+    ),
     '',
-    '=== End of Report ==='
+    '=== End of Report ===',
   ].join('\n');
 };
 
@@ -173,9 +181,15 @@ const sagaReportTemplate = (
   sagaName: string,
   failedStep: any[],
 ) => {
-  const requestErrors = failedStep.filter(step => !step.status && step.type === 'request');
-  const responseErrors = failedStep.filter(step => !step.status && step.type === 'response');
-  const logicErrors = failedStep.filter(step => !step.status && (step.type === 'logic' || step.type === ''));
+  const requestErrors = failedStep.filter(
+    (step) => !step.status && step.type === 'request',
+  );
+  const responseErrors = failedStep.filter(
+    (step) => !step.status && step.type === 'response',
+  );
+  const logicErrors = failedStep.filter(
+    (step) => !step.status && (step.type === 'logic' || step.type === ''),
+  );
   return [
     `=== Saga Test Report for ${className} ===`,
     `• Host: ${url}`,
@@ -185,24 +199,22 @@ const sagaReportTemplate = (
     '=== Execution Steps ===',
     ...failedStep.map((step, index) => {
       let errorMessage = '';
-    
+
       if (step.error) {
         // Kiểm tra nếu step.error là một mảng
         if (Array.isArray(step.error)) {
           // Duyệt qua từng lỗi và tạo chuỗi thông báo lỗi
           errorMessage = step.error
-            .map(err => {
+            .map((err) => {
               const path = err.path || 'unknown path';
-              const expected = JSON.stringify(err.expected);
-              const actual = JSON.stringify(err.actual);
               return `Path: ${path}`;
             })
             .join('\n     └─ '); // Kết hợp các lỗi bằng dấu xuống dòng và ký tự "└─"
-        } 
+        }
         // Trường hợp step.error là một đối tượng đơn lẻ
         else if (typeof step.error === 'object' && step.error !== null) {
           errorMessage = step.error.message || 'No error message available';
-        } 
+        }
         // Trường hợp step.error là một chuỗi
         else if (typeof step.error === 'string') {
           try {
@@ -213,35 +225,41 @@ const sagaReportTemplate = (
           }
         }
       }
-    
+
       return `  ${index + 1}. [${step.status ? '✅ PASSED' : '❌ FAILED'}] ${step.stepName}${errorMessage ? `\n     └─ ${errorMessage}` : ''}`;
     }),
     '',
     '=== Error Details ===',
     '[Request Errors]',
-    ...requestErrors.map((error, index) => [
-      '',
-      ` 🟣 ${index + 1}. Step: ${error.stepName}`,
-      `     ├─ Type: ${error.type || 'N/A'}`,
-      `     └─ Error: ${typeof error.error === 'string' ? error.error : JSON.stringify(error.error)}`
-    ].join('\n')),
+    ...requestErrors.map((error, index) =>
+      [
+        '',
+        ` 🟣 ${index + 1}. Step: ${error.stepName}`,
+        `     ├─ Type: ${error.type || 'N/A'}`,
+        `     └─ Error: ${typeof error.error === 'string' ? error.error : JSON.stringify(error.error)}`,
+      ].join('\n'),
+    ),
     '',
     '[Response Errors]',
-    ...responseErrors.map((error, index) => [
-      '',
-      ` 🟣 ${index + 1}. Step: ${error.stepName}`,
-      `     ├─ Type: ${error.type || 'N/A'}`,
-      `     └─ Error: ${typeof error.error === 'string' ? error.error : JSON.stringify(error.error)}`
-    ].join('\n')),
+    ...responseErrors.map((error, index) =>
+      [
+        '',
+        ` 🟣 ${index + 1}. Step: ${error.stepName}`,
+        `     ├─ Type: ${error.type || 'N/A'}`,
+        `     └─ Error: ${typeof error.error === 'string' ? error.error : JSON.stringify(error.error)}`,
+      ].join('\n'),
+    ),
     '',
     '[Logic Errors]',
-    ...logicErrors.map((error, index) => [
-      '',
-      ` 🟣 ${index + 1}. Step: ${error.stepName}`,
-      `     ├─ Type: ${error.type || 'N/A'}`,
-      `     └─ Error: ${typeof error.error === 'string' ? error.error : JSON.stringify(error.error)}`
-    ].join('\n')),
+    ...logicErrors.map((error, index) =>
+      [
+        '',
+        ` 🟣 ${index + 1}. Step: ${error.stepName}`,
+        `     ├─ Type: ${error.type || 'N/A'}`,
+        `     └─ Error: ${typeof error.error === 'string' ? error.error : JSON.stringify(error.error)}`,
+      ].join('\n'),
+    ),
     '',
-    '=== End of Report ==='
+    '=== End of Report ===',
   ].join('\n');
 };

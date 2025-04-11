@@ -1,11 +1,11 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import { generateErrorCases } from '../helps/dto-helper';
-import { getAllFiles, groupFilesByName } from '../helps/utils';
+import { generateErrorCases } from './dto-helper';
+import { getAllFiles, groupFilesByName } from './helper';
 
 export function genBodyRequest(dtoName) {
   const dtoFolderPath = path.join(__dirname, '../test-requests', dtoName);
-  console.log(dtoFolderPath)
+  console.log(dtoFolderPath);
   const outputDir = path.join(__dirname, '../test-requests', dtoName);
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
@@ -13,12 +13,12 @@ export function genBodyRequest(dtoName) {
   const files = getAllFiles(dtoFolderPath);
   const fileMap = groupFilesByName(files);
 
-  Object.entries(fileMap).forEach(([className, { dtoPath, requestPath  }]) => {
+  Object.entries(fileMap).forEach(([className, { dtoPath, requestPath }]) => {
     if (!dtoPath) {
       console.warn(`Missing .dto file for class: ${className}`);
       return;
     }
-    console.log(requestPath)
+    console.log(requestPath);
 
     try {
       // eslint-disable-next-line @typescript-eslint/no-var-requires

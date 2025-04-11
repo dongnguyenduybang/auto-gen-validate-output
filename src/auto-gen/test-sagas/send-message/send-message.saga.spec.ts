@@ -1,8 +1,8 @@
 
 import fs from 'fs';
 import path from 'path';
-import { getTime } from '../../helps/utils';
-import { executeAllSteps, resolveVariables } from '../../utils/test-executor';
+import { getTime } from '../../utils/helper';
+import { executeAllSteps } from '../../utils/test-executor';
 import { TestContext } from '../../utils/text-context';
 import { SendMessageSaga } from './send-message.saga';
 describe('Test sagas for send-message', () => {

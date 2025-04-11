@@ -1,12 +1,13 @@
 // accept-invitation.response.ts
-import { ValidateNested} from 'class-validator';
+import { ValidateNested } from 'class-validator';
 import { Exclude, Type } from 'class-transformer';
 import { DirectMessageStatusEnum } from '../enums/direct-message-status.enum';
-import { IsDefined, IsOptional } from '../decorator/general-decorator';
+import { IsDefined } from '../decorator/general-decorator';
 import { IsArray } from '../decorator/array-decorator';
 import { IsBoolean } from '../decorator/boolean-decorator';
 import { IsObject } from '../decorator/object-decorator';
-import { BaseResponse,
+import {
+  BaseResponse,
   Channel as GeneralChannel,
   Message as GeneralMessage,
   ChannelMetadata as GeneralChannelMetaData,
@@ -14,14 +15,12 @@ import { BaseResponse,
   Member as GeneralMember,
   Reaction,
   Embed,
-  OriginalMessage
- } from './general-response';
+  OriginalMessage,
+} from './general-response';
 import { StartWith, ValidIf } from '../decorator/condition-decorator';
 import { IsString } from '../decorator/string-decorator';
-import { EmbedTypeEnum } from '../enums/embed-type.enum';
 
 export class Message extends GeneralMessage {
-  
   @ValidIf('workspaceId', '===', '1')
   @IsString()
   @IsDefined()
@@ -38,7 +37,7 @@ export class Message extends GeneralMessage {
   channelId?: string;
 
   @Exclude()
-  originalMessage?: OriginalMessage
+  originalMessage?: OriginalMessage;
 
   @Exclude()
   reactions?: Reaction;
@@ -47,29 +46,25 @@ export class Message extends GeneralMessage {
   mentions?: string[];
 
   @Exclude()
-  embed?: Embed
+  embed?: Embed;
 
   @Exclude()
   attachmentCount?: number;
 
   @Exclude()
   mediaAttachments?: string[];
-
 }
 
-export class ChannelMetadata extends GeneralChannelMetaData{
-  
-}
+export class ChannelMetadata extends GeneralChannelMetaData {}
 
-export class Channel extends GeneralChannel{
-  
+export class Channel extends GeneralChannel {
   @StartWith('invitationLink', 'https://zii.chat/i/')
   @IsString()
   @IsDefined()
   invitationLink?: string;
 
   @Exclude()
-  originalAvatar?: string ;
+  originalAvatar?: string;
 
   @Exclude()
   dmStatus?: DirectMessageStatusEnum;
@@ -87,12 +82,9 @@ export class Channel extends GeneralChannel{
   acceptTime?: string;
 }
 
-export class User extends GeneralUser {
+export class User extends GeneralUser {}
 
-}
-
-export class Member extends GeneralMember {
-}
+export class Member extends GeneralMember {}
 
 export class IncludesResponse {
   @ValidateNested({ each: true })

@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 export async function deleteMessagesForEveryone(header, body) {
-
   if (!header.token) {
     return { error: 'Token not found to delete messages for everyone' };
   }
@@ -21,9 +20,9 @@ export async function deleteMessagesForEveryone(header, body) {
     return {
       ok: false,
       response:
-          error?.response?.data?.error?.details ||
-          error?.response?.data ||
-          'Unauthorized request',
-  };
+        error?.response?.data?.error?.details ||
+        error?.response?.data ||
+        'Unauthorized request',
+    };
   }
 }

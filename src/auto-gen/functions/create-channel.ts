@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { TestContext } from '../utils/text-context';
 
-
 export async function createChannel(context: TestContext) {
   try {
     const token = context.getValue('token');

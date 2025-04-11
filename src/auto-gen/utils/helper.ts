@@ -2,11 +2,7 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import 'reflect-metadata';
-import { AttachmentTypeEnum } from '../enums/attachment-type.enum';
-import { resolveVariable } from './get-resolve-variables';
-import { SendMessageResponse } from '../response/send-message.response';
-import { extractMessageData, resolveVariables } from '../utils/test-executor';
-import { TestContext } from '../utils/text-context';
+import { resolveVariables } from '../utils/test-executor';
 
 function getFileNameWithoutExtension(filePath: string): string {
   const fileName = path.basename(filePath);
@@ -45,22 +41,6 @@ export function pairFiles(
   return pairedFiles;
 }
 
-export function getLength(value) {
-  if (value === null || value === undefined || value === '') {
-    return 0;
-  }
-  return value.length;
-}
-
-export function replaceClassName(input: string): any {
-  const cleanedInput = input.replace(/DTO$/, '');
-
-  const cleanedClassname = cleanedInput
-    .replace(/([a-z])([A-Z])/g, '$1-$2')
-    .toLowerCase();
-  return { text: cleanedInput, text2: cleanedClassname };
-}
-
 export function summaryFields(
   expectJson: string[],
   receivedResponse: string[],
@@ -72,39 +52,9 @@ export function summaryFields(
   return { missing, extra };
 }
 
-export function formatErrors(stepLog: { Error: any[] }): string {
-  let formattedOutput = '';
-
-  stepLog.Error.forEach((log) => {
-    if (!log.success && log.error) {
-      // Loại bỏ dấu \ trong chuỗi lỗi
-      const errorString = log.error.replace(/\\/g, '');
-
-      // Tách lỗi thành nhiều dòng
-      const errors = errorString.split(/(?=[A-Z][a-z]+ mismatch)/); // Tách theo từ khóa "Mismatch"
-      const formattedErrors = errors.join('\n'); // Thêm xuống dòng giữa các lỗi
-
-      // Thêm vào kết quả cuối cùng
-      formattedOutput += `Function: ${log.functionName}\nErrors:\n${formattedErrors}\n\n`;
-    }
-  });
-
-  return formattedOutput;
-}
-
 export function readJsonFile(filePath: string): any {
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   return JSON.parse(fileContent);
-}
-
-export function countTokens(): number {
-  let count = 0;
-  for (const [key] of globalThis.globalVar.entries()) {
-    if (key.startsWith('token')) {
-      count++;
-    }
-  }
-  return count;
 }
 
 export function summarizeErrors(
@@ -161,7 +111,6 @@ export function summarizeErrors(
       }
     });
   } else {
-
     return;
   }
 
@@ -170,7 +119,7 @@ export function summarizeErrors(
       const statusCode = code.code || 500;
       summary.statusCodes[statusCode] =
         (summary.statusCodes[statusCode] || 0) + 1;
-    })
+    });
   } else {
     return;
   }
@@ -181,7 +130,7 @@ export function summarizeErrors(
 export function getAllFiles(dirPath: string): string[] {
   let files: string[] = [];
   const items = fs.readdirSync(dirPath);
-  console.log(items)
+  console.log(items);
   items.forEach((item) => {
     const itemPath = path.join(dirPath, item);
     if (fs.statSync(itemPath).isDirectory()) {
@@ -225,38 +174,13 @@ export function getTime() {
   return formattedDate;
 }
 
-function dmsToDecimal(degrees, minutes, seconds) {
-  return degrees + minutes / 60 + seconds / 3600;
-}
-
-export function extractCoordinates(description) {
-  const regex =
-    /([0-9]+)°([0-9]+)′([0-9.]+)″[NS]\s([0-9]+)°([0-9]+)′([0-9.]+)″[EW]/;
-  const match = description.match(regex);
-
-  if (match) {
-    const latitude = dmsToDecimal(
-      parseInt(match[1]),
-      parseInt(match[2]),
-      parseFloat(match[3]),
-    );
-    const longitude = dmsToDecimal(
-      parseInt(match[4]),
-      parseInt(match[5]),
-      parseFloat(match[6]),
-    );
-    return { latitude, longitude };
-  }
-  return null;
-}
-
 export function resolveValidIf(
   field,
   validIfMetadata: { condition: string; operators: string; condition2: string },
   valueResponse: any,
   obj: any,
   payload: any,
-  context
+  context,
 ): { isValid: boolean; errorMessage?: string } {
   const { condition, operators, condition2 } = validIfMetadata;
 
@@ -311,7 +235,10 @@ export function resolveValidIf(
       isValid = value1 <= value2;
       break;
     default:
-      return { isValid: false, errorMessage: `${operators}: Unsupported operator.` };
+      return {
+        isValid: false,
+        errorMessage: `${operators}: Unsupported operator.`,
+      };
   }
 
   if (!isValid) {
@@ -323,6 +250,7 @@ export function resolveValidIf(
 
   return { isValid: true };
 }
+
 export const formatExpectErrors = (expects) => {
   return JSON.stringify(expects)
     .replace(/'/g, "\\'")
@@ -330,42 +258,3 @@ export const formatExpectErrors = (expects) => {
     .replace(/\s*,\s*/g, ',')
     .trim();
 };
-
-export async function handleSendMessageResponse(
-  response: SendMessageResponse,
-  context: TestContext,
-): Promise<boolean> {
-  const messageData = extractMessageData(response);
-
-  if (Object.keys(messageData).length === 0) {
-    console.error('No message data extracted');
-    return false;
-  }
-  context.mergeData(messageData);
-  context.debug();
-
-  return true;
-}
-export function toCamelCase(input: string): string {
-  return input
-    .split('-')
-    .map((part, index) =>
-      index === 0
-        ? part
-        : part.charAt(0).toUpperCase() + part.slice(1)
-    )
-    .join('');
-}
-export function getBodyByAction(actionName: string, actions: any): any {
-  const foundAction = actions.find(item => item.action === actionName);
-
-  if (!foundAction) {
-    throw new Error(`Action '${actionName}' not found in the array.`);
-  }
-
-  return foundAction.body;
-}
-
-export function getStepByAction(action: string, steps: any[]) {
-  return steps.find(step => step.action === action);
-}

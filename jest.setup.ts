@@ -3,7 +3,7 @@ import { initializeGlobalVariables } from './src/auto-gen/global-var';
 import {
   setupConfiguration,
   getOrThrow,
-} from './src/auto-gen/helps/get-config';
+} from './src/auto-gen/utils/get-config';
 setupConfiguration();
 
 initializeGlobalVariables();

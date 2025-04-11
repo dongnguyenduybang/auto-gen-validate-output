@@ -1,7 +1,7 @@
 === Response Test Report for send-message ===
 • Host: https://api-sb11.rpc.ziichat.dev
 • Endpoint: /Message/SendMessage
-• Date: 11/04/2025, 11:58:51
+• Date: 11/04/2025, 13:10:11
 
 === Execution Steps ===
   1. [✅ PASSED] mockUser

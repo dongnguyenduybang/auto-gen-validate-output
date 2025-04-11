@@ -1,32 +1,20 @@
 import 'reflect-metadata';
 import { ErrorMessage } from '../enums/error-message.enum';
 
-// export function getDecorators(
-//   target: any,
-//   propertyKey: string,
-// ): Record<string, any> {
-//   const decorators: Record<string, any> = {};
-
-//   const metadataKeys = Reflect.getMetadataKeys(target, propertyKey);
-
-//   metadataKeys.forEach((key) => {
-//     const value = Reflect.getMetadata(key, target, propertyKey);
-//     decorators[key] = value;
-//   });
-
-//   return decorators;
-// }
-export function getDecorators(target: any, propertyKey: string): Record<string, any> {
+export function getDecorators(
+  target: any,
+  propertyKey: string,
+): Record<string, any> {
   const decorators: Record<string, any> = {};
 
   let metadataKeys = Reflect.getMetadataKeys(target, propertyKey);
-  metadataKeys.forEach(key => {
+  metadataKeys.forEach((key) => {
     decorators[key] = Reflect.getMetadata(key, target, propertyKey);
   });
 
   if (typeof target === 'function') {
     metadataKeys = Reflect.getMetadataKeys(target, propertyKey);
-    metadataKeys.forEach(key => {
+    metadataKeys.forEach((key) => {
       if (!decorators[key]) {
         decorators[key] = Reflect.getMetadata(key, target, propertyKey);
       }
@@ -36,7 +24,7 @@ export function getDecorators(target: any, propertyKey: string): Record<string, 
   let proto = Object.getPrototypeOf(target);
   while (proto && proto !== Object.prototype) {
     metadataKeys = Reflect.getMetadataKeys(proto, propertyKey);
-    metadataKeys.forEach(key => {
+    metadataKeys.forEach((key) => {
       if (!decorators[key]) {
         decorators[key] = Reflect.getMetadata(key, proto, propertyKey);
       }

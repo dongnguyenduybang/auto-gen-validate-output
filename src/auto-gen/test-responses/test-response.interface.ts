@@ -10,34 +10,33 @@ export interface TestCaseResult {
   actual?: any;
   performance?: PerformanceMetrics;
 }
-export const STATUS_CONFIG: Record<number, { 
-  name: string;
-  headerOverrides?: Record<string, any>;
-  bodyOverrides?: Record<string, any>;
-  customFields?: any;
-}> = {
+export const STATUS_CONFIG: Record<
+  number,
+  {
+    name: string;
+    headerOverrides?: Record<string, any>;
+    bodyOverrides?: Record<string, any>;
+    customFields?: any;
+  }
+> = {
   201: {
-      name: "Created",
+    name: 'Created',
   },
   403: {
-      name: "Forbidden",
-      headerOverrides: {
-          "x-session-token": null 
-      },
-      customFields: {
-         
-      }
+    name: 'Forbidden',
+    headerOverrides: {
+      'x-session-token': null,
+    },
+    customFields: {},
   },
   404: {
-      name: "Not Found",
-      customFields: {
-         
-      }
+    name: 'Not Found',
+    customFields: {},
   },
   500: {
-      name: "Internal Server Error",
-      customFields: {
-          errorType: "SERVER_ERROR"
-      }
-  }
+    name: 'Internal Server Error',
+    customFields: {
+      errorType: 'SERVER_ERROR',
+    },
+  },
 };

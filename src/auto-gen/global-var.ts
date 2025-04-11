@@ -1,4 +1,4 @@
-import { setupConfiguration, getOrThrow } from './helps/get-config';
+import { setupConfiguration, getOrThrow } from './utils/get-config';
 setupConfiguration();
 
 export function initializeGlobalVariables() {

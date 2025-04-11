@@ -11,18 +11,14 @@ import {
   Reaction,
 } from './general-response';
 import { DirectMessageStatusEnum } from '../enums/direct-message-status.enum';
-import { EmbedTypeEnum } from '../enums/embed-type.enum';
-import { IsDefined, IsOptional } from '../decorator/general-decorator';
+import { IsDefined } from '../decorator/general-decorator';
 import { IsString } from '../decorator/string-decorator';
 import { IsBoolean } from '../decorator/boolean-decorator';
 import { StartWith, ValidIf } from '../decorator/condition-decorator';
 import { IsObject } from '../decorator/object-decorator';
 import { IsArray } from '../decorator/array-decorator';
-import { IsEnum } from '../decorator/enum-decorator';
-
 
 export class Message extends GeneralMessage {
-
   @ValidIf('workspaceId', '===', '0')
   @IsString()
   @IsDefined()
@@ -49,13 +45,11 @@ export class Message extends GeneralMessage {
 
   @Exclude()
   mediaAttachments?: string[];
-
 }
 
-export class ChannelMetadata extends GeneralChannelMetadata { }
+export class ChannelMetadata extends GeneralChannelMetadata {}
 
 export class Channel extends GeneralChannel {
-
   @StartWith('invitationLink', 'https://zii.chat/i/')
   @IsString()
   @IsDefined()
@@ -80,9 +74,9 @@ export class Channel extends GeneralChannel {
   acceptTime?: string;
 }
 
-export class User extends GeneralUser { }
+export class User extends GeneralUser {}
 
-export class Member extends GeneralMember { }
+export class Member extends GeneralMember {}
 
 export class IncludesResponse extends GeneralIncludesResponse {
   @ValidateNested({ each: true })

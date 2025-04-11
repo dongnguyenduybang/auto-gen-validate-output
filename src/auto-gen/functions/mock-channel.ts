@@ -14,7 +14,7 @@ export async function mockChannel(
       totalMessages: totalMessages,
       typeChannel: typeChannel,
     };
-    const response = await axios.post(baseUrl, payload, {
+    await axios.post(baseUrl, payload, {
       headers: globalThis.geoCode,
     });
     // if (response.data && response.data.data.length > 0) {

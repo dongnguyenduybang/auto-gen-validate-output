@@ -1,12 +1,12 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import { formatExpectErrors, readJsonFile } from '../helps/utils';
+import { readJsonFile } from './helper';
 
 // Hàm đơn giản chỉ lấy file response.json
 function getResponseFile(dirPath: string): string | null {
   try {
     const files = fs.readdirSync(dirPath);
-    const responseFile = files.find(file => file.endsWith('.response.json'));
+    const responseFile = files.find((file) => file.endsWith('.response.json'));
     return responseFile ? path.join(dirPath, responseFile) : null;
   } catch (error) {
     console.error(`Error reading directory ${dirPath}:`, error);
@@ -25,13 +25,11 @@ function genTestCase(
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join('');
 
-  const isDeleteMethod = responseConfig.method.toLowerCase() === 'delete';  
-
   const specContent = `
     import fs from 'fs';
     import path from 'path';
     import axios from 'axios';
-    import { summarizeErrors, summaryFields, getTime } from '../../helps/utils';
+    import { getTime, summarizeErrors } from '../../utils/helper';
     import { SendMessageResponse } from '../../response/send-message.response';
     import { plainToInstance } from 'class-transformer';
     import { validateResponses } from '../../validates/validate-response';

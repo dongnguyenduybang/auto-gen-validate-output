@@ -2,7 +2,7 @@
     import fs from 'fs';
     import path from 'path';
     import axios from 'axios';
-    import { summarizeErrors, summaryFields, getTime } from '../../helps/utils';
+    import { getTime, summarizeErrors, summaryFields } from '../../utils/helper';
     import { executeAllSteps, resolveVariables } from '../../utils/test-executor';
     import { TestContext } from '../../utils/text-context';
     describe('Testcase for send-message', () => {
@@ -4495,6 +4495,15 @@
             });
 
       afterAll(async () => {
+      const resultStep = await executeAllSteps([{"action":"deleteMockedUsers","body":{"prefix":"testfaker"},"header":{"token":"{{token}}"}},{"action":"deleteChannel","header":{"token":"{{token}}","userId":"{{userId}}"},"body":{"channelId":"{{channelId}}"}}],globalContext)
+        resultStep.forEach((step, index) => {
+          failedStep.push({
+            type: step.type,
+            status: step.status,
+            stepName: step.stepName,
+            error: step.error
+          })
+        })
         const folderPath = path.join(__dirname, '../reports/send-message');
         if (!fs.existsSync(folderPath)) {
             fs.mkdirSync(folderPath, { recursive: true });

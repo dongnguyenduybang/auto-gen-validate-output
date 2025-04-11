@@ -1,42 +1,38 @@
-import { ValidateNested } from 'class-validator'
-import { Type } from 'class-transformer'
-import { ChannelTypeEnum } from '../enums/channel-type.enum'
-import { MessageTypeEnum } from '../enums/message-type.enum'
-import { AttachmentTypeEnum } from '../enums/attachment-type.enum'
-import { UserAvatarTypeEnum } from '../enums/user-avatar-type.enum'
-import { BadgeEnum } from '../enums/badge.enum'
-import { DirectMessageStatusEnum } from '../enums/direct-message-status.enum'
-import { MediaPermissionSettingEnum } from '../enums/media-permission-setting.enum'
-import { ChannelPermissionEnum } from '../enums/channel-permissions.enum'
-import { UserStatusExpireAfterTimeEnum } from '../enums/user-status-expire-after-time.enum'
-import { EmbedTypeEnum } from '../enums/embed-type.enum'
-import { IsBoolean } from '../decorator/boolean-decorator'
-import { IsDefined, IsOptional } from '../decorator/general-decorator'
-import { IsNumber } from '../decorator/number-decorator'
-import { IsString } from '../decorator/string-decorator'
-import { IsEnum } from '../decorator/enum-decorator'
-import { IsObject } from '../decorator/object-decorator'
-import { IsArray } from '../decorator/array-decorator'
-import { StartWith } from '../decorator/condition-decorator'
+import { ValidateNested } from 'class-validator';
+import { Type } from 'class-transformer';
+import { ChannelTypeEnum } from '../enums/channel-type.enum';
+import { MessageTypeEnum } from '../enums/message-type.enum';
+import { AttachmentTypeEnum } from '../enums/attachment-type.enum';
+import { UserAvatarTypeEnum } from '../enums/user-avatar-type.enum';
+import { BadgeEnum } from '../enums/badge.enum';
+import { DirectMessageStatusEnum } from '../enums/direct-message-status.enum';
+import { MediaPermissionSettingEnum } from '../enums/media-permission-setting.enum';
+import { UserStatusExpireAfterTimeEnum } from '../enums/user-status-expire-after-time.enum';
+import { EmbedTypeEnum } from '../enums/embed-type.enum';
+import { IsBoolean } from '../decorator/boolean-decorator';
+import { IsDefined, IsOptional } from '../decorator/general-decorator';
+import { IsNumber } from '../decorator/number-decorator';
+import { IsString } from '../decorator/string-decorator';
+import { IsEnum } from '../decorator/enum-decorator';
+import { IsObject } from '../decorator/object-decorator';
+import { IsArray } from '../decorator/array-decorator';
 
-export class Dimensions{
+export class Dimensions {
+  @IsNumber()
+  height: number;
 
   @IsNumber()
-  height: number
-
-  @IsNumber()
-  width: number
+  width: number;
 }
 export class FileMetadata {
-
   @IsString()
-  filename: string
+  filename: string;
 
   @IsNumber()
-  filesize: number
+  filesize: number;
 
   @IsString()
-  extension: string
+  extension: string;
 
   @IsString()
   mimetype: string;
@@ -45,153 +41,148 @@ export class FileMetadata {
   @IsObject()
   @Type(() => FileMetadata)
   dimensions: FileMetadata;
- 
+
   @IsNumber()
-  duration: number
+  duration: number;
 }
 
 export class LinkObject {
-
   @IsEnum(AttachmentTypeEnum)
-  attachmentType: AttachmentTypeEnum
+  attachmentType: AttachmentTypeEnum;
 
   @IsString()
-  url: string
+  url: string;
 
   @IsOptional()
-  shortUrl: string
+  shortUrl: string;
 }
 
 export class StickerObject {
   @IsString()
-  collectionId: string
+  collectionId: string;
 
   @IsString()
   stickerId: string;
 
   @IsEnum(AttachmentTypeEnum)
-  attachmentType: AttachmentTypeEnum
+  attachmentType: AttachmentTypeEnum;
 
   @IsString()
-  stickerUrl: string
+  stickerUrl: string;
 
   @IsString()
-  attachmentId: string
+  attachmentId: string;
 
   @IsString()
-  fileRef: string
+  fileRef: string;
 }
-
 
 export class MediaObject {
   @IsString()
-  fileId: string
+  fileId: string;
 
   @IsEnum(AttachmentTypeEnum)
-  attachmentType: AttachmentTypeEnum
+  attachmentType: AttachmentTypeEnum;
 
   @IsString()
-  fileUrl: string
+  fileUrl: string;
 
   @IsString()
   @ValidateNested({ each: true })
   @IsObject()
   @Type(() => FileMetadata)
-  fileMetadata: FileMetadata
+  fileMetadata: FileMetadata;
 
   @IsString()
   thumbnailUrl: string;
 
   @IsString()
-  audioMetadata: string
+  audioMetadata: string;
 
   @IsString()
-  fileRef: string
+  fileRef: string;
 
   @IsString()
-  attachmentId: string
+  attachmentId: string;
 
   @IsString()
-  channelId: string
+  channelId: string;
 
   @IsString()
-  userId: string
+  userId: string;
 
   @IsString()
-  messageId: string
+  messageId: string;
 }
 
-
-export class MediaAttachment{
-
+export class MediaAttachment {
   @IsOptional()
   @ValidateNested({ each: true })
   @IsObject()
   @Type(() => LinkObject)
-  link: LinkObject
+  link: LinkObject;
 
   @IsOptional()
   @ValidateNested({ each: true })
   @IsObject()
   @Type(() => StickerObject)
-  sticker: StickerObject
+  sticker: StickerObject;
 
   @IsOptional()
   @ValidateNested({ each: true })
   @IsObject()
   @Type(() => MediaObject)
-  photo: MediaObject
+  photo: MediaObject;
 
   @IsOptional()
   @ValidateNested({ each: true })
   @IsObject()
   @Type(() => MediaObject)
-  audio:MediaObject
+  audio: MediaObject;
 
   @IsOptional()
   @ValidateNested({ each: true })
   @IsObject()
   @Type(() => MediaObject)
-  video: MediaObject
+  video: MediaObject;
 
   @IsOptional()
   @ValidateNested({ each: true })
   @IsObject()
   @Type(() => MediaObject)
-  voiceMessage:MediaObject
+  voiceMessage: MediaObject;
 
   @IsOptional()
   @ValidateNested({ each: true })
   @IsObject()
   @Type(() => MediaObject)
-  videoMessage:MediaObject
+  videoMessage: MediaObject;
 
   @IsOptional()
   @ValidateNested({ each: true })
   @IsObject()
   @Type(() => MediaObject)
-  mediaMessage:MediaObject
+  mediaMessage: MediaObject;
 
   @IsOptional()
   @ValidateNested({ each: true })
   @IsObject()
   @Type(() => MediaObject)
-  file:MediaObject
+  file: MediaObject;
 }
 
 export class OriginalMessage {
+  @IsString()
+  @IsDefined()
+  messageId: string;
 
   @IsString()
   @IsDefined()
-  messageId: string
-
-  @IsString()
-  @IsDefined()
-  content: string
+  content: string;
 
   @IsDefined()
   @IsEnum(AttachmentTypeEnum)
-  attachmentType: AttachmentTypeEnum
+  attachmentType: AttachmentTypeEnum;
 
   @IsString()
   mediaAttachments: MediaAttachment;
@@ -203,7 +194,7 @@ export class OriginalMessage {
   contentLocale: string;
 
   @IsString()
-  contentArguments: string[]
+  contentArguments: string[];
 
   @IsString()
   userId: string;
@@ -212,14 +203,12 @@ export class OriginalMessage {
   editTime: string;
 
   @IsString()
-  createTime: string
+  createTime: string;
 
   @IsString()
   updateTime: string;
-
 }
 export class Embed {
-
   @IsString()
   meta: string;
 
@@ -244,202 +233,202 @@ export class Embed {
 export class Reaction {
   @IsBoolean()
   @IsDefined()
-  isReacted?: boolean 
+  isReacted?: boolean;
 
   @IsNumber()
   @IsDefined()
-  total?: number 
+  total?: number;
 }
 
 export class StatusData {
   @IsString()
   @IsOptional()
-  content?: string 
+  content?: string;
 
   @IsBoolean()
   @IsOptional()
-  status?: boolean 
+  status?: boolean;
 
   @IsEnum(UserStatusExpireAfterTimeEnum)
   @IsDefined()
-  expireAfterTime?: UserStatusExpireAfterTimeEnum
+  expireAfterTime?: UserStatusExpireAfterTimeEnum;
 
   @IsString()
   @IsDefined()
-  createTime?: string 
+  createTime?: string;
 
   @IsString()
   @IsDefined()
-  updateTime?: string 
+  updateTime?: string;
 
   @IsString()
   @IsDefined()
-  endTime?: string 
+  endTime?: string;
 }
 
 export class Message {
   @IsString()
   @IsDefined()
-  workspaceId?: string 
+  workspaceId?: string;
 
   @IsString()
   @IsDefined()
-  channelId?: string 
+  channelId?: string;
 
   @IsString()
   @IsDefined()
-  messageId?: string 
+  messageId?: string;
 
   @IsString()
   @IsDefined()
-  userId?: string 
+  userId?: string;
 
   @IsString()
   @IsDefined()
-  content?: string 
+  content?: string;
 
   @IsEnum(MessageTypeEnum)
   @IsDefined()
-  messageType?: MessageTypeEnum
+  messageType?: MessageTypeEnum;
 
   @IsNumber()
   @IsDefined()
-  messageStatus?: number 
+  messageStatus?: number;
 
   @IsOptional()
   @ValidateNested({ each: true })
   @IsObject()
   @Type(() => OriginalMessage)
-  originalMessage?: OriginalMessage 
+  originalMessage?: OriginalMessage;
 
   @ValidateNested({ each: true })
   @IsObject()
   @IsDefined()
   @Type(() => Reaction)
-  reactions?: Reaction
+  reactions?: Reaction;
 
   @IsArray()
   @IsOptional()
-  mentions?: string[] = []
+  mentions?: string[] = [];
 
   @ValidateNested({ each: true })
   @IsObject()
   @IsDefined()
   @Type(() => Embed)
-  embed?: Embed
+  embed?: Embed;
 
   @IsEnum(AttachmentTypeEnum)
   @IsDefined()
-  attachmentType?: AttachmentTypeEnum
+  attachmentType?: AttachmentTypeEnum;
 
   @IsBoolean()
   @IsDefined()
-  isThread?: boolean 
+  isThread?: boolean;
 
   @IsNumber()
   @IsDefined()
-  reportCount?: number 
+  reportCount?: number;
 
   @IsBoolean()
   @IsDefined()
-  isReported?: boolean 
+  isReported?: boolean;
 
   @IsNumber()
   @IsDefined()
-  attachmentCount?: number 
+  attachmentCount?: number;
 
   @IsArray()
   @IsOptional()
-  mediaAttachments?: string[] = []
+  mediaAttachments?: string[] = [];
 
   @IsString()
   @IsDefined()
-  contentLocale?: string 
+  contentLocale?: string;
 
   @IsArray()
   @IsDefined()
-  contentArguments?: string[] = []
+  contentArguments?: string[] = [];
 
   @IsBoolean()
   @IsDefined()
-  isPinned?: boolean 
+  isPinned?: boolean;
 
   @IsString()
   @IsDefined()
-  createTime?: string 
+  createTime?: string;
 
   @IsString()
   @IsDefined()
-  updateTime?: string 
+  updateTime?: string;
 
   @IsString()
   @IsDefined()
   @IsOptional()
-  ref?: string 
+  ref?: string;
 }
 
 export class Profile {
   @IsString()
   @IsDefined()
-  avatar?: string 
+  avatar?: string;
 
   @IsString()
   @IsDefined()
-  displayName?: string 
+  displayName?: string;
 
   @IsString()
   @IsDefined()
-  originalAvatar?: string 
+  originalAvatar?: string;
 
   @IsEnum(UserAvatarTypeEnum)
   @IsDefined()
-  avatarType?: UserAvatarTypeEnum
+  avatarType?: UserAvatarTypeEnum;
 
   @IsEnum(BadgeEnum)
   @IsDefined()
-  userBadgeType?: BadgeEnum
+  userBadgeType?: BadgeEnum;
 }
 
 export class PresenceData {
   @IsString()
   @IsDefined()
-  lastUpdateTime?: string 
+  lastUpdateTime?: string;
 
   @IsNumber()
   @IsDefined()
-  lastUpdateInSeconds?: number 
+  lastUpdateInSeconds?: number;
 
   @IsNumber()
   @IsDefined()
-  presenceState?: number 
+  presenceState?: number;
 }
 
 export class Role {
   @IsString()
   @IsDefined()
-  role?: string 
+  role?: string;
 
   @IsNumber()
   @IsDefined()
-  weight?: number 
+  weight?: number;
 }
 
 export class ChannelMetadata {
   @IsNumber()
   @IsDefined()
-  unreadCount?: number 
+  unreadCount?: number;
 
   @IsString()
   @IsDefined()
-  lastMessageId?: string 
+  lastMessageId?: string;
 
   @IsBoolean()
   @IsDefined()
-  notificationStatus?: boolean 
+  notificationStatus?: boolean;
 
   @IsEnum(MediaPermissionSettingEnum)
   @IsDefined()
-  mediaPermissionSetting?: MediaPermissionSettingEnum
+  mediaPermissionSetting?: MediaPermissionSettingEnum;
 
   // @IsEnum(ChannelPermissionEnum)
   // @IsDefined()
@@ -447,162 +436,162 @@ export class ChannelMetadata {
 
   @IsString()
   @IsDefined()
-  workspaceId?: string 
+  workspaceId?: string;
 
   @IsString()
   @IsDefined()
-  channelId?: string 
+  channelId?: string;
 
   @IsOptional()
   @IsString()
-  dmId?: string 
+  dmId?: string;
 }
 
 export class Channel {
   @IsString()
   @IsDefined()
-  workspaceId?: string 
+  workspaceId?: string;
 
   @IsString()
   @IsDefined()
-  channelId?: string 
+  channelId?: string;
 
   @IsString()
   @IsDefined()
-  userId?: string 
+  userId?: string;
 
   @IsString()
   @IsDefined()
-  name?: string 
+  name?: string;
 
   @IsOptional()
   @IsString()
-  avatar?: string
+  avatar?: string;
 
   @IsBoolean()
   @IsDefined()
-  isPrivate?: boolean
+  isPrivate?: boolean;
 
   @IsEnum(ChannelTypeEnum)
   @IsDefined()
-  type?: ChannelTypeEnum
+  type?: ChannelTypeEnum;
 
   @IsString()
   @IsDefined()
-  invitationLink?: string 
+  invitationLink?: string;
 
   @IsString()
   @IsOptional()
-  originalAvatar?: string 
+  originalAvatar?: string;
 
   @IsNumber()
   @IsDefined()
-  totalMembers?: number 
+  totalMembers?: number;
 
   @IsEnum(DirectMessageStatusEnum)
-  dmStatus?: DirectMessageStatusEnum
+  dmStatus?: DirectMessageStatusEnum;
 
   @ValidateNested({ each: true })
   @IsArray()
   @IsDefined()
   @Type(() => Message)
-  pinnedMessage?: Message
+  pinnedMessage?: Message;
 
   @IsArray()
   @IsOptional()
-  participantIds?: string[] = []
+  participantIds?: string[] = [];
 
   @IsString()
   @IsOptional()
-  rejectTime?: string 
+  rejectTime?: string;
 
   @IsString()
   @IsOptional()
-  acceptTime?: string 
+  acceptTime?: string;
 
   @IsString()
   @IsDefined()
-  createTime?: string 
+  createTime?: string;
 
   @IsString()
   @IsDefined()
-  updateTime?: string 
+  updateTime?: string;
 }
 
 export class User {
   @IsString()
   @IsDefined()
-  userId?: string 
+  userId?: string;
 
   @IsString()
   @IsDefined()
-  username?: string 
+  username?: string;
 
   @IsString()
   @IsDefined()
-  createTime?: string 
+  createTime?: string;
 
   @IsString()
   @IsDefined()
-  updateTime?: string 
+  updateTime?: string;
 
   @ValidateNested({ each: true })
   @IsObject()
   @IsDefined()
   @Type(() => Profile)
-  profile: Profile
+  profile: Profile;
 
   @IsNumber()
   @IsDefined()
-  userType?: number 
+  userType?: number;
 
   @ValidateNested({ each: true })
   @IsObject()
   @IsDefined()
   @Type(() => PresenceData)
-  presenceData?: PresenceData
+  presenceData?: PresenceData;
 
   @ValidateNested({ each: true })
   @IsObject()
   @IsDefined()
   @Type(() => StatusData)
-  statusData?: StatusData
+  statusData?: StatusData;
 }
 
 export class Member {
   @IsString()
   @IsDefined()
-  workspaceId?: string 
+  workspaceId?: string;
 
   @IsString()
   @IsDefined()
-  channelId?: string 
+  channelId?: string;
 
   @IsString()
   @IsDefined()
-  userId?: string 
+  userId?: string;
 
   @IsString()
   @IsDefined()
-  nickname?: string 
+  nickname?: string;
 
   @IsString()
   @IsDefined()
-  role?: string 
+  role?: string;
 
   @ValidateNested({ each: true })
   @IsArray()
   @IsDefined()
   @Type(() => Role)
-  roles: Role[]
+  roles: Role[];
 
   @IsString()
   @IsDefined()
-  createTime?: string 
+  createTime?: string;
 
   @IsString()
   @IsDefined()
-  updateTime?: string 
+  updateTime?: string;
 }
 
 export class IncludesResponse {
@@ -610,31 +599,31 @@ export class IncludesResponse {
   @IsArray()
   @IsDefined()
   @Type(() => User)
-  users?: User[]
+  users?: User[];
 
   @ValidateNested({ each: true })
   @IsArray()
   @IsDefined()
   @Type(() => Message)
-  messages?: Message[]
+  messages?: Message[];
 
   @ValidateNested({ each: true })
   @IsArray()
   @IsDefined()
   @Type(() => Member)
-  members?: Member[]
+  members?: Member[];
 
   @ValidateNested({ each: true })
   @IsArray()
   @IsDefined()
   @Type(() => Channel)
-  channels?: Channel[]
+  channels?: Channel[];
 
   @ValidateNested({ each: true })
   @IsArray()
   @IsDefined()
   @Type(() => ChannelMetadata)
-  channelMetadata?: ChannelMetadata[]
+  channelMetadata?: ChannelMetadata[];
 }
 
 export class DataResponse {
@@ -642,35 +631,35 @@ export class DataResponse {
   @IsObject()
   @IsDefined()
   @Type(() => Message)
-  message?: Message
+  message?: Message;
 
   @ValidateNested({ each: true })
   @IsObject()
   @IsDefined()
   @Type(() => Channel)
-  channel?: Channel
+  channel?: Channel;
 
   @ValidateNested({ each: true })
   @IsObject()
   @IsDefined()
   @Type(() => ChannelMetadata)
-  channelMetadata?: ChannelMetadata
+  channelMetadata?: ChannelMetadata;
 }
 
-export class BaseResponse{
+export class BaseResponse {
   @IsBoolean()
   @IsDefined()
-  ok?: boolean 
+  ok?: boolean;
 
   @ValidateNested({ each: true })
   @IsObject()
   @IsDefined()
   @Type(() => DataResponse)
-  data?: DataResponse 
+  data?: DataResponse;
 
   @ValidateNested({ each: true })
   @IsObject()
   @IsDefined()
   @Type(() => IncludesResponse)
-  includes?: IncludesResponse
+  includes?: IncludesResponse;
 }

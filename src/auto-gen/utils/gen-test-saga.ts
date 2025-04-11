@@ -1,9 +1,7 @@
 import * as path from 'path';
 import * as fs from 'fs';
 
-export function genTestSaga(
-  dtoName: string
-) {
+export function genTestSaga(dtoName: string) {
   const classNameCapitalized = dtoName
     .split('-')
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
@@ -13,8 +11,8 @@ export function genTestSaga(
   const specContent = `
     import fs from 'fs';
     import path from 'path';
-    import { getTime } from '../../helps/utils';
-    import { executeAllSteps, resolveVariables } from '../../utils/test-executor';
+    import { getTime } from '../../utils/helper';
+    import { executeAllSteps } from '../../utils/test-executor';
     import { TestContext } from '../../utils/text-context';
     import { ${classNameCapitalized}Saga } from './${dtoName}.saga';
     describe('Test sagas for ${dtoName}', () => {
