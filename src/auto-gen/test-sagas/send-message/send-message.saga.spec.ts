@@ -41,7 +41,7 @@
         }
         const classNames = `send-message`;
         const reportFileName = `send-message-sagas-${getTime()}.report.txt`;  
-        const { combinedReportTemplate } = await import('../../gens/report-file');
+        const { combinedReportTemplate } = await import('../../utils/report-file');
         const reportContent = combinedReportTemplate(
             classNames,
             globalThis.url,
