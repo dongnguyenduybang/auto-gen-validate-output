@@ -36,6 +36,7 @@
 ```
 
 #### createChannel
+- Create channel mặc định lấy token đầu tiên
 ``` 
   {
         action: 'createChannel',
@@ -95,6 +96,8 @@
 ```
 
 #### mockUser
+- Prefix mặc định sẽ là: testfaker
+- Quantity mặc định sẽ là: 2
 ``` 
   {
         action: 'mockUser',

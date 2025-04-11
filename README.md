@@ -37,11 +37,18 @@ pnpm i or npm install
 ```
 pnpm <action> <type> <apisName/folder>
 ```
-- `<action>`: `gen`, `test`, `clear`
-- `<type>`: `request`, `response`, `saga`
+- `<action>`: `gen`, `test`,
+- `<type>`: `request`, `response`, `saga`,
 - `<apisName>`: Endpoint name [name convention](docs/name-conventions-docs/name-conventions.md)
 - `<folder>`: Folder name [name convention](docs/name-conventions-docs/name-conventions.md)
 
+```
+pnpm <action> <type> <subType> <apisName>
+```
+- `<action>`: `clear`
+- `<type>`:  `report`
+- `<subType>`: `request`, `response`, `saga`
+- `<apisName>`: Endpoint name [name convention](docs/name-conventions-docs/name-conventions.md)
 # Demo
 #### Script for endpoint send-message
 ```bash
@@ -103,6 +110,10 @@ pnpm <action> <type> <apisName/folder>
 
 # Clear saga for folder
     pnpm clear saga test-sagas
+
+# Clear report for endpoint send-message
+    pnpm clear report response send-message
+
 
 ```
 
