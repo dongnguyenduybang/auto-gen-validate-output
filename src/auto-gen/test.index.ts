@@ -62,21 +62,35 @@ const actionHandlers: Record<string, Record<string, ActionHandler[]>> = {
   },
 };
 
-async function handleBulkAction(basePath: string, handler: ActionHandler) {
-  const directories = getSubDirectories(path.join(__dirname, basePath));
+async function handleBulkAction(basePath: string, handlers: ActionHandler[]) {
+  const fullPath = path.join(__dirname, basePath);
+  console.log(`Processing bulk action in directory: ${fullPath}`);
+
+  // Lấy danh sách thư mục con, loại bỏ thư mục reports
+  const directories = getSubDirectories(fullPath).filter(dir => !dir.includes('reports'));
+  
+  console.log(`Found ${directories.length} DTO directories:`, directories);
+
   for (const dir of directories) {
-    console.log(`Processing ${basePath}/${dir}`);
-    await Promise.resolve(handler(dir));
+    for (const handler of handlers) {
+      try {
+        await handler(dir);
+      } catch (error) {
+        console.error(`Handler failed: ${error.message}`);
+      }
+    }
   }
 }
 
 function getSubDirectories(dirPath: string): string[] {
   return fs
     .readdirSync(dirPath, { withFileTypes: true })
-    .filter((dirent) => dirent.isDirectory())
+    .filter((dirent) => 
+      dirent.isDirectory() && 
+      !dirent.name.toLowerCase().includes('report') // Loại bỏ thư mục report
+    )
     .map((dirent) => dirent.name);
 }
-
 function runTests(testType: string): ActionHandler {
   return async (dtoName) => {
     console.log(`Running test for ${testType} "${dtoName}"...`);
@@ -126,22 +140,21 @@ function clearReports(reportType: string): ActionHandler {
   };
 }
 async function main() {
-  console.log(
-    `Processing "${type}${subType ? ` ${subType}` : ''}" for: ${dtoName}`,
-  );
+  console.log(`Processing "${type}${subType ? ` ${subType}` : ''}" for: ${dtoName}`);
 
   try {
     const handlers = actionHandlers[action]?.[type];
-    if (!handlers) throw new Error('Invalid action/type combination');
+    if (!handlers) throw new Error('Invalid action');
 
-    const isBulkAction =
-      dtoName &&
-      (dtoName.includes('-requests') ||
-        dtoName.includes('-responses') ||
-        dtoName.includes('-sagas'));
+    const isBulkAction = dtoName && (
+      dtoName.includes('-requests') ||
+      dtoName.includes('-responses') ||
+      dtoName.includes('-sagas')
+    );
 
     if (isBulkAction) {
-      await handleBulkAction(dtoName, handlers[0]);
+      // Truyền toàn bộ mảng handlers
+      await handleBulkAction(dtoName, handlers);
     } else if (dtoName) {
       for (const handler of handlers) {
         await handler(dtoName);

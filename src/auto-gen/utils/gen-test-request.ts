@@ -250,7 +250,6 @@ function genTestCase(
 
 export function genTestRequest(dtoName: string) {
   const dtosDir = path.join(__dirname, '../test-requests', dtoName);
-  console.log(dtosDir);
   const payloadsDir = path.join(__dirname, '../test-requests', dtoName);
   const allFiles = getAllFiles(dtosDir);
   const pairedFiles = pairFiles(allFiles);
