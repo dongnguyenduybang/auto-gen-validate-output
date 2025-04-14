@@ -14,9 +14,18 @@ export function IsOptional() {
    check property đó không được null
    
 */
-export function IsNotNull() {
+export function IsNotNull(options?: { message?: string }) {
   return (target: any, propertyKey: string) => {
     Reflect.defineMetadata('notNull', true, target, propertyKey);
+
+    if (options?.message) {
+      Reflect.defineMetadata(
+        'notNullMessage',
+        options.message,
+        target,
+        propertyKey,
+      );
+    }
   };
 }
 /*

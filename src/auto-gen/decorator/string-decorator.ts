@@ -28,7 +28,7 @@ export function IsString(options?: {
 
     if (options?.message) {
       Reflect.defineMetadata(
-        'customErrorString',
+        'stringMessage',
         options.message,
         target,
         propertyKey,
