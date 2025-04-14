@@ -74,3 +74,17 @@ export function IsAny() {
     Reflect.defineMetadata('isAny', true, target, propertyKey);
   };
 }
+
+export function IsULID(options?: {message?: string}){
+  return (target: any, propertyKey: string) => {
+    Reflect.defineMetadata('isULID', true, target, propertyKey);
+    if (options?.message) {
+      Reflect.defineMetadata(
+        'notULID',
+        options.message,
+        target,
+        propertyKey,
+      );
+    }
+  };
+}
