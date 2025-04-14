@@ -92,7 +92,8 @@ export function generateErrorVariantsForField(
   const fieldType = decorators['type'] || 'string';
   switch (fieldType) {
     case 'string':
-      variants.push(123); // Number cho string field
+      variants.push(123);
+      variants.push('check_ulid') // Number cho string field
       break;
     case 'number':
       variants.push('invalid_number'); // String cho number field
@@ -140,7 +141,7 @@ export function generateErrorVariantsForField(
   variants.push(undefined);
   variants.push(null);
   variants.push('');
-
+  
   return variants;
 }
 
@@ -204,7 +205,7 @@ export function mapError(
     if (decorators['maxLength'] && decorators['minLength']) {
       const shouldStop = addError(
         undefined,
-        `${field} ${ErrorMessage.INVALID_RANGE_STRING_LENGTH}`
+        `${ErrorMessage.INVALID_RANGE_STRING_LENGTH}`
       );
       if (shouldStop) return errors;
     }
@@ -215,7 +216,7 @@ export function mapError(
       );
       if (shouldStop) return errors;
     }
-
+    
   }
 
   switch (decorators['type']) {
@@ -234,6 +235,17 @@ export function mapError(
           const shouldStop = addError(
             decorators['lengthMessage'],
             `${ErrorMessage.INVALID_RANGE_STRING_LENGTH}`
+          );
+          if (shouldStop) return errors;
+        }
+      }
+      if(typeof value === 'string' && decorators['isULID']){
+        if(value.startsWith('{{')){
+          return errors;
+        }else {
+          const shouldStop = addError(
+            decorators['notULID'],
+            `${field} ${ErrorMessage.INVALID_TYPE_STRING}`
           );
           if (shouldStop) return errors;
         }
