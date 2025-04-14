@@ -23,18 +23,18 @@
     ],
     "afterAll": [
         {
-            "action": "deleteMockedUsers",
-            "body": {
-                "prefix": "testfaker"
-            },
-            "header": { "token": "{{token}}" }
-        },
-        {
             "action": "deleteChannel",
-            "header": { "token": "{{token}}", "userId": "{{userId}}"},
+            "header": { "token": "{{token}}"},
             "body": {
                 "channelId": "{{channelId}}"
             }
+        },
+        {
+            "action": "deleteMockedUsers",
+            "body": {
+                "prefix": "testmock"
+            },
+            "header": { "token": "{{token}}" }
         }
     ]
 }

@@ -72,7 +72,7 @@
 
       afterAll(async () => {
 
-        const resultStep = await executeAllSteps([{"action":"deleteMockedUsers","body":{"prefix":"testfaker"},"header":{"token":"{{token}}"}},{"action":"deleteChannel","header":{"token":"{{token}}","userId":"{{userId}}"},"body":{"channelId":"{{channelId}}"}}],globalContext)
+        const resultStep = await executeAllSteps([{"action":"deleteChannel","header":{"token":"{{token}}"},"body":{"channelId":"{{channelId}}"}},{"action":"deleteMockedUsers","body":{"prefix":"testmock"},"header":{"token":"{{token}}"}}],globalContext)
         resultStep.forEach((step, index) => {
           failedStep.push({
             type: step.type,
