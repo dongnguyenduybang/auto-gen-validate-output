@@ -5,8 +5,6 @@
 # Introduce
 
 - ✏️ Auto generate test case for DTO/Response/Saga.
-- 🔎 Auto generate log report file for each generate type.
-- 🔧 Just specify the structure to automate the generate as specified in the docs.
 
 # Contents
 
