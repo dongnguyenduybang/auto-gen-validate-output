@@ -1,4 +1,4 @@
-import { IsDefined, IsNotEmpty } from '../../decorator/general-decorator';
+import { IsDefined, IsNotEmpty, IsULID } from '../../decorator/general-decorator';
 import {
   IsString,
   MaxLength,
@@ -18,11 +18,12 @@ export class SendMessageDTO {
   workspaceId: string = '';
 
   @IsString({
-    message: `Invalid channelId`,
-    value: '{{channelId}}',
-  })
+    message: `Could not resolve permission type`})
   @IsNotEmpty({
     message: `Could not resolve permission type`,
+  })
+  @IsULID({
+    message: `Invalid ChannelId`
   })
   @IsDefined({
     message: `Unsupported permission type`,
@@ -36,3 +37,7 @@ export class SendMessageDTO {
   @MaxLength(6000)
   content: string = '';
 }
+
+
+
+
