@@ -110,7 +110,7 @@ const requestReportTemplate = (
         '',
         ` 🟣 ${index + 1}. Case #${test.testcase}`,
         `     ├─ Status: ${test.code || 'N/A'}`,
-        `     ├─ Body: ${JSON.stringify(test.payload) || 'None'}`,
+        `     ├─ Body: ${JSON.stringify(test.body) || 'None'}`,
         `     ├─ Missing: ${test.missing?.join(', ') || 'None'}`,
         `     ├─ Extra: ${test.extra?.join(', ') || 'None'}`,
         `     └─ Details: ${test.errorDetails || 'No details'}`,

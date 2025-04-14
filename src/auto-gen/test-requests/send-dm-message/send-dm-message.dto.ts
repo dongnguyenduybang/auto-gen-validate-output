@@ -1,4 +1,4 @@
-import { IsDefined, IsNotEmpty, IsNotNull, IsOptional } from '../../decorator/general-decorator';
+import { IsDefined, IsNotEmpty, IsNotNull, IsOptional, IsULID } from '../../decorator/general-decorator';
 import {
   IsString,
   MaxLength,
@@ -15,6 +15,9 @@ export class SendDmMessageDTO {
   })
   @IsNotEmpty({
     message: `Could not resolve permission type`,
+  })
+  @IsULID({
+    message: `Unauthorized request`,
   })
   @IsNotNull(
     { message: `Could not resolve permission type`,}

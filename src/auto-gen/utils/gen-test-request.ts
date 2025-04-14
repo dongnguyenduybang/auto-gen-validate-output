@@ -170,13 +170,16 @@ function genTestCase(
                     body: resolvedData,
                   })
                 } catch (error) {
-                  failedTests.push({
-                    testcase: testNumber,
-                    code: 403,
-                    body: resolvedData,
-                  })
-                  throw new Error(error);
-                }
+                    const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                    failedTests.push({
+                      testcase: testNumber,
+                      code: 403,
+                      body: resolvedData,
+                      missing: missing || [],
+                      extra: extra || []
+                    })
+                    throw new Error(error);
+                  }
                 }else if (response.status === 404){
                 const errorMessage = data.error?.details;
                 failedTests.push({

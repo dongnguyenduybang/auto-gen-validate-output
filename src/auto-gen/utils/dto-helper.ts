@@ -195,13 +195,26 @@ export function mapError(
 
   // 2. Kiểm tra isDefined
   if (value === undefined || value === null || value === "") {
-    if(decorators['isDefined'] && (value === undefined || value === null )){
+    if(decorators['isDefined'] && (value === undefined ||  value === null ) && decorators['isULID']){
+      const shouldStop = addError(
+        `Could not resolve permission type`,
+        `${field} ${ErrorMessage.DEFINED}`
+      );
+      if (shouldStop) return errors;
+    }else if(decorators['isDefined'] && (value === undefined ||  value === null )) {
       const shouldStop = addError(
         decorators['notUndefinedMessage'],
         `${field} ${ErrorMessage.DEFINED}`
       );
       if (shouldStop) return errors;
     }
+    // if(decorators['notNull'] && (value === null)){
+    //   const shouldStop = addError(
+    //     decorators['notNullMessage'],
+    //     `${field} ${ErrorMessage.NULL}`
+    //   );
+    //   if (shouldStop) return errors;
+    // }
     if (decorators['maxLength'] && decorators['minLength']) {
       const shouldStop = addError(
         undefined,
@@ -227,30 +240,67 @@ export function mapError(
           `${field} ${ErrorMessage.INVALID_TYPE_STRING}`
         );
         if (shouldStop) return errors;
+      } else if (typeof value !== 'string' && decorators['isULID']){
+        const shouldStop = addError(
+          `Could not resolve permission type`,
+          `${field} ${ErrorMessage.INVALID_TYPE_STRING}`
+        );
+        if (shouldStop) return errors;
       }
-      if (typeof value === 'string' && value.length > 0) {
-        const minViolated = decorators['minLength'] && value.length < decorators['minLength'];
-        const maxViolated = decorators['maxLength'] && value.length > decorators['maxLength'];
-        if (minViolated || maxViolated) {
-          const shouldStop = addError(
-            decorators['lengthMessage'],
-            `${ErrorMessage.INVALID_RANGE_STRING_LENGTH}`
-          );
-          if (shouldStop) return errors;
+      if (typeof value === 'string') {
+        if(value.length > 0){
+          const minViolated = decorators['minLength'] && value.length < decorators['minLength'];
+          const maxViolated = decorators['maxLength'] && value.length > decorators['maxLength'];
+          if (minViolated || maxViolated) {
+            const shouldStop = addError(
+              undefined,
+              `${ErrorMessage.INVALID_RANGE_STRING_LENGTH}`
+            );
+            if (shouldStop) return errors;
+          }
         }
+      
+        if(field === 'workspaceId' || field === 'channelId'){
+          if(field === 'workspaceId' && value !== "0"){
+            const shouldStop = addError(
+              decorators['notULID'],
+              `${field} ${ErrorMessage.INVALID_TYPE_STRING}`
+            );
+            if (shouldStop) return errors;
+          }
+          if(field === 'channelId' && !value.startsWith("{{")){
+            const shouldStop = addError(
+              decorators['notULID'],
+              `${field} ${ErrorMessage.INVALID_TYPE_STRING}`
+            );
+            if (shouldStop) return errors;
+          }
+        }
+
       }
-      if(typeof value === 'string' && decorators['isULID']){
+      // if(typeof value === 'string' && decorators['isULID']){
+      //   if(value.startsWith('{{')){
+      //     return errors;
+      //   } 
         
-        if(value.startsWith('{{')){
-          return errors;
-        }else {
-          const shouldStop = addError(
-            decorators['notULID'],
-            `${field} ${ErrorMessage.INVALID_TYPE_STRING}`
-          );
-          if (shouldStop) return errors;
-        }
-      }
+      //   if(field === 'workspaceId'  || field === 'channelId'){
+      //     if(field === 'workspaceId'  && value !== "0"){
+      //       const shouldStop = addError(
+      //         decorators['notULID'],
+      //         `${field} ${ErrorMessage.INVALID_TYPE_STRING}`
+      //       );
+      //       if (shouldStop) return errors;
+      //     }
+      //     if(field === 'channelId'  && value !== "0"){
+      //       const shouldStop = addError(
+      //         decorators['notULID'],
+      //         `${field} ${ErrorMessage.INVALID_TYPE_STRING}`
+      //       );
+      //       if (shouldStop) return errors;
+      //     }
+          
+      //   }
+      // }
       break;
     case 'number':
       if (typeof value !== 'number' && (value !== undefined || value !== null || value !== "")) {
