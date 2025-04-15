@@ -1,0 +1,24 @@
+=== Saga Test Report for update-message ===
+• Host: https://api-sb11.rpc.ziichat.dev
+• Sagas: UpdateMessageSaga
+• Date: 15/04/2025, 16:44:47
+
+=== Execution Steps ===
+  1. [✅ PASSED] mockUser
+  2. [✅ PASSED] createChannel
+  3. [✅ PASSED] sendMessage
+  4. [❌ FAILED] updateMessage
+     └─ Validation failed at data.message.content
+
+=== Error Details ===
+[Request Errors]
+
+[Response Errors]
+
+[Logic Errors]
+
+ 🟣 1. Step: updateMessage
+     ├─ Type: logic
+     └─ Error: {"path":"data.message.content","expected":"equal(\"user send update\")","actual":"\"user message update\"","message":"Validation failed at data.message.content"}
+
+=== End of Report ===
