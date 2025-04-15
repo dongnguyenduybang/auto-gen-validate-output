@@ -1,0 +1,6440 @@
+[
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": 123,
+            "messageId": 123,
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": 123,
+            "messageId": 123,
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": 123,
+            "messageId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": 123,
+            "messageId": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": 123,
+            "messageId": 123,
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": 123,
+            "messageId": "check_ulid",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": 123,
+            "messageId": "check_ulid",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": 123,
+            "messageId": "check_ulid",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": 123,
+            "messageId": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": 123,
+            "messageId": "check_ulid",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": 123,
+            "messageId": "{{messageId1}}",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": 123,
+            "messageId": "{{messageId1}}",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": 123,
+            "messageId": "{{messageId1}}",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": 123,
+            "messageId": "{{messageId1}}"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": 123,
+            "messageId": "{{messageId1}}",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": 123,
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": 123,
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": 123,
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": 123,
+            "messageId": "",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": 123,
+            "messageId": "",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": 123,
+            "messageId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": 123,
+            "messageId": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": 123,
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "check_ulid",
+            "messageId": 123,
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "check_ulid",
+            "messageId": 123,
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "check_ulid",
+            "messageId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "check_ulid",
+            "messageId": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "check_ulid",
+            "messageId": 123,
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "check_ulid",
+            "messageId": "check_ulid",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "check_ulid",
+            "messageId": "check_ulid",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "check_ulid",
+            "messageId": "check_ulid",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "check_ulid",
+            "messageId": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "check_ulid",
+            "messageId": "check_ulid",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "check_ulid",
+            "messageId": "{{messageId1}}",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "check_ulid",
+            "messageId": "{{messageId1}}",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "check_ulid",
+            "messageId": "{{messageId1}}",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "check_ulid",
+            "messageId": "{{messageId1}}"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "check_ulid",
+            "messageId": "{{messageId1}}",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "check_ulid",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "check_ulid",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "check_ulid",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "check_ulid",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "check_ulid",
+            "messageId": "",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "check_ulid",
+            "messageId": "",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "check_ulid",
+            "messageId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "check_ulid",
+            "messageId": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "check_ulid",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "0",
+            "messageId": 123,
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "0",
+            "messageId": 123,
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "0",
+            "messageId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "0",
+            "messageId": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "0",
+            "messageId": 123,
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "0",
+            "messageId": "check_ulid",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "0",
+            "messageId": "check_ulid",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "0",
+            "messageId": "check_ulid",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "0",
+            "messageId": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "0",
+            "messageId": "check_ulid",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "0",
+            "messageId": "{{messageId1}}",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "0",
+            "messageId": "{{messageId1}}",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "0",
+            "messageId": "{{messageId1}}",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "0",
+            "messageId": "{{messageId1}}"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "0",
+            "messageId": "{{messageId1}}",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "0",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "0",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "0",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "0"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "0",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "0",
+            "messageId": "",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "0",
+            "messageId": "",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "0",
+            "messageId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "0",
+            "messageId": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "0",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "messageId": 123,
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "messageId": 123,
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "messageId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "messageId": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "messageId": 123,
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "messageId": "check_ulid",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "messageId": "check_ulid",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "messageId": "check_ulid",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "messageId": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "messageId": "check_ulid",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "messageId": "{{messageId1}}",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "messageId": "{{messageId1}}",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "messageId": "{{messageId1}}",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "messageId": "{{messageId1}}"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "messageId": "{{messageId1}}",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "messageId": "",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "messageId": "",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "messageId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "messageId": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "",
+            "messageId": 123,
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "",
+            "messageId": 123,
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "",
+            "messageId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "",
+            "messageId": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "",
+            "messageId": 123,
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "",
+            "messageId": "check_ulid",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "",
+            "messageId": "check_ulid",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "",
+            "messageId": "check_ulid",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "",
+            "messageId": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "",
+            "messageId": "check_ulid",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "",
+            "messageId": "{{messageId1}}",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "",
+            "messageId": "{{messageId1}}",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "",
+            "messageId": "{{messageId1}}",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "",
+            "messageId": "{{messageId1}}"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "",
+            "messageId": "{{messageId1}}",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "",
+            "messageId": "",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "",
+            "messageId": "",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "",
+            "messageId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "",
+            "messageId": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "workspaceId": "",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": 123,
+            "messageId": 123,
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": 123,
+            "messageId": 123,
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": 123,
+            "messageId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": 123,
+            "messageId": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": 123,
+            "messageId": 123,
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": 123,
+            "messageId": "check_ulid",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": 123,
+            "messageId": "check_ulid",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": 123,
+            "messageId": "check_ulid",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": 123,
+            "messageId": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": 123,
+            "messageId": "check_ulid",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": 123,
+            "messageId": "{{messageId1}}",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": 123,
+            "messageId": "{{messageId1}}",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": 123,
+            "messageId": "{{messageId1}}",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": 123,
+            "messageId": "{{messageId1}}"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": 123,
+            "messageId": "{{messageId1}}",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": 123,
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": 123,
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": 123,
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": 123,
+            "messageId": "",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": 123,
+            "messageId": "",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": 123,
+            "messageId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": 123,
+            "messageId": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": 123,
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "check_ulid",
+            "messageId": 123,
+            "emoji": 123
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "check_ulid",
+            "messageId": 123,
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "check_ulid",
+            "messageId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "check_ulid",
+            "messageId": 123
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "check_ulid",
+            "messageId": 123,
+            "emoji": ""
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "check_ulid",
+            "messageId": "check_ulid",
+            "emoji": 123
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "check_ulid",
+            "messageId": "check_ulid",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "check_ulid",
+            "messageId": "check_ulid",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "check_ulid",
+            "messageId": "check_ulid"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "check_ulid",
+            "messageId": "check_ulid",
+            "emoji": ""
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "check_ulid",
+            "messageId": "{{messageId1}}",
+            "emoji": 123
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "check_ulid",
+            "messageId": "{{messageId1}}",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "check_ulid",
+            "messageId": "{{messageId1}}",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "check_ulid",
+            "messageId": "{{messageId1}}"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "check_ulid",
+            "messageId": "{{messageId1}}",
+            "emoji": ""
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "check_ulid",
+            "emoji": 123
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "check_ulid",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "check_ulid",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "check_ulid"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "check_ulid",
+            "emoji": ""
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "check_ulid",
+            "messageId": "",
+            "emoji": 123
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "check_ulid",
+            "messageId": "",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "check_ulid",
+            "messageId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "check_ulid",
+            "messageId": ""
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "check_ulid",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "0",
+            "messageId": 123,
+            "emoji": 123
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "0",
+            "messageId": 123,
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "0",
+            "messageId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "0",
+            "messageId": 123
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "0",
+            "messageId": 123,
+            "emoji": ""
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "0",
+            "messageId": "check_ulid",
+            "emoji": 123
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "0",
+            "messageId": "check_ulid",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "0",
+            "messageId": "check_ulid",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "0",
+            "messageId": "check_ulid"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "0",
+            "messageId": "check_ulid",
+            "emoji": ""
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "0",
+            "messageId": "{{messageId1}}",
+            "emoji": 123
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "0",
+            "messageId": "{{messageId1}}",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "0",
+            "messageId": "{{messageId1}}",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "0",
+            "messageId": "{{messageId1}}"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "0",
+            "messageId": "{{messageId1}}",
+            "emoji": ""
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "0",
+            "emoji": 123
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "0",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "0",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "0"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "0",
+            "emoji": ""
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "0",
+            "messageId": "",
+            "emoji": 123
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "0",
+            "messageId": "",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "0",
+            "messageId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "0",
+            "messageId": ""
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "0",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "messageId": 123,
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "messageId": 123,
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "messageId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "messageId": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "messageId": 123,
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "messageId": "check_ulid",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "messageId": "check_ulid",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "messageId": "check_ulid",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "messageId": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "messageId": "check_ulid",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "messageId": "{{messageId1}}",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "messageId": "{{messageId1}}",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "messageId": "{{messageId1}}",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "messageId": "{{messageId1}}"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "messageId": "{{messageId1}}",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "messageId": "",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "messageId": "",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "messageId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "messageId": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "",
+            "messageId": 123,
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "",
+            "messageId": 123,
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "",
+            "messageId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "",
+            "messageId": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "",
+            "messageId": 123,
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "",
+            "messageId": "check_ulid",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "",
+            "messageId": "check_ulid",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "",
+            "messageId": "check_ulid",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "",
+            "messageId": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "",
+            "messageId": "check_ulid",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "",
+            "messageId": "{{messageId1}}",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "",
+            "messageId": "{{messageId1}}",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "",
+            "messageId": "{{messageId1}}",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "",
+            "messageId": "{{messageId1}}"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "",
+            "messageId": "{{messageId1}}",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "",
+            "messageId": "",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "",
+            "messageId": "",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "",
+            "messageId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "",
+            "messageId": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "check_ulid",
+            "workspaceId": "",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": 123,
+            "messageId": 123,
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": 123,
+            "messageId": 123,
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": 123,
+            "messageId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": 123,
+            "messageId": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": 123,
+            "messageId": 123,
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": 123,
+            "messageId": "check_ulid",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": 123,
+            "messageId": "check_ulid",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": 123,
+            "messageId": "check_ulid",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": 123,
+            "messageId": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": 123,
+            "messageId": "check_ulid",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": 123,
+            "messageId": "{{messageId1}}",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": 123,
+            "messageId": "{{messageId1}}",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": 123,
+            "messageId": "{{messageId1}}",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": 123,
+            "messageId": "{{messageId1}}"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": 123,
+            "messageId": "{{messageId1}}",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": 123,
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": 123,
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": 123,
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": 123,
+            "messageId": "",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": 123,
+            "messageId": "",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": 123,
+            "messageId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": 123,
+            "messageId": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": 123,
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "check_ulid",
+            "messageId": 123,
+            "emoji": 123
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "check_ulid",
+            "messageId": 123,
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "check_ulid",
+            "messageId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "check_ulid",
+            "messageId": 123
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "check_ulid",
+            "messageId": 123,
+            "emoji": ""
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "check_ulid",
+            "messageId": "check_ulid",
+            "emoji": 123
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "check_ulid",
+            "messageId": "check_ulid",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "check_ulid",
+            "messageId": "check_ulid",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "check_ulid",
+            "messageId": "check_ulid"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "check_ulid",
+            "messageId": "check_ulid",
+            "emoji": ""
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "check_ulid",
+            "messageId": "{{messageId1}}",
+            "emoji": 123
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "check_ulid",
+            "messageId": "{{messageId1}}",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "check_ulid",
+            "messageId": "{{messageId1}}",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "check_ulid",
+            "messageId": "{{messageId1}}"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "check_ulid",
+            "messageId": "{{messageId1}}",
+            "emoji": ""
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "check_ulid",
+            "emoji": 123
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "check_ulid",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "check_ulid",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "check_ulid"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "check_ulid",
+            "emoji": ""
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "check_ulid",
+            "messageId": "",
+            "emoji": 123
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "check_ulid",
+            "messageId": "",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "check_ulid",
+            "messageId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "check_ulid",
+            "messageId": ""
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "check_ulid",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "0",
+            "messageId": 123,
+            "emoji": 123
+        },
+        "expects": [
+            "messageId must be an ULID",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "0",
+            "messageId": 123,
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "messageId must be an ULID",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "0",
+            "messageId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "messageId must be an ULID",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "0",
+            "messageId": 123
+        },
+        "expects": [
+            "messageId must be an ULID",
+            "messageId must be a string",
+            "emoji should not be null or undefined",
+            "emoji should not be empty",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "0",
+            "messageId": 123,
+            "emoji": ""
+        },
+        "expects": [
+            "messageId must be an ULID",
+            "messageId must be a string",
+            "emoji should not be empty",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "0",
+            "messageId": "check_ulid",
+            "emoji": 123
+        },
+        "expects": [
+            "messageId must be an ULID",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "0",
+            "messageId": "check_ulid",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "messageId must be an ULID",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "0",
+            "messageId": "check_ulid",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "messageId must be an ULID"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "0",
+            "messageId": "check_ulid"
+        },
+        "expects": [
+            "messageId must be an ULID",
+            "emoji should not be null or undefined",
+            "emoji should not be empty",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "0",
+            "messageId": "check_ulid",
+            "emoji": ""
+        },
+        "expects": [
+            "messageId must be an ULID",
+            "emoji should not be empty",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "0",
+            "messageId": "{{messageId1}}",
+            "emoji": 123
+        },
+        "expects": [
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "0",
+            "messageId": "{{messageId1}}",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "0",
+            "messageId": "{{messageId1}}",
+            "emoji": "🚀"
+        },
+        "expects": []
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "0",
+            "messageId": "{{messageId1}}"
+        },
+        "expects": [
+            "emoji should not be null or undefined",
+            "emoji should not be empty",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "0",
+            "messageId": "{{messageId1}}",
+            "emoji": ""
+        },
+        "expects": [
+            "emoji should not be empty",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "0",
+            "emoji": 123
+        },
+        "expects": [
+            "messageId should not be null or undefined",
+            "messageId should not be empty",
+            "messageId must be an ULID",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "0",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "messageId should not be null or undefined",
+            "messageId should not be empty",
+            "messageId must be an ULID",
+            "messageId must be a string",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "0",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "messageId should not be null or undefined",
+            "messageId should not be empty",
+            "messageId must be an ULID",
+            "messageId must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "0"
+        },
+        "expects": [
+            "messageId should not be null or undefined",
+            "messageId should not be empty",
+            "messageId must be an ULID",
+            "messageId must be a string",
+            "emoji should not be null or undefined",
+            "emoji should not be empty",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "0",
+            "emoji": ""
+        },
+        "expects": [
+            "messageId should not be null or undefined",
+            "messageId should not be empty",
+            "messageId must be an ULID",
+            "messageId must be a string",
+            "emoji should not be empty",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "0",
+            "messageId": "",
+            "emoji": 123
+        },
+        "expects": [
+            "messageId should not be empty",
+            "messageId must be an ULID",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "0",
+            "messageId": "",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "messageId should not be empty",
+            "messageId must be an ULID",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "0",
+            "messageId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "messageId should not be empty",
+            "messageId must be an ULID"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "0",
+            "messageId": ""
+        },
+        "expects": [
+            "messageId should not be empty",
+            "messageId must be an ULID",
+            "emoji should not be null or undefined",
+            "emoji should not be empty",
+            "emoji is invalid, only 1 emoji",
+            "emoji must be a string"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "0",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "messageId should not be empty",
+            "messageId must be an ULID",
+            "emoji should not be empty",
+            "emoji is invalid, only 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "messageId": 123,
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "messageId": 123,
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "messageId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "messageId": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "messageId": 123,
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "messageId": "check_ulid",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "messageId": "check_ulid",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "messageId": "check_ulid",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "messageId": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "messageId": "check_ulid",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId1}}",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId1}}",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId1}}",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId1}}"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId1}}",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "messageId": "",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "messageId": "",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "messageId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "messageId": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "",
+            "messageId": 123,
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "",
+            "messageId": 123,
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "",
+            "messageId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "",
+            "messageId": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "",
+            "messageId": 123,
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "",
+            "messageId": "check_ulid",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "",
+            "messageId": "check_ulid",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "",
+            "messageId": "check_ulid",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "",
+            "messageId": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "",
+            "messageId": "check_ulid",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "",
+            "messageId": "{{messageId1}}",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "",
+            "messageId": "{{messageId1}}",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "",
+            "messageId": "{{messageId1}}",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "",
+            "messageId": "{{messageId1}}"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "",
+            "messageId": "{{messageId1}}",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "",
+            "messageId": "",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "",
+            "messageId": "",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "",
+            "messageId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "",
+            "messageId": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "workspaceId": "",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "messageId": 123,
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "messageId": 123,
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "messageId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "messageId": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "messageId": 123,
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "messageId": "check_ulid",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "messageId": "check_ulid",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "messageId": "check_ulid",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "messageId": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "messageId": "check_ulid",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "messageId": "{{messageId1}}",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "messageId": "{{messageId1}}",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "messageId": "{{messageId1}}",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "messageId": "{{messageId1}}"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "messageId": "{{messageId1}}",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "messageId": "",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "messageId": "",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "messageId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "messageId": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "messageId": 123,
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "messageId": 123,
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "messageId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "messageId": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "messageId": 123,
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "messageId": "check_ulid",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "messageId": "check_ulid",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "messageId": "check_ulid",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "messageId": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "messageId": "check_ulid",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "messageId": "{{messageId1}}",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "messageId": "{{messageId1}}",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "messageId": "{{messageId1}}",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "messageId": "{{messageId1}}"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "messageId": "{{messageId1}}",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "messageId": "",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "messageId": "",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "messageId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "messageId": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "messageId": 123,
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "messageId": 123,
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "messageId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "messageId": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "messageId": 123,
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "messageId": "check_ulid",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "messageId": "check_ulid",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "messageId": "check_ulid",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "messageId": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "messageId": "check_ulid",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "messageId": "{{messageId1}}",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "messageId": "{{messageId1}}",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "messageId": "{{messageId1}}",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "messageId": "{{messageId1}}"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "messageId": "{{messageId1}}",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "messageId": "",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "messageId": "",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "messageId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "messageId": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "messageId": 123,
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "messageId": 123,
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "messageId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "messageId": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "messageId": 123,
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "messageId": "check_ulid",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "messageId": "check_ulid",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "messageId": "check_ulid",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "messageId": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "messageId": "check_ulid",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "messageId": "{{messageId1}}",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "messageId": "{{messageId1}}",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "messageId": "{{messageId1}}",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "messageId": "{{messageId1}}"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "messageId": "{{messageId1}}",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {},
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "messageId": "",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "messageId": "",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "messageId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "messageId": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "messageId": 123,
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "messageId": 123,
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "messageId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "messageId": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "messageId": 123,
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "messageId": "check_ulid",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "messageId": "check_ulid",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "messageId": "check_ulid",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "messageId": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "messageId": "check_ulid",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "messageId": "{{messageId1}}",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "messageId": "{{messageId1}}",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "messageId": "{{messageId1}}",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "messageId": "{{messageId1}}"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "messageId": "{{messageId1}}",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "messageId": "",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "messageId": "",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "messageId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "messageId": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": 123,
+            "messageId": 123,
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": 123,
+            "messageId": 123,
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": 123,
+            "messageId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": 123,
+            "messageId": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": 123,
+            "messageId": 123,
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": 123,
+            "messageId": "check_ulid",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": 123,
+            "messageId": "check_ulid",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": 123,
+            "messageId": "check_ulid",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": 123,
+            "messageId": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": 123,
+            "messageId": "check_ulid",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": 123,
+            "messageId": "{{messageId1}}",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": 123,
+            "messageId": "{{messageId1}}",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": 123,
+            "messageId": "{{messageId1}}",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": 123,
+            "messageId": "{{messageId1}}"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": 123,
+            "messageId": "{{messageId1}}",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": 123,
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": 123,
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": 123,
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": 123,
+            "messageId": "",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": 123,
+            "messageId": "",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": 123,
+            "messageId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": 123,
+            "messageId": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": 123,
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "check_ulid",
+            "messageId": 123,
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "check_ulid",
+            "messageId": 123,
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "check_ulid",
+            "messageId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "check_ulid",
+            "messageId": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "check_ulid",
+            "messageId": 123,
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "check_ulid",
+            "messageId": "check_ulid",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "check_ulid",
+            "messageId": "check_ulid",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "check_ulid",
+            "messageId": "check_ulid",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "check_ulid",
+            "messageId": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "check_ulid",
+            "messageId": "check_ulid",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "check_ulid",
+            "messageId": "{{messageId1}}",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "check_ulid",
+            "messageId": "{{messageId1}}",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "check_ulid",
+            "messageId": "{{messageId1}}",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "check_ulid",
+            "messageId": "{{messageId1}}"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "check_ulid",
+            "messageId": "{{messageId1}}",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "check_ulid",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "check_ulid",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "check_ulid",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "check_ulid",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "check_ulid",
+            "messageId": "",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "check_ulid",
+            "messageId": "",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "check_ulid",
+            "messageId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "check_ulid",
+            "messageId": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "check_ulid",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "0",
+            "messageId": 123,
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "0",
+            "messageId": 123,
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "0",
+            "messageId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "0",
+            "messageId": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "0",
+            "messageId": 123,
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "0",
+            "messageId": "check_ulid",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "0",
+            "messageId": "check_ulid",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "0",
+            "messageId": "check_ulid",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "0",
+            "messageId": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "0",
+            "messageId": "check_ulid",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "0",
+            "messageId": "{{messageId1}}",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "0",
+            "messageId": "{{messageId1}}",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "0",
+            "messageId": "{{messageId1}}",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "0",
+            "messageId": "{{messageId1}}"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "0",
+            "messageId": "{{messageId1}}",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "0",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "0",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "0",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "0"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "0",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "0",
+            "messageId": "",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "0",
+            "messageId": "",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "0",
+            "messageId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "0",
+            "messageId": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "0",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "messageId": 123,
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "messageId": 123,
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "messageId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "messageId": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "messageId": 123,
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "messageId": "check_ulid",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "messageId": "check_ulid",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "messageId": "check_ulid",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "messageId": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "messageId": "check_ulid",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "messageId": "{{messageId1}}",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "messageId": "{{messageId1}}",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "messageId": "{{messageId1}}",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "messageId": "{{messageId1}}"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "messageId": "{{messageId1}}",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "messageId": "",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "messageId": "",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "messageId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "messageId": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "",
+            "messageId": 123,
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "",
+            "messageId": 123,
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "",
+            "messageId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "",
+            "messageId": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "",
+            "messageId": 123,
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "",
+            "messageId": "check_ulid",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "",
+            "messageId": "check_ulid",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "",
+            "messageId": "check_ulid",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "",
+            "messageId": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "",
+            "messageId": "check_ulid",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "",
+            "messageId": "{{messageId1}}",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "",
+            "messageId": "{{messageId1}}",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "",
+            "messageId": "{{messageId1}}",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "",
+            "messageId": "{{messageId1}}"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "",
+            "messageId": "{{messageId1}}",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "",
+            "messageId": "",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "",
+            "messageId": "",
+            "emoji": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "",
+            "messageId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "",
+            "messageId": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "workspaceId": "",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    }
+]
