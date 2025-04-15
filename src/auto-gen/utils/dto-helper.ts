@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 import { ErrorMessage } from '../enums/error-message.enum';
+import { isSingleEmoji } from './helper';
 
 export function getDecorators(
   target: any,
@@ -230,6 +231,23 @@ export function mapError(
         `${field} ${ErrorMessage.INVALID_ULID}`
       );
     }
+  }
+
+  if(decorators['isEmoji']){
+    const isString = typeof value === 'string';
+    const strVal = isString ? value : '';
+    const isInvalid =
+      value === undefined ||
+      value === null ||
+      value === '' ||
+      !isSingleEmoji(strVal)
+
+      if(isInvalid){
+        addError(
+          null,
+          `${field} ${ErrorMessage.INVALID_EMOJI}`
+        );
+      }
   }
   
   // 4. Kiểm tra kiểu dữ liệu

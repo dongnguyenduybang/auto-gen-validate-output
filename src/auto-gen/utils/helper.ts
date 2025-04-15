@@ -2,6 +2,8 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import 'reflect-metadata';
+import emojiRegex from 'emoji-regex';
+
 import { resolveVariables } from '../utils/test-executor';
 
 function getFileNameWithoutExtension(filePath: string): string {
@@ -264,4 +266,9 @@ export const formatExpectErrors = (expects) => {
 export function checkULID(value: string): boolean {
   const ulidRegex = /^[0-9A-HJKMNP-TV-Z]{26}$/;
   return typeof value === 'string' && ulidRegex.test(value);
+}
+export function isSingleEmoji(str: string): boolean {
+  const cleaned = str.replace(/\s/g, ''); // Xoá tất cả khoảng trắng
+  const emojiRegex = /^(\p{Extended_Pictographic}|\p{Emoji_Presentation})$/u;
+  return emojiRegex.test(cleaned);
 }

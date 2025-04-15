@@ -9,6 +9,7 @@ import { getChannel } from '../functions/get-channel';
 import { mockUser } from '../functions/mock-user';
 import { sendDmMessage } from '../functions/send-dm-message';
 import { sendMessage } from '../functions/send-message';
+import { updateMessage } from '../functions/update-message';
 import { TestContext } from './text-context';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
@@ -22,6 +23,7 @@ export function getApiFunction(action: string, context: TestContext): Function {
     getChannel: (method, path, header, body) => getChannel(header, body),
     acceptInvitation:(method, path, header, body) => acceptInvitation(header, body),
     sendMessage:(method, path, header, body) => sendMessage(method, path, header, body),
+    updateMessage:(method, path, header, body) => updateMessage(method, path, header, body),
     deleteMessagesForEveryone: (method, path,header, body) => deleteMessagesForEveryone(header, body),
     deleteDmMessagesForEveryone: (method, path,header, body) => deleteDmMessagesForEveryone(header, body),
     sendDmMessage: (method, path, header, body) => sendDmMessage(method, path, header, body)

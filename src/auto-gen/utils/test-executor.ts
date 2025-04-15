@@ -12,11 +12,12 @@ import { MockUserResponse } from '../response/mock-user';
 import { AcceptInvitationResponse } from '../response/accept-invitation';
 import { BaseResponse } from '../response/general-response';
 import { SendDmMessageResponse } from '../response/send-dm-message.response';
+import { UpdateMessageResponse } from '../response/update-message.response';
 
 interface Step {
     action: string;
     method?: string;
-    path?:string;
+    path?: string;
     body?: any;
     header?: any;
     expect?: any;
@@ -34,7 +35,8 @@ const responseClassMap = {
     AcceptInvitationResponse,
     SendMessageResponse,
     MockUserResponse,
-    SendDmMessageResponse
+    SendDmMessageResponse,
+    UpdateMessageResponse
 
 };
 
@@ -60,7 +62,7 @@ async function executeStep(
     stepIndex: number,
 ): Promise<StepResult> {
     try {
-        const { action, method, path,  body, header, expect: expectConfig } = step;
+        const { action, method, path, body, header, expect: expectConfig } = step;
 
         // resolve var từ  body và header
         const resolvedBody = resolveVariables(body, context);
@@ -68,24 +70,24 @@ async function executeStep(
         //goi API function
         const apiFunction = getApiFunction(action, context);
         const response = await apiFunction(method, path, resolvedHeader, resolvedBody);
-        if(response.ok === false){
+        if (response.ok === false) {
             return {
                 type: 'request',
                 status: response.ok,
                 stepName: `${step.action}`,
-                error: JSON.stringify(response.response)            
+                error: JSON.stringify(response.response)
             }
         }
-        
+
         // validate response
         const stepName = step.action.charAt(0).toUpperCase() + step.action.slice(1) + "Response";
         const ResponseClass = responseClassMap[stepName as keyof typeof responseClassMap];
         const validatedResponse = plainToClass(
-            ResponseClass as ClassConstructor<BaseResponse>, 
+            ResponseClass as ClassConstructor<BaseResponse>,
             response.response
-          );
-        const result = await validateResponses(resolvedBody,validatedResponse, context);
-        if(result.length > 0){
+        );
+        const result = await validateResponses(resolvedBody, validatedResponse, context);
+        if (result.length > 0) {
             return {
                 type: 'response',
                 status: false,
@@ -112,7 +114,7 @@ async function executeStep(
             }
         }
 
-        return { type: null,status: true, stepName: `${action}` };
+        return { type: null, status: true, stepName: `${action}` };
     } catch (error) {
         return {
             type: 'exception',
@@ -179,8 +181,10 @@ function extractData(
                 return extractAcceptInvitation(response.response, context);
             case 'sendMessage':
                 return extractMessageData(response.response);
+            case 'updateMessage':
+                return extractUpdateMessageData(response.response);
             case 'sendDmMessage':
-                return extractDmMessageData(response.response);    
+                return extractDmMessageData(response.response);
             default:
                 return flattenObject(response.response);
         }
@@ -271,6 +275,18 @@ export function extractMessageData(response: SendMessageResponse): Record<string
 
     return data;
 }
+export function extractUpdateMessageData(response: UpdateMessageResponse): Record<string, any> {
+    const data: Record<string, any> = {};
+    if (!response?.data) return data;
+
+    const { message } = response.data;
+    if (message) {
+        data.messageId = message.messageId;
+        data.content = message.content;
+    }
+
+    return data;
+}
 
 export function extractDmMessageData(response: SendDmMessageResponse): Record<string, any> {
     const data: Record<string, any> = {};
@@ -308,7 +324,7 @@ function flattenObject(
 
 function formatErrors(errors: ValidationError[]): any { // <-- Thay string bằng any
     if (!Array.isArray(errors)) return { message: 'No error details available' };
-    
+
     const formattedErrors = errors
         .filter(e => e !== undefined && e !== null)
         .map(e => ({
