@@ -18,9 +18,11 @@
 |--------|--------|--------|--------|
 | IsOptional | @IsOptional() | Cho phép undefined |   @IsOptional()<br> type: string; |
 | IsNotNull | @IsNotNull() | Không cho phép null |   @IsNotNull()<br> type: string; |
-| IsNotEmpty | @IsNotEmpty(option?) | Cho phép để rỗng. option: message? custom message error trả về |   @IsNotEmpty(<br>{message: `Could not resolve permission type`,}) |
+| IsNotEmpty | @IsNotEmpty(option?) | Cho phép để rỗng. option: message? custom message error trả về |   @IsNotEmpty(<br>{message: `Could not resolve permission type`,})<br> type: string; |
 | IsAny | @IsAny() | Cho phép bao hàm tất cả các kiểu |   @IsAny()<br> type: string; hoặc @IsAny()<br> type: number;  |
 | IsDefined | @IsDefined() | Bắt buộc phải xác định |   @IsDefined()<br> type: string|
+| IsChecked | @IsChecked(option?) | Xác định để check những field cần custom message error |   @IsChecked({message: `Could not resolve permission type`})<br> type: string|
+| IsULID | @IsULID() | Xác định giá trị là một ULID |   @IsULID()<br> type: string|
 
 ### String
 

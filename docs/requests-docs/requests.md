@@ -46,37 +46,26 @@
 
 **📄 send-message.dto.ts**
 ``` 
+import { IsDefined, IsNotEmpty, IsChecked } from '../../decorator/general-decorator';
 import {
-  IsNotEmpty,
   IsString,
-  IsDefined,
-  MinLength,
   MaxLength,
-} from '../../decorator/dto-decorator';
+  MinLength,
+} from '../../decorator/string-decorator';
 
 export class SendMessageDTO {
-  @IsString({
-    message: `Could not resolve permission type`,
-  })
-  @IsNotEmpty({
-    message: `Could not resolve permission type`,
-  })
-  @IsDefined({
-    message: `Could not resolve permission type`,
-  })
-  workspaceId: string = '';
 
-  @IsString({
-    message: `Invalid channelId`,
-    value: '{{channelId}}',
-  })
-  @IsNotEmpty({
-    message: `Could not resolve permission type`,
-  })
-  @IsDefined({
-    message: `Unsupported permission type`,
-  })
+  @IsDefined({ message: `Unsupported permission type` })
+  @IsChecked({ message: `Invalid channel` })
+  @IsNotEmpty({ message: `Could not resolve permission type` })
+  @IsString({ message: `Could not resolve permission type` })
   channelId: string = '';
+
+  @IsDefined({ message: `Could not resolve permission type` })
+  @IsChecked({ message: `Invalid channel` })
+  @IsNotEmpty({ message: `Could not resolve permission type` })
+  @IsString({ message: `Could not resolve permission type` })
+  workspaceId: string = '';
 
   @IsString()
   @IsNotEmpty()
@@ -86,5 +75,9 @@ export class SendMessageDTO {
   content: string = '';
 }
 ```
+- Note:
+  + Những decorator có custom message nếu có lỗi sẽ dừng test filed đó và push lỗi custom đó ra 
+  + Decorator IsChecked để bắt những trường hợp ngoại lệ đúng typeof nhưng sai giá trị. Dừng test field đó và push lỗi custom đó ra
+    + Example: field workspaceId có payload là chuỗi "abcdef" nhưng khác "0" => Invalid channel, field channelId có payload là chuỗi "abcdef" nhưng khác template {{channelId}}(ULID) => Invalid channel
 
 
