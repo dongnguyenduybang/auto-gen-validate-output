@@ -29,6 +29,7 @@
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
     "dotenv": "^16.4.7",
+    "emoji-regex": "^10.4.0",
     "js-yaml": "^4.1.0",
     "lodash": "^4.17.21",
     "path": "^0.12.7",
