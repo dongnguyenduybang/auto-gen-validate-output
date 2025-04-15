@@ -1,0 +1,46 @@
+{
+    "method": "PUT",
+    "path": "/Message/UpdateMessage",
+    "headers": {
+        "Content-Type": "application/json",
+        "x-session-token": "{{token}}",
+        "x-country-code": "VN"
+    },
+    "body": {
+        "channelId": "{{channelId}}",
+        "workspaceId": "0",
+        "messageId": "{{messageId1}}",
+        "content": "test response update message"
+    },
+    "beforeAll": [
+        {
+            "action": "mockUser"
+        },
+        {
+            "action": "createChannel"
+        },
+        {
+            "action": "sendMessage",
+            "method": "POST",
+            "path": "/Message/SendMessage",
+            "body": {
+                "channelId": "{{channelId}}",
+                "content": "test response send message"
+            },
+            "header": {
+                "token": "{{token}}"
+            }
+        }
+    ],
+    "afterAll": [
+        {
+            "action": "deleteMockedUsers",
+            "body": {
+                "prefix": "testfaker"
+            },
+            "header": {
+                "token": "{{token}}"
+            }
+        }
+    ]
+}

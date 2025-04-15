@@ -1,4 +1,4 @@
-import { IsDefined, IsNotEmpty, IsULID, IsNotNull, IsChecked } from '../../decorator/general-decorator';
+import { IsDefined, IsNotEmpty, IsChecked } from '../../decorator/general-decorator';
 import {
   IsString,
   MaxLength,
