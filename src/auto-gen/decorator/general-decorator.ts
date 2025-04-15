@@ -75,12 +75,12 @@ export function IsAny() {
   };
 }
 
-export function IsULID(options?: {message?: string}){
+export function IsChecked(options?: {message?: string}){
   return (target: any, propertyKey: string) => {
-    Reflect.defineMetadata('isULID', true, target, propertyKey);
+    Reflect.defineMetadata('isChecked', true, target, propertyKey);
     if (options?.message) {
       Reflect.defineMetadata(
-        'notULID',
+        'notCheckedMessage',
         options.message,
         target,
         propertyKey,
@@ -88,3 +88,41 @@ export function IsULID(options?: {message?: string}){
     }
   };
 }
+
+export function IsULID(options?: {message?: string}){
+  return (target: any, propertyKey: string) => {
+    Reflect.defineMetadata('isULID', true, target, propertyKey);
+    if (options?.message) {
+      Reflect.defineMetadata(
+        'notULIDMessage',
+        options.message,
+        target,
+        propertyKey,
+      );
+    }
+  };
+}
+
+
+export function IsMath(options?: {
+  message?: string;
+  value?: any;
+}): PropertyDecorator {
+  return (target: any, propertyKey: string) => {
+    Reflect.defineMetadata('isMath',true,  target, propertyKey);
+
+    if (options?.message) {
+      Reflect.defineMetadata(
+        'mathMessage',
+        options.message,
+        target,
+        propertyKey,
+      );
+    }
+
+    if (options?.value !== undefined) {
+      Reflect.defineMetadata('fieldValue', options.value, target, propertyKey);
+    }
+  };
+}
+
