@@ -23,4 +23,5 @@ export enum ErrorMessage {
   START_WITH = 'must start with',
   END_WITH = 'must end with',
   INVALID_RANGE_STRING_LENGTH = "content's byte length must fall into (1, 6000) range",
+  INVALID_ULID = 'must be an ULID'
 }
