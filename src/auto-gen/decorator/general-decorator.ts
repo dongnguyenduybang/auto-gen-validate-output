@@ -75,6 +75,7 @@ export function IsAny() {
   };
 }
 
+/* xác định value có custom message error */
 export function IsChecked(options?: {message?: string}){
   return (target: any, propertyKey: string) => {
     Reflect.defineMetadata('isChecked', true, target, propertyKey);
@@ -89,17 +90,10 @@ export function IsChecked(options?: {message?: string}){
   };
 }
 
-export function IsULID(options?: {message?: string}){
-  return (target: any, propertyKey: string) => {
+/* check value là một ULID */
+export function IsULID(){
+  return function (target: any, propertyKey: string) {
     Reflect.defineMetadata('isULID', true, target, propertyKey);
-    if (options?.message) {
-      Reflect.defineMetadata(
-        'notULIDMessage',
-        options.message,
-        target,
-        propertyKey,
-      );
-    }
   };
 }
 
@@ -126,3 +120,8 @@ export function IsMath(options?: {
   };
 }
 
+export function IsEmoji(){
+  return function (target: any, propertyKey: string) {
+    Reflect.defineMetadata('isEmoji', true, target, propertyKey);
+  };
+}
