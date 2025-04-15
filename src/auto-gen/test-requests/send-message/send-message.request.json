@@ -7,8 +7,8 @@
         "x-country-code": "VN"
     },
     "payload": {
-        "workspaceId": "0",
         "channelId": "{{channelId}}",
+        "workspaceId": "0",
         "content": "test123123",
         "ref": "ref"
     },
@@ -21,20 +21,6 @@
         }
     ],
     "afterAll": [
-        {
-            "action": "deleteChannel",
-            "header": { "token": "{{token}}", "userId": "{{userId}}"},
-            "body": {
-                "channelId": "{{channelId}}"
-            }
-        },
-        {
-            "action": "deleteMockedUsers",
-            "body": {
-                "prefix": "testfaker"
-            },
-            "header": { "token": "{{token}}" }
-        }
     ]
 }
 
