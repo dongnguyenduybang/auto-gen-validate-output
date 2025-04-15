@@ -8,7 +8,7 @@ export async function sendMessage(method, path, header, body) {
     const baseUrl = `${globalThis.urls}${path}`;
     const methodLowCase = method.toLowerCase();
     const payload = {
-      workspaceId: body.workspaceId,
+      workspaceId: body.workspaceId || "0",
       channelId: body.channelId,
       content: body.content,
     };
