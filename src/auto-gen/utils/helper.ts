@@ -260,3 +260,8 @@ export const formatExpectErrors = (expects) => {
     .replace(/\s*,\s*/g, ',')
     .trim();
 };
+
+export function checkULID(value: string): boolean {
+  const ulidRegex = /^[0-9A-HJKMNP-TV-Z]{26}$/;
+  return typeof value === 'string' && ulidRegex.test(value);
+}
