@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 import { ErrorMessage } from '../enums/error-message.enum';
+import { checkULID } from './helper';
 
 export function getDecorators(
   target: any,
@@ -40,7 +41,6 @@ export function generateErrorCases(
   payload: Record<string, any>,
 ): any[] {
   const instance = new dtoClass();
-  console.log(instance);
   const keys = Object.keys(instance);
   if (keys.length === 0) {
     console.warn(`No found keys in DTO class: ${dtoClass.name}`);
@@ -50,10 +50,8 @@ export function generateErrorCases(
   const errorCasesByField: Record<string, any[]> = {};
   keys.forEach((field) => {
     const decorators = getDecorators(instance, field);
-    const fieldValue =
-      payload[field] !== undefined ? payload[field] : instance[field];
+    const fieldValue = payload[field] !== undefined ? payload[field] : instance[field];
     const variants = generateErrorVariantsForField(fieldValue, decorators);
-
     errorCasesByField[field] = Array.isArray(variants) ? variants : [];
   });
 
@@ -66,17 +64,13 @@ export function generateErrorCases(
   const allErrorCombinations = generateCombinations(fields, errorCasesByField);
   return allErrorCombinations.map((combination) => {
     const testcaseGen = { ...combination };
-    for (const field of fields) {
-      const value = testcaseGen[field];
-      const decorators = getDecorators(instance, field);
-      const errors = mapError(field, value, decorators);
+    const errors = softErrorFromMap(testcaseGen, dtoClass);
 
-      if (errors.length > 0) {
-        return { testcaseGen, expectedDetail: errors }; // Stop at the first error
-      }
+    if (errors.length > 0) {
+      return { testcaseGen, expectedDetail: errors };
     }
 
-    return { testcaseGen, expectedDetail: [] }; // No errors found
+    return { testcaseGen, expectedDetail: [] };
   });
 }
 export function generateErrorVariantsForField(
@@ -93,10 +87,10 @@ export function generateErrorVariantsForField(
   switch (fieldType) {
     case 'string':
       variants.push(123);
-      variants.push('check_ulid') // Number cho string field
+      variants.push('check_ulid')
       break;
     case 'number':
-      variants.push('invalid_number'); // String cho number field
+      variants.push('invalid_number'); 
       variants.push(NaN);
       break;
     case 'enum':
@@ -104,7 +98,7 @@ export function generateErrorVariantsForField(
       break;
     case 'array':
       variants.push('not_an_array');
-      variants.push([123]); // Array với phần tử sai type
+      variants.push([123]);
       break;
     case 'boolean':
       variants.push('invalid_boolean');
@@ -139,9 +133,9 @@ export function generateErrorVariantsForField(
   variants.push(fieldValue);
 
   variants.push(undefined);
-  variants.push(null);
+  // variants.push(null);
   variants.push('');
-  
+
   return variants;
 }
 
@@ -176,15 +170,11 @@ export function mapError(
   decorators: Record<string, any>,
 ): string[] {
   const errors: string[] = [];
-
   // Helper function để thêm lỗi
   const addError = (customMessage: string | undefined, defaultMessage: string) => {
-    if (customMessage) {
-      errors.push(customMessage);
-      return true
-    } else {
-      errors.push(defaultMessage);
-      return false
+    const errorMessage = customMessage || defaultMessage;
+    if (errorMessage) {
+      errors.push(errorMessage);
     }
   };
 
@@ -194,173 +184,179 @@ export function mapError(
   }
 
   // 2. Kiểm tra isDefined
-  if (value === undefined || value === null || value === "") {
-    if(decorators['isDefined'] && (value === undefined ||  value === null ) && decorators['isULID']){
-      const shouldStop = addError(
-        `Could not resolve permission type`,
-        `${field} ${ErrorMessage.DEFINED}`
-      );
-      if (shouldStop) return errors;
-    }else if(decorators['isDefined'] && (value === undefined ||  value === null )) {
-      const shouldStop = addError(
-        decorators['notUndefinedMessage'],
-        `${field} ${ErrorMessage.DEFINED}`
-      );
-      if (shouldStop) return errors;
+  if (value === undefined  || value === null) {
+    if (decorators['isDefined']) {
+      if (decorators['isChecked']) {
+          addError(
+            decorators['notUndefinedMessage'],
+            null
+          );
+      } else {
+        addError(
+          null,
+          `${field} ${ErrorMessage.DEFINED}`
+        );
+       
+      }
     }
-    // if(decorators['notNull'] && (value === null)){
-    //   const shouldStop = addError(
-    //     decorators['notNullMessage'],
-    //     `${field} ${ErrorMessage.NULL}`
-    //   );
-    //   if (shouldStop) return errors;
-    // }
-    if (decorators['maxLength'] && decorators['minLength']) {
-      const shouldStop = addError(
-        undefined,
-        `${ErrorMessage.INVALID_RANGE_STRING_LENGTH}`
-      );
-      if (shouldStop) return errors;
-    }
-    if (decorators['notEmpty']) {
-      const shouldStop = addError(
-        decorators['notEmptyMessage'],
-        `${field} ${ErrorMessage.EMPTY}`
-      );
-      if (shouldStop) return errors;
-    }
-    
   }
-
+  // 3. Kiểm tra notEmpty
+  if ((value === '' || value === undefined ) && decorators['notEmpty']) {
+    if (decorators['isChecked']) {
+       addError(
+        decorators['notEmptyMessage'],
+        null
+      )
+    } else {
+      addError(
+        null,
+        `${field} ${ErrorMessage.EMPTY}`
+      )
+       
+    }
+  }
+  if (decorators['isULID']) {
+    const isString = typeof value === 'string';
+    const strVal = isString ? value : '';
+  
+    const isInvalid =
+      value === undefined ||
+      value === null ||
+      value === '' ||
+      !isString ||
+      !strVal.startsWith('{{');
+  
+    if (isInvalid) {
+      addError(
+        null,
+        `${field} ${ErrorMessage.INVALID_ULID}`
+      );
+    }
+  }
+  
+  // 4. Kiểm tra kiểu dữ liệu và logic đặc biệt
   switch (decorators['type']) {
     case 'string':
-      if (typeof value !== 'string' && (value !== undefined || value !== null || value !== "")) {
-        const shouldStop = addError(
-          decorators['stringMessage'],
-          `${field} ${ErrorMessage.INVALID_TYPE_STRING}`
-        );
-        if (shouldStop) return errors;
-      } else if (typeof value !== 'string' && decorators['isULID']){
-        const shouldStop = addError(
-          `Could not resolve permission type`,
-          `${field} ${ErrorMessage.INVALID_TYPE_STRING}`
-        );
-        if (shouldStop) return errors;
+      if (typeof value !== 'string') {
+       
+        if (decorators['isChecked']) {
+          const shouldStop = addError(
+            decorators['stringMessage'],
+            undefined
+          );
+        } else {
+          const shouldStop = addError(
+            null,
+            `${field} ${ErrorMessage.INVALID_TYPE_STRING}`
+          );
+           
+        }
       }
-      if (typeof value === 'string') {
-        if(value.length > 0){
-          const minViolated = decorators['minLength'] && value.length < decorators['minLength'];
-          const maxViolated = decorators['maxLength'] && value.length > decorators['maxLength'];
-          if (minViolated || maxViolated) {
-            const shouldStop = addError(
-              undefined,
-              `${ErrorMessage.INVALID_RANGE_STRING_LENGTH}`
-            );
-            if (shouldStop) return errors;
-          }
-        }
-      
-        if(field === 'workspaceId' || field === 'channelId'){
-          if(field === 'workspaceId' && value !== "0"){
-            const shouldStop = addError(
-              decorators['notULID'],
-              `${field} ${ErrorMessage.INVALID_TYPE_STRING}`
-            );
-            if (shouldStop) return errors;
-          }
-          if(field === 'channelId' && !value.startsWith("{{")){
-            const shouldStop = addError(
-              decorators['notULID'],
-              `${field} ${ErrorMessage.INVALID_TYPE_STRING}`
-            );
-            if (shouldStop) return errors;
-          }
-        }
 
-      }
-      // if(typeof value === 'string' && decorators['isULID']){
-      //   if(value.startsWith('{{')){
-      //     return errors;
-      //   } 
+      if (typeof value === 'string') {
+        if (decorators['isChecked']) {
+          if (field === 'workspaceId' && value !== '0') {
+            const shouldStop = addError(
+              decorators['notCheckedMessage'],
+              null  
+            );
+             
+          }
+         
+          if (field === 'channelId' && !value.startsWith('{{')) {
+             addError(
+              decorators['notCheckedMessage'],
+              null
+            ); 
+          }
+          if (field === 'userId' && !value.startsWith('{{')) {
+            addError(
+              decorators['notCheckedMessage'],
+              null
+            ); 
+          }
+        }
         
-      //   if(field === 'workspaceId'  || field === 'channelId'){
-      //     if(field === 'workspaceId'  && value !== "0"){
-      //       const shouldStop = addError(
-      //         decorators['notULID'],
-      //         `${field} ${ErrorMessage.INVALID_TYPE_STRING}`
-      //       );
-      //       if (shouldStop) return errors;
-      //     }
-      //     if(field === 'channelId'  && value !== "0"){
-      //       const shouldStop = addError(
-      //         decorators['notULID'],
-      //         `${field} ${ErrorMessage.INVALID_TYPE_STRING}`
-      //       );
-      //       if (shouldStop) return errors;
-      //     }
-          
-      //   }
-      // }
+      }
+     
+
+      const str = typeof value === 'string' ? value : '';
+      const hasMin = decorators['minLength'] != null;
+      const hasMax = decorators['maxLength'] != null;
+
+      if (hasMin || hasMax) {
+        const len = str.length;
+        const minViolated = hasMin && len < decorators['minLength'];
+        const maxViolated = hasMax && len > decorators['maxLength'];
+
+        if (minViolated || maxViolated) {
+          const shouldStop = addError(
+            null,
+            ErrorMessage.INVALID_RANGE_STRING_LENGTH
+          );
+           
+        }
+      }
       break;
     case 'number':
-      if (typeof value !== 'number' && (value !== undefined || value !== null || value !== "")) {
+      if (typeof value !== 'number' || isNaN(value)) {
         const shouldStop = addError(
           decorators['numberMessage'],
-          `${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`
+          `${field} must be a number`
         );
-        if (shouldStop) return errors;
+         
       }
       if (typeof value === 'number') {
         const minViolated = decorators['min'] && value < decorators['min'];
         const maxViolated = decorators['max'] && value > decorators['max'];
         if (minViolated) {
           const shouldStop = addError(
-            undefined,
-            `${field} ${ErrorMessage.MIN}`
+            decorators['minMessage'],
+            `${field} is too small`
           );
-          if (shouldStop) return errors;
-        } else if(maxViolated) {
+           
+        }
+        if (maxViolated) {
           const shouldStop = addError(
-            undefined,
-            `${field} ${ErrorMessage.MAX}`
+            decorators['maxMessage'],
+            `${field} is too large`
           );
-          if (shouldStop) return errors;
+           
         }
       }
       break;
+
     case 'array':
-      if (!Array.isArray(value) && (value !== undefined || value !== null || value !== "")) {
+      if (!Array.isArray(value)) {
         const shouldStop = addError(
           decorators['arrayMessage'],
-          `${field} ${ErrorMessage.INVALID_TYPE_ARRAY}`
+          `${field} must be an array`
         );
-        if (shouldStop) return errors;
-      } else {
-        // Kiểm tra minArray/maxArray
-        if (decorators['minArray'] && value.length < decorators['minArray']) {
-          const shouldStop = addError(
-            decorators['minArrayMessage'],
-            `${field} ${ErrorMessage.MIN_ARRAY}}`
-          );
-          if (shouldStop) return errors;
-        }
-
-        if (decorators['maxArray'] && value.length > decorators['maxArray']) {
-          const shouldStop = addError(
-            decorators['maxArrayMessage'],
-            `${field} ${ErrorMessage.MAX_ARRAY}}`
-          );
-          if (shouldStop) return errors;
-        }
+         
+      }
+      if (decorators['minArray'] && value.length < decorators['minArray']) {
+        const shouldStop = addError(
+          decorators['minArrayMessage'],
+          `${field} has too few items`
+        );
+         
+      }
+      if (decorators['maxArray'] && value.length > decorators['maxArray']) {
+        const shouldStop = addError(
+          decorators['maxArrayMessage'],
+          `${field} has too many items`
+        );
+         
       }
       break;
+
     case 'object':
-      if (typeof value !== 'object' && Array.isArray(value) && (value !== undefined || value !== null)) {
+      if (typeof value !== 'object' || Array.isArray(value) || value === null) {
         const shouldStop = addError(
           decorators['objectMessage'],
-          `${field} ${ErrorMessage.INVALID_TYPE_OBJ}`
+          `${field} must be an object`
         );
-        if (shouldStop) return errors;
+         
       }
       break;
 
@@ -368,21 +364,42 @@ export function mapError(
       if (!decorators['enumType'] || !Object.values(decorators['enumType']).includes(value)) {
         const shouldStop = addError(
           decorators['enumMessage'],
-          `${field} ${ErrorMessage.INVALID_ENUM}`
+          `${field} has invalid value`
         );
-        if (shouldStop) return errors;
+         
       }
       break;
-      
   }
-  // if (value === '' && decorators['notEmpty']) {
-  //   const shouldStop = addError(
-  //     decorators['notEmptyMessage'],
-  //     `${field} ${ErrorMessage.EMPTY}`
-  //   );
-  //   console.log(value,shouldStop)
-  //   if (shouldStop) return errors;
-  // }
 
+  return errors;
+}
+
+export function softErrorFromMap(payload: Record<string, any>, dtoClass: any): string[] {
+  const errors: string[] = [];
+  const instance = new dtoClass();
+
+  const ERROR_PRIORITY= [
+    "Could not resolve permission type",
+    "Unsupported permission type", 
+    "Invalid channel",
+    "Unauthorized request",
+  ];
+
+  // Thu thập tất cả lỗi từ các field
+  for (const field of Object.keys(payload)) {
+    const value = payload[field];
+    const decorators = getDecorators(instance, field);
+    const fieldErrors = mapError(field, value, decorators);
+    errors.push(...fieldErrors);
+  }
+
+  // Tìm lỗi có độ ưu tiên cao nhất
+  for (const priorityError of ERROR_PRIORITY) {
+    if (errors.includes(priorityError)) {
+      return [priorityError];
+    }
+  }
+
+  // Trả về tất cả lỗi nếu không có lỗi ưu tiên
   return errors;
 }
