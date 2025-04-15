@@ -1,6 +1,5 @@
 import 'reflect-metadata';
 import { ErrorMessage } from '../enums/error-message.enum';
-import { checkULID } from './helper';
 
 export function getDecorators(
   target: any,
@@ -78,9 +77,6 @@ export function generateErrorVariantsForField(
   decorators: Record<string, any>,
 ): any[] {
   const variants: any[] = [];
-
-  // 1. Các giá trị đặc biệt
-
 
   // 2. Sai kiểu dữ liệu
   const fieldType = decorators['type'] || 'string';
@@ -170,6 +166,7 @@ export function mapError(
   decorators: Record<string, any>,
 ): string[] {
   const errors: string[] = [];
+
   // Helper function để thêm lỗi
   const addError = (customMessage: string | undefined, defaultMessage: string) => {
     const errorMessage = customMessage || defaultMessage;
@@ -215,6 +212,7 @@ export function mapError(
        
     }
   }
+  // Kiểm tra ulID
   if (decorators['isULID']) {
     const isString = typeof value === 'string';
     const strVal = isString ? value : '';
@@ -234,18 +232,18 @@ export function mapError(
     }
   }
   
-  // 4. Kiểm tra kiểu dữ liệu và logic đặc biệt
+  // 4. Kiểm tra kiểu dữ liệu
   switch (decorators['type']) {
     case 'string':
       if (typeof value !== 'string') {
        
         if (decorators['isChecked']) {
-          const shouldStop = addError(
+          addError(
             decorators['stringMessage'],
             undefined
           );
         } else {
-          const shouldStop = addError(
+           addError(
             null,
             `${field} ${ErrorMessage.INVALID_TYPE_STRING}`
           );
@@ -256,7 +254,7 @@ export function mapError(
       if (typeof value === 'string') {
         if (decorators['isChecked']) {
           if (field === 'workspaceId' && value !== '0') {
-            const shouldStop = addError(
+            addError(
               decorators['notCheckedMessage'],
               null  
             );
@@ -279,7 +277,6 @@ export function mapError(
         
       }
      
-
       const str = typeof value === 'string' ? value : '';
       const hasMin = decorators['minLength'] != null;
       const hasMax = decorators['maxLength'] != null;
@@ -290,7 +287,7 @@ export function mapError(
         const maxViolated = hasMax && len > decorators['maxLength'];
 
         if (minViolated || maxViolated) {
-          const shouldStop = addError(
+          addError(
             null,
             ErrorMessage.INVALID_RANGE_STRING_LENGTH
           );
@@ -302,7 +299,7 @@ export function mapError(
       if (typeof value !== 'number' || isNaN(value)) {
         const shouldStop = addError(
           decorators['numberMessage'],
-          `${field} must be a number`
+          `${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`
         );
          
       }
@@ -310,16 +307,16 @@ export function mapError(
         const minViolated = decorators['min'] && value < decorators['min'];
         const maxViolated = decorators['max'] && value > decorators['max'];
         if (minViolated) {
-          const shouldStop = addError(
+          addError(
             decorators['minMessage'],
-            `${field} is too small`
+            `${field} ${ErrorMessage.MIN}`
           );
            
         }
         if (maxViolated) {
-          const shouldStop = addError(
+          addError(
             decorators['maxMessage'],
-            `${field} is too large`
+            `${field} ${ErrorMessage.MAX}`
           );
            
         }
@@ -328,23 +325,23 @@ export function mapError(
 
     case 'array':
       if (!Array.isArray(value)) {
-        const shouldStop = addError(
+         addError(
           decorators['arrayMessage'],
-          `${field} must be an array`
+          `${field} ${ErrorMessage.INVALID_TYPE_ARRAY}`
         );
          
       }
       if (decorators['minArray'] && value.length < decorators['minArray']) {
-        const shouldStop = addError(
+        addError(
           decorators['minArrayMessage'],
-          `${field} has too few items`
+          `${field} ${ErrorMessage.MIN_ARRAY}`
         );
          
       }
       if (decorators['maxArray'] && value.length > decorators['maxArray']) {
-        const shouldStop = addError(
+        addError(
           decorators['maxArrayMessage'],
-          `${field} has too many items`
+          `${field} ${ErrorMessage.MAX_ARRAY}`
         );
          
       }
@@ -352,9 +349,9 @@ export function mapError(
 
     case 'object':
       if (typeof value !== 'object' || Array.isArray(value) || value === null) {
-        const shouldStop = addError(
+        addError(
           decorators['objectMessage'],
-          `${field} must be an object`
+          `${field} ${ErrorMessage.INVALID_TYPE_OBJ}`
         );
          
       }
@@ -362,15 +359,14 @@ export function mapError(
 
     case 'enum':
       if (!decorators['enumType'] || !Object.values(decorators['enumType']).includes(value)) {
-        const shouldStop = addError(
+        addError(
           decorators['enumMessage'],
-          `${field} has invalid value`
+          `${field} ${ErrorMessage.INVALID_ENUM}`
         );
          
       }
       break;
   }
-
   return errors;
 }
 
