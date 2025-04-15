@@ -5,7 +5,7 @@ import {
   MinLength,
 } from '../../decorator/string-decorator';
 
-export class SendMessageDTO {
+export class UpdateMessageDTO {
 
   @IsDefined({ message: `Unsupported permission type` })
   @IsChecked({ message: `Invalid channel` })
@@ -18,6 +18,12 @@ export class SendMessageDTO {
   @IsNotEmpty({ message: `Could not resolve permission type` })
   @IsString({ message: `Could not resolve permission type` })
   workspaceId: string = '';
+
+  @IsString()
+  @IsULID()
+  @IsNotEmpty()
+  @IsDefined()
+  messageId: string = ''
 
   @IsString()
   @IsNotEmpty()
