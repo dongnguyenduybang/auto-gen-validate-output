@@ -25,6 +25,10 @@ export class SendMessageDTO {
   @MinLength(1)
   @MaxLength(6000)
   content: string = '';
+
+  @IsString()
+  @IsDefined()
+  ref: string = '';
 }
 
 
