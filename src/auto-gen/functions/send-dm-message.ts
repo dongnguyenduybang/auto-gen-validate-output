@@ -11,7 +11,6 @@ export async function sendDmMessage(
     const methodLowCase =  method.toLowerCase() || 'post' ;
     const payload = {
       userId: body.userId,
-      messageId: body.messageId,
       content: body.content,
     }
     const headers = { 'x-session-token': header.token };
