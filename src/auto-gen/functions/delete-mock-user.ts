@@ -1,11 +1,10 @@
 import axios from 'axios';
-
-export async function deleteMockedUsers(header, prefix) {
+export async function deleteMockedUsers(method, path, header, body) {
   if (!header.token) {
-    return { error: 'Token not found to delete mock user' };
+    return { ok: false, response: 'Token not found to delete mock user' };
   }
   try {
-    const baseUrl = `${globalThis.urls}/InternalFaker/DeleteMockedUsers?prefix=${prefix}`;
+    const baseUrl = `${globalThis.urls}/InternalFaker/DeleteMockedUsers?prefix=${body.prefix}`;
 
     const response = await axios.delete(baseUrl, {});
 

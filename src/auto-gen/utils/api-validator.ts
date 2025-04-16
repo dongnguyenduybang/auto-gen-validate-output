@@ -36,31 +36,24 @@ export const createApiValidator = (
     let current: any[] = [obj];
   
     for (const part of parts) {
-      console.log(`Processing part: ${part}`);
       current = current.flatMap((item) => {
         if (item === undefined || item === null) {
-          console.log(`Item is undefined or null at part: ${part}`);
           return [];
         }
         const value = item[part];
         if (Array.isArray(value)) {
-          console.log(`Found array at part: ${part}`);
           return value;
         }
         if (value !== undefined) {
-          console.log(`Found value at part: ${part}`);
           return [value];
         }
-        console.log(`No value found at part: ${part}`);
         return [];
       });
-      console.log(`Current after part ${part}:`, current);
     }
   
     // Loại bỏ các phần tử rỗng hoặc undefined/null
-    current = current.filter(value => value !== undefined && value !== null);
-  
-    console.log('Final current:', current);
+    // current = current.filter(value => value !== undefined && value !== null);
+
     return current;
   }
   
@@ -216,7 +209,6 @@ export const createApiValidator = (
       ));
       return;
     }
-  
   
     // Xử lý trường hợp expect là single value nhưng cần thành array
     const processedExpect = operator === Operator.INCLUDE && !Array.isArray(resolvedExpect) 

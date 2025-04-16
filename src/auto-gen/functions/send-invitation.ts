@@ -1,24 +1,36 @@
 import axios from 'axios';
+
 export async function sendInvitation(
-  token: string,
-  linkInvitation: string,
-  userId: string,
+  method, path,header, body
 ) {
+  if (!header.token) {
+    return { ok: false, response: 'Token not found to send invitation'}
+  }
   try {
-    if (!token) {
-      throw new Error('token not found in global var');
+    const baseUrl = `${globalThis.urls}${path}` || `${globalThis.urls}/Invitation/SendInvitation` ;
+    const methodLowCase =  method.toLowerCase() || 'post' ;
+    const payload = {
+      userId: body.userId,
+      invitationLink: body.invitationLink,
     }
+    const headers = { 'x-session-token': header.token };
 
-    // console.log(token, linkInvitation, userId)
-
-    const baseUrl = `${globalThis.urls}/Invitation/SendInvitation`;
-    const payload = { invitationLink: linkInvitation, userIds: userId };
-    const headers = { 'x-session-token': token };
-
-    await axios.post(baseUrl, payload, { headers: headers });
+    const response = await axios[methodLowCase](baseUrl, payload, { headers: headers });
+    if (!response.data || !response.data.data || !response.data.data.message) {
+      return {
+        ok: false,
+        response: 'Invalid data send invitation returned from API',
+      };
+    } else {
+      return { response: response.data };
+    }
   } catch (error) {
-    console.error('error in send link invitation:', error);
-
-    throw new Error('fail to send link invitation');
+    return {
+      ok: false,
+      response:
+        error?.response?.data?.error?.details ||
+        error?.response?.data ||
+        'Unauthorized request',
+    };
   }
 }

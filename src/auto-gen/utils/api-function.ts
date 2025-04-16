@@ -1,32 +1,40 @@
 /* eslint-disable prettier/prettier */
-import { acceptInvitation } from '../functions/accept-link-invitation';
-import { createChannel } from '../functions/create-channel';
-import { deleteChannel } from '../functions/delete-channel';
-import { deleteDmMessagesForEveryone } from '../functions/delete-dm-messages-for-everyone';
-import { deleteMessagesForEveryone } from '../functions/delete-messages-for-everyone';
-import { deleteMockedUsers } from '../functions/delete-mock-user';
-import { getChannel } from '../functions/get-channel';
-import { mockUser } from '../functions/mock-user';
-import { sendDmMessage } from '../functions/send-dm-message';
-import { sendMessage } from '../functions/send-message';
-import { updateMessage } from '../functions/update-message';
+
+import { acceptInvitation, addDmMessageReaction, addMessageReaction, createChannel, deleteAllDmMessagesForEveryone, deleteAllDMMessagesOnlyMe, deleteAllMessagesOnlyMe, deleteChannel, deleteDmMessagesForEveryone, deleteDmMessagesOnlyMe, deleteMessagesForEveryone, deleteMessagesOnlyMe, deleteMockedUsers, getChannel, getListMessage, getMessage, getSticker, getStickerCollection, markAsRead, markDmAsRead, mockChannel, mockUser, reportMessage, sendDmMessage, sendInvitation, sendMessage, sendMessageSticker, updateMessage } from '../functions';
 import { TestContext } from './text-context';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 export function getApiFunction(action: string, context: TestContext): Function {
   // eslint-disable-next-line @typescript-eslint/ban-types
   const apiFunctions: Record<string, Function> = {
-    mockUser: (method, path, header, body) => mockUser(header, body),
-    deleteMockedUsers: (method, path, header, body) => deleteMockedUsers(header, body),
-    deleteChannel: (method, path, header, body) => deleteChannel(header, body),
+    acceptInvitation: (method, path, header, body) => acceptInvitation(method, path, header, body),
+    addDmMessageReaction: (method, path, header, body) => addDmMessageReaction(method, path, header, body),
+    addMessageReaction: (method, path, header, body) => addMessageReaction(method, path, header, body),
     createChannel: () => createChannel(context),
-    getChannel: (method, path, header, body) => getChannel(header, body),
-    acceptInvitation:(method, path, header, body) => acceptInvitation(header, body),
-    sendMessage:(method, path, header, body) => sendMessage(method, path, header, body),
-    updateMessage:(method, path, header, body) => updateMessage(method, path, header, body),
-    deleteMessagesForEveryone: (method, path,header, body) => deleteMessagesForEveryone(header, body),
-    deleteDmMessagesForEveryone: (method, path,header, body) => deleteDmMessagesForEveryone(header, body),
-    sendDmMessage: (method, path, header, body) => sendDmMessage(method, path, header, body)
+    deleteAllDmMessagesForEveryone: (method, path, header, body) => deleteAllDmMessagesForEveryone(method, path, header, body),
+    deleteAllDMMessagesOnlyMe: (method, path, header, body) => deleteAllDMMessagesOnlyMe(method, path, header, body),
+    deleteAllMessagesOnlyMe: (method, path, header, body) => deleteAllMessagesOnlyMe(method, path, header, body),
+    deleteChannel: (method, path, header, body) => deleteChannel(header, body),
+    deleteDmMessagesForEveryone: (method, path, header, body) => deleteDmMessagesForEveryone(method, path, header, body),
+    deleteDmMessagesOnlyMe: (method, path, header, body) => deleteDmMessagesOnlyMe(method, path, header, body),
+    deleteMessagesForEveryone: (method, path, header, body) => deleteMessagesForEveryone(method, path, header, body),
+    deleteMessagesOnlyMe: (method, path, header, body) => deleteMessagesOnlyMe(method, path, header, body),
+    deleteMockedUsers: (method, path, header, body) => deleteMockedUsers(method, path, header, body),
+    getChannel: (method, path, header, body) => getChannel(method, path, header, body),
+    getMessage: (method, path, header, body) => getMessage(method, path, header, body),
+    getStickerCollection: (method, path, header, body) => getStickerCollection(method, path, header, body),
+    getSticker: (method, path, header, body) => getSticker(method, path, header, body),
+    getListMessage: (method, path, header, body) => getListMessage(method, path, header, body),
+    markAsRead: (method, path, header, body) => markAsRead(method, path, header, body),
+    markDmAsRead: (method, path, header, body) => markDmAsRead(method, path, header, body),
+    mockChannel: (method, path, header, body) => mockChannel(method, path, header, body),
+    mockUser: (method, path, header, body) => mockUser(header, body),
+    reportMessage: (method, path, header, body) => reportMessage(method, path, header, body),
+    sendDmMessage: (method, path, header, body) => sendDmMessage(method, path, header, body),
+    sendInvitation: (method, path, header, body) => sendInvitation(method, path, header, body),
+    sendMessageSticker: (method, path, header, body) => sendMessageSticker(method, path, header, body),
+    sendMessage: (method, path, header, body) => sendMessage(method, path, header, body),
+    updateMessage: (method, path, header, body) => updateMessage(method, path, header, body),
   };
   return (
     apiFunctions[action] ||

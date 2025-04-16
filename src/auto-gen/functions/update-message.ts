@@ -5,8 +5,8 @@ export async function updateMessage(method, path, header, body) {
     if (!header.token) {
       return { error: 'Token not found to update message' };
     }
-    const baseUrl = `${globalThis.urls}${path}`;
-    const methodLowCase = method.toLowerCase();
+    const baseUrl = `${globalThis.urls}${path}` || `${globalThis.urls}/Message/UpdateMessage`;
+    const methodLowCase = method.toLowerCase() || 'put';
     const payload = {
       workspaceId: body.workspaceId || "0",
       channelId: body.channelId,
@@ -28,14 +28,10 @@ export async function updateMessage(method, path, header, body) {
   } catch (error) {
     return {
       ok: false,
-      response: {
-        status: error.response.status,
-        statusText: error.response.statusText,
-        detailError:
-          error?.response?.data?.error?.details ||
-          error?.response?.data ||
-          'Unauthorized request',
-      },
+      response:
+        error?.response?.data?.error?.details ||
+        error?.response?.data ||
+        'Unauthorized request',
     };
   }
 }

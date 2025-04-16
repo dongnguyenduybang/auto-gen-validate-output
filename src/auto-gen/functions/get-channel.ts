@@ -1,13 +1,17 @@
 /* eslint-disable prettier/prettier */
 import axios from 'axios';
-export async function getChannel(header, body) {
+export async function getChannel(method, path, header, body) {
+    if (!header.token) {
+        return { ok: false, response:  'Token not found to get channel' };
+    }
     try {
-        if (!header.token) {
-            return { error: 'Token not found to get channel' };
-        }
-        const baseUrl = `${globalThis.urls}/ChannelView/GetChannel?workspaceId=0&channelId=${body.channelId}`;
+        const baseUrl = `${globalThis.urls}${path}` || `${globalThis.urls}/ChannelView/GetChannel` ;
+        const methodLowCase =  method.toLowerCase() || 'get' ;
+        const queryParams = new URLSearchParams();
+        queryParams.append('workspaceId', body.workspaceId || '0' );
+        queryParams.append('channelId', body.channelId);
         const headers = { 'x-session-token': header.token };
-        const response = await axios.get(baseUrl, { headers: headers });
+        const response = await axios[methodLowCase](`${baseUrl}?${queryParams.toString()}`, { headers: headers });
         if (!response.data || !response.data.data || !response.data.data.channel) {
             return {
                 ok: false,

@@ -1,28 +1,26 @@
 import axios from 'axios';
 
-export async function addMessageReaction(
+export async function addDmMessageReaction(
   method, path,header, body
 ) {
   if (!header.token) {
-    return { ok: false, response: 'Token not found to add message reaction'}
+    return { ok: false, response: 'Token not found to add dm message reaction'}
   }
   try {
-    const baseUrl = `${globalThis.urls}${path}` || `${globalThis.urls}/Message/AddMessageReaction` ;
+    const baseUrl = `${globalThis.urls}${path}` || `${globalThis.urls}/Message/AddDMMessageReaction` ;
     const methodLowCase =  method.toLowerCase() || 'post' ;
     const payload = {
-      workspaceId: body.workspaceId || '0',
-      channelId: body.channelId,
+      userId: body.userId,
       messageId: body.messageId,
       emoji: body.emoji,
     }
-
     const headers = { 'x-session-token': header.token };
 
     const response = await axios[methodLowCase](baseUrl, payload, { headers: headers });
     if (!response.data || !response.data.data || !response.data.data.message) {
       return {
         ok: false,
-        response: 'Invalid data add message reaction returned from API',
+        response: 'Invalid data add dm message reaction returned from API',
       };
     } else {
       return { response: response.data };

@@ -1,28 +1,20 @@
 import axios from 'axios';
-
-export async function deleteMessagesForEveryone(method, path, header, body) {
+export async function deleteAllMessagesOnlyMe(method, path, header, body) {
   if (!header.token) {
-    return { ok: false, response: 'Token not found to delete messages for everyone' };
+    return { error: 'Token not found to delete all messages only me' };
   }
   try {
-    const baseUrl = `${globalThis.urls}${path}` || `${globalThis.urls}/Message/DeleteMessagesForEveryone` ;
+    const baseUrl = `${globalThis.urls}${path}` || `${globalThis.urls}/Message/DeleteAllMessagesOnlyMe` ;
     const methodLowCase =  method.toLowerCase() || 'delete' ;
     const queryParams = new URLSearchParams();
     queryParams.append('workspaceId', body.workspaceId || '0' );
     queryParams.append('channelId', body.channelId);
-    if(Array.isArray(body.messageId)){
-      body.messageIds.forEach(messageId => {
-        queryParams.append('messageIds[]', messageId);
-      });
-    }else{
-      queryParams.append('messageIds[]', body.messageId);
-    }
     const headers = { 'x-session-token': header.token };
     const response = await axios[methodLowCase](`${baseUrl}?${queryParams.toString()}`, { headers: headers });
     if (!response.data) {
       return {
         ok: false,
-        response: 'Invalid data send message returned from API',
+        response: 'Invalid data delete all message only me returned from API',
       };
     } else {
       return { response: response.data };

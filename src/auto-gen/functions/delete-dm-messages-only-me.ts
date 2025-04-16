@@ -1,15 +1,14 @@
 import axios from 'axios';
 
-export async function deleteMessagesForEveryone(method, path, header, body) {
+export async function deleteDmMessagesOnlyMe(method, path,header, body) {
   if (!header.token) {
-    return { ok: false, response: 'Token not found to delete messages for everyone' };
+    return { ok: false, response: 'Token not found to delete dm messages only me' };
   }
   try {
-    const baseUrl = `${globalThis.urls}${path}` || `${globalThis.urls}/Message/DeleteMessagesForEveryone` ;
+    const baseUrl = `${globalThis.urls}${path}` || `${globalThis.urls}/Message/DeleteDMMessagesOnlyMe` ;
     const methodLowCase =  method.toLowerCase() || 'delete' ;
     const queryParams = new URLSearchParams();
-    queryParams.append('workspaceId', body.workspaceId || '0' );
-    queryParams.append('channelId', body.channelId);
+    queryParams.append('userId', body.userId);
     if(Array.isArray(body.messageId)){
       body.messageIds.forEach(messageId => {
         queryParams.append('messageIds[]', messageId);
@@ -22,7 +21,7 @@ export async function deleteMessagesForEveryone(method, path, header, body) {
     if (!response.data) {
       return {
         ok: false,
-        response: 'Invalid data send message returned from API',
+        response: 'Invalid data delete dm message returned from API',
       };
     } else {
       return { response: response.data };

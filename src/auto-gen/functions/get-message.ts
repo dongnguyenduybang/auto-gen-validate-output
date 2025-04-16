@@ -1,24 +1,32 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+/* eslint-disable prettier/prettier */
 import axios from 'axios';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export async function getMessage(header, body) {
-  try {
-    // if (!header.token) {
-    //   return { error: 'Token not found to create channel' };
-    // }
-    // const baseUrl = `${globalThis.urls}/MessageView/GetMessage?workspaceId=0&channelId=${channelId}&messageId=${messageId}`;
-    // const header = { 'x-session-token': header.token };
-    // const response = await axios.get(baseUrl, { headers: header });
-    // if (!response.data || !response.data.data || !response.data.data.message) {
-    //   return { error: 'Invalid data get message returned from API' };
-    // } else {
-    //   const content = response?.data?.data?.message?.content || [];
-    //   const ref = response?.data?.data?.message?.ref || [];
-    //   globalThis.globalVar.set('content', content);
-    //   globalThis.globalVar.set('ref', ref);
-    //   return { ok: true, result: response.data };
-    // }
-  } catch (error) {
-    return { ok: false, result: error.response.data.error.details };
-  }
+export async function getMessage(method, path, header, body) {
+    if (!header.token) {
+        return { ok: false, response:  'Token not found to get message' };
+    }
+    try {
+        const baseUrl = `${globalThis.urls}${path}` || `${globalThis.urls}/MessageView/GetMessage` ;
+        const methodLowCase =  method.toLowerCase() || 'get' ;
+        const queryParams = new URLSearchParams();
+        queryParams.append('messageId', body.messageId);
+        queryParams.append('channelId', body.channelId);
+        const headers = { 'x-session-token': header.token };
+        const response = await axios[methodLowCase](`${baseUrl}?${queryParams.toString()}`, { headers: headers });
+        if (!response.data || !response.data.data || !response.data.data.message) {
+            return {
+                ok: false,
+                response: 'Invalid data get message returned from API',
+            };
+        } else {
+            return { response: response.data };
+        }
+    } catch (error) {
+        return {
+            ok: false,
+            response:
+                error?.response?.data?.error?.details ||
+                error?.response?.data ||
+                'Unauthorized request',
+        };
+    }
 }
