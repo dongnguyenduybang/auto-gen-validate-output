@@ -22,19 +22,5 @@
         }
     ],
     "afterAll": [
-        {
-            "action": "deleteChannel",
-            "header": { "token": "{{token}}"},
-            "body": {
-                "channelId": "{{channelId}}"
-            }
-        },
-        {
-            "action": "deleteMockedUsers",
-            "body": {
-                "prefix": "testmock"
-            },
-            "header": { "token": "{{token}}" }
-        }
     ]
 }

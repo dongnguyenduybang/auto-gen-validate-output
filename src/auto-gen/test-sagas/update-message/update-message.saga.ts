@@ -167,7 +167,7 @@ export const UpdateMessageSaga = {
     },
     {
       action: 'deleteMessagesForEveryone',
-      body: { channelId: '{{channelId}}', messageId: '{{messageId1}}' },
+      body: { channelId: '{{channelId}}', messageId: ['{{messageId1}}', '{{messageId}}'] },
       header: { token: '{{token}}' },
       expect: {
         ok: { operator: Operator.EQUAL, expect: true },

@@ -33,14 +33,6 @@
         }
     ],
     "afterAll": [
-        {
-            "action": "deleteMockedUsers",
-            "body": {
-                "prefix": "testfaker"
-            },
-            "header": {
-                "token": "{{token}}"
-            }
-        }
+     
     ]
 }

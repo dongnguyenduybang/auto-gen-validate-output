@@ -67,13 +67,5 @@ export const SendDmMessageSaga = {
         },
       },
     },
-    {
-      action: 'deleteDmMessagesForEveryone',
-      body: { messageId: '{{messageId}}', userId: '{{userId1}}' },
-      header: { token: '{{token}}'},
-      expect: {
-        ok: { operator: Operator.EQUAL, expect: true },
-      },
-    },
   ],
 };

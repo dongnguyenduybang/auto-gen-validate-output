@@ -150,13 +150,5 @@ export const SendMessageSaga = {
         ok: { operator: Operator.EQUAL, expect: true },
       },
     },
-    {
-      action: 'deleteMessagesForEveryone',
-      body: { channelId: '{{channelId}}', messageId: '{{messageId1}}' },
-      header: { token: '{{token}}' },
-      expect: {
-        ok: { operator: Operator.EQUAL, expect: true },
-      },
-    },
   ],
 };
