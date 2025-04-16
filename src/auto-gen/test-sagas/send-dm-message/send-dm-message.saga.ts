@@ -13,6 +13,7 @@ export const SendDmMessageSaga = {
       body: {
         userId: '{{userId1}}',
         content: 'user send message',
+        ref: 'aa'
       },
       header: { token: '{{token}}' },
       expect: {
@@ -59,7 +60,7 @@ export const SendDmMessageSaga = {
               field: 'participantIds',
               operator: Operator.INCLUDE,
               element: Element.ALL,
-              expect: ['{{userId}}', '{{userId1}}']
+              expect: ['{{userId1}}', '{{userIdaa}}']
             }
           ],
           channelMetadata: [

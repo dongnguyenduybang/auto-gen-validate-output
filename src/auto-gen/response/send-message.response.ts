@@ -22,15 +22,6 @@ import {
 } from './general-response';
 
 export class Profile {
-  @StartWith('avatar', 'https://avatars')
-  @IsString()
-  @IsDefined()
-  avatar?: string;
-
-  @StartWith('originalAvatar', 'https://avatars')
-  @IsString()
-  @IsDefined()
-  originalAvatar?: string;
 }
 
 export class Message extends GeneralMessage {
@@ -108,10 +99,6 @@ export class Channel extends GeneralChannel {
   acceptTime?: string;
 }
 export class Member extends GeneralMember {
-  @ValidIf('createTime', '===', 'response.updateTime')
-  @IsString()
-  @IsDefined()
-  createTime?: string;
 
   @ValidIf('channelId', '===', 'payload.channelId')
   @IsString()

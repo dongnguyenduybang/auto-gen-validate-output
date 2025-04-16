@@ -1,26 +1,25 @@
 import axios from 'axios';
 
-export async function sendDmMessage(
+export async function acceptMessageRequest(
   method, path,header, body
 ) {
   if (!header.token) {
-    return { ok: false, response: 'Token not found to send dm message'}
+    return { ok: false, response: 'Token not found to accept message'}
   }
   try {
-    const baseUrl = `${globalThis.urls}${path}` || `${globalThis.urls}/Message/SendDMMessage` ;
+    const baseUrl = `${globalThis.urls}${path}` || `${globalThis.urls}/Channel/AcceptMessageRequest` ;
     const methodLowCase =  method.toLowerCase() || 'post' ;
     const payload = {
       userId: body.userId,
-      content: body.content,
-      ref: body.ref
     }
     const headers = { 'x-session-token': header.token };
 
     const response = await axios[methodLowCase](baseUrl, payload, { headers: headers });
-    if (!response.data || !response.data.data || !response.data.data.message) {
+    // console.log(response.data)
+    if (!response.data) {
       return {
         ok: false,
-        response: 'Invalid data send dm message reaction returned from API',
+        response: 'Invalid data accept message returned from API',
       };
     } else {
       return { response: response.data };

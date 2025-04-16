@@ -13,6 +13,7 @@ import { AcceptInvitationResponse } from '../response/accept-invitation';
 import { BaseResponse } from '../response/general-response';
 import { SendDmMessageResponse } from '../response/send-dm-message.response';
 import { UpdateMessageResponse } from '../response/update-message.response';
+import { getApiFunctions } from '../functions/apiRegistry';
 
 interface Step {
     action: string;
@@ -68,14 +69,23 @@ async function executeStep(
         const resolvedBody = resolveVariables(body, context);
         const resolvedHeader = resolveVariables(header, context);
         //goi API function
-        const apiFunction = getApiFunction(action, context);
-        const response = await apiFunction(method, path, resolvedHeader, resolvedBody);
-        if (response.ok === false) {
+        // const apiFunction = getApiFunction(action, context);
+        // const response = await apiFunction(method, path, resolvedHeader, resolvedBody);
+        const apiFunction = getApiFunctions(action, context);
+
+        // Execute API call
+        const response = await apiFunction({
+            method,
+            path,
+            headers: resolvedHeader,
+            body: resolvedBody
+        });
+        if (response.data.ok === false) {
             return {
                 type: 'request',
-                status: response.ok,
+                status: response.data.ok,
                 stepName: `${step.action}`,
-                error: JSON.stringify(response.response)
+                error: JSON.stringify(response.data.error.details)
             }
         }
 
@@ -84,7 +94,7 @@ async function executeStep(
         const ResponseClass = responseClassMap[stepName as keyof typeof responseClassMap];
         const validatedResponse = plainToClass(
             ResponseClass as ClassConstructor<BaseResponse>,
-            response.response
+            response.data
         );
         const result = await validateResponses(resolvedBody, validatedResponse, context);
         if (result.length > 0) {
@@ -95,15 +105,14 @@ async function executeStep(
                 error: JSON.stringify(result)
             };
         }
-
-        const extractedData = extractData(action, response, context);
+        const extractedData = extractData(action, response.data, context);
         context.mergeData(extractedData);
 
         //validate logic
         if (expectConfig) {
             const validator = createApiValidator(context);
             const resolvedExpect = resolveExpectConfig(expectConfig, context);
-            const errors = validator.validate(response.response, resolvedExpect);
+            const errors = validator.validate(response.data, resolvedExpect);
             if (errors.length > 0) {
                 return {
                     type: 'logic',
@@ -172,21 +181,26 @@ function extractData(
     try {
         switch (action) {
             case 'mockUser':
-                return extractMockUserData(response.response);
+                return extractMockUserData(response);
             case 'createChannel':
-                return extractCreateChannel(response.response, context);
+                return extractCreateChannel(response, context);
             case 'getChannel':
-                return extractGetChannel(response.response, context);
+                return extractGetChannel(response, context);
             case 'acceptInvitation':
-                return extractAcceptInvitation(response.response, context);
+                return extractAcceptInvitation(response, context);
             case 'sendMessage':
-                return extractMessageData(response.response);
+                return extractMessageData(response);
             case 'updateMessage':
-                return extractUpdateMessageData(response.response);
+                return extractUpdateMessageData(response);
             case 'sendDmMessage':
-                return extractDmMessageData(response.response);
+                return extractDmMessageData(response);
+
+            case 'acceptMessageRequest':
+                return extractAcceptMessageData(response);
+            case 'rejectMessageRequest':
+                return extractEjectMessageData(response);
             default:
-                return flattenObject(response.response);
+                return flattenObject(response);
         }
     } catch (error) {
         console.error(`Error extracting data for ${action}:`, error);
@@ -302,6 +316,29 @@ export function extractDmMessageData(response: SendDmMessageResponse): Record<st
     return data;
 }
 
+export function extractAcceptMessageData(response): Record<string, any> {
+    const data: Record<string, any> = {};
+    if (!response?.data) return data;
+
+    const { channel } = response.data;
+    if (channel) {
+        data.name = channel.name;
+    }
+
+    return data;
+}
+
+export function extractEjectMessageData(response): Record<string, any> {
+    const data: Record<string, any> = {};
+    if (!response?.data) return data;
+
+    const { channel } = response.data;
+    if (channel) {
+        data.name = channel.name;
+    }
+
+    return data;
+}
 function flattenObject(
     obj: Record<string, any>,
     prefix = '',

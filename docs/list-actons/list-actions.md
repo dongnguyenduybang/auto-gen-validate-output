@@ -2,6 +2,7 @@
 ## List Action
 
 - [acceptInvitation](#acceptInvitation)
+- [acceptMessageRequest](#acceptMessageRequest)
 - [addMessageReaction](#addMessageReaction)
 - [addDMMessageReaction](#addDMMessageReaction)
 - [createChannel](#createChannel)
@@ -22,6 +23,7 @@
 - [markDMAsRead](#markDMAsRead)
 - [mockChannel](#mockChannel)
 - [mockUser](#mockUser)
+- [rejectMessageRequest](#rejectMessageRequest)
 - [reportMessage](#reportMessage)
 - [sendDMMessage](#sendDMMessage)
 - [sendInvitation](#sendInvitation)
@@ -40,6 +42,15 @@
         header: { token: '{{token1}}' },
   }
 ```
+#### acceptMessageRequest
+``` 
+  {
+        action: 'acceptMessageRequest',
+        body: {   "userId": '{{userId}}'},
+        header: { token: '{{token1}}' },
+  }
+```
+
 
 #### addDMMessageReaction
 ``` 
@@ -240,6 +251,16 @@
 ``` 
   {
         action: 'mockUser',
+  }
+```
+#### rejectMessageRequest
+``` 
+  {
+        action: 'rejectMessageRequest',
+        body: { 
+          userId: '{{userId}}',
+        },
+        header: { token: '{{token1}}' },
   }
 ```
 #### reportMessage

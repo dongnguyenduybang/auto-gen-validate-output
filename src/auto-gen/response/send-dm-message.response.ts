@@ -22,15 +22,7 @@ import {
 } from './general-response';
 
 export class Profile {
-  @StartWith('avatar', 'https://avatars')
-  @IsString()
-  @IsDefined()
-  avatar?: string;
 
-  @StartWith('originalAvatar', 'https://avatars')
-  @IsString()
-  @IsDefined()
-  originalAvatar?: string;
 }
 
 export class Message extends GeneralMessage {

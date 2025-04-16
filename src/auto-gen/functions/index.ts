@@ -1,4 +1,5 @@
 export * from './accept-link-invitation';
+export * from './accept-message-request';
 export * from './add-dm-message-reaction';
 export * from './add-message-reaction';
 export * from './create-channel';
@@ -20,6 +21,7 @@ export * from './mark-as-read';
 export * from './mark-dm-as-read';
 export * from './mock-channel';
 export * from './mock-user';
+export * from './reject-message-request';
 export * from './report-message';
 export * from './send-dm-message';
 export * from './send-invitation';

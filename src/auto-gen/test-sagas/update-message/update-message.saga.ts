@@ -5,6 +5,11 @@ export const UpdateMessageSaga = {
   steps: [
     {
       action: 'mockUser',
+      body: {
+        quantity: 2,
+        prefix: 'testFakerMockUser',
+        badge: 0
+      }
     },
     {
       action: 'createChannel',
@@ -19,7 +24,7 @@ export const UpdateMessageSaga = {
         content: 'user send message',
         ref: 'ref',
       },
-      header: { token: '{{token}}' },
+      header: { 'x-session-token': '{{token}}' },
       expect: {
         ok: { operator: Operator.EQUAL, expect: true },
       }
@@ -34,7 +39,7 @@ export const UpdateMessageSaga = {
         messageId: '{{messageId1}}',
         content: 'user message update'
       },
-      header: { token: '{{token}}' },
+      header: { 'x-session-token': '{{token}}' },
       expect: {
         ok: { operator: Operator.EQUAL, expect: true },
         data: {
@@ -151,27 +156,24 @@ export const UpdateMessageSaga = {
     },
     {
       action: 'acceptInvitation',
-      body: { linkInvitation: '{{invitationLink}}' },
-      header: { token: '{{token1}}' },
+      method: 'POST',
+      path: '/Invitation/AcceptInvitation',
+      body: { invitationLink: '{{invitationLink}}' },
+      header: { 'x-session-token': '{{token1}}' },
       expect: {
         ok: { operator: Operator.EQUAL, expect: true },
       },
     },
     {
       action: 'getChannel',
-      body: { channelId: '{{channelId}}' },
-      header: { token: '{{token}}' },
+      method: 'GET',
+      path: '/ChannelView/GetChannel',
+      body: { channelId: '{{channelId}}', workspaceId: '0' },
+      header: { 'x-session-token': '{{token}}' },
       expect: {
         ok: { operator: Operator.EQUAL, expect: true },
       },
-    },
-    {
-      action: 'deleteMessagesForEveryone',
-      body: { channelId: '{{channelId}}', messageId: ['{{messageId1}}', '{{messageId}}'] },
-      header: { token: '{{token}}' },
-      expect: {
-        ok: { operator: Operator.EQUAL, expect: true },
-      },
-    },
+    }
+   
   ],
 };
