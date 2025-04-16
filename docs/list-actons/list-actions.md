@@ -3,16 +3,31 @@
 
 - [acceptInvitation](#acceptInvitation)
 - [addMessageReaction](#addMessageReaction)
+- [addDMMessageReaction](#addDMMessageReaction)
 - [createChannel](#createChannel)
+- [deleteAllDMMessageForEveryone](#deleteAllDMMessageForEveryone)
+- [deleteAllDMMessageOnlyMe](#deleteAllDMMessageOnlyMe)
+- [deleteAllMessageOnlyMe](#deleteAllMessageOnlyMe)
+- [deleteChannel](#deleteChannel)
+- [deleteDMMessageForEveryone](#deleteDMMessageForEveryone)
+- [deleteDMMessageOnlyMe](#deleteDMMessageOnlyMe)
+- [deleteMessagesForEveryone](#deleteMessagesForEveryone)
+- [deleteMessagesOnlyMe](#deleteMessagesOnlyMe)
+- [deleteMockUser](#deleteMockUser)
 - [getChannel](#getChannel)
 - [getMessage](#getMessage)
 - [getStickerCollection](#getStickerCollection)
 - [getSticker](#getSticker)
-- [getListMessages](#getListMessages)
+- [markAsRead](#markAsRead)
+- [markDMAsRead](#markDMAsRead)
 - [mockChannel](#mockChannel)
 - [mockUser](#mockUser)
+- [reportMessage](#reportMessage)
+- [sendDMMessage](#sendDMMessage)
 - [sendInvitation](#sendInvitation)
+- [sendMessageSticker](#sendMessageSticker)
 - [sendMessage](#sendMessage)
+- [updateMessage](#updateMessage)
 - ...
 
 ### Action Detail
@@ -20,8 +35,21 @@
 #### acceptInvitation
 ``` 
   {
-        action: 'getChannel',
-        body: { channelId: '{{channelId}}'},
+        action: 'acceptInvitation',
+        body: {   "invitationLink": '{{inviteLink}}'},
+        header: { token: '{{token1}}' },
+  }
+```
+
+#### addDMMessageReaction
+``` 
+  {
+        action: 'addDmMessageReaction',
+        body: {
+            "userId": "{{userId1}}",
+            "messageId": "{{messageId1}}",
+            "emoji": "🚀"
+        },
         header: { token: '{{token}}' },
   }
 ```
@@ -30,19 +58,124 @@
 ``` 
   {
         action: 'addMessageReaction',
-        body: { channelId: '{{channelId}}'},
+        body: {
+            "workspaceId": "0",
+            "messageId": "{{messageId1}}",
+            "emoji": "🚀"
+        },
         header: { token: '{{token}}' },
   }
 ```
 
 #### createChannel
-- Create channel mặc định lấy token đầu tiên
 ``` 
   {
         action: 'createChannel',
   }
 ```
 
+#### deleteAllDMMessageForEveryone
+``` 
+  {
+        action: 'deleteAllDmMessageForEveryone',
+        body: { userId: '{{userId1}}'},
+        header: { token: '{{token}}' },
+  }
+```
+
+#### deleteAllDmMessageOnlyMe
+``` 
+  {
+        action: 'deleteAllDmMessageOnlyMe',
+        body: { userId: '{{userId1}}'},
+        header: { token: '{{token}}' },
+  }
+```
+
+#### deleteAllMessageOnlyMe
+``` 
+  {
+        action: 'deleteAllMessageOnlyMe',
+        body: { 
+          workspaceId: '0',
+          channelId: '{{channelId}}'
+        },
+        header: { token: '{{token}}' },
+  }
+```
+
+#### deleteChannel
+``` 
+  {
+        action: 'deleteChannel',
+        body: { 
+          workspaceId: '0',
+          channelId: '{{channelId}}'
+        },
+        header: { token: '{{token}}' },
+  }
+```
+
+#### deleteDMMessageForEveryone
+``` 
+  {
+        action: 'deleteDmMessageForEveryone',
+        body: { 
+          userId: '{{userId1}}'
+          messageId: '{{messageId1}}'
+        },
+        header: { token: '{{token}}' },
+  }
+```
+
+#### deleteDmMessageOnlyMe
+``` 
+  {
+        action: 'deleteDmMessageOnlyMe',
+        body: { 
+          userId: '{{userId1}}'
+          messageId: '{{messageId1}}'
+        },
+        header: { token: '{{token}}' },
+  }
+```
+
+#### deleteMessagesForEveryone
+``` 
+  {
+        action: 'deleteMessagesForEveryone',
+        body: { 
+          workspaceId: '0',
+          channelId: '{{channelId}}'
+          messageId: '{{messageId1}}'
+        },
+        header: { token: '{{token}}' },
+  }
+```
+
+#### deleteMessagesOnlyMe
+``` 
+  {
+        action: 'deleteMessagesOnlyMe',
+        body: { 
+          workspaceId: '0',
+          channelId: '{{channelId}}'
+          messageId: '{{messageId1}}'
+        },
+        header: { token: '{{token}}' },
+  }
+```
+#### deleteMockUser
+``` 
+  {
+        action: 'deleteMockUser',
+        body: { 
+          workspaceId: '0',
+          prefix: 'abcdef'
+        },
+        header: { token: '{{token}}' },
+  }
+```
 #### getChannel
 ``` 
   {
@@ -51,16 +184,19 @@
         header: { token: '{{token}}' },
   }
 ```
-
 #### getMessage
 ``` 
   {
         action: 'getMessage',
-        body: { messageId: '{{messageId}}'},
+        body: {
+          workspaceId: '0',
+          channelId: '{{channelId}}'
+          messageId: '{{messageId1}}'
+           
+        },
         header: { token: '{{token}}' },
   }
 ```
-
 #### getStickerCollection
 ``` 
   {
@@ -69,57 +205,117 @@
         header: { token: '{{token}}' },
   }
 ```
-
 #### getSticker
 ``` 
   {
-        action: 'stickerId',
+        action: 'getSticker',
         body: { stickerId: '{{stickerId}}'},
         header: { token: '{{token}}' },
   }
 ```
-
-#### getListMessages
+#### markAsRead
 ``` 
   {
-        action: 'getListMessages',
-        body: { channelId: '{{channelId}}'},
+        action: 'markAsRead',
+        body: { 
+          workspaceId: '0',
+          channelId: '{{channelId}}',
+          messageId: '{{messageId1}},
+        },
         header: { token: '{{token}}' },
   }
 ```
-
-#### mockChannel
+#### markDMAsRead
 ``` 
   {
-        action: 'mockChannel',
+        action: 'markDMAsRead',
+        body: { 
+          userId: '{{userId1}}',
+          messageId: '{{messageId1}},
+        },
+        header: { token: '{{token}}' },
   }
 ```
-
 #### mockUser
-- Prefix mặc định sẽ là: testfaker
-- Quantity mặc định sẽ là: 2
 ``` 
   {
         action: 'mockUser',
-        body: { quantity: 2 },
   }
 ```
-
+#### reportMessage
+``` 
+  {
+        action: 'reportMessage',
+        body: { 
+          workspaceId: '0',
+          channelId: '{{channelId}}',
+          messageId: '{{messageId1}}',
+          reportCategory: 1,
+          pretendingTo: 1,
+          reportReason: 'reportReason'
+        },
+        header: { token: '{{token}}' },
+  }
+```
+#### sendDMMessage
+``` 
+  {
+        action: 'sendDMMessage',
+        body: { 
+          userId: '{{userId1}}',
+          content: 'content'
+        },
+        header: { token: '{{token}}' },
+  }
+```
 #### sendInvitation
 ``` 
   {
         action: 'sendInvitation',
-        body: { invitationLink: '{{inviteLink}}', userIds: "['{{userId1}}','{{userId2}}']" }
+        body: { 
+          invitationLink: '{{inviteLink}}'
+          userIds: '{{userId1}}'
+        },
+        header: { token: '{{token}}' },
   }
 ```
-
+#### sendMessageSticker
+``` 
+  {
+        action: 'sendMessageSticker',
+        body: { 
+          workspaceId: '0',
+          channelId: '{{channelId}}',
+          stickerId: '{{stickerId}}',
+          
+        },
+        header: { token: '{{token}}' },
+  }
+```
 #### sendMessage
 ``` 
   {
         action: 'sendMessage',
-        body: { channelId: '{{channelId}}', content: 'aaaaa' },
+        body: { 
+          workspaceId: '0',
+          channelId: '{{channelId}}',
+          content: 'content',
+          
+        },
         header: { token: '{{token}}' },
   }
 ```
-
-
+#### updateMessage
+``` 
+  {
+        action: 'updateMessage',
+        body: { 
+          workspaceId: '0',
+          channelId: '{{channelId}}',
+          messageId: '{{messageId1}}'
+          content: 'content',
+          
+        },
+        header: { token: '{{token}}' },
+  }
+```
