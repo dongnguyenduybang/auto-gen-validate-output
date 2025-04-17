@@ -20,190 +20,172 @@ import { Operator } from "../../enums/operator.enum";
 import { Element } from "../../enums/element.enum";
 
 export const SendMessageSaga = {
-    steps: [
-        {
-            action: 'mockUser',
+  steps: [
+    {
+      action: 'mockUser',
+      body: {
+        quantity: 2,
+        prefix: 'testabcssd',
+        badge: 0
+      }
+    },
+    {
+      action: 'createChannel',
+    },
+    {
+      action: 'sendMessage',
+      method: METHOD.POST,
+      path: APIPath.Message.SendMessage,
+      body: {
+        workspaceId: '0',
+        channelId: VAR.channelId,
+        content: 'user send message',
+        ref: 'ref',
+      },
+      header: HeaderList.Token(),
+      expect: {
+        ok: { operator: Operator.EQUAL, expect: true },
+        data: {
+          message: {
+            workspaceId: { operator: Operator.EQUAL, expect: 0 },
+            channelId: { operator: Operator.EQUAL, expect: VAR.channelId },
+            userId: { operator: Operator.EQUAL, expect: VAR.userId },
+            content: { operator: Operator.EQUAL, expect: 'user send message' },
+            messageType: { operator: Operator.EQUAL, expect: 0 },
+            messageStatus: { operator: Operator.EQUAL, expect: 1 },
+            attachmentType: { operator: Operator.EQUAL, expect: 0 },
+          },
         },
-        {
-            action: 'createChannel',
-        },
-        {
-            action: 'sendMessage',
-            method: "POST",
-            path: "/Message/SendMessage",
-            body: {
-                "workspaceId": '0',
-                "channelId": '{{channelId}}',
-                "content": 'user send message',
-                "ref": "ref"
+        includes: {
+          users: [
+            {
+              field: 'userId',
+              operator: Operator.INCLUDE,
+              element: Element.FIRST,
+              expect: [VAR.userId],
             },
-            header: { "token": '{{token}}' },
-            expect: {
-                ok: { operator: Operator.EQUAL, expect: true },
-                data: {
-                    message: {
-                        workspaceId: { operator: Operator.EQUAL, expect: 0 },
-                        channelId: { operator: Operator.EQUAL, expect: '{{channelId}}' },
-                        userId: { operator: Operator.EQUAL, expect: '{{userId}}' },
-                        content: { operator: Operator.EQUAL, expect: 'user send message' },
-                        messageType: { operator: Operator.EQUAL, expect: 0 },
-                        messageStatus: { operator: Operator.EQUAL, expect: 1 },
-                        attachmentType: { operator: Operator.EQUAL, expect: 0 },
-                    }
-                },
-                includes: {
-                    users: [
-                        {
-                            field: 'userId',
-                            operator: Operator.INCLUDE,
-                            element: Element.FIRST,
-                            expect: ['{{userId}}']
-                        },
-                        {
-                            field: 'userType',
-                            operator: Operator.INCLUDE,
-                            element: Element.FIRST,
-                            expect: 0
-                        },
-                        {
-                            field: 'profile.userBadgeType',
-                            operator: Operator.EQUAL,
-                            expect: 0
-                        }
-                    ],
-                    channel: [
-                        {
-                            field: 'workspaceId',
-                            operator: Operator.EQUAL,
-                            element: Element.FIRST,
-                            expect: 0
-                        },
-                        {
-                            field: 'channelId',
-                            operator: Operator.EQUAL,
-                            element: Element.FIRST,
-                            expect: ['{{channelId}}']
-                        },
-                        {
-                            field: 'userId',
-                            operator: Operator.EQUAL,
-                            element: Element.FIRST,
-                            expect: ['{{userId}}']
-                        },
-                        {
-                            field: 'totalMembers',
-                            operator: Operator.EQUAL,
-                            element: Element.FIRST,
-                            expect: ['{{totalMembers}}']
-                        },
-                        {
-                            field: 'name',
-                            operator: Operator.EQUAL,
-                            element: Element.FIRST,
-                            expect: ['{{name}}']
-                        }
-                    ],
-                    members: [
-                        {
-                            field: 'workspaceId',
-                            operator: Operator.INCLUDE,
-                            element: Element.ALL,
-                            expect: 0
-                        },
-                        {
-                            field: 'channelId',
-                            operator: Operator.INCLUDE,
-                            element: Element.ALL,
-                            expect: ['{{channelId}}']
-                        },
-                        {
-                            field: 'userId',
-                            operator: Operator.INCLUDE,
-                            element: Element.FIRST,
-                            expect: ['{{userId}}']
-                        },
-                        {
-                            field: 'role',
-                            operator: Operator.INCLUDE,
-                            element: Element.FIRST,
-                            expect: ['owner']
-                        },
-                        {
-                            field: 'roles.role',
-                            operator: Operator.INCLUDE,
-                            element: Element.FIRST,
-                            expect: ['owner']
-                        }
-                    ],
-                    channelMetadata: [
-                        {
-                            field: 'lastMessageId',
-                            operator: Operator.INCLUDE,
-                            element: Element.FIRST,
-                            expect: ['{{lastMessageId}}'] 
-                        },
-                        {
-                            field: 'workspaceId',
-                            operator: Operator.INCLUDE,
-                            element: Element.ALL,
-                            expect: 0 
-                        },
-                        {
-                            field: 'channelId',
-                            operator: Operator.INCLUDE,
-                            element: Element.ALL,
-                            expect: ['{{channelId}}'] 
-                        }
-                    ]
-                }
-            }
+            {
+              field: 'userType',
+              operator: Operator.INCLUDE,
+              element: Element.FIRST,
+              expect: 0,
+            },
+            {
+              field: 'profile.userBadgeType',
+              operator: Operator.EQUAL,
+              expect: 0,
+            },
+          ],
+          channels: [
+            {
+              field: 'workspaceId',
+              operator: Operator.EQUAL,
+              element: Element.FIRST,
+              expect: 0,
+            },
+            {
+              field: 'channelId',
+              operator: Operator.EQUAL,
+              element: Element.FIRST,
+              expect: [VAR.channelId],
+            },
+            {
+              field: 'userId',
+              operator: Operator.EQUAL,
+              element: Element.FIRST,
+              expect: [VAR.userId],
+            },
+            {
+              field: 'totalMembers',
+              operator: Operator.EQUAL,
+              element: Element.FIRST,
+              expect: [VAR.totalMembers],
+            },
+            {
+              field: 'name',
+              operator: Operator.EQUAL,
+              element: Element.FIRST,
+              expect: [VAR.name],
+            },
+          ],
+          members: [
+            {
+              field: 'workspaceId',
+              operator: Operator.INCLUDE,
+              element: Element.ALL,
+              expect: 0,
+            },
+            {
+              field: 'channelId',
+              operator: Operator.INCLUDE,
+              element: Element.ALL,
+              expect: [VAR.channelId],
+            },
+            {
+              field: 'userId',
+              operator: Operator.INCLUDE,
+              element: Element.FIRST,
+              expect: [VAR.userId],
+            },
+            {
+              field: 'role',
+              operator: Operator.INCLUDE,
+              element: Element.FIRST,
+              expect: ['owner'],
+            },
+            {
+              field: 'roles.role',
+              operator: Operator.INCLUDE,
+              element: Element.ALL,
+              expect: ['everyone', 'owner'],
+            },
+          ],
+          channelMetadata: [
+            {
+              field: 'workspaceId',
+              operator: Operator.INCLUDE,
+              element: Element.ALL,
+              expect: 0,
+            },
+            {
+              field: 'channelId',
+              operator: Operator.INCLUDE,
+              element: Element.ALL,
+              expect: [VAR.channelId],
+            },
+          ],
         },
-        {
-            action: 'acceptInvitation',
-            body: { "linkInvitation": '{{invitationLink}}' },
-            header: { "token": '{{token1}}' },
-            expect: {
-                ok: { operator: Operator.EQUAL, expect: true },
-            }
-        },
-        {
-            action: 'getChannel',
-            body: { "channelId": '{{channelId}}' },
-            header: { "token": '{{token}}' },
-            expect: {
-                ok: { operator: Operator.EQUAL, expect: true },
-            }
-        },
-
-    ],
+      },
+    },
+    {
+      action: 'acceptInvitation',
+      method: METHOD.POST,
+      path: APIPath.Invitation.AcceptInvitation,
+      body: { invitationLink: VAR.invitationLink },
+      header: HeaderList.Token1(),
+      expect: {
+        ok: { operator: Operator.EQUAL, expect: true },
+      },
+    },
+    {
+      action: 'getChannel',
+      method: METHOD.GET,
+      path: APIPath.ViewChannel.GetChannel,
+      body: { channelId: VAR.channelId, workspaceId: '0' },
+      header: HeaderList.Token(),
+      expect: {
+        ok: { operator: Operator.EQUAL, expect: true },
+      },
+    },
+  ],
 };
 
 ```
 
 * Desc
-  + Mỗi một object trong mảng steps là 1 step 
-  ```
-    {
-        action: 'mockUser', 
-    },
-  ```
   * Note
     - Cần đặt tên action theo đúng với tên endpoint và theo kiểu CamelCase 
     
-
-  + Với step test chính sẽ có đầy đủ thành phần cần defined 
-  ```
-    action: 'sendMessage',
-            method: "POST",
-            path: "/Message/SendMessage",
-            body: {
-                "workspaceId": '0',
-                "channelId": '{{channelId}}',
-                "content": 'user send message',
-                "ref": "ref"
-            },
-            header: { "token": '{{token}}' },
-  ```
 + Phần expect của test chính sẽ có cấu trục giống như cấu trúc API trả về 
 
   + Cấu trúc của API
@@ -263,17 +245,17 @@ export const SendMessageSaga = {
 + Cấu trúc expect 
   - Đối với object
     ```
-     data: {
-        message: {
-          workspaceId: { operator: Operator.EQUAL, expect: 0 },
-          channelId: { operator: Operator.EQUAL, expect: '{{channelId}}' },
-          userId: { operator: Operator.EQUAL, expect: '{{userId}}' },
-          content: { operator: Operator.EQUAL, expect: 'user send message' },
-          messageType: { operator: Operator.EQUAL, expect: 0 },
-          messageStatus: { operator: Operator.EQUAL, expect: 1 },
-          attachmentType: { operator: Operator.EQUAL, expect: 0 },
-        }
-      },
+    data: {
+          message: {
+            workspaceId: { operator: Operator.EQUAL, expect: 0 },
+            channelId: { operator: Operator.EQUAL, expect: VAR.channelId },
+            userId: { operator: Operator.EQUAL, expect: VAR.userId },
+            content: { operator: Operator.EQUAL, expect: 'user send message' },
+            messageType: { operator: Operator.EQUAL, expect: 0 },
+            messageStatus: { operator: Operator.EQUAL, expect: 1 },
+            attachmentType: { operator: Operator.EQUAL, expect: 0 },
+          },
+        },
     ```
     Defined từng filed có trong object cần expect với cấu trúc expect như trên.
 
@@ -281,37 +263,34 @@ export const SendMessageSaga = {
       - operator: toán tử
       - expect: so sánh với giá trị ...
     
-    + Cần đặt đúng tên như các property trong API trả về </br>
-        workspaceIds => ❌, </br> 
-        workspaceId => ✅
+    + Cần đặt đúng tên như các property trong API trả về
     + Đối với object chỉ sử dụng toán tử EQUAL
     + Expect với string phải để trong dấu => 'abc'
     + Expect với number phải để kiểu => number
-    + Expect với biến cục bộ phải để trong dấu => '{{userId}}'
+    + Expect với biến cục bộ có enum VAR
 
   - Đối với array
     ```
     users: [
-      {
-        field: 'userId',
-        operator: Operator.INCLUDE,
-        element: Element.FIRST,
-        expect: ['{{userId}}']
-      },
-      {
-        field: 'userType',
-        operator: Operator.INCLUDE,
-        element: Element.FIRST,
-        expect: 0
-      },
-      {
-        field: 'profile.userBadgeType',
-        operator: Operator.EQUAL,
-        expect: 0
-      }
-    ],
+            {
+              field: 'userId',
+              operator: Operator.INCLUDE,
+              element: Element.FIRST,
+              expect: [VAR.userId],
+            },
+            {
+              field: 'userType',
+              operator: Operator.INCLUDE,
+              element: Element.FIRST,
+              expect: 0,
+            },
+            {
+              field: 'profile.userBadgeType',
+              operator: Operator.EQUAL,
+              expect: 0,
+            },
+          ],
     ```
-    Defined từng filed có trong array cần expect với cấu trúc expect như trên.
       * Note
         + Mỗi object được bao bên ngoài bởi một array được xác định là 1 filed của mảng con bên trong obj đó
           ```
@@ -319,12 +298,12 @@ export const SendMessageSaga = {
               field: 'userId',
               operator: Operator.INCLUDE,
               element: Element.FIRST,
-              expect: ['{{userId}}']
+              expect: [VAR.userId],
             },
           ``` 
           Đây được xác định là một filed có trong obj
           - field: Tên filed có trong obj
-          - operator: Đối với array có chỉ sử dụng operator là INCLUDE
+          - operator: Đối với array chỉ sử dụng operator là INCLUDE
           ```
           # Expect 
            {
@@ -353,12 +332,11 @@ export const SendMessageSaga = {
           - expect: 
             + String: được bao bên ngoài là dấu => ['abcde']
             + Number: phải là kiểu number => 0
-            + Var: phải để trong dấu => ['{{userId}}']
           
           * Note 2
-            - Có thể expect nhiều biến cục bộ => ['{{userId}}', '{{userId1}}']. Nhưng với điều kiện element bắt buộc là ALL và operator là INCLUDE
+            - Có thể expect nhiều biến cục bộ => [VAR.userId, VAR.userId1]. Nhưng với điều kiện element bắt buộc là ALL và operator là INCLUDE
             - Operator và Element là Enum
-            - Element cố thể undefined nếu không cần dùng chỉ áp dụng với đối với obj
+            - Element cố thể undefined nếu không cần dùng chỉ áp dụng với đối với check kiểu obj
 
 
 

@@ -11,38 +11,38 @@
 
 **📄 send-message.response.json  **   
 ```
-{
-    "method": "POST",
-    "path": "/Message/SendMessage",
-    "headers": {
-        "Content-Type": "application/json",
-        "x-session-token": "{{token}}",
-        "x-country-code": "VN"
+export const SendMessageResponse = {
+    method: METHOD.POST,
+    path: APIPath.Message.SendMessage,
+    headers: HeaderList.Token(),
+    body: {
+        channelId: VAR.channelId,
+        workspaceId: '0',
+        content: 'test response send message',
+        ref: 'ref'
     },
-    "body": {
-        "workspaceId": "0",
-        "channelId": "{{channelId}}",
-        "content": "test123123",
-        "ref": "ref"
-    },
-
-    "beforeAll": [
+    beforeAll: [
         {
-            "action": "mockUser"
+            action: "mockUser",
+            body: {
+                quantity: 2,
+                prefix: "testABACDD",
+                badge: 0
+            }
         },
         {
-            "action": "createChannel"
+            action: "createChannel"
         }
-    ]
-}
+    ],
+    afterAll: [],
+};
+
 ```
-+ **Method**: Định nghĩa phương thức (POST | PUT | DELETE | GET)
-+ **Path**: Đường dẫn Endpoint
++ **Method**: Định nghĩa phương thức (POST | PUT | DELETE | GET) type ENUM
++ **Path**: Đường dẫn Endpoint type ENUM
 + **Headers**: Định nghĩa các header
 + **Payload**: Định nghĩa body đầu vào
 + **beforeAll**: Định nghĩa các step chuẩn bị data trước khi test
-  - **action**: Định nghĩa tên hành động
-    - [List Action](#list-action)
 
 📄 send-message.response.ts
 
