@@ -21,38 +21,39 @@ function getAllFiles(dirPath: string): string[] {
 function pairFiles(
   files: string[],
 ): { dtoPath: string; requestPath: string; className: string }[] {
-  const fileMap: Record<string, { dtoPath?: string; requestPath?: string }> =
-    {};
+  const fileMap: Record<string, { dtoPath?: string; requestPath?: string }> = {};
   files.forEach((filePath) => {
     const fileName = path.basename(filePath, path.extname(filePath));
     if (filePath.endsWith('.dto.ts') || filePath.endsWith('.dto.js')) {
       const className = fileName.replace('.dto', '');
       fileMap[className] = fileMap[className] || {};
       fileMap[className].dtoPath = filePath;
-    } else if (filePath.endsWith('.request.json')) {
+    } else if (filePath.endsWith('.request.ts')) {
       const className = fileName.replace('.request', '');
       fileMap[className] = fileMap[className] || {};
       fileMap[className].requestPath = filePath;
     }
   });
-  return Object.entries(fileMap).map(
-    ([className, { dtoPath, requestPath }]) => ({
-      dtoPath,
-      requestPath,
-      className,
-    }),
-  );
+  return Object.entries(fileMap).map(([className, { dtoPath, requestPath }]) => ({
+    dtoPath,
+    requestPath,
+    className,
+  }));
 }
 
-function genTestCase(
+async function genTestCase(
   payloadPath: string,
   requestPath: string,
   className: string,
   outputDir: string,
 ) {
   const payloadData = readJsonFile(payloadPath);
-  const requestConfig = readJsonFile(requestPath);
-  const isDeleteMethod = requestConfig.method.toLowerCase() === 'delete';
+  const classNameCapitalized = className
+    .split('-')
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join('');
+  const requestModule = await import(requestPath);
+  const requestConfig = requestModule[`${classNameCapitalized}Request`];
 
   const specContent = `
     import fs from 'fs';
@@ -73,7 +74,7 @@ function genTestCase(
         let testNumber
         let failedStep = [];
         let testType
-        let resolvedData, pathRequest, methodRequest
+        let resolvedData, pathRequest, methodRequest, requestUrl
         let globalContext, resolvedHeader
         beforeAll( async () => {
           testType = 'request'
@@ -91,27 +92,18 @@ function genTestCase(
           resolvedHeader = resolveVariables(headerRequest, globalContext)
           pathRequest = ${JSON.stringify(requestConfig.path, null, 2)}
           methodRequest = ${JSON.stringify(requestConfig.method, null, 2)}
+          requestUrl = \`\${globalThis.url}\${pathRequest}\`
         })
 
         ${payloadData
-          .map(
-            (testCase: any, index: number) => `
+      .map(
+        (testCase: any, index: number) => `
            
             it('Test case #${index + 1} with expect errors  ${formatExpectErrors(testCase.expects)} ', async () => {
               testNumber = ${index + 1};
               totalTests++;
               const payloadObj = ${JSON.stringify(testCase.body)};
               resolvedData = resolveVariables(payloadObj,globalContext );
-              ${
-                isDeleteMethod
-                  ? `
-              const urlParams = new URLSearchParams(resolvedData).toString();
-              const requestUrl = \`\${globalThis.url}${requestConfig.path}?\${urlParams}\`;
-            `
-                  : `
-              const requestUrl = \`\${globalThis.url}${requestConfig.path}\`;
-            `
-              }
             try {
               const response = await axios.${requestConfig.method.toLowerCase()}(
                 requestUrl, 
@@ -122,90 +114,78 @@ function genTestCase(
                 }
               );
 
-             const data = response.data;
+            const data = response.data;
+            const expectJson =  ${JSON.stringify(testCase.expects)}.sort()
 
-              if(response.status === 201){
-                passedTests++;
-                passed201++;
-              }else if(response.status === 200){
-                passedTests++;
-                passed200++;
-              }else if(response.status === 400){
-                const expectJson =  ${JSON.stringify(testCase.expects)}.sort()
-                const expectDetails = Array.isArray(data?.error?.details)
-                  ? data.error.details
-                  : [];
-                const softExpectDetails = [...expectDetails].sort();
-                try {
-                  expect(data.ok).toEqual(false);
-                  expect(data.data).toEqual(null);
-                  expect(expectJson).toEqual(softExpectDetails);
-                  passedTests++
-                  codedTest.push({
-                    testcase: testNumber,
-                    code: 400,
-                    body: resolvedData,
-                  })
-                } catch (error) {
-                  const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
-                  failedTests.push({
-                    testcase: testNumber,
-                    code: 400,
-                    body: resolvedData,
-                    missing: missing || [],
-                    extra: extra || []
-                  })
-                  throw new Error(error);
-                }
-              }else if (response.status === 403) {
-                  const expectJson = ${JSON.stringify(testCase.expects)}.sort();
-                  let expectDetails = Array.isArray(response.data) ? response.data : [response.data];
-                  expectDetails = expectDetails.sort();
-                  try {
-                  expect(expectJson).toEqual(expectDetails);
-                  passedTests++
-                  codedTest.push({
-                    testcase: testNumber,
-                    code: 403,
-                    body: resolvedData,
-                  })
-                } catch (error) {
-                    const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: 403,
-                      body: resolvedData,
-                      missing: missing || [],
-                      extra: extra || []
-                    })
-                    throw new Error(error);
+            let expectDetails;
+                  let softExpectDetails;
+                  switch (response.status) {
+                    case 200:
+                      expectDetails = Array.isArray(data?.error?.details)
+                        ? data.error.details
+                        : [];
+                      softExpectDetails = [...expectDetails].sort();
+                      try {
+                        expect(data.ok).toEqual(true)
+                        expect(data.data).not.toEqual(undefined)
+                        expect(expectJson).toEqual(softExpectDetails)
+                        passedTests++
+                        codedTest.push({
+                          testcase: testNumber,
+                          code: 200,
+                          body: resolvedData,
+                        })
+                      } catch (error) {
+                        const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                        failedTests.push({
+                          testcase: testNumber,
+                          code: 200,
+                          body: resolvedData,
+                          missing: missing || [],
+                          extra: extra || []
+                        })
+                      }
+                      break;
+                    case 403:
+                      expectDetails = Array.isArray(data) ? data : [data]; // always array
+                      softExpectDetails = [...expectDetails].sort(); // optional sort if needed
+                      try {
+                        expect(expectJson).toEqual(softExpectDetails);
+                        passedTests++
+                        codedTest.push({
+                          testcase: testNumber,
+                          code: 403,
+                          body: resolvedData,
+                        })
+                      } catch (error) {
+                        const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                        failedTests.push({
+                          testcase: testNumber,
+                          code: 403,
+                          body: resolvedData,
+                          missing: missing || [],
+                          extra: extra || []
+                        })
+                      }
+                      break;
+            
+                    case 500:
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 500,
+                        errorDetails: expectJson,
+                      });
+            
+                      break;
+                    default:
+            
                   }
-                }else if (response.status === 404){
-                const errorMessage = data.error?.details;
-                failedTests.push({
-                  testcase:testNumber,
-                  code: 404,
-                  body: resolvedData,
-                  errorDetails: errorMessage,
-                });
-              }else if (response.status === 500){
-                const errorMessage = data.error?.details;
-                failedTests.push({
-                  testcase:testNumber,
-                  code: 500,
-                  errorDetails: errorMessage,
-                });
-                throw new Error(errorMessage);
-              } else {
-                console.log('unexpected:', data);
-                throw new Error(data);
-              }
             }catch (error){
               console.log(error)
             }
             });`,
-          )
-          .join('\n')}
+      )
+      .join('\n')}
 
       afterAll(async () => {
       const resultStep = await executeAllSteps(${JSON.stringify(requestConfig.afterAll)},globalContext)

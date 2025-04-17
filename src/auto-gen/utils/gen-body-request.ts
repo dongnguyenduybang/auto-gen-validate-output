@@ -3,9 +3,8 @@ import * as fs from 'fs';
 import { generateErrorCases } from './dto-helper';
 import { getAllFiles, groupFilesByName } from './helper';
 
-export function genBodyRequest(dtoName) {
+export async function genBodyRequest(dtoName) {
   const dtoFolderPath = path.join(__dirname, '../test-requests', dtoName);
-  console.log(dtoFolderPath);
   const outputDir = path.join(__dirname, '../test-requests', dtoName);
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
@@ -13,15 +12,13 @@ export function genBodyRequest(dtoName) {
   const files = getAllFiles(dtoFolderPath);
   const fileMap = groupFilesByName(files);
 
-  Object.entries(fileMap).forEach(([className, { dtoPath, requestPath }]) => {
+  for (const [className, { dtoPath, requestPath }] of Object.entries(fileMap)) {
     if (!dtoPath) {
       console.warn(`Missing .dto file for class: ${className}`);
-      return;
+      continue;
     }
-    console.log(requestPath);
 
     try {
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
       const dtoModule = require(dtoPath);
       const classNameCapitalized =
         className
@@ -36,12 +33,14 @@ export function genBodyRequest(dtoName) {
         !/^\s*class\s/.test(dtoClass.toString())
       ) {
         console.error(`Invalid DTO class in file: ${dtoPath}`);
-        return;
+        continue;
       }
-      const rawData = fs.readFileSync(requestPath, 'utf-8');
-      const requestData = JSON.parse(rawData);
-      const payload = requestData.payload;
+
+      const requestModule = await import(requestPath);
+      const requestData = requestModule.default || Object.values(requestModule)[0];
+      const payload = requestData.body;
       const result = generateErrorCases(dtoClass, payload);
+
       const testCasePayload = result.map(({ testcaseGen, expectedDetail }) => ({
         body: testcaseGen,
         expects: expectedDetail,
@@ -53,9 +52,9 @@ export function genBodyRequest(dtoName) {
         JSON.stringify(testCasePayload, null, 4),
         'utf-8',
       );
-      console.log(`Success: ${outputFilePath}`);
+      console.log(`✅ Success: ${outputFilePath}`);
     } catch (error) {
-      console.error(`Error processing class: ${className}`, error);
+      console.error(`❌ Error processing class: ${className}`, error);
     }
-  });
+  }
 }

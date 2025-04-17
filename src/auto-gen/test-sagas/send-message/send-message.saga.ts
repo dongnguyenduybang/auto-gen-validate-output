@@ -1,32 +1,41 @@
 import { Operator } from '../../enums/operator.enum';
 import { Element } from '../../enums/element.enum';
+import { HeaderList } from '../../enums/header.enum';
+import { APIPath } from '../../enums/path.enum';
+import { METHOD } from '../../enums/method.enum';
+import { VAR } from '../../enums/var-placeholder.enum';
 
 export const SendMessageSaga = {
   steps: [
     {
       action: 'mockUser',
+      body: {
+        quantity: 2,
+        prefix: 'testabcssd',
+        badge: 0
+      }
     },
     {
       action: 'createChannel',
     },
     {
       action: 'sendMessage',
-      method: 'POST',
-      path: '/Message/SendMessage',
+      method: METHOD.POST,
+      path: APIPath.Message.SendMessage,
       body: {
         workspaceId: '0',
-        channelId: '{{channelId}}',
+        channelId: VAR.channelId,
         content: 'user send message',
         ref: 'ref',
       },
-      header: { token: '{{token}}' },
+      header: HeaderList.Token(),
       expect: {
         ok: { operator: Operator.EQUAL, expect: true },
         data: {
           message: {
             workspaceId: { operator: Operator.EQUAL, expect: 0 },
-            channelId: { operator: Operator.EQUAL, expect: '{{channelId}}' },
-            userId: { operator: Operator.EQUAL, expect: '{{userId}}' },
+            channelId: { operator: Operator.EQUAL, expect: VAR.channelId },
+            userId: { operator: Operator.EQUAL, expect: VAR.userId },
             content: { operator: Operator.EQUAL, expect: 'user send message' },
             messageType: { operator: Operator.EQUAL, expect: 0 },
             messageStatus: { operator: Operator.EQUAL, expect: 1 },
@@ -39,7 +48,7 @@ export const SendMessageSaga = {
               field: 'userId',
               operator: Operator.INCLUDE,
               element: Element.FIRST,
-              expect: ['{{userId}}'],
+              expect: [VAR.userId],
             },
             {
               field: 'userType',
@@ -64,25 +73,25 @@ export const SendMessageSaga = {
               field: 'channelId',
               operator: Operator.EQUAL,
               element: Element.FIRST,
-              expect: ['{{channelId}}'],
+              expect: [VAR.channelId],
             },
             {
               field: 'userId',
               operator: Operator.EQUAL,
               element: Element.FIRST,
-              expect: ['{{userId}}'],
+              expect: [VAR.userId],
             },
             {
               field: 'totalMembers',
               operator: Operator.EQUAL,
               element: Element.FIRST,
-              expect: ['{{totalMembers}}'],
+              expect: [VAR.totalMembers],
             },
             {
               field: 'name',
               operator: Operator.EQUAL,
               element: Element.FIRST,
-              expect: ['{{name}}'],
+              expect: [VAR.name],
             },
           ],
           members: [
@@ -96,13 +105,13 @@ export const SendMessageSaga = {
               field: 'channelId',
               operator: Operator.INCLUDE,
               element: Element.ALL,
-              expect: ['{{channelId}}'],
+              expect: [VAR.channelId],
             },
             {
               field: 'userId',
               operator: Operator.INCLUDE,
               element: Element.FIRST,
-              expect: ['{{userId}}'],
+              expect: [VAR.userId],
             },
             {
               field: 'role',
@@ -128,7 +137,7 @@ export const SendMessageSaga = {
               field: 'channelId',
               operator: Operator.INCLUDE,
               element: Element.ALL,
-              expect: ['{{channelId}}'],
+              expect: [VAR.channelId],
             },
           ],
         },
@@ -136,16 +145,20 @@ export const SendMessageSaga = {
     },
     {
       action: 'acceptInvitation',
-      body: { linkInvitation: '{{invitationLink}}' },
-      header: { token: '{{token1}}' },
+      method: METHOD.POST,
+      path: APIPath.Invitation.AcceptInvitation,
+      body: { invitationLink: VAR.invitationLink },
+      header: HeaderList.Token1(),
       expect: {
         ok: { operator: Operator.EQUAL, expect: true },
       },
     },
     {
       action: 'getChannel',
-      body: { channelId: '{{channelId}}' },
-      header: { token: '{{token}}' },
+      method: METHOD.GET,
+      path: APIPath.ViewChannel.GetChannel,
+      body: { channelId: VAR.channelId, workspaceId: '0' },
+      header: HeaderList.Token(),
       expect: {
         ok: { operator: Operator.EQUAL, expect: true },
       },

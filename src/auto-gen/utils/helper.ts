@@ -156,7 +156,7 @@ export function groupFilesByName(
       const className = fileName.replace('.dto', '');
       fileMap[className] = fileMap[className] || {};
       fileMap[className].dtoPath = filePath;
-    } else if (filePath.endsWith('.request.json')) {
+    } else if (filePath.endsWith('.request.ts')) {
       const className = fileName.replace('.request', '');
       fileMap[className] = fileMap[className] || {};
       fileMap[className].requestPath = filePath;
@@ -178,77 +178,60 @@ export function getTime() {
 
 export function resolveValidIf(
   field,
-  validIfMetadata: { condition: string; operators: string; condition2: string },
+  validIfMetadata: { condition: string; operator: string; condition2: string },
   valueResponse: any,
   obj: any,
   payload: any,
   context,
 ): { isValid: boolean; errorMessage?: string } {
-  const { condition, operators, condition2 } = validIfMetadata;
-  let isValid;
-  let value2: any;
-  let value1: any;
-  if (obj.hasOwnProperty(condition)) {
-    value1 = obj[condition]; // Lấy từ response nếu tồn tại
-  } else {
+  const { condition, operator, condition2 } = validIfMetadata;
+
+  const value1 = obj[condition];
+  if (value1 === undefined) {
     return {
       isValid: false,
       errorMessage: `${field}: Condition '${condition}' not found in response object.`,
     };
   }
 
-  // Lấy giá trị của condition2
-
+  // Resolve value2 từ condition2
+  let value2: any;
   if (condition2.startsWith('response.')) {
-    const key = condition2.replace('response.', '');
-    value2 = obj[key]; // Lấy từ response[key]
+    value2 = obj[condition2.slice(9)];
   } else if (condition2.startsWith('payload.')) {
-    const key = condition2.replace('payload.', '');
-    value2 = payload[key]; // Lấy từ payload[key]
+    value2 = payload[condition2.slice(8)];
   } else if (condition2.startsWith('{{')) {
     value2 = resolveVariables(condition2, context);
   } else {
-    value2 = condition2; // Giá trị cố định
+    value2 = condition2;
   }
 
-  // Chuẩn hóa kiểu dữ liệu
-  value1 = String(value1).trim();
-  value2 = String(value2).trim();
+  // So sánh sau khi chuẩn hóa kiểu chuỗi
+  const v1 = String(value1).trim();
+  const v2 = String(value2).trim();
 
-  // So sánh hai giá trị dựa trên toán tử
-  isValid = false;
-  switch (operators) {
-    case '>':
-      isValid = value1 > value2;
-      break;
-    case '<':
-      isValid = value1 < value2;
-      break;
-    case '===':
-      isValid = value1 === value2;
-      break;
-    case '!==':
-      isValid = value1 !== value2;
-      break;
-    case '>=':
-      isValid = value1 >= value2;
-      break;
-    case '<=':
-      isValid = value1 <= value2;
-      break;
-    default:
-      return {
-        isValid: false,
-        errorMessage: `${operators}: Unsupported operator.`,
-      };
+  const ops: Record<string, boolean> = {
+    '>': v1 > v2,
+    '<': v1 < v2,
+    '===': v1 === v2,
+    '!==': v1 !== v2,
+    '>=': v1 >= v2,
+    '<=': v1 <= v2,
+  };
+
+  const isValid = ops[operator];
+
+  if (isValid === undefined) {
+    return {
+      isValid: false,
+      errorMessage: `${operator}: Unsupported operator.`,
+    };
   }
-  // Lấy giá trị của condition1
-
 
   if (!isValid) {
     return {
       isValid: false,
-      errorMessage: `${field}: ${condition} must ${operators} ${value2} (actual value: ${value1}, expected value: ${value2})`,
+      errorMessage: `${field}: ${condition} must ${operator} ${v2} (actual: ${v1}, expected: ${v2})`,
     };
   }
 

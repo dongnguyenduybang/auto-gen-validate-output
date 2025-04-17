@@ -6,7 +6,7 @@ import { readJsonFile } from './helper';
 function getResponseFile(dirPath: string): string | null {
   try {
     const files = fs.readdirSync(dirPath);
-    const responseFile = files.find((file) => file.endsWith('.response.json'));
+    const responseFile = files.find((file) => file.endsWith('.response.ts'));
     return responseFile ? path.join(dirPath, responseFile) : null;
   } catch (error) {
     console.error(`Error reading directory ${dirPath}:`, error);
@@ -14,17 +14,17 @@ function getResponseFile(dirPath: string): string | null {
   }
 }
 
-function genTestCase(
+async function genTestCase(
   responsePath: string,
   className: string,
   outputDir: string,
 ) {
-  const responseConfig = readJsonFile(responsePath);
   const classNameCapitalized = className
-    .split('-')
-    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-    .join('');
-
+  .split('-')
+  .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+  .join('');
+  const responseModule = await import(responsePath);
+  const responseConfig = responseModule[`${classNameCapitalized}Response`];
   const specContent = `
     import fs from 'fs';
     import path from 'path';
@@ -55,6 +55,7 @@ function genTestCase(
             error: step.error
           })
         })
+        
         headerRequest = ${JSON.stringify(responseConfig.headers)}
         resolvedHeader = resolveVariables(headerRequest, globalContext)
         pathRequest = ${JSON.stringify(responseConfig.path, null, 2)}
@@ -76,15 +77,23 @@ function genTestCase(
             }
           );
           const data = response.data
-          const instance = plainToInstance(${classNameCapitalized}Response, data);
-          const validateResponse =await validateResponses(payloadResponse, instance, globalContext );
-          if (validateResponse.length > 0) {
+          if(data.ok === false){
             failedTests.push({
               testcase: testNumber,
-              error: validateResponse
+              error: data.error.details
             })
           }else {
-            passedTests++;
+            const instance = plainToInstance(${classNameCapitalized}Response, data);
+            const validateResponse =await validateResponses(payloadResponse, instance, globalContext );
+            if (validateResponse.length > 0) {
+              failedTests.push({
+                testcase: testNumber,
+                error: validateResponse
+              })
+            }else {
+              passedTests++;
+            }
+          
           }
         
         } catch (error) {
@@ -144,13 +153,13 @@ export function genTestResponse(dtoName: string) {
   const responseFile = getResponseFile(responsesDir);
 
   if (!responseFile) {
-    console.error(`No .response.json file found in ${responsesDir}`);
+    console.error(`No .response.ts file found in ${responsesDir}`);
     return;
   }
 
   console.log(`Found response file: ${responseFile}`);
 
-  const className = path.basename(responseFile, '.response.json');
+  const className = path.basename(responseFile, '.response.ts');
   const outputDir = path.join(__dirname, `../test-responses/${dtoName}`);
 
   if (!fs.existsSync(outputDir)) {

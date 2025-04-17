@@ -1,5 +1,9 @@
 import { Operator } from '../../enums/operator.enum';
 import { Element } from '../../enums/element.enum';
+import { METHOD } from '../../enums/method.enum';
+import { APIPath } from '../../enums/path.enum';
+import { VAR } from '../../enums/var-placeholder.enum';
+import { HeaderList } from '../../enums/header.enum';
 
 export const UpdateMessageSaga = {
   steps: [
@@ -16,30 +20,30 @@ export const UpdateMessageSaga = {
     },
     {
       action: 'sendMessage',
-      method: 'POST',
-      path: '/Message/SendMessage',
+      method: METHOD.POST,
+      path: APIPath.Message.SendMessage ,
       body: {
         workspaceId: '0',
-        channelId: '{{channelId}}',
+        channelId: VAR.channelId,
         content: 'user send message',
         ref: 'ref',
       },
-      header: { 'x-session-token': '{{token}}' },
+      header: HeaderList.Token(),
       expect: {
         ok: { operator: Operator.EQUAL, expect: true },
       }
     },
     {
       action: 'updateMessage',
-      method: 'PUT',
-      path: '/Message/UpdateMessage',
+      method: METHOD.PUT,
+      path: APIPath.Message.UpdateMessage,
       body: {
         workspaceId: '0',
-        channelId: '{{channelId}}',
-        messageId: '{{messageId1}}',
+        channelId: VAR.channelId,
+        messageId: VAR.messageId1,
         content: 'user message update'
       },
-      header: { 'x-session-token': '{{token}}' },
+      header: HeaderList.Token(),
       expect: {
         ok: { operator: Operator.EQUAL, expect: true },
         data: {
@@ -156,20 +160,20 @@ export const UpdateMessageSaga = {
     },
     {
       action: 'acceptInvitation',
-      method: 'POST',
-      path: '/Invitation/AcceptInvitation',
-      body: { invitationLink: '{{invitationLink}}' },
-      header: { 'x-session-token': '{{token1}}' },
+      method: METHOD.POST,
+      path:APIPath.Invitation.AcceptInvitation,
+      body: { invitationLink: VAR.invitationLink },
+      header: HeaderList.Token1(),
       expect: {
         ok: { operator: Operator.EQUAL, expect: true },
       },
     },
     {
       action: 'getChannel',
-      method: 'GET',
-      path: '/ChannelView/GetChannel',
-      body: { channelId: '{{channelId}}', workspaceId: '0' },
-      header: { 'x-session-token': '{{token}}' },
+      method: METHOD.GET,
+      path: APIPath.ViewChannel.GetChannel,
+      body: { channelId: VAR.channelId, workspaceId: '0' },
+      header: HeaderList.Token(),
       expect: {
         ok: { operator: Operator.EQUAL, expect: true },
       },
