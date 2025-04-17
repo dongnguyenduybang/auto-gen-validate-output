@@ -19,7 +19,7 @@
       beforeAll(async () => {
         testType = 'response'
         globalContext = new TestContext();
-        const resultStep = await executeAllSteps([{"action":"mockUser"},{"action":"createChannel"},{"action":"sendMessage","method":"POST","path":"/Message/SendMessage","body":{"channelId":"{{channelId}}","content":"test response send message"},"header":{"token":"{{token}}"}}],globalContext)
+        const resultStep = await executeAllSteps([{"action":"mockUser","body":{"quantity":2,"prefix":"testABACDD","badge":0}},{"action":"createChannel"},{"action":"sendMessage","method":"POST","path":"/Message/SendMessage","body":{"workspaceId":"0","channelId":"{{channelId}}","content":"test response send message","ref":"sssssssss"},"header":{"x-session-token":"{{token}}"}}],globalContext)
         resultStep.forEach((step, index) => {
           failedStep.push({
             type: step.type,
@@ -28,7 +28,7 @@
             error: step.error
           })
         })
-        headerRequest = {"Content-Type":"application/json","x-session-token":"{{token}}","x-country-code":"VN"}
+        headerRequest = undefined
         resolvedHeader = resolveVariables(headerRequest, globalContext)
         pathRequest = "/Message/UpdateMessage"
         methodRequest = "PUT"
@@ -72,7 +72,7 @@
 
       afterAll(async () => {
 
-        const resultStep = await executeAllSteps([{"action":"deleteMockedUsers","body":{"prefix":"testfaker"},"header":{"token":"{{token}}"}}],globalContext)
+        const resultStep = await executeAllSteps([],globalContext)
         resultStep.forEach((step, index) => {
           failedStep.push({
             type: step.type,

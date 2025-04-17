@@ -19,7 +19,7 @@
       beforeAll(async () => {
         testType = 'response'
         globalContext = new TestContext();
-        const resultStep = await executeAllSteps([{"action":"mockUser"}],globalContext)
+        const resultStep = await executeAllSteps([{"action":"mockUser","body":{"quantity":2,"prefix":"testABACDD","badge":0}}],globalContext)
         resultStep.forEach((step, index) => {
           failedStep.push({
             type: step.type,
@@ -28,13 +28,15 @@
             error: step.error
           })
         })
-        headerRequest = {"Content-Type":"application/json","x-session-token":"{{token}}","x-country-code":"VN"}
+        
+        headerRequest = {"x-session-token":"{{token}}"}
         resolvedHeader = resolveVariables(headerRequest, globalContext)
         pathRequest = "/Message/SendDMMessage"
         methodRequest = "POST"
         payloadResponse = resolveVariables({
   "userId": "{{userId1}}",
-  "content": "test123123"
+  "content": "test response send dm message",
+  "ref": "ref"
 }, globalContext);
         requestUrl = `${globalThis.url}${pathRequest}`
         });
@@ -52,15 +54,23 @@
             }
           );
           const data = response.data
-          const instance = plainToInstance(SendDmMessageResponse, data);
-          const validateResponse =await validateResponses(payloadResponse, instance, globalContext );
-          if (validateResponse.length > 0) {
+          if(data.ok === false){
             failedTests.push({
               testcase: testNumber,
-              error: validateResponse
+              error: data.error.details
             })
           }else {
-            passedTests++;
+            const instance = plainToInstance(SendDmMessageResponse, data);
+            const validateResponse =await validateResponses(payloadResponse, instance, globalContext );
+            if (validateResponse.length > 0) {
+              failedTests.push({
+                testcase: testNumber,
+                error: validateResponse
+              })
+            }else {
+              passedTests++;
+            }
+          
           }
         
         } catch (error) {
@@ -70,7 +80,7 @@
 
       afterAll(async () => {
 
-        const resultStep = await executeAllSteps([{"action":"deleteMockedUsers","body":{"prefix":"testfaker"},"header":{"token":"{{token}}"}}],globalContext)
+        const resultStep = await executeAllSteps([],globalContext)
         resultStep.forEach((step, index) => {
           failedStep.push({
             type: step.type,

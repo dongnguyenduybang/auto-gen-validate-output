@@ -67,6 +67,45 @@ export class Message extends GeneralMessage {
   contentArguments?: string[];
 }
 
+
+export class Messages extends GeneralMessage {
+  @ValidIf('workspaceId', '===', '0')
+  @IsString()
+  @IsDefined()
+  workspaceId?: string;
+
+  @ValidIf('channelId', '===', 'payload.channelId')
+  @IsString()
+  @IsDefined()
+  channelId?: string;
+
+  @ValidIf('createTime', '<', 'response.updateTime')
+  @IsString()
+  @IsDefined()
+  createTime?: string;
+
+  @Exclude()
+  originalMessage?: OriginalMessage;
+
+  @Exclude()
+  reactions?: Reaction;
+
+  @Exclude()
+  mentions?: string[];
+
+  @Exclude()
+  embed?: Embed;
+
+  @Exclude()
+  attachmentCount?: number;
+
+  @Exclude()
+  mediaAttachments?: string[];
+
+  @Exclude()
+  contentArguments?: string[];
+}
+
 export class ChannelMetadata extends GeneralChannelMetaData {}
 
 export class Channel extends GeneralChannel {
@@ -140,6 +179,13 @@ export class User extends GeneralUser {
 }
 
 export class IncludesResponse {
+
+  @ValidateNested({ each: true, always: true })
+  @IsObject()
+  @IsDefined()
+  @Type(() => Messages)
+  messages?: Messages[];
+
   @ValidateNested({ each: true, always: true })
   @IsArray()
   @IsDefined()

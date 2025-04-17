@@ -1,3 +1,4 @@
+// send-message.response.ts
 import { ValidateNested } from 'class-validator';
 import { Exclude, Type } from 'class-transformer';
 import {
@@ -9,7 +10,8 @@ import {
   Member as GeneralMember,
   ChannelMetadata as GeneralChannelMetadata,
   Reaction,
-  StatusData,
+  Embed,
+  OriginalMessage,
 } from './general-response';
 import { DirectMessageStatusEnum } from '../enums/direct-message-status.enum';
 import { IsDefined } from '../decorator/general-decorator';
@@ -20,15 +22,19 @@ import { IsObject } from '../decorator/object-decorator';
 import { IsArray } from '../decorator/array-decorator';
 
 export class Message extends GeneralMessage {
+
   @ValidIf('workspaceId', '===', '0')
   @IsString()
   @IsDefined()
   workspaceId?: string;
 
-  @ValidIf('channelId', '===', 'payload.channelId')
+  @ValidIf('content', '===', '%s created this channel')
   @IsString()
   @IsDefined()
-  channelId?: string;
+  content?: string;
+
+  @Exclude()
+  originalMessage?: OriginalMessage;
 
   @Exclude()
   reactions?: Reaction;
@@ -37,16 +43,20 @@ export class Message extends GeneralMessage {
   mentions?: string[];
 
   @Exclude()
+  embed?: Embed;
+
+  @Exclude()
   attachmentCount?: number;
 
   @Exclude()
   mediaAttachments?: string[];
 }
 
-export class ChannelMetadata extends GeneralChannelMetadata { }
+export class ChannelMetadata extends GeneralChannelMetadata {}
 
 export class Channel extends GeneralChannel {
 
+  // @StartWith('invitationLink', 'https://zii.chat/i/')
   @IsString()
   @IsDefined()
   invitationLink?: string;
@@ -70,13 +80,11 @@ export class Channel extends GeneralChannel {
   acceptTime?: string;
 }
 
-export class User extends GeneralUser {
+export class User extends GeneralUser {}
 
-}
+export class Member extends GeneralMember {}
 
-export class Member extends GeneralMember { }
-
-export class IncludesResponse  {
+export class IncludesResponse {
   @ValidateNested({ each: true })
   @IsArray()
   @IsDefined()
@@ -108,13 +116,12 @@ export class DataResponse {
   @IsDefined()
   @Type(() => Channel)
   channel?: Channel;
-
 }
 
-export class GetChannelResponse extends BaseResponse {
+export class CreateChannelResponse extends BaseResponse {
   @IsBoolean()
   @IsDefined()
-  ok?: boolean;
+  ok?: boolean = undefined;
 
   @ValidateNested({ each: true })
   @IsObject()

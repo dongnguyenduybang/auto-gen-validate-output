@@ -67,7 +67,7 @@ export class Message extends GeneralMessage {
   contentArguments?: string[];
 }
 
-export class ChannelMetadata extends GeneralChannelMetaData {}
+export class ChannelMetadata extends GeneralChannelMetaData { }
 
 export class Channel extends GeneralChannel {
   @StartWith('invitationLink', 'https://zii.chat/i/')
@@ -105,11 +105,6 @@ export class Member extends GeneralMember {
   @IsDefined()
   channelId?: string;
 
-  @ValidIf('workspaceId', '===', '0')
-  @IsString()
-  @IsDefined()
-  workspaceId?: string;
-
   @ValidIf('userId', '===', '{{userId}}')
   @IsString()
   @IsDefined()
@@ -117,6 +112,7 @@ export class Member extends GeneralMember {
 }
 
 export class User extends GeneralUser {
+
   @ValidIf('createTime', '===', 'response.updateTime')
   @IsString()
   @IsDefined()
