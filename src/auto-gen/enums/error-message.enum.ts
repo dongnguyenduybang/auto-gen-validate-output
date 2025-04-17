@@ -1,16 +1,16 @@
 export enum ErrorMessage {
   NULL = 'should not be null',
   EMPTY = 'should not be empty',
-  DEFINED = 'should not be null or undefined',
+  DEFINED = 'must have required property',
   UNDEFINED = 'should not be undefined',
-  MIN_LENGTH = 'must be longer than or equal to',
+  MIN_LENGTH = 'must have more than',
   MAX_LENGTH = 'must be less than or equal to',
   MIN = 'must not be less than',
   MAX = 'must not be greater than',
   MIN_ARRAY = 'must contain at least',
   MAX_ARRAY = 'must contain at most',
   INVALID_TYPE_NUMBER = 'must be a number conforming to the specified constraints',
-  INVALID_TYPE_STRING = 'must be a string',
+  INVALID_TYPE_STRING = 'must be string',
   INVALID_TYPE_BOOLEAN = 'must be a boolean',
   INVALID_TYPE_ARRAY = 'must be an array',
   INVALID_TYPE_DATE = 'must be a date',
@@ -22,7 +22,7 @@ export enum ErrorMessage {
   INVALID_TYPE = 'must be a type',
   START_WITH = 'must start with',
   END_WITH = 'must end with',
-  INVALID_RANGE_STRING_LENGTH = "content's byte length must fall into (1, 6000) range",
+  INVALID_RANGE_STRING_LENGTH = "must to range from 1 to 200 length",
   INVALID_ULID = 'must be an ULID',
   INVALID_EMOJI = 'is invalid, only 1 emoji'
 }
