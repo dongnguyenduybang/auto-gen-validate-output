@@ -6,36 +6,54 @@ import 'reflect-metadata';
                     number => '0'
                     var => '{{...}}'
 */
-export function ValidIf(condition: string, operators: any, condition2: any) {
-  return function (target: any, propertyKey: string) {
+
+export function ValidIf(condition: string, operator: string, condition2: any) {
+  return (target: any, propertyKey: string) => {
+    // Lưu metadata vào target
     Reflect.defineMetadata(
       'validIf',
-      { condition, operators, condition2 },
+      { condition, operator, condition2 },
       target,
-      propertyKey,
+      propertyKey
     );
+
+    // Lưu metadata vào prototype để đảm bảo tương thích với getDecorators
+    if (typeof target === 'function') {
+      Reflect.defineMetadata(
+        'validIf',
+        { condition, operator, condition2 },
+        target.prototype,
+        propertyKey
+      );
+    } else {
+      Reflect.defineMetadata(
+        'validIf',
+        { condition, operator, condition2 },
+        target.constructor.prototype,
+        propertyKey
+      );
+    }
   };
 }
-
 /*
    check chuỗi kí tự đầu tiên có bằng với value không 
    với filed là property muốn check
        value là chuỗi muốn check
 */
-export function StartWith(field: string, value: string) {
+export function StartWith(fieldCheck: string, value: string) {
   return (target: any, propertyKey: string) => {
-    Reflect.defineMetadata('startWith', { field, value }, target, propertyKey);
+    Reflect.defineMetadata('startWith', { fieldCheck, value }, target, propertyKey);
     if (typeof target === 'function') {
       Reflect.defineMetadata(
         'startWith',
-        { field, value },
+        { fieldCheck, value },
         target.prototype,
         propertyKey,
       );
     } else {
       Reflect.defineMetadata(
         'startWith',
-        { field, value },
+        { fieldCheck, value },
         target.constructor.prototype,
         propertyKey,
       );
