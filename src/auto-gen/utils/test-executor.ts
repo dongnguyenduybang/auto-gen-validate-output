@@ -1,15 +1,15 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { getApiFunction } from './api-function';
+
 import { createApiValidator, ValidationError } from './api-validator';
 import { TestContext } from './text-context';
 import { SendMessageResponse } from '../response/send-message.response';
 import { ClassConstructor, plainToClass } from 'class-transformer';
-import { CreateChannelResponse } from '../response/create-channel';
+import { CreateChannelResponse } from '../response/create-channel.response';
 import { GetChannelResponse } from '../response/get-channel.response';
 import { validateResponses } from '../validates/validate-response';
 import { MockUserResponse } from '../response/mock-user';
-import { AcceptInvitationResponse } from '../response/accept-invitation';
+import { AcceptInvitationResponse } from '../response/accept-invitation.response';
 import { BaseResponse } from '../response/general-response';
 import { SendDmMessageResponse } from '../response/send-dm-message.response';
 import { UpdateMessageResponse } from '../response/update-message.response';
@@ -80,6 +80,7 @@ async function executeStep(
             headers: resolvedHeader,
             body: resolvedBody
         });
+        console.log(step.action,JSON.stringify(response))
         if (response.data.ok === false) {
             return {
                 type: 'request',
@@ -88,7 +89,6 @@ async function executeStep(
                 error: JSON.stringify(response.data.error.details)
             }
         }
-
         // validate response
         const stepName = step.action.charAt(0).toUpperCase() + step.action.slice(1) + "Response";
         const ResponseClass = responseClassMap[stepName as keyof typeof responseClassMap];
@@ -250,8 +250,6 @@ function extractCreateChannel(response: any, context: TestContext): Record<strin
 function extractGetChannel(response: any, context: TestContext): Record<string, any> {
     const data: Record<string, any> = {};
     if (!response?.data) return data;
-
-
     return data;
 }
 
@@ -280,7 +278,6 @@ function extractAcceptInvitation(response: any, context: TestContext): Record<st
 export function extractMessageData(response: SendMessageResponse): Record<string, any> {
     const data: Record<string, any> = {};
     if (!response?.data) return data;
-
     const { message } = response.data;
     if (message) {
         data.messageId = message.messageId;

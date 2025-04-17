@@ -22,7 +22,6 @@ export async function validateResponses(
       const field = path ? `${path}.${key}` : key;
 
       const decorators = getDecorators(prototype, key);
-      // console.log(decorators)
       if (
         decorators.type === 'object' &&
         typeof valueResponse === 'object' &&
@@ -39,6 +38,7 @@ export async function validateResponses(
         if (decorators.optional &&  (valueResponse === undefined ||  valueResponse === null)) {
           return;
         } else {
+         
           for (const [index, item] of valueResponse.entries()) {
             const nestedPrototype = Object.getPrototypeOf(item);
             await validateObject(item, nestedPrototype, `${field}[${index}]`);
@@ -49,7 +49,7 @@ export async function validateResponses(
         return;
       } else if (
         decorators.isDefined &&
-        (valueResponse === undefined || valueResponse === null)
+        (valueResponse === undefined || valueResponse === null) && !decorators.validIf
       ) {
         errors.push(`${field} ${ErrorMessage.DEFINED}`);
         continue;
@@ -81,22 +81,35 @@ export async function validateResponses(
           errors.push(`${field} ${ErrorMessage.INVALID_TYPE_BOOLEAN}`);
         }
 
+
         if (decorators.startWith && typeof valueResponse === 'string') {
-
           if (Array.isArray(decorators.startWith)) {
-
-            const [fieldCheck, value] = decorators.startWith;
+            let [fieldCheck, value] = decorators.startWith;
+            if (value.startsWith('{{')) {
+              value = resolveVariables(value, context)
+            }
             if (!value || !valueResponse.startsWith(value)) {
               errors.push(`${field} must start with ${value}`);
             }
           } else if (typeof decorators.startWith === 'object' && decorators.startWith !== null) {
-
-            const { fieldCheck, value } = decorators.startWith;
-            if (!value || !valueResponse.startsWith(value)) {
+            let { fieldCheck, value } = decorators.startWith;
+            if (value.startsWith('{{')) {
+              value = resolveVariables(value, context)
+            }
+            if (valueResponse.startsWith(value) === false) {
+              console.log(value)
               errors.push(`${field} must start with ${value}`);
             }
           } else {
-            console.log('startWith metadata format unexpected:', decorators.startWith);
+            let [fieldCheck, value] = decorators.startWith;
+            if (value.startsWith('{{')) {
+              value = resolveVariables(value, context)
+            }
+            if (!value || !valueResponse.startsWith(value)) {
+              errors.push(`${field} must start with ${value}`);
+            }
+            
+            
           }
         }
 
@@ -111,9 +124,16 @@ export async function validateResponses(
               errors.push(`${field} must end with ${value}`);
             }
           } else if (typeof decorators.endWith === 'object' && decorators.endWith !== null) {
-            let { field: fieldCheck, value } = decorators.endWith;
+            let {  fieldCheck, value } = decorators.endWith;
             if (value.startsWith('{{')) {
-
+              value = resolveVariables(value, context)
+            }
+            if (!value || !valueResponse.endsWith(value)) {
+              errors.push(`${field} must end with ${value}`);
+            }
+          }else {
+            let {  fieldCheck, value } = decorators.endWith;
+            if (value.startsWith('{{')) {
               value = resolveVariables(value, context)
             }
             if (!value || !valueResponse.endsWith(value)) {

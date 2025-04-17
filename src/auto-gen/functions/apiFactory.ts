@@ -51,14 +51,12 @@ export function createApiFunction(config: ApiConfig, context: TestContext) {
       }
 
       const response = await axios(axiosConfig);
-
       return {
         ok: true,
         data: response.data
       };
 
     } catch (error: any) {
-      console.log(error.response)
       return {
         ok: false,
         error: error.response?.data?.error?.details ||
