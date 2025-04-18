@@ -212,9 +212,8 @@ if (decorators['isULID']) {
   // 10. Kiểm tra emoji
   if (decorators['isEmoji']) {
     const isInvalid =
-      typeof value !== 'string' ||
-      value === '' ||
-      !isSingleEmoji(value);
+      typeof value === 'string' && (value === '' ||
+        !isSingleEmoji(value))
     if (isInvalid) {
       addError(null, `${field} ${ErrorMessage.INVALID_EMOJI}`);
 
@@ -303,7 +302,7 @@ if (decorators['isULID']) {
       } else if (hasMin && len < decorators['minLength']) {
         addError(null, `${field} ${ErrorMessage.MIN_LENGTH} ${decorators['minLength']} length`);
       } else if (hasMax && len > decorators['maxLength']) {
-        addError(null, `${field} ${ErrorMessage.MAX_LENGTH}`);
+        addError(null, `${field} ${ErrorMessage.MAX_LENGTH} ${decorators['minLength']} length`);
       }
     }
   }
@@ -351,7 +350,7 @@ if (decorators['isULID']) {
   // 8. Kiểm tra enum
   if (decorators['type'] === 'enum') {
     if (!decorators['enumType'] || !Object.values(decorators['enumType']).includes(value)) {
-      addError(decorators['enumMessage'], `${field} must be one of the allowed values`);
+      addError(decorators['enumMessage'], `${field} ${ErrorMessage.INVALID_ENUM}`);
       return errors;
     }
   }
