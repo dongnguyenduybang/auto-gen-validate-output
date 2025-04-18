@@ -1,3 +1,4 @@
+import { MinLength } from 'class-validator';
 import { IsDefined, IsNotEmpty, IsULID, IsChecked, IsEmoji } from '../../decorator/general-decorator';
 import {
   IsString,
@@ -28,6 +29,7 @@ export class AddMessageReactionDTO {
   @IsNotEmpty()
   @IsDefined()
   @IsEmoji()
+  @MinLength(1)
   emoji: string = '';
 }
 
