@@ -14,13 +14,14 @@ import { BaseResponse } from '../response/general-response';
 import { SendDmMessageResponse } from '../response/send-dm-message.response';
 import { UpdateMessageResponse } from '../response/update-message.response';
 import { getApiFunctions } from '../functions/apiRegistry';
+import { extractDatas } from './extract-data';
 
 interface Step {
     action: string;
     method?: string;
     path?: string;
     body?: any;
-    header?: any;
+    headers?: any;
     expect?: any;
 }
 
@@ -63,14 +64,12 @@ async function executeStep(
     stepIndex: number,
 ): Promise<StepResult> {
     try {
-        const { action, method, path, body, header, expect: expectConfig } = step;
+        const { action, method, path, body, headers, expect: expectConfig } = step;
 
         // resolve var từ  body và header
         const resolvedBody = resolveVariables(body, context);
-        const resolvedHeader = resolveVariables(header, context);
+        const resolvedHeader = resolveVariables(headers, context);
         //goi API function
-        // const apiFunction = getApiFunction(action, context);
-        // const response = await apiFunction(method, path, resolvedHeader, resolvedBody);
         const apiFunction = getApiFunctions(action, context);
 
         // Execute API call
@@ -80,7 +79,6 @@ async function executeStep(
             headers: resolvedHeader,
             body: resolvedBody
         });
-        console.log(step.action,JSON.stringify(response))
         if (response.data.ok === false) {
             return {
                 type: 'request',
@@ -105,7 +103,8 @@ async function executeStep(
                 error: JSON.stringify(result)
             };
         }
-        const extractedData = extractData(action, response.data, context);
+        console.log(action)
+        const extractedData = extractDatas(response.data, action)
         context.mergeData(extractedData);
 
         //validate logic
@@ -172,190 +171,6 @@ function resolveExpectConfig(expectConfig: any, context: TestContext): any {
     }
     return expectConfig;
 }
-//get data api
-function extractData(
-    action: string,
-    response: any,
-    context: TestContext,
-): Record<string, any> {
-    try {
-        switch (action) {
-            case 'mockUser':
-                return extractMockUserData(response);
-            case 'createChannel':
-                return extractCreateChannel(response, context);
-            case 'getChannel':
-                return extractGetChannel(response, context);
-            case 'acceptInvitation':
-                return extractAcceptInvitation(response, context);
-            case 'sendMessage':
-                return extractMessageData(response);
-            case 'updateMessage':
-                return extractUpdateMessageData(response);
-            case 'sendDmMessage':
-                return extractDmMessageData(response);
-
-            case 'acceptMessageRequest':
-                return extractAcceptMessageData(response);
-            case 'rejectMessageRequest':
-                return extractEjectMessageData(response);
-            default:
-                return flattenObject(response);
-        }
-    } catch (error) {
-        console.error(`Error extracting data for ${action}:`, error);
-        return {};
-    }
-}
-// thêm các trường cần thiết từ response vào context
-function extractMockUserData(response: any): Record<string, any> {
-    const data: Record<string, any> = {};
-    if (!response?.data) return data;
-    response.data.forEach((user: any, index: number) => {
-        const suffix = index === 0 ? '' : index;
-        data[`userId${suffix}`] = user.userId;
-        data[`token${suffix}`] = user.token;
-    });
-    return data;
-}
-// thêm các trường cần thiết từ response vào context
-function extractCreateChannel(response: any, context: TestContext): Record<string, any> {
-    const data: Record<string, any> = {};
-    if (!response?.data) return data;
-
-    const { channel, channelMetadata } = response.data;
-    if (channel) {
-        data.channelId = channel.channelId;
-        data.workspaceId = channel.workspaceId;
-        data.name = channel.name;
-        data.invitationLink = channel.invitationLink;
-        data.totalMembers = channel.totalMembers;
-    }
-
-    if (channelMetadata) {
-        data.lastMessageId = channelMetadata.lastMessageId;
-    }
-
-    if (response.includes) {
-        if (response.includes.messages?.[0]) {
-            data.messageId = response.includes.messages[0].messageId;
-            data.content = response.includes.messages[0].content;
-        }
-    }
-
-    return data;
-}
-
-// thêm các trường cần thiết từ response vào context
-function extractGetChannel(response: any, context: TestContext): Record<string, any> {
-    const data: Record<string, any> = {};
-    if (!response?.data) return data;
-    return data;
-}
-
-// thêm các trường cần thiết từ response vào context
-function extractAcceptInvitation(response: any, context: TestContext): Record<string, any> {
-    const data: Record<string, any> = {};
-    if (!response?.data) return data;
-
-    const { channel, channelMetadata } = response.data;
-    if (channel) {
-        data.totalMembers = channel.totalMembers;
-    }
-
-    if (channelMetadata) {
-        data.lastMessageId = channelMetadata.lastMessageId;
-    }
-
-    if (response.includes?.messages?.[0]) {
-        // data.messageId = response.includes.messages[0].messageId;
-        data.content = response.includes.messages[0].content;
-    }
-
-    return data;
-}
-// thêm các trường cần thiết từ response vào context
-export function extractMessageData(response: SendMessageResponse): Record<string, any> {
-    const data: Record<string, any> = {};
-    if (!response?.data) return data;
-    const { message } = response.data;
-    if (message) {
-        data.messageId = message.messageId;
-        data.content = message.content;
-    }
-
-    return data;
-}
-export function extractUpdateMessageData(response: UpdateMessageResponse): Record<string, any> {
-    const data: Record<string, any> = {};
-    if (!response?.data) return data;
-
-    const { message } = response.data;
-    if (message) {
-        data.messageId = message.messageId;
-        data.content = message.content;
-    }
-
-    return data;
-}
-
-export function extractDmMessageData(response: SendDmMessageResponse): Record<string, any> {
-    const data: Record<string, any> = {};
-    if (!response?.data) return data;
-
-    const { message } = response.data;
-    if (message) {
-        data.messageId = message.messageId;
-        data.content = message.content;
-        data.channelId = message.channelId
-    }
-
-    return data;
-}
-
-export function extractAcceptMessageData(response): Record<string, any> {
-    const data: Record<string, any> = {};
-    if (!response?.data) return data;
-
-    const { channel } = response.data;
-    if (channel) {
-        data.name = channel.name;
-    }
-
-    return data;
-}
-
-export function extractEjectMessageData(response): Record<string, any> {
-    const data: Record<string, any> = {};
-    if (!response?.data) return data;
-
-    const { channel } = response.data;
-    if (channel) {
-        data.name = channel.name;
-    }
-
-    return data;
-}
-function flattenObject(
-    obj: Record<string, any>,
-    prefix = '',
-): Record<string, any> {
-    if (typeof obj !== 'object' || obj === null) return { [prefix]: obj };
-
-    return Object.entries(obj).reduce(
-        (acc, [key, value]) => {
-            const newKey = prefix ? `${prefix}.${key}` : key;
-            if (typeof value === 'object' && value !== null) {
-                Object.assign(acc, flattenObject(value, newKey));
-            } else {
-                acc[newKey] = value;
-            }
-            return acc;
-        },
-        {} as Record<string, any>,
-    );
-}
-
 function formatErrors(errors: ValidationError[]): any { // <-- Thay string bằng any
     if (!Array.isArray(errors)) return { message: 'No error details available' };
 
