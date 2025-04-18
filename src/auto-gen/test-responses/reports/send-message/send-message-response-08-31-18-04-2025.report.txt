@@ -1,0 +1,17 @@
+=== Response Test Report for send-message ===
+• Host: https://api-hono.rpc.ziichat.dev
+• Endpoint: /Message/SendMessage
+• Date: 18/04/2025, 08:31:32
+
+=== Execution Steps ===
+  1. [✅ PASSED] mockUser
+  2. [✅ PASSED] createChannel
+
+=== Test Summary ===
+✅ Passed: 1
+❌ Failed: 0
+📊 Total: 1
+
+=== Error Details ===
+
+=== End of Report ===

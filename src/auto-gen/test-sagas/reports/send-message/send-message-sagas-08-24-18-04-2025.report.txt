@@ -1,0 +1,25 @@
+=== Saga Test Report for send-message ===
+• Host: https://api-hono.rpc.ziichat.dev
+• Sagas: SendMessageSaga
+• Date: 18/04/2025, 08:24:25
+
+=== Execution Steps ===
+  1. [✅ PASSED] mockUser
+  2. [✅ PASSED] createChannel
+  3. [✅ PASSED] sendMessage
+  4. [✅ PASSED] acceptInvitation
+  5. [❌ FAILED] getChannel
+     └─ ["includes.users[0].statusData must have required property","includes.users[1].statusData must have required property"]
+
+=== Error Details ===
+[Request Errors]
+
+[Response Errors]
+
+ 🟣 1. Step: getChannel
+     ├─ Type: response
+     └─ Error: ["includes.users[0].statusData must have required property","includes.users[1].statusData must have required property"]
+
+[Logic Errors]
+
+=== End of Report ===
