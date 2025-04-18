@@ -15,7 +15,7 @@ export enum ErrorMessage {
   INVALID_TYPE_ARRAY = 'must be an array',
   INVALID_TYPE_DATE = 'must be a date',
   INVALID_TYPE_OBJ = 'must be an object',
-  INVALID_ENUM = 'should not be invalid enum',
+  INVALID_ENUM = 'must be equal to one of the allowed values',
   INVALID_DATE_OVER_CURRENT = 'must not dates greater than or equal to the current date',
   INVALID_DATE_EQUAL_CURRENT = 'must not dates equal to the current date',
   INVALID_RANGE_NUMBER = 'must be one of the following values:',
@@ -24,5 +24,5 @@ export enum ErrorMessage {
   END_WITH = 'must end with',
   INVALID_RANGE_STRING_LENGTH = "must to range from",
   INVALID_ULID = 'invalid ULID format',
-  INVALID_EMOJI = 'is invalid, only 1 emoji'
+  INVALID_EMOJI = 'invalid Emoji format'
 }
