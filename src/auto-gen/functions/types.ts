@@ -1,3 +1,4 @@
+import { String } from "lodash";
 import { TestContext } from "../utils/text-context";
 
   export interface ApiStep {
@@ -33,4 +34,15 @@ import { TestContext } from "../utils/text-context";
     path?: string;
     headers: any
     body: any;
+  }
+
+  export interface WssFunctionParams {
+    urlWss: string;
+  }
+  export type ApiEvent = {
+    [key: string]: {
+      [version: string]: {
+        [module: string]: string
+      }
+    }
   }

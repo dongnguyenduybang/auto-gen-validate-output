@@ -1,20 +1,11 @@
 
+import { APIPath } from '../enums/path.enum';
 import { TestContext } from '../utils/text-context';
 import { createApiFunction } from './apiFactory';
 import { ApiConfig } from './types';
 type ApiRegistry = Record<string, ApiConfig>;
 
 const API_REGISTRY: ApiRegistry = {
-  acceptMessageRequest: {
-    defaultPath: '/Channel/AcceptMessageRequest',
-    requiredHeaders: {
-      'x-session-token': { //headerName
-        source: 'token', //value
-        errorMessage: 'Token not found to accept message' //error
-      }
-    },
-    payloadMapper: (body) => ({ userId: body.userId })
-  },
   mockUser: {
     defaultPath: '/InternalFaker/MockUsers',
     defaultMethod: 'post',
@@ -24,7 +15,7 @@ const API_REGISTRY: ApiRegistry = {
     payloadMapper: (body) => ({ quantity: body.quantity, prefix: body.prefix, badge: body.badge})
   },
   createChannel: {
-    defaultPath: '/Channel/CreateChannel',
+    defaultPath:  APIPath.Channel.CreateChannel,
     defaultMethod: 'post',
     requiredHeaders: {
       'x-session-token': { //headerName

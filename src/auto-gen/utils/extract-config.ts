@@ -64,6 +64,13 @@ const ejectMessageConfig: ExtractConfig = {
   },
 };
 
+const openConnectionConfig: ExtractConfig = {
+  connectParams: {
+    path: ['connectParams'],
+    fields: ['url']
+  }
+}
+
 // Ánh xạ action tới cấu hình
 export const configMap: Record<string, ExtractConfig> = {
   mockUser: mockUserConfig,
@@ -75,4 +82,5 @@ export const configMap: Record<string, ExtractConfig> = {
   sendDmMessage: sendDmMessageConfig,
   acceptMessage: acceptMessageConfig,
   ejectMessage: ejectMessageConfig,
+  openConnection: openConnectionConfig, 
 };
