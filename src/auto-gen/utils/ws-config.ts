@@ -6,7 +6,7 @@ export const API_EVENT: APIEvent = {
     halome: {
         v3: {
             webSocket: {
-
+                RECONNECTION_STARTED: 'com.halome.websocket.v3.reconnection_started'
             },
             user: {
                 AVATAR_FRAME_CREATED: 'com.halome.user.v3.profile.avatar_frame_created',
@@ -37,17 +37,24 @@ export const API_EVENT: APIEvent = {
                 USER_VISITED_PROFILE: 'com.halome.user.v3.profile.visited_profile'
             },
             uploader: {
-
+                MEDIA_DELETED: 'com.halome.uploader.v3.media.deleted'
             },
             realTime: {
                 GATEWAY_CONNECTED: 'com.halome.realtime.v3.gateway.connected',
                 PRESENCE_UPDATED: 'com.halome.realtime.v3.presence.updated'
             },
             notification: {
-
+                CALL_NOTIFICATION_CREATED: 'com.halome.notification.v3.call_notification.created',
+                CALL_NOTIFICATION_ENDED: 'com.halome.notification.v3.call_notification.ended',
+                CHANNEL_NOTIFICATION_CREATED: 'com.halome.notification.v3.channel_notification.created',
+                DEVICE_NOTIFICATION_CREATED: 'com.halome.notification.v3.device_notification.created',
+                REVOKE_CHANNELS_NOTIFICATION_PUSHED: 'com.halome.notification.v3.revoke_channels_notification.pushed',
+                REVOKE_MESSAGES_NOTIFICATION_PUSHED: 'com.halome.notification.v3.revoke_messages_notification.pushed',
+                USER_BADGE_COUNT_UPDATED: 'com.halome.notification.v3.badge_count.updated',
+                USER_GLOBAL_NOTIFICATION_STATUS_UPDATED: 'com.halome.notification.v3.user_global_notification_status.updated',
+                USER_NOTIFICATION_CREATED: 'com.halome.notification.v3.user_notification.created',
             },
             iam: {
-
             },
             fs: {
                 FILE_UPLOADED: 'com.halome.fs.v3.file.uploaded'
@@ -68,7 +75,7 @@ export const API_EVENT: APIEvent = {
                 DM_CHANNEL_CREATION_COMPLETED: 'com.halome.chat.v3.dm_channel.creation_completed',
                 DM_CHANNEL_MEDIA_PERMISSION_SETTING_UPDATED: 'com.halome.chat.v3.dm_channel.media_permission_setting_updated',
                 FRIEND_REMOVED: 'com.halome.chat.v3.friend.unfriended',
-                INCOMING_FRIEND_REQUEST_ACCEPTD: 'com.halome.chat.v3.incoming_friend_request.accepted',
+                INCOMING_FRIEND_REQUEST_ACCEPTED: 'com.halome.chat.v3.incoming_friend_request.accepted',
                 INCOMING_FRIEND_REQUEST_CANCELED: 'com.halome.chat.v3.incoming_friend_request.canceled',
                 INCOMING_FRIEND_REQUEST_CREATED: 'com.halome.chat.v3.incoming_friend_request.created',
                 INCOMING_FRIEND_REQUEST_DELETED: 'com.halome.chat.v3.incoming_friend_request.deleted',
@@ -79,7 +86,7 @@ export const API_EVENT: APIEvent = {
                 MEMBER_JOINED: 'com.halome.chat.v3.member.join',
                 MEMBER_LEFT: 'com.halome.chat.v3.member.left',
                 MEMBER_NICKNAME_UPDATED: 'com.halome.chat.v3.member.nickname_updated',
-                MEMVER_REMOVED: 'com.halome.chat.v3.member.removed',
+                MEMBER_REMOVED: 'com.halome.chat.v3.member.removed',
                 MEMBER_ROLE_REVOKED: 'com.halome.chat.v3.member.role_revoked',
                 MEMBER_ROLE_UPDATED: 'com.halome.chat.v3.member.role_updated',
                 MEMBER_UNBANNED: 'com.halome.chat.v3.member.unbanned',
