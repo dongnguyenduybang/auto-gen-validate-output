@@ -6,28 +6,29 @@ import {
 } from '../../decorator/string-decorator';
 
 export class SendMessageDTO {
-
-  @IsDefined({ message: `Unsupported permission type` })
-  @IsChecked({ message: `Invalid channel` })
-  @IsNotEmpty({ message: `Could not resolve permission type` })
-  @IsString({ message: `Could not resolve permission type` })
-  channelId: string = '';
-
   @IsDefined({ message: `Could not resolve permission type` })
   @IsChecked({ message: `Invalid channel` })
   @IsNotEmpty({ message: `Could not resolve permission type` })
   @IsString({ message: `Could not resolve permission type` })
+
   workspaceId: string = '';
+
+  @IsDefined({ message: `Could not resolve permission type` })
+  @IsChecked({ message: `Unsupported permission type` })
+  @IsNotEmpty({ message: `Could not resolve permission type` })
+  @IsString({ message: `Could not resolve permission type` })
+  channelId: string = '';
 
   @IsString()
   @IsNotEmpty()
   @IsDefined()
   @MinLength(1)
-  @MaxLength(6000)
+  @MaxLength(2000)
   content: string = '';
 
   @IsString()
   @IsDefined()
+  @MinLength(1)
   ref: string = '';
 }
 

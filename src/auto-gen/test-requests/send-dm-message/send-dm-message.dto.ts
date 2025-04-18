@@ -27,13 +27,12 @@ export class SendDmMessageDTO {
   @IsString()
   @IsNotEmpty()
   @IsDefined()
-  @IsNotNull()
   @MinLength(1)
-  @MaxLength(6000)
+  @MaxLength(2000)
   content: string = '';
 
-  @IsOptional()
-  @IsString( { message: `TypeError: value.trim is not a function`,})
-  @IsNotEmpty()
+  @IsString()
+  @IsDefined()
+  @MinLength(1)
   ref: string = '';
 }

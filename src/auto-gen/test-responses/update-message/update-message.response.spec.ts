@@ -19,7 +19,7 @@
       beforeAll(async () => {
         testType = 'response'
         globalContext = new TestContext();
-        const resultStep = await executeAllSteps([{"action":"mockUser","body":{"quantity":2,"prefix":"testABACDD","badge":0}},{"action":"createChannel"},{"action":"sendMessage","method":"POST","path":"/Message/SendMessage","body":{"workspaceId":"0","channelId":"{{channelId}}","content":"test response send message","ref":"sssssssss"},"header":{"x-session-token":"{{token}}"}}],globalContext)
+        const resultStep = await executeAllSteps([{"action":"mockUser","body":{"quantity":2,"prefix":"testABACDD","badge":0}},{"action":"createChannel"},{"action":"sendMessage","method":"POST","path":"/Message/SendMessage","body":{"workspaceId":"0","channelId":"{{channelId}}","content":"test response send message","ref":"sssssssss"},"headers":{"x-session-token":"{{token}}"}}],globalContext)
         resultStep.forEach((step, index) => {
           failedStep.push({
             type: step.type,
@@ -28,6 +28,7 @@
             error: step.error
           })
         })
+        
         headerRequest = undefined
         resolvedHeader = resolveVariables(headerRequest, globalContext)
         pathRequest = "/Message/UpdateMessage"
@@ -54,15 +55,23 @@
             }
           );
           const data = response.data
-          const instance = plainToInstance(UpdateMessageResponse, data);
-          const validateResponse =await validateResponses(payloadResponse, instance, globalContext );
-          if (validateResponse.length > 0) {
+          if(data.ok === false){
             failedTests.push({
               testcase: testNumber,
-              error: validateResponse
+              error: data.error.details
             })
           }else {
-            passedTests++;
+            const instance = plainToInstance(UpdateMessageResponse, data);
+            const validateResponse =await validateResponses(payloadResponse, instance, globalContext );
+            if (validateResponse.length > 0) {
+              failedTests.push({
+                testcase: testNumber,
+                error: validateResponse
+              })
+            }else {
+              passedTests++;
+            }
+          
           }
         
         } catch (error) {

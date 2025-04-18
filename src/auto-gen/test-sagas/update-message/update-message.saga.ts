@@ -28,7 +28,7 @@ export const UpdateMessageSaga = {
         content: 'user send message',
         ref: 'ref',
       },
-      header: HeaderList.Token(),
+      headers: HeaderList.Token(),
       expect: {
         ok: { operator: Operator.EQUAL, expect: true },
       }
@@ -43,7 +43,7 @@ export const UpdateMessageSaga = {
         messageId: VAR.messageId1,
         content: 'user message update'
       },
-      header: HeaderList.Token(),
+      headers: HeaderList.Token(),
       expect: {
         ok: { operator: Operator.EQUAL, expect: true },
         data: {
@@ -163,7 +163,7 @@ export const UpdateMessageSaga = {
       method: METHOD.POST,
       path:APIPath.Invitation.AcceptInvitation,
       body: { invitationLink: VAR.invitationLink },
-      header: HeaderList.Token1(),
+      headers: HeaderList.Token1(),
       expect: {
         ok: { operator: Operator.EQUAL, expect: true },
       },
@@ -173,7 +173,7 @@ export const UpdateMessageSaga = {
       method: METHOD.GET,
       path: APIPath.ViewChannel.GetChannel,
       body: { channelId: VAR.channelId, workspaceId: '0' },
-      header: HeaderList.Token(),
+      headers: HeaderList.Token(),
       expect: {
         ok: { operator: Operator.EQUAL, expect: true },
       },

@@ -24,7 +24,7 @@ export const SendDmMessageSaga = {
         content: 'user send dm message',
         ref: 'aa'
       },
-      header: HeaderList.Token(),
+      headers: HeaderList.Token(),
       expect: {
         ok: { operator: Operator.EQUAL, expect: true },
         data: {

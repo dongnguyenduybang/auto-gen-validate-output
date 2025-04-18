@@ -35,7 +35,7 @@ export const UpdateMessageResponse = {
             content: "test response send message",
             ref: "sssssssss"
         },
-        header: HeaderList.Token()
+        headers: HeaderList.Token()
     } ],
     afterAll: [],
   };
