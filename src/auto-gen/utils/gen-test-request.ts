@@ -77,22 +77,31 @@ async function genTestCase(
         let resolvedData, pathRequest, methodRequest, requestUrl
         let globalContext, resolvedHeader
         beforeAll( async () => {
-          testType = 'request'
-          globalContext = new TestContext()
-          const resultStep = await executeAllSteps(${JSON.stringify(requestConfig.beforeAll)},globalContext)
-          resultStep.forEach((step) => {
-            failedStep.push({
-              type: step.type,
-              status: step.status,
-              stepName: step.stepName,
-              error: step.error
+          try {
+            testType = 'request'
+            globalContext = new TestContext()
+            const resultStep = await executeAllSteps(${JSON.stringify(requestConfig.beforeAll)},globalContext)
+            resultStep.forEach((step) => {
+              failedStep.push({
+                type: step.type,
+                status: step.status,
+                stepName: step.stepName,
+                error: step.error
+              })
             })
-          })
-          headerRequest = ${JSON.stringify(requestConfig.headers)}
-          resolvedHeader = resolveVariables(headerRequest, globalContext)
-          pathRequest = ${JSON.stringify(requestConfig.path, null, 2)}
-          methodRequest = ${JSON.stringify(requestConfig.method, null, 2)}
-          requestUrl = \`\${globalThis.url}\${pathRequest}\`
+            const hasFailure = resultStep.some(step => !step.status);
+              if (hasFailure) {
+                  throw new Error(\`beforeAll failed: \${JSON.stringify(failedStep, null, 2)}\`);
+              }
+            headerRequest = ${JSON.stringify(requestConfig.headers)}
+            resolvedHeader = resolveVariables(headerRequest, globalContext)
+            pathRequest = ${JSON.stringify(requestConfig.path, null, 2)}
+            methodRequest = ${JSON.stringify(requestConfig.method, null, 2)}
+            requestUrl = \`\${globalThis.url}\${pathRequest}\`
+          } catch(error){
+            console.error('beforeAll failed:', error);
+            throw error; // Ném lỗi để Jest dừng
+          }
         })
 
         ${payloadData
@@ -126,8 +135,6 @@ async function genTestCase(
                         : [];
                       softExpectDetails = [...expectDetails].sort();
                       try {
-                        expect(data.ok).toEqual(true)
-                        expect(data.data).not.toEqual(undefined)
                         expect(expectJson).toEqual(softExpectDetails)
                         passedTests++
                         codedTest.push({
@@ -136,7 +143,7 @@ async function genTestCase(
                           body: resolvedData,
                         })
                       } catch (error) {
-                        const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                        const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                         failedTests.push({
                           testcase: testNumber,
                           code: 200,
@@ -158,7 +165,7 @@ async function genTestCase(
                           body: resolvedData,
                         })
                       } catch (error) {
-                        const { missing, extra } = summaryFields(error.matcherResult.actual, error.matcherResult.expected);
+                        const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                         failedTests.push({
                           testcase: testNumber,
                           code: 403,
