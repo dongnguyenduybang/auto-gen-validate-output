@@ -27,12 +27,16 @@ const acceptInvitationConfig: ExtractConfig = {
     path: ['data', 'channel'],
     fields: ['totalMembers'],
   },
+  messages: {
+    path: ['includes', 'messages' ],
+    fields: ['content', 'messageType']
+  }
 };
 
 const sendMessageConfig: ExtractConfig = {
   message: {
     path: ['data', 'message'],
-    fields: ['messageId', 'content'],
+    fields: ['messageId', 'content', 'messageType'],
   },
 };
 
@@ -71,6 +75,18 @@ const openConnectionConfig: ExtractConfig = {
   }
 }
 
+const wsOpenConfigRecipient: ExtractConfig = {
+  wsRecipient: {
+    path: [],
+    fields: ['id', 'type', 'data'],
+  },
+};
+const wsOpenConfigActor: ExtractConfig = {
+  wsActor: {
+    path: [],
+    fields: ['id', 'type', 'data'],
+  },
+};
 // Ánh xạ action tới cấu hình
 export const configMap: Record<string, ExtractConfig> = {
   mockUser: mockUserConfig,
@@ -82,5 +98,7 @@ export const configMap: Record<string, ExtractConfig> = {
   sendDmMessage: sendDmMessageConfig,
   acceptMessage: acceptMessageConfig,
   ejectMessage: ejectMessageConfig,
-  openConnection: openConnectionConfig, 
+  openConnection: openConnectionConfig,
+  wsActor: wsOpenConfigActor,
+  wsRecipient: wsOpenConfigRecipient
 };

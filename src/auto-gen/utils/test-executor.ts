@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { createApiValidator, ValidationError } from './api-validator';
-import { TestContext } from './text-context';
+import { TestContext, WSSContext } from './text-context';
 import { SendMessageResponse } from '../response/send-message.response';
 import { ClassConstructor, plainToClass } from 'class-transformer';
 import { CreateChannelResponse } from '../response/create-channel.response';
@@ -15,6 +15,7 @@ import { SendDmMessageResponse } from '../response/send-dm-message.response';
 import { UpdateMessageResponse } from '../response/update-message.response';
 import { getApiFunctions } from '../functions/apiRegistry';
 import { extractDatas } from './extract-data';
+import { formatErrors, resolveExpectConfig, resolveVariables } from './helper';
 
 interface Step {
     action: string;
@@ -42,14 +43,17 @@ const responseClassMap = {
 
 };
 
+
+
 export async function executeAllSteps(
     steps: Step[],
     context: TestContext,
+    wsContext: WSSContext,
 ): Promise<StepResult[]> {
     const results: StepResult[] = [];
 
     for (const [index, step] of steps.entries()) {
-        const result = await executeStep(step, context, index);
+        const result = await executeStep(step, context, wsContext, index);
         results.push(result);
         if (!result.status) break;
     }
@@ -61,6 +65,7 @@ export async function executeAllSteps(
 async function executeStep(
     step: Step,
     context: TestContext,
+    wsContext: WSSContext,
     stepIndex: number,
 ): Promise<StepResult> {
     try {
@@ -103,8 +108,7 @@ async function executeStep(
                 error: JSON.stringify(result)
             };
         }
-        console.log(action)
-        const extractedData = extractDatas(response.data, action)
+        const extractedData = extractDatas(response.data, action, false)
         context.mergeData(extractedData);
 
         //validate logic
@@ -134,56 +138,3 @@ async function executeStep(
 }
 
 // resolve var {{}}
-export function resolveVariables(obj: any, context: TestContext): any {
-    if (typeof obj === 'string') {
-        return obj.replace(/\{\{(.+?)\}\}/g, (_, path) => context.getValue(path.split('.')) ?? `{{${path}}}`);
-    }
-    if (Array.isArray(obj)) {
-        return obj.map((item) => resolveVariables(item, context));
-    }
-    if (typeof obj === 'object' && obj !== null) {
-        return Object.fromEntries(
-            Object.entries(obj).map(([k, v]) => [k, resolveVariables(v, context)]),
-        );
-    }
-    return obj;
-}
-
-function resolveExpectConfig(expectConfig: any, context: TestContext): any {
-    if (typeof expectConfig === 'string') {
-        return resolveVariables(expectConfig, context);
-    }
-    if (Array.isArray(expectConfig)) {
-        return expectConfig.map(item => resolveExpectConfig(item, context));
-    }
-    if (typeof expectConfig === 'object' && expectConfig !== null) {
-        if (expectConfig.operator && expectConfig.expect) {
-            return {
-                ...expectConfig,
-                expect: resolveExpectConfig(expectConfig.expect, context)
-            };
-        }
-        return Object.fromEntries(
-            Object.entries(expectConfig).map(([k, v]) =>
-                [k, resolveExpectConfig(v, context)]
-            )
-        );
-    }
-    return expectConfig;
-}
-function formatErrors(errors: ValidationError[]): any { // <-- Thay string bằng any
-    if (!Array.isArray(errors)) return { message: 'No error details available' };
-
-    const formattedErrors = errors
-        .filter(e => e !== undefined && e !== null)
-        .map(e => ({
-            path: e.path?.toString() || 'unknown_path',
-            expected: e.expected?.toString() || 'no_expected_value',
-            actual: e.actual !== undefined
-                ? (typeof e.actual === 'object' ? JSON.stringify(e.actual) : e.actual.toString())
-                : 'no_actual_value',
-            message: e.message || 'No message'
-        }));
-
-    return formattedErrors.length === 1 ? formattedErrors[0] : formattedErrors;
-}

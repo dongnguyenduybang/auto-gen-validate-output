@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Element } from '../enums/element.enum';
 import { Operator } from '../enums/operator.enum';
-import { TestContext } from './text-context';
+import { IContext, TestContext, WSSContext } from './text-context';
 
 export interface ValidationError {
   path: string;
@@ -17,52 +17,37 @@ interface OperatorConfig {
   expect: any;
 }
 
-export const createApiValidator = (
-  context: TestContext,
-) => {
-  //đệ quye so sánh excpect & acutal
+export const createApiValidator = (context: IContext) => {
   const comparedValue = (a: any, b: any): boolean => {
-    // Resolve giá trị từ context nếu là template variable
     if (typeof b === 'string' && b.startsWith('{{')) {
-      b = context.getValue(b.replace(/[{}]/g, '').split('.'));
+      const path = b.replace(/[{}]/g, '').split('.');
+      b = context.getValue(path);
     }
-  
-    // So sánh sau khi convert về string
     return String(a).trim() === String(b).trim();
   };
-  
   function getNestedValue(obj: any, pathStr: string): any[] {
     const parts = pathStr.split('.');
     let current: any[] = [obj];
-  
+
     for (const part of parts) {
       current = current.flatMap((item) => {
-        if (item === undefined || item === null) {
-          return [];
-        }
+        if (item === undefined || item === null) return [];
         const value = item[part];
-        if (Array.isArray(value)) {
-          return value;
-        }
-        if (value !== undefined) {
-          return [value];
-        }
+        if (Array.isArray(value)) return value;
+        if (value !== undefined) return [value];
         return [];
       });
     }
-  
-    // Loại bỏ các phần tử rỗng hoặc undefined/null
-    // current = current.filter(value => value !== undefined && value !== null);
 
     return current;
   }
-  
-  
+
   const resolveValue = (value: any): any => {
     if (typeof value === 'string') {
-      return value.replace(/\{\{(.+?)\}\}/g, (_, path) =>
-        context.getValue(path.split('.')) ?? `{{${path}}}`
-      );
+      return value.replace(/\{\{(.+?)\}\}/g, (_, path) => {
+        const pathArray = path.split('.');
+        return context.getValue(pathArray) ?? `{{${path}}}`;
+      });
     }
     if (Array.isArray(value)) return value.map(item => resolveValue(item));
     if (typeof value === 'object') {
@@ -90,9 +75,8 @@ export const createApiValidator = (
     expected: any,
     elementType: Element | undefined,
     path: string[],
-    errors: ValidationError[],
+    errors: ValidationError[]
   ) => {
-    // Xử lý trường hợp không phải array
     if (!elementType) {
       if (!comparedValue(actual, expected)) {
         errors.push(createError(
@@ -103,8 +87,7 @@ export const createApiValidator = (
       }
       return;
     }
-  
-    // Xử lý trường hợp array
+
     if (!Array.isArray(actual)) {
       errors.push(createError(
         path,
@@ -113,7 +96,7 @@ export const createApiValidator = (
       ));
       return;
     }
-  
+
     switch (elementType) {
       case Element.ALL:
         if (!actual.every(item => comparedValue(item, expected))) {
@@ -143,32 +126,32 @@ export const createApiValidator = (
         }
         break;
     }
-  };  
+  };
 
-  const validateInclusion = async (
+  const validateInclusion = (
     actual: any,
     expectedValues: any,
     elementType: Element | undefined,
     path: string[],
-    errors: ValidationError[],
+    errors: ValidationError[]
   ) => {
     const expectedArray = Array.isArray(expectedValues) ? expectedValues : [expectedValues];
     const fullPath = path.join('.');
     const targetValues = getNestedValue(actual, fullPath);
-    // targetValues = Array.isArray(targetValues) ? targetValues : [targetValues];
-    const filteredValues = actual[0]
-    let valuesToCheck = filteredValues;
-    switch(elementType) {
+
+    let valuesToCheck = targetValues;
+    switch (elementType) {
       case Element.FIRST:
-        valuesToCheck = filteredValues.slice(0, 1);
+        valuesToCheck = targetValues.slice(0, 1);
         break;
       case Element.LAST:
-        valuesToCheck = filteredValues.slice(-1);
+        valuesToCheck = targetValues.slice(-1);
         break;
       case Element.ALL:
       default:
-        valuesToCheck = filteredValues;
+        valuesToCheck = targetValues;
     }
+
     if (valuesToCheck.length === 0) {
       errors.push(createError(
         path,
@@ -177,11 +160,12 @@ export const createApiValidator = (
       ));
       return;
     }
-    const missing = expectedArray.filter(expected => 
+
+    const missing = expectedArray.filter(expected =>
       !valuesToCheck.some(val => comparedValue(val, expected))
     );
     if (missing.length > 0) {
-      const message = elementType 
+      const message = elementType
         ? `${elementType} elements of ${fullPath} must include ${missing.join(', ')}`
         : `${fullPath} must include ${missing.join(', ')}`;
       errors.push(createError(
@@ -191,11 +175,12 @@ export const createApiValidator = (
       ));
     }
   };
+
   const validateOperatorObject = (
     actual: any,
     config: OperatorConfig,
     path: string[],
-    errors: ValidationError[],
+    errors: ValidationError[]
   ) => {
     const { field, operator, element, expect } = config;
     const resolvedExpect = resolveValue(expect);
@@ -209,12 +194,11 @@ export const createApiValidator = (
       ));
       return;
     }
-  
-    // Xử lý trường hợp expect là single value nhưng cần thành array
-    const processedExpect = operator === Operator.INCLUDE && !Array.isArray(resolvedExpect) 
-      ? [resolvedExpect] 
+
+    const processedExpect = operator === Operator.INCLUDE && !Array.isArray(resolvedExpect)
+      ? [resolvedExpect]
       : resolvedExpect;
-  
+
     switch (operator) {
       case Operator.INCLUDE:
         validateInclusion(targetValue, processedExpect, element, path, errors);
@@ -226,6 +210,7 @@ export const createApiValidator = (
         errors.push(createError(path, `Unknown operator: ${operator}`, targetValue));
     }
   };
+
   const isOperatorObject = (obj: any): boolean => {
     return obj && typeof obj === 'object' && 'operator' in obj && 'expect' in obj;
   };
@@ -234,7 +219,7 @@ export const createApiValidator = (
     actual: Record<string, any>,
     expected: Record<string, any>,
     path: string[],
-    errors: ValidationError[],
+    errors: ValidationError[]
   ) => {
     if (typeof actual !== 'object' || actual === null) {
       errors.push(createError(path, 'Expected object', actual));
@@ -250,7 +235,7 @@ export const createApiValidator = (
     actual: any[],
     expected: any[],
     path: string[],
-    errors: ValidationError[],
+    errors: ValidationError[]
   ) => {
     if (!Array.isArray(actual)) {
       errors.push(createError(path, 'Expected array', actual));
@@ -259,7 +244,7 @@ export const createApiValidator = (
 
     if (expected.every(item => isOperatorObject(item))) {
       expected.forEach(rule => {
-        const fieldValues = actual.map(item => 
+        const fieldValues = actual.map(item =>
           getNestedValue(item, (rule as OperatorConfig).field)
         );
         validateFieldValues(fieldValues, rule as OperatorConfig, [...path, (rule as OperatorConfig).field], errors);
@@ -277,10 +262,10 @@ export const createApiValidator = (
     values: any[],
     rule: OperatorConfig,
     path: string[],
-    errors: ValidationError[],
+    errors: ValidationError[]
   ) => {
     const resolvedExpect = resolveValue(rule.expect);
-    
+
     switch (rule.operator) {
       case Operator.INCLUDE:
         validateInclusion(values, resolvedExpect, rule.element, path, errors);
@@ -297,7 +282,7 @@ export const createApiValidator = (
     actual: any,
     expected: any,
     path: string[],
-    errors: ValidationError[],
+    errors: ValidationError[]
   ) => {
     if (isOperatorObject(expected)) {
       validateOperatorObject(actual, expected as OperatorConfig, path, errors);
@@ -308,6 +293,13 @@ export const createApiValidator = (
         validateObject(actual, expected, path, errors);
       }
     } else if (typeof expected === 'string') {
+      if (!comparedValue(actual, expected)) {
+        errors.push(createError(
+          path,
+          `equal(${JSON.stringify(expected)})`,
+          actual
+        ));
+      }
     }
   };
 

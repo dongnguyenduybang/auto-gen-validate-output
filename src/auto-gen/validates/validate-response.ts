@@ -2,8 +2,7 @@
 import 'reflect-metadata';
 import { ErrorMessage } from '../enums/error-message.enum';
 import { getDecorators } from '../utils/dto-helper';
-import { resolveVariables } from '../utils/test-executor';
-import { resolveValidIf } from '../utils/helper';
+import { resolveValidIf, resolveVariables } from '../utils/helper';
 export async function validateResponses(
   payload: any,
   instance: any,

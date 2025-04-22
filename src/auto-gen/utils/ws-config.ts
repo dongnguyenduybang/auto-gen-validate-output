@@ -1,8 +1,6 @@
 import { ApiEvent } from "../functions/types";
 
-type APIEvent = Record<string, ApiEvent>;
-
-export const API_EVENT: APIEvent = {
+export const API_EVENT = {
     halome: {
         v3: {
             webSocket: {
@@ -106,7 +104,7 @@ export const API_EVENT: APIEvent = {
                 OUTGOING_MESSAGE_REQUEST_CREATED: 'com.halome.chat.v3.outgoing_message_request.updated',
                 USER_MESSAGE_REACTION_UPDATED: 'com.halome.chat.v3.message.user_reaction_updated',
                 USER_MESSAGE_DELETED: 'com.halome.chat.v3.user_message.deleted',
-                USER_UNREAD_MESSAGE_UPDATED: 'com.halome.chat.v3.friend.unfriended',
+                USER_UNREAD_MESSAGE_UPDATED:  'com.halome.chat.v3.unread_messages.updated',
                 WORKSPACE_CREATED: 'com.halome.chat.v3.workspace.created',
                 WORKSPACE_CREATION_COMPLETED: 'com.halome.chat.v3.workspace.creation_completed',
                 WORKSPACE_CREATION_FAILED: 'com.halome.chat.v3.workspace.creation_failed',
