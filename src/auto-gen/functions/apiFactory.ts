@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { ApiConfig, ApiFunctionParams, ApiResponse } from './types';
-import { resolveVariables } from '../utils/test-executor';
 import { TestContext } from '../utils/text-context';
+import { resolveVariables } from '../utils/helper';
 
 export function createApiFunction(config: ApiConfig, context: TestContext) {
   return async ({
@@ -11,6 +11,8 @@ export function createApiFunction(config: ApiConfig, context: TestContext) {
     body
   }: ApiFunctionParams): Promise<ApiResponse> => {
     try {
+
+      // 0. Create WS
       // 1. Validate required headers
       const finalHeaders: Record<string, string> = {};
       if (config) {
@@ -36,7 +38,6 @@ export function createApiFunction(config: ApiConfig, context: TestContext) {
       // 3. Prepare payload && header
       const payload = config && config.payloadMapper ? config.payloadMapper(body) : body;
       const header = config ? finalHeaders : headers
-      
       // 4. Make API call
       const axiosConfig: AxiosRequestConfig = {
         method: finalMethod,

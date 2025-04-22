@@ -26,4 +26,5 @@ export enum VAR {
     url = '{{url}}',
     url1 = '{{url1}}',
     url2 = '{{url2}}',
+    idWS = '{{id}}'
 }

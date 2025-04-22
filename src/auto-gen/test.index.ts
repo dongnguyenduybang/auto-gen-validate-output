@@ -6,6 +6,7 @@ import { genTestRequest } from './utils/gen-test-request';
 import { execSync } from 'child_process';
 import { genTestResponse } from './utils/gen-test-response';
 import { genTestSaga } from './utils/gen-test-saga';
+import { genTestWS } from './utils/gen-test-ws';
 
 type ActionHandler = (dtoName: string) => Promise<void> | void;
 
@@ -27,7 +28,7 @@ if (type === 'report') {
   // Đối với các trường hợp khác: pnpm gen request send-message
   dtoName = restArgs[0];
 }
-const validTypes = ['request', 'response', 'saga', 'report'];
+const validTypes = ['request', 'response', 'saga', 'report', 'ws'];
 
 if (!validTypes.includes(type)) {
   console.error(`Invalid type. Valid types: ${validTypes.join(', ')}`);
@@ -42,16 +43,19 @@ const actionHandlers: Record<string, Record<string, ActionHandler[]>> = {
     ],
     response: [(dto) => Promise.resolve(genTestResponse(dto))],
     saga: [(dto) => Promise.resolve(genTestSaga(dto))],
+    ws: [(dto) => Promise.resolve(genTestWS(dto))],
   },
   test: {
     request: [runTests('test-requests')],
     response: [runTests('test-responses')],
     saga: [runTests('test-sagas')],
+    ws: [runTests('test-ws')],
   },
   clear: {
     request: [clearFiles('test-requests')],
     response: [clearFiles('test-responses')],
     saga: [clearFiles('test-sagas')],
+    ws: [clearFiles('test-ws')],
     report: [
       (dto) => {
         // Xác định  trên subType (request/response/saga)
@@ -95,7 +99,7 @@ function runTests(testType: string): ActionHandler {
   return async (dtoName) => {
     console.log(`Running test for ${testType} "${dtoName}"...`);
     try {
-      const testPath = `src/auto-gen/${testType}/${dtoName}`;
+      const testPath = `src/auto-gen/${testType}/${dtoName} --detectOpenHandles`;
       execSync(`jest ${testPath}`, { stdio: 'inherit' });
     } catch (error) {
       console.error(`Test failed for ${dtoName}:`, error.message);
@@ -149,7 +153,8 @@ async function main() {
     const isBulkAction = dtoName && (
       dtoName.includes('-requests') ||
       dtoName.includes('-responses') ||
-      dtoName.includes('-sagas')
+      dtoName.includes('-sagas')||
+      dtoName.includes('-ws')
     );
 
     if (isBulkAction) {
