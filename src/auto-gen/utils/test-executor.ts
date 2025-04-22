@@ -16,6 +16,8 @@ import { UpdateMessageResponse } from '../response/update-message.response';
 import { getApiFunctions } from '../functions/apiRegistry';
 import { extractDatas } from './extract-data';
 import { formatErrors, resolveExpectConfig, resolveVariables } from './helper';
+import { getWebSocket } from './ws-store';
+import { captureWSEvents } from './ws-listener';
 
 interface Step {
     action: string;
@@ -56,11 +58,50 @@ export async function executeAllSteps(
         const result = await executeStep(step, context, wsContext, index);
         results.push(result);
         if (!result.status) break;
+
+        const wsCaptureResult = await capturePostActionEvents(context, wsContext);
+    results.push(...wsCaptureResult);
     }
 
     context.debug();
     return results;
 }
+
+async function capturePostActionEvents(
+    context: TestContext,
+    wsContext: WSSContext
+  ): Promise<StepResult[]> {
+    const results: StepResult[] = [];
+    const wsTypes = ['wsActor', 'wsRecipient'];
+  
+    for (const wsType of wsTypes) {
+      try {
+        const ws = getWebSocket(`ws_${wsType}`);
+        if (!ws || ws.readyState !== WebSocket.OPEN) continue;
+  
+        const events = await captureWSEvents(ws, 5000);
+        const currentEvents = wsContext.getValue(wsType) || [];
+        wsContext.setValue(wsType, [...currentEvents, ...events]);
+  
+        // Validate events nếu cần
+        results.push({
+          type: `ws_${wsType}_update`,
+          status: true,
+          stepName: `PostAction ${wsType} Capture`,
+        });
+      } catch (error) {
+        results.push({
+          type: `ws_${wsType}_error`,
+          status: false,
+          stepName: `PostAction ${wsType} Capture`,
+          error: error instanceof Error ? error.message : 'WS Capture Failed',
+        });
+      }
+    }
+  
+    return results;
+  }
+  
 
 async function executeStep(
     step: Step,

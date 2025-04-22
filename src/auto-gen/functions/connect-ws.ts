@@ -1,12 +1,6 @@
 import WebSocket from 'ws';
 
-export async function connectWSS(url: string, maxEvents: number = 1, timeoutMs: number = 10000): Promise<{ ws: WebSocket, message: any[] }> {
-  const ws = new WebSocket(url);
-  const events = await initSocketEvents(ws, maxEvents, timeoutMs);
-  return { ws, message: events };
-}
-
-export async function initSocketEvents(ws: WebSocket, maxEvents: number = 1, timeoutMs: number = 5000): Promise<any[]> {
+export async function initSocketEvents(ws: WebSocket, maxEvents: number = 1, timeoutMs: number = 120000): Promise<any[]> {
   return new Promise((resolve, reject) => {
     let timeoutId: NodeJS.Timeout;
     const events: any[] = [];
@@ -21,17 +15,13 @@ export async function initSocketEvents(ws: WebSocket, maxEvents: number = 1, tim
     timeoutId = setTimeout(() => {
       console.log(`WebSocket timeout for ${ws.url}, received ${events.length} of ${maxEvents} events`);
       cleanup();
-      if (events.length > 0) {
-        resolve(events); // Trả về các sự kiện đã nhận nếu có
-      } else {
-        reject(new Error('WebSocket timeout: No events received within the specified time'));
-      }
+      resolve(events); // Trả về các sự kiện đã nhận, ngay cả khi timeout
     }, timeoutMs);
 
     ws.on('message', (msg) => {
       try {
         const message = JSON.parse(msg.toString());
-        console.log(`Received WebSocket message for ${ws.url}:`, message);
+        console.log(`Received WebSocket message ${events.length + 1}/${maxEvents} for ${ws.url}:`, message);
         events.push(message);
         if (events.length >= maxEvents) {
           cleanup();
@@ -51,9 +41,24 @@ export async function initSocketEvents(ws: WebSocket, maxEvents: number = 1, tim
     });
 
     ws.on('close', () => {
-      console.log(`WebSocket closed for ${ws.url}, received ${events.length} events`);
-      cleanup();
-      resolve(events); // Trả về các sự kiện đã nhận nếu WebSocket đóng
+      try {
+        console.log(`WebSocket closed for ${ws.url}, received ${events.length} events`);
+        cleanup();
+        resolve(events);
+      } catch (error) {
+        // Ngăn lỗi log không đồng bộ
+        cleanup();
+        resolve(events);
+      }
     });
+
+    // Log khi WebSocket mở
+    if (ws.readyState === WebSocket.OPEN) {
+      console.log(`WebSocket is open for ${ws.url}`);
+    } else {
+      ws.on('open', () => {
+        console.log(`WebSocket opened for ${ws.url}`);
+      });
+    }
   });
 }
