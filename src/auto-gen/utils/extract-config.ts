@@ -87,6 +87,10 @@ const wsOpenConfigActor: ExtractConfig = {
     fields: ['id', 'type', 'data'],
   },
 };
+
+const openConnectionResumeConfig: ExtractConfig = {
+
+}
 // Ánh xạ action tới cấu hình
 export const configMap: Record<string, ExtractConfig> = {
   mockUser: mockUserConfig,
@@ -100,5 +104,6 @@ export const configMap: Record<string, ExtractConfig> = {
   ejectMessage: ejectMessageConfig,
   openConnection: openConnectionConfig,
   wsActor: wsOpenConfigActor,
-  wsRecipient: wsOpenConfigRecipient
+  wsRecipient: wsOpenConfigRecipient,
+  openConnectionResume: openConnectionResumeConfig
 };
