@@ -103,7 +103,6 @@ async function executeStep(
                 error: JSON.stringify(result)
             };
         }
-        console.log(action)
         const extractedData = extractDatas(response.data, action)
         context.mergeData(extractedData);
 
