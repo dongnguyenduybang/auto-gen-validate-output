@@ -23,4 +23,5 @@ export enum VAR {
     name = '{{name}}',
     name1 = '{{name1}}',
     name2 = '{{name2}}',
+    workspaceId = '0'
 }
