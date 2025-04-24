@@ -4,7 +4,7 @@
 
 # Introduce
 
-- ✏️ Auto generate test case for DTO/Response/Saga.
+- ✏️ Auto generate test script for DTO/Response/Saga.
 
 # Contents
 
