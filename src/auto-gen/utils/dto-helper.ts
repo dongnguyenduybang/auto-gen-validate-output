@@ -216,7 +216,25 @@ export function mapError(
     } else {
       addError(decorators['notEmptyMessage'], `${field} ${ErrorMessage.INVALID_RANGE_STRING_LENGTH} ${decorators['minLength']} to ${decorators['maxLength']} length`);
     }
-    return errors;
+    // return errors;
+  }
+
+  
+  // 5. Kiểm tra ULID
+  if (decorators['isULID']) {
+    if(typeof value !== 'string'){
+      addError(null, `${field} ${ErrorMessage.INVALID_ULID}`);
+    }else if(typeof value === 'string' && (value === '' || !value.startsWith('{{'))){
+      addError(null, `${field} ${ErrorMessage.INVALID_ULID}`);
+    }
+  }
+
+  // 6. Kiểm tra emoji
+  if (decorators['isEmoji']) {
+    const isInvalid = typeof value === 'string' && (value === '' || !isSingleEmoji(value));
+    if (isInvalid) {
+      addError(null, `${field} ${ErrorMessage.INVALID_EMOJI}`);
+    }
   }
 
   // 4. Kiểm tra kiểu string và các điều kiện liên quan
@@ -224,14 +242,12 @@ export function mapError(
     if (typeof value !== 'string') {
       if (decorators['isChecked']) {
         if (field === 'workspaceId' || field === 'channelId' || field === 'userId') {
-          addError(decorators['stringMessage'], 'Could not resolve permission type');
-        } else if (field === 'content') {
-          addError(decorators['stringMessage'], 'content must be string');
-        } else if (field === 'ref') {
-          addError(decorators['stringMessage'], 'ref must be string');
-        }
+          addError(decorators['stringMessage'], null);
+        } else{
+          addError(decorators['stringMessage'], `${field} ${ErrorMessage.INVALID_TYPE_STRING}`);
+        } 
       } else {
-        addError(decorators['stringMessage'], `${field} must be string`);
+        addError(decorators['stringMessage'], `${field} ${ErrorMessage.INVALID_TYPE_STRING}`);
       }
       return errors;
     }
@@ -279,20 +295,6 @@ export function mapError(
     }
   }
 
-  // 5. Kiểm tra ULID
-  if (decorators['isULID']) {
-    if (typeof value === 'string' && (value === '' || !value.startsWith('{{'))) {
-      addError(null, `${field} ${ErrorMessage.INVALID_ULID}`);
-    }
-  }
-
-  // 6. Kiểm tra emoji
-  if (decorators['isEmoji']) {
-    const isInvalid = typeof value === 'string' && (value === '' || !isSingleEmoji(value));
-    if (isInvalid) {
-      addError(null, `${field} ${ErrorMessage.INVALID_EMOJI}`);
-    }
-  }
 
   // 5. Kiểm tra kiểu number
   if (decorators['type'] === 'number') {
