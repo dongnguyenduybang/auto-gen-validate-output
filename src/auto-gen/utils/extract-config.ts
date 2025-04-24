@@ -18,6 +18,10 @@ const createChannelConfig: ExtractConfig = {
     path: ['data', 'channel'],
     fields: ['channelId', 'workspaceId', 'name', 'invitationLink', 'totalMembers'],
   },
+  users: {
+    path: ['includes', 'users'],
+    fields: ['userId', 'username']
+  }
 };
 
 const getChannelConfig: ExtractConfig = {};
