@@ -354,9 +354,3 @@ Bước 3: Tiến hành chạy test script
                   - Có thể expect nhiều biến cục bộ => [VAR.userId, VAR.userId1]. Nhưng với điều kiện element bắt buộc là ALL và operator là INCLUDE
                   - Operator và Element là Enum
                   - Element cố thể undefined nếu không cần dùng chỉ áp dụng với đối với check kiểu obj
-
-
-
-
-
-          
