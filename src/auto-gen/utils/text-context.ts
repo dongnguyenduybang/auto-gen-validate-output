@@ -16,7 +16,7 @@ export class TestContext implements IContext {
 
   setValue(key: string, value: any): void {
     if (key === 'wsActor' || key === 'wsRecipient') {
-      this.data[key] = value; // Lưu mảng trực tiếp
+      this.data[key] = value;
     } else {
       const version = this.versions[key] || 0;
       const versionedKey = version > 0 ? `${key}${version}` : key;
@@ -40,7 +40,6 @@ export class TestContext implements IContext {
       return acc[key];
     }, this.data);
   }
-
   mergeData(newData: Record<string, any>): void {
     Object.entries(newData).forEach(([key, value]) => {
       this.setValue(key, value);
