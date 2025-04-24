@@ -1,15 +1,17 @@
 import { getWebSocket } from '../../utils/ws-store';
-import { TestContext, WSSContext } from '../../utils/text-context';
+import { EventContext, TestContext, WSSContext } from '../../utils/text-context';
 import { SendMessageSagaWS } from './send-message.ws';
 import { executeAllSteps } from '../../utils/test-executor';
 import { executeWSSteps } from '../../utils/ws-execute-ws-step';
 import { executeOpenWS } from '../../utils/ws-open';
+import { executeWSSCheck } from '../../utils/ws-execute-check';
 
 describe('Test sagas for send-message', () => {
   let pathRequest: string;
   let testType: string;
   let globalContext: TestContext;
   let globalWSSContext: WSSContext;
+  let eventContext
   let testNumber = 0;
 
   beforeAll(async () => {
@@ -17,20 +19,23 @@ describe('Test sagas for send-message', () => {
     testType = 'saga';
     globalContext = new TestContext();
     globalWSSContext = new WSSContext();
+    eventContext = new EventContext()
 
-    const resultBeforeAll = await executeAllSteps(SendMessageSagaWS.beforeAll, globalContext, globalWSSContext);
+    const resultBeforeAll = await executeAllSteps(SendMessageSagaWS.beforeAll, globalContext, globalWSSContext, eventContext);
 
     const resultOpenWS = await executeOpenWS(SendMessageSagaWS.wsOpen, globalContext, globalWSSContext);
 
-  }, 10000); // Tăng timeout lên 60s để đảm bảo đủ thời gian cho beforeAll
+  }, 10000);
 
   it('should validate response structure', async () => {
     testNumber++;
 
-    const resultSteps = await executeWSSteps(SendMessageSagaWS.steps, globalContext, globalWSSContext);
+    const resultSteps = await executeWSSteps(SendMessageSagaWS.steps, globalContext, globalWSSContext, eventContext);
 
+    const resultCheck = await executeWSSCheck(SendMessageSagaWS.wssCheck, globalContext, globalWSSContext, eventContext)
+    globalWSSContext.debug()
+    console.log(JSON.stringify(resultCheck))
     expect(resultSteps.every(step => step.status)).toBe(true);
-  }, 15000); // Giữ timeout 240s vì có nhiều bước
+  }, 15000); 
 
-  // Không cần afterAll vì WebSocket đã được đóng trong ws-execute-ws-step.ts và ws-open.ts
 });
