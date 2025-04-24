@@ -136,7 +136,6 @@ export function generateErrorVariantsForField(
   if (!decorators['optional']) {
     variants.push(undefined);
   }
-  // variants.push(null);
   variants.push('');
 
   return [...new Set(variants)];
@@ -175,6 +174,7 @@ export function mapError(
   const errors: string[] = [];
 
   // Helper function để thêm lỗi
+  // Helper function để thêm lỗi
   const addError = (customMessage: string | undefined, defaultMessage: string) => {
     const errorMessage = customMessage || defaultMessage;
     if (errorMessage && !errors.includes(errorMessage)) {
@@ -191,7 +191,9 @@ export function mapError(
   if (value === undefined || value === null) {
     if (decorators['isDefined']) {
       if (decorators['isChecked']) {
-        if (field === 'workspaceId' || field === 'channelId' || field === 'userId') {
+        if (field === 'channelId') {
+          addError(decorators['isDefinedMessage'], 'Unsupported permission type');
+        } else if (field === 'workspaceId' || field === 'userId') {
           addError(decorators['isDefinedMessage'], 'Could not resolve permission type');
         } else {
           addError(decorators['isDefinedMessage'], `${ErrorMessage.DEFINED} '${field}'`);
@@ -200,23 +202,6 @@ export function mapError(
         addError(decorators['isDefinedMessage'], `${ErrorMessage.DEFINED} '${field}'`);
       }
       return errors;
-    }
-  }
-
-  // 9. Kiểm tra ULID
-if (decorators['isULID']) {
-  if (typeof value === 'string' && (value === '' || !value.startsWith('{{'))) {
-    addError(null, `${field} ${ErrorMessage.INVALID_ULID}`);
-  }
-}
-  // 10. Kiểm tra emoji
-  if (decorators['isEmoji']) {
-    const isInvalid =
-      typeof value === 'string' && (value === '' ||
-        !isSingleEmoji(value))
-    if (isInvalid) {
-      addError(null, `${field} ${ErrorMessage.INVALID_EMOJI}`);
-
     }
   }
 
@@ -252,11 +237,9 @@ if (decorators['isULID']) {
     }
 
     if (typeof value === 'string' && decorators['isChecked']) {
-      // Trường hợp Invalid channel hoặc Unsupported permission type
       const isWorkspaceInvalid = field === 'workspaceId' && value !== '0';
       const isChannelInvalid = field === 'channelId' && !value.startsWith('{{');
       const isUserInvalid = field === 'userId' && !value.startsWith('{{');
-      const isChannelIdUndefined = field === 'channelId' && (value === undefined || value === null);
 
       if (isWorkspaceInvalid) {
         addError(decorators['isCheckedMessage'], 'Invalid channel');
@@ -269,17 +252,6 @@ if (decorators['isULID']) {
       }
       if (isUserInvalid) {
         addError(decorators['isCheckedMessage'], 'Unauthorized request');
-        return errors;
-      }
-
-
-      // Xử lý Unsupported permission type
-      if (
-        (isChannelIdUndefined) ||
-        ((field === 'workspaceId' && value === '0') && isChannelIdUndefined) ||
-        (isWorkspaceInvalid && isChannelIdUndefined)
-      ) {
-        addError(decorators['isCheckedMessage'], 'Unsupported permission type');
         return errors;
       }
     }
@@ -302,8 +274,23 @@ if (decorators['isULID']) {
       } else if (hasMin && len < decorators['minLength']) {
         addError(null, `${field} ${ErrorMessage.MIN_LENGTH} ${decorators['minLength']} length`);
       } else if (hasMax && len > decorators['maxLength']) {
-        addError(null, `${field} ${ErrorMessage.MAX_LENGTH} ${decorators['minLength']} length`);
+        addError(null, `${field} ${ErrorMessage.MAX_LENGTH} ${decorators['maxLength']} length`);
       }
+    }
+  }
+
+  // 5. Kiểm tra ULID
+  if (decorators['isULID']) {
+    if (typeof value === 'string' && (value === '' || !value.startsWith('{{'))) {
+      addError(null, `${field} ${ErrorMessage.INVALID_ULID}`);
+    }
+  }
+
+  // 6. Kiểm tra emoji
+  if (decorators['isEmoji']) {
+    const isInvalid = typeof value === 'string' && (value === '' || !isSingleEmoji(value));
+    if (isInvalid) {
+      addError(null, `${field} ${ErrorMessage.INVALID_EMOJI}`);
     }
   }
 
@@ -327,7 +314,7 @@ if (decorators['isULID']) {
   // 6. Kiểm tra kiểu array
   if (decorators['type'] === 'array') {
     if (!Array.isArray(value)) {
-      addError(decorators['arrayMessage'], `${field} must be an array`);
+      addError(decorators['arrayMessage'], `${field} ${ErrorMessage.INVALID_TYPE_ARRAY}`);
       return errors;
     }
 
@@ -342,7 +329,7 @@ if (decorators['isULID']) {
   // 7. Kiểm tra kiểu object
   if (decorators['type'] === 'object') {
     if (typeof value !== 'object' || Array.isArray(value) || value === null) {
-      addError(decorators['objectMessage'], `${field} must be an object`);
+      addError(decorators['objectMessage'], `${field} ${ErrorMessage.INVALID_TYPE_OBJ}`);
       return errors;
     }
   }
@@ -368,7 +355,89 @@ export function softErrorFromMap(payload: Record<string, any>, dtoClass: any): s
     "Unauthorized request",
   ];
 
-  // Thu thập tất cả lỗi từ các field
+  // kiểm tra các trường hợp
+  const workspaceId = payload['workspaceId'];
+  const channelId = payload['channelId'];
+  const isWorkspaceString = typeof workspaceId === 'string';
+  const isWorkspaceEmpty = isWorkspaceString && workspaceId === '';
+  const isWorkspaceZero = workspaceId === '0';
+  const isChannelUndefined = !payload.hasOwnProperty('channelId') || channelId === undefined;
+  const isChannelString = typeof channelId === 'string';
+  const isChannelEmpty = isChannelString && channelId === '';
+  const isChannelValidFormat = isChannelString && channelId.startsWith('{{');
+
+  // trường hợp: workspaceId là chuỗi rỗng, channelId là chuỗi bất kỳ
+  if (isWorkspaceEmpty) {
+    const workspaceIdDecorators = getDecorators(instance, 'workspaceId');
+    const workspaceIdErrors = mapError('workspaceId', workspaceId, workspaceIdDecorators);
+    if (workspaceIdErrors.length > 0) {
+      return ['Could not resolve permission type'];
+    }
+  }
+
+  // trường hợp: workspaceId = "0", channelId là chuỗi rỗng
+  if (isWorkspaceZero && isChannelEmpty) {
+    const channelIdDecorators = getDecorators(instance, 'channelId');
+    const channelIdErrors = mapError('channelId', channelId, channelIdDecorators);
+    if (channelIdErrors.length > 0) {
+      return ['Could not resolve permission type'];
+    }
+  }
+
+  // trường hợp: workspaceId là string, channelId undefined (trừ workspaceId rỗng)
+  if (isWorkspaceString && !isWorkspaceEmpty && isChannelUndefined) {
+    const channelIdDecorators = getDecorators(instance, 'channelId');
+    const channelIdErrors = mapError('channelId', undefined, channelIdDecorators);
+    if (channelIdErrors.length > 0) {
+      return ['Unsupported permission type'];
+    }
+  }
+
+  // trường hợp: workspaceId không phải string, channelId undefined
+  if (!isWorkspaceString && workspaceId !== undefined && isChannelUndefined) {
+    const channelIdDecorators = getDecorators(instance, 'channelId');
+    const channelIdErrors = mapError('channelId', undefined, channelIdDecorators);
+    if (channelIdErrors.length > 0) {
+      return ['Could not resolve permission type'];
+    }
+  }
+
+  // trường hợp workspaceId undefined, channelId undefined
+  if (workspaceId === undefined && isChannelUndefined) {
+    const workspaceIdDecorators = getDecorators(instance, 'workspaceId');
+    const workspaceIdErrors = mapError('workspaceId', undefined, workspaceIdDecorators);
+    if (workspaceIdErrors.length > 0) {
+      return ['Could not resolve permission type'];
+    }
+  }
+
+  // trường hợp workspaceId = "0", channelId string không bắt đầu bằng {{}}
+  if (isWorkspaceZero && isChannelString && !isChannelEmpty && !isChannelValidFormat) {
+    const channelIdDecorators = getDecorators(instance, 'channelId');
+    const channelIdErrors = mapError('channelId', channelId, channelIdDecorators);
+    if (channelIdErrors.length > 0) {
+      return ['Invalid channel'];
+    }
+  }
+
+  // trường hợp workspaceId string ≠ "0", channelId string bắt đầu bằng "{{"
+  if (isWorkspaceString && !isWorkspaceZero && !isWorkspaceEmpty && isChannelValidFormat) {
+    const workspaceIdDecorators = getDecorators(instance, 'workspaceId');
+    const workspaceIdErrors = mapError('workspaceId', workspaceId, workspaceIdDecorators);
+    if (workspaceIdErrors.length > 0) {
+      return ['Invalid channel'];
+    }
+  }
+
+  // trường hợp workspaceId = "0", channelId không phải string
+  if (isWorkspaceZero && channelId !== undefined && !isChannelString) {
+    const channelIdDecorators = getDecorators(instance, 'channelId');
+    const channelIdErrors = mapError('channelId', channelId, channelIdDecorators);
+    if (channelIdErrors.length > 0) {
+      return ['Could not resolve permission type'];
+    }
+  }
+
   for (const field of Object.keys(payload)) {
     const value = payload[field];
     const decorators = getDecorators(instance, field);
@@ -383,7 +452,5 @@ export function softErrorFromMap(payload: Record<string, any>, dtoClass: any): s
     }
   }
 
-  // Trả về tất cả lỗi nếu không có lỗi ưu tiên
   return errors;
 }
-
