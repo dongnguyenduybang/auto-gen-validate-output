@@ -10,11 +10,10 @@ export class SendMessageDTO {
   @IsChecked({ message: `Invalid channel` })
   @IsNotEmpty({ message: `Could not resolve permission type` })
   @IsString({ message: `Could not resolve permission type` })
-
   workspaceId: string = '';
 
-  @IsDefined({ message: `Could not resolve permission type` })
-  @IsChecked({ message: `Unsupported permission type` })
+  @IsDefined({ message: `Unsupported permission type` })
+  @IsChecked({ message: `Invalid channel` })
   @IsNotEmpty({ message: `Could not resolve permission type` })
   @IsString({ message: `Could not resolve permission type` })
   channelId: string = '';
