@@ -1,11 +1,15 @@
 ## Requests
+Mục đích: Định nghĩa cấu trúc các bước chuẩn bị dữ liệu, bước sau khi chạy test, method, path, header và body của endpoint đang test. Với cấu trúc thư mục như sau
 
 - 📂 root
   - 📂 test-requests
     - 📂 send-message
-      - 📄 send-message.request.json
+      - 📄 send-message.request.ts
       - 📄 send-message.dto.ts
+      - 📄 send-message.payload.json
       - 📄 send-message.spec.ts
+
+Bước 1: Định nghĩa 2 file send-message-dto và send-message-request
 
 **📄 send-message.request.json**
 ``` 
@@ -24,7 +28,7 @@
             action: "mockUser",
             body: {
                 quantity: 2,
-                prefix: "testABACDD",
+                prefix: "testDTO",
                 badge: 0
             }
         },
@@ -32,7 +36,16 @@
             action: "createChannel"
         }
     ],
-    afterAll: [],
+    afterAll: [
+       {
+        action: "deleteMockedUsers",
+        method: METHOD.DELETE,
+        path: APIPath.Faker.DeleteMockedUsers,
+        body: {
+          prefix: "testDTO"
+        }
+      }
+    ],
 };
 ```
 
@@ -69,13 +82,31 @@ export class SendMessageDTO {
   @IsNotEmpty()
   @IsDefined()
   @MinLength(1)
-  @MaxLength(6000)
+  @MaxLength(2000)
   content: string = '';
 }
 ```
+
+Bước 2: Tiến hành chạy gen script
+
+```bash
+  pnpm gen request send-message
+```
+  Sau khi chạy gen script sẽ gen ra được 2 file là 
+  - 📄 send-message.payload.json
+  - 📄 send-message.spec.ts
+
+Bước 3: Tiến hành chạy test script
+
+```bash
+  pnpm test request send-message
+```
+  Sau khi chạy test script thì log sẽ được ghi vào file report 
+
+
 - Note:
   + Những decorator có custom message nếu có lỗi sẽ dừng test filed đó và push lỗi custom đó ra 
-  + Decorator IsChecked để bắt những trường hợp ngoại lệ đúng typeof nhưng sai giá trị. Dừng test field đó và push lỗi custom đó ra
+  + Decorator IsChecked để bắt những trường hợp ngoại lệ đúng typeof nhưng sai giá trị. Sẽ dừng test field đó và push lỗi custom đó ra
     + Example: field workspaceId có payload là chuỗi "abcdef" nhưng khác "0" => Invalid channel, field channelId có payload là chuỗi "abcdef" nhưng khác template {{channelId}}(ULID) => Invalid channel
 
 

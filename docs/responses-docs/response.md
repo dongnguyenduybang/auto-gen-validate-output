@@ -1,6 +1,6 @@
 
 ## Responses
-
+- Mục định: Định nghĩa cấu trúc response và validate response API sẽ trả về. Cấu trúc file thư mục như sau:
 - 📂 root
   - 📂 test-responses
     - 📂 send-message
@@ -9,7 +9,9 @@
   - 📂 responses
     - 📄 send-message.response.ts
 
-**📄 send-message.response.json  **   
+Bước 1: Định nghĩa file send-message.response và send-message.request.ts
+
+**📄 send-message.response.ts  **   
 ```
 export const SendMessageResponse = {
     method: METHOD.POST,
@@ -26,7 +28,7 @@ export const SendMessageResponse = {
             action: "mockUser",
             body: {
                 quantity: 2,
-                prefix: "testABACDD",
+                prefix: "testResponse",
                 badge: 0
             }
         },
@@ -34,7 +36,16 @@ export const SendMessageResponse = {
             action: "createChannel"
         }
     ],
-    afterAll: [],
+    afterAll: [
+      {
+        action: "deleteMockedUsers",
+        method: METHOD.DELETE,
+        path: APIPath.Faker.DeleteMockedUsers,
+        body: {
+          prefix: "testResponse"
+        }
+      }
+    ],
 };
 
 ```
@@ -243,7 +254,23 @@ export class SendMessageResponse extends BaseResponse {
 }
 
 ```
-- Định nghĩa kế thừa từ class BaseResponse 
-- Override thêm các decorator đối với các property cần thay đổi 
-- Exclude sẽ undefined các property không cần dùng đến 
-- Nếu không defined các property trong SendMessageResponse thì mặc định sẽ lấy từ class BaseResponse
+
+Bước 2: Tiến hành chạy gen script
+
+```bash
+  pnpm gen response send-message
+```
+ Sau khi chạy gen script sẽ gen ra được  file là 
+  - 📄 send-message.response.spec.ts
+Bước 3: Tiến hành chạy test script
+
+```bash
+  pnpm test request send-message
+```
+  Sau khi chạy test script thì log sẽ được ghi vào file report 
+
++ Note:  
+  - Định nghĩa kế thừa từ class BaseResponse 
+  - Override thêm các decorator đối với các property cần thay đổi 
+  - Exclude sẽ undefined các property không cần dùng đến 
+  - Nếu không defined các property trong SendMessageResponse thì mặc định sẽ lấy từ class BaseResponse

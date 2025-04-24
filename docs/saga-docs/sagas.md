@@ -1,5 +1,6 @@
 ## Saga
-- Cấu trúc
+- Mục đích: Gen script test và validate lần lượt các bước được định nghĩa các step kèm expect sẳn.
+
   - 📂 root
     - 📂 test-sagas
       - 📂 send-message
@@ -13,8 +14,10 @@
       - 📄 send-message.response.ts
       - 📄 send-dm-message.response.ts
      
-- 📄 send-message.saga.ts 
 
+Bước 1: Định nghĩa file cấu trúc các step sẽ check
+
+- 📄 send-message.saga.ts 
 ```
 import { Operator } from "../../enums/operator.enum";
 import { Element } from "../../enums/element.enum";
@@ -182,161 +185,175 @@ export const SendMessageSaga = {
 
 ```
 
-* Desc
-  * Note
+Bước 2: Tiến hành chạy gen script
+
+```bash
+  pnpm gen saga send-message
+```
+ Sau khi chạy gen script sẽ gen ra được file là 
+  - 📄 send-message.saga.spec.ts
+
+Bước 3: Tiến hành chạy test script
+
+```bash
+  pnpm test saga send-message
+```
+  Sau khi chạy test script thì log sẽ được ghi vào file report 
+
+
+* Note
     - Cần đặt tên action theo đúng với tên endpoint và theo kiểu CamelCase 
     
-+ Phần expect của test chính sẽ có cấu trục giống như cấu trúc API trả về 
+    - Phần expect của test chính sẽ có cấu trục giống như cấu trúc API trả về 
 
-  + Cấu trúc của API
-  ```
-    {
-      "ok": true,
-      "data": {
-          "message": {
-              
-          }
-      },
-      "includes": {
-          "users": [
-            
-          ],
-          "channels": [
-            
-          ],
-          "members": [
-              
-          ],
-          "channelMetadata": [
-            
-          ]
-      }
-    }
-  ```
-
-  - Cấu trúc của expect
-  ```
-    expect: {
-      ok: {
-
-      },
-      data: {
-          message: {
-            
-          },
-      },
-      includes: {
-          users: [
-            
-          ],
-          channelMetadata: [
-
-          ],
-          members: [
-
-          ],
-          channels: [
-            
-          ]
-      }
-    }
-  ```
-
-+ Cấu trúc expect 
-  - Đối với object
-    ```
-    data: {
-          message: {
-            workspaceId: { operator: Operator.EQUAL, expect: 0 },
-            channelId: { operator: Operator.EQUAL, expect: VAR.channelId },
-            userId: { operator: Operator.EQUAL, expect: VAR.userId },
-            content: { operator: Operator.EQUAL, expect: 'user send message' },
-            messageType: { operator: Operator.EQUAL, expect: 0 },
-            messageStatus: { operator: Operator.EQUAL, expect: 1 },
-            attachmentType: { operator: Operator.EQUAL, expect: 0 },
-          },
-        },
-    ```
-    Defined từng filed có trong object cần expect với cấu trúc expect như trên.
-
-    * Note: 
-      - operator: toán tử
-      - expect: so sánh với giá trị ...
-    
-    + Cần đặt đúng tên như các property trong API trả về
-    + Đối với object chỉ sử dụng toán tử EQUAL
-    + Expect với string phải để trong dấu => 'abc'
-    + Expect với number phải để kiểu => number
-    + Expect với biến cục bộ có enum VAR
-
-  - Đối với array
-    ```
-    users: [
-            {
-              field: 'userId',
-              operator: Operator.INCLUDE,
-              element: Element.FIRST,
-              expect: [VAR.userId],
+        + Cấu trúc của API
+        ```
+          {
+            "ok": true,
+            "data": {
+                "message": {
+                    
+                }
             },
-            {
-              field: 'userType',
-              operator: Operator.INCLUDE,
-              element: Element.FIRST,
-              expect: 0,
-            },
-            {
-              field: 'profile.userBadgeType',
-              operator: Operator.EQUAL,
-              expect: 0,
-            },
-          ],
-    ```
-      * Note
-        + Mỗi object được bao bên ngoài bởi một array được xác định là 1 filed của mảng con bên trong obj đó
-          ```
-            {
-              field: 'userId',
-              operator: Operator.INCLUDE,
-              element: Element.FIRST,
-              expect: [VAR.userId],
-            },
-          ``` 
-          Đây được xác định là một filed có trong obj
-          - field: Tên filed có trong obj
-          - operator: Đối với array chỉ sử dụng operator là INCLUDE
-          ```
-          # Expect 
-           {
-              field: 'roles.role',
-              operator: Operator.INCLUDE,
-              element: Element.ALL,
-              expect: ['everyone', 'owner']
+            "includes": {
+                "users": [
+                  
+                ],
+                "channels": [
+                  
+                ],
+                "members": [
+                    
+                ],
+                "channelMetadata": [
+                  
+                ]
             }
-          # Response return API
-            "roles": [
-                    {
-                        "role": "owner",
-                        "weight": 0
-                    },
-                    {
-                        "role": "everyone",
-                        "weight": 2
-                    }
-              ],
+          }
+        ```
+
+        + Cấu trúc của expect
+        ```
+          expect: {
+            ok: {
+
+            },
+            data: {
+                message: {
+                  
+                },
+            },
+            includes: {
+                users: [
+                  
+                ],
+                channelMetadata: [
+
+                ],
+                members: [
+
+                ],
+                channels: [
+                  
+                ]
+            }
+          }
+        ```
+      + Cấu trúc expect 
+        - Đối với object
           ```
-            + Operator.INCLUDE => Phải đi kèm với element để xác định sẽ lấy mảng con thứ mấy trong mảng được bao bên ngoài.
-          - element: Thứ tự mảng con được xác định 
-            + ALL: Lấy tất cả các mảng con
-            + FIRST: Lấy mảng con đầu tiên
-            + LAST: Lấy mảng con cuối cùng
-          - expect: 
-            + String: được bao bên ngoài là dấu => ['abcde']
-            + Number: phải là kiểu number => 0
+          data: {
+                message: {
+                  workspaceId: { operator: Operator.EQUAL, expect: 0 },
+                  channelId: { operator: Operator.EQUAL, expect: VAR.channelId },
+                  userId: { operator: Operator.EQUAL, expect: VAR.userId },
+                  content: { operator: Operator.EQUAL, expect: 'user send message' },
+                  messageType: { operator: Operator.EQUAL, expect: 0 },
+                  messageStatus: { operator: Operator.EQUAL, expect: 1 },
+                  attachmentType: { operator: Operator.EQUAL, expect: 0 },
+                },
+              },
+          ```
+          Defined từng filed có trong object cần expect với cấu trúc expect như trên.
+
+          * Note: 
+            - operator: toán tử
+            - expect: so sánh với giá trị ...
           
-          * Note 2
-            - Có thể expect nhiều biến cục bộ => [VAR.userId, VAR.userId1]. Nhưng với điều kiện element bắt buộc là ALL và operator là INCLUDE
-            - Operator và Element là Enum
-            - Element cố thể undefined nếu không cần dùng chỉ áp dụng với đối với check kiểu obj
+          + Cần đặt đúng tên như các property trong API trả về
+          + Đối với object chỉ sử dụng toán tử EQUAL
+          + Expect với string phải để trong dấu => 'abc'
+          + Expect với number phải để kiểu => number
+          + Expect với biến cục bộ có enum VAR
+
+        - Đối với array
+          ```
+          users: [
+                  {
+                    field: 'userId',
+                    operator: Operator.INCLUDE,
+                    element: Element.FIRST,
+                    expect: [VAR.userId],
+                  },
+                  {
+                    field: 'userType',
+                    operator: Operator.INCLUDE,
+                    element: Element.FIRST,
+                    expect: 0,
+                  },
+                  {
+                    field: 'profile.userBadgeType',
+                    operator: Operator.EQUAL,
+                    expect: 0,
+                  },
+                ],
+          ```
+          * Note
+            + Mỗi object được bao bên ngoài bởi một array được xác định là 1 filed của mảng con bên trong obj đó
+              ```
+                  {
+                    field: 'userId',
+                    operator: Operator.INCLUDE,
+                    element: Element.FIRST,
+                    expect: [VAR.userId],
+                  },
+              ``` 
+              Đây được xác định là một filed có trong obj
+                - field: Tên filed có trong obj
+                - operator: Đối với array chỉ sử dụng operator là INCLUDE
+                ```
+                # Expect 
+                {
+                    field: 'roles.role',
+                    operator: Operator.INCLUDE,
+                    element: Element.ALL,
+                    expect: ['everyone', 'owner']
+                  }
+                # Response return API
+                  "roles": [
+                          {
+                              "role": "owner",
+                              "weight": 0
+                          },
+                          {
+                              "role": "everyone",
+                              "weight": 2
+                          }
+                    ],
+                ```
+                  + Operator.INCLUDE => Phải đi kèm với element để xác định sẽ lấy mảng con thứ mấy trong mảng được bao bên ngoài.
+                - element: Thứ tự mảng con được xác định 
+                  + ALL: Lấy tất cả các mảng con
+                  + FIRST: Lấy mảng con đầu tiên
+                  + LAST: Lấy mảng con cuối cùng
+                - expect: 
+                  + String: được bao bên ngoài là dấu => ['abcde']
+                  + Number: phải là kiểu number => 0
+                
+                * Note 2
+                  - Có thể expect nhiều biến cục bộ => [VAR.userId, VAR.userId1]. Nhưng với điều kiện element bắt buộc là ALL và operator là INCLUDE
+                  - Operator và Element là Enum
+                  - Element cố thể undefined nếu không cần dùng chỉ áp dụng với đối với check kiểu obj
 
 
 
