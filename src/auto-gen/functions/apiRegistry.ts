@@ -1,6 +1,6 @@
 
 import { APIPath } from '../enums/path.enum';
-import { TestContext } from '../utils/text-context';
+import { EventContext, TestContext } from '../utils/text-context';
 import { createApiFunction } from './apiFactory';
 import { ApiConfig } from './types';
 type ApiRegistry = Record<string, ApiConfig>;
@@ -28,8 +28,8 @@ const API_REGISTRY: ApiRegistry = {
  
 };
 
-export function getApiFunctions(action: string, context: TestContext) {
+export function getApiFunctions(action: string, context: TestContext, eventContext: EventContext) {
   const config = API_REGISTRY[action];
   
-  return createApiFunction(config, context);
+  return createApiFunction(config, context, eventContext);
 }

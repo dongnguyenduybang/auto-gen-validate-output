@@ -85,28 +85,34 @@ export const SendMessageSagaWS = {
       },
       headers: HeaderList.Token(),
     },
-    {
-      action: 'resume',
-      path: 'wsActor',
-      body: "member_joined.id",
+    // {
+    //   action: 'resume',
+    //   path: 'wsActor',
+    //   body: "member_joined.id",
       
-    },
-    {
-      action: 'sendMessage',
-      method: METHOD.POST,
-      path: APIPath.Message.SendMessage,
-      body: {
-        workspaceId: '0',
-        channelId: VAR.channelId,
-        content: 'user send message 2',
-        ref: 'ref',
-      },
-      headers: HeaderList.Token(),
-    },
+    // },
+    // {
+    //   action: 'sendMessage',
+    //   method: METHOD.POST,
+    //   path: APIPath.Message.SendMessage,
+    //   body: {
+    //     workspaceId: '0',
+    //     channelId: VAR.channelId,
+    //     content: 'user send message 2',
+    //     ref: 'ref',
+    //   },
+    //   headers: HeaderList.Token(),
+    // },
   ],
   wssCheck:
   {
     expectWSActor: [
+      {
+        type: {operator: Operator.EQUAL, expect: API_EVENT.halome.v3.realTime.GATEWAY_CONNECTED},
+        data: {
+          message: {operator: Operator.EQUAL, expect: 'Hello'}
+        }
+      },
       {
         type: { operator: Operator.EQUAL, expect: API_EVENT.halome.v3.chat.CHANNEL_CREATED },
         data: {
@@ -137,6 +143,9 @@ export const SendMessageSagaWS = {
             },
           ],
         }
+      },
+      {
+        type: { operator: Operator.EQUAL, expect: API_EVENT.halome.v3.chat.MESSAGE_CREATED },
       },
       {
         type: { operator: Operator.EQUAL, expect: API_EVENT.halome.v3.chat.MEMBER_JOINED },

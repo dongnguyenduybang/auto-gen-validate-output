@@ -1,14 +1,17 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { ApiConfig, ApiFunctionParams, ApiResponse } from './types';
-import { TestContext } from '../utils/text-context';
+import { EventContext, TestContext } from '../utils/text-context';
 import { resolveVariables } from '../utils/helper';
+import { EVENTS_BY_ACTION } from '../utils/event-acction';
 
-export function createApiFunction(config: ApiConfig, context: TestContext) {
+export function createApiFunction(config: ApiConfig, context: TestContext, eventContext: EventContext) {
   return async ({
     method,
     path,
     headers,
-    body
+    body,
+    action,
+    stepIndex
   }: ApiFunctionParams): Promise<ApiResponse> => {
     try {
 
@@ -50,8 +53,11 @@ export function createApiFunction(config: ApiConfig, context: TestContext) {
       } else if (['get', 'delete'].includes(finalMethod)) {
         axiosConfig.params = payload;
       }
-
       const response = await axios(axiosConfig);
+      const events = EVENTS_BY_ACTION[action] || [];
+      if (events.length > 0 ) {
+        eventContext.setValue(action, events);
+      }
       return {
         ok: true,
         data: response.data

@@ -1,6 +1,6 @@
 import { createApiValidator } from './api-validator';
 import { formatErrors, resolveExpectConfig, resolveVariables } from './helper';
-import { TestContext, WSSContext } from './text-context';
+import { EventContext, TestContext, WSSContext } from './text-context';
 import { getWebSocket } from './ws-store';
 import WebSocket from 'ws';
 import { WebSocketEventCollector } from './ws-event-collector';
@@ -18,6 +18,7 @@ import { UpdateMessageResponse } from '../response/update-message.response';
 import { extractDatas } from './extract-data';
 import { processAction } from './process-resume';
 import { fetchResume } from './fetch-resume';
+import { EVENTS_BY_ACTION } from './event-acction';
 
 interface StepResult {
   type?: string;
@@ -41,7 +42,8 @@ const responseClassMap = {
 export async function executeWSSteps(
   wssSteps: any[],
   globalContext: TestContext,
-  globalWSSContext: WSSContext
+  globalWSSContext: WSSContext,
+  eventContext: EventContext
 ): Promise<StepResult[]> {
   console.log('Executing WebSocket steps:', wssSteps);
   const results: StepResult[] = [];
@@ -62,9 +64,9 @@ export async function executeWSSteps(
   try {
 
     for (const [index, step] of wssSteps.entries()) {
-      const result = await executeStep(step, globalContext, globalWSSContext, collector);
+      const result = await executeStep(step, index, globalContext, globalWSSContext, eventContext, collector);
       results.push(result);
-      // Nếu step là 'resume', ghi nhớ thông tin (nhưng chưa slice)
+
       if (step.action === 'resume' && result.resumeIndex !== undefined) {
         lastResumeStep = {
           path: result.path, // 'wsActor' hoặc 'wsRecipient'
@@ -73,12 +75,12 @@ export async function executeWSSteps(
       }
     }
 
-    // BƯỚC 2: Sau khi tất cả step chạy xong, mới slice context (nếu có resume)
     if (lastResumeStep) {
       const { path, index } = lastResumeStep;
       const currentEvents = globalWSSContext.getValue(path) || [];
-      const eventsAfterResume = currentEvents.slice(index + 1); // Bỏ qua event đã resume
-      globalWSSContext.setValue(path, eventsAfterResume); // Cập nhật lại context
+      const eventsAfterResume = currentEvents.slice(index + 1);
+      globalWSSContext.setValue(path, eventsAfterResume);
+      eventContext.setValue(path, eventsAfterResume)
     }
   } catch (error) {
     console.error('Error in executeWSSteps:', error);
@@ -93,19 +95,21 @@ export async function executeWSSteps(
       collector.stop();
     }
   }
+  eventContext.debug()
 
-  globalWSSContext.debug();
+  // globalWSSContext.debug();
   return results;
 }
 
 async function executeStep(
   step: any,
+  index,
   globalContext: TestContext,
   globalWSSContext: WSSContext,
+  eventContext: EventContext,
   collector: WebSocketEventCollector,
 ): Promise<StepResult> {
   let resultResume: any = null;
-  let resumeIndex: any[] = []
   try {
     const { action, method, path, body, headers, expect: expectConfig } = step;
     const wsActor = getWebSocket('ws_wsActor');
@@ -117,12 +121,16 @@ async function executeStep(
       const dataResume = processAction(path, body, globalWSSContext)
 
       resultResume = await fetchResume(action, path, dataResume, globalWSSContext, collector)
+      const events = EVENTS_BY_ACTION[action] || [];
+      if (events.length > 0) {
+        eventContext.setValue(action, events);
+      }
       return {
         type: 'ws',
         status: true,
         stepName: action,
-        resumeIndex: resultResume.resumeEventIndex, // Giả sử `resultResume` có `index`
-        path: resultResume.path // 'wsActor' hoặc 'wsRecipient'
+        resumeIndex: resultResume.resumeEventIndex,
+        path: resultResume.path
       };
 
     } else {
@@ -130,14 +138,16 @@ async function executeStep(
       const resolvedBody = resolveVariables(body, globalContext);
       const resolvedHeader = resolveVariables(headers, globalContext);
       //goi API function
-      const apiFunction = getApiFunctions(action, globalContext);
+      const apiFunction = getApiFunctions(action, globalContext, eventContext);
 
       // Execute API call
       const response = await apiFunction({
         method,
         path,
         headers: resolvedHeader,
-        body: resolvedBody
+        body: resolvedBody,
+        action: action,
+        stepIndex: index
       });
       if (response.data.ok === false) {
         return {
@@ -163,7 +173,6 @@ async function executeStep(
           error: JSON.stringify(result)
         };
       }
-
       const extractedData = extractDatas(response.data, action, false)
       globalContext.mergeData(extractedData);
 
@@ -182,9 +191,6 @@ async function executeStep(
         }
       }
     }
-
-
-
 
     // Thu thập sự kiện mới
     const { actorEvents, recipientEvents } = await collector.collectEventsAfterAction(5000, 5);
@@ -209,8 +215,8 @@ async function executeStep(
       type: e.type,
       source: e.source
     }));
-    globalWSSContext.setValue('wsActor', currentActorEvents.concat(mappedActorEvents));
-    globalWSSContext.setValue('wsRecipient', currentRecipientEvents.concat(mappedRecipientEvents));
+    globalWSSContext.setValue('wsActor', currentActorEvents.concat(newActorEvents));
+    globalWSSContext.setValue('wsRecipient', currentRecipientEvents.concat(newRecipientEvents));
 
     return {
       type: 'ws',

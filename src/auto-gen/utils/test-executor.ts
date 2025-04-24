@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { createApiValidator } from './api-validator';
-import { TestContext, WSSContext } from './text-context';
+import { EventContext, TestContext, WSSContext } from './text-context';
 import { SendMessageResponse } from '../response/send-message.response';
 import { ClassConstructor, plainToClass } from 'class-transformer';
 import { CreateChannelResponse } from '../response/create-channel.response';
@@ -49,11 +49,12 @@ export async function executeAllSteps(
     steps: Step[],
     context: TestContext,
     wsContext: WSSContext,
+    eventContext: EventContext
 ): Promise<StepResult[]> {
     const results: StepResult[] = [];
 
     for (const [index, step] of steps.entries()) {
-        const result = await executeStep(step, context, wsContext, index);
+        const result = await executeStep(step, context, wsContext, eventContext, index);
         results.push(result);
         if (!result.status) break;
     }
@@ -67,6 +68,7 @@ async function executeStep(
     step: Step,
     context: TestContext,
     wsContext: WSSContext,
+    eventContext: EventContext,
     stepIndex: number,
 ): Promise<StepResult> {
     try {
@@ -76,14 +78,16 @@ async function executeStep(
         const resolvedBody = resolveVariables(body, context);
         const resolvedHeader = resolveVariables(headers, context);
         //goi API function
-        const apiFunction = getApiFunctions(action, context);
+        const apiFunction = getApiFunctions(action, context, eventContext);
 
         // Execute API call
         const response = await apiFunction({
             method,
             path,
             headers: resolvedHeader,
-            body: resolvedBody
+            body: resolvedBody,
+            action: action,
+            stepIndex: stepIndex
         });
         if (response.data.ok === false) {
             return {

@@ -32,8 +32,10 @@ import { TestContext } from "../utils/text-context";
   export interface ApiFunctionParams {
     method?: string;
     path?: string;
-    headers: any
+    headers: any;
     body: any;
+    action: string;
+    stepIndex: number; // Bắt buộc
   }
 
   export interface WssFunctionParams {
