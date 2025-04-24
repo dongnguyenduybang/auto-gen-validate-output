@@ -20,7 +20,7 @@ export const UpdateMessageRequest = {
             action: "mockUser",
             body: {
                 quantity: 2,
-                prefix: "testABACDD",
+                prefix: "testUpdateMessage",
                 badge: 0
             }
         },
@@ -40,5 +40,14 @@ export const UpdateMessageRequest = {
             headers: HeaderList.Token(),
         }
     ],
-    afterAll: [],
+    afterAll: [
+        {
+            action: "deleteMockedUsers",
+            method: METHOD.DELETE,
+            path: APIPath.Faker.DeleteMockedUsers,
+            body: {
+                prefix: "testUpdateMessage",
+            }
+        }
+    ],
 };

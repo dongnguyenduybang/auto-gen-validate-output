@@ -1,0 +1,326 @@
+=== Request Test Report for send-dm-message ===
+• Host: https://api-hono.rpc.ziichat.dev
+• Endpoint: /Message/SendDMMessage
+• Date: 17/04/2025, 20:01:42
+
+=== Execution Steps ===
+  1. [✅ PASSED] mockUser
+
+=== Test Summary ===
+✅ Passed: 167
+❌ Failed: 43
+📊 Total: 210
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 42
+ 🟢 201: 0
+ 🟠 400: 0
+ 🟠 403: 168
+ 🟠 404: 0
+ 🔴 500: 0
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #43
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":123,"ref":123}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: content must be string, ref must be string
+     └─ Details: No details
+
+ 🟣 2. Case #44
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":123,"ref":"check_ulid"}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: content must be string
+     └─ Details: No details
+
+ 🟣 3. Case #45
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":123,"ref":""}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: content must be string, ref must have more than 1 length
+     └─ Details: No details
+
+ 🟣 4. Case #46
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":123,"ref":"ref"}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: content must be string
+     └─ Details: No details
+
+ 🟣 5. Case #47
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":123}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: content must be string, must have required property 'ref'
+     └─ Details: No details
+
+ 🟣 6. Case #48
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":123,"ref":""}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: content must be string, ref must have more than 1 length
+     └─ Details: No details
+
+ 🟣 7. Case #49
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":"check_ulid","ref":123}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: ref must be string
+     └─ Details: No details
+
+ 🟣 8. Case #50
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":"check_ulid","ref":"check_ulid"}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: None
+     └─ Details: No details
+
+ 🟣 9. Case #51
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":"check_ulid","ref":""}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: ref must have more than 1 length
+     └─ Details: No details
+
+ 🟣 10. Case #52
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":"check_ulid","ref":"ref"}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: None
+     └─ Details: No details
+
+ 🟣 11. Case #53
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":"check_ulid"}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: must have required property 'ref'
+     └─ Details: No details
+
+ 🟣 12. Case #54
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":"check_ulid","ref":""}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: ref must have more than 1 length
+     └─ Details: No details
+
+ 🟣 13. Case #55
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":"","ref":123}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: content must to range from 1 to 2000 length, ref must be string
+     └─ Details: No details
+
+ 🟣 14. Case #56
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":"","ref":"check_ulid"}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: content must to range from 1 to 2000 length
+     └─ Details: No details
+
+ 🟣 15. Case #57
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":"","ref":""}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: content must to range from 1 to 2000 length, ref must have more than 1 length
+     └─ Details: No details
+
+ 🟣 16. Case #58
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":"","ref":"ref"}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: content must to range from 1 to 2000 length
+     └─ Details: No details
+
+ 🟣 17. Case #59
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":""}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: content must to range from 1 to 2000 length, must have required property 'ref'
+     └─ Details: No details
+
+ 🟣 18. Case #60
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":"","ref":""}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: content must to range from 1 to 2000 length, ref must have more than 1 length
+     └─ Details: No details
+
+ 🟣 19. Case #61
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":123}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: content must to range from 1 to 2000 length, ref must be string
+     └─ Details: No details
+
+ 🟣 20. Case #62
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":"check_ulid"}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: content must to range from 1 to 2000 length
+     └─ Details: No details
+
+ 🟣 21. Case #63
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":""}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: content must to range from 1 to 2000 length, ref must have more than 1 length
+     └─ Details: No details
+
+ 🟣 22. Case #64
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":"ref"}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: content must to range from 1 to 2000 length
+     └─ Details: No details
+
+ 🟣 23. Case #65
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: content must to range from 1 to 2000 length, must have required property 'ref'
+     └─ Details: No details
+
+ 🟣 24. Case #66
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":""}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: content must to range from 1 to 2000 length, ref must have more than 1 length
+     └─ Details: No details
+
+ 🟣 25. Case #67
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":"test response send dm message","ref":123}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: ref must be string
+     └─ Details: No details
+
+ 🟣 26. Case #68
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":"test response send dm message","ref":"check_ulid"}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: None
+     └─ Details: No details
+
+ 🟣 27. Case #69
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":"test response send dm message","ref":""}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: ref must have more than 1 length
+     └─ Details: No details
+
+ 🟣 28. Case #70
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":"test response send dm message","ref":"ref"}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: None
+     └─ Details: No details
+
+ 🟣 29. Case #71
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":"test response send dm message"}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: must have required property 'ref'
+     └─ Details: No details
+
+ 🟣 30. Case #72
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":"test response send dm message","ref":""}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: ref must have more than 1 length
+     └─ Details: No details
+
+ 🟣 31. Case #73
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","ref":123}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: must have required property 'content', ref must be string
+     └─ Details: No details
+
+ 🟣 32. Case #74
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","ref":"check_ulid"}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: must have required property 'content'
+     └─ Details: No details
+
+ 🟣 33. Case #75
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","ref":""}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: must have required property 'content', ref must have more than 1 length
+     └─ Details: No details
+
+ 🟣 34. Case #76
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","ref":"ref"}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: must have required property 'content'
+     └─ Details: No details
+
+ 🟣 35. Case #77
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid"}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: must have required property 'content', must have required property 'ref'
+     └─ Details: No details
+
+ 🟣 36. Case #78
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","ref":""}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: must have required property 'content', ref must have more than 1 length
+     └─ Details: No details
+
+ 🟣 37. Case #79
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":"","ref":123}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: content must to range from 1 to 2000 length, ref must be string
+     └─ Details: No details
+
+ 🟣 38. Case #80
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":"","ref":"check_ulid"}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: content must to range from 1 to 2000 length
+     └─ Details: No details
+
+ 🟣 39. Case #81
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":"","ref":""}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: content must to range from 1 to 2000 length, ref must have more than 1 length
+     └─ Details: No details
+
+ 🟣 40. Case #82
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":"","ref":"ref"}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: content must to range from 1 to 2000 length
+     └─ Details: No details
+
+ 🟣 41. Case #83
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":""}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: content must to range from 1 to 2000 length, must have required property 'ref'
+     └─ Details: No details
+
+ 🟣 42. Case #84
+     ├─ Status: 403
+     ├─ Body: {"userId":"check_ulid","content":"","ref":""}
+     ├─ Missing: Unauthorized request
+     ├─ Extra: content must to range from 1 to 2000 length, ref must have more than 1 length
+     └─ Details: No details
+
+ 🟣 43. Case #112
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JS1XDV29EP8PF8TGAB48SB8C","content":"test response send dm message","ref":"ref"}
+     ├─ Missing: You have reached the limit of 3 messages for strangers
+     ├─ Extra: None
+     └─ Details: No details
+
+=== End of Report ===

@@ -1,0 +1,18 @@
+=== Saga Test Report for report-dm-message ===
+• Host: https://api-hono.rpc.ziichat.dev
+• Sagas: ReportDmMessageSaga
+• Date: 18/04/2025, 09:01:33
+
+=== Execution Steps ===
+  1. [✅ PASSED] mockUser
+  2. [✅ PASSED] sendDmMessage
+  3. [✅ PASSED] reportDmMessage
+
+=== Error Details ===
+[Request Errors]
+
+[Response Errors]
+
+[Logic Errors]
+
+=== End of Report ===

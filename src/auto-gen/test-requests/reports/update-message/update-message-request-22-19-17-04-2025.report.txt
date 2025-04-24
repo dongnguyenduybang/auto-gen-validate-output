@@ -1,0 +1,34 @@
+=== Request Test Report for update-message ===
+• Host: https://api-hono.rpc.ziichat.dev
+• Endpoint: /Message/UpdateMessage
+• Date: 17/04/2025, 22:19:14
+
+=== Execution Steps ===
+  1. [✅ PASSED] mockUser
+  2. [✅ PASSED] createChannel
+  3. [✅ PASSED] sendMessage
+
+=== Test Summary ===
+✅ Passed: 0
+❌ Failed: 1
+📊 Total: 1
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 1
+ 🟢 201: 0
+ 🟠 400: 0
+ 🟠 403: 0
+ 🟠 404: 0
+ 🔴 500: 0
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #1560
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":"0","channelId":"01JS25A8ZBNY8AGS7R9RY02R2S","messageId":"","ref":"ref"}
+     ├─ Missing: messageId invalid ULID format
+     ├─ Extra: None
+     └─ Details: No details
+
+=== End of Report ===

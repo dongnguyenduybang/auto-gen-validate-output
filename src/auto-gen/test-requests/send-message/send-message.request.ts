@@ -1,5 +1,5 @@
+import { METHOD } from "src/auto-gen/enums/method.enum";
 import { HeaderList } from "../../enums/header.enum";
-import { METHOD } from "../../enums/method.enum";
 import { APIPath } from "../../enums/path.enum";
 import { VAR } from "../../enums/var-placeholder.enum";
 
@@ -9,8 +9,8 @@ export const SendMessageRequest = {
     headers: HeaderList.Token(),
     body: {
         channelId: VAR.channelId,
-        workspaceId: '0',
-        content: 'test response send message',
+        workspaceId: VAR.workspaceId,
+        content: 'test DTO send message',
         ref: 'ref'
     },
     beforeAll: [
@@ -18,7 +18,7 @@ export const SendMessageRequest = {
             action: "mockUser",
             body: {
                 quantity: 2,
-                prefix: "testABACDD",
+                prefix: "testDTO",
                 badge: 0
             }
         },
@@ -26,5 +26,14 @@ export const SendMessageRequest = {
             action: "createChannel"
         }
     ],
-    afterAll: [],
+    afterAll: [
+        {
+            action: "deleteMockedUsers",
+            method: METHOD.DELETE,
+            path: APIPath.Faker.DeleteMockedUsers,
+            body: {
+                prefix: "testDTO",
+            }
+        }
+    ],
 };

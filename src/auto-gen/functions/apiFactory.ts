@@ -49,7 +49,6 @@ export function createApiFunction(config: ApiConfig, context: TestContext) {
       } else if (['get', 'delete'].includes(finalMethod)) {
         axiosConfig.params = payload;
       }
-
       const response = await axios(axiosConfig);
       return {
         ok: true,

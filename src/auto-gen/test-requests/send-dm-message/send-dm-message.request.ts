@@ -23,7 +23,16 @@ export const SendDmMessageRequest = {
             }
         },
     ],
-    afterAll: [],
+    afterAll: [
+        {
+            action: "deleteMockedUsers",
+            method: METHOD.DELETE,
+            path: APIPath.Faker.DeleteMockedUsers,
+            body: {
+                prefix: "testABACDD",
+            }
+        }
+    ],
 };
 
 

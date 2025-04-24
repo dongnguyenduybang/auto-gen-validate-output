@@ -1,0 +1,32 @@
+=== Request Test Report for send-dm-message ===
+• Host: https://api-hono.rpc.ziichat.dev
+• Endpoint: /Message/SendDMMessage
+• Date: 17/04/2025, 20:04:01
+
+=== Execution Steps ===
+  1. [✅ PASSED] mockUser
+
+=== Test Summary ===
+✅ Passed: 209
+❌ Failed: 1
+📊 Total: 210
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 42
+ 🟢 201: 0
+ 🟠 400: 0
+ 🟠 403: 168
+ 🟠 404: 0
+ 🔴 500: 0
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #112
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JS1XJ2P7MFTY1KK23K1A3RKZ","content":"test response send dm message","ref":"ref"}
+     ├─ Missing: You have reached the limit of 3 messages for strangers
+     ├─ Extra: None
+     └─ Details: No details
+
+=== End of Report ===
