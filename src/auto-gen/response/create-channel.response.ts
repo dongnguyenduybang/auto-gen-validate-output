@@ -55,8 +55,15 @@ export class Message extends GeneralMessage {
 export class ChannelMetadata extends GeneralChannelMetadata {}
 
 export class Channel extends GeneralChannel {
+  @IsString()
+  @IsDefined()
+  workspaceId?: string;
 
-  // @StartWith('invitationLink', 'https://zii.chat/i/')
+  @IsString()
+  @IsDefined()
+  channelId?: string;
+
+  @StartWith('invitationLink', 'https://zii.chat/i/')
   @IsString()
   @IsDefined()
   invitationLink?: string;
