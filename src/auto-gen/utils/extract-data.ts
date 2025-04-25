@@ -1,7 +1,9 @@
-
 import { configMap } from './extract-config';
 
-export function extractDatas(response: any, action: string): Record<string, any> {
+export function extractDatas(
+  response: any,
+  action: string,
+): Record<string, any> {
   const data: Record<string, any> = {};
 
   // Lấy cấu hình từ configMap dựa trên action

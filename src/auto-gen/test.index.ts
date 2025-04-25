@@ -67,8 +67,10 @@ async function handleBulkAction(basePath: string, handlers: ActionHandler[]) {
   console.log(`Processing bulk action in directory: ${fullPath}`);
 
   // Lấy danh sách thư mục con, loại bỏ thư mục reports
-  const directories = getSubDirectories(fullPath).filter(dir => !dir.includes('reports'));
-  
+  const directories = getSubDirectories(fullPath).filter(
+    (dir) => !dir.includes('reports'),
+  );
+
   console.log(`Found ${directories.length} DTO directories:`, directories);
 
   for (const dir of directories) {
@@ -85,9 +87,9 @@ async function handleBulkAction(basePath: string, handlers: ActionHandler[]) {
 function getSubDirectories(dirPath: string): string[] {
   return fs
     .readdirSync(dirPath, { withFileTypes: true })
-    .filter((dirent) => 
-      dirent.isDirectory() && 
-      !dirent.name.toLowerCase().includes('report') // Loại bỏ thư mục report
+    .filter(
+      (dirent) =>
+        dirent.isDirectory() && !dirent.name.toLowerCase().includes('report'), // Loại bỏ thư mục report
     )
     .map((dirent) => dirent.name);
 }
@@ -140,17 +142,19 @@ function clearReports(reportType: string): ActionHandler {
   };
 }
 async function main() {
-  console.log(`Processing "${type}${subType ? ` ${subType}` : ''}" for: ${dtoName}`);
+  console.log(
+    `Processing "${type}${subType ? ` ${subType}` : ''}" for: ${dtoName}`,
+  );
 
   try {
     const handlers = actionHandlers[action]?.[type];
     if (!handlers) throw new Error('Invalid action');
 
-    const isBulkAction = dtoName && (
-      dtoName.includes('-requests') ||
-      dtoName.includes('-responses') ||
-      dtoName.includes('-sagas')
-    );
+    const isBulkAction =
+      dtoName &&
+      (dtoName.includes('-requests') ||
+        dtoName.includes('-responses') ||
+        dtoName.includes('-sagas'));
 
     if (isBulkAction) {
       // Truyền toàn bộ mảng handlers

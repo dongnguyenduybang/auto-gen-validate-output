@@ -1,7 +1,6 @@
-/* eslint-disable prettier/prettier */
 import { Element } from '../enums/element.enum';
 import { Operator } from '../enums/operator.enum';
-import { IContext, TestContext, WSSContext } from './text-context';
+import { IContext } from './text-context';
 
 export interface ValidationError {
   path: string;
@@ -24,33 +23,49 @@ export const createApiValidator = (context: IContext) => {
       b = context.getValue(path);
     }
     if (Array.isArray(a) && Array.isArray(b)) {
-      return a.length === b.length && a.every((item, i) => String(item).trim() === String(b[i]).trim());
+      return (
+        a.length === b.length &&
+        a.every((item, i) => String(item).trim() === String(b[i]).trim())
+      );
     }
     return String(a).trim() === String(b).trim();
   };
 
   function getNestedValue(obj: any, pathStr: string): any[] {
-    console.log(`getNestedValue: path=${pathStr}, obj=`, JSON.stringify(obj, null, 2));
+    console.log(
+      `getNestedValue: path=${pathStr}, obj=`,
+      JSON.stringify(obj, null, 2),
+    );
     const parts = pathStr.split('.');
     let current = Array.isArray(obj) ? obj.flat(Infinity) : [obj];
 
     for (const part of parts) {
-      current = current.flatMap(item => {
+      current = current.flatMap((item) => {
         if (item === undefined || item === null) return [];
 
         if (Array.isArray(item)) {
-          return item.flatMap(i => {
+          return item.flatMap((i) => {
             const val = i?.[part];
-            return val !== undefined ? (Array.isArray(val) ? val.flat(Infinity) : [val]) : [];
+            return val !== undefined
+              ? Array.isArray(val)
+                ? val.flat(Infinity)
+                : [val]
+              : [];
           });
         }
 
         const val = item[part];
-        return val !== undefined ? (Array.isArray(val) ? val.flat(Infinity) : [val]) : [];
+        return val !== undefined
+          ? Array.isArray(val)
+            ? val.flat(Infinity)
+            : [val]
+          : [];
       });
     }
 
-    const result = current.flat(Infinity).filter(val => val !== undefined && val !== null);
+    const result = current
+      .flat(Infinity)
+      .filter((val) => val !== undefined && val !== null);
     console.log(`getNestedValue result:`, JSON.stringify(result));
     return result;
   }
@@ -65,11 +80,11 @@ export const createApiValidator = (context: IContext) => {
       });
     }
     if (Array.isArray(value)) {
-      return value.map(item => resolveValue(item));
+      return value.map((item) => resolveValue(item));
     }
     if (typeof value === 'object' && value !== null) {
       return Object.fromEntries(
-        Object.entries(value).map(([key, val]) => [key, resolveValue(val)])
+        Object.entries(value).map(([key, val]) => [key, resolveValue(val)]),
       );
     }
     return value;
@@ -79,12 +94,13 @@ export const createApiValidator = (context: IContext) => {
     path: string[],
     expected: any,
     actual: any,
-    message?: string
+    message?: string,
   ): ValidationError => ({
     path: path.join('.'),
-    expected: typeof expected === 'string' ? expected : JSON.stringify(expected),
+    expected:
+      typeof expected === 'string' ? expected : JSON.stringify(expected),
     actual: JSON.stringify(actual),
-    message: message || `Validation failed at ${path.join('.')}`
+    message: message || `Validation failed at ${path.join('.')}`,
   });
 
   const validateEquality = (
@@ -92,54 +108,63 @@ export const createApiValidator = (context: IContext) => {
     expected: any,
     elementType: Element | undefined,
     path: string[],
-    errors: ValidationError[]
+    errors: ValidationError[],
   ) => {
     if (!elementType) {
       if (!comparedValue(actual, expected)) {
-        errors.push(createError(
-          path,
-          `equal(${JSON.stringify(expected)})`,
-          actual
-        ));
+        errors.push(
+          createError(path, `equal(${JSON.stringify(expected)})`, actual),
+        );
       }
       return;
     }
 
     if (!Array.isArray(actual)) {
-      errors.push(createError(
-        path,
-        `Expected array for element type '${elementType}'`,
-        actual
-      ));
+      errors.push(
+        createError(
+          path,
+          `Expected array for element type '${elementType}'`,
+          actual,
+        ),
+      );
       return;
     }
 
     switch (elementType) {
       case Element.ALL:
-        if (!actual.every(item => comparedValue(item, expected))) {
-          errors.push(createError(
-            path,
-            `All elements must equal ${JSON.stringify(expected)}`,
-            actual
-          ));
+        if (!actual.every((item) => comparedValue(item, expected))) {
+          errors.push(
+            createError(
+              path,
+              `All elements must equal ${JSON.stringify(expected)}`,
+              actual,
+            ),
+          );
         }
         break;
       case Element.FIRST:
         if (actual.length === 0 || !comparedValue(actual[0], expected)) {
-          errors.push(createError(
-            path,
-            `First element must equal ${JSON.stringify(expected)}`,
-            actual
-          ));
+          errors.push(
+            createError(
+              path,
+              `First element must equal ${JSON.stringify(expected)}`,
+              actual,
+            ),
+          );
         }
         break;
       case Element.LAST:
-        if (actual.length === 0 || !comparedValue(actual[actual.length - 1], expected)) {
-          errors.push(createError(
-            path,
-            `Last element must equal ${JSON.stringify(expected)}`,
-            actual
-          ));
+        if (
+          actual.length === 0 ||
+          !comparedValue(actual[actual.length - 1], expected)
+        ) {
+          errors.push(
+            createError(
+              path,
+              `Last element must equal ${JSON.stringify(expected)}`,
+              actual,
+            ),
+          );
         }
         break;
     }
@@ -150,11 +175,15 @@ export const createApiValidator = (context: IContext) => {
     expectedValues: any,
     elementType: Element | undefined,
     path: string[],
-    errors: ValidationError[]
+    errors: ValidationError[],
   ) => {
     console.log(`validateInclusion: actual=`, JSON.stringify(actual, null, 2));
-    const normalizedActual = Array.isArray(actual) ? actual.flat(Infinity) : [actual];
-    const expectedArray = Array.isArray(expectedValues) ? expectedValues.flat(Infinity) : [expectedValues];
+    const normalizedActual = Array.isArray(actual)
+      ? actual.flat(Infinity)
+      : [actual];
+    const expectedArray = Array.isArray(expectedValues)
+      ? expectedValues.flat(Infinity)
+      : [expectedValues];
 
     const fullPath = path.join('.');
 
@@ -165,7 +194,7 @@ export const createApiValidator = (context: IContext) => {
       actual: JSON.stringify(normalizedActual),
       targetValues: JSON.stringify(valuesToCheck),
       expectedValues: JSON.stringify(expectedArray),
-      elementType
+      elementType,
     });
 
     switch (elementType) {
@@ -181,27 +210,25 @@ export const createApiValidator = (context: IContext) => {
     }
 
     if (valuesToCheck.length === 0) {
-      errors.push(createError(
-        path,
-        `No values found at path '${fullPath}'`,
-        valuesToCheck
-      ));
+      errors.push(
+        createError(
+          path,
+          `No values found at path '${fullPath}'`,
+          valuesToCheck,
+        ),
+      );
       return;
     }
 
-    const missing = expectedArray.filter(expected =>
-      !valuesToCheck.some(val => comparedValue(val, expected))
+    const missing = expectedArray.filter(
+      (expected) => !valuesToCheck.some((val) => comparedValue(val, expected)),
     );
 
     if (missing.length > 0) {
       const message = elementType
         ? `${elementType} elements of ${fullPath} must include ${missing.join(', ')}`
         : `${fullPath} must include ${missing.join(', ')}`;
-      errors.push(createError(
-        path,
-        message,
-        valuesToCheck
-      ));
+      errors.push(createError(path, message, valuesToCheck));
     }
   };
 
@@ -209,7 +236,7 @@ export const createApiValidator = (context: IContext) => {
     actual: any,
     config: OperatorConfig,
     path: string[],
-    errors: ValidationError[]
+    errors: ValidationError[],
   ) => {
     const { field, operator, element, expect } = config;
     const resolvedExpect = resolveValue(expect);
@@ -219,30 +246,38 @@ export const createApiValidator = (context: IContext) => {
       operator,
       element,
       actual: JSON.stringify(actual),
-      resolvedExpect
+      resolvedExpect,
     });
 
     if (field && field.includes('.')) {
       const fieldParts = field.split('.');
       const targetValues = getNestedValue(actual, field);
-      validateFieldValues(targetValues, { ...config, field: fieldParts[fieldParts.length - 1] }, [...path, ...fieldParts], errors);
+      validateFieldValues(
+        targetValues,
+        { ...config, field: fieldParts[fieldParts.length - 1] },
+        [...path, ...fieldParts],
+        errors,
+      );
       return;
     }
 
     const targetValue = field ? getNestedValue(actual, field) : actual;
 
     if (element && !Array.isArray(targetValue)) {
-      errors.push(createError(
-        path,
-        `Expected array for element validation but got ${typeof targetValue}`,
-        targetValue
-      ));
+      errors.push(
+        createError(
+          path,
+          `Expected array for element validation but got ${typeof targetValue}`,
+          targetValue,
+        ),
+      );
       return;
     }
 
-    const processedExpect = operator === Operator.INCLUDE && !Array.isArray(resolvedExpect)
-      ? [resolvedExpect]
-      : resolvedExpect;
+    const processedExpect =
+      operator === Operator.INCLUDE && !Array.isArray(resolvedExpect)
+        ? [resolvedExpect]
+        : resolvedExpect;
 
     switch (operator) {
       case Operator.INCLUDE:
@@ -252,19 +287,23 @@ export const createApiValidator = (context: IContext) => {
         validateEquality(targetValue, processedExpect, element, path, errors);
         break;
       default:
-        errors.push(createError(path, `Unknown operator: ${operator}`, targetValue));
+        errors.push(
+          createError(path, `Unknown operator: ${operator}`, targetValue),
+        );
     }
   };
 
   const isOperatorObject = (obj: any): boolean => {
-    return obj && typeof obj === 'object' && 'operator' in obj && 'expect' in obj;
+    return (
+      obj && typeof obj === 'object' && 'operator' in obj && 'expect' in obj
+    );
   };
 
   const validateObject = (
     actual: Record<string, any>,
     expected: Record<string, any>,
     path: string[],
-    errors: ValidationError[]
+    errors: ValidationError[],
   ) => {
     if (typeof actual !== 'object' || actual === null) {
       errors.push(createError(path, 'Expected object', actual));
@@ -280,20 +319,25 @@ export const createApiValidator = (context: IContext) => {
     actual: any[],
     expected: any[],
     path: string[],
-    errors: ValidationError[]
+    errors: ValidationError[],
   ) => {
     if (!Array.isArray(actual)) {
       errors.push(createError(path, 'Expected array', actual));
       return;
     }
 
-    if (expected.every(item => isOperatorObject(item))) {
-      expected.forEach(rule => {
-        const fieldValues = actual.map(item =>
-          getNestedValue(item, (rule as OperatorConfig).field)
-        ).flat(Infinity);
-        
-        validateFieldValues(fieldValues, rule as OperatorConfig, [(rule as OperatorConfig).field], errors);
+    if (expected.every((item) => isOperatorObject(item))) {
+      expected.forEach((rule) => {
+        const fieldValues = actual
+          .map((item) => getNestedValue(item, (rule as OperatorConfig).field))
+          .flat(Infinity);
+
+        validateFieldValues(
+          fieldValues,
+          rule as OperatorConfig,
+          [(rule as OperatorConfig).field],
+          errors,
+        );
       });
       return;
     }
@@ -308,7 +352,7 @@ export const createApiValidator = (context: IContext) => {
     values: any[],
     rule: OperatorConfig,
     path: string[],
-    errors: ValidationError[]
+    errors: ValidationError[],
   ) => {
     const resolvedExpect = resolveValue(rule.expect);
 
@@ -320,7 +364,9 @@ export const createApiValidator = (context: IContext) => {
         validateEquality(values, resolvedExpect, rule.element, path, errors);
         break;
       default:
-        errors.push(createError(path, `Unknown operator: ${rule.operator}`, values));
+        errors.push(
+          createError(path, `Unknown operator: ${rule.operator}`, values),
+        );
     }
   };
 
@@ -328,7 +374,7 @@ export const createApiValidator = (context: IContext) => {
     actual: any,
     expected: any,
     path: string[],
-    errors: ValidationError[]
+    errors: ValidationError[],
   ) => {
     if (isOperatorObject(expected)) {
       validateOperatorObject(actual, expected as OperatorConfig, path, errors);
@@ -340,22 +386,20 @@ export const createApiValidator = (context: IContext) => {
       }
     } else if (typeof expected === 'string') {
       if (!comparedValue(actual, expected)) {
-        errors.push(createError(
-          path,
-          `equal(${JSON.stringify(expected)})`,
-          actual
-        ));
+        errors.push(
+          createError(path, `equal(${JSON.stringify(expected)})`, actual),
+        );
       }
     }
   };
 
   const normalizeData = (data: any): any => {
     if (Array.isArray(data)) {
-      return data.flatMap(item => normalizeData(item));
+      return data.flatMap((item) => normalizeData(item));
     }
     if (typeof data === 'object' && data !== null) {
       return Object.fromEntries(
-        Object.entries(data).map(([key, val]) => [key, normalizeData(val)])
+        Object.entries(data).map(([key, val]) => [key, normalizeData(val)]),
       );
     }
     return data;
@@ -363,11 +407,14 @@ export const createApiValidator = (context: IContext) => {
 
   return {
     validate: (actualData: any, expectConfig: any): ValidationError[] => {
-      console.log(`Validating actualData:`, JSON.stringify(actualData, null, 2));
+      console.log(
+        `Validating actualData:`,
+        JSON.stringify(actualData, null, 2),
+      );
       const errors: ValidationError[] = [];
-      const normalizedData = normalizeData(actualData);
+      normalizeData(actualData);
       validateRecursive(actualData, expectConfig, [], errors);
       return errors;
-    }
+    },
   };
 };

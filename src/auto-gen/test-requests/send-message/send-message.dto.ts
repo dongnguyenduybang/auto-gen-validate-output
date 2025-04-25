@@ -1,4 +1,8 @@
-import { IsDefined, IsNotEmpty, IsChecked } from '../../decorator/general-decorator';
+import {
+  IsDefined,
+  IsNotEmpty,
+  IsChecked,
+} from '../../decorator/general-decorator';
 import {
   IsString,
   MaxLength,
@@ -30,6 +34,3 @@ export class SendMessageDTO {
   @MinLength(1)
   ref: string = '';
 }
-
-
-

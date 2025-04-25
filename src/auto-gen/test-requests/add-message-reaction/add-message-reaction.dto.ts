@@ -1,12 +1,14 @@
-import { MinLength } from 'class-validator';
-import { IsDefined, IsNotEmpty, IsULID, IsChecked, IsEmoji } from '../../decorator/general-decorator';
 import {
   IsString,
-  MaxLength,
-} from '../../decorator/string-decorator';
+  MinLength,
+  IsDefined,
+  IsNotEmpty,
+  IsULID,
+  IsChecked,
+  IsEmoji,
+} from '../../decorator';
 
 export class AddMessageReactionDTO {
-
   @IsDefined({ message: `Unsupported permission type` })
   @IsChecked({ message: `Invalid channel` })
   @IsNotEmpty({ message: `Could not resolve permission type` })
@@ -23,7 +25,7 @@ export class AddMessageReactionDTO {
   @IsULID()
   @IsNotEmpty()
   @IsDefined()
-  messageId: string = ''
+  messageId: string = '';
 
   @IsString()
   @IsNotEmpty()
@@ -32,6 +34,3 @@ export class AddMessageReactionDTO {
   @MinLength(1)
   emoji: string = '';
 }
-
-
-

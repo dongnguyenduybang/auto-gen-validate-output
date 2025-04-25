@@ -13,8 +13,8 @@ export const ReportDmMessageSaga = {
       body: {
         quantity: 2,
         prefix: 'testDMmessage',
-        badge: 0
-      }
+        badge: 0,
+      },
     },
     {
       action: 'sendDmMessage',
@@ -23,7 +23,7 @@ export const ReportDmMessageSaga = {
       body: {
         userId: VAR.userId1,
         content: 'user send dm message',
-        ref: 'aa'
+        ref: 'aa',
       },
       headers: HeaderList.Token(),
       expect: {
@@ -32,7 +32,10 @@ export const ReportDmMessageSaga = {
           message: {
             workspaceId: { operator: Operator.EQUAL, expect: 0 },
             userId: { operator: Operator.EQUAL, expect: VAR.userId },
-            content: { operator: Operator.EQUAL, expect: 'user send dm message' },
+            content: {
+              operator: Operator.EQUAL,
+              expect: 'user send dm message',
+            },
             messageType: { operator: Operator.EQUAL, expect: 0 },
             messageStatus: { operator: Operator.EQUAL, expect: 1 },
             attachmentType: { operator: Operator.EQUAL, expect: 0 },
@@ -70,11 +73,10 @@ export const ReportDmMessageSaga = {
               field: 'participantIds',
               operator: Operator.INCLUDE,
               element: Element.ALL,
-              expect: [VAR.userId, VAR.userId1]
-            }
+              expect: [VAR.userId, VAR.userId1],
+            },
           ],
-          channelMetadata: [
-          ],
+          channelMetadata: [],
         },
       },
     },
@@ -91,7 +93,7 @@ export const ReportDmMessageSaga = {
       headers: HeaderList.Token1(),
       expect: {
         ok: { operator: Operator.EQUAL, expect: true },
-      }
-    }
+      },
+    },
   ],
 };

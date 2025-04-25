@@ -36,7 +36,6 @@ export function getDecorators(
     proto = Object.getPrototypeOf(proto);
   }
 
-
   return decorators;
 }
 
@@ -54,7 +53,8 @@ export function generateErrorCases(
   const errorCasesByField: Record<string, any[]> = {};
   keys.forEach((field) => {
     const decorators = getDecorators(instance, field);
-    const fieldValue = payload[field] !== undefined ? payload[field] : instance[field];
+    const fieldValue =
+      payload[field] !== undefined ? payload[field] : instance[field];
     const variants = generateErrorVariantsForField(fieldValue, decorators);
     errorCasesByField[field] = Array.isArray(variants) ? variants : [];
   });
@@ -88,8 +88,8 @@ export function generateErrorVariantsForField(
   switch (fieldType) {
     case 'string':
       variants.push(123);
-      variants.push(fieldValue)
-      variants.push('check_ulid')
+      variants.push(fieldValue);
+      variants.push('check_ulid');
       break;
     case 'number':
       variants.push('invalid_number');
@@ -97,16 +97,16 @@ export function generateErrorVariantsForField(
       break;
     case 'enum':
       variants.push('invalid_enum_value');
-      variants.push(fieldValue)
+      variants.push(fieldValue);
       break;
     case 'array':
       variants.push('not_an_array');
       variants.push([123]);
-      variants.push(fieldValue)
+      variants.push(fieldValue);
       break;
     case 'boolean':
       variants.push('invalid_boolean');
-      variants.push(fieldValue)
+      variants.push(fieldValue);
       break;
   }
 
@@ -179,7 +179,10 @@ export function mapError(
 
   // Helper function để thêm lỗi
   // Helper function để thêm lỗi
-  const addError = (customMessage: string | undefined, defaultMessage: string) => {
+  const addError = (
+    customMessage: string | undefined,
+    defaultMessage: string,
+  ) => {
     const errorMessage = customMessage || defaultMessage;
     if (errorMessage && !errors.includes(errorMessage)) {
       errors.push(errorMessage);
@@ -196,14 +199,26 @@ export function mapError(
     if (decorators['isDefined']) {
       if (decorators['isChecked']) {
         if (field === 'channelId') {
-          addError(decorators['isDefinedMessage'], 'Unsupported permission type');
+          addError(
+            decorators['isDefinedMessage'],
+            'Unsupported permission type',
+          );
         } else if (field === 'workspaceId' || field === 'userId') {
-          addError(decorators['isDefinedMessage'], 'Could not resolve permission type');
+          addError(
+            decorators['isDefinedMessage'],
+            'Could not resolve permission type',
+          );
         } else {
-          addError(decorators['isDefinedMessage'], `${ErrorMessage.DEFINED} '${field}'`);
+          addError(
+            decorators['isDefinedMessage'],
+            `${ErrorMessage.DEFINED} '${field}'`,
+          );
         }
       } else {
-        addError(decorators['isDefinedMessage'], `${ErrorMessage.DEFINED} '${field}'`);
+        addError(
+          decorators['isDefinedMessage'],
+          `${ErrorMessage.DEFINED} '${field}'`,
+        );
       }
       return errors;
     }
@@ -212,30 +227,46 @@ export function mapError(
   // 3. Kiểm tra notEmpty
   if (value === '' && decorators['notEmpty']) {
     if (decorators['isChecked']) {
-      if (field === 'workspaceId' || field === 'channelId' || field === 'userId') {
-        addError(decorators['notEmptyMessage'], 'Could not resolve permission type');
+      if (
+        field === 'workspaceId' ||
+        field === 'channelId' ||
+        field === 'userId'
+      ) {
+        addError(
+          decorators['notEmptyMessage'],
+          'Could not resolve permission type',
+        );
       } else {
-        addError(decorators['notEmptyMessage'], `${ErrorMessage.DEFINED} '${field}'`);
+        addError(
+          decorators['notEmptyMessage'],
+          `${ErrorMessage.DEFINED} '${field}'`,
+        );
       }
     } else {
-      addError(decorators['notEmptyMessage'], `${field} ${ErrorMessage.INVALID_RANGE_STRING_LENGTH} ${decorators['minLength']} to ${decorators['maxLength']} length`);
+      addError(
+        decorators['notEmptyMessage'],
+        `${field} ${ErrorMessage.INVALID_RANGE_STRING_LENGTH} ${decorators['minLength']} to ${decorators['maxLength']} length`,
+      );
     }
     // return errors;
   }
 
-  
   // 5. Kiểm tra ULID
   if (decorators['isULID']) {
-    if(typeof value !== 'string'){
+    if (typeof value !== 'string') {
       addError(null, `${field} ${ErrorMessage.INVALID_ULID}`);
-    }else if(typeof value === 'string' && (value === '' || !value.startsWith('{{'))){
+    } else if (
+      typeof value === 'string' &&
+      (value === '' || !value.startsWith('{{'))
+    ) {
       addError(null, `${field} ${ErrorMessage.INVALID_ULID}`);
     }
   }
 
   // 6. Kiểm tra emoji
   if (decorators['isEmoji']) {
-    const isInvalid = typeof value === 'string' && (value === '' || !isSingleEmoji(value));
+    const isInvalid =
+      typeof value === 'string' && (value === '' || !isSingleEmoji(value));
     if (isInvalid) {
       addError(null, `${field} ${ErrorMessage.INVALID_EMOJI}`);
     }
@@ -245,13 +276,23 @@ export function mapError(
   if (decorators['type'] === 'string') {
     if (typeof value !== 'string') {
       if (decorators['isChecked']) {
-        if (field === 'workspaceId' || field === 'channelId' || field === 'userId') {
+        if (
+          field === 'workspaceId' ||
+          field === 'channelId' ||
+          field === 'userId'
+        ) {
           addError(decorators['stringMessage'], null);
-        } else{
-          addError(decorators['stringMessage'], `${field} ${ErrorMessage.INVALID_TYPE_STRING}`);
-        } 
+        } else {
+          addError(
+            decorators['stringMessage'],
+            `${field} ${ErrorMessage.INVALID_TYPE_STRING}`,
+          );
+        }
       } else {
-        addError(decorators['stringMessage'], `${field} ${ErrorMessage.INVALID_TYPE_STRING}`);
+        addError(
+          decorators['stringMessage'],
+          `${field} ${ErrorMessage.INVALID_TYPE_STRING}`,
+        );
       }
       return errors;
     }
@@ -288,77 +329,112 @@ export function mapError(
         if (minViolated || maxViolated) {
           addError(
             null,
-            `${field} ${ErrorMessage.INVALID_RANGE_STRING_LENGTH} ${decorators['minLength']} to ${decorators['maxLength']} length`
+            `${field} ${ErrorMessage.INVALID_RANGE_STRING_LENGTH} ${decorators['minLength']} to ${decorators['maxLength']} length`,
           );
         }
       } else if (hasMin && len < decorators['minLength']) {
-        addError(null, `${field} ${ErrorMessage.MIN_LENGTH} ${decorators['minLength']} length`);
+        addError(
+          null,
+          `${field} ${ErrorMessage.MIN_LENGTH} ${decorators['minLength']} length`,
+        );
       } else if (hasMax && len > decorators['maxLength']) {
-        addError(null, `${field} ${ErrorMessage.MAX_LENGTH} ${decorators['maxLength']} length`);
+        addError(
+          null,
+          `${field} ${ErrorMessage.MAX_LENGTH} ${decorators['maxLength']} length`,
+        );
       }
     }
   }
 
-
   // 5. Kiểm tra kiểu number
   if (decorators['type'] === 'number') {
     if (typeof value !== 'number' || isNaN(value)) {
-      addError(decorators['numberMessage'], `${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`);
+      addError(
+        decorators['numberMessage'],
+        `${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`,
+      );
       return errors;
     }
 
     const minViolated = decorators['min'] && value < decorators['min'];
     const maxViolated = decorators['max'] && value > decorators['max'];
     if (minViolated) {
-      addError(decorators['minMessage'], `${field} must be at least ${decorators['min']}`);
+      addError(
+        decorators['minMessage'],
+        `${field} must be at least ${decorators['min']}`,
+      );
     }
     if (maxViolated) {
-      addError(decorators['maxMessage'], `${field} must be at most ${decorators['max']}`);
+      addError(
+        decorators['maxMessage'],
+        `${field} must be at most ${decorators['max']}`,
+      );
     }
   }
 
   // 6. Kiểm tra kiểu array
   if (decorators['type'] === 'array') {
     if (!Array.isArray(value)) {
-      addError(decorators['arrayMessage'], `${field} ${ErrorMessage.INVALID_TYPE_ARRAY}`);
+      addError(
+        decorators['arrayMessage'],
+        `${field} ${ErrorMessage.INVALID_TYPE_ARRAY}`,
+      );
       return errors;
     }
 
     if (decorators['minArray'] && value.length < decorators['minArray']) {
-      addError(decorators['minArrayMessage'], `${field} must have at least ${decorators['minArray']} items`);
+      addError(
+        decorators['minArrayMessage'],
+        `${field} must have at least ${decorators['minArray']} items`,
+      );
     }
     if (decorators['maxArray'] && value.length > decorators['maxArray']) {
-      addError(decorators['maxArrayMessage'], `${field} must have at most ${decorators['maxArray']} items`);
+      addError(
+        decorators['maxArrayMessage'],
+        `${field} must have at most ${decorators['maxArray']} items`,
+      );
     }
   }
 
   // 7. Kiểm tra kiểu object
   if (decorators['type'] === 'object') {
     if (typeof value !== 'object' || Array.isArray(value) || value === null) {
-      addError(decorators['objectMessage'], `${field} ${ErrorMessage.INVALID_TYPE_OBJ}`);
+      addError(
+        decorators['objectMessage'],
+        `${field} ${ErrorMessage.INVALID_TYPE_OBJ}`,
+      );
       return errors;
     }
   }
 
   // 8. Kiểm tra enum
   if (decorators['type'] === 'enum') {
-    if (!decorators['enumType'] || !Object.values(decorators['enumType']).includes(value)) {
-      addError(decorators['enumMessage'], `${field} ${ErrorMessage.INVALID_ENUM}`);
+    if (
+      !decorators['enumType'] ||
+      !Object.values(decorators['enumType']).includes(value)
+    ) {
+      addError(
+        decorators['enumMessage'],
+        `${field} ${ErrorMessage.INVALID_ENUM}`,
+      );
       return errors;
     }
   }
 
   return errors;
 }
-export function softErrorFromMap(payload: Record<string, any>, dtoClass: any): string[] {
+export function softErrorFromMap(
+  payload: Record<string, any>,
+  dtoClass: any,
+): string[] {
   const errors: string[] = [];
   const instance = new dtoClass();
 
   const ERROR_PRIORITY = [
-    "Could not resolve permission type",
-    "Unsupported permission type",
-    "Invalid channel",
-    "Unauthorized request",
+    'Could not resolve permission type',
+    'Unsupported permission type',
+    'Invalid channel',
+    'Unauthorized request',
   ];
 
   // kiểm tra các trường hợp
@@ -367,7 +443,8 @@ export function softErrorFromMap(payload: Record<string, any>, dtoClass: any): s
   const isWorkspaceString = typeof workspaceId === 'string';
   const isWorkspaceEmpty = isWorkspaceString && workspaceId === '';
   const isWorkspaceZero = workspaceId === '0';
-  const isChannelUndefined = !payload.hasOwnProperty('channelId') || channelId === undefined;
+  const isChannelUndefined =
+    !payload.hasOwnProperty('channelId') || channelId === undefined;
   const isChannelString = typeof channelId === 'string';
   const isChannelEmpty = isChannelString && channelId === '';
   const isChannelValidFormat = isChannelString && channelId.startsWith('{{');
@@ -375,7 +452,11 @@ export function softErrorFromMap(payload: Record<string, any>, dtoClass: any): s
   // trường hợp: workspaceId là chuỗi rỗng, channelId là chuỗi bất kỳ
   if (isWorkspaceEmpty) {
     const workspaceIdDecorators = getDecorators(instance, 'workspaceId');
-    const workspaceIdErrors = mapError('workspaceId', workspaceId, workspaceIdDecorators);
+    const workspaceIdErrors = mapError(
+      'workspaceId',
+      workspaceId,
+      workspaceIdDecorators,
+    );
     if (workspaceIdErrors.length > 0) {
       return ['Could not resolve permission type'];
     }
@@ -384,7 +465,11 @@ export function softErrorFromMap(payload: Record<string, any>, dtoClass: any): s
   // trường hợp: workspaceId = "0", channelId là chuỗi rỗng
   if (isWorkspaceZero && isChannelEmpty) {
     const channelIdDecorators = getDecorators(instance, 'channelId');
-    const channelIdErrors = mapError('channelId', channelId, channelIdDecorators);
+    const channelIdErrors = mapError(
+      'channelId',
+      channelId,
+      channelIdDecorators,
+    );
     if (channelIdErrors.length > 0) {
       return ['Could not resolve permission type'];
     }
@@ -393,7 +478,11 @@ export function softErrorFromMap(payload: Record<string, any>, dtoClass: any): s
   // trường hợp: workspaceId là string, channelId undefined (trừ workspaceId rỗng)
   if (isWorkspaceString && !isWorkspaceEmpty && isChannelUndefined) {
     const channelIdDecorators = getDecorators(instance, 'channelId');
-    const channelIdErrors = mapError('channelId', undefined, channelIdDecorators);
+    const channelIdErrors = mapError(
+      'channelId',
+      undefined,
+      channelIdDecorators,
+    );
     if (channelIdErrors.length > 0) {
       return ['Unsupported permission type'];
     }
@@ -402,7 +491,11 @@ export function softErrorFromMap(payload: Record<string, any>, dtoClass: any): s
   // trường hợp: workspaceId không phải string, channelId undefined
   if (!isWorkspaceString && workspaceId !== undefined && isChannelUndefined) {
     const channelIdDecorators = getDecorators(instance, 'channelId');
-    const channelIdErrors = mapError('channelId', undefined, channelIdDecorators);
+    const channelIdErrors = mapError(
+      'channelId',
+      undefined,
+      channelIdDecorators,
+    );
     if (channelIdErrors.length > 0) {
       return ['Could not resolve permission type'];
     }
@@ -411,25 +504,47 @@ export function softErrorFromMap(payload: Record<string, any>, dtoClass: any): s
   // trường hợp workspaceId undefined, channelId undefined
   if (workspaceId === undefined && isChannelUndefined) {
     const workspaceIdDecorators = getDecorators(instance, 'workspaceId');
-    const workspaceIdErrors = mapError('workspaceId', undefined, workspaceIdDecorators);
+    const workspaceIdErrors = mapError(
+      'workspaceId',
+      undefined,
+      workspaceIdDecorators,
+    );
     if (workspaceIdErrors.length > 0) {
       return ['Could not resolve permission type'];
     }
   }
 
   // trường hợp workspaceId = "0", channelId string không bắt đầu bằng {{}}
-  if (isWorkspaceZero && isChannelString && !isChannelEmpty && !isChannelValidFormat) {
+  if (
+    isWorkspaceZero &&
+    isChannelString &&
+    !isChannelEmpty &&
+    !isChannelValidFormat
+  ) {
     const channelIdDecorators = getDecorators(instance, 'channelId');
-    const channelIdErrors = mapError('channelId', channelId, channelIdDecorators);
+    const channelIdErrors = mapError(
+      'channelId',
+      channelId,
+      channelIdDecorators,
+    );
     if (channelIdErrors.length > 0) {
       return ['Invalid channel'];
     }
   }
 
   // trường hợp workspaceId string ≠ "0", channelId string bắt đầu bằng "{{"
-  if (isWorkspaceString && !isWorkspaceZero && !isWorkspaceEmpty && isChannelValidFormat) {
+  if (
+    isWorkspaceString &&
+    !isWorkspaceZero &&
+    !isWorkspaceEmpty &&
+    isChannelValidFormat
+  ) {
     const workspaceIdDecorators = getDecorators(instance, 'workspaceId');
-    const workspaceIdErrors = mapError('workspaceId', workspaceId, workspaceIdDecorators);
+    const workspaceIdErrors = mapError(
+      'workspaceId',
+      workspaceId,
+      workspaceIdDecorators,
+    );
     if (workspaceIdErrors.length > 0) {
       return ['Invalid channel'];
     }
@@ -438,7 +553,11 @@ export function softErrorFromMap(payload: Record<string, any>, dtoClass: any): s
   // trường hợp workspaceId = "0", channelId không phải string
   if (isWorkspaceZero && channelId !== undefined && !isChannelString) {
     const channelIdDecorators = getDecorators(instance, 'channelId');
-    const channelIdErrors = mapError('channelId', channelId, channelIdDecorators);
+    const channelIdErrors = mapError(
+      'channelId',
+      channelId,
+      channelIdDecorators,
+    );
     if (channelIdErrors.length > 0) {
       return ['Could not resolve permission type'];
     }

@@ -1,11 +1,5 @@
-// accept-invitation.response.ts
 import { ValidateNested } from 'class-validator';
 import { Exclude, Type } from 'class-transformer';
-import { DirectMessageStatusEnum } from '../enums/direct-message-status.enum';
-import { IsDefined } from '../decorator/general-decorator';
-import { IsArray } from '../decorator/array-decorator';
-import { IsBoolean } from '../decorator/boolean-decorator';
-import { IsObject } from '../decorator/object-decorator';
 import {
   BaseResponse,
   Channel as GeneralChannel,
@@ -17,8 +11,16 @@ import {
   Embed,
   OriginalMessage,
 } from './general-response';
-import { StartWith, ValidIf } from '../decorator/condition-decorator';
-import { IsString } from '../decorator/string-decorator';
+import {
+  IsDefined,
+  StartWith,
+  ValidIf,
+  IsString,
+  IsArray,
+  IsBoolean,
+  IsObject,
+} from '../decorator';
+import { DirectMessageStatusEnum } from '../enums';
 
 export class Message extends GeneralMessage {
   @ValidIf('workspaceId', '===', '0')
@@ -58,7 +60,6 @@ export class Message extends GeneralMessage {
 export class ChannelMetadata extends GeneralChannelMetaData {}
 
 export class Channel extends GeneralChannel {
-
   @ValidIf('invitationLink', '===', 'payload.invitationLink')
   @StartWith('invitationLink', 'https://zii.chat/i/')
   @IsString()

@@ -47,7 +47,6 @@ export const combinedReportTemplate = (
         passedTests,
         failedTests,
         totalTests,
-        responseValidations,
       );
 
     case 'saga':
@@ -130,7 +129,6 @@ const responseReportTemplate = (
   passedTests: number,
   failedTests: any[],
   totalTests: number,
-  responseValidations: any[],
 ) => {
   return [
     `=== Response Test Report for ${className} ===`,

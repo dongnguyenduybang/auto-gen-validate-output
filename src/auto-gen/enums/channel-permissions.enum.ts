@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 export enum ChannelPermissionEnum {
   OWNER = 0, //	The owner channel permission
   CHANNELS__VIEW_CHANNEL = 1, //	The view channel permission

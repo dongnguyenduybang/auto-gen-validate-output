@@ -1,21 +1,26 @@
 import { ValidateNested } from 'class-validator';
 import { Type } from 'class-transformer';
-import { ChannelTypeEnum } from '../enums/channel-type.enum';
-import { MessageTypeEnum } from '../enums/message-type.enum';
-import { AttachmentTypeEnum } from '../enums/attachment-type.enum';
-import { UserAvatarTypeEnum } from '../enums/user-avatar-type.enum';
-import { BadgeEnum } from '../enums/badge.enum';
-import { DirectMessageStatusEnum } from '../enums/direct-message-status.enum';
-import { MediaPermissionSettingEnum } from '../enums/media-permission-setting.enum';
-import { UserStatusExpireAfterTimeEnum } from '../enums/user-status-expire-after-time.enum';
-import { EmbedTypeEnum } from '../enums/embed-type.enum';
-import { IsBoolean } from '../decorator/boolean-decorator';
-import { IsDefined, IsOptional } from '../decorator/general-decorator';
-import { IsNumber } from '../decorator/number-decorator';
-import { IsString } from '../decorator/string-decorator';
-import { IsEnum } from '../decorator/enum-decorator';
-import { IsObject } from '../decorator/object-decorator';
-import { IsArray } from '../decorator/array-decorator';
+import {
+  IsNumber,
+  IsArray,
+  IsBoolean,
+  IsDefined,
+  IsEnum,
+  IsObject,
+  IsOptional,
+  IsString,
+} from '../decorator';
+import {
+  AttachmentTypeEnum,
+  MessageTypeEnum,
+  EmbedTypeEnum,
+  UserStatusExpireAfterTimeEnum,
+  UserAvatarTypeEnum,
+  BadgeEnum,
+  MediaPermissionSettingEnum,
+  ChannelTypeEnum,
+  DirectMessageStatusEnum,
+} from '../enums';
 
 export class Dimensions {
   @IsNumber()
@@ -632,7 +637,7 @@ export class DataResponse {
   @IsDefined()
   @Type(() => Message)
   message?: Message;
-  
+
   @ValidateNested({ each: true })
   @IsObject()
   @IsDefined()

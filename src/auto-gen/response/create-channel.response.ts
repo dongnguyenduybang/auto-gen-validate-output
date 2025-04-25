@@ -1,28 +1,27 @@
-// send-message.response.ts
 import { ValidateNested } from 'class-validator';
 import { Exclude, Type } from 'class-transformer';
 import {
   BaseResponse,
   Channel as GeneralChannel,
-  IncludesResponse as GeneralIncludesResponse,
-  Message as GeneralMessage,
-  User as GeneralUser,
-  Member as GeneralMember,
   ChannelMetadata as GeneralChannelMetadata,
-  Reaction,
   Embed,
+  Member as GeneralMember,
+  Message as GeneralMessage,
   OriginalMessage,
+  Reaction,
+  User as GeneralUser,
 } from './general-response';
-import { DirectMessageStatusEnum } from '../enums/direct-message-status.enum';
-import { IsDefined } from '../decorator/general-decorator';
-import { IsString } from '../decorator/string-decorator';
-import { IsBoolean } from '../decorator/boolean-decorator';
-import { StartWith, ValidIf } from '../decorator/condition-decorator';
-import { IsObject } from '../decorator/object-decorator';
-import { IsArray } from '../decorator/array-decorator';
+import {
+  IsArray,
+  IsBoolean,
+  IsDefined,
+  IsObject,
+  IsString,
+  ValidIf,
+} from '../decorator';
+import { DirectMessageStatusEnum } from '../enums';
 
 export class Message extends GeneralMessage {
-
   @ValidIf('workspaceId', '===', '0')
   @IsString()
   @IsDefined()
@@ -55,7 +54,6 @@ export class Message extends GeneralMessage {
 export class ChannelMetadata extends GeneralChannelMetadata {}
 
 export class Channel extends GeneralChannel {
-
   // @StartWith('invitationLink', 'https://zii.chat/i/')
   @IsString()
   @IsDefined()

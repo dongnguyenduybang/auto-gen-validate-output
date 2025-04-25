@@ -1,9 +1,9 @@
-/* eslint-disable prettier/prettier */
 import { initializeGlobalVariables } from './src/auto-gen/global-var';
 import {
-  setupConfiguration,
   getOrThrow,
+  setupConfiguration,
 } from './src/auto-gen/utils/get-config';
+
 setupConfiguration();
 
 initializeGlobalVariables();
