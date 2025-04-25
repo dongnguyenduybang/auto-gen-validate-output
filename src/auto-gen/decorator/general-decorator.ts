@@ -2,7 +2,6 @@ import 'reflect-metadata';
 
 /*
    check có phải là kiểu optional hay không 
-
 */
 export function IsOptional() {
   return function (target: any, propertyKey: string) {
@@ -11,9 +10,7 @@ export function IsOptional() {
 }
 
 /*
-   check property đó không được null
-   
-*/
+   check property đó không được null*/
 export function IsNotNull(options?: { message?: string }) {
   return (target: any, propertyKey: string) => {
     Reflect.defineMetadata('notNull', true, target, propertyKey);
@@ -30,8 +27,7 @@ export function IsNotNull(options?: { message?: string }) {
 }
 /*
    check property đó không được rỗng
-   
-*/
+   */
 export function IsNotEmpty(options?: { message?: string }) {
   return (target: any, propertyKey: string) => {
     Reflect.defineMetadata('notEmpty', true, target, propertyKey);
@@ -49,8 +45,7 @@ export function IsNotEmpty(options?: { message?: string }) {
 
 /*
    check property đó phải được xác định
-   
-*/
+   */
 export function IsDefined(options?: { message?: string }) {
   return (target: any, propertyKey: string) => {
     Reflect.defineMetadata('isDefined', true, target, propertyKey);
@@ -67,8 +62,7 @@ export function IsDefined(options?: { message?: string }) {
 
 /*
    check property đó là kiểu any
-   
-*/
+   */
 export function IsAny() {
   return function (target: any, propertyKey: string) {
     Reflect.defineMetadata('isAny', true, target, propertyKey);
