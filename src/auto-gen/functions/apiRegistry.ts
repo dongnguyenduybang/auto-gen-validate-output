@@ -43,9 +43,9 @@ const API_REGISTRY: ApiRegistry = {
         return defaultBody;
       } else {
         return {
-          workspaceId: body.workspaceId !== undefined ? body.workspaceId : defaultBody.workspaceId,
-          name: body.name !== undefined ? body.name : defaultBody.name,
-          channelType: body.channelType !== undefined ? body.channelType : defaultBody.channelType
+          workspaceId: body.workspaceId,
+          name: body.name,
+          channelType: body.channelType,
         };
       }
     }
