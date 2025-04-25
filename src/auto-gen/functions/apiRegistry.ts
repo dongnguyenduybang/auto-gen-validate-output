@@ -1,4 +1,5 @@
 
+import { ChannelTypeEnum } from '../enums/channel-type.enum';
 import { TestContext } from '../utils/text-context';
 import { createApiFunction } from './apiFactory';
 import { ApiConfig } from './types';
@@ -19,9 +20,9 @@ const API_REGISTRY: ApiRegistry = {
     defaultPath: '/InternalFaker/MockUsers',
     defaultMethod: 'post',
     requiredHeaders: {
-      
+
     },
-    payloadMapper: (body) => ({ quantity: body.quantity, prefix: body.prefix, badge: body.badge})
+    payloadMapper: (body) => ({ quantity: body.quantity, prefix: body.prefix, badge: body.badge })
   },
   createChannel: {
     defaultPath: '/Channel/CreateChannel',
@@ -32,13 +33,28 @@ const API_REGISTRY: ApiRegistry = {
         errorMessage: 'Token not found to create channel' //error
       }
     },
-    payloadMapper: (body) => ({ workspaceId: '0', name: 'channel1'})
+    payloadMapper: (body) => {
+      const defaultBody = {
+        workspaceId: "0",
+        name: "channel 1",
+        channelType: ChannelTypeEnum.CHANNEL_TYPE_ENUM_CHANNEL
+      };
+      if (!body) {
+        return defaultBody;
+      } else {
+        return {
+          workspaceId: body.workspaceId !== undefined ? body.workspaceId : defaultBody.workspaceId,
+          name: body.name !== undefined ? body.name : defaultBody.name,
+          channelType: body.channelType !== undefined ? body.channelType : defaultBody.channelType
+        };
+      }
+    }
   },
- 
+
 };
 
 export function getApiFunctions(action: string, context: TestContext) {
   const config = API_REGISTRY[action];
-  
+
   return createApiFunction(config, context);
 }
