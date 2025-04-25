@@ -1,4 +1,3 @@
-// Template cho type 'request'
 export const combinedReportTemplate = (
   className?: string,
   url?: string,
@@ -21,7 +20,7 @@ export const combinedReportTemplate = (
   totalTests = totalTests || 0;
   logicTests = logicTests || [];
   summary = summary || { statusCodes: {} };
-  type = type;
+  type = type || 'request';
   responseValidations = responseValidations || [];
 
   switch (type) {
@@ -53,27 +52,42 @@ export const combinedReportTemplate = (
     case 'saga':
       return sagaReportTemplate(className, url, pathRequest, failedStep);
 
+    case 'ws':
+      return wsReportTemplate(
+        className,
+        url,
+        pathRequest,
+        failedStep,
+        passedTests,
+        failedTests,
+        totalTests,
+      );
+
     default:
-    // return requestReportTemplate(
-    //   className,
-    //   url,
-    //   pathRequest,
-    //   failedStep,
-    //   failedTests,
-    //   summary
-    // );
+      // return requestReportTemplate(
+      //   className,
+      //   url,
+      //   pathRequest,
+      //   failedStep,
+      //   passedTests,
+      //   failedTests,
+      //   totalTests,
+      //   logicTests,
+      //   summary,
+      // );
   }
 };
+
 const requestReportTemplate = (
-  className,
-  url,
-  pathRequest,
-  failedStep,
-  passedTests,
-  failedTests,
-  totalTests,
-  logicTests,
-  summary,
+  className: string,
+  url: string,
+  pathRequest: string,
+  failedStep: any[],
+  passedTests: number,
+  failedTests: any[],
+  totalTests: number,
+  logicTests: any[],
+  summary: any,
 ) => {
   console.log(summary);
   return [
@@ -121,7 +135,6 @@ const requestReportTemplate = (
   ].join('\n');
 };
 
-// Template cho type 'response'
 const responseReportTemplate = (
   className: string,
   url: string,
@@ -174,7 +187,6 @@ const responseReportTemplate = (
   ].join('\n');
 };
 
-// Template cho type 'saga'
 const sagaReportTemplate = (
   className: string,
   url: string,
@@ -201,22 +213,16 @@ const sagaReportTemplate = (
       let errorMessage = '';
 
       if (step.error) {
-        // Kiểm tra nếu step.error là một mảng
         if (Array.isArray(step.error)) {
-          // Duyệt qua từng lỗi và tạo chuỗi thông báo lỗi
           errorMessage = step.error
             .map((err) => {
               const path = err.path || 'unknown path';
               return `Path: ${path}`;
             })
-            .join('\n     └─ '); // Kết hợp các lỗi bằng dấu xuống dòng và ký tự "└─"
-        }
-        // Trường hợp step.error là một đối tượng đơn lẻ
-        else if (typeof step.error === 'object' && step.error !== null) {
+            .join('\n     └─ ');
+        } else if (typeof step.error === 'object' && step.error !== null) {
           errorMessage = step.error.message || 'No error message available';
-        }
-        // Trường hợp step.error là một chuỗi
-        else if (typeof step.error === 'string') {
+        } else if (typeof step.error === 'string') {
           try {
             const errorObj = JSON.parse(step.error);
             errorMessage = errorObj.message || step.error;
@@ -261,5 +267,109 @@ const sagaReportTemplate = (
     ),
     '',
     '=== End of Report ===',
+  ].join('\n');
+};
+
+const wsReportTemplate = (
+  className: string,
+  url: string,
+  pathRequest: string,
+  failedStep: any[],
+  passedTests: number,
+  failedTests: any[],
+  totalTests: number,
+) => {
+  const wsErrors = failedStep.filter(
+    (step) => !step.status && step.type === 'ws',
+  );
+  const logicErrors = failedStep.filter(
+    (step) => !step.status && (step.type === 'logic' || step.type === ''),
+  );
+
+  return [
+    `=== WebSocket Test Report For ${className} ===`,
+    `• Host: ${url}`,
+    `• Endpoint: ${pathRequest}`,
+    `• Date: ${new Date().toLocaleString()}`,
+    '',
+    '=== Execution Steps ===',
+    ...failedStep.map((step, index) => {
+      let resultMessage = '';
+
+      if (step.result) {
+        if (typeof step.result === 'object' && step.result !== null && ('wsActor' in step.result || 'wsRecipient' in step.result)) {
+          const wsResult = step.result;
+          const actorErrors = wsResult.wsActor?.errors || [];
+          const recipientErrors = wsResult.wsRecipient?.errors || [];
+          resultMessage = [
+            actorErrors.length > 0
+              ? `wsActor: ${wsResult.wsActor.success ? 'Passed' : 'Failed'}, Khớp: ${wsResult.wsActor.matched}/${wsResult.wsActor.total}`
+              : '',
+            recipientErrors.length > 0
+              ? `wsRecipient: ${wsResult.wsRecipient.success ? 'Passed' : 'Failed'}, Khớp: ${wsResult.wsRecipient.matched}/${wsResult.wsRecipient.total}`
+              : '',
+          ]
+            .filter(Boolean)
+            .join('\n     ├─ ');
+        } else if (typeof step.result === 'string') {
+          try {
+            const resultObj = JSON.parse(step.result);
+            resultMessage = resultObj.message || step.result;
+          } catch {
+            resultMessage = step.result;
+          }
+        } else {
+          resultMessage = JSON.stringify(step.result);
+        }
+      }
+
+      return `  ${index + 1}. [${step.status ? '✅ Passed' : '❌ Failed'}] ${step.stepName}${resultMessage ? `\n     └─ ${resultMessage}` : ''}`;
+    }),
+    '',
+    '=== Test Summary ===',
+    `✅ Passed: ${passedTests}`,
+    `❌ Failed: ${failedTests.length}`,
+    `📊 Total: ${totalTests}`,
+    '',
+    '=== Error Details ===',
+    '[WebSocket Errors]',
+    ...wsErrors.flatMap((error, index) => {
+      const wsResult = error.result;
+      const actorErrors = wsResult?.wsActor?.errors || [];
+      const recipientErrors = wsResult?.wsRecipient?.errors || [];
+      const allErrors = [...actorErrors, ...recipientErrors];
+
+      return allErrors.length > 0
+        ? allErrors.map((err, errIndex) => [
+            '',
+            ` 🟣 ${index + 1}.${errIndex + 1}. Bước: ${error.stepName}`,
+            `     ├─ Type: ws`,
+            `     ├─ Event Index: ${err.eventIndex}`,
+            `     ├─ Event Type: ${err.event?.type || 'N/A'}`,
+            `     ├─ Errors:`,
+            ...err.errors.map((validationError, vIndex) => 
+              `     │  ${vIndex + 1}. Path: ${validationError.path || 'N/A'}, Expected: ${validationError.expected || 'N/A'}, Actual: ${validationError.actual || 'N/A'}, Thông Điệp: ${validationError.message || 'N/A'}`
+            ),
+            `     └─ Source: ${err.event?.source || 'N/A'}`,
+          ].join('\n'))
+        : [
+            '',
+            ` 🟣 ${index + 1}. Step: ${error.stepName}`,
+            `     ├─ Type: ws`,
+            `     └─ Result: ${typeof error.result === 'string' ? error.result : JSON.stringify(error.result)}`,
+          ];
+    }),
+    '',
+    '[Logic Errors]',
+    ...logicErrors.map((error, index) =>
+      [
+        '',
+        ` 🟣 ${index + 1}. Step: ${error.stepName}`,
+        `     ├─ Type: ${error.type || 'N/A'}`,
+        `     └─ Result: ${typeof error.result === 'string' ? error.result : JSON.stringify(error.result)}`,
+      ].join('\n'),
+    ),
+    '',
+    '=== End Report ===',
   ].join('\n');
 };
