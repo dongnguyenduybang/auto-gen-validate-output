@@ -54,9 +54,12 @@ export function createApiFunction(config: ApiConfig, context: TestContext, event
         axiosConfig.params = payload;
       }
       const response = await axios(axiosConfig);
-      const events = EVENTS_BY_ACTION[action] || [];
-      if (events.length > 0 ) {
-        eventContext.setValue(action, events);
+
+      if(eventContext){
+        const events = EVENTS_BY_ACTION[action] || [];
+        if (events.length > 0 ) {
+          eventContext.setValue(action, events);
+        }
       }
       return {
         ok: true,
