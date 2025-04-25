@@ -29,7 +29,7 @@ const acceptInvitationConfig: ExtractConfig = {
   },
   messages: {
     path: ['includes', 'messages' ],
-    fields: ['content', 'messageType']
+    fields: ['content', 'messageType', 'messageId']
   }
 };
 

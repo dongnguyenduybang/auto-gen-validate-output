@@ -89,6 +89,7 @@ async function executeStep(
             action: action,
             stepIndex: stepIndex
         });
+        console.log(response)
         if (response.data.ok === false) {
             return {
                 type: 'request',
