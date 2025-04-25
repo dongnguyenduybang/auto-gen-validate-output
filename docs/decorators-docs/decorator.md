@@ -11,7 +11,9 @@
 - [Enum](#enum)
 - [Condition](#condition)
 
-Note: Với các decorator có option message khi catch lỗi sẽ ưu tiên lấy lỗi của option message, nếu không có option message mặc định sẽ lấy lỗi từ mặc định từ error_enum
+Note: 
+    - Với các decorator có option message khi catch lỗi sẽ ưu tiên lấy lỗi của option message, nếu không có option message mặc định sẽ lấy lỗi từ mặc định từ error_enum
+    - Với các field đặc biệt như workspaceId, channelId, userId khi có lỗi và có option message sẽ ưu tiên lỗi từ option message và đẩy lỗi ra ngay lặp tức không check các field còn lại của body
 
 ### General
 
@@ -20,8 +22,8 @@ Note: Với các decorator có option message khi catch lỗi sẽ ưu tiên l�
 | IsOptional | @IsOptional() | Cho phép undefined |   @IsOptional()<br> type: string; |
 | IsNotNull | @IsNotNull() | Không cho phép null |   @IsNotNull()<br> type: string; |
 | IsNotEmpty | @IsNotEmpty(option?) | Không cho phép rỗng |   @IsNotEmpty(<br>{message: `Could not resolve permission type`,})<br> type: string; |
-| IsAny | @IsAny() | Cho phép bao hàm tất cả các kiểu |   @IsAny()<br> type: string; hoặc @IsAny()<br> type: number;  |
-| IsDefined | @IsDefined(option?) | Bắt buộc phải xác định.   |   @IsDefined({message: `Could not resolve permission type`})<br> type: string|
+| IsAny | @IsAny() | Cho phép bao hàm tất cả các kiểu |   @IsAny()<br> type: string; hoặc @IsAny()<br> type: number; |
+| IsDefined | @IsDefined(option?) | Bắt buộc phải xác định.   |   @IsDefined({message: `Could not resolve permission type`})<br> type: string |
 | IsChecked | @IsChecked(option?) | Xác định để check những field đặc biệt đúng kiểu dữ liệu nhưng khác giá trị  (workspaceId, channelId, userId) cần custom error. field workspaceId có payload là chuỗi "abcdef" nhưng khác "0" => Invalid channel, field channelId có payload là chuỗi "abcdef" nhưng khác template {{channelId}}(ULID) => Invalid channel  |   @IsChecked({message: `Invalid channel`})<br> channelId: string|
 | IsULID | @IsULID() | Xác định giá trị là một ULID |   @IsULID()<br> type: string|
 
