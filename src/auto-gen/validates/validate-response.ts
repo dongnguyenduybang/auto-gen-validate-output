@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { ErrorMessage } from '../enums/error-message.enum';
+import { ErrorMessage } from '../enums';
 import { getDecorators } from '../utils/dto-helper';
 import { resolveVariables } from '../utils/test-executor';
 import { resolveValidIf } from '../utils/helper';

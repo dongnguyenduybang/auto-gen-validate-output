@@ -1,7 +1,6 @@
 import { getOrThrow, setupConfiguration } from './utils/get-config';
 
 setupConfiguration();
-
 export function initializeGlobalVariables() {
   try {
     globalThis.urls = getOrThrow<string>('host');
