@@ -25,7 +25,7 @@ const createChannelConfig: ExtractConfig = {
   },
   users: {
     path: ['includes', 'users'],
-    fields: ['userId', 'username'],
+    fields: ['username'],
   },
 };
 

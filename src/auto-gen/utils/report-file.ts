@@ -249,15 +249,41 @@ const sagaReportTemplate = (
     ),
     '',
     '[Logic Errors]',
-    ...logicErrors.map((error, index) =>
-      [
-        '',
-        ` 🟣 ${index + 1}. Step: ${error.stepName}`,
-        `     ├─ Type: ${error.type || 'N/A'}`,
-        `     └─ Error: ${typeof error.error === 'string' ? error.error : JSON.stringify(error.error)}`,
-      ].join('\n'),
-    ),
+    ...logicErrors.map((error, index) => [
+      '',
+      ` 🟣 ${index + 1}. Step: ${error.stepName}`,
+      `    ├─ Type: ${error.type || 'N/A'}`,
+      `    └─ Error:`,
+      formatError(error.error)
+    ].join('\n')),
     '',
     '=== End of Report ===',
   ].join('\n');
+};
+
+const formatError = (error: any) => {
+  if (Array.isArray(error)) {
+    return error.map(err => {
+      const path = err.path || 'unknown path';
+      const expected = err.expected || 'No expected value';
+      const actual = err.actual || 'No actual value';
+      const message = err.message || 'Validation failed';
+      
+      return [
+        `    ├─ Path: ${path}`,
+        `    ├─ Expected: ${expected}`,
+        `    ├─ Actual: ${actual}`,
+        `    └─ Message: ${message}`
+      ].join('\n');
+    }).join('\n');
+  }
+  
+  if (typeof error === 'object' && error !== null) {
+    return JSON.stringify(error, null, 2)
+      .split('\n')
+      .map((line, i) => i === 0 ? line : `    ${line}`)
+      .join('\n');
+  }
+  
+  return error;
 };
