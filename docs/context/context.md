@@ -28,6 +28,7 @@
     };
 ```
 *Note:
+
     + channel: filed muốn lấy data
     + path: đường dẫn đến filed
     + filed: tên filed muốn lấy 
