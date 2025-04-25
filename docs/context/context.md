@@ -4,6 +4,7 @@
     + WSSContext: context event từ websocket
 
 - Custom data: Có thể custom lại data nào sẽ được lưu vào context 
+
     📄 extractConfig.ts
 ```
     const sendDmMessageConfig: ExtractConfig = {
@@ -32,6 +33,7 @@
     + channel: filed muốn lấy data
     + path: đường dẫn đến filed
     + filed: tên filed muốn lấy 
+
 
 - Cấu trúc của context: Thứ tự được đưa vào context sẽ dựa vào mỗi lần action được call api. Khi có filed giống nhau được đưa vào context sẽ tăng dần suffix 0 , 1 , 2 , 3 
 
