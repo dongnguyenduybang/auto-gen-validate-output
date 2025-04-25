@@ -1,9 +1,4 @@
-import { Operator } from '../../enums/operator.enum';
-import { Element } from '../../enums/element.enum';
-import { METHOD } from '../../enums/method.enum';
-import { APIPath } from '../../enums/path.enum';
-import { VAR } from '../../enums/var-placeholder.enum';
-import { HeaderList } from '../../enums/header.enum';
+import { APIPath, HeaderList, METHOD, Operator, Element, VAR } from "../../enums";
 
 export const SendDmMessageSaga = {
   steps: [

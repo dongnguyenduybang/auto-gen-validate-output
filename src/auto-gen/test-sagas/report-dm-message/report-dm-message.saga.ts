@@ -1,10 +1,4 @@
-import { Operator } from '../../enums/operator.enum';
-import { Element } from '../../enums/element.enum';
-import { METHOD } from '../../enums/method.enum';
-import { APIPath } from '../../enums/path.enum';
-import { VAR } from '../../enums/var-placeholder.enum';
-import { HeaderList } from '../../enums/header.enum';
-import { ReportCategory } from '../../enums/report-category.enum';
+import { APIPath, HeaderList, METHOD, Operator, Element, ReportCategory, VAR } from "../../enums";
 
 export const ReportDmMessageSaga = {
   steps: [

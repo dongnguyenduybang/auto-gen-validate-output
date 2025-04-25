@@ -1,7 +1,4 @@
-import { HeaderList } from '../../enums/header.enum';
-import { METHOD } from '../../enums/method.enum';
-import { APIPath } from '../../enums/path.enum';
-import { VAR } from '../../enums/var-placeholder.enum';
+import { APIPath, HeaderList, METHOD, VAR } from "../../enums";
 
 export const SendMessageResponse = {
   method: METHOD.POST,
