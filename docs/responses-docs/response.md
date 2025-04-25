@@ -1,6 +1,7 @@
 
 ## Responses
-- Mục định: Định nghĩa cấu trúc response và validate response API sẽ trả về. Cấu trúc file thư mục như sau:
+- Mục đích: Validate response check typeof, required, so sánh và các điều kiện với response trả về từ API. Cấu trúc file thư mục như sau:
+
 - 📂 root
   - 📂 test-responses
     - 📂 send-message
@@ -270,7 +271,7 @@ Bước 3: Tiến hành chạy test script
   Sau khi chạy test script thì log sẽ được ghi vào file report 
 
 + Note:  
-  - Định nghĩa kế thừa từ class BaseResponse 
-  - Override thêm các decorator đối với các property cần thay đổi 
+  - Response được kế thừa từ class BaseResponse 
+  - Override thêm các decorator đối với các property cần thay đổi các điều kiện muốn check
   - Exclude sẽ undefined các property không cần dùng đến 
-  - Nếu không defined các property trong SendMessageResponse thì mặc định sẽ lấy từ class BaseResponse
+  - Nếu không defined các property trong SendMessageResponse thì mặc định sẽ lấy property từ class BaseResponse

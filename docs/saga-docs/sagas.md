@@ -1,5 +1,5 @@
 ## Saga
-- Mục đích: Gen script test và validate lần lượt các bước được định nghĩa các step kèm expect sẳn.
+- Mục đích: Gen script test và validate lần lượt các bước được định nghĩa các step kèm với expect cần kiểm tra.
 
   - 📂 root
     - 📂 test-sagas
@@ -9,11 +9,6 @@
       - 📂 send-dm-message
         - 📄 send-dm-message.saga.json
         - 📄 send-dm-message.saga.spec.ts
-       
-    - 📂 responses
-      - 📄 send-message.response.ts
-      - 📄 send-dm-message.response.ts
-     
 
 Bước 1: Định nghĩa file cấu trúc các step sẽ check
 

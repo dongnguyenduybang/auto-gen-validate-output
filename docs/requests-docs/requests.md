@@ -1,5 +1,5 @@
 ## Requests
-Mục đích: Định nghĩa cấu trúc các bước chuẩn bị dữ liệu, bước sau khi chạy test, method, path, header và body của endpoint đang test. Với cấu trúc thư mục như sau
+Mục đích: Gen body và expect error dựa vào decorator DTO. Với cấu trúc thư mục như sau
 
 - 📂 root
   - 📂 test-requests
