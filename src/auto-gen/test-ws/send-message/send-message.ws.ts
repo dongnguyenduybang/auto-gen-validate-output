@@ -89,7 +89,7 @@ export const SendMessageSagaWS = {
     //   action: 'resume',
     //   path: 'wsActor',
     //   body: "member_joined.id",
-      
+
     // },
     // {
     //   action: 'sendMessage',
@@ -107,12 +107,12 @@ export const SendMessageSagaWS = {
   wssCheck:
   {
     expectWSActor: [
-      {
-        type: {operator: Operator.EQUAL, expect: API_EVENT.halome.v3.realTime.GATEWAY_CONNECTED},
-        data: {
-          message: {operator: Operator.EQUAL, expect: 'Hello'}
-        }
-      },
+      // {
+      //   type: { operator: Operator.EQUAL, expect: API_EVENT.halome.v3.realTime.GATEWAY_CONNECTED },
+      //   data: {
+      //     message: { operator: Operator.EQUAL, expect: 'Hello' }
+      //   }
+      // },
       {
         type: { operator: Operator.EQUAL, expect: API_EVENT.halome.v3.chat.CHANNEL_CREATED },
         data: {
@@ -120,29 +120,30 @@ export const SendMessageSagaWS = {
             workspaceId: { operator: Operator.EQUAL, expect: '0' },
             channelId: { operator: Operator.EQUAL, expect: VAR.channelId },
             userId: { operator: Operator.EQUAL, expect: VAR.userId },
+          },
+          includes: {
+            users: [
+              {
+                field: 'userId',
+                operator: Operator.INCLUDE,
+                element: Element.FIRST,
+                expect: [VAR.userId],
+              },
+              {
+                field: 'userType',
+                operator: Operator.INCLUDE,
+                element: Element.FIRST,
+                expect: 0,
+              },
+              {
+                field: 'profile.userBadgeType',
+                operator: Operator.EQUAL,
+                expect: 0,
+              },
+            ],
           }
         },
-        includes: {
-          users: [
-            {
-              field: 'userId',
-              operator: Operator.INCLUDE,
-              element: Element.FIRST,
-              expect: [VAR.userId],
-            },
-            {
-              field: 'userType',
-              operator: Operator.INCLUDE,
-              element: Element.FIRST,
-              expect: 0,
-            },
-            {
-              field: 'profile.userBadgeType',
-              operator: Operator.EQUAL,
-              expect: 0,
-            },
-          ],
-        }
+
       },
       {
         type: { operator: Operator.EQUAL, expect: API_EVENT.halome.v3.chat.MESSAGE_CREATED },
@@ -180,14 +181,19 @@ export const SendMessageSagaWS = {
       {
         type: { operator: Operator.EQUAL, expect: API_EVENT.halome.v3.chat.USER_UNREAD_MESSAGE_UPDATED },
         data: {
-          message: {
-            lastSeenMessageId: { operator: Operator.EQUAL, expect: VAR.messageId3 },
-            channelId: { operator: Operator.EQUAL, expect: VAR.channelId },
-          }
+          lastSeenMessageId: { operator: Operator.EQUAL, expect: VAR.messageId1 },
+          userId: { operator: Operator.EQUAL, expect: VAR.userId },
+          channelId: { operator: Operator.EQUAL, expect: VAR.channelId },
         },
       }
     ],
     expectWSRecipient: [
+      {
+        type: { operator: Operator.EQUAL, expect: API_EVENT.halome.v3.realTime.GATEWAY_CONNECTED },
+        data: {
+          message: { operator: Operator.EQUAL, expect: 'Hello' }
+        }
+      },
       {
         type: { operator: Operator.EQUAL, expect: API_EVENT.halome.v3.chat.MEMBER_JOINED },
         data: {
