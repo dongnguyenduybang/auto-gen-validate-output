@@ -23,36 +23,53 @@ export const createApiValidator = (context: IContext) => {
       const path = b.replace(/[{}]/g, '').split('.');
       b = context.getValue(path);
     }
+    if (Array.isArray(a) && Array.isArray(b)) {
+      return a.length === b.length && a.every((item, i) => String(item).trim() === String(b[i]).trim());
+    }
     return String(a).trim() === String(b).trim();
   };
+
   function getNestedValue(obj: any, pathStr: string): any[] {
+    console.log(`getNestedValue: path=${pathStr}, obj=`, JSON.stringify(obj, null, 2));
     const parts = pathStr.split('.');
-    let current: any[] = [obj];
+    let current = Array.isArray(obj) ? obj.flat(Infinity) : [obj];
 
     for (const part of parts) {
-      current = current.flatMap((item) => {
+      current = current.flatMap(item => {
         if (item === undefined || item === null) return [];
-        const value = item[part];
-        if (Array.isArray(value)) return value;
-        if (value !== undefined) return [value];
-        return [];
+
+        if (Array.isArray(item)) {
+          return item.flatMap(i => {
+            const val = i?.[part];
+            return val !== undefined ? (Array.isArray(val) ? val.flat(Infinity) : [val]) : [];
+          });
+        }
+
+        const val = item[part];
+        return val !== undefined ? (Array.isArray(val) ? val.flat(Infinity) : [val]) : [];
       });
     }
 
-    return current;
+    const result = current.flat(Infinity).filter(val => val !== undefined && val !== null);
+    console.log(`getNestedValue result:`, JSON.stringify(result));
+    return result;
   }
 
   const resolveValue = (value: any): any => {
     if (typeof value === 'string') {
       return value.replace(/\{\{(.+?)\}\}/g, (_, path) => {
         const pathArray = path.split('.');
-        return context.getValue(pathArray) ?? `{{${path}}}`;
+        const resolved = context.getValue(pathArray);
+        console.log(`Resolving template: ${path} => ${resolved}`);
+        return resolved ?? `{{${path}}}`;
       });
     }
-    if (Array.isArray(value)) return value.map(item => resolveValue(item));
-    if (typeof value === 'object') {
+    if (Array.isArray(value)) {
+      return value.map(item => resolveValue(item));
+    }
+    if (typeof value === 'object' && value !== null) {
       return Object.fromEntries(
-        Object.entries(value).map(([a, b]) => [a, resolveValue(b)])
+        Object.entries(value).map(([key, val]) => [key, resolveValue(val)])
       );
     }
     return value;
@@ -135,28 +152,40 @@ export const createApiValidator = (context: IContext) => {
     path: string[],
     errors: ValidationError[]
   ) => {
-    const expectedArray = Array.isArray(expectedValues) ? expectedValues : [expectedValues];
-    const fullPath = path.join('.');
-    const targetValues = getNestedValue(actual, fullPath);
+    console.log(`validateInclusion: actual=`, JSON.stringify(actual, null, 2));
+    const normalizedActual = Array.isArray(actual) ? actual.flat(Infinity) : [actual];
+    const expectedArray = Array.isArray(expectedValues) ? expectedValues.flat(Infinity) : [expectedValues];
 
-    let valuesToCheck = targetValues;
+    const fullPath = path.join('.');
+
+    // Sử dụng normalizedActual trực tiếp thay vì gọi getNestedValue
+    let valuesToCheck = normalizedActual;
+
+    console.log('Validate inclusion debug:', {
+      path: fullPath,
+      actual: JSON.stringify(normalizedActual),
+      targetValues: JSON.stringify(valuesToCheck),
+      expectedValues: JSON.stringify(expectedArray),
+      elementType
+    });
+
     switch (elementType) {
       case Element.FIRST:
-        valuesToCheck = targetValues.slice(0, 1);
+        valuesToCheck = valuesToCheck.slice(0, 1);
         break;
       case Element.LAST:
-        valuesToCheck = targetValues.slice(-1);
+        valuesToCheck = valuesToCheck.slice(-1);
         break;
       case Element.ALL:
       default:
-        valuesToCheck = targetValues;
+        break;
     }
 
     if (valuesToCheck.length === 0) {
       errors.push(createError(
         path,
         `No values found at path '${fullPath}'`,
-        targetValues
+        valuesToCheck
       ));
       return;
     }
@@ -164,6 +193,7 @@ export const createApiValidator = (context: IContext) => {
     const missing = expectedArray.filter(expected =>
       !valuesToCheck.some(val => comparedValue(val, expected))
     );
+
     if (missing.length > 0) {
       const message = elementType
         ? `${elementType} elements of ${fullPath} must include ${missing.join(', ')}`
@@ -184,6 +214,22 @@ export const createApiValidator = (context: IContext) => {
   ) => {
     const { field, operator, element, expect } = config;
     const resolvedExpect = resolveValue(expect);
+
+    console.log('Validating operator object:', {
+      field,
+      operator,
+      element,
+      actual: JSON.stringify(actual),
+      resolvedExpect
+    });
+
+    if (field && field.includes('.')) {
+      const fieldParts = field.split('.');
+      const targetValues = getNestedValue(actual, field);
+      validateFieldValues(targetValues, { ...config, field: fieldParts[fieldParts.length - 1] }, [...path, ...fieldParts], errors);
+      return;
+    }
+
     const targetValue = field ? getNestedValue(actual, field) : actual;
 
     if (element && !Array.isArray(targetValue)) {
@@ -246,8 +292,9 @@ export const createApiValidator = (context: IContext) => {
       expected.forEach(rule => {
         const fieldValues = actual.map(item =>
           getNestedValue(item, (rule as OperatorConfig).field)
-        );
-        validateFieldValues(fieldValues, rule as OperatorConfig, [...path, (rule as OperatorConfig).field], errors);
+        ).flat(Infinity);
+        // Sử dụng field làm path thay vì path đầy đủ
+        validateFieldValues(fieldValues, rule as OperatorConfig, [/*path[path.length - 1],*/ (rule as OperatorConfig).field], errors);
       });
       return;
     }
@@ -303,9 +350,23 @@ export const createApiValidator = (context: IContext) => {
     }
   };
 
+  const normalizeData = (data: any): any => {
+    if (Array.isArray(data)) {
+      return data.flatMap(item => normalizeData(item));
+    }
+    if (typeof data === 'object' && data !== null) {
+      return Object.fromEntries(
+        Object.entries(data).map(([key, val]) => [key, normalizeData(val)])
+      );
+    }
+    return data;
+  };
+
   return {
     validate: (actualData: any, expectConfig: any): ValidationError[] => {
+      console.log(`Validating actualData:`, JSON.stringify(actualData, null, 2));
       const errors: ValidationError[] = [];
+      const normalizedData = normalizeData(actualData);
       validateRecursive(actualData, expectConfig, [], errors);
       return errors;
     }
