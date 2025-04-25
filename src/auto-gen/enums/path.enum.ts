@@ -77,5 +77,8 @@ export const APIPath = {
         GetStickerCollection: '/StickerView/GetStickerCollection',
         ListStickers: '/StickerView/ListStickers',
         SyncStickerCollections: '/StickerView/SyncStickerCollections',
+    },
+    Faker: {
+        DeleteMockedUsers: '/InternalFaker/DeleteMockedUsers'
     }
 };

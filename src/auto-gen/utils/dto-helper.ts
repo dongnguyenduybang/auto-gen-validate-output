@@ -88,6 +88,7 @@ export function generateErrorVariantsForField(
   switch (fieldType) {
     case 'string':
       variants.push(123);
+      variants.push(fieldValue)
       variants.push('check_ulid')
       break;
     case 'number':
@@ -96,13 +97,16 @@ export function generateErrorVariantsForField(
       break;
     case 'enum':
       variants.push('invalid_enum_value');
+      variants.push(fieldValue)
       break;
     case 'array':
       variants.push('not_an_array');
       variants.push([123]);
+      variants.push(fieldValue)
       break;
     case 'boolean':
       variants.push('invalid_boolean');
+      variants.push(fieldValue)
       break;
   }
 
@@ -131,7 +135,7 @@ export function generateErrorVariantsForField(
   }
 
   // 6. Giá trị hợp lệ
-  variants.push(fieldValue);
+  // variants.push(fieldValue);
 
   if (!decorators['optional']) {
     variants.push(undefined);

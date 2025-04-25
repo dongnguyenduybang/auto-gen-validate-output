@@ -108,7 +108,7 @@ async function genTestCase(
       .map(
         (testCase: any, index: number) => `
            
-            it('Test case #${index + 1} with expect errors  ${formatExpectErrors(testCase.expects)} ', async () => {
+            it('Test case #${index + 1} should return errors ${formatExpectErrors(testCase.expects)} when body ${JSON.stringify(testCase.body)} ', async () => {
               testNumber = ${index + 1};
               totalTests++;
               const payloadObj = ${JSON.stringify(testCase.body)};
