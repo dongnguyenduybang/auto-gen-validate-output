@@ -1,0 +1,28 @@
+=== WebSocket Test Report For send-message-ws-saga ===
+• Host: https://api-hono.rpc.ziichat.dev
+• Endpoint: SendMessageWS
+• Date: 25/04/2025, 14:59:42
+
+=== Execution Steps ===
+  1. [❌ Failed] wssCheck
+     └─ wsActor: Failed, Fit: 6/7
+
+=== Test Summary ===
+✅ Passed: 0
+❌ Failed: 0
+📊 Total: 0
+
+=== Error Details ===
+[WebSocket Errors]
+
+ 🟣 1.1. Bước: wssCheck
+     ├─ Type: ws
+     ├─ Event Index: 0
+     ├─ Event Type: com.halome.realtime.v3.gateway.connected
+     ├─ Errors:
+     │  1. Path: message, Expected: equal("Hellos"), Actual: "Hello", Message: Validation failed at message
+     └─ Source: https://realtime.v3.halome.com/cloudevents?userId=01JSNZB05VXFW82188AG0QANKA&deviceId=01JSNZB06FKTBJ2QHJ1EJEPDSY
+
+[Logic Errors]
+
+=== End Report ===

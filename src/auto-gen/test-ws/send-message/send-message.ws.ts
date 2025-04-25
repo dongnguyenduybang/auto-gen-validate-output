@@ -107,12 +107,12 @@ export const SendMessageSagaWS = {
   wssCheck:
   {
     expectWSActor: [
-      // {
-      //   type: { operator: Operator.EQUAL, expect: API_EVENT.halome.v3.realTime.GATEWAY_CONNECTED },
-      //   data: {
-      //     message: { operator: Operator.EQUAL, expect: 'Hello' }
-      //   }
-      // },
+      {
+        type: { operator: Operator.EQUAL, expect: API_EVENT.halome.v3.realTime.GATEWAY_CONNECTED },
+        data: {
+          message: { operator: Operator.EQUAL, expect: 'Hellos' }
+        }
+      },
       {
         type: { operator: Operator.EQUAL, expect: API_EVENT.halome.v3.chat.CHANNEL_CREATED },
         data: {

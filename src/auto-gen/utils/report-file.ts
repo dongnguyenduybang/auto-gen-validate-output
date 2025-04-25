@@ -303,10 +303,10 @@ const wsReportTemplate = (
           const recipientErrors = wsResult.wsRecipient?.errors || [];
           resultMessage = [
             actorErrors.length > 0
-              ? `wsActor: ${wsResult.wsActor.success ? 'Passed' : 'Failed'}, Khớp: ${wsResult.wsActor.matched}/${wsResult.wsActor.total}`
+              ? `wsActor: ${wsResult.wsActor.success ? 'Passed' : 'Failed'}, Fit: ${wsResult.wsActor.matched}/${wsResult.wsActor.total}`
               : '',
             recipientErrors.length > 0
-              ? `wsRecipient: ${wsResult.wsRecipient.success ? 'Passed' : 'Failed'}, Khớp: ${wsResult.wsRecipient.matched}/${wsResult.wsRecipient.total}`
+              ? `wsRecipient: ${wsResult.wsRecipient.success ? 'Passed' : 'Failed'}, Fit: ${wsResult.wsRecipient.matched}/${wsResult.wsRecipient.total}`
               : '',
           ]
             .filter(Boolean)
@@ -348,7 +348,7 @@ const wsReportTemplate = (
             `     ├─ Event Type: ${err.event?.type || 'N/A'}`,
             `     ├─ Errors:`,
             ...err.errors.map((validationError, vIndex) => 
-              `     │  ${vIndex + 1}. Path: ${validationError.path || 'N/A'}, Expected: ${validationError.expected || 'N/A'}, Actual: ${validationError.actual || 'N/A'}, Thông Điệp: ${validationError.message || 'N/A'}`
+              `     │  ${vIndex + 1}. Path: ${validationError.path || 'N/A'}, Expected: ${validationError.expected || 'N/A'}, Actual: ${validationError.actual || 'N/A'}, Message: ${validationError.message || 'N/A'}`
             ),
             `     └─ Source: ${err.event?.source || 'N/A'}`,
           ].join('\n'))
