@@ -1,4 +1,3 @@
-// send-message.response.ts
 import { ValidateNested } from 'class-validator';
 import { Exclude, Type } from 'class-transformer';
 import {
@@ -12,13 +11,15 @@ import {
   Reaction,
   User as GeneralUser,
 } from './general-response';
-import { DirectMessageStatusEnum } from '../enums/direct-message-status.enum';
-import { IsDefined } from '../decorator/general-decorator';
-import { IsString } from '../decorator/string-decorator';
-import { IsBoolean } from '../decorator/boolean-decorator';
-import { ValidIf } from '../decorator/condition-decorator';
-import { IsObject } from '../decorator/object-decorator';
-import { IsArray } from '../decorator/array-decorator';
+import {
+  IsArray,
+  IsBoolean,
+  IsDefined,
+  IsObject,
+  IsString,
+  ValidIf,
+} from '../decorator';
+import { DirectMessageStatusEnum } from '../enums';
 
 export class Message extends GeneralMessage {
   @ValidIf('workspaceId', '===', '0')
