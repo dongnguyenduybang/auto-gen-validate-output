@@ -158,7 +158,6 @@ export const createApiValidator = (context: IContext) => {
 
     const fullPath = path.join('.');
 
-    // Sử dụng normalizedActual trực tiếp thay vì gọi getNestedValue
     let valuesToCheck = normalizedActual;
 
     console.log('Validate inclusion debug:', {
@@ -293,8 +292,8 @@ export const createApiValidator = (context: IContext) => {
         const fieldValues = actual.map(item =>
           getNestedValue(item, (rule as OperatorConfig).field)
         ).flat(Infinity);
-        // Sử dụng field làm path thay vì path đầy đủ
-        validateFieldValues(fieldValues, rule as OperatorConfig, [/*path[path.length - 1],*/ (rule as OperatorConfig).field], errors);
+        
+        validateFieldValues(fieldValues, rule as OperatorConfig, [(rule as OperatorConfig).field], errors);
       });
       return;
     }
