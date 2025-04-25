@@ -92,7 +92,7 @@ export async function validateResponses(
 
         if (decorators.startWith && typeof valueResponse === 'string') {
           if (Array.isArray(decorators.startWith)) {
-            let [fieldCheck, value] = decorators.startWith;
+            let [value] = decorators.startWith;
             if (value.startsWith('{{')) {
               value = resolveVariables(value, context);
             }
@@ -103,7 +103,7 @@ export async function validateResponses(
             typeof decorators.startWith === 'object' &&
             decorators.startWith !== null
           ) {
-            let { fieldCheck, value } = decorators.startWith;
+            let { value } = decorators.startWith;
             if (value.startsWith('{{')) {
               value = resolveVariables(value, context);
             }
@@ -112,7 +112,7 @@ export async function validateResponses(
               errors.push(`${field} must start with ${value}`);
             }
           } else {
-            let [fieldCheck, value] = decorators.startWith;
+            let [value] = decorators.startWith;
             if (value.startsWith('{{')) {
               value = resolveVariables(value, context);
             }
@@ -125,7 +125,7 @@ export async function validateResponses(
         //check endWith
         if (decorators.endWith && typeof valueResponse === 'string') {
           if (Array.isArray(decorators.endWith)) {
-            let [fieldCheck, value] = decorators.endWith;
+            let [value] = decorators.endWith;
             if (value.startsWith('{{')) {
               value = resolveVariables(value, context);
             }
@@ -136,7 +136,7 @@ export async function validateResponses(
             typeof decorators.endWith === 'object' &&
             decorators.endWith !== null
           ) {
-            let { fieldCheck, value } = decorators.endWith;
+            let { value } = decorators.endWith;
             if (value.startsWith('{{')) {
               value = resolveVariables(value, context);
             }
@@ -144,7 +144,7 @@ export async function validateResponses(
               errors.push(`${field} must end with ${value}`);
             }
           } else {
-            let { fieldCheck, value } = decorators.endWith;
+            let { value } = decorators.endWith;
             if (value.startsWith('{{')) {
               value = resolveVariables(value, context);
             }

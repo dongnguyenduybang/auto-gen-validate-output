@@ -412,7 +412,7 @@ export const createApiValidator = (context: IContext) => {
         JSON.stringify(actualData, null, 2),
       );
       const errors: ValidationError[] = [];
-      const normalizedData = normalizeData(actualData);
+      normalizeData(actualData);
       validateRecursive(actualData, expectConfig, [], errors);
       return errors;
     },

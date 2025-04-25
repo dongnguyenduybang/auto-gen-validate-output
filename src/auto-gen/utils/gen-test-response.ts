@@ -1,7 +1,5 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import { readJsonFile } from './helper';
-
 // Hàm đơn giản chỉ lấy file response.json
 function getResponseFile(dirPath: string): string | null {
   try {

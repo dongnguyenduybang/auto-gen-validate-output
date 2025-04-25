@@ -2,15 +2,12 @@ import {
   IsDefined,
   IsNotEmpty,
   IsULID,
-  IsNotNull,
   IsChecked,
   IsOptional,
-} from '../../decorator/general-decorator';
-import {
   IsString,
   MaxLength,
   MinLength,
-} from '../../decorator/string-decorator';
+} from '../../decorator';
 
 export class UpdateMessageDTO {
   @IsDefined({ message: `Could not resolve permission type` })

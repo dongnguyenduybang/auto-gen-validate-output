@@ -37,8 +37,7 @@ export async function genBodyRequest(dtoName) {
       }
 
       const requestModule = await import(requestPath);
-      const requestData =
-        requestModule.default || Object.values(requestModule)[0];
+      const requestData = requestModule.default || Object.values(requestModule)[0];
       const payload = requestData.body;
       const result = generateErrorCases(dtoClass, payload);
 

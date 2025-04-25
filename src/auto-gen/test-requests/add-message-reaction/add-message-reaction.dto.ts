@@ -1,12 +1,12 @@
-import { MinLength } from 'class-validator';
 import {
+  IsString,
+  MinLength,
   IsDefined,
   IsNotEmpty,
   IsULID,
   IsChecked,
   IsEmoji,
-} from '../../decorator/general-decorator';
-import { IsString, MaxLength } from '../../decorator/string-decorator';
+} from '../../decorator';
 
 export class AddMessageReactionDTO {
   @IsDefined({ message: `Unsupported permission type` })
