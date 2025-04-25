@@ -20,9 +20,9 @@ async function genTestCase(
   outputDir: string,
 ) {
   const classNameCapitalized = className
-  .split('-')
-  .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-  .join('');
+    .split('-')
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join('');
   const responseModule = await import(responsePath);
   const responseConfig = responseModule[`${classNameCapitalized}Response`];
   const specContent = `

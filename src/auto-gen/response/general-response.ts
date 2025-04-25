@@ -632,7 +632,7 @@ export class DataResponse {
   @IsDefined()
   @Type(() => Message)
   message?: Message;
-  
+
   @ValidateNested({ each: true })
   @IsObject()
   @IsDefined()

@@ -21,7 +21,8 @@ function getAllFiles(dirPath: string): string[] {
 function pairFiles(
   files: string[],
 ): { dtoPath: string; requestPath: string; className: string }[] {
-  const fileMap: Record<string, { dtoPath?: string; requestPath?: string }> = {};
+  const fileMap: Record<string, { dtoPath?: string; requestPath?: string }> =
+    {};
   files.forEach((filePath) => {
     const fileName = path.basename(filePath, path.extname(filePath));
     if (filePath.endsWith('.dto.ts') || filePath.endsWith('.dto.js')) {
@@ -34,11 +35,13 @@ function pairFiles(
       fileMap[className].requestPath = filePath;
     }
   });
-  return Object.entries(fileMap).map(([className, { dtoPath, requestPath }]) => ({
-    dtoPath,
-    requestPath,
-    className,
-  }));
+  return Object.entries(fileMap).map(
+    ([className, { dtoPath, requestPath }]) => ({
+      dtoPath,
+      requestPath,
+      className,
+    }),
+  );
 }
 
 async function genTestCase(
@@ -105,8 +108,8 @@ async function genTestCase(
         })
 
         ${payloadData
-      .map(
-        (testCase: any, index: number) => `
+          .map(
+            (testCase: any, index: number) => `
            
             it('Test case #${index + 1} should return errors ${formatExpectErrors(testCase.expects)} when body ${JSON.stringify(testCase.body)} ', async () => {
               testNumber = ${index + 1};
@@ -191,8 +194,8 @@ async function genTestCase(
               console.log(error)
             }
             });`,
-      )
-      .join('\n')}
+          )
+          .join('\n')}
 
       afterAll(async () => {
       const resultStep = await executeAllSteps(${JSON.stringify(requestConfig.afterAll)},globalContext)

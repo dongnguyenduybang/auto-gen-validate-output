@@ -14,7 +14,7 @@ export function ValidIf(condition: string, operator: string, condition2: any) {
       'validIf',
       { condition, operator, condition2 },
       target,
-      propertyKey
+      propertyKey,
     );
 
     // Lưu metadata vào prototype để đảm bảo tương thích với getDecorators
@@ -23,14 +23,14 @@ export function ValidIf(condition: string, operator: string, condition2: any) {
         'validIf',
         { condition, operator, condition2 },
         target.prototype,
-        propertyKey
+        propertyKey,
       );
     } else {
       Reflect.defineMetadata(
         'validIf',
         { condition, operator, condition2 },
         target.constructor.prototype,
-        propertyKey
+        propertyKey,
       );
     }
   };
@@ -42,7 +42,12 @@ export function ValidIf(condition: string, operator: string, condition2: any) {
 */
 export function StartWith(fieldCheck: string, value: string) {
   return (target: any, propertyKey: string) => {
-    Reflect.defineMetadata('startWith', { fieldCheck, value }, target, propertyKey);
+    Reflect.defineMetadata(
+      'startWith',
+      { fieldCheck, value },
+      target,
+      propertyKey,
+    );
     if (typeof target === 'function') {
       Reflect.defineMetadata(
         'startWith',

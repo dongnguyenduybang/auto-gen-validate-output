@@ -76,7 +76,7 @@ export function IsAny() {
 }
 
 /* xác định value có custom message error */
-export function IsChecked(options?: {message?: string}){
+export function IsChecked(options?: { message?: string }) {
   return (target: any, propertyKey: string) => {
     Reflect.defineMetadata('isChecked', true, target, propertyKey);
     if (options?.message) {
@@ -91,19 +91,18 @@ export function IsChecked(options?: {message?: string}){
 }
 
 /* check value là một ULID */
-export function IsULID(){
+export function IsULID() {
   return function (target: any, propertyKey: string) {
     Reflect.defineMetadata('isULID', true, target, propertyKey);
   };
 }
-
 
 export function IsMath(options?: {
   message?: string;
   value?: any;
 }): PropertyDecorator {
   return (target: any, propertyKey: string) => {
-    Reflect.defineMetadata('isMath',true,  target, propertyKey);
+    Reflect.defineMetadata('isMath', true, target, propertyKey);
 
     if (options?.message) {
       Reflect.defineMetadata(
@@ -120,7 +119,7 @@ export function IsMath(options?: {
   };
 }
 
-export function IsEmoji(){
+export function IsEmoji() {
   return function (target: any, propertyKey: string) {
     Reflect.defineMetadata('isEmoji', true, target, propertyKey);
   };

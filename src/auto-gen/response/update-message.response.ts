@@ -21,8 +21,7 @@ import {
   OriginalMessage,
 } from './general-response';
 
-export class Profile {
-}
+export class Profile {}
 
 export class Message extends GeneralMessage {
   @ValidIf('workspaceId', '===', '0')
@@ -66,7 +65,6 @@ export class Message extends GeneralMessage {
   @Exclude()
   contentArguments?: string[];
 }
-
 
 export class Messages extends GeneralMessage {
   @ValidIf('workspaceId', '===', '0')
@@ -138,7 +136,6 @@ export class Channel extends GeneralChannel {
   acceptTime?: string;
 }
 export class Member extends GeneralMember {
-
   @ValidIf('channelId', '===', 'payload.channelId')
   @IsString()
   @IsDefined()
@@ -179,7 +176,6 @@ export class User extends GeneralUser {
 }
 
 export class IncludesResponse {
-
   @ValidateNested({ each: true, always: true })
   @IsObject()
   @IsDefined()

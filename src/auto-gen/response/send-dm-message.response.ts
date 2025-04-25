@@ -21,9 +21,7 @@ import {
   OriginalMessage,
 } from './general-response';
 
-export class Profile {
-
-}
+export class Profile {}
 
 export class Message extends GeneralMessage {
   @ValidIf('workspaceId', '===', '0')
@@ -71,7 +69,6 @@ export class Message extends GeneralMessage {
 export class ChannelMetadata extends GeneralChannelMetaData {}
 
 export class Channel extends GeneralChannel {
-
   @Exclude()
   originalAvatar?: string;
 
@@ -108,7 +105,6 @@ export class Member extends GeneralMember {
   @IsString()
   @IsDefined()
   workspaceId?: string;
-
 }
 
 export class User extends GeneralUser {

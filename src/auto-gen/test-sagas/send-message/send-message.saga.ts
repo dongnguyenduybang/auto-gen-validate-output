@@ -12,8 +12,8 @@ export const SendMessageSaga = {
       body: {
         quantity: 2,
         prefix: 'testabcssd',
-        badge: 0
-      }
+        badge: 0,
+      },
     },
     {
       action: 'createChannel',

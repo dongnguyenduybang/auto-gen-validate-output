@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 export enum UserStatusExpireAfterTimeEnum {
   USER_STATUS_EXPIRES_AFTER_TIME_ENUM_UNSPECIFIED = 0, //	The user status expires time after unspecified
   USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_1_HOUR = 1, //	The user status expires time after 1 hour

@@ -58,7 +58,6 @@ export class Message extends GeneralMessage {
 export class ChannelMetadata extends GeneralChannelMetaData {}
 
 export class Channel extends GeneralChannel {
-
   @ValidIf('invitationLink', '===', 'payload.invitationLink')
   @StartWith('invitationLink', 'https://zii.chat/i/')
   @IsString()

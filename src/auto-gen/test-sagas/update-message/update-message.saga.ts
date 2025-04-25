@@ -12,8 +12,8 @@ export const UpdateMessageSaga = {
       body: {
         quantity: 2,
         prefix: 'testFakerMockUser',
-        badge: 0
-      }
+        badge: 0,
+      },
     },
     {
       action: 'createChannel',
@@ -21,7 +21,7 @@ export const UpdateMessageSaga = {
     {
       action: 'sendMessage',
       method: METHOD.POST,
-      path: APIPath.Message.SendMessage ,
+      path: APIPath.Message.SendMessage,
       body: {
         workspaceId: '0',
         channelId: VAR.channelId,
@@ -31,7 +31,7 @@ export const UpdateMessageSaga = {
       headers: HeaderList.Token(),
       expect: {
         ok: { operator: Operator.EQUAL, expect: true },
-      }
+      },
     },
     {
       action: 'updateMessage',
@@ -41,7 +41,7 @@ export const UpdateMessageSaga = {
         workspaceId: '0',
         channelId: VAR.channelId,
         messageId: VAR.messageId1,
-        content: 'user message update'
+        content: 'user message update',
       },
       headers: HeaderList.Token(),
       expect: {
@@ -51,7 +51,10 @@ export const UpdateMessageSaga = {
             workspaceId: { operator: Operator.EQUAL, expect: 0 },
             channelId: { operator: Operator.EQUAL, expect: VAR.channelId },
             userId: { operator: Operator.EQUAL, expect: VAR.userId },
-            content: { operator: Operator.EQUAL, expect: 'user message update' },
+            content: {
+              operator: Operator.EQUAL,
+              expect: 'user message update',
+            },
             messageType: { operator: Operator.EQUAL, expect: 0 },
             messageStatus: { operator: Operator.EQUAL, expect: 1 },
             attachmentType: { operator: Operator.EQUAL, expect: 0 },
@@ -63,7 +66,7 @@ export const UpdateMessageSaga = {
               field: 'userId',
               operator: Operator.INCLUDE,
               element: Element.FIRST,
-              expect: [VAR.userId ],
+              expect: [VAR.userId],
             },
             {
               field: 'userType',
@@ -88,13 +91,13 @@ export const UpdateMessageSaga = {
               field: 'channelId',
               operator: Operator.EQUAL,
               element: Element.FIRST,
-              expect: [VAR.channelId ],
+              expect: [VAR.channelId],
             },
             {
               field: 'userId',
               operator: Operator.EQUAL,
               element: Element.FIRST,
-              expect: [VAR.userId ],
+              expect: [VAR.userId],
             },
             {
               field: 'totalMembers',
@@ -106,7 +109,7 @@ export const UpdateMessageSaga = {
               field: 'name',
               operator: Operator.EQUAL,
               element: Element.FIRST,
-              expect: [VAR.name ],
+              expect: [VAR.name],
             },
           ],
           members: [
@@ -120,13 +123,13 @@ export const UpdateMessageSaga = {
               field: 'channelId',
               operator: Operator.INCLUDE,
               element: Element.ALL,
-              expect: [VAR.channelId ],
+              expect: [VAR.channelId],
             },
             {
               field: 'userId',
               operator: Operator.INCLUDE,
               element: Element.FIRST,
-              expect: [VAR.userId ],
+              expect: [VAR.userId],
             },
             {
               field: 'role',
@@ -152,7 +155,7 @@ export const UpdateMessageSaga = {
               field: 'channelId',
               operator: Operator.INCLUDE,
               element: Element.ALL,
-              expect: [VAR.channelId ],
+              expect: [VAR.channelId],
             },
           ],
         },
@@ -161,7 +164,7 @@ export const UpdateMessageSaga = {
     {
       action: 'acceptInvitation',
       method: METHOD.POST,
-      path:APIPath.Invitation.AcceptInvitation,
+      path: APIPath.Invitation.AcceptInvitation,
       body: { invitationLink: VAR.invitationLink },
       headers: HeaderList.Token1(),
       expect: {
@@ -177,7 +180,6 @@ export const UpdateMessageSaga = {
       expect: {
         ok: { operator: Operator.EQUAL, expect: true },
       },
-    }
-   
+    },
   ],
 };

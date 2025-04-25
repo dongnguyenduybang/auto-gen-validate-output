@@ -43,10 +43,9 @@ export class Message extends GeneralMessage {
   mediaAttachments?: string[];
 }
 
-export class ChannelMetadata extends GeneralChannelMetadata { }
+export class ChannelMetadata extends GeneralChannelMetadata {}
 
 export class Channel extends GeneralChannel {
-
   @IsString()
   @IsDefined()
   invitationLink?: string;
@@ -70,13 +69,11 @@ export class Channel extends GeneralChannel {
   acceptTime?: string;
 }
 
-export class User extends GeneralUser {
+export class User extends GeneralUser {}
 
-}
+export class Member extends GeneralMember {}
 
-export class Member extends GeneralMember { }
-
-export class IncludesResponse  {
+export class IncludesResponse {
   @ValidateNested({ each: true })
   @IsArray()
   @IsDefined()
@@ -108,7 +105,6 @@ export class DataResponse {
   @IsDefined()
   @Type(() => Channel)
   channel?: Channel;
-
 }
 
 export class GetChannelResponse extends BaseResponse {

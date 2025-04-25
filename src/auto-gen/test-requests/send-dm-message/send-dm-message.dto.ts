@@ -1,4 +1,11 @@
-import { IsChecked, IsDefined, IsNotEmpty, IsNotNull, IsOptional, IsULID } from '../../decorator/general-decorator';
+import {
+  IsChecked,
+  IsDefined,
+  IsNotEmpty,
+  IsNotNull,
+  IsOptional,
+  IsULID,
+} from '../../decorator/general-decorator';
 import {
   IsString,
   MaxLength,
@@ -6,7 +13,6 @@ import {
 } from '../../decorator/string-decorator';
 
 export class SendDmMessageDTO {
-
   @IsString({
     message: `Could not resolve permission type`,
   })
@@ -19,9 +25,7 @@ export class SendDmMessageDTO {
   @IsChecked({
     message: `Unauthorized request`,
   })
-  @IsNotNull(
-    { message: `Could not resolve permission type`,}
-  )
+  @IsNotNull({ message: `Could not resolve permission type` })
   userId: string = '';
 
   @IsString()

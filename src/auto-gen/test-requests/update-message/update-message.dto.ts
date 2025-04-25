@@ -1,4 +1,11 @@
-import { IsDefined, IsNotEmpty, IsULID, IsNotNull, IsChecked, IsOptional } from '../../decorator/general-decorator';
+import {
+  IsDefined,
+  IsNotEmpty,
+  IsULID,
+  IsNotNull,
+  IsChecked,
+  IsOptional,
+} from '../../decorator/general-decorator';
 import {
   IsString,
   MaxLength,
@@ -6,7 +13,6 @@ import {
 } from '../../decorator/string-decorator';
 
 export class UpdateMessageDTO {
-
   @IsDefined({ message: `Could not resolve permission type` })
   @IsChecked({ message: `Invalid channel` })
   @IsNotEmpty({ message: `Could not resolve permission type` })
@@ -21,9 +27,9 @@ export class UpdateMessageDTO {
 
   @IsString()
   @IsULID()
-  @IsNotEmpty({message: `messageId must NOT have fewer than 1 characters`})
+  @IsNotEmpty({ message: `messageId must NOT have fewer than 1 characters` })
   @IsDefined()
-  messageId: string = ''
+  messageId: string = '';
 
   @IsString()
   @IsNotEmpty()
@@ -38,6 +44,3 @@ export class UpdateMessageDTO {
   @MinLength(1)
   ref: string = '';
 }
-
-
-

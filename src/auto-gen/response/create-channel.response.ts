@@ -22,7 +22,6 @@ import { IsObject } from '../decorator/object-decorator';
 import { IsArray } from '../decorator/array-decorator';
 
 export class Message extends GeneralMessage {
-
   @ValidIf('workspaceId', '===', '0')
   @IsString()
   @IsDefined()
@@ -55,7 +54,6 @@ export class Message extends GeneralMessage {
 export class ChannelMetadata extends GeneralChannelMetadata {}
 
 export class Channel extends GeneralChannel {
-
   // @StartWith('invitationLink', 'https://zii.chat/i/')
   @IsString()
   @IsDefined()
