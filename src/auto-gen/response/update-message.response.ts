@@ -1,4 +1,3 @@
-// send-message.response.ts
 import { ValidateNested } from 'class-validator';
 import { Exclude, Type } from 'class-transformer';
 import {
