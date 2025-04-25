@@ -81,7 +81,7 @@ export const API_EVENT = {
                 INCOMING_MESSAGE_REQUEST_CREATED: 'com.halome.chat.v3.incoming_message_request.created',
                 MARK_ALL_CHANNELS_AS_READ: 'com.halome.chat.v3.channel.mark-all-as-read',
                 MEMBER_BANNED: 'com.halome.chat.v3.member.banned',
-                MEMBER_JOINED: 'com.halome.chat.v3.member.join',
+                MEMBER_JOINED: 'com.halome.chat.v3.member.joined',
                 MEMBER_LEFT: 'com.halome.chat.v3.member.left',
                 MEMBER_NICKNAME_UPDATED: 'com.halome.chat.v3.member.nickname_updated',
                 MEMBER_REMOVED: 'com.halome.chat.v3.member.removed',
