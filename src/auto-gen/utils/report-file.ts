@@ -342,7 +342,7 @@ const wsReportTemplate = (
       return allErrors.length > 0
         ? allErrors.map((err, errIndex) => [
             '',
-            ` 🟣 ${index + 1}.${errIndex + 1}. Bước: ${error.stepName}`,
+            ` 🟣 ${index + 1}.${errIndex + 1}. Step: ${error.stepName}`,
             `     ├─ Type: ws`,
             `     ├─ Event Index: ${err.eventIndex}`,
             `     ├─ Event Type: ${err.event?.type || 'N/A'}`,
