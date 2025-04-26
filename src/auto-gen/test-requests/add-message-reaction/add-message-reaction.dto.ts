@@ -22,13 +22,11 @@ export class AddMessageReactionDTO {
   workspaceId: string = '';
 
   @IsString()
-  @IsULID()
   @IsNotEmpty()
   @IsDefined()
   messageId: string = '';
 
   @IsString()
-  @IsNotEmpty()
   @IsDefined()
   @IsEmoji()
   @MinLength(1)

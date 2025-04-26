@@ -21,7 +21,6 @@ export class SendMessageDTO {
   channelId: string = '';
 
   @IsString()
-  @IsNotEmpty()
   @IsDefined()
   @MinLength(1)
   @MaxLength(2000)

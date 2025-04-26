@@ -1,0 +1,28 @@
+=== Request Test Report for add-message-reaction ===
+• Host: https://api-hono.rpc.ziichat.dev
+• Endpoint: N/A
+• Date: 26/04/2025, 08:16:14
+
+=== Execution Steps ===
+  1. [✅ PASSED] mockUser
+  2. [✅ PASSED] createChannel
+  3. [❌ FAILED] sendMessage
+     └─ Cannot read properties of undefined (reading 'ok')
+
+=== Test Summary ===
+✅ Passed: 0
+❌ Failed: 0
+📊 Total: 0
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 0
+ 🟢 201: 0
+ 🟠 400: 0
+ 🟠 403: 0
+ 🟠 404: 0
+ 🔴 500: 0
+
+[DTO Validation Issues]
+
+=== End of Report ===

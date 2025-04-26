@@ -1,4 +1,4 @@
-import { APIPath, HeaderList, METHOD, Operator, Element, ReportCategory, VAR } from "../../enums";
+import { APIPath, HeaderList, METHOD, Operator, Element, ReportCategory, VAR, ACTION } from "../../enums";
 
 export const ReportDmMessageSaga = {
   steps: [
@@ -11,7 +11,7 @@ export const ReportDmMessageSaga = {
       },
     },
     {
-      action: 'sendDmMessage',
+      action: ACTION.SEND_DM_MESSAGE,
       method: METHOD.POST,
       path: APIPath.Message.SendDMMessage,
       body: {
@@ -75,7 +75,7 @@ export const ReportDmMessageSaga = {
       },
     },
     {
-      action: 'reportDmMessage',
+      action: ACTION.REPORT_DM_MESSAGE,
       method: METHOD.POST,
       path: APIPath.Message.ReportDMMessage,
       body: {

@@ -1,7 +1,4 @@
-import { HeaderList } from '../../enums/header.enum';
-import { METHOD } from '../../enums/method.enum';
-import { APIPath } from '../../enums/path.enum';
-import { VAR } from '../../enums/var-placeholder.enum';
+import { METHOD, APIPath, HeaderList, VAR, ACTION } from "../../enums";
 
 export const UpdateMessageRequest = {
   method: METHOD.PUT,
@@ -16,7 +13,7 @@ export const UpdateMessageRequest = {
   },
   beforeAll: [
     {
-      action: 'mockUser',
+      action: ACTION.MOCK_USER,
       body: {
         quantity: 2,
         prefix: 'testUpdateMessage',
@@ -24,7 +21,7 @@ export const UpdateMessageRequest = {
       },
     },
     {
-      action: 'createChannel',
+      action: ACTION.SEND_MESSAGE,
     },
     {
       action: 'sendMessage',
@@ -41,7 +38,7 @@ export const UpdateMessageRequest = {
   ],
   afterAll: [
     {
-      action: 'deleteMockedUsers',
+      action: ACTION.DELETE_MOCKED_USER,
       method: METHOD.DELETE,
       path: APIPath.Faker.DeleteMockedUsers,
       body: {

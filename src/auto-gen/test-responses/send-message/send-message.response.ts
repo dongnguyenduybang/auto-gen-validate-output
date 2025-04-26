@@ -1,4 +1,4 @@
-import { APIPath, HeaderList, METHOD, VAR } from "../../enums";
+import { ACTION, APIPath, HeaderList, METHOD, VAR } from "../../enums";
 
 export const SendMessageResponse = {
   method: METHOD.POST,
@@ -12,7 +12,7 @@ export const SendMessageResponse = {
   },
   beforeAll: [
     {
-      action: 'mockUser',
+      action: ACTION.MOCK_USER,
       body: {
         quantity: 2,
         prefix: 'testABACDD',
@@ -20,7 +20,7 @@ export const SendMessageResponse = {
       },
     },
     {
-      action: 'createChannel',
+      action: ACTION.CREATE_CHANNEL,
     },
   ],
   afterAll: [],

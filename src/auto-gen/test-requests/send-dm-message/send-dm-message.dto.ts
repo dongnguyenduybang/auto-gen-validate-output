@@ -25,7 +25,6 @@ export class SendDmMessageDTO {
   userId: string = '';
 
   @IsString()
-  @IsNotEmpty()
   @IsDefined()
   @MinLength(1)
   @MaxLength(2000)

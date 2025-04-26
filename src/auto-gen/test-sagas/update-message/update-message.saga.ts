@@ -1,9 +1,9 @@
-import { APIPath, HeaderList, METHOD, Operator, Element, VAR } from "../../enums";
+import { APIPath, HeaderList, METHOD, Operator, Element, VAR, ACTION } from "../../enums";
 
 export const UpdateMessageSaga = {
   steps: [
     {
-      action: 'mockUser',
+      action: ACTION.MOCK_USER,
       body: {
         quantity: 2,
         prefix: 'testFakerMockUser',
@@ -11,10 +11,10 @@ export const UpdateMessageSaga = {
       },
     },
     {
-      action: 'createChannel',
+      action: ACTION.CREATE_CHANNEL,
     },
     {
-      action: 'sendMessage',
+      action: ACTION.SEND_MESSAGE,
       method: METHOD.POST,
       path: APIPath.Message.SendMessage,
       body: {
@@ -29,7 +29,7 @@ export const UpdateMessageSaga = {
       },
     },
     {
-      action: 'updateMessage',
+      action: ACTION.UPDATE_MESSAGE,
       method: METHOD.PUT,
       path: APIPath.Message.UpdateMessage,
       body: {
@@ -157,7 +157,7 @@ export const UpdateMessageSaga = {
       },
     },
     {
-      action: 'acceptInvitation',
+      action: ACTION.ACCEPT_INVITATION,
       method: METHOD.POST,
       path: APIPath.Invitation.AcceptInvitation,
       body: { invitationLink: VAR.invitationLink },
@@ -167,7 +167,7 @@ export const UpdateMessageSaga = {
       },
     },
     {
-      action: 'getChannel',
+      action: ACTION.GET_CHANNEL,
       method: METHOD.GET,
       path: APIPath.ViewChannel.GetChannel,
       body: { channelId: VAR.channelId, workspaceId: '0' },

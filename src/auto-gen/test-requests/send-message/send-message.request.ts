@@ -1,4 +1,4 @@
-import { APIPath, HeaderList, METHOD, VAR } from '../../enums';
+import { ACTION, APIPath, HeaderList, METHOD, VAR } from '../../enums';
 
 export const SendMessageRequest = {
   method: METHOD.POST,
@@ -12,7 +12,7 @@ export const SendMessageRequest = {
   },
   beforeAll: [
     {
-      action: 'mockUser',
+      action: ACTION.MOCK_USER,
       body: {
         quantity: 2,
         prefix: 'testDTO',
@@ -20,12 +20,12 @@ export const SendMessageRequest = {
       },
     },
     {
-      action: 'createChannel',
+      action: ACTION.CREATE_CHANNEL,
     },
   ],
   afterAll: [
     {
-      action: 'deleteMockedUsers',
+      action: ACTION.DELETE_MOCKED_USER,
       method: METHOD.DELETE,
       path: APIPath.Faker.DeleteMockedUsers,
       body: {

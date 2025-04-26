@@ -1,7 +1,5 @@
-import { HeaderList } from '../../enums/header.enum';
-import { METHOD } from '../../enums/method.enum';
-import { APIPath } from '../../enums/path.enum';
-import { VAR } from '../../enums/var-placeholder.enum';
+import { METHOD, APIPath, HeaderList, VAR, ACTION } from "../../enums";
+
 
 export const SendDmMessageRequest = {
   method: METHOD.POST,
@@ -14,7 +12,7 @@ export const SendDmMessageRequest = {
   },
   beforeAll: [
     {
-      action: 'mockUser',
+      action: ACTION.MOCK_USER,
       body: {
         quantity: 2,
         prefix: 'testABACDD',
@@ -24,7 +22,7 @@ export const SendDmMessageRequest = {
   ],
   afterAll: [
     {
-      action: 'deleteMockedUsers',
+      action: ACTION.DELETE_MOCKED_USER,
       method: METHOD.DELETE,
       path: APIPath.Faker.DeleteMockedUsers,
       body: {

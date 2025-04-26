@@ -1,9 +1,9 @@
-import { APIPath, HeaderList, METHOD, Operator, Element, VAR } from "../../enums";
+import { APIPath, HeaderList, METHOD, Operator, Element, VAR, ACTION } from "../../enums";
 
 export const SendDmMessageSaga = {
   steps: [
     {
-      action: 'mockUser',
+      action: ACTION.MOCK_USER,
       body: {
         quantity: 2,
         prefix: 'testDMmessage',
@@ -11,7 +11,7 @@ export const SendDmMessageSaga = {
       },
     },
     {
-      action: 'sendDmMessage',
+      action: ACTION.SEND_DM_MESSAGE,
       method: METHOD.POST,
       path: APIPath.Message.SendDMMessage,
       body: {

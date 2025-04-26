@@ -1,7 +1,4 @@
-import { HeaderList } from '../../enums/header.enum';
-import { METHOD } from '../../enums/method.enum';
-import { APIPath } from '../../enums/path.enum';
-import { VAR } from '../../enums/var-placeholder.enum';
+import { ACTION,VAR ,HeaderList, METHOD, APIPath} from '../../enums';
 
 export const AddMessageReactionRequest = {
   method: METHOD.POST,
@@ -15,7 +12,7 @@ export const AddMessageReactionRequest = {
   },
   beforeAll: [
     {
-      action: 'mockUser',
+      action: ACTION.MOCK_USER,
       body: {
         quantity: 2,
         prefix: 'testABACDD',
@@ -26,7 +23,7 @@ export const AddMessageReactionRequest = {
       action: 'createChannel',
     },
     {
-      action: 'sendMessage',
+      action: ACTION.SEND_MESSAGE,
       method: METHOD.POST,
       path: APIPath.Message.SendMessage,
       body: {

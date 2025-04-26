@@ -1,9 +1,9 @@
-import { APIPath, HeaderList, METHOD, Operator, Element, VAR } from "../../enums";
+import { APIPath, HeaderList, METHOD, Operator, Element, VAR, ACTION } from "../../enums";
 
 export const SendMessageSaga = {
   steps: [
     {
-      action: 'mockUser',
+      action: ACTION.MOCK_USER,
       body: {
         quantity: 2,
         prefix: 'testabcssd',
@@ -11,10 +11,10 @@ export const SendMessageSaga = {
       },
     },
     {
-      action: 'createChannel',
+      action: ACTION.CREATE_CHANNEL,
     },
     {
-      action: 'sendMessage',
+      action: ACTION.SEND_MESSAGE,
       method: METHOD.POST,
       path: APIPath.Message.SendMessage,
       body: {
@@ -115,12 +115,12 @@ export const SendMessageSaga = {
               element: Element.ALL,
               expect: ['owner'],
             },
-            // {
-            //   field: 'roles.role',
-            //   operator: Operator.INCLUDE,
-            //   element: Element.ALL,
-            //   expect: ['everyone', 'owner'],
-            // },
+            {
+              field: 'roles.role',
+              operator: Operator.INCLUDE,
+              element: Element.ALL,
+              expect: ['everyone', 'owner'],
+            },
           ],
           channelMetadata: [
             {
@@ -140,7 +140,7 @@ export const SendMessageSaga = {
       },
     },
     {
-      action: 'acceptInvitation',
+      action: ACTION.ACCEPT_INVITATION,
       method: METHOD.POST,
       path: APIPath.Invitation.AcceptInvitation,
       body: { invitationLink: VAR.invitationLink },
@@ -203,7 +203,7 @@ export const SendMessageSaga = {
       },
     },
     {
-      action: 'getChannel',
+      action: ACTION.GET_CHANNEL,
       method: METHOD.GET,
       path: APIPath.ViewChannel.GetChannel,
       body: { channelId: VAR.channelId, workspaceId: '0' },
