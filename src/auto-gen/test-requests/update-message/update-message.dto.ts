@@ -29,7 +29,6 @@ export class UpdateMessageDTO {
   messageId: string = '';
 
   @IsString()
-  @IsNotEmpty()
   @IsDefined()
   @MinLength(1)
   @MaxLength(2000)
