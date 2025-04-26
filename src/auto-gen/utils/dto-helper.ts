@@ -1,5 +1,9 @@
 import 'reflect-metadata';
+<<<<<<< HEAD
 import { ErrorMessage } from '../enums/error-message.enum';
+=======
+import { ErrorMessage } from '../enums';
+>>>>>>> b4552fc948d05cc6f9cdd553c98a1dd7eac13bca
 import { checkULID, isSingleEmoji } from './helper';
 
 export function getDecorators(
