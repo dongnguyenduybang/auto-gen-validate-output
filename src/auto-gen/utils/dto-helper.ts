@@ -1,6 +1,6 @@
 import 'reflect-metadata';
-import { ErrorMessage } from '../enums/error-message.enum';
-import { isSingleEmoji } from './helper';
+import { ErrorMessage } from '../enums';
+import { checkULID, isSingleEmoji } from './helper';
 
 export function getDecorators(
   target: any,
@@ -140,7 +140,14 @@ export function generateErrorVariantsForField(
   if (!decorators['optional']) {
     variants.push(undefined);
   }
-  variants.push('');
+
+  if (decorators['notEmpty']) {
+    variants.push('');
+  }
+
+  if (decorators['notNull']) {
+    variants.push('');
+  }
 
   return [...new Set(variants)];
 }
@@ -245,9 +252,11 @@ export function mapError(
     } else {
       addError(
         decorators['notEmptyMessage'],
-        `${field} ${ErrorMessage.INVALID_RANGE_STRING_LENGTH} ${decorators['minLength']} to ${decorators['maxLength']} length`,
+        `${field} ${ErrorMessage.EMPTY}`
       );
     }
+
+    // `${field} ${ErrorMessage.INVALID_RANGE_STRING_LENGTH} ${decorators['minLength']} to ${decorators['maxLength']} length`
     // return errors;
   }
 
@@ -259,6 +268,8 @@ export function mapError(
       typeof value === 'string' &&
       (value === '' || !value.startsWith('{{'))
     ) {
+      addError(null, `${field} ${ErrorMessage.INVALID_ULID}`);
+    } else if (typeof value === 'string' && !checkULID(value)) {
       addError(null, `${field} ${ErrorMessage.INVALID_ULID}`);
     }
   }
