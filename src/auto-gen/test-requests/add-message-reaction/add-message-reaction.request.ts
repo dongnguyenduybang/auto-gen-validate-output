@@ -27,6 +27,7 @@ export const AddMessageReactionRequest = {
       method: METHOD.POST,
       path: APIPath.Message.SendMessage,
       body: {
+        workspaceId: VAR.workspaceId,
         channelId: VAR.channelId,
         content: 'duybang12345',
         ref: 'abc',

@@ -22,13 +22,13 @@ export class AddMessageReactionDTO {
   workspaceId: string = '';
 
   @IsString()
-  @IsNotEmpty()
+  @IsULID()
+  @IsNotEmpty({ message: `messageId must NOT have fewer than 1 characters` })
   @IsDefined()
   messageId: string = '';
 
   @IsString()
   @IsDefined()
   @IsEmoji()
-  @MinLength(1)
   emoji: string = '';
 }

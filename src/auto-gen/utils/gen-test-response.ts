@@ -1,6 +1,5 @@
 import * as path from 'path';
 import * as fs from 'fs';
-// Hàm đơn giản chỉ lấy file response.json
 function getResponseFile(dirPath: string): string | null {
   try {
     const files = fs.readdirSync(dirPath);

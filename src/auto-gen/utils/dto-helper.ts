@@ -171,7 +171,7 @@ export function generateCombinations(
       [field]: errorVariant,
     }));
   });
-
+  console.log(fieldErrorVariants)
   return combineFields(fieldErrorVariants).map((combination) => {
     return combination.reduce((acc, curr) => ({ ...acc, ...curr }), {});
   });
@@ -183,9 +183,6 @@ export function mapError(
   decorators: Record<string, any>,
 ): string[] {
   const errors: string[] = [];
-
-  // Helper function để thêm lỗi
-  // Helper function để thêm lỗi
   const addError = (
     customMessage: string | undefined,
     defaultMessage: string,
@@ -280,6 +277,7 @@ export function mapError(
       typeof value === 'string' && (value === '' || !isSingleEmoji(value));
     if (isInvalid) {
       addError(null, `${field} ${ErrorMessage.INVALID_EMOJI}`);
+      addError(null, `${field} ${ErrorMessage.INVALID_EMOJI_LENGTH}`);
     }
   }
 
