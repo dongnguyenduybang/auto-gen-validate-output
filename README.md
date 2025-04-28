@@ -9,13 +9,11 @@
 # Contents
 
 + [Docs Decorator](docs/decorators-docs/decorator.md)
-+ [Docs List Actions](docs/list-actons/list-actions.md)
 + [Docs Name Conventions](docs/name-conventions-docs/name-conventions.md)
 + [Docs Reports](docs/reports/reports.md)
 + [Docs Requests](docs/requests-docs/requests.md)
 + [Docs Responses](docs/responses-docs/response.md)
 + [Docs Sagas](docs/saga-docs/sagas.md)
-+ [Docs Flow](docs/flow/)
 
 
 # Install
