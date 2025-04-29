@@ -35,7 +35,6 @@ export function getDecorators(
     });
     proto = Object.getPrototypeOf(proto);
   }
-
   return decorators;
 }
 
@@ -88,25 +87,18 @@ export function generateErrorVariantsForField(
   switch (fieldType) {
     case 'string':
       variants.push(123);
-      variants.push(fieldValue);
-      variants.push('check_ulid');
       break;
     case 'number':
       variants.push('invalid_number');
-      variants.push(NaN);
       break;
     case 'enum':
       variants.push('invalid_enum_value');
-      variants.push(fieldValue);
       break;
     case 'array':
       variants.push('not_an_array');
-      variants.push([123]);
-      variants.push(fieldValue);
       break;
     case 'boolean':
       variants.push('invalid_boolean');
-      variants.push(fieldValue);
       break;
   }
 
@@ -134,9 +126,6 @@ export function generateErrorVariantsForField(
     variants.push(new Array(decorators['maxArray'] + 1).fill(null));
   }
 
-  // 6. Giá trị hợp lệ
-  // variants.push(fieldValue);
-
   if (!decorators['optional']) {
     variants.push(undefined);
   }
@@ -149,6 +138,12 @@ export function generateErrorVariantsForField(
     variants.push('');
   }
 
+  if (decorators['isInvalid']) {
+    variants.push('invalid');
+  }
+
+  // Giá trị hợp lệ
+  variants.push(fieldValue)
   return [...new Set(variants)];
 }
 
@@ -201,7 +196,7 @@ export function mapError(
   // 2. Kiểm tra isDefined
   if (value === undefined || value === null) {
     if (decorators['isDefined']) {
-      if (decorators['isChecked']) {
+      if (decorators['isInvalid']) {
         if (field === 'channelId') {
           addError(
             decorators['isDefinedMessage'],
@@ -230,7 +225,7 @@ export function mapError(
 
   // 3. Kiểm tra notEmpty
   if (value === '' && decorators['notEmpty']) {
-    if (decorators['isChecked']) {
+    if (decorators['isInvalid']) {
       if (
         field === 'workspaceId' ||
         field === 'channelId' ||
@@ -284,44 +279,44 @@ export function mapError(
   // 4. Kiểm tra kiểu string và các điều kiện liên quan
   if (decorators['type'] === 'string') {
     if (typeof value !== 'string') {
-      if (decorators['isChecked']) {
+      if (decorators['isInvalid']) {
         if (
           field === 'workspaceId' ||
           field === 'channelId' ||
           field === 'userId'
         ) {
-          addError(decorators['stringMessage'], null);
+          addError(decorators['isStringMessage'], null);
         } else {
           addError(
-            decorators['stringMessage'],
+            decorators['isStringMessage'],
             `${field} ${ErrorMessage.INVALID_TYPE_STRING}`,
           );
         }
       } else {
         addError(
-          decorators['stringMessage'],
+          decorators['isStringMessage'],
           `${field} ${ErrorMessage.INVALID_TYPE_STRING}`,
         );
       }
       return errors;
     }
 
-    if (typeof value === 'string' && decorators['isChecked']) {
+    if (typeof value === 'string' && decorators['isInvalid']) {
       const isWorkspaceInvalid = field === 'workspaceId' && value !== '0';
       const isChannelInvalid = field === 'channelId' && !value.startsWith('{{');
       const isUserInvalid = field === 'userId' && !value.startsWith('{{');
 
       if (isWorkspaceInvalid) {
-        addError(decorators['isCheckedMessage'], 'Invalid channel');
+        addError(decorators['invalidMessage'], 'Invalid channel');
         return errors;
       }
 
       if (isChannelInvalid) {
-        addError(decorators['isCheckedMessage'], 'Invalid channel');
+        addError(decorators['invalidMessage'], 'Invalid channel');
         return errors;
       }
       if (isUserInvalid) {
-        addError(decorators['isCheckedMessage'], 'Unauthorized request');
+        addError(decorators['invalidMessage'], 'Unauthorized request');
         return errors;
       }
     }
