@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 
 /*
-    check điều kiện với condition là value filed đang set, operator là toán tử, condition 2 là value muốn so sánh 
+    Gán điều kiện với condition là value filed đang set, operator là toán tử, condition 2 là value muốn so sánh 
     với condition2: string => 'aaa'
                     number => '0'
                     var => '{{...}}'*/
@@ -35,7 +35,7 @@ export function ValidIf(condition: string, operator: string, condition2: any) {
   };
 }
 /*
-   check chuỗi kí tự đầu tiên có bằng với value không 
+   Gán chuỗi kí tự đầu tiên có bằng với value không 
    với filed là property muốn check
        value là chuỗi muốn check*/
 export function StartWith(fieldCheck: string, value: string) {
@@ -65,7 +65,7 @@ export function StartWith(fieldCheck: string, value: string) {
 }
 
 /*
-   check chuỗi kí tự cuối cùng có bằng với value không 
+   Gán chuỗi kí tự cuối cùng có bằng với value không 
    với filed là property muốn check
        value là chuỗi muốn check*/
 export function EndWith(field: string, value: string) {

@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 
 /*
-   check có phải là kiểu enum hay không*/
+   Gán property kiểu enum*/
 export function IsEnum(enumType: any) {
   return (target: any, propertyKey: string) => {
     Reflect.defineMetadata('type', 'enum', target, propertyKey);

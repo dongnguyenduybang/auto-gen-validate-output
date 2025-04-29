@@ -126,23 +126,27 @@ export function generateErrorVariantsForField(
     variants.push(new Array(decorators['maxArray'] + 1).fill(null));
   }
 
+  // 6. Bỏ qua optional
   if (!decorators['optional']) {
     variants.push(undefined);
   }
 
-  if (decorators['notEmpty']) {
+  // 7. Vi phạm empty
+  if (decorators['isNotEmpty']) {
     variants.push('');
   }
 
-  if (decorators['notNull']) {
+  // 8. Vi phạm null
+  if (decorators['isNotNull']) {
     variants.push('');
   }
 
+  //9. Vi phạm invalid
   if (decorators['isInvalid']) {
     variants.push('invalid');
   }
 
-  // Giá trị hợp lệ
+  //10. Giá trị hợp lệ
   variants.push(fieldValue)
   return [...new Set(variants)];
 }
@@ -224,7 +228,7 @@ export function mapError(
   }
 
   // 3. Kiểm tra notEmpty
-  if (value === '' && decorators['notEmpty']) {
+  if (value === '' && decorators['isNotEmpty']) {
     if (decorators['isInvalid']) {
       if (
         field === 'workspaceId' ||
@@ -232,18 +236,18 @@ export function mapError(
         field === 'userId'
       ) {
         addError(
-          decorators['notEmptyMessage'],
+          decorators['isNotEmptyMessage'],
           'Could not resolve permission type',
         );
       } else {
         addError(
-          decorators['notEmptyMessage'],
+          decorators['isNotEmptyMessage'],
           `${ErrorMessage.DEFINED} '${field}'`,
         );
       }
     } else {
       addError(
-        decorators['notEmptyMessage'],
+        decorators['isNotEmptyMessage'],
         `${field} ${ErrorMessage.EMPTY}`
       );
     }
@@ -307,16 +311,16 @@ export function mapError(
       const isUserInvalid = field === 'userId' && !value.startsWith('{{');
 
       if (isWorkspaceInvalid) {
-        addError(decorators['invalidMessage'], 'Invalid channel');
+        addError(decorators['isInvalidMessage'], 'Invalid channel');
         return errors;
       }
 
       if (isChannelInvalid) {
-        addError(decorators['invalidMessage'], 'Invalid channel');
+        addError(decorators['isInvalidMessage'], 'Invalid channel');
         return errors;
       }
       if (isUserInvalid) {
-        addError(decorators['invalidMessage'], 'Unauthorized request');
+        addError(decorators['isInvalidMessage'], 'Unauthorized request');
         return errors;
       }
     }
@@ -354,7 +358,7 @@ export function mapError(
   if (decorators['type'] === 'number') {
     if (typeof value !== 'number' || isNaN(value)) {
       addError(
-        decorators['numberMessage'],
+        decorators['isNumberMessage'],
         `${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`,
       );
       return errors;
@@ -364,13 +368,13 @@ export function mapError(
     const maxViolated = decorators['max'] && value > decorators['max'];
     if (minViolated) {
       addError(
-        decorators['minMessage'],
+        decorators['isMinMessage'],
         `${field} must be at least ${decorators['min']}`,
       );
     }
     if (maxViolated) {
       addError(
-        decorators['maxMessage'],
+        decorators['isMaxMessage'],
         `${field} must be at most ${decorators['max']}`,
       );
     }
@@ -388,13 +392,13 @@ export function mapError(
 
     if (decorators['minArray'] && value.length < decorators['minArray']) {
       addError(
-        decorators['minArrayMessage'],
+        decorators['isMinArrayMessage'],
         `${field} must have at least ${decorators['minArray']} items`,
       );
     }
     if (decorators['maxArray'] && value.length > decorators['maxArray']) {
       addError(
-        decorators['maxArrayMessage'],
+        decorators['isMaxArrayMessage'],
         `${field} must have at most ${decorators['maxArray']} items`,
       );
     }
@@ -404,7 +408,7 @@ export function mapError(
   if (decorators['type'] === 'object') {
     if (typeof value !== 'object' || Array.isArray(value) || value === null) {
       addError(
-        decorators['objectMessage'],
+        decorators['isObjectMessage'],
         `${field} ${ErrorMessage.INVALID_TYPE_OBJ}`,
       );
       return errors;
@@ -418,7 +422,7 @@ export function mapError(
       !Object.values(decorators['enumType']).includes(value)
     ) {
       addError(
-        decorators['enumMessage'],
+        decorators['isEnumMessage'],
         `${field} ${ErrorMessage.INVALID_ENUM}`,
       );
       return errors;

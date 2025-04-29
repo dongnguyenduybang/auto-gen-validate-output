@@ -13,11 +13,11 @@ export function IsOptional() {
    check property đó không được null*/
 export function IsNotNull(options?: { message?: string }) {
   return (target: any, propertyKey: string) => {
-    Reflect.defineMetadata('notNull', true, target, propertyKey);
+    Reflect.defineMetadata('isNotNull', true, target, propertyKey);
 
     if (options?.message) {
       Reflect.defineMetadata(
-        'notNullMessage',
+        'isNotNullMessage',
         options.message,
         target,
         propertyKey,
@@ -28,20 +28,20 @@ export function IsNotNull(options?: { message?: string }) {
 /*
    check property đó không được rỗng
    */
-export function IsNotEmpty(options?: { message?: string }) {
-  return (target: any, propertyKey: string) => {
-    Reflect.defineMetadata('notEmpty', true, target, propertyKey);
+  export function IsNotEmpty(options?: { message?: string }) {
+    return (target: any, propertyKey: string) => {
+      Reflect.defineMetadata('isNotEmpty', true, target, propertyKey);
 
-    if (options?.message) {
-      Reflect.defineMetadata(
-        'notEmptyMessage',
-        options.message,
-        target,
-        propertyKey,
-      );
-    }
-  };
-}
+      if (options?.message) {
+        Reflect.defineMetadata(
+          'isNotEmptyMessage',
+          options.message,
+          target,
+          propertyKey,
+        );
+      }
+    };
+  }
 
 /*
    check property đó phải được xác định
@@ -51,7 +51,7 @@ export function IsDefined(options?: { message?: string }) {
     Reflect.defineMetadata('isDefined', true, target, propertyKey);
     if (options?.message) {
       Reflect.defineMetadata(
-        'notUndefinedMessage',
+        'isDefinedMessage',
         options.message,
         target,
         propertyKey,
@@ -70,12 +70,12 @@ export function IsAny() {
 }
 
 /* xác định value có custom message error */
-export function IsChecked(options?: { message?: string }) {
+export function IsInvalid(options?: { message?: string }) {
   return (target: any, propertyKey: string) => {
-    Reflect.defineMetadata('isChecked', true, target, propertyKey);
+    Reflect.defineMetadata('isInvalid', true, target, propertyKey);
     if (options?.message) {
       Reflect.defineMetadata(
-        'notCheckedMessage',
+        'isInvalidMessage',
         options.message,
         target,
         propertyKey,

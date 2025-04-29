@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 
 /*
-   check property đó có phải là kiểu số hay không
+   Gán property kiểu number
    */
 export function IsNumber() {
   return (target: any, propertyKey: string) => {
@@ -9,14 +9,14 @@ export function IsNumber() {
   };
 }
 /*
-Check min với kiểu số với tham số là value là số tối thiểu*/
+Gán min với tham số là value là số tối thiểu*/
 export function Min(value: number) {
   return (target: any, propertyKey: string) => {
     Reflect.defineMetadata('min', value, target, propertyKey);
   };
 }
 /*
-Check max với kiểu số với tham số là value là số tối đa*/
+Gán max với tham số là value là số tối đa*/
 export function Max(value: number) {
   return (target: any, propertyKey: string) => {
     Reflect.defineMetadata('max', value, target, propertyKey);

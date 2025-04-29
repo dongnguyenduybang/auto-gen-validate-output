@@ -27,7 +27,7 @@ if (type === 'report') {
   // Đối với các trường hợp khác: pnpm gen request send-message
   dtoName = restArgs[0];
 }
-const validTypes = ['request', 'response', 'saga', 'report'];
+const validTypes = ['request', 'response', 'saga', 'report', 'unittest'];
 
 if (!validTypes.includes(type)) {
   console.error(`Invalid type. Valid types: ${validTypes.join(', ')}`);
@@ -47,6 +47,7 @@ const actionHandlers: Record<string, Record<string, ActionHandler[]>> = {
     request: [runTests('test-requests')],
     response: [runTests('test-responses')],
     saga: [runTests('test-sagas')],
+    unittest : [runTests('unit-test')]
   },
   clear: {
     request: [clearFiles('test-requests')],

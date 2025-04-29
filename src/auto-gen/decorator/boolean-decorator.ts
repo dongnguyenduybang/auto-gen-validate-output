@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 
 /*
-Check xem nó có phải là 1 type true/false hay không*/
+Gán property type boolean*/
 export function IsBoolean() {
   return (target: any, propertyKey: string) => {
     Reflect.defineMetadata('type', 'boolean', target, propertyKey);
