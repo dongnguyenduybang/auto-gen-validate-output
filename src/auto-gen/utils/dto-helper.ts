@@ -157,7 +157,6 @@ export function combineFields(arrays: any[][]): any[][] {
       'Invalid input for combineFields: Expected an array of arrays',
     );
   }
-  console.log(arrays)
   return arrays.reduce((a, b) => a.flatMap((d) => b.map((e) => [d, e].flat())));
 }
 
@@ -428,7 +427,6 @@ export function mapError(
       return errors;
     }
   }
-
   return errors;
 }
 export function softErrorFromMap(
@@ -437,7 +435,6 @@ export function softErrorFromMap(
 ): string[] {
   const errors: string[] = [];
   const instance = new dtoClass();
-
   const ERROR_PRIORITY = [
     'Could not resolve permission type',
     'Unsupported permission type',
@@ -460,6 +457,7 @@ export function softErrorFromMap(
   // trường hợp: workspaceId là chuỗi rỗng, channelId là chuỗi bất kỳ
   if (isWorkspaceEmpty) {
     const workspaceIdDecorators = getDecorators(instance, 'workspaceId');
+
     const workspaceIdErrors = mapError(
       'workspaceId',
       workspaceId,
@@ -584,6 +582,5 @@ export function softErrorFromMap(
       return [priorityError];
     }
   }
-
   return errors;
 }
