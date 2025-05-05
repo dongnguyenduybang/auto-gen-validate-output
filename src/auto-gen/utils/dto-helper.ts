@@ -77,7 +77,7 @@ export function generateErrorCases(
   });
 }
 export function generateErrorVariantsForField(
-  fieldValue: any,
+  fieldValue: string,
   decorators: Record<string, any>,
 ): any[] {
   const variants: any[] = [];
@@ -157,7 +157,7 @@ export function combineFields(arrays: any[][]): any[][] {
       'Invalid input for combineFields: Expected an array of arrays',
     );
   }
-
+  console.log(arrays)
   return arrays.reduce((a, b) => a.flatMap((d) => b.map((e) => [d, e].flat())));
 }
 
@@ -170,7 +170,7 @@ export function generateCombinations(
       [field]: errorVariant,
     }));
   });
-  console.log(fieldErrorVariants)
+
   return combineFields(fieldErrorVariants).map((combination) => {
     return combination.reduce((acc, curr) => ({ ...acc, ...curr }), {});
   });
