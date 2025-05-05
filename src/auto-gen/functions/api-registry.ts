@@ -4,17 +4,6 @@ import { ApiConfig } from './types';
 type ApiRegistry = Record<string, ApiConfig>;
 
 const API_REGISTRY: ApiRegistry = {
-  acceptMessageRequest: {
-    defaultPath: '/Channel/AcceptMessageRequest',
-    requiredHeaders: {
-      'x-session-token': {
-        //headerName
-        source: 'token', //value
-        errorMessage: 'Token not found to accept message', //error
-      },
-    },
-    payloadMapper: (body) => ({ userId: body.userId }),
-  },
   mockUser: {
     defaultPath: '/InternalFaker/MockUsers',
     defaultMethod: 'post',
@@ -35,7 +24,10 @@ const API_REGISTRY: ApiRegistry = {
         errorMessage: 'Token not found to create channel', //error
       },
     },
-    payloadMapper: () => ({ workspaceId: '0', name: 'channel1' }),
+    
+    payloadMapper: (body) => {
+      return body || { workspaceId: '0', name: 'channel1' };
+    },
   },
 };
 
