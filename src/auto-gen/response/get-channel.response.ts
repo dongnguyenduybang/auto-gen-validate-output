@@ -15,6 +15,7 @@ import {
   IsBoolean,
   IsDefined,
   IsObject,
+  IsOptional,
   IsString,
   ValidIf,
 } from '../decorator';
@@ -74,6 +75,7 @@ export class User extends GeneralUser {
   @ValidateNested({ each: true })
   @IsObject()
   @Type(() => StatusData)
+  @IsOptional()
   statusData?: StatusData;
 }
 
