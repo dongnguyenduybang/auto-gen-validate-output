@@ -23,7 +23,7 @@ export const CreateChannelSaga = {
       body: {
         workspaceId: '0',
         name: 'channel1',
-        channelType: ChannelTypeEnum.CHANNEL_TYPE_ENUM_DM,
+        channelType: ChannelTypeEnum.CHANNEL_TYPE_ENUM_BROADCAST,
       },
       headers: HeaderList.Token(),
       expect: {
@@ -32,7 +32,12 @@ export const CreateChannelSaga = {
     },
     {
       action: ACTION.DELETE_MOCKED_USER,
+      method: METHOD.DELETE,
+      path: APIPath.Faker.DeleteMockedUsers,
       body: { prefix: prefixMockUser },
+      expect: {
+        ok: { operator: Operator.EQUAL, expect: true },
+      },
     },
   ],
 };

@@ -11,7 +11,7 @@ import {
 const prefixMockUser = new Date().toISOString().replace(/[^a-zA-Z0-9]/g, '');
 const channelName = 'new channel name';
 
-export const UpdateChannelNameSaga = {
+export const OwnerUpdateChannelNameSaga = {
   steps: [
     {
       action: ACTION.MOCK_USER,
@@ -24,16 +24,6 @@ export const UpdateChannelNameSaga = {
     {
       action: ACTION.CREATE_CHANNEL,
       body: { name: 'channel for edit', workspaceId: '0' },
-    },
-    {
-      action: ACTION.ACCEPT_INVITATION,
-      method: METHOD.POST,
-      path: APIPath.Invitation.AcceptInvitation,
-      headers: HeaderList.Token1(),
-      body: { invitationLink: VAR.invitationLink },
-      expect: {
-        ok: { operator: Operator.EQUAL, expect: true },
-      },
     },
     {
       action: ACTION.UPDATE_CHANNEL_NAME,
