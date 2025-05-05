@@ -35,7 +35,10 @@ const API_REGISTRY: ApiRegistry = {
         errorMessage: 'Token not found to create channel', //error
       },
     },
-    payloadMapper: () => ({ workspaceId: '0', name: 'channel1' }),
+    
+    payloadMapper: (body) => {
+      return body || { workspaceId: '0', name: 'channel1' };
+    },
   },
 };
 
