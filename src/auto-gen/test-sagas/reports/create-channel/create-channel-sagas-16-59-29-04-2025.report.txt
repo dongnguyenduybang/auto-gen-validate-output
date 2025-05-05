@@ -1,0 +1,17 @@
+=== Saga Test Report for create-channel ===
+• Host: https://api-hono.rpc.ziichat.dev
+• Sagas: CreateChannelSaga
+• Date: 29/04/2025, 16:59:28
+
+=== Execution Steps ===
+  1. [❌ FAILED] CREATE_CHANNEL
+     └─ Cannot read properties of undefined (reading 'ok')
+
+=== Error Details ===
+[Request Errors]
+
+[Response Errors]
+
+[Logic Errors]
+
+=== End of Report ===

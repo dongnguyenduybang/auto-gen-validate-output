@@ -1,0 +1,18 @@
+=== Saga Test Report for create-channel ===
+• Host: https://api-hono.rpc.ziichat.dev
+• Sagas: CreateChannelSaga
+• Date: 05/05/2025, 11:40:14
+
+=== Execution Steps ===
+  1. [✅ PASSED] mockUser
+  2. [✅ PASSED] createChannel
+  3. [✅ PASSED] updateChannelName
+
+=== Error Details ===
+[Request Errors]
+
+[Response Errors]
+
+[Logic Errors]
+
+=== End of Report ===

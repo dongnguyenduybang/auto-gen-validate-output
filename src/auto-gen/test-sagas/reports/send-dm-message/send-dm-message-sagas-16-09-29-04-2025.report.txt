@@ -1,0 +1,15 @@
+=== Saga Test Report for send-dm-message ===
+• Host: https://api-hono.rpc.ziichat.dev
+• Sagas: SendDmMessageSaga
+• Date: 29/04/2025, 16:09:22
+
+=== Execution Steps ===
+
+=== Error Details ===
+[Request Errors]
+
+[Response Errors]
+
+[Logic Errors]
+
+=== End of Report ===
