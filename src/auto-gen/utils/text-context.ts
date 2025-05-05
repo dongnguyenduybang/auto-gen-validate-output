@@ -1,6 +1,3 @@
-import WebSocket from 'ws';
-
-
 export interface IContext {
   getValue(path: string | string[]): any;
   setValue(key: string, value: any): void;
@@ -98,7 +95,8 @@ export class WSSContext implements IContext {
 }
 
 export class EventContext {
-  private data: Array<{ action: string; events: string[]; stepIndex: number }> = [];
+  private data: Array<{ action: string; events: string[]; stepIndex: number }> =
+    [];
   private stepIndex: number = 0; // Biến nội bộ để theo dõi stepIndex
 
   setValue(action: string, events: string[]): void {
@@ -106,12 +104,16 @@ export class EventContext {
     this.stepIndex++; // Tăng stepIndex sau mỗi lần setValue
   }
 
-  getValue(path: string | string[]): Array<{ action: string; events: string[]; stepIndex: number }> | undefined {
+  getValue(
+    path: string | string[],
+  ):
+    | Array<{ action: string; events: string[]; stepIndex: number }>
+    | undefined {
     if (!path || path === 'all' || (Array.isArray(path) && path.length === 0)) {
       return this.data;
     }
     const action = Array.isArray(path) ? path.join('.') : path;
-    return this.data.filter(item => item.action === action);
+    return this.data.filter((item) => item.action === action);
   }
 
   debug(): void {

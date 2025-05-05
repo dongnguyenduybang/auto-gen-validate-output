@@ -1,10 +1,4 @@
-import { Operator } from '../../enums/operator.enum';
-import { Element } from '../../enums/element.enum';
-import { METHOD } from '../../enums/method.enum';
-import { APIPath } from '../../enums/path.enum';
-import { VAR } from '../../enums/var-placeholder.enum';
-import { HeaderList } from '../../enums/header.enum';
-import { ReportCategory } from '../../enums/report-category.enum';
+import { APIPath, HeaderList, METHOD, Operator, Element, ReportCategory, VAR, ACTION } from "../../enums";
 
 export const ReportDmMessageSaga = {
   steps: [
@@ -13,17 +7,17 @@ export const ReportDmMessageSaga = {
       body: {
         quantity: 2,
         prefix: 'testDMmessage',
-        badge: 0
-      }
+        badge: 0,
+      },
     },
     {
-      action: 'sendDmMessage',
+      action: ACTION.SEND_DM_MESSAGE,
       method: METHOD.POST,
       path: APIPath.Message.SendDMMessage,
       body: {
         userId: VAR.userId1,
         content: 'user send dm message',
-        ref: 'aa'
+        ref: 'aa',
       },
       headers: HeaderList.Token(),
       expect: {
@@ -32,7 +26,10 @@ export const ReportDmMessageSaga = {
           message: {
             workspaceId: { operator: Operator.EQUAL, expect: 0 },
             userId: { operator: Operator.EQUAL, expect: VAR.userId },
-            content: { operator: Operator.EQUAL, expect: 'user send dm message' },
+            content: {
+              operator: Operator.EQUAL,
+              expect: 'user send dm message',
+            },
             messageType: { operator: Operator.EQUAL, expect: 0 },
             messageStatus: { operator: Operator.EQUAL, expect: 1 },
             attachmentType: { operator: Operator.EQUAL, expect: 0 },
@@ -70,16 +67,15 @@ export const ReportDmMessageSaga = {
               field: 'participantIds',
               operator: Operator.INCLUDE,
               element: Element.ALL,
-              expect: [VAR.userId, VAR.userId1]
-            }
+              expect: [VAR.userId, VAR.userId1],
+            },
           ],
-          channelMetadata: [
-          ],
+          channelMetadata: [],
         },
       },
     },
     {
-      action: 'reportDmMessage',
+      action: ACTION.REPORT_DM_MESSAGE,
       method: METHOD.POST,
       path: APIPath.Message.ReportDMMessage,
       body: {
@@ -91,7 +87,7 @@ export const ReportDmMessageSaga = {
       headers: HeaderList.Token1(),
       expect: {
         ok: { operator: Operator.EQUAL, expect: true },
-      }
-    }
+      },
+    },
   ],
 };

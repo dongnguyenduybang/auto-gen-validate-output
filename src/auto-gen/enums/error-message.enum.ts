@@ -22,7 +22,8 @@ export enum ErrorMessage {
   INVALID_TYPE = 'must be a type',
   START_WITH = 'must start with',
   END_WITH = 'must end with',
-  INVALID_RANGE_STRING_LENGTH = "must to range from",
+  INVALID_RANGE_STRING_LENGTH = 'must to range from',
   INVALID_ULID = 'invalid ULID format',
-  INVALID_EMOJI = 'invalid Emoji format'
+  INVALID_EMOJI = 'invalid Emoji format',
+  INVALID_EMOJI_LENGTH = 'must have length equals 1'
 }

@@ -1,4 +1,3 @@
-
 export type ExtractConfig = {
   [key: string]: {
     path: string[];
@@ -16,12 +15,18 @@ const mockUserConfig: ExtractConfig = {
 const createChannelConfig: ExtractConfig = {
   channel: {
     path: ['data', 'channel'],
-    fields: ['channelId', 'workspaceId', 'name', 'invitationLink', 'totalMembers'],
+    fields: [
+      'channelId',
+      'workspaceId',
+      'name',
+      'invitationLink',
+      'totalMembers',
+    ],
   },
   users: {
     path: ['includes', 'users'],
-    fields: ['userId', 'username']
-  }
+    fields: ['username'],
+  },
 };
 
 const getChannelConfig: ExtractConfig = {};

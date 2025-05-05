@@ -1,25 +1,20 @@
-import { Operator } from '../../enums/operator.enum';
-import { Element } from '../../enums/element.enum';
-import { HeaderList } from '../../enums/header.enum';
-import { APIPath } from '../../enums/path.enum';
-import { METHOD } from '../../enums/method.enum';
-import { VAR } from '../../enums/var-placeholder.enum';
+import { APIPath, HeaderList, METHOD, Operator, Element, VAR, ACTION } from "../../enums";
 
 export const SendMessageSaga = {
   steps: [
     {
-      action: 'mockUser',
+      action: ACTION.MOCK_USER,
       body: {
         quantity: 2,
         prefix: 'testabcssd',
-        badge: 0
-      }
+        badge: 0,
+      },
     },
     {
-      action: 'createChannel',
+      action: ACTION.CREATE_CHANNEL,
     },
     {
-      action: 'sendMessage',
+      action: ACTION.SEND_MESSAGE,
       method: METHOD.POST,
       path: APIPath.Message.SendMessage,
       body: {
@@ -47,50 +42,51 @@ export const SendMessageSaga = {
             {
               field: 'userId',
               operator: Operator.INCLUDE,
-              element: Element.FIRST,
+              element: Element.ALL,
               expect: [VAR.userId],
             },
             {
               field: 'userType',
               operator: Operator.INCLUDE,
-              element: Element.FIRST,
-              expect: 0,
+              element: Element.ALL,
+              expect: [0],
             },
             {
               field: 'profile.userBadgeType',
-              operator: Operator.EQUAL,
-              expect: 0,
+              operator: Operator.INCLUDE,
+              element: Element.ALL,
+              expect: [0],
             },
           ],
           channels: [
             {
               field: 'workspaceId',
-              operator: Operator.EQUAL,
-              element: Element.FIRST,
-              expect: 0,
+              operator: Operator.INCLUDE,
+              element: Element.ALL,
+              expect: [0],
             },
             {
               field: 'channelId',
-              operator: Operator.EQUAL,
-              element: Element.FIRST,
+              operator: Operator.INCLUDE,
+              element: Element.ALL,
               expect: [VAR.channelId],
             },
             {
               field: 'userId',
-              operator: Operator.EQUAL,
+              operator: Operator.INCLUDE,
               element: Element.FIRST,
               expect: [VAR.userId],
             },
             {
               field: 'totalMembers',
-              operator: Operator.EQUAL,
-              element: Element.FIRST,
+              operator: Operator.INCLUDE,
+              element: Element.ALL,
               expect: [VAR.totalMembers],
             },
             {
               field: 'name',
-              operator: Operator.EQUAL,
-              element: Element.FIRST,
+              operator: Operator.INCLUDE,
+              element: Element.ALL,
               expect: [VAR.name],
             },
           ],
@@ -99,7 +95,7 @@ export const SendMessageSaga = {
               field: 'workspaceId',
               operator: Operator.INCLUDE,
               element: Element.ALL,
-              expect: 0,
+              expect: [0],
             },
             {
               field: 'channelId',
@@ -110,13 +106,13 @@ export const SendMessageSaga = {
             {
               field: 'userId',
               operator: Operator.INCLUDE,
-              element: Element.FIRST,
+              element: Element.ALL,
               expect: [VAR.userId],
             },
             {
               field: 'role',
               operator: Operator.INCLUDE,
-              element: Element.FIRST,
+              element: Element.ALL,
               expect: ['owner'],
             },
             {
@@ -131,7 +127,7 @@ export const SendMessageSaga = {
               field: 'workspaceId',
               operator: Operator.INCLUDE,
               element: Element.ALL,
-              expect: 0,
+              expect: [0],
             },
             {
               field: 'channelId',
@@ -144,17 +140,70 @@ export const SendMessageSaga = {
       },
     },
     {
-      action: 'acceptInvitation',
+      action: ACTION.ACCEPT_INVITATION,
       method: METHOD.POST,
       path: APIPath.Invitation.AcceptInvitation,
       body: { invitationLink: VAR.invitationLink },
       headers: HeaderList.Token1(),
       expect: {
         ok: { operator: Operator.EQUAL, expect: true },
+        includes: {
+          users: [
+            {
+              field: 'userId',
+              operator: Operator.INCLUDE,
+              element: Element.FIRST,
+              expect: [VAR.userId1],
+            },
+            {
+              field: 'userType',
+              operator: Operator.INCLUDE,
+              expect: [0],
+            },
+            {
+              field: 'profile.userBadgeType',
+              operator: Operator.INCLUDE,
+              element: Element.ALL,
+              expect: [0],
+            },
+          ],
+          members: [
+            {
+              field: 'workspaceId',
+              operator: Operator.EQUAL,
+              element: Element.ALL,
+              expect: [0],
+            },
+            {
+              field: 'channelId',
+              operator: Operator.INCLUDE,
+              element: Element.ALL,
+              expect: [VAR.channelId],
+            },
+            {
+              field: 'userId',
+              operator: Operator.INCLUDE,
+              element: Element.ALL,
+              expect: [VAR.userId],
+            },
+            {
+              field: 'role',
+              operator: Operator.INCLUDE,
+              element: Element.ALL,
+              expect: ['owner'],
+            },
+            {
+              field: 'roles.role',
+              operator: Operator.INCLUDE,
+              element: Element.ALL,
+              expect: ['everyone', 'owner'],
+            },
+          ],
+        }
       },
     },
     {
-      action: 'getChannel',
+      action: ACTION.GET_CHANNEL,
       method: METHOD.GET,
       path: APIPath.ViewChannel.GetChannel,
       body: { channelId: VAR.channelId, workspaceId: '0' },

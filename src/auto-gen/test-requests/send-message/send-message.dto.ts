@@ -1,9 +1,11 @@
-import { IsDefined, IsNotEmpty, IsChecked } from '../../decorator/general-decorator';
 import {
+  IsDefined,
+  IsNotEmpty,
+  IsChecked,
   IsString,
   MaxLength,
   MinLength,
-} from '../../decorator/string-decorator';
+} from '../../decorator';
 
 export class SendMessageDTO {
   @IsDefined({ message: `Could not resolve permission type` })
@@ -19,7 +21,6 @@ export class SendMessageDTO {
   channelId: string = '';
 
   @IsString()
-  @IsNotEmpty()
   @IsDefined()
   @MinLength(1)
   @MaxLength(2000)
@@ -30,6 +31,3 @@ export class SendMessageDTO {
   @MinLength(1)
   ref: string = '';
 }
-
-
-
