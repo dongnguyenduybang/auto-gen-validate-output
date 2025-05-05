@@ -9,49 +9,36 @@ import {
 } from '../../enums';
 
 const prefixMockUser = new Date().toISOString().replace(/[^a-zA-Z0-9]/g, '');
-const channelName = 'new channel name';
-
-export const UpdateChannelNameSaga = {
+export const GetChannelSaga = {
   steps: [
     {
       action: ACTION.MOCK_USER,
       body: {
-        quantity: 3,
+        quantity: 2,
         prefix: prefixMockUser,
         badge: 0,
       },
     },
     {
       action: ACTION.CREATE_CHANNEL,
-      body: { name: 'channel for edit', workspaceId: '0' },
     },
     {
-      action: ACTION.ACCEPT_INVITATION,
-      method: METHOD.POST,
-      path: APIPath.Invitation.AcceptInvitation,
-      headers: HeaderList.Token1(),
-      body: { invitationLink: VAR.invitationLink },
-      expect: {
-        ok: { operator: Operator.EQUAL, expect: true },
-      },
-    },
-    {
-      action: ACTION.UPDATE_CHANNEL_NAME,
-      method: METHOD.PUT,
-      path: APIPath.Channel.UpdateChannelName,
+      action: ACTION.GET_CHANNEL,
+      method: METHOD.GET,
+      path: APIPath.ViewChannel.GetChannel,
       headers: HeaderList.Token(),
-      body: {
-        workspaceId: '0',
-        channelId: VAR.channelId,
-        name: channelName,
-      },
+      body: { channelId: VAR.channelId, workspaceId: '0' },
       expect: {
         ok: { operator: Operator.EQUAL, expect: true },
         data: {
           channel: {
             workspaceId: { operator: Operator.EQUAL, expect: '0' },
             channelId: { operator: Operator.EQUAL, expect: VAR.channelId },
-            name: { operator: Operator.EQUAL, expect: channelName },
+            name: { operator: Operator.EQUAL, expect: 'channel1' },
+            totalMembers: {
+              operator: Operator.EQUAL,
+              expect: VAR.totalMembers,
+            },
           },
         },
         includes: {
@@ -124,6 +111,7 @@ export const UpdateChannelNameSaga = {
         },
       },
     },
+
     {
       action: ACTION.DELETE_MOCKED_USER,
       method: METHOD.DELETE,

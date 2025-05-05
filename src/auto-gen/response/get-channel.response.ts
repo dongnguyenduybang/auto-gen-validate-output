@@ -3,12 +3,12 @@ import { Exclude, Type } from 'class-transformer';
 import {
   BaseResponse,
   Channel as GeneralChannel,
-  IncludesResponse as GeneralIncludesResponse,
-  Message as GeneralMessage,
-  User as GeneralUser,
-  Member as GeneralMember,
   ChannelMetadata as GeneralChannelMetadata,
+  Member as GeneralMember,
+  Message as GeneralMessage,
   Reaction,
+  StatusData,
+  User as GeneralUser,
 } from './general-response';
 import {
   IsArray,
@@ -70,7 +70,12 @@ export class Channel extends GeneralChannel {
   acceptTime?: string;
 }
 
-export class User extends GeneralUser {}
+export class User extends GeneralUser {
+  @ValidateNested({ each: true })
+  @IsObject()
+  @Type(() => StatusData)
+  statusData?: StatusData;
+}
 
 export class Member extends GeneralMember {}
 
