@@ -22,6 +22,7 @@ import {
 import { DirectMessageStatusEnum } from '../enums';
 
 export class Message extends GeneralMessage {
+
   @ValidIf('workspaceId', '===', '0')
   @IsString()
   @IsDefined()

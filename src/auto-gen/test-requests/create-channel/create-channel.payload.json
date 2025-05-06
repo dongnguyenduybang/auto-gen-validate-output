@@ -1,0 +1,1135 @@
+[
+    {
+        "body": {
+            "workspaceId": 123,
+            "name": 123,
+            "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "name": 123,
+            "channelType": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "name": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "name": 123,
+            "channelType": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "name": "channel1",
+            "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "name": "channel1",
+            "channelType": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "name": "channel1"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "name": "channel1",
+            "channelType": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "name": "check_ulid",
+            "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "name": "check_ulid",
+            "channelType": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "name": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "name": "check_ulid",
+            "channelType": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "name": "",
+            "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "name": "",
+            "channelType": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "name": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "name": "",
+            "channelType": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "channelType": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "channelType": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "channelType": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "channelType": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": 123,
+            "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "name must be string",
+            "channelType must be equal to one of the allowed values"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": 123,
+            "channelType": 1
+        },
+        "expects": [
+            "name must be string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": 123
+        },
+        "expects": [
+            "name must be string",
+            "channelType must be equal to one of the allowed values"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": 123,
+            "channelType": ""
+        },
+        "expects": [
+            "name must be string",
+            "channelType must be equal to one of the allowed values"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": "channel1",
+            "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "channelType must be equal to one of the allowed values"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": "channel1",
+            "channelType": 1
+        },
+        "expects": []
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": "channel1"
+        },
+        "expects": [
+            "channelType must be equal to one of the allowed values"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": "channel1",
+            "channelType": ""
+        },
+        "expects": [
+            "channelType must be equal to one of the allowed values"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": "check_ulid",
+            "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "channelType must be equal to one of the allowed values"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": "check_ulid",
+            "channelType": 1
+        },
+        "expects": []
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": "check_ulid"
+        },
+        "expects": [
+            "channelType must be equal to one of the allowed values"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": "check_ulid",
+            "channelType": ""
+        },
+        "expects": [
+            "channelType must be equal to one of the allowed values"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": "",
+            "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "name must to range from 1 to 50 length",
+            "channelType must be equal to one of the allowed values"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": "",
+            "channelType": 1
+        },
+        "expects": [
+            "name must to range from 1 to 50 length"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": ""
+        },
+        "expects": [
+            "name must to range from 1 to 50 length",
+            "channelType must be equal to one of the allowed values"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": "",
+            "channelType": ""
+        },
+        "expects": [
+            "name must to range from 1 to 50 length",
+            "channelType must be equal to one of the allowed values"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "name must to range from 1 to 50 length",
+            "channelType must be equal to one of the allowed values"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "channelType": 1
+        },
+        "expects": [
+            "name must to range from 1 to 50 length"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "expects": [
+            "name must to range from 1 to 50 length",
+            "channelType must be equal to one of the allowed values"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "channelType": ""
+        },
+        "expects": [
+            "name must to range from 1 to 50 length",
+            "channelType must be equal to one of the allowed values"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "must have required property 'name'",
+            "channelType must be equal to one of the allowed values"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelType": 1
+        },
+        "expects": [
+            "must have required property 'name'"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0"
+        },
+        "expects": [
+            "must have required property 'name'",
+            "channelType must be equal to one of the allowed values"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelType": ""
+        },
+        "expects": [
+            "must have required property 'name'",
+            "channelType must be equal to one of the allowed values"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "name": 123,
+            "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "name": 123,
+            "channelType": 1
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "name": 123
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "name": 123,
+            "channelType": ""
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "name": "channel1",
+            "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "name": "channel1",
+            "channelType": 1
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "name": "channel1"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "name": "channel1",
+            "channelType": ""
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "name": "check_ulid",
+            "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "name": "check_ulid",
+            "channelType": 1
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "name": "check_ulid"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "name": "check_ulid",
+            "channelType": ""
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "name": "",
+            "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "name": "",
+            "channelType": 1
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "name": ""
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "name": "",
+            "channelType": ""
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "channelType": 1
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "channelType": ""
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "channelType": 1
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "check_ulid",
+            "channelType": ""
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "name": 123,
+            "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "name": 123,
+            "channelType": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "name": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "name": 123,
+            "channelType": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "name": "channel1",
+            "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "name": "channel1",
+            "channelType": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "name": "channel1"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "name": "channel1",
+            "channelType": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "name": "check_ulid",
+            "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "name": "check_ulid",
+            "channelType": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "name": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "name": "check_ulid",
+            "channelType": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "name": "",
+            "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "name": "",
+            "channelType": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "name": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "name": "",
+            "channelType": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "channelType": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "channelType": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelType": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {},
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelType": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "name": 123,
+            "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "name": 123,
+            "channelType": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "name": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "name": 123,
+            "channelType": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "name": "channel1",
+            "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "name": "channel1",
+            "channelType": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "name": "channel1"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "name": "channel1",
+            "channelType": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "name": "check_ulid",
+            "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "name": "check_ulid",
+            "channelType": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "name": "check_ulid"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "name": "check_ulid",
+            "channelType": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "name": "",
+            "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "name": "",
+            "channelType": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "name": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "name": "",
+            "channelType": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "channelType": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "channelType": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelType": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelType": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    }
+]
