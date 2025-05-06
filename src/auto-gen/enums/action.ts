@@ -9,5 +9,7 @@ export enum ACTION {
     GET_MESSAGE = 'getMessage',
     ACCEPT_INVITATION = 'acceptInvitation',
     ADD_MESSAGE_REACTION = 'addMessageReaction',
-    DELETE_MOCKED_USER = 'deleteMockedUsers'
+    DELETE_MOCKED_USER = 'deleteMockedUsers',
+    ADD_FRIEND = 'addFriend',
+    ACCEPT_FRIEND_REQUEST = 'acceptFriendRequest',
 }
