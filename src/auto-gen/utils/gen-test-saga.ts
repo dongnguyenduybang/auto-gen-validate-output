@@ -25,9 +25,10 @@ export function genTestSaga(dtoName: string) {
     import { getTime } from '../../utils/helper';
     import { executeAllSteps } from '../../utils/test-executor';
     import { TestContext } from '../../utils/text-context';
+    import { executeSteps } from '../../utils/text-execute-test';
     import { ${classNameCapitalized}Saga } from './${sagaFilePathWithoutExt}.saga';
     describe('Test sagas for ${sagaFilePathWithoutExt}', () => {
-      let failedStep = [];
+      let allSteps = [];
       let testNumber = 0;
       let testType;
       let globalContext, pathRequest
@@ -35,26 +36,57 @@ export function genTestSaga(dtoName: string) {
         pathRequest = '${classNameCapitalized}Saga'
         testType = 'saga'
         globalContext = new TestContext();
+        const beforeResults = await executeSteps(
+          ${classNameCapitalized}Saga.beforeAll.map(b => b.step),
+          globalContext,
+          { stepPrefix: '[BeforeAll] ' }
+        );
+        
+        beforeResults.forEach(result => {
+          allSteps.push({
+            ...result,
+            caseTitle: 'BeforeAll Setup',
+            phase: 'beforeAll'
+          });
         });
+      });
 
-      it('should validate response structure', async () => {
+      it('should validate saga structure', async () => {
         testNumber++;
         try {
-              const resultStep = await executeAllSteps(${classNameCapitalized}Saga.steps, globalContext)
-              resultStep.forEach((step, index)=> {
-                failedStep.push({
-                  type: step.type,
-                  status: step.status,
-                  stepName: step.stepName,
-                  error: step.error
-                })
-              })
+    
+          const caseResults = await Promise.all(
+            ${classNameCapitalized}Saga.steps.map(async (testCase) => {
+              const caseContext = globalContext.clone();
+              const results = await executeSteps(testCase.step, caseContext);
+             
+              results.forEach(result => {
+                allSteps.push({
+                  ...result,
+                  caseTitle: testCase.title,
+                  phase: 'testCase'
+                });
+              });
+            })
+          );
           }catch (error){
             console.log(error)
           }         
       });
 
       afterAll(async () => {
+        const afterResults = await executeSteps(
+          ${classNameCapitalized}Saga.afterAll.map(a => a.step),
+          globalContext,
+          { stepPrefix: '[AfterAll] ' }
+        );
+        afterResults.forEach(result => {
+          allSteps.push({
+            ...result,
+            caseTitle: 'AfterAll Cleanup',
+            phase: 'afterAll'
+          });
+        });
         const folderPath = path.join(__dirname, '../reports/${dtoName}');
         if (!fs.existsSync(folderPath)) {
           fs.mkdirSync(folderPath, { recursive: true });
@@ -66,7 +98,7 @@ export function genTestSaga(dtoName: string) {
             classNames,
             globalThis.url,
             pathRequest,
-            failedStep,
+            allSteps,
             null,
             null,
             null,
