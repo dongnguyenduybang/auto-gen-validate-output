@@ -23,6 +23,13 @@ export class TestContext implements IContext {
     }
   }
 
+  clone(): TestContext {
+    const newContext = new TestContext();
+    newContext.data = { ...this.data };
+    return newContext;
+  }
+
+
   getValue(path: string | string[]): any {
     const keys = Array.isArray(path) ? path : path.split('.');
 
