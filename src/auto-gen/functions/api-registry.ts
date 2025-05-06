@@ -1,7 +1,6 @@
 import { TestContext } from '../utils/text-context';
+import { ApiRegistry } from '../utils/types';
 import { createApiFunction } from './api-factory';
-import { ApiConfig } from './types';
-type ApiRegistry = Record<string, ApiConfig>;
 
 const API_REGISTRY: ApiRegistry = {
   acceptMessageRequest: {
