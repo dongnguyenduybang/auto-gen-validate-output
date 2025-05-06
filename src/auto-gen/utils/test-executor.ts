@@ -41,11 +41,12 @@ const responseClassMap = {
 export async function executeAllSteps(
   steps: Step[],
   context: TestContext,
+  testType?: string
 ): Promise<StepResult[]> {
   const results: StepResult[] = [];
 
   for (const [index, step] of steps.entries()) {
-    const result = await executeStep(step, context, index);
+    const result = await executeStep(step, context, index, testType);
     results.push(result);
     if (!result.status) break;
   }
@@ -58,6 +59,7 @@ async function executeStep(
   step: Step,
   context: TestContext,
   stepIndex: number,
+  testType?: string
 ): Promise<StepResult> {
   try {
     const { action, method, path, body, headers, expect: expectConfig } = step;
@@ -75,12 +77,12 @@ async function executeStep(
       headers: resolvedHeader,
       body: resolvedBody,
     });
-    if (response.data.ok === false) {
+    if (response?.data?.error?.code === 1000) {
       return {
         type: 'request',
         status: response.data.ok,
         stepName: `${step.action}`,
-        error: JSON.stringify(response.data.error.details),
+        error: JSON.stringify(response?.data?.error?.details),
       };
     }
     // validate response
