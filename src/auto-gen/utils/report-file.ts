@@ -267,13 +267,12 @@ const sagaReportTemplate = (
   sagaName: string,
   failedSteps: any[]
 ) => {
-  console.log(failedSteps);
-  // Phân loại theo phase
+  //sort phase
   const beforeAllFailures = failedSteps.filter(s => s.phase === 'beforeAll');
   const testCaseFailures = failedSteps.filter(s => s.phase === 'testCase');
   const afterAllFailures = failedSteps.filter(s => s.phase === 'afterAll');
 
-  // Nhóm các test case failures theo caseTitle
+  //group test case by caseTitle
   const testCaseGroups = testCaseFailures.reduce((groups, failure) => {
     const caseTitle = failure.caseTitle || 'Unknown Case';
     if (!groups[caseTitle]) {
@@ -312,7 +311,7 @@ const sagaReportTemplate = (
   ].join('\n');
 };
 
-// Helper function để format từng step
+// format từng step
 const formatStep = (step: any, index: number) => {
   const stepInfo = [
     `${index + 1}. ${step.stepName}`,
