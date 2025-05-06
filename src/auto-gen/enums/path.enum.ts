@@ -76,4 +76,13 @@ export const APIPath = {
   Faker: {
     DeleteMockedUsers: '/InternalFaker/DeleteMockedUsers',
   },
+  Friend: {
+    AddFriend: '/Friend/AddFriend',
+    RemoveFriend: '/Friend/RemoveFriend',
+    BlockUser: '/Friend/BlockUser',
+    UnblockUser: '/Friend/UnblockUser',
+    AcceptFriendRequest: '/Friend/AcceptFriendRequest',
+    RejectFriendRequest: '/Friend/RejectFriendRequest',
+    CancelFriendRequest: '/Friend/CancelFriendRequest',
+  }
 };
