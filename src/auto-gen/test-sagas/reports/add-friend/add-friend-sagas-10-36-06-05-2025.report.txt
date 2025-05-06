@@ -1,0 +1,49 @@
+=== Saga Test Report For add-friend ===
+• URL: https://api-hono.rpc.ziichat.dev
+• Saga: AddFriendSaga
+• Date: 2025-05-06T03:36:57.340Z
+
+=== BeforeAll Failures ===
+1. mockUser
+   • Type: saga
+   • Status: passed
+2. createChannel
+   • Type: saga
+   • Status: passed
+
+=== Test Case ===
+Test Case: Add Friend Saga
+1. addFriend
+   • Type: saga
+   • Status: passed
+
+Test Case: Add Friend Saga 1
+1. sendDmMessage
+   • Type: saga
+   • Error: {
+      "path": "ok",
+      "expected": "false",
+      "actual": "true",
+      "message": "Validation failed at ok"
+    }
+2. sendDmMessage
+   • Type: saga
+   • Error: {
+      "path": "ok",
+      "expected": "false",
+      "actual": "true",
+      "message": "Validation failed at ok"
+    }
+
+
+=== AfterAll Failures ===
+1. deleteMockedUsers
+   • Type: saga
+   • Error: {
+      "path": "ok",
+      "expected": "false",
+      "actual": "true",
+      "message": "Validation failed at ok"
+    }
+
+=== End of Report ===
