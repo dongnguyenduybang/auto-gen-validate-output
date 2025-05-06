@@ -1,9 +1,4 @@
-export type ExtractConfig = {
-  [key: string]: {
-    path: string[];
-    fields: string[];
-  };
-};
+import { ExtractConfig } from "./types";
 
 const mockUserConfig: ExtractConfig = {
   user: {

@@ -1,8 +1,9 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import 'reflect-metadata';
-
-import { resolveVariables } from '../utils/test-executor';
+import emojiRegex from 'emoji-regex';
+import { TestContext } from './text-context';
+import { ValidationError } from './types';
 
 function getFileNameWithoutExtension(filePath: string): string {
   const fileName = path.basename(filePath);
@@ -175,15 +176,14 @@ export function getTime() {
 }
 
 export function resolveValidIf(
-  field,
+  field: string,
   validIfMetadata: { condition: string; operator: string; condition2: string },
-  valueResponse: any,
+  valueResponse: string,
   obj: any,
-  payload: any,
-  context,
+  payload: string,
+  context: any,
 ): { isValid: boolean; errorMessage?: string } {
   const { condition, operator, condition2 } = validIfMetadata;
-
   const value1 = obj[condition];
   if (value1 === undefined) {
     return {
@@ -204,10 +204,9 @@ export function resolveValidIf(
     value2 = condition2;
   }
 
-  // So sánh sau khi chuẩn hóa kiểu chuỗi
-  const v1 = String(value1).trim();
-  const v2 = String(value2).trim();
-
+  // So sánh sau khi chuẩn hóa kiểu number
+  const v1 = Number(value1);
+  const v2 = Number(value2);
   const ops: Record<string, boolean> = {
     '>': v1 > v2,
     '<': v1 < v2,
@@ -218,7 +217,6 @@ export function resolveValidIf(
   };
 
   const isValid = ops[operator];
-
   if (isValid === undefined) {
     return {
       isValid: false,
@@ -236,7 +234,7 @@ export function resolveValidIf(
   return { isValid: true };
 }
 
-export const formatExpectErrors = (expects) => {
+export const formatExpectErrors = (expects: string) => {
   return JSON.stringify(expects)
     .replace(/'/g, "\\'")
     .replace(/\\"/g, '"')
@@ -248,9 +246,72 @@ export function checkULID(value: string): boolean {
   const ulidRegex = /^[0-9A-HJKMNP-TV-Z]{26}$/;
   return typeof value === 'string' && ulidRegex.test(value);
 }
-export function isSingleEmoji(str: string): boolean {
+
+export function isEmoji(str: string): boolean {
   const cleaned = str.replace(/\s/g, ''); // Xoá tất cả khoảng trắng
-  // https://github.com/colinhacks/zod/issues/2433
-  const emojiRegex = /^(\p{Extended_Pictographic}|\p{Emoji_Presentation})$/u;
-  return emojiRegex.test(cleaned);
+  // lib check emoji https://github.com/mathiasbynens/emoji-regex
+  const regex = emojiRegex();
+  return regex.test(cleaned);
+}
+
+export function resolveVariables(obj: any, context: TestContext): any {
+  if (typeof obj === 'string') {
+    return obj.replace(
+      /\{\{(.+?)\}\}/g,
+      (_, path) => context.getValue(path.split('.')) ?? `{{${path}}}`,
+    );
+  }
+  if (Array.isArray(obj)) {
+    return obj.map((item) => resolveVariables(item, context));
+  }
+  if (typeof obj === 'object' && obj !== null) {
+    return Object.fromEntries(
+      Object.entries(obj).map(([k, v]) => [k, resolveVariables(v, context)]),
+    );
+  }
+  return obj;
+}
+
+export function resolveExpectConfig(expectConfig: any, context: TestContext): any {
+  if (typeof expectConfig === 'string') {
+    return resolveVariables(expectConfig, context);
+  }
+  if (Array.isArray(expectConfig)) {
+    return expectConfig.map((item) => resolveExpectConfig(item, context));
+  }
+  if (typeof expectConfig === 'object' && expectConfig !== null) {
+    if (expectConfig.operator && expectConfig.expect) {
+      return {
+        ...expectConfig,
+        expect: resolveExpectConfig(expectConfig.expect, context),
+      };
+    }
+    return Object.fromEntries(
+      Object.entries(expectConfig).map(([k, v]) => [
+        k,
+        resolveExpectConfig(v, context),
+      ]),
+    );
+  }
+  return expectConfig;
+}
+export function formatErrors(errors: ValidationError[]): any {
+  // <-- Thay string bằng any
+  if (!Array.isArray(errors)) return { message: 'No error details available' };
+
+  const formattedErrors = errors
+    .filter((e) => e !== undefined && e !== null)
+    .map((e) => ({
+      path: e.path?.toString() || 'unknown_path',
+      expected: e.expected?.toString() || 'no_expected_value',
+      actual:
+        e.actual !== undefined
+          ? typeof e.actual === 'object'
+            ? JSON.stringify(e.actual)
+            : e.actual.toString()
+          : 'no_actual_value',
+      message: e.message || 'No message',
+    }));
+
+  return formattedErrors.length === 1 ? formattedErrors[0] : formattedErrors;
 }

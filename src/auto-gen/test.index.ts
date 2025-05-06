@@ -6,8 +6,7 @@ import { genTestRequest } from './utils/gen-test-request';
 import { execSync } from 'child_process';
 import { genTestResponse } from './utils/gen-test-response';
 import { genTestSaga } from './utils/gen-test-saga';
-
-type ActionHandler = (dtoName: string) => Promise<void> | void;
+import { ActionHandler } from './utils/types';
 
 const args = process.argv.slice(2);
 if (args.length < 2) {
@@ -47,7 +46,7 @@ const actionHandlers: Record<string, Record<string, ActionHandler[]>> = {
     request: [runTests('test-requests')],
     response: [runTests('test-responses')],
     saga: [runTests('test-sagas')],
-    unittest : [runTests('unit-test')]
+    unittest: [runTests('unit-test')],
   },
   clear: {
     request: [clearFiles('test-requests')],

@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { ErrorMessage } from '../enums';
-import { checkULID, isSingleEmoji } from './helper';
+import { checkULID, isEmoji } from './helper';
 
 export function getDecorators(
   target: any,
@@ -76,6 +76,7 @@ export function generateErrorCases(
     return { testcaseGen, expectedDetail: [] };
   });
 }
+
 export function generateErrorVariantsForField(
   fieldValue: string,
   decorators: Record<string, any>,
@@ -147,7 +148,7 @@ export function generateErrorVariantsForField(
   }
 
   //10. Giá trị hợp lệ
-  variants.push(fieldValue)
+  variants.push(fieldValue);
   return [...new Set(variants)];
 }
 
@@ -247,7 +248,7 @@ export function mapError(
     } else {
       addError(
         decorators['isNotEmptyMessage'],
-        `${field} ${ErrorMessage.EMPTY}`
+        `${field} ${ErrorMessage.EMPTY}`,
       );
     }
 
@@ -272,7 +273,7 @@ export function mapError(
   // 6. Kiểm tra emoji
   if (decorators['isEmoji']) {
     const isInvalid =
-      typeof value === 'string' && (value === '' || !isSingleEmoji(value));
+      typeof value === 'string' && (value === '' || !isEmoji(value));
     if (isInvalid) {
       addError(null, `${field} ${ErrorMessage.INVALID_EMOJI}`);
       addError(null, `${field} ${ErrorMessage.INVALID_EMOJI_LENGTH}`);

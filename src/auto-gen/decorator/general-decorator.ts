@@ -28,20 +28,20 @@ export function IsNotNull(options?: { message?: string }) {
 /*
    check property đó không được rỗng
    */
-  export function IsNotEmpty(options?: { message?: string }) {
-    return (target: any, propertyKey: string) => {
-      Reflect.defineMetadata('isNotEmpty', true, target, propertyKey);
+export function IsNotEmpty(options?: { message?: string }) {
+  return (target: any, propertyKey: string) => {
+    Reflect.defineMetadata('isNotEmpty', true, target, propertyKey);
 
-      if (options?.message) {
-        Reflect.defineMetadata(
-          'isNotEmptyMessage',
-          options.message,
-          target,
-          propertyKey,
-        );
-      }
-    };
-  }
+    if (options?.message) {
+      Reflect.defineMetadata(
+        'isNotEmptyMessage',
+        options.message,
+        target,
+        propertyKey,
+      );
+    }
+  };
+}
 
 /*
    check property đó phải được xác định
@@ -70,7 +70,7 @@ export function IsAny() {
 }
 
 /* xác định value có custom message error */
-export function IsInvalid(options?: { message?: string }) {
+export function IsInvalid(options: { message: string }) {
   return (target: any, propertyKey: string) => {
     Reflect.defineMetadata('isInvalid', true, target, propertyKey);
     if (options?.message) {

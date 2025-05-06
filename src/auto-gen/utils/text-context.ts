@@ -1,14 +1,7 @@
-export interface IContext {
-  getValue(path: string | string[]): any;
-  setValue(key: string, value: any): void;
-  mergeData(newData: Record<string, any>): void;
-  debug(): void;
-}
+import { IContext } from "./types";
 
 export class TestContext implements IContext {
   private data: Record<string, any> = {
-    wsActor: [],
-    wsRecipient: [],
   };
   private versions: Record<string, number> = {};
 

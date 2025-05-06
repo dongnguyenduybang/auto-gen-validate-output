@@ -68,20 +68,25 @@ export function StartWith(fieldCheck: string, value: string) {
    Gán chuỗi kí tự cuối cùng có bằng với value không 
    với filed là property muốn check
        value là chuỗi muốn check*/
-export function EndWith(field: string, value: string) {
+export function EndWith(fieldCheck: string, value: string) {
   return (target: any, propertyKey: string) => {
-    Reflect.defineMetadata('endWith', { field, value }, target, propertyKey);
+    Reflect.defineMetadata(
+      'endWith',
+      { fieldCheck, value },
+      target,
+      propertyKey,
+    );
     if (typeof target === 'function') {
       Reflect.defineMetadata(
         'endWith',
-        { field, value },
+        { fieldCheck, value },
         target.prototype,
         propertyKey,
       );
     } else {
       Reflect.defineMetadata(
         'endWith',
-        { field, value },
+        { fieldCheck, value },
         target.constructor.prototype,
         propertyKey,
       );
