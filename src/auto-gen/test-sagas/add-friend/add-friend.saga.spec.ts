@@ -2,9 +2,10 @@
 import fs from 'fs';
 import path from 'path';
 import { getTime } from '../../utils/helper';
+import { executeAllSteps } from '../../utils/test-executor';
 import { TestContext } from '../../utils/text-context';
-import { AddFriendSaga } from './add-friend.saga';
 import { executeSteps } from '../../utils/text-execute-test';
+import { AddFriendSaga } from './add-friend.saga';
 describe('Test sagas for add-friend', () => {
   let allSteps = [];
   let testNumber = 0;
@@ -14,26 +15,25 @@ describe('Test sagas for add-friend', () => {
     pathRequest = 'AddFriendSaga'
     testType = 'saga'
     globalContext = new TestContext();
-    if (AddFriendSaga.beforeAll) {
-      const beforeResults = await executeSteps(
-        AddFriendSaga.beforeAll.map(b => b.step),
-        globalContext,
-        { stepPrefix: '[BeforeAll] ' }
-      );
+    const beforeResults = await executeSteps(
+      AddFriendSaga.beforeAll.map(b => b.step),
+      globalContext,
+      { stepPrefix: '[BeforeAll] ' }
+    );
 
-      beforeResults.forEach(result => {
-          allSteps.push({
-            ...result,
-            caseTitle: 'BeforeAll Setup',
-            phase: 'beforeAll'
-          });
+    beforeResults.forEach(result => {
+      allSteps.push({
+        ...result,
+        caseTitle: 'BeforeAll Setup',
+        phase: 'beforeAll'
       });
-    }
+    });
   });
 
-  it('should validate response structure', async () => {
+  it('should validate saga structure', async () => {
     testNumber++;
     try {
+
       const caseResults = await Promise.all(
         AddFriendSaga.steps.map(async (testCase) => {
           const caseContext = globalContext.clone();
@@ -48,7 +48,6 @@ describe('Test sagas for add-friend', () => {
           });
         })
       );
-
     } catch (error) {
       console.log(error)
     }
@@ -61,11 +60,11 @@ describe('Test sagas for add-friend', () => {
       { stepPrefix: '[AfterAll] ' }
     );
     afterResults.forEach(result => {
-        allSteps.push({
-          ...result,
-          caseTitle: 'AfterAll Cleanup',
-          phase: 'afterAll'
-        });
+      allSteps.push({
+        ...result,
+        caseTitle: 'AfterAll Cleanup',
+        phase: 'afterAll'
+      });
     });
     const folderPath = path.join(__dirname, '../reports/add-friend');
     if (!fs.existsSync(folderPath)) {
