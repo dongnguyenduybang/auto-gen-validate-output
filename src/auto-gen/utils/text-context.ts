@@ -1,21 +1,16 @@
 import { IContext } from "./declarations";
 
 export class TestContext implements IContext {
-  private data: Record<string, any> = {
-    wsActor: [],
-    wsRecipient: [],
-  };
+  private data: Record<string, any> = {};
   private versions: Record<string, number> = {};
 
   setValue(key: string, value: any): void {
-    if (key === 'wsActor' || key === 'wsRecipient') {
-      this.data[key] = value;
-    } else {
+
       const version = this.versions[key] || 0;
       const versionedKey = version > 0 ? `${key}${version}` : key;
       this.data[versionedKey] = value;
       this.versions[key] = version + 1;
-    }
+    
   }
 
   clone(): TestContext {
