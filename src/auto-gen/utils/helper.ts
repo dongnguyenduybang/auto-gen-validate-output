@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import 'reflect-metadata';
 import emojiRegex from 'emoji-regex';
 import { TestContext } from './text-context';
-import { ValidationError } from './types';
+import { ValidationError } from './declarations';
 
 function getFileNameWithoutExtension(filePath: string): string {
   const fileName = path.basename(filePath);

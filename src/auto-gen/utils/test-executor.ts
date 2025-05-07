@@ -6,8 +6,24 @@ import { BaseResponse } from '../response/general-response';
 import { getApiFunctions } from '../functions/api-registry';
 import { extractDatas } from './extract-data';
 import { formatErrors, resolveExpectConfig, resolveVariables } from './helper';
-import { responseClassMap, Step, StepResult } from './types';
+import { Step, StepResult } from './declarations';
+import { GetChannelResponse } from '../response/get-channel.response';
+import { AcceptInvitationResponse } from '../response/accept-invitation.response';
+import { CreateChannelResponse } from '../response/create-channel.response';
+import { MockUserResponse } from '../response/mock-user';
+import { SendDmMessageResponse } from '../response/send-dm-message.response';
+import { SendMessageResponse } from '../response/send-message.response';
+import { UpdateMessageResponse } from '../response/update-message.response';
 
+export const responseClassMap = {
+  CreateChannelResponse,
+  GetChannelResponse,
+  AcceptInvitationResponse,
+  SendMessageResponse,
+  MockUserResponse,
+  SendDmMessageResponse,
+  UpdateMessageResponse,
+};
 export async function executeAllSteps(
   steps: Step[],
   context: TestContext,

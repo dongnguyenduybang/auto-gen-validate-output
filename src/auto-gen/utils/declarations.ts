@@ -28,15 +28,6 @@ export interface StepResult {
   stepName: string;
   error?: string;
 }
-export const responseClassMap = {
-  CreateChannelResponse,
-  GetChannelResponse,
-  AcceptInvitationResponse,
-  SendMessageResponse,
-  MockUserResponse,
-  SendDmMessageResponse,
-  UpdateMessageResponse,
-};
 
 export interface IContext {
   getValue(path: string | string[]): any;

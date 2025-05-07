@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { TestContext } from '../utils/text-context';
 import { resolveVariables } from '../utils/helper';
-import { ApiConfig, ApiFunctionParams, ApiResponse } from '../utils/types';
+import { ApiConfig, ApiFunctionParams, ApiResponse } from '../utils/declarations';
 
 export function createApiFunction(config: ApiConfig, context: TestContext) {
   return async ({

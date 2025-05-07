@@ -1,4 +1,4 @@
-import { ExtractConfig } from "./types";
+import { ExtractConfig } from "./declarations";
 
 const mockUserConfig: ExtractConfig = {
   user: {

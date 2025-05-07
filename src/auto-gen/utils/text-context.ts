@@ -1,4 +1,4 @@
-import { IContext } from "./types";
+import { IContext } from "./declarations";
 
 export class TestContext implements IContext {
   private data: Record<string, any> = {

@@ -1,5 +1,5 @@
 import { TestContext } from '../utils/text-context';
-import { ApiRegistry } from '../utils/types';
+import { ApiRegistry } from '../utils/declarations';
 import { createApiFunction } from './api-factory';
 
 const API_REGISTRY: ApiRegistry = {

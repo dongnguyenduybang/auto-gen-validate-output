@@ -1,6 +1,6 @@
 import { Element } from '../enums/element.enum';
 import { Operator } from '../enums/operator.enum';
-import { IContext, ValidationError } from './types';
+import { IContext, ValidationError } from './declarations';
 
 export interface OperatorConfig {
   field?: string;
