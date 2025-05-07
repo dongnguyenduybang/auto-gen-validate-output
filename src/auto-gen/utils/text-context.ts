@@ -1,7 +1,10 @@
 import { IContext } from "./declarations";
 
 export class TestContext implements IContext {
-  public data: Record<string, any> = {};
+  private data: Record<string, any> = {
+    wsActor: [],
+    wsRecipient: [],
+  };
   private versions: Record<string, number> = {};
 
   setValue(key: string, value: any): void {

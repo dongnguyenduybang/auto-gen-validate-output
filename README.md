@@ -1,5 +1,5 @@
 <div align="center">
-<h1>Auto Generate Testcase</h1>
+<h1>Auto Generate Testscript</h1>
 </div>
 
 # Introduce
