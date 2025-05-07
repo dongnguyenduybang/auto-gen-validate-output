@@ -1,9 +1,4 @@
-export interface IContext {
-  getValue(path: string | string[]): any;
-  setValue(key: string, value: any): void;
-  mergeData(newData: Record<string, any>): void;
-  debug(): void;
-}
+import { IContext } from "./declarations";
 
 export class TestContext implements IContext {
   private data: Record<string, any> = {

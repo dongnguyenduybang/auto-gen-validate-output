@@ -15,6 +15,22 @@ export interface Step {
   expect?: any;
 }
 
+export interface SagaTestSuite {
+  beforeAll?: TestStep[];
+  steps: TestCase[];
+  afterAll?: TestStep[];
+}
+
+interface TestStep {
+  title: string;
+  step: Step;
+}
+
+interface TestCase {
+  title: string;
+  step: Step[];
+}
+
 export interface StepResult {
   type?: string;
   status: boolean;

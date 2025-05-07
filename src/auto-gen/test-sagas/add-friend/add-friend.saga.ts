@@ -1,4 +1,4 @@
-import { SagaTestSuite } from '../../utils/text-execute-test';
+import { SagaTestSuite } from '../../utils/declarations';
 import {
   APIPath,
   HeaderList,

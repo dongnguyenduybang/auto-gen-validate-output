@@ -1,13 +1,6 @@
 import { Element } from '../enums/element.enum';
 import { Operator } from '../enums/operator.enum';
-import { IContext } from './text-context';
-
-export interface ValidationError {
-  path: string;
-  expected: string;
-  actual: any;
-  message?: string;
-}
+import { IContext, ValidationError } from './declarations';
 
 interface OperatorConfig {
   field?: string;

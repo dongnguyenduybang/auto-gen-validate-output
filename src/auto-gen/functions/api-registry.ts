@@ -1,7 +1,6 @@
+import { ApiRegistry } from '../utils/declarations';
 import { TestContext } from '../utils/text-context';
 import { createApiFunction } from './api-factory';
-import { ApiConfig } from './types';
-type ApiRegistry = Record<string, ApiConfig>;
 
 const API_REGISTRY: ApiRegistry = {
   mockUser: {

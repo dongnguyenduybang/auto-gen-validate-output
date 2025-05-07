@@ -6,8 +6,7 @@ import { genTestRequest } from './utils/gen-test-request';
 import { execSync } from 'child_process';
 import { genTestResponse } from './utils/gen-test-response';
 import { genTestSaga } from './utils/gen-test-saga';
-
-type ActionHandler = (dtoName: string) => Promise<void> | void;
+import { ActionHandler } from './utils/declarations';
 
 const args = process.argv.slice(2);
 if (args.length < 2) {

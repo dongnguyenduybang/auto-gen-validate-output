@@ -1,4 +1,4 @@
-import { createApiValidator, ValidationError } from './api-validator';
+import { createApiValidator } from './api-validator';
 import { TestContext } from './text-context';
 import { SendMessageResponse } from '../response/send-message.response';
 import { ClassConstructor, plainToClass } from 'class-transformer';
@@ -12,31 +12,8 @@ import { SendDmMessageResponse } from '../response/send-dm-message.response';
 import { UpdateMessageResponse } from '../response/update-message.response';
 import { getApiFunctions } from '../functions/api-registry';
 import { extractDatas } from './extract-data';
+import { Step, ValidationError } from './declarations';
 
-export interface SagaTestSuite {
-  beforeAll?: TestStep[];
-  steps: TestCase[];
-  afterAll?: TestStep[];
-}
-
-export interface TestStep {
-  title: string;
-  step: Step;
-}
-
-export interface TestCase {
-  title: string;
-  step: Step[];
-}
-
-export interface Step {
-  action: string;
-  method?: string;
-  path?: string;
-  body?: any;
-  headers?: any;
-  expect?: any;
-}
 
 export interface StepResult {
   type?: string;
