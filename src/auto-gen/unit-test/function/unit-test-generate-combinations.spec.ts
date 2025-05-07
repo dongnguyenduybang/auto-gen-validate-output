@@ -9,7 +9,7 @@ describe('Unit test for function generateCombinations()', () => {
       content: [123, undefined, '', 'a'.repeat(2001), ''],
     };
   });
-  it("should return all combinations for 'workspaceId' and 'content' field with error case", () => {
+  it("should return all combinations for 'workspaceId' and 'content' field", () => {
     const result = generateCombinations(fields, errorCasesByField);
     const expectedCombinations = [
       { workspaceId: 123, content: 123 },
