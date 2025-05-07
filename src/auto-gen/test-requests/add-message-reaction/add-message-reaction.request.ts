@@ -1,4 +1,4 @@
-import { ACTION,VAR ,HeaderList, METHOD, APIPath} from '../../enums';
+import { ACTION, VAR, HeaderList, METHOD, APIPath } from '../../enums';
 
 export const AddMessageReactionRequest = {
   method: METHOD.POST,

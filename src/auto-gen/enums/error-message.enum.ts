@@ -25,5 +25,5 @@ export enum ErrorMessage {
   INVALID_RANGE_STRING_LENGTH = 'must to range from',
   INVALID_ULID = 'invalid ULID format',
   INVALID_EMOJI = 'invalid Emoji format',
-  INVALID_EMOJI_LENGTH = 'must have length equals 1'
+  INVALID_EMOJI_LENGTH = 'must have length equals 1',
 }

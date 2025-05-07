@@ -74,7 +74,7 @@ export class User extends GeneralUser {}
 
 export class Member extends GeneralMember {}
 
-export class IncludesResponse {
+export class IncludesResponse extends GeneralIncludesResponse {
   @ValidateNested({ each: true })
   @IsArray()
   @IsDefined()

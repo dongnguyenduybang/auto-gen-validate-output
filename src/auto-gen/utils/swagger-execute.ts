@@ -11,23 +11,23 @@
 //     context: TestContext,
 //   ): Promise<StepResult[]> {
 //     const results: StepResult[] = [];
-  
+
 //     for (const [index, step] of steps.entries()) {
 //       console.log(`[Executing Step ${index + 1}/${steps.length}] ${step.action}`);
-      
+
 //       const result = await executeStep(step, context, index);
 //       results.push(result);
-      
+
 //       // Log chi tiết kết quả
 //       console.log(`[Step Result] ${step.action}:`, {
 //         status: result.status ? 'PASSED' : 'FAILED',
 //         data: result.data,
 //         error: result.error
 //       });
-  
+
 //       if (!result.status) break;
 //     }
-  
+
 //     context.debug();
 //     return results;
 //   }
@@ -81,7 +81,7 @@
 //       const validator = createApiValidator(context);
 //       const resolvedExpect = resolveExpectConfig(expectConfig, context);
 //       const errors = validator.validate(response.data, resolvedExpect);
-      
+
 //       if (errors.length > 0) {
 //         return {
 //           ...result,

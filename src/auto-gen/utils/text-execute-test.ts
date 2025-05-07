@@ -59,20 +59,16 @@ const responseClassMap = {
 export async function executeSteps(
   steps: Step[],
   context: TestContext,
-  option: {
-    stepPrefix?: string;
-    failFast?: boolean;
-  } = {},
 ): Promise<StepResult[]> {
   const results: StepResult[] = [];
-  const { stepPrefix = '', failFast = false } = option;
 
   for (const [index, step] of steps.entries()) {
     try {
-      const result = await executeSingleStep(step, context, index);
+      const result = await executeSingleStep(step, context);
       results.push(result);
       // if(!result.status) break;
     } catch (error) {
+      console.error(`Error executing step ${index}:`, error);
     }
   }
 
@@ -83,7 +79,6 @@ export async function executeSteps(
 async function executeSingleStep(
   step: Step,
   context: TestContext,
-  stepIndex?: number,
 ): Promise<StepResult> {
   try {
     const { action, method, path, body, headers, expect: expectConfig } = step;
@@ -102,7 +97,7 @@ async function executeSingleStep(
       path,
       headers: resolveHeaders,
       body: resolveBody,
-    })
+    });
     if (response?.data?.error?.code === 1000) {
       return {
         type: 'request',
@@ -112,30 +107,35 @@ async function executeSingleStep(
           code: response.data.error.code,
           message: response.data.error.message,
           details: response.data.error.details,
-        }
-      }
+        },
+      };
     }
 
-    // validate response 
+    // validate response
 
-    const stepName = step.action.charAt(0).toUpperCase() + step.action.slice(1) + 'Response';
-    const responseClass = responseClassMap[stepName as keyof typeof responseClassMap];
-    const validateResponse = plainToClass(responseClass as ClassConstructor<BaseResponse>, response.data);
+    const stepName =
+      step.action.charAt(0).toUpperCase() + step.action.slice(1) + 'Response';
+    const responseClass =
+      responseClassMap[stepName as keyof typeof responseClassMap];
+    const validateResponse = plainToClass(
+      responseClass as ClassConstructor<BaseResponse>,
+      response.data,
+    );
     const result = await validateResponses(
       resolveBody,
       validateResponse,
-      context
-    )
+      context,
+    );
     if (result.length > 0) {
       return {
         type: 'response',
         status: false,
         stepName: action,
-        error: JSON.stringify(result, null, 2)
-      }
+        error: JSON.stringify(result, null, 2),
+      };
     }
 
-    // save context 
+    // save context
     const extractedData = extractDatas(response.data, action);
     context.mergeData(extractedData);
 
@@ -151,7 +151,7 @@ async function executeSingleStep(
           status: false,
           stepName: action,
           error: formatErrors(errors),
-        }
+        };
       }
     }
 
@@ -159,16 +159,15 @@ async function executeSingleStep(
       type: null,
       status: true,
       stepName: action,
-    }
+    };
   } catch (error) {
     return {
       type: 'error',
       status: false,
       stepName: step.action,
       error: error.message || error,
-    }
+    };
   }
-
 }
 
 export function resolveVariables(obj: any, context: TestContext): any {

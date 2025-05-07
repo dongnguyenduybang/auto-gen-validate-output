@@ -29,7 +29,6 @@ export class TestContext implements IContext {
     return newContext;
   }
 
-
   getValue(path: string | string[]): any {
     const keys = Array.isArray(path) ? path : path.split('.');
 

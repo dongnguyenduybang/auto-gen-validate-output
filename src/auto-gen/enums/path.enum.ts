@@ -84,5 +84,5 @@ export const APIPath = {
     AcceptFriendRequest: '/Friend/AcceptFriendRequest',
     RejectFriendRequest: '/Friend/RejectFriendRequest',
     CancelFriendRequest: '/Friend/CancelFriendRequest',
-  }
+  },
 };

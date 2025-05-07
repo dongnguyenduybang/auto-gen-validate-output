@@ -5,13 +5,13 @@ export function genTestSaga(dtoName: string) {
   const baseFolder = path.join(__dirname, `../test-sagas/${dtoName}`);
 
   const files = fs.readdirSync(baseFolder);
-  const sagaFiles = files.filter(file => file.endsWith('.saga.ts'));
+  const sagaFiles = files.filter((file) => file.endsWith('.saga.ts'));
 
   if (sagaFiles.length === 0) {
     console.error(`No saga files found in folder: ${baseFolder}`);
     return;
   }
-  sagaFiles.forEach(sagaFile => {
+  sagaFiles.forEach((sagaFile) => {
     const sagaFilePathWithoutExt = sagaFile.replace('.saga.ts', '');
     const classNameCapitalized = sagaFilePathWithoutExt
       .split('-')
@@ -114,8 +114,11 @@ export function genTestSaga(dtoName: string) {
     });
   `;
 
-    const outputPath = path.join(outputDir, `${sagaFilePathWithoutExt}.saga.spec.ts`);
+    const outputPath = path.join(
+      outputDir,
+      `${sagaFilePathWithoutExt}.saga.spec.ts`,
+    );
     fs.writeFileSync(outputPath, specContent, 'utf-8');
     console.log(`✅ Generated saga test: ${outputPath}`);
-  })
+  });
 }

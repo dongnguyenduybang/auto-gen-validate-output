@@ -1,69 +1,62 @@
-
 import fs from 'fs';
 import path from 'path';
 import { getTime } from '../../utils/helper';
-import { executeAllSteps } from '../../utils/test-executor';
 import { TestContext } from '../../utils/text-context';
 import { executeSteps } from '../../utils/text-execute-test';
 import { AddFriendSaga } from './add-friend.saga';
 describe('Test sagas for add-friend', () => {
-  let allSteps = [];
-  let testNumber = 0;
+  const allSteps = [];
   let testType;
-  let globalContext, pathRequest
+  let globalContext, pathRequest;
   beforeAll(async () => {
-    pathRequest = 'AddFriendSaga'
-    testType = 'saga'
+    pathRequest = 'AddFriendSaga';
+    testType = 'saga';
     globalContext = new TestContext();
     const beforeResults = await executeSteps(
-      AddFriendSaga.beforeAll.map(b => b.step),
+      AddFriendSaga.beforeAll.map((b) => b.step),
       globalContext,
-      { stepPrefix: '[BeforeAll] ' }
     );
 
-    beforeResults.forEach(result => {
+    beforeResults.forEach((result) => {
       allSteps.push({
         ...result,
         caseTitle: 'BeforeAll Setup',
-        phase: 'beforeAll'
+        phase: 'beforeAll',
       });
     });
   });
 
   it('should validate saga structure', async () => {
-    testNumber++;
     try {
-
-      const caseResults = await Promise.all(
+      await Promise.all(
         AddFriendSaga.steps.map(async (testCase) => {
           const caseContext = globalContext.clone();
           const results = await executeSteps(testCase.step, caseContext);
 
-          results.forEach(result => {
+          results.forEach((result) => {
             allSteps.push({
               ...result,
               caseTitle: testCase.title,
-              phase: 'testCase'
+              phase: 'testCase',
             });
           });
-        })
+        }),
       );
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   });
 
   afterAll(async () => {
     const afterResults = await executeSteps(
-      AddFriendSaga.afterAll.map(a => a.step),
+      AddFriendSaga.afterAll.map((a) => a.step),
       globalContext,
-      { stepPrefix: '[AfterAll] ' }
     );
-    afterResults.forEach(result => {
+    afterResults.forEach((result) => {
       allSteps.push({
         ...result,
         caseTitle: 'AfterAll Cleanup',
-        phase: 'afterAll'
+        phase: 'afterAll',
       });
     });
     const folderPath = path.join(__dirname, '../reports/add-friend');
@@ -83,7 +76,7 @@ describe('Test sagas for add-friend', () => {
       null,
       null,
       null,
-      testType
+      testType,
     );
 
     const reportPath = path.join(folderPath, reportFileName);

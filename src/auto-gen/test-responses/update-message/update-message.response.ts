@@ -1,4 +1,4 @@
-import { ACTION, APIPath, HeaderList, METHOD, VAR } from "../../enums";
+import { ACTION, APIPath, HeaderList, METHOD, VAR } from '../../enums';
 
 export const UpdateMessageResponse = {
   method: METHOD.PUT,

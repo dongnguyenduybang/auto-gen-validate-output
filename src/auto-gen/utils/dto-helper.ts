@@ -171,7 +171,7 @@ export function generateCombinations(
       [field]: errorVariant,
     }));
   });
-  console.log(fieldErrorVariants)
+  console.log(fieldErrorVariants);
   return combineFields(fieldErrorVariants).map((combination) => {
     return combination.reduce((acc, curr) => ({ ...acc, ...curr }), {});
   });
@@ -247,10 +247,7 @@ export function mapError(
         );
       }
     } else {
-      addError(
-        decorators['notEmptyMessage'],
-        `${field} ${ErrorMessage.EMPTY}`
-      );
+      addError(decorators['notEmptyMessage'], `${field} ${ErrorMessage.EMPTY}`);
     }
 
     // `${field} ${ErrorMessage.INVALID_RANGE_STRING_LENGTH} ${decorators['minLength']} to ${decorators['maxLength']} length`

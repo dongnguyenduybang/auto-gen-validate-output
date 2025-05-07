@@ -41,12 +41,11 @@ const responseClassMap = {
 export async function executeAllSteps(
   steps: Step[],
   context: TestContext,
-  testType?: string
 ): Promise<StepResult[]> {
   const results: StepResult[] = [];
 
   for (const [index, step] of steps.entries()) {
-    const result = await executeStep(step, context, index, testType);
+    const result = await executeStep(step, context);
     results.push(result);
     if (!result.status) break;
   }
@@ -58,8 +57,6 @@ export async function executeAllSteps(
 async function executeStep(
   step: Step,
   context: TestContext,
-  stepIndex: number,
-  testType?: string
 ): Promise<StepResult> {
   try {
     const { action, method, path, body, headers, expect: expectConfig } = step;

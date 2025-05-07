@@ -1,4 +1,12 @@
-import { APIPath, HeaderList, METHOD, Operator, Element, VAR, ACTION } from "../../enums";
+import {
+  APIPath,
+  HeaderList,
+  METHOD,
+  Operator,
+  Element,
+  VAR,
+  ACTION,
+} from '../../enums';
 
 export const UpdateMessageSaga = {
   steps: [

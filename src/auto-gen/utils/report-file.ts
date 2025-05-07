@@ -10,7 +10,6 @@ export const combinedReportTemplate = (
   logicTests?: any[],
   summary?: any,
   type?: string,
-  responseValidations?: any[],
 ) => {
   className = className || 'Unknown Class';
   url = url || 'N/A';
@@ -22,7 +21,6 @@ export const combinedReportTemplate = (
   logicTests = logicTests || [];
   summary = summary || { statusCodes: {} };
   type = type;
-  responseValidations = responseValidations || [];
 
   switch (type) {
     case 'request':
@@ -265,12 +263,12 @@ const sagaReportTemplate = (
   className: string,
   url: string,
   sagaName: string,
-  failedSteps: any[]
+  failedSteps: any[],
 ) => {
   //sort phase
-  const beforeAllFailures = failedSteps.filter(s => s.phase === 'beforeAll');
-  const testCaseFailures = failedSteps.filter(s => s.phase === 'testCase');
-  const afterAllFailures = failedSteps.filter(s => s.phase === 'afterAll');
+  const beforeAllFailures = failedSteps.filter((s) => s.phase === 'beforeAll');
+  const testCaseFailures = failedSteps.filter((s) => s.phase === 'testCase');
+  const afterAllFailures = failedSteps.filter((s) => s.phase === 'afterAll');
 
   //group test case by caseTitle
   const testCaseGroups = testCaseFailures.reduce((groups, failure) => {
@@ -289,7 +287,7 @@ const sagaReportTemplate = (
     `• Date: ${new Date().toISOString()}`,
     '',
     '=== BeforeAll Failures ===',
-    ...(beforeAllFailures.length > 0 
+    ...(beforeAllFailures.length > 0
       ? beforeAllFailures.map((step, i) => formatStep(step, i))
       : ['✅ All beforeAll steps passed']),
     '',
@@ -298,16 +296,16 @@ const sagaReportTemplate = (
       ? Object.entries(testCaseGroups).flatMap(([caseTitle, failures]) => [
           `Test Case: ${caseTitle}`,
           ...(failures as any[]).map((step, i) => formatStep(step, i)),
-          ''
+          '',
         ])
       : ['✅ All test cases passed']),
     '',
     '=== AfterAll Failures ===',
-    ...(afterAllFailures.length > 0 
+    ...(afterAllFailures.length > 0
       ? afterAllFailures.map((step, i) => formatStep(step, i))
       : ['✅ All afterAll steps passed']),
     '',
-    '=== End of Report ==='
+    '=== End of Report ===',
   ].join('\n');
 };
 
@@ -326,27 +324,29 @@ const formatStep = (step: any, index: number) => {
 };
 const formatError = (error: any) => {
   if (Array.isArray(error)) {
-    return error.map(err => {
-      const path = err.path || 'unknown path';
-      const expected = err.expected || 'No expected value';
-      const actual = err.actual || 'No actual value';
-      const message = err.message || 'Validation failed';
-      
-      return [
-        `    ├─ Path: ${path}`,
-        `    ├─ Expected: ${expected}`,
-        `    ├─ Actual: ${actual}`,
-        `    └─ Message: ${message}`
-      ].join('\n');
-    }).join('\n');
+    return error
+      .map((err) => {
+        const path = err.path || 'unknown path';
+        const expected = err.expected || 'No expected value';
+        const actual = err.actual || 'No actual value';
+        const message = err.message || 'Validation failed';
+
+        return [
+          `    ├─ Path: ${path}`,
+          `    ├─ Expected: ${expected}`,
+          `    ├─ Actual: ${actual}`,
+          `    └─ Message: ${message}`,
+        ].join('\n');
+      })
+      .join('\n');
   }
-  
+
   if (typeof error === 'object' && error !== null) {
     return JSON.stringify(error, null, 2)
       .split('\n')
-      .map((line, i) => i === 0 ? line : `    ${line}`)
+      .map((line, i) => (i === 0 ? line : `    ${line}`))
       .join('\n');
   }
-  
+
   return error;
 };
