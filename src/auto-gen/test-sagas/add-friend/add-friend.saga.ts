@@ -1,8 +1,6 @@
 import { SagaTestSuite } from '../../utils/declarations';
 import {
-  APIPath,
   HeaderList,
-  METHOD,
   Operator,
   VAR,
   ACTION,
@@ -38,8 +36,6 @@ export const AddFriendSaga: SagaTestSuite = {
       step: [
         {
           action: ACTION.ADD_FRIEND,
-          method: METHOD.POST,
-          path: APIPath.Friend.AddFriend,
           body: {
             userId: VAR.userId1,
           },
@@ -55,8 +51,6 @@ export const AddFriendSaga: SagaTestSuite = {
       step: [
         {
           action: ACTION.SEND_DM_MESSAGE,
-          method: METHOD.POST,
-          path: APIPath.Message.SendDMMessage,
           body: {
             userId: VAR.userId1,
             content: 'Hello',
@@ -69,8 +63,6 @@ export const AddFriendSaga: SagaTestSuite = {
         },
         {
           action: ACTION.SEND_DM_MESSAGE,
-          method: METHOD.POST,
-          path: APIPath.Message.SendDMMessage,
           body: {
             userId: VAR.userId1,
             content: 'Hello1',
@@ -89,8 +81,6 @@ export const AddFriendSaga: SagaTestSuite = {
       title: 'Delete User',
       step: {
         action: ACTION.DELETE_MOCKED_USER,
-        method: METHOD.DELETE,
-        path: APIPath.Faker.DeleteMockedUsers,
         body: {
           prefix: 'testabcssd',
         },

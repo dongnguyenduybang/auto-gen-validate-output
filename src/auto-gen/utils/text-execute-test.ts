@@ -1,5 +1,4 @@
 import { createApiValidator } from './api-validator';
-import { TestContext } from './text-context';
 import { SendMessageResponse } from '../response/send-message.response';
 import { ClassConstructor, plainToClass } from 'class-transformer';
 import { CreateChannelResponse } from '../response/create-channel.response';
@@ -13,6 +12,8 @@ import { UpdateMessageResponse } from '../response/update-message.response';
 import { getApiFunctions } from '../functions/api-registry';
 import { extractDatas } from './extract-data';
 import { Step, ValidationError } from './declarations';
+import { TestContext } from './text-context';
+import { ACTION_CONFIG } from '../enums';
 
 
 export interface StepResult {
@@ -58,8 +59,10 @@ async function executeSingleStep(
   context: TestContext,
 ): Promise<StepResult> {
   try {
-    const { action, method, path, body, headers, expect: expectConfig } = step;
+    const { action, body, headers, expect: expectConfig } = step;
 
+    // defined method & path dựa vào action config 
+    const actionInfo = ACTION_CONFIG[action as keyof typeof ACTION_CONFIG];
     // resolve variables body and headers
     const resolveBody = resolveVariables(body, context);
     const resolveHeaders = resolveVariables(headers, context);
@@ -70,8 +73,8 @@ async function executeSingleStep(
       throw new Error(`API function not found for action: ${action}`);
     }
     const response = await apiFunction({
-      method,
-      path,
+      method: actionInfo.method,
+      path: actionInfo.path,
       headers: resolveHeaders,
       body: resolveBody,
     });

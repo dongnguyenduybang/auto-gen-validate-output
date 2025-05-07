@@ -1,4 +1,4 @@
-export const APIPath = {
+export const APIPath =  {
   Invitation: {
     AcceptInvitation: '/Invitation/AcceptInvitation',
     DeclineInvitation: '/Invitation/DeclineInvitation',
@@ -74,6 +74,7 @@ export const APIPath = {
     SyncStickerCollections: '/StickerView/SyncStickerCollections',
   },
   Faker: {
+    MockedUsers: '/InternalFaker/MockUsers',
     DeleteMockedUsers: '/InternalFaker/DeleteMockedUsers',
   },
   Friend: {

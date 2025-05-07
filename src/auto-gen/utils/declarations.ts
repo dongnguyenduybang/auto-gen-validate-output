@@ -8,8 +8,6 @@ export interface ValidationError {
 }
 export interface Step {
   action: string;
-  method?: string;
-  path?: string;
   body?: any;
   headers?: any;
   expect?: any;
