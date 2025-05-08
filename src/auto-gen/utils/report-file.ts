@@ -286,11 +286,11 @@ const sagaReportTemplate = (
     `• Saga: ${sagaName}`,
     `• Date: ${new Date().toISOString()}`,
     '',
-    '=== BeforeAll Failures ===',
-    ...(beforeAllFailures.length > 0
-      ? beforeAllFailures.map((step, i) => formatStep(step, i))
-      : ['✅ All beforeAll steps passed']),
-    '',
+    // '=== BeforeAll Failures ===',
+    // ...(beforeAllFailures.length > 0
+    //   ? beforeAllFailures.map((step, i) => formatStep(step, i))
+    //   : ['✅ All beforeAll steps passed']),
+    // '',
     '=== Test Case ===',
     ...(Object.keys(testCaseGroups).length > 0
       ? Object.entries(testCaseGroups).flatMap(([caseTitle, failures]) => [
@@ -300,11 +300,11 @@ const sagaReportTemplate = (
         ])
       : ['✅ All test cases passed']),
     '',
-    '=== AfterAll Failures ===',
-    ...(afterAllFailures.length > 0
-      ? afterAllFailures.map((step, i) => formatStep(step, i))
-      : ['✅ All afterAll steps passed']),
-    '',
+    // '=== AfterAll Failures ===',
+    // ...(afterAllFailures.length > 0
+    //   ? afterAllFailures.map((step, i) => formatStep(step, i))
+    //   : ['✅ All afterAll steps passed']),
+    // '',
     '=== End of Report ===',
   ].join('\n');
 };
@@ -318,35 +318,34 @@ const formatStep = (step: any, index: number) => {
   if (step.status) {
     stepInfo.push(`   • Status: passed`);
   } else {
-    stepInfo.push(`   • Error: ${formatError(step.error)}`);
+    stepInfo.push(`   • Error:\n${formatError(step.error)}`);
   }
   return stepInfo.join('\n');
 };
-const formatError = (error: any) => {
-  if (Array.isArray(error)) {
-    return error
-      .map((err) => {
-        const path = err.path || 'unknown path';
-        const expected = err.expected || 'No expected value';
-        const actual = err.actual || 'No actual value';
-        const message = err.message || 'Validation failed';
 
-        return [
-          `    ├─ Path: ${path}`,
-          `    ├─ Expected: ${expected}`,
-          `    ├─ Actual: ${actual}`,
-          `    └─ Message: ${message}`,
-        ].join('\n');
-      })
-      .join('\n');
+
+const formatError = (error: any) => {
+  const formatSingleError = (err: any) => {
+    const path = err.path || 'unknown path';
+    const expected = err.expected || 'No expected value';
+    const actual = err.actual || 'No actual value';
+    const message = err.message || 'Validation failed';
+
+    return [
+      `    ├─ Path: ${path}`,
+      `    ├─ Expected: ${expected}`,
+      `    ├─ Actual: ${actual}`,
+      `    └─ Message: ${message}`,
+    ].join('\n');
+  };
+
+  if (Array.isArray(error)) {
+    return error.map(formatSingleError).join('\n');
   }
 
   if (typeof error === 'object' && error !== null) {
-    return JSON.stringify(error, null, 2)
-      .split('\n')
-      .map((line, i) => (i === 0 ? line : `    ${line}`))
-      .join('\n');
+    return formatSingleError(error);
   }
 
-  return error;
+  return `    └─ Message: ${String(error)}`;
 };
