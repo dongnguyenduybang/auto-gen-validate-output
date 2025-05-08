@@ -1,4 +1,3 @@
-
 import dotenv from 'dotenv';
 export default {
     moduleFileExtensions: ['js', 'json', 'ts'],
@@ -12,7 +11,9 @@ export default {
       },
       
     setupFiles: ['dotenv/config'],
-    setupFilesAfterEnv: ['./jest.setup.ts'],
+    setupFilesAfterEnv: ['./setup/jest.setup.ts'],
+    globalTeardown: './setup/jest.teardown.ts',
+
     preset: 'ts-jest',
     moduleNameMapper: {
         '#ansi-styles': 'ansi-styles',
@@ -24,4 +25,5 @@ export default {
     },
     extensionsToTreatAsEsm: ['.ts', '.tsx'],
     maxWorkers: 2, 
+   
 };
