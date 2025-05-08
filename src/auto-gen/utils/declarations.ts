@@ -88,3 +88,10 @@ export interface ApiFunctionParams {
 
 export type ActionHandler = (dtoName: string) => Promise<void> | void;
 export type ApiRegistry = Record<string, ApiConfig>;
+export type HeaderOptions = {
+  token?: string;
+  userId?: string;
+  deviceId?: string;
+  role?: string;
+  [key: string]: string | undefined;
+};

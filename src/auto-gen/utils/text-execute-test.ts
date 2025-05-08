@@ -34,9 +34,9 @@ const responseClassMap = {
   UpdateMessageResponse,
 };
 
-export async function executeSteps(
+export async function   executeSteps(
   steps: Step[],
-  context: TestContext,
+  context?: TestContext,
 ): Promise<StepResult[]> {
   const results: StepResult[] = [];
 
@@ -49,14 +49,12 @@ export async function executeSteps(
       console.error(`Error executing step ${index}:`, error);
     }
   }
-
-  context.debug();
   return results;
 }
 
 async function executeSingleStep(
   step: Step,
-  context: TestContext,
+  context?: TestContext,
 ): Promise<StepResult> {
   try {
     const { action, body, headers, expect: expectConfig } = step;
@@ -65,6 +63,7 @@ async function executeSingleStep(
     const actionInfo = ACTION_CONFIG[action as keyof typeof ACTION_CONFIG];
     // resolve variables body and headers
     const resolveBody = resolveVariables(body, context);
+    console.log(resolveBody, actionInfo)
     const resolveHeaders = resolveVariables(headers, context);
 
     // get api function
@@ -78,6 +77,7 @@ async function executeSingleStep(
       headers: resolveHeaders,
       body: resolveBody,
     });
+    console.log('a',response.data)
     if (response?.data?.error?.code === 1000) {
       return {
         type: 'request',
@@ -116,8 +116,11 @@ async function executeSingleStep(
     }
 
     // save context
-    const extractedData = extractDatas(response.data, action);
-    context.mergeData(extractedData);
+    if(response.data?.data !== undefined) {
+      const extractedData = extractDatas(response.data, action);
+      context.mergeData(extractedData);
+    }
+
 
     // validate saga
 
