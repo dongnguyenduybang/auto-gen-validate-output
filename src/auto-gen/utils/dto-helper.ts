@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { ErrorMessage } from '../enums';
-import { checkULID, isSingleEmoji } from './helper';
+import { checkULID, isEmoji } from './helper';
 
 export function getDecorators(
   target: any,
@@ -271,7 +271,7 @@ export function mapError(
   // 6. Kiểm tra emoji
   if (decorators['isEmoji']) {
     const isInvalid =
-      typeof value === 'string' && (value === '' || !isSingleEmoji(value));
+      typeof value === 'string' && (value === '' || !isEmoji(value));
     if (isInvalid) {
       addError(null, `${field} ${ErrorMessage.INVALID_EMOJI}`);
       addError(null, `${field} ${ErrorMessage.INVALID_EMOJI_LENGTH}`);

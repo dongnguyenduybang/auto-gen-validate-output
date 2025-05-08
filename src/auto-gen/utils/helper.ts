@@ -3,6 +3,7 @@ import * as fs from 'fs';
 import 'reflect-metadata';
 import { ValidationError } from './declarations';
 import { TestContext } from './text-context';
+import emojiRegex from 'emoji-regex';
 
 function getFileNameWithoutExtension(filePath: string): string {
   const fileName = path.basename(filePath);
@@ -248,14 +249,13 @@ export function checkULID(value: string): boolean {
   const ulidRegex = /^[0-9A-HJKMNP-TV-Z]{26}$/;
   return typeof value === 'string' && ulidRegex.test(value);
 }
-export function isSingleEmoji(str: string): boolean {
-  const cleaned = str.replace(/\s/g, ''); // Xoá tất cả khoảng trắng
-  // https://github.com/colinhacks/zod/issues/2433
-  const emojiRegex = /^(\p{Extended_Pictographic}|\p{Emoji_Presentation})$/u;
-  return emojiRegex.test(cleaned);
-}
 
-// resolve var {{}}
+export function isEmoji(str: string): boolean {
+  const cleaned = str.replace(/\s/g, ''); // Xoá tất cả khoảng trắng
+  // lib check emoji https://github.com/mathiasbynens/emoji-regex
+  const regex = emojiRegex();
+  return regex.test(cleaned);
+}
 export function resolveVariables(obj: any, context: TestContext): any {
   if (typeof obj === 'string') {
     return obj.replace(
