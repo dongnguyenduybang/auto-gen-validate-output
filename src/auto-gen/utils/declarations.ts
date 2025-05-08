@@ -73,7 +73,7 @@ export interface ApiConfig {
 }
 
 export interface ApiResponse {
-  ok: boolean;
+  // ok: boolean;
   data?: any;
   error?: any;
 }

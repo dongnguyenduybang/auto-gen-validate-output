@@ -77,13 +77,13 @@ async function executeSingleStep(
       headers: resolveHeaders,
       body: resolveBody,
     });
-    console.log('a',response.data)
-    if (response?.data?.error?.code === 1000) {
+    const hasExpectConfig = !!expectConfig;
+    if ((response?.data?.ok === false || response.error !== undefined) && !hasExpectConfig) {
       return {
-        type: 'request',
+        type: 'request DTO',
         status: false,
         stepName: action,
-        error: {
+        error: response.error  ||  {
           code: response.data.error.code,
           message: response.data.error.message,
           details: response.data.error.details,

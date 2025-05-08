@@ -15,6 +15,7 @@ export enum ACTION {
   DELETE_MOCKED_USER = 'deleteMockedUsers',
   ADD_FRIEND = 'addFriend',
   ACCEPT_FRIEND_REQUEST = 'acceptFriendRequest',
+  UPDATE_CHANNEl_NAME = 'updateChannelName',
 }
 
 export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
@@ -56,5 +57,8 @@ export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
   },
   [ACTION.ACCEPT_FRIEND_REQUEST]: {
     path: APIPath.Friend.AcceptFriendRequest, method: METHOD.POST
+  },
+  [ACTION.UPDATE_CHANNEl_NAME]: {
+    path: APIPath.Channel.UpdateChannelName, method: METHOD.PUT
   },
 }

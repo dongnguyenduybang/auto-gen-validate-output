@@ -1,37 +1,16 @@
-import * as path from 'path';
-import * as fs from 'fs';
 
-export function genTestSaga(dtoName: string) {
-  const baseFolder = path.join(__dirname, `../test-sagas/${dtoName}`);
-
-  const files = fs.readdirSync(baseFolder);
-  const sagaFiles = files.filter((file) => file.endsWith('.saga.ts'));
-
-  if (sagaFiles.length === 0) {
-    console.error(`No saga files found in folder: ${baseFolder}`);
-    return;
-  }
-  sagaFiles.forEach((sagaFile) => {
-    const sagaFilePathWithoutExt = sagaFile.replace('.saga.ts', '');
-    const classNameCapitalized = sagaFilePathWithoutExt
-      .split('-')
-      .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-      .join('');
-
-    const outputDir = path.join(__dirname, `../test-sagas/${dtoName}`);
-    const specContent = `
     import fs from 'fs';
     import path from 'path';
     import { getTime } from '../../utils/helper';
     import { executeSteps } from '../../utils/text-execute-test';
-    import { ${classNameCapitalized}Saga } from './${sagaFilePathWithoutExt}.saga';
-    describe('Test sagas for ${sagaFilePathWithoutExt}', () => {
+    import { CreateChannelSaga } from './create-channel.saga';
+    describe('Test sagas for create-channel', () => {
       let allSteps = [];
       let testNumber = 0;
       let testType;
       let globalContext, pathRequest
       beforeAll(async () => {
-        pathRequest = '${classNameCapitalized}Saga'
+        pathRequest = 'CreateChannelSaga'
         testType = 'saga'
         globalContext = globalThis.globalContext
       });
@@ -41,7 +20,7 @@ export function genTestSaga(dtoName: string) {
         try {
     
           await Promise.all(
-            ${classNameCapitalized}Saga.steps.map(async (testCase) => {
+            CreateChannelSaga.steps.map(async (testCase) => {
               const results = await executeSteps(testCase.step, globalContext);
              
               results.forEach(result => {
@@ -60,12 +39,12 @@ export function genTestSaga(dtoName: string) {
 
       afterAll(async () => {
         
-        const folderPath = path.join(__dirname, '../reports/${dtoName}');
+        const folderPath = path.join(__dirname, '../reports/create-channel');
         if (!fs.existsSync(folderPath)) {
           fs.mkdirSync(folderPath, { recursive: true });
         }
-        const classNames = \`${sagaFilePathWithoutExt}\`;
-        const reportFileName = \`${sagaFilePathWithoutExt}-sagas-\${getTime()}.report.txt\`;  
+        const classNames = `create-channel`;
+        const reportFileName = `create-channel-sagas-${getTime()}.report.txt`;  
         const { combinedReportTemplate } = await import('../../utils/report-file');
         const reportContent = combinedReportTemplate(
             classNames,
@@ -82,16 +61,7 @@ export function genTestSaga(dtoName: string) {
         
         const reportPath = path.join(folderPath, reportFileName);
         fs.writeFileSync(reportPath, reportContent, 'utf-8');
-        console.log(\`📄 Saga test report generated: \${reportPath}\`);
+        console.log(`📄 Saga test report generated: ${reportPath}`);
       });
     });
-  `;
-
-    const outputPath = path.join(
-      outputDir,
-      `${sagaFilePathWithoutExt}.saga.spec.ts`,
-    );
-    fs.writeFileSync(outputPath, specContent, 'utf-8');
-    console.log(`✅ Generated saga test: ${outputPath}`);
-  });
-}
+  

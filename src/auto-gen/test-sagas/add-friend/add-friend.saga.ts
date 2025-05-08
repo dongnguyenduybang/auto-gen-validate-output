@@ -14,7 +14,7 @@ export const AddFriendSaga: SagaTestSuite = {
         {
           action: ACTION.ADD_FRIEND,
           body: {
-            userId: VAR.userId1,
+            userId: VAR.userId3,
           },
           headers: HEADER_LIST.create({
             token: VAR.token,
@@ -32,14 +32,28 @@ export const AddFriendSaga: SagaTestSuite = {
           action: ACTION.SEND_DM_MESSAGE,
           body: {
             userId: VAR.userId1,
-            content: 'Hello',
+            content: '',
             ref: 'ref',
           },
           headers: HEADER_LIST.create({
             token: VAR.token,
           }),
           expect: {
-            ok: { operator: Operator.EQUAL, expect: false },
+            ok: { operator: Operator.EQUAL, expect: true },
+          },
+        },
+        {
+          action: ACTION.SEND_DM_MESSAGE,
+          body: {
+            userId: VAR.userId1,
+            content: 'aaaaaa',
+            ref: 'ref',
+          },
+          headers: HEADER_LIST.create({
+            token: VAR.token,
+          }),
+          expect: {
+            ok: { operator: Operator.EQUAL, expect: true },
           },
         },
       ],

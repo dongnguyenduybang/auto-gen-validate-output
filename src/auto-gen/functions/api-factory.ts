@@ -23,7 +23,7 @@ export function createApiFunction(config: ApiConfig, context: TestContext) {
             : headers[source];
 
           if (!resolvedValue) {
-            return { ok: false, error: errorMessage };
+            return { error: errorMessage };
           }
           finalHeaders[headerName] = resolvedValue;
         }
@@ -56,12 +56,10 @@ export function createApiFunction(config: ApiConfig, context: TestContext) {
       }
       const response = await axios(axiosConfig);
       return {
-        ok: true,
         data: response.data,
       };
     } catch (error: any) {
       return {
-        ok: false,
         error:
           error.response?.data?.error?.details ||
           error.response?.data ||
