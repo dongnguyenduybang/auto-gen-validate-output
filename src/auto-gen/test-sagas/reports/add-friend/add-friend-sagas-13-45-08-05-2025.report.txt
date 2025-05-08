@@ -1,0 +1,29 @@
+=== Saga Test Report For add-friend ===
+• URL: N/A
+• Saga: AddFriendSaga
+• Date: 2025-05-08T06:45:22.667Z
+
+=== BeforeAll Failures ===
+✅ All beforeAll steps passed
+
+=== Test Case ===
+Test Case: Add Friend Saga
+1. addFriend
+   • Type: error
+   • Error: Cannot read properties of undefined (reading 'error')
+
+Test Case: Send Message After Add Friend
+1. sendDmMessage
+   • Type: saga
+   • Error: {
+      "path": "ok",
+      "expected": "false",
+      "actual": "true",
+      "message": "Validation failed at ok"
+    }
+
+
+=== AfterAll Failures ===
+✅ All afterAll steps passed
+
+=== End of Report ===

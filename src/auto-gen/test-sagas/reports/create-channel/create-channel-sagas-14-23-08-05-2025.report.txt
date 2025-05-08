@@ -1,0 +1,28 @@
+=== Saga Test Report For create-channel ===
+• URL: N/A
+• Saga: CreateChannelSaga
+• Date: 2025-05-08T07:23:14.585Z
+
+=== BeforeAll Failures ===
+✅ All beforeAll steps passed
+
+=== Test Case ===
+Test Case: Member edit channel
+1. acceptInvitation
+   • Type: saga
+   • Status: passed
+2. updateChannelName
+   • Type: request DTO
+   • Error: {
+      "code": 3001,
+      "message": "Failed to update channel",
+      "details": [
+        "Invalid user permission"
+      ]
+    }
+
+
+=== AfterAll Failures ===
+✅ All afterAll steps passed
+
+=== End of Report ===

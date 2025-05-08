@@ -1,0 +1,30 @@
+=== Saga Test Report For add-friend ===
+• URL: N/A
+• Saga: AddFriendSaga
+• Date: 2025-05-08T06:57:55.451Z
+
+=== BeforeAll Failures ===
+✅ All beforeAll steps passed
+
+=== Test Case ===
+Test Case: Add Friend Saga
+1. addFriend
+   • Type: error
+   • Error: Cannot convert undefined or null to object
+
+Test Case: Send Message After Add Friend
+1. sendDmMessage
+   • Type: request DTO
+   • Error: {
+      "code": 1000,
+      "message": "Invalid argument",
+      "details": [
+        "content must to range from 1 to 2000 length"
+      ]
+    }
+
+
+=== AfterAll Failures ===
+✅ All afterAll steps passed
+
+=== End of Report ===

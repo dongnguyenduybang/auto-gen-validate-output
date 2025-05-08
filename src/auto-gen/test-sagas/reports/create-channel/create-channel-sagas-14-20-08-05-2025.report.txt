@@ -1,0 +1,29 @@
+=== Saga Test Report For create-channel ===
+• URL: N/A
+• Saga: CreateChannelSaga
+• Date: 2025-05-08T07:20:32.489Z
+
+=== BeforeAll Failures ===
+✅ All beforeAll steps passed
+
+=== Test Case ===
+Test Case: Member edit channel
+1. acceptInvitation
+   • Type: request DTO
+   • Error: {
+      "code": 1000,
+      "message": "Invalid argument",
+      "details": [
+        "must have required property 'invitationLink'",
+        "must not allow the property 'userId' to exist."
+      ]
+    }
+2. updateChannelName
+   • Type: request DTO
+   • Error: Token not found
+
+
+=== AfterAll Failures ===
+✅ All afterAll steps passed
+
+=== End of Report ===

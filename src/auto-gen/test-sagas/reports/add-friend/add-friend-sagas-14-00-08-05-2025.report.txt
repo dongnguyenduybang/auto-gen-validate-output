@@ -1,0 +1,38 @@
+=== Saga Test Report For add-friend ===
+• URL: N/A
+• Saga: AddFriendSaga
+• Date: 2025-05-08T07:00:32.668Z
+
+=== BeforeAll Failures ===
+✅ All beforeAll steps passed
+
+=== Test Case ===
+Test Case: Add Friend Saga
+1. addFriend
+   • Type: request DTO
+   • Error: Unauthorized request
+
+Test Case: Send Message After Add Friend
+1. sendDmMessage
+   • Type: request DTO
+   • Error: {
+      "code": 1000,
+      "message": "Invalid argument",
+      "details": [
+        "content must to range from 1 to 2000 length"
+      ]
+    }
+2. sendDmMessage
+   • Type: saga
+   • Error: {
+      "path": "ok",
+      "expected": "false",
+      "actual": "true",
+      "message": "Validation failed at ok"
+    }
+
+
+=== AfterAll Failures ===
+✅ All afterAll steps passed
+
+=== End of Report ===
