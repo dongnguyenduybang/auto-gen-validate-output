@@ -11,27 +11,14 @@ describe('Test sagas for add-friend', () => {
   beforeAll(async () => {
     pathRequest = 'AddFriendSaga';
     testType = 'saga';
-    globalContext = new TestContext();
-    const beforeResults = await executeSteps(
-      AddFriendSaga.beforeAll.map((b) => b.step),
-      globalContext,
-    );
-
-    beforeResults.forEach((result) => {
-      allSteps.push({
-        ...result,
-        caseTitle: 'BeforeAll Setup',
-        phase: 'beforeAll',
-      });
-    });
+    globalContext = globalThis.globalContext
   });
 
   it('should validate saga structure', async () => {
     try {
       await Promise.all(
         AddFriendSaga.steps.map(async (testCase) => {
-          const caseContext = globalContext.clone();
-          const results = await executeSteps(testCase.step, caseContext);
+          const results = await executeSteps(testCase.step, globalContext);
 
           results.forEach((result) => {
             allSteps.push({
@@ -48,17 +35,7 @@ describe('Test sagas for add-friend', () => {
   });
 
   afterAll(async () => {
-    const afterResults = await executeSteps(
-      AddFriendSaga.afterAll.map((a) => a.step),
-      globalContext,
-    );
-    afterResults.forEach((result) => {
-      allSteps.push({
-        ...result,
-        caseTitle: 'AfterAll Cleanup',
-        phase: 'afterAll',
-      });
-    });
+
     const folderPath = path.join(__dirname, '../reports/add-friend');
     if (!fs.existsSync(folderPath)) {
       fs.mkdirSync(folderPath, { recursive: true });
