@@ -86,4 +86,7 @@ export const APIPath =  {
     RejectFriendRequest: '/Friend/RejectFriendRequest',
     CancelFriendRequest: '/Friend/CancelFriendRequest',
   },
+  UserProfile: {
+    UpdateUserDisplayName: '/UserProfile/UpdateUserDisplayName'
+  }
 };
