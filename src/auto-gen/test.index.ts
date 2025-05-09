@@ -96,7 +96,7 @@ function runTests(testType: string): ActionHandler {
   return async (dtoName) => {
     console.log(`Running test for ${testType} "${dtoName}"...`);
     try {
-      const testPath = `src/auto-gen/${testType}/${dtoName}`;
+      const testPath = `src/auto-gen/${testType}/${dtoName} --detectOpenHandles`;
       execSync(`jest ${testPath}`, { stdio: 'inherit' });
     } catch (error) {
       console.error(`Test failed for ${dtoName}:`, error.message);
