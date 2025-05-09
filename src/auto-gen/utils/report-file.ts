@@ -294,7 +294,7 @@ const sagaReportTemplate = (
     '=== Test Case ===',
     ...(Object.keys(testCaseGroups).length > 0
       ? Object.entries(testCaseGroups).flatMap(([caseTitle, failures]) => [
-          `Test Case: ${caseTitle}`,
+          `📄 Case: ${caseTitle}`,
           ...(failures as any[]).map((step, i) => formatStep(step, i)),
           '',
         ])
@@ -312,29 +312,49 @@ const sagaReportTemplate = (
 // format từng step
 const formatStep = (step: any, index: number) => {
   const stepInfo = [
-    `${index + 1}. ${step.stepName}`,
-    `   • Type: ${step.type || 'saga'}`,
+    `📝 ${index + 1}. ${step.stepName}`,
+    `   • Type: ${step.type}`,
   ];
   if (step.status) {
-    stepInfo.push(`   • Status: passed`);
+    stepInfo.push(`   • Status: ✅ passed`);
   } else {
     stepInfo.push(`   • Error:\n${formatError(step.error)}`);
   }
   return stepInfo.join('\n');
 };
 
-
 const formatError = (error: any) => {
   const formatSingleError = (err: any) => {
     const path = err.path || 'unknown path';
-    const expected = err.expected || 'No expected value';
-    const actual = err.actual || 'No actual value';
+    let expected = err.expected || 'No expected value';
+    let actual = err.actual || 'No actual value';
     const message = err.message || 'Validation failed';
+
+    // Xử lý định dạng đặc biệt cho các dòng Index[]
+    const formatIndexLines = (text: string) => {
+      if (typeof text === 'string' && text.includes('Index[')) {
+        return text.split('\n')
+          .map(line => `         ${line}`)
+          .join('\n');
+      }
+      return text;
+    };
+
+    expected = formatIndexLines(expected);
+    actual = formatIndexLines(actual);
+
+    // Thêm dòng trống sau Expected: và Actual: nếu có nhiều dòng
+    const expectedLines = expected.includes('\n') 
+      ? `\n${expected}` 
+      : ` ${expected}`;
+    const actualLines = actual.includes('\n') 
+      ? `\n${actual}` 
+      : ` ${actual}`;
 
     return [
       `    ├─ Path: ${path}`,
-      `    ├─ Expected: ${expected}`,
-      `    ├─ Actual: ${actual}`,
+      `    ├─ Expected:${expectedLines}`,
+      `    ├─ Actual:${actualLines}`,
       `    └─ Message: ${message}`,
     ].join('\n');
   };
