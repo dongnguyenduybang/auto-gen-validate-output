@@ -11,12 +11,11 @@ export interface Step {
   body?: any;
   headers?: any;
   expect?: any;
+  delay?: number;
 }
 
 export interface SagaTestSuite {
-  beforeAll?: TestStep[];
   steps: TestCase[];
-  afterAll?: TestStep[];
 }
 
 interface TestStep {
