@@ -84,10 +84,9 @@ export const createApiValidator = (context: IContext) => {
     message?: string,
   ): ValidationError => ({
     path: path.join('.'),
-    expected:
-      typeof expected === 'string' ? expected : JSON.stringify(expected),
-    actual: JSON.stringify(actual),
-    message: message || `Validation failed at ${path.join('.')}`,
+    expected: expected,
+    actual: actual,
+    message: message,
   });
 
   const validateOperatorRules = (
@@ -205,6 +204,85 @@ export const createApiValidator = (context: IContext) => {
     }
   };
 
+  // const validateInclusion = (
+  //   actual: any,
+  //   expectedValues: any,
+  //   elementType: Element | undefined,
+  //   path: string[],
+  //   errors: ValidationError[],
+  // ) => {
+  //   const normalizedActual = Array.isArray(actual)
+  //     ? actual.flat(Infinity)
+  //     : [actual];
+  //   const expectedArray = Array.isArray(expectedValues)
+  //     ? expectedValues.flat(Infinity)
+  //     : [expectedValues];
+
+  //   // Special handling for ALL elements
+  //   if (elementType === Element.ALL) {
+  //     if (normalizedActual.length !== expectedArray.length) {
+  //       errors.push(createError(path, expectedArray, normalizedActual));
+  //       return;
+  //     }
+
+  //     const missingInActual = expectedArray.filter(
+  //       (expected) =>
+  //         !normalizedActual.some((actual) => comparedValue(actual, expected)),
+  //     );
+
+  //     const missingInExpected = normalizedActual.filter(
+  //       (actual) =>
+  //         !expectedArray.some((expected) => comparedValue(actual, expected)),
+  //     );
+
+  //     if (missingInActual.length > 0 || missingInExpected.length > 0) {
+  //       let message = `Element.ALL validation failed: `;
+  //       if (missingInActual.length > 0) {
+  //         message += `Missing expected values: ${missingInActual.join(', ')}. `;
+  //       }
+  //       if (missingInExpected.length > 0) {
+  //         message += `Unexpected values: ${missingInExpected.join(', ')}`;
+  //       }
+  //       errors.push(createError(path, message.trim(), normalizedActual));
+  //       return;
+  //     }
+  //     return;
+  //   }
+
+  //   let valuesToCheck = normalizedActual;
+  //   switch (elementType) {
+  //     case Element.FIRST:
+  //       valuesToCheck = valuesToCheck.slice(0, 1);
+  //       break;
+  //     case Element.LAST:
+  //       valuesToCheck = valuesToCheck.slice(-1);
+  //       break;
+  //     default:
+  //       break;
+  //   }
+
+  //   if (valuesToCheck.length === 0) {
+  //     errors.push(
+  //       createError(
+  //         path,
+  //         `No values found at path '${path.join('.')}'`,
+  //         valuesToCheck,
+  //       ),
+  //     );
+  //     return;
+  //   }
+
+  //   const missing = expectedArray.filter(
+  //     (expected) => !valuesToCheck.some((val) => comparedValue(val, expected)),
+  //   );
+
+  //   if (missing.length > 0) {
+  //     const message = elementType
+  //       ? `${elementType} elements of ${path.join('.')} must include ${missing.join(', ')}`
+  //       : `${path.join('.')} must expected ${missing.join(', ')}`;
+  //     errors.push(createError(path, message, valuesToCheck));
+  //   }
+  // };
   const validateInclusion = (
     actual: any,
     expectedValues: any,
@@ -219,37 +297,52 @@ export const createApiValidator = (context: IContext) => {
       ? expectedValues.flat(Infinity)
       : [expectedValues];
 
-    // Special handling for ALL elements
+    // xử lý ALL elements
     if (elementType === Element.ALL) {
+      // check độ dài
       if (normalizedActual.length !== expectedArray.length) {
-        errors.push(createError(path, expectedArray, normalizedActual));
+        errors.push(
+          createError(
+            path,
+            `Expected ${expectedArray.length} items ${expectedArray}`,
+            normalizedActual,
+          ),
+        );
         return;
       }
 
-      const missingInActual = expectedArray.filter(
-        (expected) =>
-          !normalizedActual.some((actual) => comparedValue(actual, expected)),
-      );
-
-      const missingInExpected = normalizedActual.filter(
-        (actual) =>
-          !expectedArray.some((expected) => comparedValue(actual, expected)),
-      );
-
-      if (missingInActual.length > 0 || missingInExpected.length > 0) {
-        let message = `Element.ALL validation failed: `;
-        if (missingInActual.length > 0) {
-          message += `Missing expected values: ${missingInActual.join(', ')}. `;
+      // check thứ tự phần tử
+      const mismatches = [];
+      for (let i = 0; i < expectedArray.length; i++) {
+        if (!comparedValue(normalizedActual[i], expectedArray[i])) {
+          mismatches.push({
+            index: i,
+            expected: expectedArray[i],
+            actual: normalizedActual[i],
+          });
         }
-        if (missingInExpected.length > 0) {
-          message += `Unexpected values: ${missingInExpected.join(', ')}`;
-        }
-        errors.push(createError(path, message.trim(), normalizedActual));
-        return;
+      }
+
+      if (mismatches.length > 0) {
+        const expected = mismatches
+          .map((m) => `Index[${m.index}] expected [${m.expected}]`)
+          .join('\n');
+        const actual = mismatches
+          .map((m) => `Index[${m.index}] actual [${m.actual}]`)
+          .join('\n');
+        errors.push(
+          createError(
+            path,
+            expected,
+            actual,
+            `The order or value of the elements does not match`,
+          ),
+        );
       }
       return;
     }
 
+    // xử lý first, all, default
     let valuesToCheck = normalizedActual;
     switch (elementType) {
       case Element.FIRST:
@@ -266,7 +359,7 @@ export const createApiValidator = (context: IContext) => {
       errors.push(
         createError(
           path,
-          `No values found at path '${path.join('.')}'`,
+          `No value found at path '${path.join('.')}'`,
           valuesToCheck,
         ),
       );
@@ -279,18 +372,17 @@ export const createApiValidator = (context: IContext) => {
 
     if (missing.length > 0) {
       const message = elementType
-        ? `${elementType} elements of ${path.join('.')} must include ${missing.join(', ')}`
-        : `${path.join('.')} must expected ${missing.join(', ')}`;
+        ? `${elementType} elements of ${path.join('.')} must have ${missing.join(', ')}`
+        : `${path.join('.')} must have ${missing.join(', ')}`;
       errors.push(createError(path, message, valuesToCheck));
     }
   };
-
   const validateOperatorObject = (
     actual: any,
     config: OperatorConfig,
     path: string[],
     errors: ValidationError[],
-    parentType: 'object' | 'array' = 'object', // Default to object
+    parentType: 'object' | 'array' = 'object',
   ) => {
     const { field, operator, element, expect } = config;
     const resolvedExpect = resolveValue(expect);
