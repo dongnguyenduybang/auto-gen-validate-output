@@ -67,6 +67,6 @@ export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
     path: APIPath.UserProfile.UpdateUserDisplayName, method: METHOD.PUT
   },
   [ACTION.SEARCH_USERS]: {
-    path: APIPath.Search.SearchUsers, method: METHOD.GET
+    path: APIPath.Search.SearchUsers, method: METHOD.POST
   },
 }
