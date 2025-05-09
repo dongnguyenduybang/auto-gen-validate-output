@@ -43,7 +43,6 @@ export function genTestSaga(dtoName: string) {
           await Promise.all(
             ${classNameCapitalized}Saga.steps.map(async (testCase) => {
               const results = await executeSteps(testCase.step, globalContext);
-             
               results.forEach(result => {
                 allSteps.push({
                   ...result,
@@ -56,7 +55,7 @@ export function genTestSaga(dtoName: string) {
           }catch (error){
             console.log(error)
           }         
-      });
+      }, 15000);
 
       afterAll(async () => {
         

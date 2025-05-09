@@ -15,7 +15,6 @@ import { Step, ValidationError } from './declarations';
 import { TestContext } from './text-context';
 import { ACTION_CONFIG } from '../enums';
 
-
 export interface StepResult {
   type?: string;
   status: boolean;
@@ -34,7 +33,7 @@ const responseClassMap = {
   UpdateMessageResponse,
 };
 
-export async function   executeSteps(
+export async function executeSteps(
   steps: Step[],
   context?: TestContext,
 ): Promise<StepResult[]> {
@@ -57,9 +56,13 @@ async function executeSingleStep(
   context?: TestContext,
 ): Promise<StepResult> {
   try {
+    if (step.delay) {
+      await new Promise((resolve) => setTimeout(resolve, step.delay));
+    }
+
     const { action, body, headers, expect: expectConfig } = step;
 
-    // defined method & path dựa vào action config 
+    // defined method & path dựa vào action config
     const actionInfo = ACTION_CONFIG[action as keyof typeof ACTION_CONFIG];
     // resolve variables body and headers
     const resolveBody = resolveVariables(body, context);
@@ -77,12 +80,15 @@ async function executeSingleStep(
       body: resolveBody,
     });
     const hasExpectConfig = !!expectConfig;
-    if ((response?.data?.ok === false || response.error !== undefined) && !hasExpectConfig) {
+    if (
+      (response?.data?.ok === false || response.error !== undefined) &&
+      !hasExpectConfig
+    ) {
       return {
         type: 'request DTO',
         status: false,
         stepName: action,
-        error: response.error  ||  {
+        error: response.error || {
           code: response.data.error.code,
           message: response.data.error.message,
           details: response.data.error.details,
@@ -115,11 +121,10 @@ async function executeSingleStep(
     }
 
     // save context
-    if(response.data?.data !== undefined) {
+    if (response.data?.data !== undefined) {
       const extractedData = extractDatas(response.data, action);
       context.mergeData(extractedData);
     }
-
 
     // validate saga
 
