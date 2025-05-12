@@ -155,13 +155,13 @@ const responseReportTemplate = (
         `   ├─ Error: ${test.error || 'No details'}`,
         ...(test.expected
           ? [
-              `   ├─ Expected: ${JSON.stringify(test.expected, null, 2).split('\n').join('\n      ')}`,
-            ]
+            `   ├─ Expected: ${JSON.stringify(test.expected, null, 2).split('\n').join('\n      ')}`,
+          ]
           : []),
         ...(test.actual
           ? [
-              `   └─ Actual: ${JSON.stringify(test.actual, null, 2).split('\n').join('\n      ')}`,
-            ]
+            `   └─ Actual: ${JSON.stringify(test.actual, null, 2).split('\n').join('\n      ')}`,
+          ]
           : []),
       ].join('\n'),
     ),
@@ -170,108 +170,41 @@ const responseReportTemplate = (
   ].join('\n');
 };
 
-// Template cho type 'saga'
-// const sagaReportTemplate = (
-//   className: string,
-//   url: string,
-//   sagaName: string,
-//   failedStep: any[],
-// ) => {
-//   const requestErrors = failedStep.filter(
-//     (step) => !step.status && step.type === 'request',
-//   );
-//   const responseErrors = failedStep.filter(
-//     (step) => !step.status && step.type === 'response',
-//   );
-//   const logicErrors = failedStep.filter(
-//     (step) => !step.status && (step.type === 'saga' || step.type === ''),
-//   );
-//   return [
-//     `=== Saga Test Report for ${className} ===`,
-//     `• Host: ${url}`,
-//     `• Sagas: ${sagaName}`,
-//     `• Date: ${new Date().toLocaleString()}`,
-//     '',
-//     '=== Execution Steps ===',
-//     ...failedStep.map((step, index) => {
-//       let errorMessage = '';
-
-//       if (step.error) {
-//         // Kiểm tra nếu step.error là một mảng
-//         if (Array.isArray(step.error)) {
-//           // Duyệt qua từng lỗi và tạo chuỗi thông báo lỗi
-//           errorMessage = step.error
-//             .map((err) => {
-//               const path = err.path || 'unknown path';
-//               return `Path: ${path}`;
-//             })
-//             .join('\n     └─ '); // Kết hợp các lỗi bằng dấu xuống dòng và ký tự "└─"
-//         }
-//         // Trường hợp step.error là một đối tượng đơn lẻ
-//         else if (typeof step.error === 'object' && step.error !== null) {
-//           errorMessage = step.error.message || 'No error message available';
-//         }
-//         // Trường hợp step.error là một chuỗi
-//         else if (typeof step.error === 'string') {
-//           try {
-//             const errorObj = JSON.parse(step.error);
-//             errorMessage = errorObj.message || step.error;
-//           } catch {
-//             errorMessage = step.error;
-//           }
-//         }
-//       }
-
-//       return `  ${index + 1}. [${step.status ? '✅ PASSED' : '❌ FAILED'}] ${step.stepName}${errorMessage ? `\n     └─ ${errorMessage}` : ''}`;
-//     }),
-//     '',
-//     '=== Error Details ===',
-//     '[Request Errors]',
-//     ...requestErrors.map((error, index) =>
-//       [
-//         '',
-//         ` 🟣 ${index + 1}. Step: ${error.stepName}`,
-//         `     ├─ Type: ${error.type || 'N/A'}`,
-//         `     └─ Error: ${typeof error.error === 'string' ? error.error : JSON.stringify(error.error)}`,
-//       ].join('\n'),
-//     ),
-//     '',
-//     '[Response Errors]',
-//     ...responseErrors.map((error, index) =>
-//       [
-//         '',
-//         ` 🟣 ${index + 1}. Step: ${error.stepName}`,
-//         `     ├─ Type: ${error.type || 'N/A'}`,
-//         `     └─ Error: ${typeof error.error === 'string' ? error.error : JSON.stringify(error.error)}`,
-//       ].join('\n'),
-//     ),
-//     '',
-//     '[Logic Errors]',
-//     ...logicErrors.map((error, index) => [
-//       '',
-//       ` 🟣 ${index + 1}. Step: ${error.stepName}`,
-//       `    ├─ Type: ${error.type || 'N/A'}`,
-//       `    └─ Error:`,
-//       formatError(error.error)
-//     ].join('\n')),
-//     '',
-//     '=== End of Report ===',
-//   ].join('\n');
-// };
-
 const sagaReportTemplate = (
   className: string,
   url: string,
   sagaName: string,
   failedSteps: any[],
 ) => {
-  //sort phase
-  const beforeAllFailures = failedSteps.filter((s) => s.phase === 'beforeAll');
-  const testCaseFailures = failedSteps.filter((s) => s.phase === 'testCase');
-  const afterAllFailures = failedSteps.filter((s) => s.phase === 'afterAll');
 
-  //group test case by caseTitle
+  const beforeAllFailures = failedSteps.filter((s) => s.phase === 'beforeAll');
+  const testCaseFailures = failedSteps.filter((s) => s.phase === 'test');
+  const afterAllFailures = failedSteps.filter((s) => s.phase === 'afterAll');
+  const beforeEachFailures = failedSteps.filter((s) => s.phase === 'beforeEach');
+  const afterEachFailures = failedSteps.filter((s) => s.phase === 'afterEach');
+
+  // group beforeEach
+  const beforeEachGroups = beforeEachFailures.reduce((groups, failure) => {
+    const caseTitle = failure.caseTitle || 'Unknown Case';
+    if (!groups[caseTitle]) {
+      groups[caseTitle] = [];
+    }
+    groups[caseTitle].push(failure);
+    return groups;
+  }, {});
+
+  // group test case
   const testCaseGroups = testCaseFailures.reduce((groups, failure) => {
+    const caseTitle = failure.caseTitle || 'Unknown Case';
+    if (!groups[caseTitle]) {
+      groups[caseTitle] = [];
+    }
+    groups[caseTitle].push(failure);
+    return groups;
+  }, {});
+
+  // group afterEach
+  const afterEachGroups = afterEachFailures.reduce((groups, failure) => {
     const caseTitle = failure.caseTitle || 'Unknown Case';
     if (!groups[caseTitle]) {
       groups[caseTitle] = [];
@@ -286,25 +219,51 @@ const sagaReportTemplate = (
     `• Saga: ${sagaName}`,
     `• Date: ${new Date().toISOString()}`,
     '',
-    // '=== BeforeAll Failures ===',
-    // ...(beforeAllFailures.length > 0
-    //   ? beforeAllFailures.map((step, i) => formatStep(step, i))
-    //   : ['✅ All beforeAll steps passed']),
-    // '',
-    '=== Test Case ===',
-    ...(Object.keys(testCaseGroups).length > 0
-      ? Object.entries(testCaseGroups).flatMap(([caseTitle, failures]) => [
+    ...(beforeAllFailures.length > 0
+      ? [
+        '=== BeforeAll Failures ===',
+        ...beforeAllFailures.map((step, i) => formatStep(step, i)),
+      ]
+      : []),
+    '',
+    ...(Object.keys(beforeEachGroups).length > 0
+      ? [
+        '=== BeforeEach Failures ===',
+        ...Object.entries(beforeEachGroups).flatMap(([caseTitle, failures]) => [
           `📄 Case: ${caseTitle}`,
           ...(failures as any[]).map((step, i) => formatStep(step, i)),
           '',
-        ])
+        ]),
+      ]
+      : []),
+    '',
+    '=== Test Case ===',
+    ...(Object.keys(testCaseGroups).length > 0
+      ? Object.entries(testCaseGroups).flatMap(([caseTitle, failures]) => [
+        `📄 Case: ${caseTitle}`,
+        ...(failures as any[]).map((step, i) => formatStep(step, i)),
+        '',
+      ])
       : ['✅ All test cases passed']),
     '',
-    // '=== AfterAll Failures ===',
-    // ...(afterAllFailures.length > 0
-    //   ? afterAllFailures.map((step, i) => formatStep(step, i))
-    //   : ['✅ All afterAll steps passed']),
-    // '',
+    ...(Object.keys(afterEachGroups).length > 0
+      ? [
+        '=== AfterEach Failures ===',
+        ...Object.entries(afterEachGroups).flatMap(([caseTitle, failures]) => [
+          `📄 Case: ${caseTitle}`,
+          ...(failures as any[]).map((step, i) => formatStep(step, i)),
+          '',
+        ]),
+      ]
+      : []),
+    '',
+    ...(afterAllFailures.length > 0
+      ? [
+        '=== AfterAll Failures ===',
+        ...afterAllFailures.map((step, i) => formatStep(step, i)),
+      ]
+      : []),
+    '',
     '=== End of Report ===',
   ].join('\n');
 };
@@ -344,11 +303,11 @@ const formatError = (error: any) => {
     actual = formatIndexLines(actual);
 
     // Thêm dòng trống sau Expected: và Actual: nếu có nhiều dòng
-    const expectedLines = expected.includes('\n') 
-      ? `\n${expected}` 
+    const expectedLines = expected.includes('\n')
+      ? `\n${expected}`
       : ` ${expected}`;
-    const actualLines = actual.includes('\n') 
-      ? `\n${actual}` 
+    const actualLines = actual.includes('\n')
+      ? `\n${actual}`
       : ` ${actual}`;
 
     return [
