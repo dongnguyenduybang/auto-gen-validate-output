@@ -88,5 +88,8 @@ export const APIPath =  {
   },
   UserProfile: {
     UpdateUserDisplayName: '/UserProfile/UpdateUserDisplayName'
+  },
+  ViewMember: {
+    ListMembers: '/MemberView/ListMembers'
   }
 };

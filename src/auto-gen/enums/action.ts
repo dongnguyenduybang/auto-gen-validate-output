@@ -17,7 +17,10 @@ export enum ACTION {
   ACCEPT_FRIEND_REQUEST = 'acceptFriendRequest',
   UPDATE_CHANNEl_NAME = 'updateChannelName',
   UPDATE_USER_DISPLAY_NAME = 'updateUserDisplayName',
-  SEARCH_USERS = 'searchUsers'
+  SEARCH_USERS = 'searchUsers',
+  LIST_MEMBERS = 'listMembers',
+  GET_USER = 'getUser',
+  LIST_MESSAGE= 'listMessage'
 }
 
 export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
@@ -68,5 +71,14 @@ export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
   },
   [ACTION.SEARCH_USERS]: {
     path: APIPath.Search.SearchUsers, method: METHOD.POST
+  },
+    [ACTION.LIST_MEMBERS]: {
+    path: APIPath.ViewMember.ListMembers, method: METHOD.GET
+  },
+    [ACTION.GET_USER]: {
+    path: APIPath.ViewUser.GetUser, method: METHOD.GET
+  },
+    [ACTION.LIST_MESSAGE]: {
+    path: APIPath.ViewMessage.ListMessages, method: METHOD.GET
   },
 }
