@@ -7,6 +7,40 @@ import {
 } from '../../enums';
 
 export const CreateChannelSaga: SagaTestSuite = {
+  options: [
+    {
+      beforeEach: [
+        {
+          action: ACTION.MOCK_USER,
+          body: {
+            prefix: 'testabc',
+            quantity: 2,
+            badge: 0,
+          }
+        },
+        {
+          action: ACTION.CREATE_CHANNEL,
+          body: {
+            name: 'channel1',
+            workspaceId: VAR.workspaceId
+          },
+          headers: HEADER_LIST.create({
+            token: VAR.token
+          })
+        }
+      ],
+    },
+    {
+      afterEach: [
+        {
+          action: ACTION.DELETE_MOCKED_USER,
+          body: {
+            prefix: 'testabc'
+          }
+        }
+      ] 
+    }
+  ],
   steps: [
     {
       title: 'should return false when member update channel name',
@@ -24,20 +58,21 @@ export const CreateChannelSaga: SagaTestSuite = {
           },
         },
         {
-            action: ACTION.UPDATE_CHANNEl_NAME,
-            body: {
-                workspaceId: VAR.workspaceId,
-                channelId: VAR.channelId,
-                name: 'test update fail'
-            },
-            headers: HEADER_LIST.create({
-                token: VAR.token1
-            }),
-            expect: {
-                ok: {operator: Operator.EQUAL, expect: true}
-            }
+          action: ACTION.UPDATE_CHANNEL_NAME,
+          body: {
+            workspaceId: VAR.workspaceId,
+            channelId: VAR.channelId,
+            name: 'test update fail'
+          },
+          headers: HEADER_LIST.create({
+            token: VAR.token1
+          }),
+          expect: {
+            ok: { operator: Operator.EQUAL, expect: false }
+          }
         }
       ],
     },
+    
   ],
 };
