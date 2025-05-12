@@ -15,16 +15,20 @@ export interface Step {
 }
 
 export interface SagaTestSuite {
+  options?: FirstStep[];
   steps: TestCase[];
 }
 
-interface TestStep {
-  title: string;
-  step: Step;
+interface FirstStep {
+  beforeEach?: Step[];
+  afterEach?: Step[];
+  afterAll?: Step[];
 }
+
 
 interface TestCase {
   title: string;
+
   step: Step[];
 }
 
