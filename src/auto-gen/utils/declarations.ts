@@ -6,11 +6,27 @@ export interface ValidationError {
   actual: any;
   message?: string;
 }
-export interface Step {
+export interface ApiRequestConfig {
+  body: any;
+  header?: any
+}
+export interface ExpectData {
+  path: string;
   action: string;
-  body?: any;
-  headers?: any;
+  payload: ApiRequestConfig
+  fields?: string[];
   expect?: any;
+}
+export interface Expect {
+  ok?: boolean,
+  data?: ExpectData
+  includes?: ExpectData[]
+}
+export interface Step<T = any> {
+  action: string;
+  body?: T;
+  headers?: any;
+  expect?: Expect;
   delay?: number;
 }
 
@@ -28,7 +44,6 @@ interface FirstStep {
 
 interface TestCase {
   title: string;
-
   step: Step[];
 }
 

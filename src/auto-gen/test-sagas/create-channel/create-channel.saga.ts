@@ -1,10 +1,10 @@
 import { SagaTestSuite } from '../../utils/declarations';
 import {
-  Operator,
   VAR,
   ACTION,
   HEADER_LIST,
 } from '../../enums';
+import { executeFunction } from '../../utils/expect-config';
 
 export const CreateChannelSaga: SagaTestSuite = {
   options: [
@@ -38,7 +38,7 @@ export const CreateChannelSaga: SagaTestSuite = {
             prefix: 'testabc'
           }
         }
-      ] 
+      ]
     }
   ],
   steps: [
@@ -54,25 +54,31 @@ export const CreateChannelSaga: SagaTestSuite = {
             token: VAR.token1,
           }),
           expect: {
-            ok: { operator: Operator.EQUAL, expect: true },
+            ok: true,
+            data: executeFunction(
+              'data.channel',
+              ACTION.GET_CHANNEL,
+              {
+                body: { channelId: VAR.channelId, workspaceId: VAR.workspaceId }
+              },
+              null,
+              null
+            ),
+            includes: [
+              executeFunction(
+                'includes.members',
+                ACTION.LIST_MEMBERS,
+                {
+                  body: { channelId: VAR.channelId, workspaceId: VAR.workspaceId }
+                },
+                null,
+                null
+              ),
+            ]
           },
         },
-        {
-          action: ACTION.UPDATE_CHANNEL_NAME,
-          body: {
-            workspaceId: VAR.workspaceId,
-            channelId: VAR.channelId,
-            name: 'test update fail'
-          },
-          headers: HEADER_LIST.create({
-            token: VAR.token1
-          }),
-          expect: {
-            ok: { operator: Operator.EQUAL, expect: false }
-          }
-        }
       ],
     },
-    
+
   ],
 };

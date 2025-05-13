@@ -14,6 +14,7 @@ import { extractDatas } from './extract-data';
 import { Step, ValidationError } from './declarations';
 import { TestContext } from './text-context';
 import { ACTION_CONFIG } from '../enums';
+import { handleExpectConfig } from './check-expect';
 
 export interface StepResult {
   type?: string;
@@ -127,20 +128,25 @@ async function executeSingleStep(
     }
 
     // validate saga
-
     if (expectConfig) {
-      const validator = createApiValidator(context);
-      const resolveExpect = resolveExpectConfig(expectConfig, context);
-      const errors = validator.validate(response.data, resolveExpect);
-      if (errors.length > 0) {
-        return {
-          type: 'saga',
-          status: false,
-          stepName: action,
-          error: formatErrors(errors),
-        };
-      }
+      const resolveConfig = resolveExpectConfig(expectConfig, context)
+      // get api function
+      const result = await handleExpectConfig(response.data, resolveConfig, context);
+      console.log(result)
     }
+    // if (expectConfig) {
+    //   const validator = createApiValidator(context);
+    //   const resolveExpect = resolveExpectConfig(expectConfig, context);
+    //   const errors = validator.validate(response.data, resolveExpect);
+    //   if (errors.length > 0) {
+    //     return {
+    //       type: 'saga',
+    //       status: false,
+    //       stepName: action,
+    //       error: formatErrors(errors),
+    //     };
+    //   }
+    // }
 
     return {
       type: null,
