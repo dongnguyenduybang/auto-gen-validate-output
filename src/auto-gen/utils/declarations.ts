@@ -1,3 +1,10 @@
+import { AcceptInvitationResponse } from "../response/accept-invitation.response";
+import { CreateChannelResponse } from "../response/create-channel.response";
+import { GetChannelResponse } from "../response/get-channel.response";
+import { MockUserResponse } from "../response/mock-user";
+import { SendDmMessageResponse } from "../response/send-dm-message.response";
+import { SendMessageResponse } from "../response/send-message.response";
+import { UpdateMessageResponse } from "../response/update-message.response";
 import { TestContext } from "./text-context";
 
 export interface ValidationError {
@@ -6,22 +13,44 @@ export interface ValidationError {
   actual: any;
   message?: string;
 }
-export interface Step {
+export interface ApiRequestConfig {
+  body: any;
+  header?: any
+}
+export interface ExpectData {
+  path: string;
   action: string;
-  body?: any;
-  headers?: any;
+  payload: ApiRequestConfig
+  fields?: string[];
   expect?: any;
+}
+export interface Expect {
+  ok?: boolean,
+  data?: ExpectData
+  includes?: ExpectData[]
+}
+
+export interface ExpectResult {
+  type: string;
+  
+}
+export interface Step<T = any> {
+  action: string;
+  body?: T;
+  headers?: any;
+  expect?: Expect;
+  delay?: number;
 }
 
 export interface SagaTestSuite {
-  beforeAll?: TestStep[];
+  options?: FirstStep[];
   steps: TestCase[];
-  afterAll?: TestStep[];
 }
 
-interface TestStep {
-  title: string;
-  step: Step;
+interface FirstStep {
+  beforeEach?: Step[];
+  afterEach?: Step[];
+  afterAll?: Step[];
 }
 
 interface TestCase {
@@ -115,3 +144,13 @@ export type Actual = {
   data: object
   includes: object;
 }
+
+export const responseClassMap = {
+  CreateChannelResponse,
+  GetChannelResponse,
+  AcceptInvitationResponse,
+  SendMessageResponse,
+  MockUserResponse,
+  SendDmMessageResponse,
+  UpdateMessageResponse,
+};
