@@ -64,22 +64,35 @@ async function executeSingleStep(
     if (!resultCheckResponse.status) {
       return resultCheckResponse
     } else {
+
       // save context
-      const extractedData = extractDatas(response.data, action);
-      context.mergeData(extractedData);
+      if (response?.data.data) {
+        const extractedData = extractDatas(response.data, action);
+        context.mergeData(extractedData);
+      }
 
       // validate saga
       if (expectConfig) {
         const resolveConfig = resolveExpectConfig(expectConfig, context)
         // get api function
         const result = await handleExpectConfig(response.data, resolveConfig, context);
-        console.log(result)
+        if (result.length > 0) {
+          const groupedErrors = result.reduce((acc, item) => {
+            const key = item.type || 'unknown';
+            if (!acc[key]) acc[key] = [];
+            acc[key].push(item);
+            return acc;
+          }, {});
+          return {
+            type: 'expect',
+            status: false,
+            stepName: action,
+            error: groupedErrors
+          };
+        }
       }
-
     }
-
   }
- 
   return {
     type: null,
     status: true,

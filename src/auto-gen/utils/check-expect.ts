@@ -4,7 +4,7 @@ import { resolveVariables } from "./helper";
 import { TestContext } from "./text-context";
 
 export async function handleExpectConfig(responseChecking: any, expectConfig: any, context: TestContext) {
-  const results: any = {};
+  const results: any[] = [];
   // 1. Xử lý API  (data)
   if (expectConfig.data) {
     const { path, action, payload, fields = [], expect: expectedValues } = expectConfig.data;
@@ -24,36 +24,35 @@ export async function handleExpectConfig(responseChecking: any, expectConfig: an
       body: payload.body
     });
 
-    let data = getValueByPath(responseChecking, path);
-    let data1 = getValueByPath(response.data, path);
-    if (path === 'data' && Array.isArray(data)) {
-      data = data.map(item => item.nestedKey);
+    let actual = getValueByPath(responseChecking, path);
+    let expected = getValueByPath(response.data, path);
+    if (path === 'data' && Array.isArray(actual)) {
+      actual = actual.map(item => item.nestedKey);
     }
-    if (path === 'data' && Array.isArray(data1)) {
-      data1 = data1.map(item => item.nestedKey);
+    if (path === 'data' && Array.isArray(expected)) {
+      expected = expected.map(item => item.nestedKey);
     }
     if (fields.length > 0) {
-      if (Array.isArray(data)) {
-        data = data.map(item => pickFields(item, fields));
+      if (Array.isArray(actual)) {
+        actual = actual.map(item => pickFields(item, fields));
       } else {
-        data = pickFields(data, fields);
+        actual = pickFields(actual, fields);
       }
-      if (Array.isArray(data1)) {
-        data1 = data1.map(item => pickFields(item, fields));
+      if (Array.isArray(expected)) {
+        expected = expected.map(item => pickFields(item, fields));
       } else {
-        data1 = pickFields(data1, fields);
+        expected = pickFields(expected, fields);
       }
     }
-
+    console.log(actual, expected)
     // Check expect values nếu có
-    if (expectedValues) {
-      const rs = validateExpectValues(data, expectedValues);
-    
-    } else {
-      const rs = validateExpectValues(data, data1);
-    
-    }
+    const rs = expectedValues
+      ? validateExpectValues(actual, expectedValues, path)
+      : validateExpectValues(actual, expected, path);
 
+    if (rs?.length) {
+      results.push(...rs);
+    }
   }
 
   if (expectConfig.includes) {
@@ -95,8 +94,11 @@ export async function handleExpectConfig(responseChecking: any, expectConfig: an
         }
       }
 
-      const rs = validateExpectValues(dataInclude, processedData)
-      console.log(rs)
+      
+      const rs = validateExpectValues(dataInclude, processedData, path);
+      if (rs?.length) {
+        results.push(...rs);
+      }
     }
   } else {
     ///
@@ -141,15 +143,16 @@ function pickFields(obj: any, fields: string[], nestedKey?: string): any {
   }
 
 }
-function validateExpectValues(data: any, expectedValues: any) {
-  const result: { type: string; message: string; index?: number; key?: string; dataValue?: any; expectedValue?: any }[] = [];
+function validateExpectValues(data: any, expectedValues: any, path: string) {
+  const result: { type: string; message: string; index?: number; path: string; key?: string; actualValue?: any; expectedValue?: any }[] = [];
   let allMatch = true;
   if (Array.isArray(data) && Array.isArray(expectedValues)) {
 
     if (data.length !== expectedValues.length) {
       result.push({
         type: 'array_length_mismatch',
-        message: `Array length mismatch: Data has ${data.length} items, Expected has ${expectedValues.length} items`
+        path: path,
+        message: `Array length mismatch: Actual has ${data.length} items, Expected has ${expectedValues.length} items`
       });
       allMatch = false;
       return result;
@@ -161,7 +164,8 @@ function validateExpectValues(data: any, expectedValues: any) {
       if (!expectedItem) {
         result.push({
           type: 'missing_expected_item',
-          message: `ExpectedValues[${index}] is undefined or missing`,
+          path: path,
+          message: `Expected[${index}] is undefined or missing`,
           index
         });
         allMatch = false;
@@ -174,8 +178,9 @@ function validateExpectValues(data: any, expectedValues: any) {
       for (const key of dataKeys) {
         if (!(key in expectedItem)) {
           result.push({
-            type: 'missing_key',
-            message: `Field '${key}' in data[${index}] is MISSING in expectedValues[${index}]`,
+            type: 'missing_field',
+            path: path,
+            message: `Field '${key}' in actual[${index}] is MISSING in expected[${index}]`,
             index,
             key
           });
@@ -183,15 +188,16 @@ function validateExpectValues(data: any, expectedValues: any) {
           continue;
         }
 
-        const dataValue = dataItem[key];
+        const actualValue = dataItem[key];
         const expectedValue = expectedItem[key];
-        if (!deepEqual(dataValue, expectedValue)) {
+        if (!deepEqual(actualValue, expectedValue)) {
           result.push({
             type: 'value_mismatch',
-            message: `Field '${key}' in data[${index}] VALUE MISMATCH`,
+            message: `Field '${key}' in actual[${index}] VALUE MISMATCH`,
             index,
+            path,
             key,
-            dataValue,
+            actualValue,
             expectedValue
           });
           allMatch = false;
@@ -201,9 +207,10 @@ function validateExpectValues(data: any, expectedValues: any) {
       for (const key of expectedKeys) {
         if (!(key in dataItem)) {
           result.push({
-            type: 'excess_key',
-            message: `Field '${key}' in expectedValues[${index}] is EXCESS (not present in data[${index}])`,
+            type: 'excess_field',
+            message: `Field '${key}' in expected[${index}] is EXCESS (not present in data[${index}])`,
             index,
+            path,
             key
           });
           allMatch = false;
@@ -218,22 +225,24 @@ function validateExpectValues(data: any, expectedValues: any) {
     for (const key of dataKeys) {
       if (!(key in expectedValues)) {
         result.push({
-          type: 'missing_key',
-          message: `Field '${key}' in data is MISSING in expectedValues`,
+          type: 'missing_field',
+          message: `Field '${key}' in actual is MISSING in expected`,
+          path,
           key
         });
         allMatch = false;
         continue;
       }
 
-      const dataValue = data[key];
+      const actualValue = data[key];
       const expectedValue = expectedValues[key];
-      if (!deepEqual(dataValue, expectedValue)) {
+      if (!deepEqual(actualValue, expectedValue)) {
         result.push({
           type: 'value_mismatch',
           message: `Field '${key}' VALUE MISMATCH`,
+          path,
           key,
-          dataValue,
+          actualValue,
           expectedValue
         });
         allMatch = false;
@@ -244,7 +253,8 @@ function validateExpectValues(data: any, expectedValues: any) {
       if (!(key in data)) {
         result.push({
           type: 'excess_key',
-          message: `Field '${key}' in expectedValues is EXCESS (not present in data)`,
+          path,
+          message: `Field '${key}' in expected is EXCESS (not present in actual)`,
           key
         });
         allMatch = false;
@@ -254,7 +264,8 @@ function validateExpectValues(data: any, expectedValues: any) {
   else {
     result.push({
       type: 'invalid_format',
-      message: 'Invalid data or expectedValues format: both must be arrays or objects'
+      message: 'Invalid actual or expected format: both must be arrays or objects',
+      path
     });
     allMatch = false;
   }

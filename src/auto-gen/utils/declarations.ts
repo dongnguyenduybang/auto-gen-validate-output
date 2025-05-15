@@ -157,3 +157,18 @@ export const responseClassMap = {
   SendDmMessageResponse,
   UpdateMessageResponse,
 };
+
+export type Entry = {
+  path?: string;
+  [key: string]: any;
+};
+
+export type ErrorItem = {
+  type: string;
+  path: string;
+  message: string;
+  index: number;
+  key: string;
+  actualValue?: any;
+  expectedValue?: any;
+};

@@ -1,0 +1,36 @@
+=== Saga Test Report For create-channel ===
+• URL: N/A
+• Saga: CreateChannelSaga
+• Date: 2025-05-15T08:10:12.029Z
+
+
+=== BeforeEach Failures ===
+📄 Case: Case 1
+📝 1. mockUser
+   • Type: null
+   • Status: ✅ passed
+📝 2. createChannel
+   • Type: null
+   • Status: ✅ passed
+
+
+=== Test Case ===
+📄 Case: should return false when member update channel name
+📝 1. acceptInvitation
+   • Type: expect
+   • Error:
+      └─ missing_field:
+         └─ Path: includes.members
+            └─ Field 'nickname' in actual[0] is MISSING in expected[0]
+            └─ Field 'nickname' in actual[1] is MISSING in expected[1]
+
+
+=== AfterEach Failures ===
+📄 Case: should return false when member update channel name
+📝 1. deleteMockedUsers
+   • Type: null
+   • Status: ✅ passed
+
+
+
+=== End of Report ===
