@@ -1,11 +1,14 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import 'reflect-metadata';
-import { IContext, ValidationError } from './declarations';
+import { IContext, responseClassMap, StepResult, ValidationError } from './declarations';
 import { TestContext } from './text-context';
 import emojiRegex from 'emoji-regex';
 import { ACTION_CONFIG } from '../enums';
 import { getApiFunctions } from '../functions/api-registry';
+import { ClassConstructor, plainToClass } from 'class-transformer';
+import { validateResponses } from '../validates/validate-response';
+import { BaseResponse } from '../response';
 
 function getFileNameWithoutExtension(filePath: string): string {
   const fileName = path.basename(filePath);
@@ -320,7 +323,7 @@ export function formatErrors(errors: ValidationError[]): any {
   return formattedErrors.length === 1 ? formattedErrors[0] : formattedErrors;
 }
 
-export async function resolveCallAPI (action: string, header: any, body: any, context){
+export async function resolveCallAPI(action: string, header: any, body: any, context) {
   const actionInfo = ACTION_CONFIG[action as keyof typeof ACTION_CONFIG];
   const resolveBody = resolveVariables(body, context);
   const resolveHeader = resolveVariables(header, context);
@@ -337,66 +340,102 @@ export async function resolveCallAPI (action: string, header: any, body: any, co
   return response
 }
 
-export function resolveActionPath(action: string){
-   const actionInfo = ACTION_CONFIG[action as keyof typeof ACTION_CONFIG];
+export function resolveActionPath(action: string) {
+  const actionInfo = ACTION_CONFIG[action as keyof typeof ACTION_CONFIG];
 
-   return actionInfo.path
+  return actionInfo.path
 }
 
-export  function comparedValue (a: any, b: any, context: IContext): boolean {
-    if (typeof b === 'string' && b.startsWith('{{')) {
-      const path = b.replace(/[{}]/g, '').split('.');
-      b = context.getValue(path);
-    }
-    if (Array.isArray(a) && Array.isArray(b)) {
-      return (
-        a.length === b.length &&
-        a.every((item, i) => String(item).trim() === String(b[i]).trim())
-      );
-    }
-    return String(a).trim() === String(b).trim();
-  };
+export function comparedValue(a: any, b: any, context: IContext): boolean {
+  if (typeof b === 'string' && b.startsWith('{{')) {
+    const path = b.replace(/[{}]/g, '').split('.');
+    b = context.getValue(path);
+  }
+  if (Array.isArray(a) && Array.isArray(b)) {
+    return (
+      a.length === b.length &&
+      a.every((item, i) => String(item).trim() === String(b[i]).trim())
+    );
+  }
+  return String(a).trim() === String(b).trim();
+};
 
-export function getNestedValue (obj: any, pathStr: string): any[] {
-    const parts = pathStr.split('.');
-    let current = Array.isArray(obj) ? obj.flat(Infinity) : [obj];
+export function getNestedValue(obj: any, pathStr: string): any[] {
+  const parts = pathStr.split('.');
+  let current = Array.isArray(obj) ? obj.flat(Infinity) : [obj];
 
-    for (const part of parts) {
-      current = current.flatMap((item) => {
-        if (item === undefined || item === null) return [];
-        if (Array.isArray(item)) {
-          return item.flatMap((i) => {
-            const val = i?.[part];
-            return val !== undefined ? (Array.isArray(val) ? val.flat(Infinity) : [val]) : [];
-          });
-        }
-        const val = item[part];
-        return val !== undefined ? (Array.isArray(val) ? val.flat(Infinity) : [val]) : [];
-      });
-    }
+  for (const part of parts) {
+    current = current.flatMap((item) => {
+      if (item === undefined || item === null) return [];
+      if (Array.isArray(item)) {
+        return item.flatMap((i) => {
+          const val = i?.[part];
+          return val !== undefined ? (Array.isArray(val) ? val.flat(Infinity) : [val]) : [];
+        });
+      }
+      const val = item[part];
+      return val !== undefined ? (Array.isArray(val) ? val.flat(Infinity) : [val]) : [];
+    });
+  }
 
-    return current.flat(Infinity).filter((val) => val !== undefined && val !== null);
-  };
+  return current.flat(Infinity).filter((val) => val !== undefined && val !== null);
+};
 
-export   function resolveValue (value: any, context): any {
-    if (typeof value === 'string') {
-      return value.replace(/\{\{(.+?)\}\}/g, (_, path) => {
-        const pathArray = path.split('.');
-        const resolved = context.getValue(pathArray);
-        return resolved ?? `{{${path}}}`;
-      });
-    }
-    if (Array.isArray(value)) {
-      return value.map((item) => resolveValue(item, context));
-    }
-    if (typeof value === 'object' && value !== null) {
-      return Object.fromEntries(
-        Object.entries(value).map(([key, val]) => [key, resolveValue(val, context)]),
-      );
-    }
-    return value;
-  };
+export function resolveValue(value: any, context): any {
+  if (typeof value === 'string') {
+    return value.replace(/\{\{(.+?)\}\}/g, (_, path) => {
+      const pathArray = path.split('.');
+      const resolved = context.getValue(pathArray);
+      return resolved ?? `{{${path}}}`;
+    });
+  }
+  if (Array.isArray(value)) {
+    return value.map((item) => resolveValue(item, context));
+  }
+  if (typeof value === 'object' && value !== null) {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, val]) => [key, resolveValue(val, context)]),
+    );
+  }
+  return value;
+};
 
-  export function  isOperatorObject (obj: object): boolean {
-    return obj && typeof obj === 'object' && 'operator' in obj && 'expect' in obj;
-  };
+export function isOperatorObject(obj: object): boolean {
+  return obj && typeof obj === 'object' && 'operator' in obj && 'expect' in obj;
+};
+
+export function delay(delayTime: number): Promise<number> {
+  const ms = typeof delayTime === 'number' && delayTime >= 0 ? delayTime : 0;
+  return new Promise((resolve) => setTimeout(resolve, ms));
+};
+
+export async function checkResponse(step, response: object, resolveBody: object, context: TestContext): Promise<StepResult> {
+  const stepName =
+    step.action.charAt(0).toUpperCase() + step.action.slice(1) + 'Response';
+  const responseClass =
+    responseClassMap[stepName as keyof typeof responseClassMap];
+  const validateResponse = plainToClass(
+    responseClass as ClassConstructor<BaseResponse>,
+    response,
+  );
+  const result = await validateResponses(
+    resolveBody,
+    validateResponse,
+    context,
+  );
+  if (result.length > 0) {
+    return {
+      type: 'response',
+      status: false,
+      stepName: step.action,
+      error: JSON.stringify(result, null, 2),
+    };
+  } else {
+    return {
+      type: 'response',
+      status: true,
+      stepName: step.action,
+      error: null,
+    };
+  }
+}
