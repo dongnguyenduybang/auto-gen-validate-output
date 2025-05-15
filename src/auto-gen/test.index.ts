@@ -21,14 +21,13 @@ const [action, type, ...restArgs] = args;
 let subType, dtoName;
 
 if (type === 'report') {
-  // Đối với report: pnpm clear report response send-message
+  
   [subType, dtoName] = restArgs;
 } else if (type !== 'reports') {
-  // Đối với các trường hợp khác: pnpm gen request send-message
+
   dtoName = restArgs[0];
 } else {
-  // Đối với reports: pnpm gen reports [dtoName]
-  dtoName = restArgs[0]; // Có thể undefined nếu không cung cấp
+  dtoName = restArgs[0]; 
 }
 const validTypes = ['request', 'response', 'saga', 'report', 'reports'];
 
