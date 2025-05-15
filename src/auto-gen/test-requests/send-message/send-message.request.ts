@@ -1,9 +1,8 @@
-import { ACTION, APIPath, HeaderList, METHOD, VAR } from '../../enums';
+import { ACTION, APIPath, HEADER_LIST, METHOD, VAR } from '../../enums';
 
 export const SendMessageRequest = {
-  method: METHOD.POST,
-  path: APIPath.Message.SendMessage,
-  headers: HeaderList.Token(),
+  action: ACTION.SEND_MESSAGE,
+  headers: HEADER_LIST.create({token: VAR.token}),
   body: {
     channelId: VAR.channelId,
     workspaceId: VAR.workspaceId,
@@ -11,25 +10,12 @@ export const SendMessageRequest = {
     ref: 'ref',
   },
   beforeAll: [
-    {
-      action: ACTION.MOCK_USER,
-      body: {
-        quantity: 2,
-        prefix: 'testDTO',
-        badge: 0,
-      },
-    },
-    {
-      action: ACTION.CREATE_CHANNEL,
-    },
   ],
   afterAll: [
     {
       action: ACTION.DELETE_MOCKED_USER,
-      method: METHOD.DELETE,
-      path: APIPath.Faker.DeleteMockedUsers,
       body: {
-        prefix: 'testDTO',
+        prefix: 'testabcssd',
       },
     },
   ],

@@ -72,17 +72,31 @@ export interface ApiConfig {
   context?: TestContext;
 }
 
-export interface ApiResponse {
-  // ok: boolean;
-  data?: any;
-  error?: any;
-}
+// export interface ApiResponse {
+//   // ok: boolean;
+//   data?: any;
+//   error?: any;
+// }
 
 export interface ApiFunctionParams {
   method?: string;
   path?: string;
   headers: any;
   body: any;
+}
+
+export interface TestResult {
+  path: string;
+    className: string;
+    chunkNumber?: number;
+    failedTests: any[];
+    codedTest: any[];
+    passedTests: number;
+    totalTests: number;
+    logicTests: any[];
+    failedStep: any[];
+    passed200?: number;
+    passed201?: number;
 }
 
 
@@ -95,3 +109,9 @@ export type HeaderOptions = {
   role?: string;
   [key: string]: string | undefined;
 };
+
+export type Actual = {
+  ok: boolean;
+  data: object
+  includes: object;
+}

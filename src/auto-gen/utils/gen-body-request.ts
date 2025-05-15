@@ -40,7 +40,7 @@ export async function genBodyRequest(dtoName) {
       const requestData =
         requestModule.default || Object.values(requestModule)[0];
       const payload = requestData.body;
-      const result = generateErrorCases(dtoClass, payload);
+      const result = await generateErrorCases(dtoClass, payload);
 
       const testCasePayload = result.map(({ testcaseGen, expectedDetail }) => ({
         body: testcaseGen,

@@ -63,7 +63,6 @@ async function executeSingleStep(
     const actionInfo = ACTION_CONFIG[action as keyof typeof ACTION_CONFIG];
     // resolve variables body and headers
     const resolveBody = resolveVariables(body, context);
-    console.log(resolveBody, actionInfo)
     const resolveHeaders = resolveVariables(headers, context);
 
     // get api function

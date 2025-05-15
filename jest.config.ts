@@ -8,8 +8,8 @@ export default {
     reporters: ['default'],
     transform: {
         '^.+\\.tsx?$': ['ts-jest', { tsconfig: 'tsconfig.json' }],
-      },
-      
+    },
+
     setupFiles: ['dotenv/config'],
     setupFilesAfterEnv: ['./setup/jest.setup.ts'],
     globalTeardown: './setup/jest.teardown.ts',
@@ -18,12 +18,15 @@ export default {
     moduleNameMapper: {
         '#ansi-styles': 'ansi-styles',
     },
-    globals: {  
+    globals: {
         'ts-jest': {
             useESM: true,
         },
     },
     extensionsToTreatAsEsm: ['.ts', '.tsx'],
-    maxWorkers: 2, 
-   
+    maxWorkers: '50%',
+    cache: true,
+    bail: true,
+    collectCoverage: false, 
+
 };

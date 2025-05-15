@@ -38,7 +38,6 @@ export function getDecorators(
 
   return decorators;
 }
-
 export function generateErrorCases(
   dtoClass: any,
   payload: Record<string, any>,
@@ -151,7 +150,6 @@ export function generateErrorVariantsForField(
 
   return [...new Set(variants)];
 }
-
 export function combineFields(arrays: any[][]): any[][] {
   if (!Array.isArray(arrays) || arrays.some((arr) => !Array.isArray(arr))) {
     throw new Error(
@@ -161,7 +159,6 @@ export function combineFields(arrays: any[][]): any[][] {
 
   return arrays.reduce((a, b) => a.flatMap((d) => b.map((e) => [d, e].flat())));
 }
-
 export function generateCombinations(
   fields: string[],
   errorCasesByField: Record<string, any[]>,
@@ -176,7 +173,6 @@ export function generateCombinations(
     return combination.reduce((acc, curr) => ({ ...acc, ...curr }), {});
   });
 }
-
 export function mapError(
   field: string,
   value: any,
@@ -256,9 +252,7 @@ export function mapError(
 
   // 5. Kiểm tra ULID
   if (decorators['isULID']) {
-    if (typeof value !== 'string') {
-      addError(null, `${field} ${ErrorMessage.INVALID_ULID}`);
-    } else if (
+     if (
       typeof value === 'string' &&
       (value === '' || !value.startsWith('{{'))
     ) {
