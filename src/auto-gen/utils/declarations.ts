@@ -32,7 +32,10 @@ export interface Expect {
 
 export interface ExpectResult {
   type: string;
-  
+  message: string;
+  index: number;
+  key: string;
+
 }
 export interface Step<T = any> {
   action: string;
