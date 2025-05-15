@@ -1,0 +1,20 @@
+{
+  "path": "/Message/SendDMMessage",
+  "className": "send-dm-message",
+  "failedTests": [],
+  "codedTest": [
+    {
+      "testcase": 1,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "content": 123,
+        "ref": 123
+      }
+    }
+  ],
+  "passedTests": 1,
+  "totalTests": 1,
+  "logicTests": [],
+  "failedStep": []
+}
