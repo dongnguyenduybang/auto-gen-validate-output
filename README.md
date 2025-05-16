@@ -1,21 +1,19 @@
 <div align="center">
-<h1>Auto Generate Testcase</h1>
+<h1>Auto Generate Testscript</h1>
 </div>
 
 # Introduce
 
-- ✏️ Auto generate test case for DTO/Response/Saga.
+- ✏️ Auto generate test script for DTO/Response/Saga.
 
 # Contents
 
 + [Docs Decorator](docs/decorators-docs/decorator.md)
-+ [Docs List Actions](docs/list-actons/list-actions.md)
 + [Docs Name Conventions](docs/name-conventions-docs/name-conventions.md)
 + [Docs Reports](docs/reports/reports.md)
 + [Docs Requests](docs/requests-docs/requests.md)
 + [Docs Responses](docs/responses-docs/response.md)
 + [Docs Sagas](docs/saga-docs/sagas.md)
-+ [Docs Flow](docs/flow/)
 
 
 # Install

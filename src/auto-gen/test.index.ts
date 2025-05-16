@@ -6,7 +6,6 @@ import { genTestRequest } from './utils/gen-test-request';
 import { execSync } from 'child_process';
 import { genTestResponse } from './utils/gen-test-response';
 import { genTestSaga } from './utils/gen-test-saga';
-import { genTestWS } from './utils/gen-test-ws';
 
 type ActionHandler = (dtoName: string) => Promise<void> | void;
 
@@ -22,13 +21,15 @@ const [action, type, ...restArgs] = args;
 let subType, dtoName;
 
 if (type === 'report') {
-  // Đối với report: pnpm clear report response send-message
+  
   [subType, dtoName] = restArgs;
-} else {
-  // Đối với các trường hợp khác: pnpm gen request send-message
+} else if (type !== 'reports') {
+
   dtoName = restArgs[0];
+} else {
+  dtoName = restArgs[0]; 
 }
-const validTypes = ['request', 'response', 'saga', 'report', 'ws'];
+const validTypes = ['request', 'response', 'saga', 'report'];
 
 if (!validTypes.includes(type)) {
   console.error(`Invalid type. Valid types: ${validTypes.join(', ')}`);
@@ -43,7 +44,6 @@ const actionHandlers: Record<string, Record<string, ActionHandler[]>> = {
     ],
     response: [(dto) => Promise.resolve(genTestResponse(dto))],
     saga: [(dto) => Promise.resolve(genTestSaga(dto))],
-    ws: [(dto) => Promise.resolve(genTestWS(dto))],
   },
   test: {
     request: [runTests('test-requests')],
@@ -58,7 +58,6 @@ const actionHandlers: Record<string, Record<string, ActionHandler[]>> = {
     ws: [clearFiles('test-ws')],
     report: [
       (dto) => {
-        // Xác định  trên subType (request/response/saga)
         const basePath = `test-${subType}s/reports`;
         return clearReports(basePath)(dto);
       },
@@ -71,8 +70,10 @@ async function handleBulkAction(basePath: string, handlers: ActionHandler[]) {
   console.log(`Processing bulk action in directory: ${fullPath}`);
 
   // Lấy danh sách thư mục con, loại bỏ thư mục reports
-  const directories = getSubDirectories(fullPath).filter(dir => !dir.includes('reports'));
-  
+  const directories = getSubDirectories(fullPath).filter(
+    (dir) => !dir.includes('reports'),
+  );
+
   console.log(`Found ${directories.length} DTO directories:`, directories);
 
   for (const dir of directories) {
@@ -89,9 +90,9 @@ async function handleBulkAction(basePath: string, handlers: ActionHandler[]) {
 function getSubDirectories(dirPath: string): string[] {
   return fs
     .readdirSync(dirPath, { withFileTypes: true })
-    .filter((dirent) => 
-      dirent.isDirectory() && 
-      !dirent.name.toLowerCase().includes('report') // Loại bỏ thư mục report
+    .filter(
+      (dirent) =>
+        dirent.isDirectory() && !dirent.name.toLowerCase().includes('report'), // Loại bỏ thư mục report
     )
     .map((dirent) => dirent.name);
 }
@@ -144,7 +145,10 @@ function clearReports(reportType: string): ActionHandler {
   };
 }
 async function main() {
-  console.log(`Processing "${type}${subType ? ` ${subType}` : ''}" for: ${dtoName}`);
+  console.log(
+    `Processing "${type}${subType ? ` ${subType}` : ''}"${dtoName ? ` for: ${dtoName}` : ''
+    }`,
+  );
 
   try {
     const handlers = actionHandlers[action]?.[type];
@@ -153,8 +157,7 @@ async function main() {
     const isBulkAction = dtoName && (
       dtoName.includes('-requests') ||
       dtoName.includes('-responses') ||
-      dtoName.includes('-sagas')||
-      dtoName.includes('-ws')
+      dtoName.includes('-sagas')
     );
 
     if (isBulkAction) {
@@ -165,12 +168,27 @@ async function main() {
         await handler(dtoName);
       }
     } else {
-      throw new Error('Missing dtoName parameter');
+      const isBulkAction =
+        dtoName &&
+        (dtoName.includes('-requests') ||
+          dtoName.includes('-responses') ||
+          dtoName.includes('-sagas'));
+
+      if (!dtoName) {
+        throw new Error('Missing dtoName parameter');
+      }
+
+      if (isBulkAction) {
+        await handleBulkAction(dtoName, handlers);
+      } else {
+        for (const handler of handlers) {
+          await handler(dtoName);
+        }
+      }
     }
   } catch (error) {
     console.error('Error:', error.message);
     process.exit(1);
   }
 }
-
 main();

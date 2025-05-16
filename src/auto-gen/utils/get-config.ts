@@ -41,7 +41,6 @@ export function setupConfiguration(): void {
 export function getConfig<T>(key: string, fallback?: T): T {
   return get(CONFIG_DATA, key, fallback) as T;
 }
-
 export function getOrThrow<T>(key: string): T {
   const result = get(CONFIG_DATA, key);
   if (result === undefined) {

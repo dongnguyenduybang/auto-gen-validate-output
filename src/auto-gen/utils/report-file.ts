@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+import { Entry, ErrorItem } from "./declarations";
+
+// Template cho type 'request'
+>>>>>>> main
 export const combinedReportTemplate = (
   className?: string,
   url?: string,
@@ -9,7 +15,6 @@ export const combinedReportTemplate = (
   logicTests?: any[],
   summary?: any,
   type?: string,
-  responseValidations?: any[],
 ) => {
   className = className || 'Unknown Class';
   url = url || 'N/A';
@@ -20,8 +25,12 @@ export const combinedReportTemplate = (
   totalTests = totalTests || 0;
   logicTests = logicTests || [];
   summary = summary || { statusCodes: {} };
+<<<<<<< HEAD
   type = type || 'request';
   responseValidations = responseValidations || [];
+=======
+  type = type;
+>>>>>>> main
 
   switch (type) {
     case 'request':
@@ -46,7 +55,6 @@ export const combinedReportTemplate = (
         passedTests,
         failedTests,
         totalTests,
-        responseValidations,
       );
 
     case 'saga':
@@ -143,7 +151,6 @@ const responseReportTemplate = (
   passedTests: number,
   failedTests: any[],
   totalTests: number,
-  responseValidations: any[],
 ) => {
   return [
     `=== Response Test Report for ${className} ===`,
@@ -172,13 +179,13 @@ const responseReportTemplate = (
         `   ├─ Error: ${test.error || 'No details'}`,
         ...(test.expected
           ? [
-              `   ├─ Expected: ${JSON.stringify(test.expected, null, 2).split('\n').join('\n      ')}`,
-            ]
+            `   ├─ Expected: ${JSON.stringify(test.expected, null, 2).split('\n').join('\n      ')}`,
+          ]
           : []),
         ...(test.actual
           ? [
-              `   └─ Actual: ${JSON.stringify(test.actual, null, 2).split('\n').join('\n      ')}`,
-            ]
+            `   └─ Actual: ${JSON.stringify(test.actual, null, 2).split('\n').join('\n      ')}`,
+          ]
           : []),
       ].join('\n'),
     ),
@@ -191,23 +198,53 @@ const sagaReportTemplate = (
   className: string,
   url: string,
   sagaName: string,
-  failedStep: any[],
+  failedSteps: any[],
 ) => {
-  const requestErrors = failedStep.filter(
-    (step) => !step.status && step.type === 'request',
-  );
-  const responseErrors = failedStep.filter(
-    (step) => !step.status && step.type === 'response',
-  );
-  const logicErrors = failedStep.filter(
-    (step) => !step.status && (step.type === 'logic' || step.type === ''),
-  );
+
+  const beforeAllFailures = failedSteps.filter((s) => s.phase === 'beforeAll');
+  const testCaseFailures = failedSteps.filter((s) => s.phase === 'test');
+  const afterAllFailures = failedSteps.filter((s) => s.phase === 'afterAll');
+  const beforeEachFailures = failedSteps.filter((s) => s.phase === 'beforeEach');
+  const afterEachFailures = failedSteps.filter((s) => s.phase === 'afterEach');
+
+  // group beforeEach
+  const beforeEachGroups = beforeEachFailures.reduce((groups, failure) => {
+    const caseTitle = failure.caseTitle || 'Unknown Case';
+    if (!groups[caseTitle]) {
+      groups[caseTitle] = [];
+    }
+    groups[caseTitle].push(failure);
+    return groups;
+  }, {});
+
+  // group test case
+  const testCaseGroups = testCaseFailures.reduce((groups, failure) => {
+    const caseTitle = failure.caseTitle || 'Unknown Case';
+    if (!groups[caseTitle]) {
+      groups[caseTitle] = [];
+    }
+    groups[caseTitle].push(failure);
+    console.log(JSON.stringify(groups, null, 2))
+    return groups;
+  }, {});
+
+  // group afterEach
+  const afterEachGroups = afterEachFailures.reduce((groups, failure) => {
+    const caseTitle = failure.caseTitle || 'Unknown Case';
+    if (!groups[caseTitle]) {
+      groups[caseTitle] = [];
+    }
+    groups[caseTitle].push(failure);
+    return groups;
+  }, {});
+
   return [
-    `=== Saga Test Report for ${className} ===`,
-    `• Host: ${url}`,
-    `• Sagas: ${sagaName}`,
-    `• Date: ${new Date().toLocaleString()}`,
+    `=== Saga Test Report For ${className} ===`,
+    `• URL: ${url}`,
+    `• Saga: ${sagaName}`,
+    `• Date: ${new Date().toISOString()}`,
     '',
+<<<<<<< HEAD
     '=== Execution Steps ===',
     ...failedStep.map((step, index) => {
       let errorMessage = '';
@@ -234,42 +271,58 @@ const sagaReportTemplate = (
 
       return `  ${index + 1}. [${step.status ? '✅ PASSED' : '❌ FAILED'}] ${step.stepName}${errorMessage ? `\n     └─ ${errorMessage}` : ''}`;
     }),
+=======
+    ...(beforeAllFailures.length > 0
+      ? [
+        '=== BeforeAll Failures ===',
+        ...beforeAllFailures.map((step, i) => formatStep(step, i)),
+      ]
+      : []),
+>>>>>>> main
     '',
-    '=== Error Details ===',
-    '[Request Errors]',
-    ...requestErrors.map((error, index) =>
-      [
-        '',
-        ` 🟣 ${index + 1}. Step: ${error.stepName}`,
-        `     ├─ Type: ${error.type || 'N/A'}`,
-        `     └─ Error: ${typeof error.error === 'string' ? error.error : JSON.stringify(error.error)}`,
-      ].join('\n'),
-    ),
+    ...(Object.keys(beforeEachGroups).length > 0
+      ? [
+        '=== BeforeEach Failures ===',
+        ...Object.entries(beforeEachGroups).flatMap(([caseTitle, failures]) => [
+          `📄 Case: ${caseTitle}`,
+          ...(failures as any[]).map((step, i) => formatStep(step, i)),
+          '',
+        ]),
+      ]
+      : []),
     '',
-    '[Response Errors]',
-    ...responseErrors.map((error, index) =>
-      [
+    '=== Test Case ===',
+    ...(Object.keys(testCaseGroups).length > 0
+      ? Object.entries(testCaseGroups).flatMap(([caseTitle, failures]) => [
+        `📄 Case: ${caseTitle}`,
+        ...(failures as any[]).map((step, i) => formatStep(step, i)),
         '',
-        ` 🟣 ${index + 1}. Step: ${error.stepName}`,
-        `     ├─ Type: ${error.type || 'N/A'}`,
-        `     └─ Error: ${typeof error.error === 'string' ? error.error : JSON.stringify(error.error)}`,
-      ].join('\n'),
-    ),
+      ])
+      : ['✅ All test cases passed']),
     '',
-    '[Logic Errors]',
-    ...logicErrors.map((error, index) =>
-      [
-        '',
-        ` 🟣 ${index + 1}. Step: ${error.stepName}`,
-        `     ├─ Type: ${error.type || 'N/A'}`,
-        `     └─ Error: ${typeof error.error === 'string' ? error.error : JSON.stringify(error.error)}`,
-      ].join('\n'),
-    ),
+    ...(Object.keys(afterEachGroups).length > 0
+      ? [
+        '=== AfterEach Failures ===',
+        ...Object.entries(afterEachGroups).flatMap(([caseTitle, failures]) => [
+          `📄 Case: ${caseTitle}`,
+          ...(failures as any[]).map((step, i) => formatStep(step, i)),
+          '',
+        ]),
+      ]
+      : []),
+    '',
+    ...(afterAllFailures.length > 0
+      ? [
+        '=== AfterAll Failures ===',
+        ...afterAllFailures.map((step, i) => formatStep(step, i)),
+      ]
+      : []),
     '',
     '=== End of Report ===',
   ].join('\n');
 };
 
+<<<<<<< HEAD
 const wsReportTemplate = (
   className: string,
   url: string,
@@ -373,3 +426,108 @@ const wsReportTemplate = (
     '=== End Report ===',
   ].join('\n');
 };
+=======
+// format từng step
+const formatStep = (step: any, index: number) => {
+  const stepInfo = [
+    `📝 ${index + 1}. ${step.stepName}`,
+    `   • Type: ${step.type}`,
+  ];
+  if (step.status) {
+    stepInfo.push(`   • Status: ✅ passed`);
+  } else {
+    stepInfo.push(`   • Error:\n${formatErrorDetails(step.error)}`);
+  }
+  return stepInfo.join('\n');
+};
+
+function groupEntriesByPath(entries: Entry[]): Record<string, ErrorItem[]> {
+  return entries.reduce((acc: object, curr: Entry) => {
+    const path = curr.path ?? 'unknown.path';
+    if (!acc[path]) acc[path] = [];
+    acc[path].push(curr);
+    return acc;
+  }, {});
+}
+
+function formatGroupedPath(path: string, items: ErrorItem[], errorType: string): string {
+  const lines = [`         └─ Path: ${path}`];
+
+  for (const item of items) {
+    lines.push(`            └─ ${item.message}`);
+    if (
+      errorType === 'value_mismatch' &&
+      item.actualValue !== undefined &&
+      item.expectedValue !== undefined
+    ) {
+      lines.push(
+        `                  - ActualValue: ${JSON.stringify(item.actualValue)}`,
+        `                  - ExpectedValue: ${JSON.stringify(item.expectedValue)}`
+      );
+    }
+  }
+
+  return lines.join('\n');
+}
+function formatErrorDetails(error: Record<string, Entry[]>): string {
+  return Object.entries(error).map(([errorType, entries]) => {
+      if (!Array.isArray(entries)) return '';
+
+      const groupedByPath = groupEntriesByPath(entries);
+
+      const formattedGroups = Object.entries(groupedByPath)
+        .map(([path, items]) => formatGroupedPath(path, items, errorType));
+
+      return `      └─ ${errorType}:\n${formattedGroups.join('\n')}`;
+    })
+    .join('\n');
+}
+
+
+// const formatError = (error: any) => {
+//   const formatSingleError = (err: any) => {
+//     const path = err.path || 'unknown path';
+//     let expected = err.expected || 'No expected value';
+//     let actual = err.actual || 'No actual value';
+//     const message = err.message || 'Validation failed';
+
+//     // Xử lý định dạng đặc biệt cho các dòng Index[]
+//     const formatIndexLines = (text: string) => {
+//       if (typeof text === 'string' && text.includes('Index[')) {
+//         return text.split('\n')
+//           .map(line => `         ${line}`)
+//           .join('\n');
+//       }
+//       return text;
+//     };
+
+//     expected = formatIndexLines(expected);
+//     actual = formatIndexLines(actual);
+
+//     // Thêm dòng trống sau Expected: và Actual: nếu có nhiều dòng
+//     const expectedLines = expected.includes('\n')
+//       ? `\n${expected}`
+//       : ` ${expected}`;
+//     const actualLines = actual.includes('\n')
+//       ? `\n${actual}`
+//       : ` ${actual}`;
+
+//     return [
+//       `    ├─ Path: ${path}`,
+//       `    ├─ Expected:${expectedLines}`,
+//       `    ├─ Actual:${actualLines}`,
+//       `    └─ Message: ${message}`,
+//     ].join('\n');
+//   };
+
+//   if (Array.isArray(error)) {
+//     return error.map(formatSingleError).join('\n');
+//   }
+
+//   if (typeof error === 'object' && error !== null) {
+//     return formatSingleError(error);
+//   }
+
+//   return `    └─ Message: ${String(error)}`;
+// };
+>>>>>>> main

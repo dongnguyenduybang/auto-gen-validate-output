@@ -1,10 +1,4 @@
-
-export type ExtractConfig = {
-  [key: string]: {
-    path: string[];
-    fields: string[];
-  };
-};
+import { ExtractConfig } from "./declarations";
 
 const mockUserConfig: ExtractConfig = {
   user: {
@@ -16,7 +10,17 @@ const mockUserConfig: ExtractConfig = {
 const createChannelConfig: ExtractConfig = {
   channel: {
     path: ['data', 'channel'],
-    fields: ['channelId', 'workspaceId', 'name', 'invitationLink', 'totalMembers'],
+    fields: [
+      'channelId',
+      'workspaceId',
+      'name',
+      'invitationLink',
+      'totalMembers',
+    ],
+  },
+  users: {
+    path: ['includes', 'users'],
+    fields: ['username'],
   },
 };
 
@@ -102,8 +106,12 @@ export const configMap: Record<string, ExtractConfig> = {
   sendDmMessage: sendDmMessageConfig,
   acceptMessage: acceptMessageConfig,
   ejectMessage: ejectMessageConfig,
+<<<<<<< HEAD
   openConnection: openConnectionConfig,
   wsActor: wsOpenConfigActor,
   wsRecipient: wsOpenConfigRecipient,
   openConnectionResume: openConnectionResumeConfig
 };
+=======
+};
+>>>>>>> main

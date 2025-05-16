@@ -1,7 +1,15 @@
 import { configMap } from './extract-config';
+<<<<<<< HEAD
 
 export function extractDatas(response: any, action: string, groupBySection: boolean = true): Record<string, any> {
   const result: Record<string, any> = {};
+=======
+export function extractDatas(
+  response: object,
+  action: string,
+): Record<string, any> {
+  const data: Record<string, any> = {};
+>>>>>>> main
 
   const config = configMap[action];
   if (!config) {
@@ -18,11 +26,27 @@ export function extractDatas(response: any, action: string, groupBySection: bool
       if (!source) return;
     }
 
+<<<<<<< HEAD
     if (groupBySection) {
       const sectionData: Record<string, any> = {};
       fields.forEach((field) => {
         if (source[field] !== undefined) {
           sectionData[field] = source[field];
+=======
+    if (Array.isArray(source)) {
+      source.forEach((item: string, index: number) => {
+        const suffix = index === 0 ? '' : index; // Hậu tố: '', '2', '3', ...
+        fields.forEach((field) => {
+          if (item[field] !== undefined) {
+            data[`${field}${suffix}`] = item[field];
+          }
+        });
+      });
+    } else {
+      fields.forEach((field) => {
+        if (source[field] !== undefined) {
+          data[field] = source[field];
+>>>>>>> main
         }
       });
       result[section] = sectionData;
