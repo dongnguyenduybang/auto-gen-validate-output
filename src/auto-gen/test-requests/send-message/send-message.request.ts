@@ -12,11 +12,11 @@ export const SendMessageRequest = {
   beforeAll: [
   ],
   afterAll: [
-    {
-      action: ACTION.DELETE_MOCKED_USER,
-      body: {
-        prefix: 'testabcssd',
-      },
-    },
+    // {
+    //   action: ACTION.DELETE_MOCKED_USER,
+    //   body: {
+    //     prefix: 'testabcssd',
+    //   },
+    // },
   ],
 };
