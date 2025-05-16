@@ -1,3 +1,5 @@
+import { Entry, ErrorItem } from "./declarations";
+
 // Template cho type 'request'
 export const combinedReportTemplate = (
   className?: string,
@@ -200,6 +202,17 @@ const sagaReportTemplate = (
       groups[caseTitle] = [];
     }
     groups[caseTitle].push(failure);
+    console.log(JSON.stringify(groups, null, 2))
+    return groups;
+  }, {});
+
+  // group afterEach
+  const afterEachGroups = afterEachFailures.reduce((groups, failure) => {
+    const caseTitle = failure.caseTitle || 'Unknown Case';
+    if (!groups[caseTitle]) {
+      groups[caseTitle] = [];
+    }
+    groups[caseTitle].push(failure);
     return groups;
   }, {});
 
@@ -277,11 +290,16 @@ const formatStep = (step: any, index: number) => {
   if (step.status) {
     stepInfo.push(`   • Status: ✅ passed`);
   } else {
+<<<<<<< HEAD
     stepInfo.push(`   • Error:\n${formatError(step.error)}`);
+=======
+    stepInfo.push(`   • Error:\n${formatErrorDetails(step.error)}`);
+>>>>>>> main
   }
   return stepInfo.join('\n');
 };
 
+<<<<<<< HEAD
 const formatError = (error: any) => {
   const formatSingleError = (err: any) => {
     const path = err.path || 'unknown path';
@@ -328,3 +346,94 @@ const formatError = (error: any) => {
 
   return `    └─ Message: ${String(error)}`;
 };
+=======
+function groupEntriesByPath(entries: Entry[]): Record<string, ErrorItem[]> {
+  return entries.reduce((acc: object, curr: Entry) => {
+    const path = curr.path ?? 'unknown.path';
+    if (!acc[path]) acc[path] = [];
+    acc[path].push(curr);
+    return acc;
+  }, {});
+}
+
+function formatGroupedPath(path: string, items: ErrorItem[], errorType: string): string {
+  const lines = [`         └─ Path: ${path}`];
+
+  for (const item of items) {
+    lines.push(`            └─ ${item.message}`);
+    if (
+      errorType === 'value_mismatch' &&
+      item.actualValue !== undefined &&
+      item.expectedValue !== undefined
+    ) {
+      lines.push(
+        `                  - ActualValue: ${JSON.stringify(item.actualValue)}`,
+        `                  - ExpectedValue: ${JSON.stringify(item.expectedValue)}`
+      );
+    }
+  }
+
+  return lines.join('\n');
+}
+function formatErrorDetails(error: Record<string, Entry[]>): string {
+  return Object.entries(error).map(([errorType, entries]) => {
+      if (!Array.isArray(entries)) return '';
+
+      const groupedByPath = groupEntriesByPath(entries);
+
+      const formattedGroups = Object.entries(groupedByPath)
+        .map(([path, items]) => formatGroupedPath(path, items, errorType));
+
+      return `      └─ ${errorType}:\n${formattedGroups.join('\n')}`;
+    })
+    .join('\n');
+}
+
+
+// const formatError = (error: any) => {
+//   const formatSingleError = (err: any) => {
+//     const path = err.path || 'unknown path';
+//     let expected = err.expected || 'No expected value';
+//     let actual = err.actual || 'No actual value';
+//     const message = err.message || 'Validation failed';
+
+//     // Xử lý định dạng đặc biệt cho các dòng Index[]
+//     const formatIndexLines = (text: string) => {
+//       if (typeof text === 'string' && text.includes('Index[')) {
+//         return text.split('\n')
+//           .map(line => `         ${line}`)
+//           .join('\n');
+//       }
+//       return text;
+//     };
+
+//     expected = formatIndexLines(expected);
+//     actual = formatIndexLines(actual);
+
+//     // Thêm dòng trống sau Expected: và Actual: nếu có nhiều dòng
+//     const expectedLines = expected.includes('\n')
+//       ? `\n${expected}`
+//       : ` ${expected}`;
+//     const actualLines = actual.includes('\n')
+//       ? `\n${actual}`
+//       : ` ${actual}`;
+
+//     return [
+//       `    ├─ Path: ${path}`,
+//       `    ├─ Expected:${expectedLines}`,
+//       `    ├─ Actual:${actualLines}`,
+//       `    └─ Message: ${message}`,
+//     ].join('\n');
+//   };
+
+//   if (Array.isArray(error)) {
+//     return error.map(formatSingleError).join('\n');
+//   }
+
+//   if (typeof error === 'object' && error !== null) {
+//     return formatSingleError(error);
+//   }
+
+//   return `    └─ Message: ${String(error)}`;
+// };
+>>>>>>> main

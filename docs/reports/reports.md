@@ -2,36 +2,28 @@
 
 #### Report Request
 ```
-=== Test Report for send-message ===
-• Host: https://api-sb11.rpc.ziichat.dev
-• Endpoint: /Message/SendMessage
-• Date: 01/04/2025, 10:36:39
+=== Request Test Report for update-message ===
+• Host: N/A
+• Endpoint: /Message/UpdateMessage
+• Date: 15/05/2025, 16:00:23
 
-=== Validation Metrics ===
-■ DTO Validation:
-  ✅ Passed: 1
-  ❌ Failed: 1
-  📊 Total: 45
+=== Execution Steps ===
 
-=== Error Details ===
-[DTO Validation Issues]
-
-  🔴 Case #42
-     ├─ Status: 500
-     ├─ Missing: None
-     ├─ Extra: None
-     └─ Details: TypeError: value.trim is not a function
+=== Test Summary ===
+✅ Passed: 3000
+❌ Failed: 0
+📊 Total: 3000
 
 === System Metrics ===
 ▧ Status Code Distribution:
-  200: 0
-  201: 1
-  400: 0
-  403: 0
-  404: 0
-  500: 1
+ 🟢 200: 120
+ 🟢 201: 0
+ 🟠 400: 0
+ 🟠 403: 2880
+ 🟠 404: 0
+ 🔴 500: 0
 
-▧ Unique Error Patterns:
+[DTO Validation Issues]
 
 === End of Report ===
 ```
@@ -65,31 +57,38 @@
 
 #### Report Sagas
 ```
-=== Saga Test Report for send-message ===
-• Host: https://api-sb11.rpc.ziichat.dev
-• Sagas: SendMessage
-• Date: 09/04/2025, 09:49:38
+=== Saga Test Report For create-channel ===
+• URL: N/A
+• Saga: CreateChannelSaga
+• Date: 2025-05-15T08:10:12.029Z
 
-=== Execution Steps ===
-  1. [✅ PASSED] mockUser
-  2. [✅ PASSED] createChannel
-  3. [❌ FAILED] sendMessage
-     └─ Validation failed at includes.channels.workspaceId
 
-=== Error Details ===
-[Request Errors]
+=== BeforeEach Failures ===
+📄 Case: Case 1
+📝 1. mockUser
+   • Type: null
+   • Status: ✅ passed
+📝 2. createChannel
+   • Type: null
+   • Status: ✅ passed
 
-[Response Errors]
 
-[Logic Errors]
+=== Test Case ===
+📄 Case: should return false when member update channel name
+📝 1. acceptInvitation
+   • Type: expect
+   • Error:
+      └─ missing_field:
+         └─ Path: includes.members
+            └─ Field 'nickname' in actual[0] is MISSING in expected[0]
+            └─ Field 'nickname' in actual[1] is MISSING in expected[1]
 
- 🔴 1. Step: sendMessage
-     ├─ Type: logic
-     └─ Error: {"path":"includes.channels.workspaceId","expected":"First element must equal 1","actual":"[\"0\"]","message":"Validation failed at includes.channels.workspaceId"}
+
+=== AfterEach Failures ===
+📄 Case: should return false when member update channel name
+📝 1. deleteMockedUsers
+   • Type: null
+   • Status: ✅ passed
 
 === End of Report ===
 ```
-- Có 3 loại lỗi trong sagas là: DTO, Response, Logic
-- Khi có bất kỳ lỗi trong 3 loại có lỗi sẽ log ra và dừng ngay tại step đang lỗi
-- Exexcute steps sẽ log ra field nào bị lỗi 
-- Error detail sẽ log ra cụ thể chi tiết lỗi như thế nào 

@@ -7,6 +7,7 @@ import { execSync } from 'child_process';
 import { genTestResponse } from './utils/gen-test-response';
 import { genTestSaga } from './utils/gen-test-saga';
 import { ActionHandler } from './utils/declarations';
+import { generateAllReports } from './utils/combine-report';
 
 const args = process.argv.slice(2);
 if (args.length < 2) {
@@ -20,13 +21,15 @@ const [action, type, ...restArgs] = args;
 let subType, dtoName;
 
 if (type === 'report') {
-  // Đối với report: pnpm clear report response send-message
+  
   [subType, dtoName] = restArgs;
-} else {
-  // Đối với các trường hợp khác: pnpm gen request send-message
+} else if (type !== 'reports') {
+
   dtoName = restArgs[0];
+} else {
+  dtoName = restArgs[0]; 
 }
-const validTypes = ['request', 'response', 'saga', 'report'];
+const validTypes = ['request', 'response', 'saga', 'report', 'reports'];
 
 if (!validTypes.includes(type)) {
   console.error(`Invalid type. Valid types: ${validTypes.join(', ')}`);
@@ -41,6 +44,7 @@ const actionHandlers: Record<string, Record<string, ActionHandler[]>> = {
     ],
     response: [(dto) => Promise.resolve(genTestResponse(dto))],
     saga: [(dto) => Promise.resolve(genTestSaga(dto))],
+    reports: [(dto) => generateAllReports(dto)],
   },
   test: {
     request: [runTests('test-requests')],
@@ -53,7 +57,6 @@ const actionHandlers: Record<string, Record<string, ActionHandler[]>> = {
     saga: [clearFiles('test-sagas')],
     report: [
       (dto) => {
-        // Xác định  trên subType (request/response/saga)
         const basePath = `test-${subType}s/reports`;
         return clearReports(basePath)(dto);
       },
@@ -142,33 +145,40 @@ function clearReports(reportType: string): ActionHandler {
 }
 async function main() {
   console.log(
-    `Processing "${type}${subType ? ` ${subType}` : ''}" for: ${dtoName}`,
+    `Processing "${type}${subType ? ` ${subType}` : ''}"${dtoName ? ` for: ${dtoName}` : ''
+    }`,
   );
 
   try {
     const handlers = actionHandlers[action]?.[type];
     if (!handlers) throw new Error('Invalid action');
 
-    const isBulkAction =
-      dtoName &&
-      (dtoName.includes('-requests') ||
-        dtoName.includes('-responses') ||
-        dtoName.includes('-sagas'));
-
-    if (isBulkAction) {
-      // Truyền toàn bộ mảng handlers
-      await handleBulkAction(dtoName, handlers);
-    } else if (dtoName) {
+    if (type === 'reports') {
       for (const handler of handlers) {
         await handler(dtoName);
       }
     } else {
-      throw new Error('Missing dtoName parameter');
+      const isBulkAction =
+        dtoName &&
+        (dtoName.includes('-requests') ||
+          dtoName.includes('-responses') ||
+          dtoName.includes('-sagas'));
+
+      if (!dtoName) {
+        throw new Error('Missing dtoName parameter');
+      }
+
+      if (isBulkAction) {
+        await handleBulkAction(dtoName, handlers);
+      } else {
+        for (const handler of handlers) {
+          await handler(dtoName);
+        }
+      }
     }
   } catch (error) {
     console.error('Error:', error.message);
     process.exit(1);
   }
 }
-
 main();

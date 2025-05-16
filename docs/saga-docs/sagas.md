@@ -14,338 +14,149 @@ Bước 1: Định nghĩa file cấu trúc các step sẽ check
 
 - 📄 send-message.saga.ts 
 ```
-import { Operator } from "../../enums/operator.enum";
-import { Element } from "../../enums/element.enum";
+import { SagaTestSuite } from '../../utils/declarations';
+import {
+  VAR,
+  ACTION,
+  HEADER_LIST,
+} from '../../enums';
+import { executeFunction } from '../../utils/expect-config';
 
-export const SendMessageSaga = {
+export const CreateChannelSaga: SagaTestSuite = {
+  options: [
+    {
+      beforeEach: [
+        {
+          action: ACTION.MOCK_USER,
+          body: {
+            prefix: 'testabc',
+            quantity: 2,
+            badge: 0,
+          }
+        },
+        {
+          action: ACTION.CREATE_CHANNEL,
+          body: {
+            name: 'channel1',
+            workspaceId: VAR.workspaceId
+          },
+          headers: HEADER_LIST.create({
+            token: VAR.token
+          })
+        }
+      ],
+    },
+    {
+      afterEach: [
+        {
+          action: ACTION.DELETE_MOCKED_USER,
+          body: {
+            prefix: 'testabc'
+          }
+        }
+      ]
+    }
+  ],
   steps: [
     {
-      action: 'mockUser',
-      body: {
-        quantity: 2,
-        prefix: 'testabcssd',
-        badge: 0
-      }
-    },
-    {
-      action: 'createChannel',
-    },
-    {
-      action: 'sendMessage',
-      method: METHOD.POST,
-      path: APIPath.Message.SendMessage,
-      body: {
-        workspaceId: '0',
-        channelId: VAR.channelId,
-        content: 'user send message',
-        ref: 'ref',
-      },
-      header: HeaderList.Token(),
-      expect: {
-        ok: { operator: Operator.EQUAL, expect: true },
-        data: {
-          message: {
-            workspaceId: { operator: Operator.EQUAL, expect: 0 },
-            channelId: { operator: Operator.EQUAL, expect: VAR.channelId },
-            userId: { operator: Operator.EQUAL, expect: VAR.userId },
-            content: { operator: Operator.EQUAL, expect: 'user send message' },
-            messageType: { operator: Operator.EQUAL, expect: 0 },
-            messageStatus: { operator: Operator.EQUAL, expect: 1 },
-            attachmentType: { operator: Operator.EQUAL, expect: 0 },
+      title: 'should return false when member update channel name',
+      step: [
+        {
+          action: ACTION.ACCEPT_INVITATION,
+          body: {
+            invitationLink: VAR.invitationLink,
+          },
+          headers: HEADER_LIST.create({
+            token: VAR.token1,
+          }),
+          expect: {
+            ok: true,
+            data: executeFunction(
+              'data.channel',
+              ACTION.GET_CHANNEL,
+              {
+                body: { channelId: VAR.channelId, workspaceId: VAR.workspaceId }
+              },
+              null,
+              null
+            ),
+            includes: [
+              executeFunction(
+                'includes.members',
+                ACTION.LIST_MEMBERS,
+                {
+                  body: { channelId: VAR.channelId, workspaceId: VAR.workspaceId }
+                },
+                null,
+                null
+              ),
+            ]
           },
         },
-        includes: {
-          users: [
-            {
-              field: 'userId',
-              operator: Operator.INCLUDE,
-              element: Element.FIRST,
-              expect: [VAR.userId],
-            },
-            {
-              field: 'userType',
-              operator: Operator.INCLUDE,
-              element: Element.FIRST,
-              expect: 0,
-            },
-            {
-              field: 'profile.userBadgeType',
-              operator: Operator.EQUAL,
-              expect: 0,
-            },
-          ],
-          channels: [
-            {
-              field: 'workspaceId',
-              operator: Operator.EQUAL,
-              element: Element.FIRST,
-              expect: 0,
-            },
-            {
-              field: 'channelId',
-              operator: Operator.EQUAL,
-              element: Element.FIRST,
-              expect: [VAR.channelId],
-            },
-            {
-              field: 'userId',
-              operator: Operator.EQUAL,
-              element: Element.FIRST,
-              expect: [VAR.userId],
-            },
-            {
-              field: 'totalMembers',
-              operator: Operator.EQUAL,
-              element: Element.FIRST,
-              expect: [VAR.totalMembers],
-            },
-            {
-              field: 'name',
-              operator: Operator.EQUAL,
-              element: Element.FIRST,
-              expect: [VAR.name],
-            },
-          ],
-          members: [
-            {
-              field: 'workspaceId',
-              operator: Operator.INCLUDE,
-              element: Element.ALL,
-              expect: 0,
-            },
-            {
-              field: 'channelId',
-              operator: Operator.INCLUDE,
-              element: Element.ALL,
-              expect: [VAR.channelId],
-            },
-            {
-              field: 'userId',
-              operator: Operator.INCLUDE,
-              element: Element.FIRST,
-              expect: [VAR.userId],
-            },
-            {
-              field: 'role',
-              operator: Operator.INCLUDE,
-              element: Element.FIRST,
-              expect: ['owner'],
-            },
-            {
-              field: 'roles.role',
-              operator: Operator.INCLUDE,
-              element: Element.ALL,
-              expect: ['everyone', 'owner'],
-            },
-          ],
-          channelMetadata: [
-            {
-              field: 'workspaceId',
-              operator: Operator.INCLUDE,
-              element: Element.ALL,
-              expect: 0,
-            },
-            {
-              field: 'channelId',
-              operator: Operator.INCLUDE,
-              element: Element.ALL,
-              expect: [VAR.channelId],
-            },
-          ],
-        },
-      },
+      ],
     },
-    {
-      action: 'acceptInvitation',
-      method: METHOD.POST,
-      path: APIPath.Invitation.AcceptInvitation,
-      body: { invitationLink: VAR.invitationLink },
-      header: HeaderList.Token1(),
-      expect: {
-        ok: { operator: Operator.EQUAL, expect: true },
-      },
-    },
-    {
-      action: 'getChannel',
-      method: METHOD.GET,
-      path: APIPath.ViewChannel.GetChannel,
-      body: { channelId: VAR.channelId, workspaceId: '0' },
-      header: HeaderList.Token(),
-      expect: {
-        ok: { operator: Operator.EQUAL, expect: true },
-      },
-    },
+
   ],
 };
-
 ```
 
 Bước 2: Tiến hành chạy gen script
 
 ```bash
-  pnpm gen saga send-message
+  pnpm gen saga create-channel
 ```
  Sau khi chạy gen script sẽ gen ra được file là 
-  - 📄 send-message.saga.spec.ts
+  - 📄 create-channel.saga.spec.ts
 
 Bước 3: Tiến hành chạy test script
 
 ```bash
-  pnpm test saga send-message
+  pnpm test saga create-channel
 ```
-  Sau khi chạy test script thì log sẽ được ghi vào file report 
+Bước 4: Tiến hành chạy script ghi report
 
+```bash
+  pnpm gen reports create-channel
+```
+Sau khi chạy script gen reports thì file reports sẽ được ghi vào folder reports tương ứng
 
 * Note
     - Cần đặt tên action theo đúng với tên endpoint và theo kiểu CamelCase 
     
     - Phần expect của test chính sẽ có cấu trục giống như cấu trúc API trả về 
 
-        + Cấu trúc của API
-        ```
-          {
-            "ok": true,
-            "data": {
-                "message": {
-                    
-                }
-            },
-            "includes": {
-                "users": [
-                  
-                ],
-                "channels": [
-                  
-                ],
-                "members": [
-                    
-                ],
-                "channelMetadata": [
-                  
-                ]
-            }
-          }
-        ```
-
         + Cấu trúc của expect
         ```
-          expect: {
-            ok: {
-
-            },
-            data: {
-                message: {
-                  
+          {
+            ok: true,
+            data: executeFunction(
+              'data.channel',
+              ACTION.GET_CHANNEL,
+              {
+                body: { channelId: VAR.channelId, workspaceId: VAR.workspaceId }
+              },
+              null,
+              null
+            ),
+            includes: [
+              executeFunction(
+                'includes.members',
+                ACTION.LIST_MEMBERS,
+                {
+                  body: { channelId: VAR.channelId, workspaceId: VAR.workspaceId }
                 },
-            },
-            includes: {
-                users: [
-                  
-                ],
-                channelMetadata: [
-
-                ],
-                members: [
-
-                ],
-                channels: [
-                  
-                ]
-            }
+                null,
+                null
+              )
+            ]
           }
         ```
-      + Cấu trúc expect 
-        - Đối với object
-          ```
-          data: {
-                message: {
-                  workspaceId: { operator: Operator.EQUAL, expect: 0 },
-                  channelId: { operator: Operator.EQUAL, expect: VAR.channelId },
-                  userId: { operator: Operator.EQUAL, expect: VAR.userId },
-                  content: { operator: Operator.EQUAL, expect: 'user send message' },
-                  messageType: { operator: Operator.EQUAL, expect: 0 },
-                  messageStatus: { operator: Operator.EQUAL, expect: 1 },
-                  attachmentType: { operator: Operator.EQUAL, expect: 0 },
-                },
-              },
-          ```
-          Defined từng filed có trong object cần expect với cấu trúc expect như trên.
-
-          * Note: 
-            - operator: toán tử
-            - expect: so sánh với giá trị ...
-          
-          + Cần đặt đúng tên như các property trong API trả về
-          + Đối với object chỉ sử dụng toán tử EQUAL
-          + Expect với string phải để trong dấu => 'abc'
-          + Expect với number phải để kiểu => number
-          + Expect với biến cục bộ có enum VAR
-
-        - Đối với array
-          ```
-          users: [
-                  {
-                    field: 'userId',
-                    operator: Operator.INCLUDE,
-                    element: Element.FIRST,
-                    expect: [VAR.userId],
-                  },
-                  {
-                    field: 'userType',
-                    operator: Operator.INCLUDE,
-                    element: Element.FIRST,
-                    expect: 0,
-                  },
-                  {
-                    field: 'profile.userBadgeType',
-                    operator: Operator.EQUAL,
-                    expect: 0,
-                  },
-                ],
-          ```
-          * Note
-            + Mỗi object được bao bên ngoài bởi một array được xác định là 1 filed của mảng con bên trong obj đó
-              ```
-                  {
-                    field: 'userId',
-                    operator: Operator.INCLUDE,
-                    element: Element.FIRST,
-                    expect: [VAR.userId],
-                  },
-              ``` 
-              Đây được xác định là một filed có trong obj
-                - field: Tên filed có trong obj
-                - operator: Đối với array chỉ sử dụng operator là INCLUDE
-                ```
-                # Expect 
-                {
-                    field: 'roles.role',
-                    operator: Operator.INCLUDE,
-                    element: Element.ALL,
-                    expect: ['everyone', 'owner']
-                  }
-                # Response return API
-                  "roles": [
-                          {
-                              "role": "owner",
-                              "weight": 0
-                          },
-                          {
-                              "role": "everyone",
-                              "weight": 2
-                          }
-                    ],
-                ```
-                  + Operator.INCLUDE => Phải đi kèm với element để xác định sẽ lấy mảng con thứ mấy trong mảng được bao bên ngoài.
-                - element: Thứ tự mảng con được xác định 
-                  + ALL: Lấy tất cả các mảng con
-                  + FIRST: Lấy mảng con đầu tiên
-                  + LAST: Lấy mảng con cuối cùng
-                - expect: 
-                  + String: được bao bên ngoài là dấu => ['abcde']
-                  + Number: phải là kiểu number => 0
-                
-                * Note 2
-                  - Có thể expect nhiều biến cục bộ => [VAR.userId, VAR.userId1]. Nhưng với điều kiện element bắt buộc là ALL và operator là INCLUDE
-                  - Operator và Element là Enum
-                  - Element cố thể undefined nếu không cần dùng chỉ áp dụng với đối với check kiểu obj
+    - Cấu trúc expect: Expect theo cấu trúc call function để check
+        + executeFunction: có 5 tham số tuỳ chỉnh và 1 tham số cố định
+            + Tham số tuỳ chỉnh:
+              - Path: path đang thực hiện gọi function để check ( includes.members, ...)
+              - Action: action gọi đến một API khác để lấy response và so sánh với response đang check
+              - Payload: body của action, và header là tham số cố định mặc định sẽ lấy token đầu tiên của context
+              - Filter: filter các filed của response đang check (optional)
+              - Expect: defined giá trị sẽ so sánh với response đang check dựa vào filter
+      

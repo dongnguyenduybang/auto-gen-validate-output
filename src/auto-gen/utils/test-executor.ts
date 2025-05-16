@@ -14,6 +14,7 @@ import { getApiFunctions } from '../functions/api-registry';
 import { extractDatas } from './extract-data';
 import { Step, StepResult } from './declarations';
 import { formatErrors, resolveExpectConfig, resolveVariables } from './helper';
+import { ACTION_CONFIG } from '../enums';
 
 const responseClassMap = {
   CreateChannelResponse,
@@ -48,6 +49,7 @@ async function executeStep(
   try {
     const { action, body, headers, expect: expectConfig } = step;
 
+    const actionInfo = ACTION_CONFIG[action as keyof typeof ACTION_CONFIG];
     // resolve var từ  body và header
     const resolvedBody = resolveVariables(body, context);
     const resolvedHeader = resolveVariables(headers, context);
@@ -56,15 +58,23 @@ async function executeStep(
 
     // Execute API call
     const response = await apiFunction({
+      method: actionInfo.method,
+      path: actionInfo.path,
       headers: resolvedHeader,
       body: resolvedBody,
     });
-    if (response?.data?.error?.code === 1000) {
+
+    const hasExpectConfig = !!expectConfig;
+    if ((response?.data?.ok === false || response.error !== undefined) && !hasExpectConfig) {
       return {
-        type: 'request',
-        status: response.data.ok,
-        stepName: `${step.action}`,
-        error: JSON.stringify(response?.data?.error?.details),
+        type: 'request DTO',
+        status: false,
+        stepName: action,
+        error: response.error || {
+          code: response.data.error.code,
+          message: response.data.error.message,
+          details: response.data.error.details,
+        },
       };
     }
     // validate response

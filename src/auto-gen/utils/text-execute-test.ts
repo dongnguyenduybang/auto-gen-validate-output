@@ -1,20 +1,10 @@
-import { createApiValidator } from './api-validator';
-import { SendMessageResponse } from '../response/send-message.response';
-import { ClassConstructor, plainToClass } from 'class-transformer';
-import { CreateChannelResponse } from '../response/create-channel.response';
-import { GetChannelResponse } from '../response/get-channel.response';
-import { validateResponses } from '../validates/validate-response';
-import { MockUserResponse } from '../response/mock-user';
-import { AcceptInvitationResponse } from '../response/accept-invitation.response';
-import { BaseResponse } from '../response/general-response';
-import { SendDmMessageResponse } from '../response/send-dm-message.response';
-import { UpdateMessageResponse } from '../response/update-message.response';
 import { getApiFunctions } from '../functions/api-registry';
 import { extractDatas } from './extract-data';
-import { Step, ValidationError } from './declarations';
+import { Step, StepResult, ValidationError } from './declarations';
 import { TestContext } from './text-context';
 import { ACTION_CONFIG } from '../enums';
 import { handleExpectConfig } from './check-expect';
+<<<<<<< HEAD
 
 export interface StepResult {
   type?: string;
@@ -33,6 +23,9 @@ const responseClassMap = {
   SendDmMessageResponse,
   UpdateMessageResponse,
 };
+=======
+import { checkResponse, delay } from './helper';
+>>>>>>> main
 
 export async function executeSteps(
   steps: Step[],
@@ -56,6 +49,7 @@ async function executeSingleStep(
   step: Step,
   context?: TestContext,
 ): Promise<StepResult> {
+<<<<<<< HEAD
   try {
     if (step.delay) {
       await new Promise((resolve) => setTimeout(resolve, step.delay));
@@ -96,31 +90,52 @@ async function executeSingleStep(
         },
       };
     }
+=======
 
+  const { action, body, headers, expect: expectConfig } = step;
+  // defined method & path dựa vào action config
+  const actionInfo = ACTION_CONFIG[action as keyof typeof ACTION_CONFIG];
+  // resolve variables body and headers
+  const resolveBody = resolveVariables(body, context);
+  const resolveHeaders = resolveVariables(headers, context);
+
+  // get api function
+  const apiFunction = getApiFunctions(action, context);
+  const response = await apiFunction({
+    method: actionInfo.method,
+    path: actionInfo.path,
+    headers: resolveHeaders,
+    body: resolveBody,
+  });
+>>>>>>> main
+
+  const hasExpectConfig = !!expectConfig;
+  if ((!response?.data?.ok) && !hasExpectConfig) {
+    return {
+      type: 'request DTO',
+      status: false,
+      stepName: action,
+      error: response.error || {
+        code: response.data.error.code,
+        message: response.data.error.message,
+        details: response.data.error.details,
+      },
+    };
+
+  } else {
     // validate response
+    const resultCheckResponse = await checkResponse(step, response.data, resolveBody, context)
+    if (!resultCheckResponse.status) {
+      return resultCheckResponse
+    } else {
 
-    const stepName =
-      step.action.charAt(0).toUpperCase() + step.action.slice(1) + 'Response';
-    const responseClass =
-      responseClassMap[stepName as keyof typeof responseClassMap];
-    const validateResponse = plainToClass(
-      responseClass as ClassConstructor<BaseResponse>,
-      response.data,
-    );
-    const result = await validateResponses(
-      resolveBody,
-      validateResponse,
-      context,
-    );
-    if (result.length > 0) {
-      return {
-        type: 'response',
-        status: false,
-        stepName: action,
-        error: JSON.stringify(result, null, 2),
-      };
-    }
+      // save context
+      if (response?.data.data) {
+        const extractedData = extractDatas(response.data, action);
+        context.mergeData(extractedData);
+      }
 
+<<<<<<< HEAD
     // save context
     if (response.data?.data !== undefined) {
       const extractedData = extractDatas(response.data, action);
@@ -160,7 +175,35 @@ async function executeSingleStep(
       stepName: step.action,
       error: error.message || error,
     };
+=======
+      // validate saga
+      if (expectConfig) {
+        const resolveConfig = resolveExpectConfig(expectConfig, context)
+        // get api function
+        const result = await handleExpectConfig(response.data, resolveConfig, context);
+        if (result.length > 0) {
+          const groupedErrors = result.reduce((acc, item) => {
+            const key = item.type || 'unknown';
+            if (!acc[key]) acc[key] = [];
+            acc[key].push(item);
+            return acc;
+          }, {});
+          return {
+            type: 'expect',
+            status: false,
+            stepName: action,
+            error: groupedErrors
+          };
+        }
+      }
+    }
+>>>>>>> main
   }
+  return {
+    type: null,
+    status: true,
+    stepName: action,
+  };
 }
 
 export function resolveVariables(obj: any, context: TestContext): any {
@@ -224,3 +267,4 @@ function formatErrors(errors: ValidationError[]): any {
 
   return formattedErrors.length === 1 ? formattedErrors[0] : formattedErrors;
 }
+

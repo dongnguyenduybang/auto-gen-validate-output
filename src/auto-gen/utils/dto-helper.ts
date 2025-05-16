@@ -1,13 +1,12 @@
 import 'reflect-metadata';
 import { ErrorMessage } from '../enums';
-import { checkULID, isEmoji } from './helper';
-
+import { checkRegexULID, isEmoji } from './helper';
+import { FieldValueObject, PayloadGen } from './declarations';
 export function getDecorators(
-  target: any,
+  target: Object,
   propertyKey: string,
 ): Record<string, any> {
   const decorators: Record<string, any> = {};
-
   let metadataKeys = Reflect.getMetadataKeys(target, propertyKey);
 
   metadataKeys.forEach((key) => {
@@ -24,25 +23,25 @@ export function getDecorators(
     });
   }
 
-  let proto = Object.getPrototypeOf(target);
-  while (proto && proto !== Object.prototype) {
-    metadataKeys = Reflect.getMetadataKeys(proto, propertyKey);
+  // let proto = Object.getPrototypeOf(target);
+  // while (proto && proto !== Object.prototype) {
+  //   metadataKeys = Reflect.getMetadataKeys(proto, propertyKey);
 
-    metadataKeys.forEach((key) => {
-      if (!decorators[key]) {
-        decorators[key] = Reflect.getMetadata(key, proto, propertyKey);
-      }
-    });
-    proto = Object.getPrototypeOf(proto);
-  }
+  //   metadataKeys.forEach((key) => {
+  //     if (!decorators[key]) {
+  //       decorators[key] = Reflect.getMetadata(key, proto, propertyKey);
+  //     }
+  //   });
+  //   proto = Object.getPrototypeOf(proto);
+  // }
 
   return decorators;
 }
-
 export function generateErrorCases(
   dtoClass: any,
   payload: Record<string, any>,
-): any[] {
+): PayloadGen[] {
+
   const instance = new dtoClass();
   const keys = Object.keys(instance);
   if (keys.length === 0) {
@@ -71,17 +70,16 @@ export function generateErrorCases(
     const errors = softErrorFromMap(testcaseGen, dtoClass);
 
     if (errors.length > 0) {
-      return { testcaseGen, expectedDetail: errors };
+      return { body: testcaseGen, expects: errors };
     }
-
-    return { testcaseGen, expectedDetail: [] };
+    return { body: testcaseGen, expects: [] };
   });
 }
 export function generateErrorVariantsForField(
-  fieldValue: any,
+  fieldValue: unknown,
   decorators: Record<string, any>,
-): any[] {
-  const variants: any[] = [];
+): unknown[] {
+  const variants: unknown[] = [];
 
   // 2. Sai kiểu dữ liệu
   const fieldType = decorators['type'] || 'string';
@@ -134,9 +132,6 @@ export function generateErrorVariantsForField(
     variants.push(new Array(decorators['maxArray'] + 1).fill(null));
   }
 
-  // 6. Giá trị hợp lệ
-  // variants.push(fieldValue);
-
   if (!decorators['optional']) {
     variants.push(undefined);
   }
@@ -148,287 +143,509 @@ export function generateErrorVariantsForField(
   if (decorators['notNull']) {
     variants.push('');
   }
-
   return [...new Set(variants)];
 }
-
-export function combineFields(arrays: any[][]): any[][] {
+export function combineFields(arrays: FieldValueObject[][]): FieldValueObject[][] {
   if (!Array.isArray(arrays) || arrays.some((arr) => !Array.isArray(arr))) {
     throw new Error(
       'Invalid input for combineFields: Expected an array of arrays',
     );
   }
 
-  return arrays.reduce((a, b) => a.flatMap((d) => b.map((e) => [d, e].flat())));
+  return arrays.reduce<FieldValueObject[][]>((a, b) => a.flatMap(d => b.map(e => [...d, e])),
+    [[]]
+  );
 }
-
 export function generateCombinations(
   fields: string[],
   errorCasesByField: Record<string, any[]>,
-): any[] {
+): FieldValueObject[] {
   const fieldErrorVariants = fields.map((field) => {
     return errorCasesByField[field].map((errorVariant) => ({
       [field]: errorVariant,
     }));
   });
-  console.log(fieldErrorVariants);
+  // console.log(fieldErrorVariants);
   return combineFields(fieldErrorVariants).map((combination) => {
     return combination.reduce((acc, curr) => ({ ...acc, ...curr }), {});
   });
 }
+// export function mapError(
+//   field: string,
+//   value: unknown,
+//   decorators: Record<string, any>,
+// ): string[] {
+//   const errors: string[] = [];
+//   const addError = (
+//     customMessage: string,
+//     defaultMessage: string,
+//   ) => {
+//     const errorMessage = customMessage || defaultMessage;
+//     if (errorMessage && !errors.includes(errorMessage)) {
+//       errors.push(errorMessage);
+//     }
+//   };
 
-export function mapError(
-  field: string,
-  value: any,
-  decorators: Record<string, any>,
-): string[] {
-  const errors: string[] = [];
-  const addError = (
-    customMessage: string | undefined,
-    defaultMessage: string,
-  ) => {
-    const errorMessage = customMessage || defaultMessage;
-    if (errorMessage && !errors.includes(errorMessage)) {
-      errors.push(errorMessage);
-    }
-  };
+//   // 1. Kiểm tra optional
+//   if (decorators['optional'] && (value === undefined || value === null)) {
+//     return errors;
+//   }
 
-  // 1. Kiểm tra optional
-  if (decorators['optional'] && (value === undefined || value === null)) {
-    return errors;
+//   // 2. Kiểm tra isDefined
+//   if (value === undefined || value === null) {
+//     if (decorators['isDefined']) {
+//       if (decorators['isChecked']) {
+//         if (field === 'channelId') {
+//           addError(
+//             decorators['isDefinedMessage'],
+//             'Unsupported permission type',
+//           );
+//         } else if (field === 'workspaceId' || field === 'userId') {
+//           addError(
+//             decorators['isDefinedMessage'],
+//             'Could not resolve permission type',
+//           );
+//         } else {
+//           addError(
+//             decorators['isDefinedMessage'],
+//             `${ErrorMessage.DEFINED} '${field}'`,
+//           );
+//         }
+//       } else {
+//         addError(
+//           decorators['isDefinedMessage'],
+//           `${ErrorMessage.DEFINED} '${field}'`,
+//         );
+//       }
+//       return errors;
+//     }
+//   }
+
+//   // 3. Kiểm tra notEmpty
+//   if (value === '' && decorators['notEmpty']) {
+//     if (decorators['isChecked']) {
+//       if (
+//         field === 'workspaceId' ||
+//         field === 'channelId' ||
+//         field === 'userId'
+//       ) {
+//         addError(
+//           decorators['notEmptyMessage'],
+//           'Could not resolve permission type',
+//         );
+//       } else {
+//         addError(
+//           decorators['notEmptyMessage'],
+//           `${ErrorMessage.DEFINED} '${field}'`,
+//         );
+//       }
+//     } else {
+//       addError(decorators['notEmptyMessage'], `${field} ${ErrorMessage.EMPTY}`);
+//     }
+
+//     // `${field} ${ErrorMessage.INVALID_RANGE_STRING_LENGTH} ${decorators['minLength']} to ${decorators['maxLength']} length`
+//     // return errors;
+//   }
+
+//   // 5. Kiểm tra ULID
+//   if (decorators['isULID']) {
+//     if (
+//       typeof value === 'string' &&
+//       (value === '' || !value.startsWith('{{'))
+//     ) {
+//       addError(null, `${field} ${ErrorMessage.INVALID_ULID}`);
+//     } else if (typeof value === 'string' && !checkULID(value)) {
+//       addError(null, `${field} ${ErrorMessage.INVALID_ULID}`);
+//     }
+//   }
+
+//   // 6. Kiểm tra emoji
+//   if (decorators['isEmoji']) {
+//     const isInvalid =
+//       typeof value === 'string' && (value === '' || !isEmoji(value));
+//     if (isInvalid) {
+//       addError(null, `${field} ${ErrorMessage.INVALID_EMOJI}`);
+//       addError(null, `${field} ${ErrorMessage.INVALID_EMOJI_LENGTH}`);
+//     }
+//   }
+
+//   // 4. Kiểm tra kiểu string và các điều kiện liên quan
+//   if (decorators['type'] === 'string') {
+//     if (typeof value !== 'string') {
+//       if (decorators['isChecked']) {
+//         if (
+//           field === 'workspaceId' ||
+//           field === 'channelId' ||
+//           field === 'userId'
+//         ) {
+//           addError(decorators['stringMessage'], null);
+//         } else {
+//           addError(
+//             decorators['stringMessage'],
+//             `${field} ${ErrorMessage.INVALID_TYPE_STRING}`,
+//           );
+//         }
+//       } else {
+//         addError(
+//           decorators['stringMessage'],
+//           `${field} ${ErrorMessage.INVALID_TYPE_STRING}`,
+//         );
+//       }
+//       return errors;
+//     }
+
+//     if (typeof value === 'string' && decorators['isChecked']) {
+//       const isWorkspaceInvalid = field === 'workspaceId' && value !== '0';
+//       const isChannelInvalid = field === 'channelId' && !value.startsWith('{{');
+//       const isUserInvalid = field === 'userId' && !value.startsWith('{{');
+
+//       if (isWorkspaceInvalid) {
+//         addError(decorators['isCheckedMessage'], 'Invalid channel');
+//         return errors;
+//       }
+
+//       if (isChannelInvalid) {
+//         addError(decorators['isCheckedMessage'], 'Invalid channel');
+//         return errors;
+//       }
+//       if (isUserInvalid) {
+//         addError(decorators['isCheckedMessage'], 'Unauthorized request');
+//         return errors;
+//       }
+//     }
+
+//     // Kiểm tra độ dài chuỗi (minLength, maxLength)
+//     if (decorators['minLength'] || decorators['maxLength']) {
+//       const len = value.length;
+//       const hasMin = decorators['minLength'] != null;
+//       const hasMax = decorators['maxLength'] != null;
+
+//       if (hasMin && hasMax) {
+//         const minViolated = len < decorators['minLength'];
+//         const maxViolated = len > decorators['maxLength'];
+//         if (minViolated || maxViolated) {
+//           addError(
+//             null,
+//             `${field} ${ErrorMessage.INVALID_RANGE_STRING_LENGTH} ${decorators['minLength']} to ${decorators['maxLength']} length`,
+//           );
+//         }
+//       } else if (hasMin && len < decorators['minLength']) {
+//         addError(
+//           null,
+//           `${field} ${ErrorMessage.MIN_LENGTH} ${decorators['minLength']} length`,
+//         );
+//       } else if (hasMax && len > decorators['maxLength']) {
+//         addError(
+//           null,
+//           `${field} ${ErrorMessage.MAX_LENGTH} ${decorators['maxLength']} length`,
+//         );
+//       }
+//     }
+//   }
+
+//   // 5. Kiểm tra kiểu number
+//   if (decorators['type'] === 'number') {
+//     if (typeof value !== 'number' || isNaN(value)) {
+//       addError(
+//         decorators['numberMessage'],
+//         `${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`,
+//       );
+//       return errors;
+//     }
+
+//     const minViolated = decorators['min'] && value < decorators['min'];
+//     const maxViolated = decorators['max'] && value > decorators['max'];
+//     if (minViolated) {
+//       addError(
+//         decorators['minMessage'],
+//         `${field} must be at least ${decorators['min']}`,
+//       );
+//     }
+//     if (maxViolated) {
+//       addError(
+//         decorators['maxMessage'],
+//         `${field} must be at most ${decorators['max']}`,
+//       );
+//     }
+//   }
+
+//   // 6. Kiểm tra kiểu array
+//   if (decorators['type'] === 'array') {
+//     if (!Array.isArray(value)) {
+//       addError(
+//         decorators['arrayMessage'],
+//         `${field} ${ErrorMessage.INVALID_TYPE_ARRAY}`,
+//       );
+//       return errors;
+//     }
+
+//     if (decorators['minArray'] && value.length < decorators['minArray']) {
+//       addError(
+//         decorators['minArrayMessage'],
+//         `${field} must have at least ${decorators['minArray']} items`,
+//       );
+//     }
+//     if (decorators['maxArray'] && value.length > decorators['maxArray']) {
+//       addError(
+//         decorators['maxArrayMessage'],
+//         `${field} must have at most ${decorators['maxArray']} items`,
+//       );
+//     }
+//   }
+
+//   // 7. Kiểm tra kiểu object
+//   if (decorators['type'] === 'object') {
+//     if (typeof value !== 'object' || Array.isArray(value) || value === null) {
+//       addError(
+//         decorators['objectMessage'],
+//         `${field} ${ErrorMessage.INVALID_TYPE_OBJ}`,
+//       );
+//       return errors;
+//     }
+//   }
+
+//   // 8. Kiểm tra enum
+//   if (decorators['type'] === 'enum') {
+//     if (
+//       !decorators['enumType'] ||
+//       !Object.values(decorators['enumType']).includes(value)
+//     ) {
+//       addError(
+//         decorators['enumMessage'],
+//         `${field} ${ErrorMessage.INVALID_ENUM}`,
+//       );
+//       return errors;
+//     }
+//   }
+
+//   return errors;
+// }
+
+function addErrorIfNotExist(errors: string[], customMessage: string | null, defaultMessage: string) {
+  const errorMessage = customMessage || defaultMessage;
+  if (errorMessage && !errors.includes(errorMessage)) {
+    errors.push(errorMessage);
   }
+}
 
-  // 2. Kiểm tra isDefined
+function checkOptional(value: unknown, decorators: Record<string, any>): string[] | null {
+  if (decorators['optional'] && (value === undefined || value === null)) {
+    return [];
+  }
+  return null;
+}
+
+
+function getDefinedErrorMessage(field: string): string {
+  switch (field) {
+    case 'channelId':
+      return 'Unsupported permission type';
+    case 'workspaceId':
+    case 'userId':
+      return 'Could not resolve permission type';
+    default:
+      return `${ErrorMessage.DEFINED} '${field}'`;
+  }
+}
+
+function checkIsDefined(field: string, value: unknown, decorators: Record<string, any>): string[] {
+  const errors: string[] = [];
   if (value === undefined || value === null) {
     if (decorators['isDefined']) {
       if (decorators['isChecked']) {
-        if (field === 'channelId') {
-          addError(
-            decorators['isDefinedMessage'],
-            'Unsupported permission type',
-          );
-        } else if (field === 'workspaceId' || field === 'userId') {
-          addError(
-            decorators['isDefinedMessage'],
-            'Could not resolve permission type',
-          );
-        } else {
-          addError(
-            decorators['isDefinedMessage'],
-            `${ErrorMessage.DEFINED} '${field}'`,
-          );
-        }
+        addErrorIfNotExist(errors, decorators['isDefinedMessage'], getDefinedErrorMessage(field));
       } else {
-        addError(
-          decorators['isDefinedMessage'],
-          `${ErrorMessage.DEFINED} '${field}'`,
-        );
+        addErrorIfNotExist(errors, decorators['isDefinedMessage'], `${ErrorMessage.DEFINED} '${field}'`);
       }
       return errors;
     }
   }
+  return null;
+}
 
-  // 3. Kiểm tra notEmpty
+function checkNotEmpty(field: string, value: unknown, decorators: Record<string, any>): string[] {
+  const errors: string[] = [];
   if (value === '' && decorators['notEmpty']) {
     if (decorators['isChecked']) {
-      if (
-        field === 'workspaceId' ||
-        field === 'channelId' ||
-        field === 'userId'
-      ) {
-        addError(
-          decorators['notEmptyMessage'],
-          'Could not resolve permission type',
-        );
+      if (field === 'workspaceId' || field === 'channelId' || field === 'userId') {
+        addErrorIfNotExist(errors, decorators['notEmptyMessage'], 'Could not resolve permission type');
       } else {
-        addError(
-          decorators['notEmptyMessage'],
-          `${ErrorMessage.DEFINED} '${field}'`,
-        );
+        addErrorIfNotExist(errors, decorators['notEmptyMessage'], `${field} ${ErrorMessage.EMPTY}`);
       }
     } else {
-      addError(decorators['notEmptyMessage'], `${field} ${ErrorMessage.EMPTY}`);
+      addErrorIfNotExist(errors, decorators['notEmptyMessage'], `${field} ${ErrorMessage.EMPTY}`);
     }
-
-    // `${field} ${ErrorMessage.INVALID_RANGE_STRING_LENGTH} ${decorators['minLength']} to ${decorators['maxLength']} length`
-    // return errors;
   }
+  return errors;
+}
 
-  // 5. Kiểm tra ULID
+function checkULID(field: string, value: unknown, decorators: Record<string, any>): string[] {
+  const errors: string[] = [];
   if (decorators['isULID']) {
-    if (typeof value !== 'string') {
-      addError(null, `${field} ${ErrorMessage.INVALID_ULID}`);
-    } else if (
-      typeof value === 'string' &&
-      (value === '' || !value.startsWith('{{'))
-    ) {
-      addError(null, `${field} ${ErrorMessage.INVALID_ULID}`);
-    } else if (typeof value === 'string' && !checkULID(value)) {
-      addError(null, `${field} ${ErrorMessage.INVALID_ULID}`);
+    if (typeof value === 'string' && (value === '' || !value.startsWith('{{'))) {
+      addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_ULID}`);
+    } else if (typeof value === 'string' && !checkRegexULID(value)) {
+      addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_ULID}`);
     }
   }
+  return errors;
+}
 
-  // 6. Kiểm tra emoji
+function checkEmoji(field: string, value: unknown, decorators: Record<string, any>): string[] {
+  const errors: string[] = [];
   if (decorators['isEmoji']) {
-    const isInvalid =
-      typeof value === 'string' && (value === '' || !isEmoji(value));
+    const isInvalid = typeof value === 'string' && (value === '' || !isEmoji(value));
     if (isInvalid) {
-      addError(null, `${field} ${ErrorMessage.INVALID_EMOJI}`);
-      addError(null, `${field} ${ErrorMessage.INVALID_EMOJI_LENGTH}`);
+      addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_EMOJI}`);
+      addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_EMOJI_LENGTH}`);
     }
   }
+  return errors;
+}
 
-  // 4. Kiểm tra kiểu string và các điều kiện liên quan
+function checkTypeString(field: string, value: unknown, decorators: Record<string, any>): string[] {
+  const errors: string[] = [];
+  if (value === undefined) {
+    return [];
+  }
+
   if (decorators['type'] === 'string') {
     if (typeof value !== 'string') {
       if (decorators['isChecked']) {
-        if (
-          field === 'workspaceId' ||
-          field === 'channelId' ||
-          field === 'userId'
-        ) {
-          addError(decorators['stringMessage'], null);
+        if (field === 'workspaceId' || field === 'channelId' || field === 'userId') {
+          addErrorIfNotExist(errors, decorators['stringMessage'], null);
         } else {
-          addError(
-            decorators['stringMessage'],
-            `${field} ${ErrorMessage.INVALID_TYPE_STRING}`,
-          );
+          addErrorIfNotExist(errors, decorators['stringMessage'], `${field} ${ErrorMessage.INVALID_TYPE_STRING}`);
         }
       } else {
-        addError(
-          decorators['stringMessage'],
-          `${field} ${ErrorMessage.INVALID_TYPE_STRING}`,
-        );
+        addErrorIfNotExist(errors, decorators['stringMessage'], `${field} ${ErrorMessage.INVALID_TYPE_STRING}`);
       }
       return errors;
     }
 
-    if (typeof value === 'string' && decorators['isChecked']) {
-      const isWorkspaceInvalid = field === 'workspaceId' && value !== '0';
-      const isChannelInvalid = field === 'channelId' && !value.startsWith('{{');
-      const isUserInvalid = field === 'userId' && !value.startsWith('{{');
-
-      if (isWorkspaceInvalid) {
-        addError(decorators['isCheckedMessage'], 'Invalid channel');
+    if (decorators['isChecked']) {
+      if (field === 'workspaceId' && value !== '0') {
+        addErrorIfNotExist(errors, decorators['isCheckedMessage'], 'Invalid channel');
         return errors;
       }
-
-      if (isChannelInvalid) {
-        addError(decorators['isCheckedMessage'], 'Invalid channel');
+      if (field === 'channelId' && !value.startsWith('{{')) {
+        addErrorIfNotExist(errors, decorators['isCheckedMessage'], 'Invalid channel');
         return errors;
       }
-      if (isUserInvalid) {
-        addError(decorators['isCheckedMessage'], 'Unauthorized request');
+      if (field === 'userId' && !value.startsWith('{{')) {
+        addErrorIfNotExist(errors, decorators['isCheckedMessage'], 'Unauthorized request');
         return errors;
       }
     }
 
-    // Kiểm tra độ dài chuỗi (minLength, maxLength)
     if (decorators['minLength'] || decorators['maxLength']) {
       const len = value.length;
       const hasMin = decorators['minLength'] != null;
       const hasMax = decorators['maxLength'] != null;
 
       if (hasMin && hasMax) {
-        const minViolated = len < decorators['minLength'];
-        const maxViolated = len > decorators['maxLength'];
-        if (minViolated || maxViolated) {
-          addError(
-            null,
-            `${field} ${ErrorMessage.INVALID_RANGE_STRING_LENGTH} ${decorators['minLength']} to ${decorators['maxLength']} length`,
-          );
+        if (len < decorators['minLength'] || len > decorators['maxLength']) {
+          addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_RANGE_STRING_LENGTH} ${decorators['minLength']} to ${decorators['maxLength']} length`);
         }
       } else if (hasMin && len < decorators['minLength']) {
-        addError(
-          null,
-          `${field} ${ErrorMessage.MIN_LENGTH} ${decorators['minLength']} length`,
-        );
+        addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.MIN_LENGTH} ${decorators['minLength']} length`);
       } else if (hasMax && len > decorators['maxLength']) {
-        addError(
-          null,
-          `${field} ${ErrorMessage.MAX_LENGTH} ${decorators['maxLength']} length`,
-        );
+        addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.MAX_LENGTH} ${decorators['maxLength']} length`);
+      }
+    }
+  }
+  return errors;
+}
+
+function checkTypeNumber(field: string, value: unknown, decorators: Record<string, any>): string[] {
+  const errors: string[] = [];
+  if (decorators['type'] === 'number') {
+    if (typeof value !== 'number' || isNaN(value)) {
+      addErrorIfNotExist(errors, decorators['numberMessage'], `${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`);
+      return errors;
+    }
+    if (decorators['min'] != null && value < decorators['min']) {
+      addErrorIfNotExist(errors, decorators['minMessage'], `${field} must be at least ${decorators['min']}`);
+    }
+    if (decorators['max'] != null && value > decorators['max']) {
+      addErrorIfNotExist(errors, decorators['maxMessage'], `${field} must be at most ${decorators['max']}`);
+    }
+  }
+  return errors;
+}
+
+function checkTypeArray(field: string, value: unknown, decorators: Record<string, any>): string[] {
+  const errors: string[] = [];
+  if (decorators['type'] === 'array') {
+    if (!Array.isArray(value)) {
+      addErrorIfNotExist(errors, decorators['arrayMessage'], `${field} ${ErrorMessage.INVALID_TYPE_ARRAY}`);
+      return errors;
+    }
+    if (decorators['minArray'] != null && value.length < decorators['minArray']) {
+      addErrorIfNotExist(errors, decorators['minArrayMessage'], `${field} must have at least ${decorators['minArray']} items`);
+    }
+    if (decorators['maxArray'] != null && value.length > decorators['maxArray']) {
+      addErrorIfNotExist(errors, decorators['maxArrayMessage'], `${field} must have at most ${decorators['maxArray']} items`);
+    }
+  }
+  return errors;
+}
+
+function checkTypeObject(field: string, value: unknown, decorators: Record<string, any>): string[] {
+  const errors: string[] = [];
+  if (decorators['type'] === 'object') {
+    if (typeof value !== 'object' || Array.isArray(value) || value === null) {
+      addErrorIfNotExist(errors, decorators['objectMessage'], `${field} ${ErrorMessage.INVALID_TYPE_OBJ}`);
+      return errors;
+    }
+  }
+  return errors;
+}
+
+function checkEnum(field: string, value: unknown, decorators: Record<string, any>): string[] {
+  const errors: string[] = [];
+  if (decorators['type'] === 'enum') {
+    if (!decorators['enumType'] || !Object.values(decorators['enumType']).includes(value)) {
+      addErrorIfNotExist(errors, decorators['enumMessage'], `${field} ${ErrorMessage.INVALID_ENUM}`);
+      return errors;
+    }
+  }
+  return errors;
+}
+
+export function mapError(field: string, value: unknown, decorators: Record<string, any>): string[] {
+  // Kiểm tra từng nhóm lỗi
+  const errors: string[] = [];
+
+  const optionalErrors = checkOptional(value, decorators);
+  if (optionalErrors !== null) return optionalErrors;
+
+
+  const checks = [
+    checkIsDefined,
+    checkNotEmpty,
+    checkULID,
+    checkEmoji,
+    checkTypeString,
+    checkTypeNumber,
+    checkTypeArray,
+    checkTypeObject,
+    checkEnum,
+  ];
+
+  for (const check of checks) {
+    const result = check(field, value, decorators);
+    if (result && result.length > 0) {
+      errors.push(...result);
+      if (check === checkTypeString || check === checkTypeNumber || check === checkTypeArray || check === checkTypeObject || check === checkEnum) {
+        break;
       }
     }
   }
 
-  // 5. Kiểm tra kiểu number
-  if (decorators['type'] === 'number') {
-    if (typeof value !== 'number' || isNaN(value)) {
-      addError(
-        decorators['numberMessage'],
-        `${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`,
-      );
-      return errors;
-    }
-
-    const minViolated = decorators['min'] && value < decorators['min'];
-    const maxViolated = decorators['max'] && value > decorators['max'];
-    if (minViolated) {
-      addError(
-        decorators['minMessage'],
-        `${field} must be at least ${decorators['min']}`,
-      );
-    }
-    if (maxViolated) {
-      addError(
-        decorators['maxMessage'],
-        `${field} must be at most ${decorators['max']}`,
-      );
-    }
-  }
-
-  // 6. Kiểm tra kiểu array
-  if (decorators['type'] === 'array') {
-    if (!Array.isArray(value)) {
-      addError(
-        decorators['arrayMessage'],
-        `${field} ${ErrorMessage.INVALID_TYPE_ARRAY}`,
-      );
-      return errors;
-    }
-
-    if (decorators['minArray'] && value.length < decorators['minArray']) {
-      addError(
-        decorators['minArrayMessage'],
-        `${field} must have at least ${decorators['minArray']} items`,
-      );
-    }
-    if (decorators['maxArray'] && value.length > decorators['maxArray']) {
-      addError(
-        decorators['maxArrayMessage'],
-        `${field} must have at most ${decorators['maxArray']} items`,
-      );
-    }
-  }
-
-  // 7. Kiểm tra kiểu object
-  if (decorators['type'] === 'object') {
-    if (typeof value !== 'object' || Array.isArray(value) || value === null) {
-      addError(
-        decorators['objectMessage'],
-        `${field} ${ErrorMessage.INVALID_TYPE_OBJ}`,
-      );
-      return errors;
-    }
-  }
-
-  // 8. Kiểm tra enum
-  if (decorators['type'] === 'enum') {
-    if (
-      !decorators['enumType'] ||
-      !Object.values(decorators['enumType']).includes(value)
-    ) {
-      addError(
-        decorators['enumMessage'],
-        `${field} ${ErrorMessage.INVALID_ENUM}`,
-      );
-      return errors;
-    }
-  }
-
-  return errors;
+  return Array.from(new Set(errors));
 }
+
 export function softErrorFromMap(
   payload: Record<string, any>,
   dtoClass: any,

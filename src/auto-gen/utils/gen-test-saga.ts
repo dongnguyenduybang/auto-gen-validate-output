@@ -1,6 +1,5 @@
 import * as path from 'path';
 import * as fs from 'fs';
-
 export function genTestSaga(dtoName: string) {
   const baseFolder = path.join(__dirname, `../test-sagas/${dtoName}`);
 

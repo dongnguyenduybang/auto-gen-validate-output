@@ -1,7 +1,6 @@
 import { configMap } from './extract-config';
-
 export function extractDatas(
-  response: any,
+  response: object,
   action: string,
 ): Record<string, any> {
   const data: Record<string, any> = {};
@@ -24,7 +23,7 @@ export function extractDatas(
     }
 
     if (Array.isArray(source)) {
-      source.forEach((item: any, index: number) => {
+      source.forEach((item: string, index: number) => {
         const suffix = index === 0 ? '' : index; // Hậu tố: '', '2', '3', ...
         fields.forEach((field) => {
           if (item[field] !== undefined) {
@@ -32,10 +31,10 @@ export function extractDatas(
           }
         });
       });
-    } else if (typeof source === 'object' && source !== null) {
+    } else {
       fields.forEach((field) => {
         if (source[field] !== undefined) {
-          data[field] = source[field]; // Tạo key trực tiếp như channelId, name
+          data[field] = source[field];
         }
       });
     }
