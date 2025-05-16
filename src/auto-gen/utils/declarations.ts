@@ -50,10 +50,16 @@ export interface SagaTestSuite {
   steps: TestCase[];
 }
 
+export interface SagaWSTestSuite {
+  options?: FirstStep[];
+  steps: TestCase[];
+}
+
 interface FirstStep {
   beforeEach?: Step[];
   afterEach?: Step[];
   afterAll?: Step[];
+  resume?: string;
 }
 
 interface TestCase {
@@ -119,16 +125,16 @@ export interface ApiFunctionParams {
 
 export interface TestResult {
   path: string;
-    className: string;
-    chunkNumber?: number;
-    failedTests: any[];
-    codedTest: any[];
-    passedTests: number;
-    totalTests: number;
-    logicTests: any[];
-    failedStep: any[];
-    passed200?: number;
-    passed201?: number;
+  className: string;
+  chunkNumber?: number;
+  failedTests: any[];
+  codedTest: any[];
+  passedTests: number;
+  totalTests: number;
+  logicTests: any[];
+  failedStep: any[];
+  passed200?: number;
+  passed201?: number;
 }
 
 

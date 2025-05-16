@@ -1,23 +1,19 @@
 import { configMap } from './extract-config';
-<<<<<<< HEAD
-
-export function extractDatas(response: any, action: string, groupBySection: boolean = true): Record<string, any> {
-  const result: Record<string, any> = {};
-=======
 export function extractDatas(
   response: object,
   action: string,
 ): Record<string, any> {
   const data: Record<string, any> = {};
->>>>>>> main
 
+  // Lấy cấu hình từ configMap dựa trên action
   const config = configMap[action];
   if (!config) {
     console.warn(`No config found for action: ${action}`);
-    return result;
+    return data;
   }
 
-  if (!response) return result;
+  // Kiểm tra response
+  if (!response) return data;
 
   Object.entries(config).forEach(([section, { path, fields }]) => {
     let source = response;
@@ -26,13 +22,6 @@ export function extractDatas(
       if (!source) return;
     }
 
-<<<<<<< HEAD
-    if (groupBySection) {
-      const sectionData: Record<string, any> = {};
-      fields.forEach((field) => {
-        if (source[field] !== undefined) {
-          sectionData[field] = source[field];
-=======
     if (Array.isArray(source)) {
       source.forEach((item: string, index: number) => {
         const suffix = index === 0 ? '' : index; // Hậu tố: '', '2', '3', ...
@@ -46,29 +35,10 @@ export function extractDatas(
       fields.forEach((field) => {
         if (source[field] !== undefined) {
           data[field] = source[field];
->>>>>>> main
         }
       });
-      result[section] = sectionData;
-    } else {
-      if (Array.isArray(source)) {
-        source.forEach((item: any, index: number) => {
-          const suffix = index === 0 ? '' : index;
-          fields.forEach((field) => {
-            if (item[field] !== undefined) {
-              result[`${field}${suffix}`] = item[field];
-            }
-          });
-        });
-      } else if (typeof source === 'object' && source !== null) {
-        fields.forEach((field) => {
-          if (source[field] !== undefined) {
-            result[field] = source[field];
-          }
-        });
-      }
     }
   });
 
-  return result;
+  return data;
 }

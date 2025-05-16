@@ -1,14 +1,8 @@
 import axios, { AxiosRequestConfig } from 'axios';
-<<<<<<< HEAD:src/auto-gen/functions/apiFactory.ts
-import { ApiConfig, ApiFunctionParams, ApiResponse } from './types';
 import { EventContext, TestContext } from '../utils/text-context';
-import { resolveVariables } from '../utils/helper';
-import { EVENTS_BY_ACTION } from '../utils/event-acction';
-=======
-import { TestContext } from '../utils/text-context';
 import { ApiConfig, ApiFunctionParams } from '../utils/declarations';
 import { resolveVariables } from '../utils/helper';
->>>>>>> main:src/auto-gen/functions/api-factory.ts
+import { EVENTS_BY_ACTION } from '../utils/event-acction';
 
 export function createApiFunction(config: ApiConfig, context: TestContext, eventContext: EventContext) {
   return async ({
@@ -16,13 +10,7 @@ export function createApiFunction(config: ApiConfig, context: TestContext, event
     path,
     headers,
     body,
-<<<<<<< HEAD:src/auto-gen/functions/apiFactory.ts
-    action,
-    stepIndex
-  }: ApiFunctionParams): Promise<ApiResponse> => {
-=======
   }: ApiFunctionParams): Promise<any> => {
->>>>>>> main:src/auto-gen/functions/api-factory.ts
     try {
 
       // 0. Create WS
@@ -52,16 +40,11 @@ export function createApiFunction(config: ApiConfig, context: TestContext, event
       const finalPath = path || config.defaultPath;
       const url = `${globalThis.urls}${finalPath}`;
 
-      // 3. Prepare payload && header
-<<<<<<< HEAD:src/auto-gen/functions/apiFactory.ts
-      const payload = config && config.payloadMapper ? config.payloadMapper(body) : body;
-      const header = config ? finalHeaders : headers
-=======
+
       const payload =
         config && config.payloadMapper ? config.payloadMapper(body) : body;
       const header = config ? finalHeaders : headers;
 
->>>>>>> main:src/auto-gen/functions/api-factory.ts
       // 4. Make API call
       const axiosConfig: AxiosRequestConfig = {
         method: finalMethod,
@@ -76,22 +59,14 @@ export function createApiFunction(config: ApiConfig, context: TestContext, event
         axiosConfig.params = payload;
       }
       const response = await axios(axiosConfig);
-<<<<<<< HEAD:src/auto-gen/functions/apiFactory.ts
 
-      if(eventContext){
-        const events = EVENTS_BY_ACTION[action] || [];
-        if (events.length > 0 ) {
-          eventContext.setValue(action, events);
-        }
-      }
-      return {
-        ok: true,
-        data: response.data
-      };
-=======
-      return response
->>>>>>> main:src/auto-gen/functions/api-factory.ts
-
+      // if(eventContext){
+      //   const events = EVENTS_BY_ACTION[action] || [];
+      //   if (events.length > 0 ) {
+      //     eventContext.setValue(action, events);
+      //   }
+      // }
+      return  response
     } catch (error: any) {
       return {
         error:

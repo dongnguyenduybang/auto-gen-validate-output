@@ -1,5 +1,5 @@
 import { ApiRegistry } from '../utils/declarations';
-import { TestContext } from '../utils/text-context';
+import { EventContext, TestContext } from '../utils/text-context';
 import { createApiFunction } from './api-factory';
 
 const API_REGISTRY: ApiRegistry = {
@@ -30,8 +30,8 @@ const API_REGISTRY: ApiRegistry = {
   },
 };
 
-export function getApiFunctions(action: string, context: TestContext) {
+export function getApiFunctions(action: string, context: TestContext, eventContext: EventContext) {
   const config = API_REGISTRY[action];
 
-  return createApiFunction(config, context);
+  return createApiFunction(config, context, eventContext);
 }

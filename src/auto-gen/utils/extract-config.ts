@@ -106,12 +106,10 @@ export const configMap: Record<string, ExtractConfig> = {
   sendDmMessage: sendDmMessageConfig,
   acceptMessage: acceptMessageConfig,
   ejectMessage: ejectMessageConfig,
-<<<<<<< HEAD
+
   openConnection: openConnectionConfig,
   wsActor: wsOpenConfigActor,
   wsRecipient: wsOpenConfigRecipient,
   openConnectionResume: openConnectionResumeConfig
 };
-=======
-};
->>>>>>> main
+
