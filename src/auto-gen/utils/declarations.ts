@@ -134,6 +134,8 @@ export interface TestResult {
 
 export type ActionHandler = (dtoName: string) => Promise<void> | void;
 export type ApiRegistry = Record<string, ApiConfig>;
+export type FieldValueObject = Record<string, any>;
+
 export type HeaderOptions = {
   token?: string;
   userId?: string;
@@ -172,3 +174,8 @@ export type ErrorItem = {
   actualValue?: any;
   expectedValue?: any;
 };
+
+export interface PayloadGen {
+  body: Object;
+  expects: string[];
+}

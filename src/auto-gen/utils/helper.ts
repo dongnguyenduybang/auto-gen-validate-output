@@ -15,38 +15,44 @@ function getFileNameWithoutExtension(filePath: string): string {
   return fileName.split('.')[0];
 }
 
+// function getAllFiles(dirPath: string): string[] {
+//   let files: string[] = [];
+//   const items = fs.readdirSync(dirPath);
+//   items.forEach((item) => {
+//     const itemPath = path.join(dirPath, item);
+//     if (fs.statSync(itemPath).isDirectory()) {
+//       files = files.concat(getAllFiles(itemPath));
+//     } else {
+//       files.push(itemPath);
+//     }
+//   });
+//   return files;
+// }
+
 export function pairFiles(
-  requestsDir: string,
-  payloadsDir: string,
-): { requestConfig: string; payload: string; name: string }[] {
-  const requestFiles = fs.readdirSync(requestsDir);
-  const payloadFiles = fs.readdirSync(payloadsDir);
-
-  const pairedFiles: {
-    requestConfig: string;
-    payload: string;
-    name: string;
-  }[] = [];
-
-  for (const requestFile of requestFiles) {
-    const requestFileName = getFileNameWithoutExtension(requestFile);
-
-    for (const payloadFile of payloadFiles) {
-      const payloadFileName = getFileNameWithoutExtension(payloadFile);
-
-      if (requestFileName === payloadFileName) {
-        pairedFiles.push({
-          name: requestFileName,
-          requestConfig: path.join(requestsDir, requestFile),
-          payload: path.join(payloadsDir, payloadFile),
-        });
-      }
+  files: string[],
+): { dtoPath: string; requestPath: string; className: string }[] {
+  const fileMap: Record<string, { dtoPath?: string; requestPath?: string }> = {};
+  files.forEach((filePath) => {
+    const fileName = path.basename(filePath, path.extname(filePath));
+    if (filePath.endsWith('.dto.ts') || filePath.endsWith('.dto.js')) {
+      const className = fileName.replace('.dto', '');
+      fileMap[className] = fileMap[className] || {};
+      fileMap[className].dtoPath = filePath;
+    } else if (filePath.endsWith('.request.ts')) {
+      const className = fileName.replace('.request', '');
+      fileMap[className] = fileMap[className] || {};
+      fileMap[className].requestPath = filePath;
     }
-  }
-
-  return pairedFiles;
+  });
+  return Object.entries(fileMap).map(
+    ([className, { dtoPath, requestPath }]) => ({
+      dtoPath,
+      requestPath,
+      className,
+    }),
+  );
 }
-
 export function summaryFields(
   expectJson: string[],
   receivedResponse: string[],
@@ -149,6 +155,17 @@ export function getAllFiles(dirPath: string): string[] {
   return files;
 }
 
+export function getResponseFile(dirPath: string): string{
+  try {
+    const files = fs.readdirSync(dirPath);
+    const responseFile = files.find((file) => file.endsWith('.response.ts'));
+    return responseFile ? path.join(dirPath, responseFile) : null;
+  } catch (error) {
+    console.error(`Error reading directory ${dirPath}:`, error);
+    return null;
+  }
+}
+
 export function groupFilesByName(
   files: string[],
 ): Record<string, { dtoPath?: string; requestPath?: string }> {
@@ -168,6 +185,31 @@ export function groupFilesByName(
   });
   return fileMap;
 }
+
+// export function pairFiles(
+//   files: string[],
+// ): { dtoPath: string; requestPath: string; className: string }[] {
+//   const fileMap: Record<string, { dtoPath?: string; requestPath?: string }> = {};
+//   files.forEach((filePath) => {
+//     const fileName = path.basename(filePath, path.extname(filePath));
+//     if (filePath.endsWith('.dto.ts') || filePath.endsWith('.dto.js')) {
+//       const className = fileName.replace('.dto', '');
+//       fileMap[className] = fileMap[className] || {};
+//       fileMap[className].dtoPath = filePath;
+//     } else if (filePath.endsWith('.request.ts')) {
+//       const className = fileName.replace('.request', '');
+//       fileMap[className] = fileMap[className] || {};
+//       fileMap[className].requestPath = filePath;
+//     }
+//   });
+//   return Object.entries(fileMap).map(
+//     ([className, { dtoPath, requestPath }]) => ({
+//       dtoPath,
+//       requestPath,
+//       className,
+//     }),
+//   );
+// }
 
 export function getTime() {
   const now = new Date();
@@ -250,7 +292,7 @@ export const formatExpectErrors = (expects) => {
     .trim();
 };
 
-export function checkULID(value: string): boolean {
+export function checkRegexULID(value: string): boolean {
   const ulidRegex = /^[0-9A-HJKMNP-TV-Z]{26}$/;
   return typeof value === 'string' && ulidRegex.test(value);
 }

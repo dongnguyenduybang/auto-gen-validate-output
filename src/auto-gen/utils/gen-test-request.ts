@@ -1,49 +1,7 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import { formatExpectErrors, readJsonFile, resolveActionPath } from './helper';
+import { formatExpectErrors, getAllFiles, pairFiles, readJsonFile, resolveActionPath } from './helper';
 
-// Hàm đọc tất cả các file từ thư mục
-function getAllFiles(dirPath: string): string[] {
-  let files: string[] = [];
-  const items = fs.readdirSync(dirPath);
-  items.forEach((item) => {
-    const itemPath = path.join(dirPath, item);
-    if (fs.statSync(itemPath).isDirectory()) {
-      files = files.concat(getAllFiles(itemPath));
-    } else {
-      files.push(itemPath);
-    }
-  });
-  return files;
-}
-
-// Ghép cặp file .dto.ts và .request.json
-function pairFiles(
-  files: string[],
-): { dtoPath: string; requestPath: string; className: string }[] {
-  const fileMap: Record<string, { dtoPath?: string; requestPath?: string }> = {};
-  files.forEach((filePath) => {
-    const fileName = path.basename(filePath, path.extname(filePath));
-    if (filePath.endsWith('.dto.ts') || filePath.endsWith('.dto.js')) {
-      const className = fileName.replace('.dto', '');
-      fileMap[className] = fileMap[className] || {};
-      fileMap[className].dtoPath = filePath;
-    } else if (filePath.endsWith('.request.ts')) {
-      const className = fileName.replace('.request', '');
-      fileMap[className] = fileMap[className] || {};
-      fileMap[className].requestPath = filePath;
-    }
-  });
-  return Object.entries(fileMap).map(
-    ([className, { dtoPath, requestPath }]) => ({
-      dtoPath,
-      requestPath,
-      className,
-    }),
-  );
-}
-
-// Hàm tạo nội dung test case
 async function generateSpecContent(
   testCases: any[],
   requestConfig: any,
@@ -76,8 +34,8 @@ async function generateSpecContent(
         });
 
         ${testCases
-          .map(
-            (testCase, index) => `
+      .map(
+        (testCase, index) => `
             it('Test case #${startIndex + index + 1} should return errors ${formatExpectErrors(testCase.expects)} when body ${JSON.stringify(testCase.body)}', async () => {
               testNumber = ${startIndex + index + 1};
               totalTests++;
@@ -165,19 +123,23 @@ async function generateSpecContent(
                 });
               }
             });`
-          )
-          .join('\n')}
+      )
+      .join('\n')}
 
-        afterAll(async () => {
-          const resultStep = await executeAllSteps(${JSON.stringify(requestConfig.afterAll)}, globalContext);
-          resultStep.forEach((step) => {
-            failedStep.push({
-              type: step.type,
-              status: step.status,
-              stepName: step.stepName,
-              error: step.error
-            });
-          });
+         afterAll(async () => {
+        //   const response = await resolveCallAPI(
+        //           ${JSON.stringify(requestConfig.action)},
+        //           ${JSON.stringify(requestConfig.headers)},
+        //           globalContext
+        //         );
+        //   resultStep.forEach((step) => {
+        //     failedStep.push({
+        //       type: step.type,
+        //       status: step.status,
+        //       stepName: step.stepName,
+        //       error: step.error
+        //     });
+        //   });
           
           // Lưu kết quả vào biến toàn cục
           const testResult: TestResult = {
@@ -205,8 +167,6 @@ async function generateSpecContent(
         })
   `;
 }
-
-// Hàm chính tạo test case
 async function genTestCase(
   payloadPath: string,
   requestPath: string,
@@ -215,7 +175,7 @@ async function genTestCase(
 ) {
   const payloadData = readJsonFile(payloadPath);
   console.log(`Total test cases in ${payloadPath}: ${payloadData.length}`);
-  
+
   const classNameCapitalized = className
     .split('-')
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
@@ -239,7 +199,6 @@ async function genTestCase(
       const endIdx = startIdx + CHUNK_SIZE;
       const chunkData = payloadData.slice(startIdx, endIdx);
 
-      // Tạo nội dung cho từng chunk
       const chunkSpecContent = await generateSpecContent(
         chunkData,
         requestConfig,
@@ -249,16 +208,14 @@ async function genTestCase(
         totalChunks
       );
 
-      // Tạo tên file cho từng chunk
       const chunkFileName = `${className}-chunk-${i + 1}.spec.ts`;
       const outputPath = path.join(outputDir, chunkFileName);
 
-      // Ghi file
       fs.writeFileSync(outputPath, chunkSpecContent, 'utf-8');
       console.log(`Generated test file: ${outputPath}`);
     }
   } else {
-    // Nếu số lượng test case nhỏ hơn ngưỡng, tạo file duy nhất
+
     const specContent = await generateSpecContent(
       payloadData,
       requestConfig,
@@ -270,8 +227,6 @@ async function genTestCase(
     console.log(`Success: ${outputPath}`);
   }
 }
-
-// Hàm chính để generate test request
 export function genTestRequest(dtoName: string) {
   const dtosDir = path.join(__dirname, '../test-requests', dtoName);
   const payloadsDir = path.join(__dirname, '../test-requests', dtoName);

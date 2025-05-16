@@ -1,15 +1,14 @@
 import { HEADER_LIST, VAR } from "../enums";
 import { ExpectData } from "./declarations";
-
 export const executeFunction = (
   path: string,
   action: string,
   requestConfig: {
-    body: any;
-    header?: any;
+    body: object;
+    header?: string[];
   },
   fields?: string[],
-  expect?: any[]
+  expect?: string[]
 ): ExpectData => ({
   path,
   action,

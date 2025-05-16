@@ -2,7 +2,6 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { generateErrorCases } from './dto-helper';
 import { getAllFiles, groupFilesByName } from './helper';
-
 export async function genBodyRequest(dtoName) {
   const dtoFolderPath = path.join(__dirname, '../test-requests', dtoName);
   const outputDir = path.join(__dirname, '../test-requests', dtoName);
@@ -42,9 +41,9 @@ export async function genBodyRequest(dtoName) {
       const payload = requestData.body;
       const result = await generateErrorCases(dtoClass, payload);
 
-      const testCasePayload = result.map(({ testcaseGen, expectedDetail }) => ({
-        body: testcaseGen,
-        expects: expectedDetail,
+      const testCasePayload = result.map(({ body, expects }) => ({
+        body,
+        expects
       }));
 
       const outputFilePath = path.join(outputDir, `${className}.payload.json`);

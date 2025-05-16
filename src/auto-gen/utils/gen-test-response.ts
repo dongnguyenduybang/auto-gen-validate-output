@@ -1,16 +1,6 @@
 import * as path from 'path';
 import * as fs from 'fs';
-function getResponseFile(dirPath: string): string | null {
-  try {
-    const files = fs.readdirSync(dirPath);
-    const responseFile = files.find((file) => file.endsWith('.response.ts'));
-    return responseFile ? path.join(dirPath, responseFile) : null;
-  } catch (error) {
-    console.error(`Error reading directory ${dirPath}:`, error);
-    return null;
-  }
-}
-
+import { getResponseFile } from './helper';
 async function genTestCase(
   responsePath: string,
   className: string,
@@ -142,10 +132,8 @@ async function genTestCase(
   fs.writeFileSync(outputPath, specContent, 'utf-8');
   console.log(`✅ Generated response test: ${outputPath}`);
 }
-
 export function genTestResponse(dtoName: string) {
   const responsesDir = path.join(__dirname, '../test-responses', dtoName);
-
   // Chỉ lấy file response.json
   const responseFile = getResponseFile(responsesDir);
 
