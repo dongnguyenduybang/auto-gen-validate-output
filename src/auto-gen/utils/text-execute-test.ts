@@ -4,28 +4,7 @@ import { Step, StepResult, ValidationError } from './declarations';
 import { TestContext } from './text-context';
 import { ACTION_CONFIG } from '../enums';
 import { handleExpectConfig } from './check-expect';
-<<<<<<< HEAD
-
-export interface StepResult {
-  type?: string;
-  status: boolean;
-  stepName: string;
-  caseTitle?: string;
-  error?: string | any;
-}
-
-const responseClassMap = {
-  CreateChannelResponse,
-  GetChannelResponse,
-  AcceptInvitationResponse,
-  SendMessageResponse,
-  MockUserResponse,
-  SendDmMessageResponse,
-  UpdateMessageResponse,
-};
-=======
 import { checkResponse, delay } from './helper';
->>>>>>> main
 
 export async function executeSteps(
   steps: Step[],
@@ -49,48 +28,6 @@ async function executeSingleStep(
   step: Step,
   context?: TestContext,
 ): Promise<StepResult> {
-<<<<<<< HEAD
-  try {
-    if (step.delay) {
-      await new Promise((resolve) => setTimeout(resolve, step.delay));
-    }
-
-    const { action, body, headers, expect: expectConfig } = step;
-
-    // defined method & path dựa vào action config
-    const actionInfo = ACTION_CONFIG[action as keyof typeof ACTION_CONFIG];
-    // resolve variables body and headers
-    const resolveBody = resolveVariables(body, context);
-    const resolveHeaders = resolveVariables(headers, context);
-
-    // get api function
-    const apiFunction = getApiFunctions(action, context);
-    if (!apiFunction) {
-      throw new Error(`API function not found for action: ${action}`);
-    }
-    const response = await apiFunction({
-      method: actionInfo.method,
-      path: actionInfo.path,
-      headers: resolveHeaders,
-      body: resolveBody,
-    });
-    const hasExpectConfig = !!expectConfig;
-    if (
-      (response?.data?.ok === false || response.error !== undefined) &&
-      !hasExpectConfig
-    ) {
-      return {
-        type: 'request DTO',
-        status: false,
-        stepName: action,
-        error: response.error || {
-          code: response.data.error.code,
-          message: response.data.error.message,
-          details: response.data.error.details,
-        },
-      };
-    }
-=======
 
   const { action, body, headers, expect: expectConfig } = step;
   // defined method & path dựa vào action config
@@ -107,7 +44,6 @@ async function executeSingleStep(
     headers: resolveHeaders,
     body: resolveBody,
   });
->>>>>>> main
 
   const hasExpectConfig = !!expectConfig;
   if ((!response?.data?.ok) && !hasExpectConfig) {
@@ -135,47 +71,6 @@ async function executeSingleStep(
         context.mergeData(extractedData);
       }
 
-<<<<<<< HEAD
-    // save context
-    if (response.data?.data !== undefined) {
-      const extractedData = extractDatas(response.data, action);
-      context.mergeData(extractedData);
-    }
-
-    // validate saga
-    if (expectConfig) {
-      const resolveConfig = resolveExpectConfig(expectConfig, context)
-      // get api function
-      const result = await handleExpectConfig(response.data, resolveConfig, context);
-      console.log(result)
-    }
-    // if (expectConfig) {
-    //   const validator = createApiValidator(context);
-    //   const resolveExpect = resolveExpectConfig(expectConfig, context);
-    //   const errors = validator.validate(response.data, resolveExpect);
-    //   if (errors.length > 0) {
-    //     return {
-    //       type: 'saga',
-    //       status: false,
-    //       stepName: action,
-    //       error: formatErrors(errors),
-    //     };
-    //   }
-    // }
-
-    return {
-      type: null,
-      status: true,
-      stepName: action,
-    };
-  } catch (error) {
-    return {
-      type: 'error',
-      status: false,
-      stepName: step.action,
-      error: error.message || error,
-    };
-=======
       // validate saga
       if (expectConfig) {
         const resolveConfig = resolveExpectConfig(expectConfig, context)
@@ -197,7 +92,6 @@ async function executeSingleStep(
         }
       }
     }
->>>>>>> main
   }
   return {
     type: null,
@@ -267,4 +161,3 @@ function formatErrors(errors: ValidationError[]): any {
 
   return formattedErrors.length === 1 ? formattedErrors[0] : formattedErrors;
 }
-

@@ -216,16 +216,6 @@ const sagaReportTemplate = (
     return groups;
   }, {});
 
-  // group afterEach
-  const afterEachGroups = afterEachFailures.reduce((groups, failure) => {
-    const caseTitle = failure.caseTitle || 'Unknown Case';
-    if (!groups[caseTitle]) {
-      groups[caseTitle] = [];
-    }
-    groups[caseTitle].push(failure);
-    return groups;
-  }, {});
-
   return [
     `=== Saga Test Report For ${className} ===`,
     `• URL: ${url}`,
@@ -290,63 +280,11 @@ const formatStep = (step: any, index: number) => {
   if (step.status) {
     stepInfo.push(`   • Status: ✅ passed`);
   } else {
-<<<<<<< HEAD
-    stepInfo.push(`   • Error:\n${formatError(step.error)}`);
-=======
     stepInfo.push(`   • Error:\n${formatErrorDetails(step.error)}`);
->>>>>>> main
   }
   return stepInfo.join('\n');
 };
 
-<<<<<<< HEAD
-const formatError = (error: any) => {
-  const formatSingleError = (err: any) => {
-    const path = err.path || 'unknown path';
-    let expected = err.expected || 'No expected value';
-    let actual = err.actual || 'No actual value';
-    const message = err.message || 'Validation failed';
-
-    // Xử lý định dạng đặc biệt cho các dòng Index[]
-    const formatIndexLines = (text: string) => {
-      if (typeof text === 'string' && text.includes('Index[')) {
-        return text.split('\n')
-          .map(line => `         ${line}`)
-          .join('\n');
-      }
-      return text;
-    };
-
-    expected = formatIndexLines(expected);
-    actual = formatIndexLines(actual);
-
-    // Thêm dòng trống sau Expected: và Actual: nếu có nhiều dòng
-    const expectedLines = expected.includes('\n')
-      ? `\n${expected}`
-      : ` ${expected}`;
-    const actualLines = actual.includes('\n')
-      ? `\n${actual}`
-      : ` ${actual}`;
-
-    return [
-      `    ├─ Path: ${path}`,
-      `    ├─ Expected:${expectedLines}`,
-      `    ├─ Actual:${actualLines}`,
-      `    └─ Message: ${message}`,
-    ].join('\n');
-  };
-
-  if (Array.isArray(error)) {
-    return error.map(formatSingleError).join('\n');
-  }
-
-  if (typeof error === 'object' && error !== null) {
-    return formatSingleError(error);
-  }
-
-  return `    └─ Message: ${String(error)}`;
-};
-=======
 function groupEntriesByPath(entries: Entry[]): Record<string, ErrorItem[]> {
   return entries.reduce((acc: object, curr: Entry) => {
     const path = curr.path ?? 'unknown.path';
@@ -436,4 +374,3 @@ function formatErrorDetails(error: Record<string, Entry[]>): string {
 
 //   return `    └─ Message: ${String(error)}`;
 // };
->>>>>>> main

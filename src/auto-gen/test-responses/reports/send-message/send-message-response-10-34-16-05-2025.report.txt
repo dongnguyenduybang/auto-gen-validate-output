@@ -1,0 +1,15 @@
+=== Response Test Report for send-message ===
+• Host: N/A
+• Endpoint: N/A
+• Date: 16/05/2025, 10:34:11
+
+=== Execution Steps ===
+
+=== Test Summary ===
+✅ Passed: 1
+❌ Failed: 0
+📊 Total: 1
+
+=== Error Details ===
+
+=== End of Report ===

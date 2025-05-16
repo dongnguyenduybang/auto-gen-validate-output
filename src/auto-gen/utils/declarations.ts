@@ -29,8 +29,6 @@ export interface Expect {
   data?: ExpectData
   includes?: ExpectData[]
 }
-<<<<<<< HEAD
-=======
 
 export interface ExpectResult {
   type: string;
@@ -39,7 +37,7 @@ export interface ExpectResult {
   key: string;
 
 }
->>>>>>> main
+
 export interface Step<T = any> {
   action: string;
   body?: T;

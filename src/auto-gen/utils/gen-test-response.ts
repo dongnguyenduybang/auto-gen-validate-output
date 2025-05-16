@@ -16,11 +16,10 @@ async function genTestCase(
     import fs from 'fs';
     import path from 'path';
     import axios from 'axios';
-    import { getTime, summarizeErrors } from '../../utils/helper';
+    import { getTime,resolveCallAPI, summarizeErrors } from '../../utils/helper';
     import { ${classNameCapitalized}Response } from '../../response/${className}.response';
     import { plainToInstance } from 'class-transformer';
     import { validateResponses } from '../../validates/validate-response';
-    import { executeAllSteps, resolveVariables } from '../../utils/test-executor';
     import { TestContext } from '../../utils/text-context';
 
     describe('Test response for ${className}', () => {
@@ -29,40 +28,22 @@ async function genTestCase(
       let passedTests = 0;
       let testNumber = 0;
       let totalTests = 0;
-      let requestUrl, globalContext, resolvedHeader, pathRequest, methodRequest, headerRequest, payloadResponse, testType
+      let requestUrl, globalContext, pathRequest, payloadResponse, testType
       beforeAll(async () => {
         testType = 'response'
         globalContext = new TestContext();
-        const resultStep = await executeAllSteps(${JSON.stringify(responseConfig.beforeAll)},globalContext)
-        resultStep.forEach((step, index) => {
-          failedStep.push({
-            type: step.type,
-            status: step.status,
-            stepName: step.stepName,
-            error: step.error
-          })
-        })
-        
-        headerRequest = ${JSON.stringify(responseConfig.headers)}
-        resolvedHeader = resolveVariables(headerRequest, globalContext)
-        pathRequest = ${JSON.stringify(responseConfig.path, null, 2)}
-        methodRequest = ${JSON.stringify(responseConfig.method, null, 2)}
-        payloadResponse = resolveVariables(${JSON.stringify(responseConfig.body, null, 2)}, globalContext);
-        requestUrl = \`\${globalThis.url}\${pathRequest}\`
-        });
+      });
 
       it('should validate response structure', async () => {
         testNumber++;
         totalTests++;
         try {
-          const response = await axios.${responseConfig.method.toLowerCase()}(
-            requestUrl, 
-            payloadResponse,
-            {
-              headers: {...resolvedHeader},
-              validateStatus: () => true 
-            }
-          );
+           const response = await resolveCallAPI(
+                  ${JSON.stringify(responseConfig.action)},
+                  ${JSON.stringify(responseConfig.headers)},
+                  ${JSON.stringify(responseConfig.body)},
+                  globalContext
+                );
           const data = response.data
           if(data.ok === false){
             failedTests.push({
@@ -89,17 +70,7 @@ async function genTestCase(
       });
 
       afterAll(async () => {
-
-        const resultStep = await executeAllSteps(${JSON.stringify(responseConfig.afterAll)},globalContext)
-        resultStep.forEach((step, index) => {
-          failedStep.push({
-            type: step.type,
-            status: step.status,
-            stepName: step.stepName,
-            error: step.error
-          })
-        })
-        const folderPath = path.join(__dirname, '../reports/${className}');
+       const folderPath = path.join(__dirname, '../reports/${className}');
         if (!fs.existsSync(folderPath)) {
           fs.mkdirSync(folderPath, { recursive: true });
         }
@@ -125,7 +96,9 @@ async function genTestCase(
         fs.writeFileSync(reportPath, reportContent, 'utf-8');
         console.log(\`📄 Response test report generated: \${reportPath}\`);
       });
-    });
+      
+      })
+
   `;
 
   const outputPath = path.join(outputDir, `${className}.response.spec.ts`);

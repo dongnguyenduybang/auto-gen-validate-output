@@ -77,6 +77,18 @@ export const CreateChannelSaga: SagaTestSuite = {
             ]
           },
         },
+        {
+          action: ACTION.UPDATE_CHANNEL_NAME,
+          body: {
+            workspaceId: VAR.workspaceId, channelId: VAR.channelId, name: 'update channel name'
+          },
+          headers: HEADER_LIST.create({
+            token: VAR.token1,
+          }),
+          expect: {
+            ok: true
+          }
+        }
       ],
     },
 

@@ -1,7 +1,7 @@
 === Saga Test Report For create-channel ===
 • URL: N/A
 • Saga: CreateChannelSaga
-• Date: 2025-05-12T08:23:09.795Z
+• Date: 2025-05-16T03:22:36.311Z
 
 
 === BeforeEach Failures ===
@@ -17,11 +17,20 @@
 === Test Case ===
 📄 Case: should return false when member update channel name
 📝 1. acceptInvitation
-   • Type: null
-   • Status: ✅ passed
+   • Type: expect
+   • Error:
+      └─ missing_field:
+         └─ Path: includes.members
+            └─ Field 'nickname' in actual[0] is MISSING in expected[0]
+            └─ Field 'nickname' in actual[1] is MISSING in expected[1]
 📝 2. updateChannelName
-   • Type: null
-   • Status: ✅ passed
+   • Type: expect
+   • Error:
+      └─ value_mismatch:
+         └─ Path: ok
+            └─ Field 'ok' VALUE MISMATCH
+                  - ActualValue: false
+                  - ExpectedValue: true
 
 
 === AfterEach Failures ===
