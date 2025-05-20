@@ -5,7 +5,8 @@ import {
 } from '../src/auto-gen/utils/get-config';
 import { ACTION, VAR } from '../src/auto-gen/enums';
 import { TestContext } from '../src/auto-gen/utils/text-context';
-import { executeSteps } from '../src/auto-gen/utils/text-execute-test';
+import { executeAllSteps } from '../src/auto-gen/utils/test-executor';
+
 
 setupConfiguration();
 
@@ -25,16 +26,9 @@ beforeAll(async () => {
           badge: 0,
         },
       },
-      {
-        action: ACTION.CREATE_CHANNEL,
-        body: {
-          workspaceId: VAR.workspaceId,
-          name: 'channel1'
-        }
-      }
     ]
 
-    await executeSteps(steps, globalThis.globalContext);
+    await executeAllSteps(steps, globalThis.globalContext);
     const dataToSave = {
       urls: globalThis.urls,
       prefix: steps[0].body.prefix,

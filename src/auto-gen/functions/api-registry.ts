@@ -30,7 +30,11 @@ const API_REGISTRY: ApiRegistry = {
   },
 };
 
-export function getApiFunctions(action: string, context: TestContext, eventContext: EventContext) {
+export function getApiFunctions(
+  action: string,
+  context: TestContext,
+  eventContext: EventContext,
+) {
   const config = API_REGISTRY[action];
 
   return createApiFunction(config, context, eventContext);

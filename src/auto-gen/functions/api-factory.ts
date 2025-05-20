@@ -2,9 +2,12 @@ import axios, { AxiosRequestConfig } from 'axios';
 import { EventContext, TestContext } from '../utils/text-context';
 import { ApiConfig, ApiFunctionParams } from '../utils/declarations';
 import { resolveVariables } from '../utils/helper';
-import { EVENTS_BY_ACTION } from '../utils/event-acction';
 
-export function createApiFunction(config: ApiConfig, context: TestContext, eventContext: EventContext) {
+export function createApiFunction(
+  config: ApiConfig,
+  context: TestContext,
+  eventContext: EventContext,
+) {
   return async ({
     method,
     path,
@@ -12,7 +15,6 @@ export function createApiFunction(config: ApiConfig, context: TestContext, event
     body,
   }: ApiFunctionParams): Promise<any> => {
     try {
-
       // 0. Create WS
       // 1. Validate required headers
       const finalHeaders: Record<string, string> = {};
@@ -40,7 +42,6 @@ export function createApiFunction(config: ApiConfig, context: TestContext, event
       const finalPath = path || config.defaultPath;
       const url = `${globalThis.urls}${finalPath}`;
 
-
       const payload =
         config && config.payloadMapper ? config.payloadMapper(body) : body;
       const header = config ? finalHeaders : headers;
@@ -50,7 +51,7 @@ export function createApiFunction(config: ApiConfig, context: TestContext, event
         method: finalMethod,
         url,
         headers: header,
-        validateStatus: () => true
+        validateStatus: () => true,
       };
 
       if (['post', 'put'].includes(finalMethod)) {
@@ -66,7 +67,7 @@ export function createApiFunction(config: ApiConfig, context: TestContext, event
       //     eventContext.setValue(action, events);
       //   }
       // }
-      return  response
+      return response;
     } catch (error: any) {
       return {
         error:

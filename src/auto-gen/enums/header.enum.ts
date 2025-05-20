@@ -1,4 +1,4 @@
-import { HeaderOptions } from "../utils/declarations";
+import { HeaderOptions } from '../utils/declarations';
 
 export const HEADER_LIST = {
   create: ({

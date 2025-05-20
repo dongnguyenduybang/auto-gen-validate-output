@@ -11,7 +11,10 @@ export function getWebSocket(key: string): WebSocket | undefined {
   return sockets[key];
 }
 
-export function addWSListener(key: string, listener: (event: any) => void): void {
+export function addWSListener(
+  key: string,
+  listener: (event: any) => void,
+): void {
   wsListeners[key] = listener;
 }
 
@@ -20,5 +23,5 @@ export function removeWSListener(key: string): void {
 }
 
 export function closeAllWebSockets(): void {
-  Object.values(sockets).forEach(ws => ws.close());
+  Object.values(sockets).forEach((ws) => ws.close());
 }

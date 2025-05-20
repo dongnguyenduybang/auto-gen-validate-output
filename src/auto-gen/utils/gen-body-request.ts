@@ -43,7 +43,7 @@ export async function genBodyRequest(dtoName) {
 
       const testCasePayload = result.map(({ body, expects }) => ({
         body,
-        expects
+        expects,
       }));
 
       const outputFilePath = path.join(outputDir, `${className}.payload.json`);

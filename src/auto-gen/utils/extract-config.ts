@@ -1,4 +1,4 @@
-import { ExtractConfig } from "./declarations";
+import { ExtractConfig } from './declarations';
 
 const mockUserConfig: ExtractConfig = {
   user: {
@@ -32,9 +32,9 @@ const acceptInvitationConfig: ExtractConfig = {
     fields: ['totalMembers'],
   },
   messages: {
-    path: ['includes', 'messages' ],
-    fields: ['content', 'messageType', 'messageId']
-  }
+    path: ['includes', 'messages'],
+    fields: ['content', 'messageType', 'messageId'],
+  },
 };
 
 const sendMessageConfig: ExtractConfig = {
@@ -75,9 +75,9 @@ const ejectMessageConfig: ExtractConfig = {
 const openConnectionConfig: ExtractConfig = {
   connectParams: {
     path: ['connectParams'],
-    fields: ['url']
-  }
-}
+    fields: ['url'],
+  },
+};
 
 const wsOpenConfigRecipient: ExtractConfig = {
   wsRecipient: {
@@ -92,9 +92,7 @@ const wsOpenConfigActor: ExtractConfig = {
   },
 };
 
-const openConnectionResumeConfig: ExtractConfig = {
-
-}
+const openConnectionResumeConfig: ExtractConfig = {};
 // Ánh xạ action tới cấu hình
 export const configMap: Record<string, ExtractConfig> = {
   mockUser: mockUserConfig,
@@ -110,6 +108,5 @@ export const configMap: Record<string, ExtractConfig> = {
   openConnection: openConnectionConfig,
   wsActor: wsOpenConfigActor,
   wsRecipient: wsOpenConfigRecipient,
-  openConnectionResume: openConnectionResumeConfig
+  openConnectionResume: openConnectionResumeConfig,
 };
-

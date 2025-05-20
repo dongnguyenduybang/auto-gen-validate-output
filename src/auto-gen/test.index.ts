@@ -6,6 +6,7 @@ import { genTestRequest } from './utils/gen-test-request';
 import { execSync } from 'child_process';
 import { genTestResponse } from './utils/gen-test-response';
 import { genTestSaga } from './utils/gen-test-saga';
+import { genTestWS } from './utils/gen-test-ws';
 
 type ActionHandler = (dtoName: string) => Promise<void> | void;
 
@@ -21,15 +22,13 @@ const [action, type, ...restArgs] = args;
 let subType, dtoName;
 
 if (type === 'report') {
-  
   [subType, dtoName] = restArgs;
 } else if (type !== 'reports') {
-
   dtoName = restArgs[0];
 } else {
-  dtoName = restArgs[0]; 
+  dtoName = restArgs[0];
 }
-const validTypes = ['request', 'response', 'saga', 'report'];
+const validTypes = ['request', 'response', 'saga', 'report', 'reports', 'ws'];
 
 if (!validTypes.includes(type)) {
   console.error(`Invalid type. Valid types: ${validTypes.join(', ')}`);
@@ -44,6 +43,7 @@ const actionHandlers: Record<string, Record<string, ActionHandler[]>> = {
     ],
     response: [(dto) => Promise.resolve(genTestResponse(dto))],
     saga: [(dto) => Promise.resolve(genTestSaga(dto))],
+    ws: [(dto) => Promise.resolve(genTestWS(dto))],
   },
   test: {
     request: [runTests('test-requests')],
@@ -146,7 +146,8 @@ function clearReports(reportType: string): ActionHandler {
 }
 async function main() {
   console.log(
-    `Processing "${type}${subType ? ` ${subType}` : ''}"${dtoName ? ` for: ${dtoName}` : ''
+    `Processing "${type}${subType ? ` ${subType}` : ''}"${
+      dtoName ? ` for: ${dtoName}` : ''
     }`,
   );
 
@@ -154,11 +155,11 @@ async function main() {
     const handlers = actionHandlers[action]?.[type];
     if (!handlers) throw new Error('Invalid action');
 
-    const isBulkAction = dtoName && (
-      dtoName.includes('-requests') ||
-      dtoName.includes('-responses') ||
-      dtoName.includes('-sagas')
-    );
+    const isBulkAction =
+      dtoName &&
+      (dtoName.includes('-requests') ||
+        dtoName.includes('-responses') ||
+        dtoName.includes('-sagas'));
 
     if (isBulkAction) {
       // Truyền toàn bộ mảng handlers

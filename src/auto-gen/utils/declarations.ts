@@ -1,11 +1,11 @@
-import { AcceptInvitationResponse } from "../response/accept-invitation.response";
-import { CreateChannelResponse } from "../response/create-channel.response";
-import { GetChannelResponse } from "../response/get-channel.response";
-import { MockUserResponse } from "../response/mock-user";
-import { SendDmMessageResponse } from "../response/send-dm-message.response";
-import { SendMessageResponse } from "../response/send-message.response";
-import { UpdateMessageResponse } from "../response/update-message.response";
-import { TestContext } from "./text-context";
+import { AcceptInvitationResponse } from '../response/accept-invitation.response';
+import { CreateChannelResponse } from '../response/create-channel.response';
+import { GetChannelResponse } from '../response/get-channel.response';
+import { MockUserResponse } from '../response/mock-user';
+import { SendDmMessageResponse } from '../response/send-dm-message.response';
+import { SendMessageResponse } from '../response/send-message.response';
+import { UpdateMessageResponse } from '../response/update-message.response';
+import { TestContext } from './text-context';
 
 export interface ValidationError {
   path: string;
@@ -15,19 +15,19 @@ export interface ValidationError {
 }
 export interface ApiRequestConfig {
   body: any;
-  header?: any
+  header?: any;
 }
 export interface ExpectData {
   path: string;
   action: string;
-  payload: ApiRequestConfig
+  payload: ApiRequestConfig;
   fields?: string[];
   expect?: any;
 }
 export interface Expect {
-  ok?: boolean,
-  data?: ExpectData
-  includes?: ExpectData[]
+  ok?: boolean;
+  data?: ExpectData;
+  includes?: ExpectData[];
 }
 
 export interface ExpectResult {
@@ -35,10 +35,10 @@ export interface ExpectResult {
   message: string;
   index: number;
   key: string;
-
 }
 export interface Step<T = any> {
-  action: string;
+  title?: string;
+  action?: string;
   body?: T;
   headers?: any;
   expect?: Expect;
@@ -55,11 +55,18 @@ export interface SagaWSTestSuite {
   steps: TestCase[];
 }
 
+export interface Resume<T = any> {
+  title: string;
+  type?: string;
+  data: string;
+}
+
 interface FirstStep {
+  beforeAll?: Step[];
   beforeEach?: Step[];
   afterEach?: Step[];
   afterAll?: Step[];
-  resume?: string;
+  resume?: Resume[];
 }
 
 interface TestCase {
@@ -137,6 +144,15 @@ export interface TestResult {
   passed201?: number;
 }
 
+export interface EventValidationResult {
+  isValid: boolean;
+  errors: {
+    type: 'missing' | 'unexpected' | 'count' | 'duplicate';
+    message: string;
+    expected?: string[];
+    received?: string[];
+  }[];
+}
 
 export type ActionHandler = (dtoName: string) => Promise<void> | void;
 export type ApiRegistry = Record<string, ApiConfig>;
@@ -152,9 +168,9 @@ export type HeaderOptions = {
 
 export type Actual = {
   ok: boolean;
-  data: object
+  data: object;
   includes: object;
-}
+};
 
 export const responseClassMap = {
   CreateChannelResponse,

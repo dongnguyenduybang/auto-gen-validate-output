@@ -2,10 +2,6 @@ import 'reflect-metadata';
 import { ErrorMessage } from '../enums';
 import { getDecorators } from '../utils/dto-helper';
 import { resolveValidIf, resolveVariables } from '../utils/helper';
-<<<<<<< HEAD
-=======
-
->>>>>>> main
 export async function validateResponses(
   payload: any,
   instance: any,

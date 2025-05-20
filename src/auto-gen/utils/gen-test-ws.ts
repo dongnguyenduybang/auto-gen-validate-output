@@ -2,76 +2,85 @@ import * as path from 'path';
 import * as fs from 'fs';
 
 export function genTestWS(dtoName: string) {
-  const classNameCapitalized = dtoName
-    .split('-')
-    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-    .join('');
+  const baseFolder = path.join(__dirname, `../test-ws/${dtoName}`);
 
-  const outputDir = path.join(__dirname, `../test-ws/${dtoName}`);
-  const specContent = `
+  const files = fs.readdirSync(baseFolder);
+  const wsFiles = files.filter((file) => file.endsWith('.ws.ts'));
+  wsFiles.forEach(async (wsFile) => {
+    const wsFilePathWithoutExt = wsFile.replace('.ws.ts', '');
+    const classNameCapitalized = wsFilePathWithoutExt
+      .split('-')
+      .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+      .join('');
+
+    const wsModule = await import(path.join(baseFolder, wsFile));
+    const wsConfig = wsModule[`${classNameCapitalized}WS`];
+
+    const itBlocks = wsConfig.steps
+      .map(
+        (step: { title: string; step: any[] }, index: number) =>
+          `
+        it('${step.title}', async () => {
+          currentTestCaseTitle = '${step.title}';
+          const results = await executeAllSteps(${classNameCapitalized}WS.steps[${index}].step, contextData);
+            results.forEach((result) => {
+              allSteps.push({
+                ...result,
+                caseTitle: currentTestCaseTitle ,
+                phase: 'test',
+              });
+          });        
+        })
+      `,
+      )
+      .join('\n');
+
+    const outputDir = path.join(__dirname, `../test-ws/${dtoName}`);
+    const specContent = `
     import path from 'path';
     import fs from 'fs';
     import { getTime } from '../../utils/helper';
-    import { executeAllSteps } from '../../utils/test-executor';
     import { TestContext, WSSContext, EventContext } from '../../utils/text-context';
-    import { executeWSSCheck } from '../../utils/ws-execute-check';
-    import { executeWSSteps } from '../../utils/ws-execute-ws-step';
-    import { executeOpenWS } from '../../utils/ws-open';
-    import { ${classNameCapitalized}SagaWS } from './${dtoName}.ws';
+    import { executeWS } from '../../utils/execute-ws';
+    import { executeAllSteps } from '../../utils/test-executor';
+    import { ${classNameCapitalized}WS } from './${dtoName}.ws';
     describe('Test sagas for ${dtoName}', () => {
       let pathRequest: string;
       let testType: string;
-      let globalContext: TestContext;
+      let context: TestContext;
       let globalWSSContext: WSSContext;
       let eventContext: EventContext;
-      let testNumber = 0;
-      let failedStep = [];
-      let passedTests = 0;
-      let failedTests: any[] = [];
-      let totalTests = 0;
+      let allSteps: any[] = [];
+      let contextData;
+      let currentTestCaseTitle;
       beforeAll(async () => {
         pathRequest = '${classNameCapitalized}WS'
-            testType = 'ws';
-        globalContext = new TestContext();
+        testType = 'ws';
+        context = new TestContext();
         globalWSSContext = new WSSContext();
         eventContext = new EventContext();
-          const resultBeforeAll = await executeAllSteps(SendMessageSagaWS.beforeAll, globalContext, globalWSSContext, eventContext);
-          const resultOpenWS = await executeOpenWS(SendMessageSagaWS.wsOpen, globalContext, globalWSSContext);
-         });
 
-      it('should validate response structure', async () => {
-        testNumber++;
-         try {
-              const resultSteps = await executeWSSteps(SendMessageSagaWS.steps, globalContext, globalWSSContext, eventContext)
-        
-              const resultCheck = await executeWSSCheck(SendMessageSagaWS.wssCheck, globalContext, globalWSSContext, eventContext);
-              const checkStatus = resultCheck.success;
-              failedStep.push({
-                type: 'ws',
-                status: checkStatus,
-                stepName: 'wssCheck',
-                result: resultCheck,
+         const beforeAllSteps = ${classNameCapitalized}WS.options
+            ?.find((option) => option.beforeAll)
+            ?.beforeAll || [];
+
+          if (beforeAllSteps.length > 0) {
+            contextData = context.clone();
+            const results = await executeWS(beforeAllSteps, contextData, eventContext);
+            results.forEach((result) => {
+              allSteps.push({
+                ...result,
+                caseTitle: \`Case\`,
+                phase: 'beforeEach',
               });
-        
-              const allStepsPassed = resultSteps.every(step => step.status ?? true) && checkStatus;
-              if (allStepsPassed) {
-                passedTests++;
-              } else {
-                failedTests.push({
-                  testcase: testNumber,
-                  result: resultCheck, 
-                });
-              }
-        
-              expect(allStepsPassed).toBe(true);
-            } catch (error) {
-              failedTests.push({
-                testcase: testNumber,
-                result: error instanceof Error ? error.message : JSON.stringify(error),
-              });
-              expect(error).toBeNull();
-            }
-          }, 15000);
+            });
+          }else {
+            contextData = context
+          }
+
+      });
+
+      ${itBlocks}
 
       afterAll(async () => {
         const folderPath = path.join(__dirname, '../reports/${dtoName}');
@@ -85,7 +94,7 @@ export function genTestWS(dtoName: string) {
             classNames,
             globalThis.url,
             pathRequest,
-            failedStep,
+            allSteps,
             null,
             null,
             null,
@@ -101,7 +110,8 @@ export function genTestWS(dtoName: string) {
     });
   `;
 
-  const outputPath = path.join(outputDir, `${dtoName}.ws.spec.ts`);
-  fs.writeFileSync(outputPath, specContent, 'utf-8');
-  console.log(`✅ Generated WS test: ${outputPath}`);
+    const outputPath = path.join(outputDir, `${dtoName}.ws.spec.ts`);
+    fs.writeFileSync(outputPath, specContent, 'utf-8');
+    console.log(`✅ Generated WS test: ${outputPath}`);
+  });
 }

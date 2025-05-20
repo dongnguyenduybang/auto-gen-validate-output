@@ -1,5 +1,5 @@
 import { configMap } from './extract-config';
-export function extractDatas(
+export function extractDates(
   response: object,
   action: string,
 ): Record<string, any> {

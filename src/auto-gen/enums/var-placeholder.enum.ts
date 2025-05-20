@@ -1,35 +1,4 @@
 export enum VAR {
-<<<<<<< HEAD
-    userId = '{{userId}}',
-    userId1 = '{{userId1}}',
-    userId2 = '{{userId2}}',
-    userId3 = '{{userId3}}',
-    channelId = '{{channelId}}',
-    channelId1 = '{{channelId1}}',
-    channelId2 = '{{channelId2}}',
-    channelId3 = '{{channelId3}}',
-    messageId = '{{messageId}}',
-    messageId1 = '{{messageId1}}',
-    messageId2 = '{{messageId2}}',
-    messageId3= '{{messageId3}}',
-    token = '{{token}}',
-    token1 = '{{token1}}',
-    token2 = '{{token2}}',
-    token3 = '{{token3}}',
-    invitationLink = '{{invitationLink}}',
-    totalMembers = '{{totalMembers}}',
-    totalMembers1 = '{{totalMembers1}}',
-    totalMembers2 = '{{totalMembers2}}',
-    totalMembers3 = '{{totalMembers3}}',
-    name = '{{name}}',
-    name1 = '{{name1}}',
-    name2 = '{{name2}}',
-    url = '{{url}}',
-    url1 = '{{url1}}',
-    url2 = '{{url2}}',
-    idWS = '{{id}}'
-}
-=======
   userId = '{{userId}}',
   userId1 = '{{userId1}}',
   userId2 = '{{userId2}}',
@@ -55,5 +24,8 @@ export enum VAR {
   name1 = '{{name1}}',
   name2 = '{{name2}}',
   workspaceId = '0',
+  url = '{{url}}',
+  url1 = '{{url1}}',
+  time = 'time',
+  id = 'id',
 }
->>>>>>> main

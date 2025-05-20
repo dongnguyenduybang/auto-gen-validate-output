@@ -1,5 +1,5 @@
-import { HEADER_LIST, VAR } from "../enums";
-import { ExpectData } from "./declarations";
+import { HEADER_LIST, VAR } from '../enums';
+import { ExpectData } from './declarations';
 export const executeFunction = (
   path: string,
   action: string,
@@ -8,14 +8,14 @@ export const executeFunction = (
     header?: string[];
   },
   fields?: string[],
-  expect?: string[]
+  expect?: string[],
 ): ExpectData => ({
   path,
   action,
   payload: {
     body: requestConfig.body,
-    header: requestConfig.header || HEADER_LIST.create({ token: VAR.token })
+    header: requestConfig.header || HEADER_LIST.create({ token: VAR.token }),
   },
   ...(fields && { fields }),
-  ...(expect && { expect })
+  ...(expect && { expect }),
 });

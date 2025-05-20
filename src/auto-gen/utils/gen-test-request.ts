@@ -1,6 +1,12 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import { formatExpectErrors, getAllFiles, pairFiles, readJsonFile, resolveActionPath } from './helper';
+import {
+  formatExpectErrors,
+  getAllFiles,
+  pairFiles,
+  readJsonFile,
+  resolveActionPath,
+} from './helper';
 
 async function generateSpecContent(
   testCases: any[],
@@ -8,7 +14,7 @@ async function generateSpecContent(
   className: string,
   chunkNumber?: number,
   startIndex: number = 0,
-  totalChunks?: number
+  totalChunks?: number,
 ): Promise<string> {
   return `
     import fs from 'fs';
@@ -34,8 +40,8 @@ async function generateSpecContent(
         });
 
         ${testCases
-      .map(
-        (testCase, index) => `
+          .map(
+            (testCase, index) => `
             it('Test case #${startIndex + index + 1} should return errors ${formatExpectErrors(testCase.expects)} when body ${JSON.stringify(testCase.body)}', async () => {
               testNumber = ${startIndex + index + 1};
               totalTests++;
@@ -122,9 +128,9 @@ async function generateSpecContent(
                   error: error.message
                 });
               }
-            });`
-      )
-      .join('\n')}
+            });`,
+          )
+          .join('\n')}
 
          afterAll(async () => {
         //   const response = await resolveCallAPI(
@@ -171,7 +177,7 @@ async function genTestCase(
   payloadPath: string,
   requestPath: string,
   className: string,
-  outputDir: string
+  outputDir: string,
 ) {
   const payloadData = readJsonFile(payloadPath);
   console.log(`Total test cases in ${payloadPath}: ${payloadData.length}`);
@@ -205,7 +211,7 @@ async function genTestCase(
         className,
         i + 1,
         startIdx,
-        totalChunks
+        totalChunks,
       );
 
       const chunkFileName = `${className}-chunk-${i + 1}.spec.ts`;
@@ -215,11 +221,10 @@ async function genTestCase(
       console.log(`Generated test file: ${outputPath}`);
     }
   } else {
-
     const specContent = await generateSpecContent(
       payloadData,
       requestConfig,
-      className
+      className,
     );
 
     const outputPath = path.join(outputDir, `${className}.spec.ts`);
@@ -239,8 +244,10 @@ export function genTestRequest(dtoName: string) {
       const outputDir = path.join(__dirname, `../test-requests/${className}`);
 
       if (fs.existsSync(payloadPath)) {
-        genTestCase(payloadPath, requestPath, className, outputDir)
-          .catch(err => console.error(`Error generating tests for ${className}:`, err));
+        genTestCase(payloadPath, requestPath, className, outputDir).catch(
+          (err) =>
+            console.error(`Error generating tests for ${className}:`, err),
+        );
       } else {
         console.warn(`Missing payload file for class: ${className}`);
       }

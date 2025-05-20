@@ -41,7 +41,6 @@ export function generateErrorCases(
   dtoClass: any,
   payload: Record<string, any>,
 ): PayloadGen[] {
-
   const instance = new dtoClass();
   const keys = Object.keys(instance);
   if (keys.length === 0) {
@@ -145,15 +144,18 @@ export function generateErrorVariantsForField(
   }
   return [...new Set(variants)];
 }
-export function combineFields(arrays: FieldValueObject[][]): FieldValueObject[][] {
+export function combineFields(
+  arrays: FieldValueObject[][],
+): FieldValueObject[][] {
   if (!Array.isArray(arrays) || arrays.some((arr) => !Array.isArray(arr))) {
     throw new Error(
       'Invalid input for combineFields: Expected an array of arrays',
     );
   }
 
-  return arrays.reduce<FieldValueObject[][]>((a, b) => a.flatMap(d => b.map(e => [...d, e])),
-    [[]]
+  return arrays.reduce<FieldValueObject[][]>(
+    (a, b) => a.flatMap((d) => b.map((e) => [...d, e])),
+    [[]],
   );
 }
 export function generateCombinations(
@@ -421,20 +423,26 @@ export function generateCombinations(
 //   return errors;
 // }
 
-function addErrorIfNotExist(errors: string[], customMessage: string | null, defaultMessage: string) {
+function addErrorIfNotExist(
+  errors: string[],
+  customMessage: string | null,
+  defaultMessage: string,
+) {
   const errorMessage = customMessage || defaultMessage;
   if (errorMessage && !errors.includes(errorMessage)) {
     errors.push(errorMessage);
   }
 }
 
-function checkOptional(value: unknown, decorators: Record<string, any>): string[] | null {
+function checkOptional(
+  value: unknown,
+  decorators: Record<string, any>,
+): string[] | null {
   if (decorators['optional'] && (value === undefined || value === null)) {
     return [];
   }
   return null;
 }
-
 
 function getDefinedErrorMessage(field: string): string {
   switch (field) {
@@ -448,14 +456,26 @@ function getDefinedErrorMessage(field: string): string {
   }
 }
 
-function checkIsDefined(field: string, value: unknown, decorators: Record<string, any>): string[] {
+function checkIsDefined(
+  field: string,
+  value: unknown,
+  decorators: Record<string, any>,
+): string[] {
   const errors: string[] = [];
   if (value === undefined || value === null) {
     if (decorators['isDefined']) {
       if (decorators['isChecked']) {
-        addErrorIfNotExist(errors, decorators['isDefinedMessage'], getDefinedErrorMessage(field));
+        addErrorIfNotExist(
+          errors,
+          decorators['isDefinedMessage'],
+          getDefinedErrorMessage(field),
+        );
       } else {
-        addErrorIfNotExist(errors, decorators['isDefinedMessage'], `${ErrorMessage.DEFINED} '${field}'`);
+        addErrorIfNotExist(
+          errors,
+          decorators['isDefinedMessage'],
+          `${ErrorMessage.DEFINED} '${field}'`,
+        );
       }
       return errors;
     }
@@ -463,26 +483,53 @@ function checkIsDefined(field: string, value: unknown, decorators: Record<string
   return null;
 }
 
-function checkNotEmpty(field: string, value: unknown, decorators: Record<string, any>): string[] {
+function checkNotEmpty(
+  field: string,
+  value: unknown,
+  decorators: Record<string, any>,
+): string[] {
   const errors: string[] = [];
   if (value === '' && decorators['notEmpty']) {
     if (decorators['isChecked']) {
-      if (field === 'workspaceId' || field === 'channelId' || field === 'userId') {
-        addErrorIfNotExist(errors, decorators['notEmptyMessage'], 'Could not resolve permission type');
+      if (
+        field === 'workspaceId' ||
+        field === 'channelId' ||
+        field === 'userId'
+      ) {
+        addErrorIfNotExist(
+          errors,
+          decorators['notEmptyMessage'],
+          'Could not resolve permission type',
+        );
       } else {
-        addErrorIfNotExist(errors, decorators['notEmptyMessage'], `${field} ${ErrorMessage.EMPTY}`);
+        addErrorIfNotExist(
+          errors,
+          decorators['notEmptyMessage'],
+          `${field} ${ErrorMessage.EMPTY}`,
+        );
       }
     } else {
-      addErrorIfNotExist(errors, decorators['notEmptyMessage'], `${field} ${ErrorMessage.EMPTY}`);
+      addErrorIfNotExist(
+        errors,
+        decorators['notEmptyMessage'],
+        `${field} ${ErrorMessage.EMPTY}`,
+      );
     }
   }
   return errors;
 }
 
-function checkULID(field: string, value: unknown, decorators: Record<string, any>): string[] {
+function checkULID(
+  field: string,
+  value: unknown,
+  decorators: Record<string, any>,
+): string[] {
   const errors: string[] = [];
   if (decorators['isULID']) {
-    if (typeof value === 'string' && (value === '' || !value.startsWith('{{'))) {
+    if (
+      typeof value === 'string' &&
+      (value === '' || !value.startsWith('{{'))
+    ) {
       addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_ULID}`);
     } else if (typeof value === 'string' && !checkRegexULID(value)) {
       addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_ULID}`);
@@ -491,19 +538,36 @@ function checkULID(field: string, value: unknown, decorators: Record<string, any
   return errors;
 }
 
-function checkEmoji(field: string, value: unknown, decorators: Record<string, any>): string[] {
+function checkEmoji(
+  field: string,
+  value: unknown,
+  decorators: Record<string, any>,
+): string[] {
   const errors: string[] = [];
   if (decorators['isEmoji']) {
-    const isInvalid = typeof value === 'string' && (value === '' || !isEmoji(value));
+    const isInvalid =
+      typeof value === 'string' && (value === '' || !isEmoji(value));
     if (isInvalid) {
-      addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_EMOJI}`);
-      addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_EMOJI_LENGTH}`);
+      addErrorIfNotExist(
+        errors,
+        null,
+        `${field} ${ErrorMessage.INVALID_EMOJI}`,
+      );
+      addErrorIfNotExist(
+        errors,
+        null,
+        `${field} ${ErrorMessage.INVALID_EMOJI_LENGTH}`,
+      );
     }
   }
   return errors;
 }
 
-function checkTypeString(field: string, value: unknown, decorators: Record<string, any>): string[] {
+function checkTypeString(
+  field: string,
+  value: unknown,
+  decorators: Record<string, any>,
+): string[] {
   const errors: string[] = [];
   if (value === undefined) {
     return [];
@@ -512,28 +576,52 @@ function checkTypeString(field: string, value: unknown, decorators: Record<strin
   if (decorators['type'] === 'string') {
     if (typeof value !== 'string') {
       if (decorators['isChecked']) {
-        if (field === 'workspaceId' || field === 'channelId' || field === 'userId') {
+        if (
+          field === 'workspaceId' ||
+          field === 'channelId' ||
+          field === 'userId'
+        ) {
           addErrorIfNotExist(errors, decorators['stringMessage'], null);
         } else {
-          addErrorIfNotExist(errors, decorators['stringMessage'], `${field} ${ErrorMessage.INVALID_TYPE_STRING}`);
+          addErrorIfNotExist(
+            errors,
+            decorators['stringMessage'],
+            `${field} ${ErrorMessage.INVALID_TYPE_STRING}`,
+          );
         }
       } else {
-        addErrorIfNotExist(errors, decorators['stringMessage'], `${field} ${ErrorMessage.INVALID_TYPE_STRING}`);
+        addErrorIfNotExist(
+          errors,
+          decorators['stringMessage'],
+          `${field} ${ErrorMessage.INVALID_TYPE_STRING}`,
+        );
       }
       return errors;
     }
 
     if (decorators['isChecked']) {
       if (field === 'workspaceId' && value !== '0') {
-        addErrorIfNotExist(errors, decorators['isCheckedMessage'], 'Invalid channel');
+        addErrorIfNotExist(
+          errors,
+          decorators['isCheckedMessage'],
+          'Invalid channel',
+        );
         return errors;
       }
       if (field === 'channelId' && !value.startsWith('{{')) {
-        addErrorIfNotExist(errors, decorators['isCheckedMessage'], 'Invalid channel');
+        addErrorIfNotExist(
+          errors,
+          decorators['isCheckedMessage'],
+          'Invalid channel',
+        );
         return errors;
       }
       if (field === 'userId' && !value.startsWith('{{')) {
-        addErrorIfNotExist(errors, decorators['isCheckedMessage'], 'Unauthorized request');
+        addErrorIfNotExist(
+          errors,
+          decorators['isCheckedMessage'],
+          'Unauthorized request',
+        );
         return errors;
       }
     }
@@ -545,81 +633,153 @@ function checkTypeString(field: string, value: unknown, decorators: Record<strin
 
       if (hasMin && hasMax) {
         if (len < decorators['minLength'] || len > decorators['maxLength']) {
-          addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_RANGE_STRING_LENGTH} ${decorators['minLength']} to ${decorators['maxLength']} length`);
+          addErrorIfNotExist(
+            errors,
+            null,
+            `${field} ${ErrorMessage.INVALID_RANGE_STRING_LENGTH} ${decorators['minLength']} to ${decorators['maxLength']} length`,
+          );
         }
       } else if (hasMin && len < decorators['minLength']) {
-        addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.MIN_LENGTH} ${decorators['minLength']} length`);
+        addErrorIfNotExist(
+          errors,
+          null,
+          `${field} ${ErrorMessage.MIN_LENGTH} ${decorators['minLength']} length`,
+        );
       } else if (hasMax && len > decorators['maxLength']) {
-        addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.MAX_LENGTH} ${decorators['maxLength']} length`);
+        addErrorIfNotExist(
+          errors,
+          null,
+          `${field} ${ErrorMessage.MAX_LENGTH} ${decorators['maxLength']} length`,
+        );
       }
     }
   }
   return errors;
 }
 
-function checkTypeNumber(field: string, value: unknown, decorators: Record<string, any>): string[] {
+function checkTypeNumber(
+  field: string,
+  value: unknown,
+  decorators: Record<string, any>,
+): string[] {
   const errors: string[] = [];
   if (decorators['type'] === 'number') {
     if (typeof value !== 'number' || isNaN(value)) {
-      addErrorIfNotExist(errors, decorators['numberMessage'], `${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`);
+      addErrorIfNotExist(
+        errors,
+        decorators['numberMessage'],
+        `${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`,
+      );
       return errors;
     }
     if (decorators['min'] != null && value < decorators['min']) {
-      addErrorIfNotExist(errors, decorators['minMessage'], `${field} must be at least ${decorators['min']}`);
+      addErrorIfNotExist(
+        errors,
+        decorators['minMessage'],
+        `${field} must be at least ${decorators['min']}`,
+      );
     }
     if (decorators['max'] != null && value > decorators['max']) {
-      addErrorIfNotExist(errors, decorators['maxMessage'], `${field} must be at most ${decorators['max']}`);
+      addErrorIfNotExist(
+        errors,
+        decorators['maxMessage'],
+        `${field} must be at most ${decorators['max']}`,
+      );
     }
   }
   return errors;
 }
 
-function checkTypeArray(field: string, value: unknown, decorators: Record<string, any>): string[] {
+function checkTypeArray(
+  field: string,
+  value: unknown,
+  decorators: Record<string, any>,
+): string[] {
   const errors: string[] = [];
   if (decorators['type'] === 'array') {
     if (!Array.isArray(value)) {
-      addErrorIfNotExist(errors, decorators['arrayMessage'], `${field} ${ErrorMessage.INVALID_TYPE_ARRAY}`);
+      addErrorIfNotExist(
+        errors,
+        decorators['arrayMessage'],
+        `${field} ${ErrorMessage.INVALID_TYPE_ARRAY}`,
+      );
       return errors;
     }
-    if (decorators['minArray'] != null && value.length < decorators['minArray']) {
-      addErrorIfNotExist(errors, decorators['minArrayMessage'], `${field} must have at least ${decorators['minArray']} items`);
+    if (
+      decorators['minArray'] != null &&
+      value.length < decorators['minArray']
+    ) {
+      addErrorIfNotExist(
+        errors,
+        decorators['minArrayMessage'],
+        `${field} must have at least ${decorators['minArray']} items`,
+      );
     }
-    if (decorators['maxArray'] != null && value.length > decorators['maxArray']) {
-      addErrorIfNotExist(errors, decorators['maxArrayMessage'], `${field} must have at most ${decorators['maxArray']} items`);
+    if (
+      decorators['maxArray'] != null &&
+      value.length > decorators['maxArray']
+    ) {
+      addErrorIfNotExist(
+        errors,
+        decorators['maxArrayMessage'],
+        `${field} must have at most ${decorators['maxArray']} items`,
+      );
     }
   }
   return errors;
 }
 
-function checkTypeObject(field: string, value: unknown, decorators: Record<string, any>): string[] {
+function checkTypeObject(
+  field: string,
+  value: unknown,
+  decorators: Record<string, any>,
+): string[] {
   const errors: string[] = [];
   if (decorators['type'] === 'object') {
     if (typeof value !== 'object' || Array.isArray(value) || value === null) {
-      addErrorIfNotExist(errors, decorators['objectMessage'], `${field} ${ErrorMessage.INVALID_TYPE_OBJ}`);
+      addErrorIfNotExist(
+        errors,
+        decorators['objectMessage'],
+        `${field} ${ErrorMessage.INVALID_TYPE_OBJ}`,
+      );
       return errors;
     }
   }
   return errors;
 }
 
-function checkEnum(field: string, value: unknown, decorators: Record<string, any>): string[] {
+function checkEnum(
+  field: string,
+  value: unknown,
+  decorators: Record<string, any>,
+): string[] {
   const errors: string[] = [];
   if (decorators['type'] === 'enum') {
-    if (!decorators['enumType'] || !Object.values(decorators['enumType']).includes(value)) {
-      addErrorIfNotExist(errors, decorators['enumMessage'], `${field} ${ErrorMessage.INVALID_ENUM}`);
+    if (
+      !decorators['enumType'] ||
+      !Object.values(decorators['enumType']).includes(value)
+    ) {
+      addErrorIfNotExist(
+        errors,
+        decorators['enumMessage'],
+        `${field} ${ErrorMessage.INVALID_ENUM}`,
+      );
       return errors;
     }
   }
   return errors;
 }
 
-export function mapError(field: string, value: unknown, decorators: Record<string, any>): string[] {
+export function mapError(
+  field: string,
+  value: unknown,
+  decorators: Record<string, any>,
+): string[] {
   // Kiểm tra từng nhóm lỗi
   const errors: string[] = [];
 
   const optionalErrors = checkOptional(value, decorators);
   if (optionalErrors !== null) return optionalErrors;
-
 
   const checks = [
     checkIsDefined,
@@ -637,7 +797,13 @@ export function mapError(field: string, value: unknown, decorators: Record<strin
     const result = check(field, value, decorators);
     if (result && result.length > 0) {
       errors.push(...result);
-      if (check === checkTypeString || check === checkTypeNumber || check === checkTypeArray || check === checkTypeObject || check === checkEnum) {
+      if (
+        check === checkTypeString ||
+        check === checkTypeNumber ||
+        check === checkTypeArray ||
+        check === checkTypeObject ||
+        check === checkEnum
+      ) {
         break;
       }
     }
