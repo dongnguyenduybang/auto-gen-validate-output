@@ -4,7 +4,7 @@ import { Step, StepResult, ValidationError } from './declarations';
 import { TestContext } from './text-context';
 import { ACTION_CONFIG } from '../enums';
 import { handleExpectConfig } from './check-expect';
-import { checkResponse, delay } from './helper';
+import { checkResponse } from './helper';
 
 export async function executeSteps(
   steps: Step[],
@@ -44,18 +44,18 @@ async function executeSingleStep(
     headers: resolveHeaders,
     body: resolveBody,
   });
-
   const hasExpectConfig = !!expectConfig;
   if ((!response?.data?.ok) && !hasExpectConfig) {
     return {
       type: 'request DTO',
       status: false,
       stepName: action,
-      error: response.error || {
-        code: response.data.error.code,
-        message: response.data.error.message,
-        details: response.data.error.details,
-      },
+      error: response?.error || {
+        code: response?.data?.error?.code,
+        message: response?.data?.error?.message,
+        details: response?.data?.error?.details,
+      } || response?.data
+
     };
 
   } else {

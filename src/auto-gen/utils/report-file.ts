@@ -202,7 +202,6 @@ const sagaReportTemplate = (
       groups[caseTitle] = [];
     }
     groups[caseTitle].push(failure);
-    console.log(JSON.stringify(groups, null, 2))
     return groups;
   }, {});
 

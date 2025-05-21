@@ -1,0 +1,61 @@
+=== Saga Test Report For create-channel ===
+• URL: N/A
+• Saga: CreateChannelSaga
+• Date: 2025-05-21T04:45:50.171Z
+
+
+=== BeforeEach Failures ===
+📄 Case: Case 1
+📝 1. mockUser
+   • Type: null
+   • Status: ✅ passed
+📝 2. createChannel
+   • Type: null
+   • Status: ✅ passed
+
+📄 Case: Case 2
+📝 1. mockUser
+   • Type: null
+   • Status: ✅ passed
+📝 2. createChannel
+   • Type: null
+   • Status: ✅ passed
+
+
+=== Test Case ===
+📄 Case: should return false when member update channel name
+📝 1. acceptInvitation
+   • Type: null
+   • Status: ✅ passed
+📝 2. updateChannelName
+   • Type: expect
+   • Error:
+      └─ value_mismatch:
+         └─ Path: ok
+            └─ Boolean value mismatch
+                  - ActualValue: false
+                  - ExpectedValue: true
+
+📄 Case: should return true when owner update channel name
+📝 1. acceptInvitation
+   • Type: null
+   • Status: ✅ passed
+📝 2. updateChannelName
+   • Type: null
+   • Status: ✅ passed
+
+
+=== AfterEach Failures ===
+📄 Case: should return false when member update channel name
+📝 1. deleteMockedUsers
+   • Type: null
+   • Status: ✅ passed
+
+📄 Case: should return true when owner update channel name
+📝 1. deleteMockedUsers
+   • Type: null
+   • Status: ✅ passed
+
+
+
+=== End of Report ===

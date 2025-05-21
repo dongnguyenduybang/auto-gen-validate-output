@@ -24,7 +24,6 @@ export class UpdateMessageDTO {
 
   @IsString()
   @IsULID()
-  @IsNotEmpty({ message: `messageId must NOT have fewer than 1 characters` })
   @IsDefined()
   messageId: string = '';
 

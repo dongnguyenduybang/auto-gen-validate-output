@@ -55,27 +55,65 @@ export const CreateChannelSaga: SagaTestSuite = {
           }),
           expect: {
             ok: true,
-            data: executeFunction(
-              'data.channel',
-              ACTION.GET_CHANNEL,
-              {
-                body: { channelId: VAR.channelId, workspaceId: VAR.workspaceId }
-              },
-              null,
-              null
-            ),
             includes: [
               executeFunction(
-                'includes.members',
-                ACTION.LIST_MEMBERS,
-                {
-                  body: { channelId: VAR.channelId, workspaceId: VAR.workspaceId }
-                },
-                null,
-                null
+                'includes.users',
+                ACTION.GET_USER,
+                [null,
+                  { userId: VAR.userId1 }
+                ],
+                ['userId'],
               ),
             ]
           },
+        },
+        {
+          action: ACTION.UPDATE_CHANNEL_NAME,
+          body: {
+            workspaceId: VAR.workspaceId, channelId: VAR.channelId, name: 'new name gr'
+          },
+          headers: HEADER_LIST.create({ token: VAR.token1 }),
+          expect: {
+            ok: true
+          }
+        },
+
+      ],
+    },
+    {
+      title: 'should return true when owner update channel name',
+      step: [
+        {
+          action: ACTION.ACCEPT_INVITATION,
+          body: {
+            invitationLink: VAR.invitationLink,
+          },
+          headers: HEADER_LIST.create({
+            token: VAR.token1,
+          }),
+          expect: {
+            ok: true,
+            includes: [
+              executeFunction(
+                'includes.users',
+                ACTION.GET_USER,
+                [null,
+                  { userId: VAR.userId1 }
+                ],
+                ['userId'],
+              ),
+            ]
+          },
+        },
+        {
+          action: ACTION.UPDATE_CHANNEL_NAME,
+          body: {
+            workspaceId: VAR.workspaceId, channelId: VAR.channelId, name: 'new name gr'
+          },
+          headers: HEADER_LIST.create({ token: VAR.token }),
+          expect: {
+            ok: true
+          }
         },
       ],
     },

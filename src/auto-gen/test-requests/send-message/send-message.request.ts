@@ -1,4 +1,4 @@
-import { ACTION, APIPath, HEADER_LIST, METHOD, VAR } from '../../enums';
+import { ACTION, HEADER_LIST, VAR } from '../../enums';
 
 export const SendMessageRequest = {
   action: ACTION.SEND_MESSAGE,

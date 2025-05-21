@@ -1,15 +1,14 @@
-import { ACTION, APIPath, HeaderList, METHOD, VAR } from '../../enums';
+import { ACTION, HEADER_LIST, VAR } from '../../enums';
 
 export const SendMessageResponse = {
-  method: METHOD.POST,
-  path: APIPath.Message.SendMessage,
-  headers: HeaderList.Token(),
+  action: ACTION.SEND_MESSAGE,
   body: {
     channelId: VAR.channelId,
     workspaceId: '0',
     content: 'test response send message',
     ref: 'ref',
   },
+  headers: HEADER_LIST.create({token: VAR.token}),
   beforeAll: [
     {
       action: ACTION.MOCK_USER,

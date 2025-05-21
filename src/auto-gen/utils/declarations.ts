@@ -35,9 +35,10 @@ export interface Expect {
 
 export interface ExpectResult {
   type: string;
+  path: string;
   message: string;
-  index: number;
-  key: string;
+  actualValue?: string;
+  expectedValue?: string;
 
 }
 export interface Step<T = any> {
@@ -68,7 +69,7 @@ export interface StepResult {
   type?: string;
   status: boolean;
   stepName: string;
-  error?: string;
+  error?: Object;
 }
 
 export interface IContext {
