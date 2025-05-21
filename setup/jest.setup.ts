@@ -41,7 +41,6 @@ beforeAll(async () => {
       context: globalThis.globalContext
     };
     writeFileSync('temp.json', JSON.stringify(dataToSave));
-    console.log('Setup completed with context:', globalThis.globalContext);
   } catch (error) {
     console.error('Setup failed:', error);
     throw error;

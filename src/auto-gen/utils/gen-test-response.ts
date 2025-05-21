@@ -15,12 +15,11 @@ async function genTestCase(
   const specContent = `
     import fs from 'fs';
     import path from 'path';
-    import axios from 'axios';
-    import { getTime, summarizeErrors } from '../../utils/helper';
+    import { getTime, summarizeErrors, resolveCallAPI, resolveVariables } from '../../utils/helper';
     import { ${classNameCapitalized}Response } from '../../response/${className}.response';
     import { plainToInstance } from 'class-transformer';
     import { validateResponses } from '../../validates/validate-response';
-    import { executeAllSteps, resolveVariables } from '../../utils/test-executor';
+    import { executeAllSteps } from '../../utils/test-executor';
     import { TestContext } from '../../utils/text-context';
 
     describe('Test response for ${className}', () => {
@@ -33,6 +32,7 @@ async function genTestCase(
       beforeAll(async () => {
         testType = 'response'
         globalContext = new TestContext();
+        
         const resultStep = await executeAllSteps(${JSON.stringify(responseConfig.beforeAll)},globalContext)
         resultStep.forEach((step, index) => {
           failedStep.push({
@@ -55,15 +55,13 @@ async function genTestCase(
         testNumber++;
         totalTests++;
         try {
-          const response = await axios.${responseConfig.method.toLowerCase()}(
-            requestUrl, 
-            payloadResponse,
-            {
-              headers: {...resolvedHeader},
-              validateStatus: () => true 
-            }
-          );
-          const data = response.data
+                const response = await resolveCallAPI(
+                  ${JSON.stringify(responseConfig.action)},
+                  ${JSON.stringify(responseConfig.headers)},
+                  ${JSON.stringify(responseConfig.body)},
+                  globalContext
+                );
+                const data = response.data;
           if(data.ok === false){
             failedTests.push({
               testcase: testNumber,

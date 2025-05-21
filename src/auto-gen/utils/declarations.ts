@@ -13,16 +13,19 @@ export interface ValidationError {
   actual: any;
   message?: string;
 }
-export interface ApiRequestConfig {
-  body: any;
-  header?: any
+interface ApiRequestConfig {
+  body?: any;
+  header?: Record<string, string>;
 }
-export interface ExpectData {
+
+interface ExpectData {
   path: string;
   action: string;
-  payload: ApiRequestConfig
+  payload: ApiRequestConfig | ApiRequestConfig[];
+  filter?: string[];
   fields?: string[];
-  expect?: any;
+  isArrayMapping?: boolean;
+  headers?: Record<string, string>;
 }
 export interface Expect {
   ok?: boolean,

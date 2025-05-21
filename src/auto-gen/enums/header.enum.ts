@@ -4,8 +4,6 @@ export const HEADER_LIST = {
   create: ({
     token,
     userId,
-    deviceId,
-    role,
     ...customHeaders
   }: HeaderOptions) => {
     const headers: Record<string, string> = {
@@ -13,10 +11,6 @@ export const HEADER_LIST = {
       'x-user-id': userId,
       ...customHeaders,
     };
-
-    if (deviceId) headers['x-device-id'] = deviceId;
-    if (role) headers['x-role'] = role;
-
     return headers;
   },
 };

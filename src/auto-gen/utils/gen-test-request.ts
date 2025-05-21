@@ -14,7 +14,6 @@ async function generateSpecContent(
     import fs from 'fs';
     import path from 'path';
     import { summaryFields, resolveCallAPI, resolveVariables } from '../../utils/helper';
-    import { executeAllSteps } from '../../utils/test-executor';
     import { TestResult } from '../../utils/declarations';
     describe('Testcase for ${className}${chunkNumber ? ` (Chunk ${chunkNumber})` : ''}', () => {
         let totalTests = 0;
