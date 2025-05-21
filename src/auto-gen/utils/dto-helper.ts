@@ -455,7 +455,7 @@ function checkIsDefined(field: string, value: unknown, decorators: Record<string
       if (decorators['isChecked']) {
         addErrorIfNotExist(errors, decorators['isDefinedMessage'], getDefinedErrorMessage(field));
       } else {
-        addErrorIfNotExist(errors, decorators['isDefinedMessage'], `${ErrorMessage.DEFINED} '${field}'`);
+        addErrorIfNotExist(errors, decorators['isDefinedMessage'],`${field} ${ErrorMessage.DEFINED}`);
       }
       return errors;
     }
@@ -542,15 +542,15 @@ function checkTypeString(field: string, value: unknown, decorators: Record<strin
       const len = value.length;
       const hasMin = decorators['minLength'] != null;
       const hasMax = decorators['maxLength'] != null;
-
-      if (hasMin && hasMax) {
-        if (len < decorators['minLength'] || len > decorators['maxLength']) {
-          addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_RANGE_STRING_LENGTH} ${decorators['minLength']} to ${decorators['maxLength']} length`);
-        }
-      } else if (hasMin && len < decorators['minLength']) {
-        addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.MIN_LENGTH} ${decorators['minLength']} length`);
+  //  if (hasMin && hasMax) {
+  //       if (len < decorators['minLength'] || len > decorators['maxLength']) {
+  //         addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_RANGE_STRING_LENGTH} ${decorators['minLength']} to ${decorators['maxLength']} length`);
+  //       }
+  //     } else
+    if (hasMin && len < decorators['minLength']) {
+        addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.MIN_LENGTH} ${decorators['minLength']} character(s)`);
       } else if (hasMax && len > decorators['maxLength']) {
-        addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.MAX_LENGTH} ${decorators['maxLength']} length`);
+        addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.MAX_LENGTH} ${decorators['maxLength']} character(s)`);
       }
     }
   }
