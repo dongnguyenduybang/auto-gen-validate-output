@@ -44,6 +44,7 @@ describe('Unit test for function softErrorFromMap()', () => {
       const payload = { workspaceId: '', channelId: '{{channelId}}' };
 
       const result = softErrorFromMap(payload, TestDto);
+
       expect(result).toEqual(['Could not resolve permission type']);
     });
     it("should return 'Invalid channel' for invalid value 'workspaceId'", () => {
@@ -66,6 +67,7 @@ describe('Unit test for function softErrorFromMap()', () => {
       };
 
       const result = softErrorFromMap(payload, TestDto);
+      console.log(result)
       expect(result).toEqual(['Unauthorized request']);
     });
   });

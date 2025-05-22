@@ -208,8 +208,8 @@ export function resolveValidIf(
   }
 
   // So sánh sau khi chuẩn hóa kiểu chuỗi
-  const v1 = String(value1).trim();
-  const v2 = String(value2).trim();
+  const v1 = Number(value1)
+  const v2 = Number(value2)
 
   const ops: Record<string, boolean> = {
     '>': v1 > v2,

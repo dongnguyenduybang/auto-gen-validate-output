@@ -21,7 +21,7 @@ describe('Unit test for function generateErrorVariantsForField()', () => {
     const fieldValue = payload.workspaceId;
     const variants = generateErrorVariantsForField(fieldValue, decorators);
     expect(variants.sort()).toEqual(
-      [123, undefined, '', 'invalid', '0'].sort(),
+      [123, undefined, '', 'check_ulid', '0'].sort(),
     );
   });
 });
