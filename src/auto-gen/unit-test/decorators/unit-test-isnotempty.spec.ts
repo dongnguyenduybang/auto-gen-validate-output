@@ -12,7 +12,7 @@ class TestClass {
 describe('Unit test for decorators IsNotEmpty', () => {
   it('should define metadata isNotEmpty correctly', () => {
     const metadataNotEmpty = Reflect.getMetadata(
-      'isNotEmpty',
+      'notEmpty',
       TestClass.prototype,
       'address',
     );
@@ -21,7 +21,7 @@ describe('Unit test for decorators IsNotEmpty', () => {
 
   it('should define metadata isNotEmptyMessage correctly when message is provided', () => {
     const metadataMessage = Reflect.getMetadata(
-      'isNotEmptyMessage',
+      'notEmptyMessage',
       TestClass.prototype,
       'address',
     );
@@ -30,7 +30,7 @@ describe('Unit test for decorators IsNotEmpty', () => {
 
   it('should not define isNotEmptyMessage metadata when no message is provided', () => {
     const metadataMessage = Reflect.getMetadata(
-      'isNotEmptyMessage',
+      'notEmptyMessage',
       TestClass.prototype,
       'noOptions',
     );

@@ -11,7 +11,7 @@ describe('Unit test for decorators EndWith', () => {
       TestClass.prototype,
       'name',
     );
-    expect(metadataValidIf).toEqual({ fieldCheck: 'name', value: 'test' });
+    expect(metadataValidIf).toEqual({ field: 'name', value: 'test' });
   });
   it('should not throw error when accessing metadata', () => {
     expect(() => {

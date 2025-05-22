@@ -25,7 +25,7 @@ describe('Unit test for decorators IsString', () => {
 
   it('should define metadata isStringMessage correctly when message is provided', () => {
     const metadataMessage = Reflect.getMetadata(
-      'isStringMessage',
+      'stringMessage',
       TestClass.prototype,
       'address',
     );
@@ -43,7 +43,7 @@ describe('Unit test for decorators IsString', () => {
 
   it('should not define isStringMessage metadata when no message is provided', () => {
     const metadataMessage = Reflect.getMetadata(
-      'isStringMessage',
+      'stringMessage',
       TestClass.prototype,
       'noOptions',
     );

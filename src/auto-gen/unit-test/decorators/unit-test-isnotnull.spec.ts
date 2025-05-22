@@ -9,20 +9,20 @@ class TestClass {
   name: string;
 }
 
-describe('Unit test for decorators IsNotNull', () => {
+describe('Unit test for decorators notNull', () => {
   beforeEach(() => {
-    Reflect.deleteMetadata('isNotNull', TestClass.prototype);
-    Reflect.deleteMetadata('isNotNullMessage', TestClass.prototype);
+    Reflect.deleteMetadata('notNull', TestClass.prototype);
+    Reflect.deleteMetadata('notNullMessage', TestClass.prototype);
   });
 
-  it('should define metadata isNotNull correctly without options', () => {
+  it('should define metadata notNull correctly without options', () => {
     const metadataIsNotNull = Reflect.getMetadata(
-      'isNotNull',
+      'notNull',
       TestClass.prototype,
       'userId',
     );
     const metadataMessage = Reflect.getMetadata(
-      'isNotNullMessage',
+      'notNullMessage',
       TestClass.prototype,
       'userId',
     );
@@ -30,14 +30,14 @@ describe('Unit test for decorators IsNotNull', () => {
     expect(metadataMessage).toBeUndefined();
   });
 
-  it('should define metadata isNotNull and isNotNullMessage correctly with message', () => {
+  it('should define metadata notNull and notNullMessage correctly with message', () => {
     const metadataIsNotNull = Reflect.getMetadata(
-      'isNotNull',
+      'notNull',
       TestClass.prototype,
       'name',
     );
     const metadataMessage = Reflect.getMetadata(
-      'isNotNullMessage',
+      'notNullMessage',
       TestClass.prototype,
       'name',
     );
@@ -47,20 +47,20 @@ describe('Unit test for decorators IsNotNull', () => {
 
   it('should not throw error when accessing metadata', () => {
     expect(() => {
-      Reflect.getMetadata('isNotNull', TestClass.prototype, 'id');
-      Reflect.getMetadata('isNotNullMessage', TestClass.prototype, 'id');
+      Reflect.getMetadata('notNull', TestClass.prototype, 'id');
+      Reflect.getMetadata('notNullMessage', TestClass.prototype, 'id');
     }).not.toThrow();
   });
 
   it('should define metadata correctly for instance', () => {
     const instance = new TestClass();
     const metadataIsNotNull = Reflect.getMetadata(
-      'isNotNull',
+      'notNull',
       instance,
       'name',
     );
     const metadataMessage = Reflect.getMetadata(
-      'isNotNullMessage',
+      'notNullMessage',
       instance,
       'name',
     );
@@ -70,12 +70,12 @@ describe('Unit test for decorators IsNotNull', () => {
 
   it('should return undefined for non-existent property', () => {
     const metadataIsNotNull = Reflect.getMetadata(
-      'isNotNull',
+      'notNull',
       TestClass.prototype,
       'nonExistent',
     );
     const metadataMessage = Reflect.getMetadata(
-      'isNotNullMessage',
+      'notNullMessage',
       TestClass.prototype,
       'nonExistent',
     );

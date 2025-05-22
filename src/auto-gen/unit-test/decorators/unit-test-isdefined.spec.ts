@@ -21,7 +21,7 @@ describe('Unit test for decorators IsDefined', () => {
 
   it('should define metadata isDefined correctly when message is provided', () => {
     const metadataMessage = Reflect.getMetadata(
-      'isDefinedMessage',
+      'notUndefinedMessage',
       TestClass.prototype,
       'address',
     );
@@ -30,7 +30,7 @@ describe('Unit test for decorators IsDefined', () => {
 
   it('should not define isDefined metadata when no message is provided', () => {
     const metadataMessage = Reflect.getMetadata(
-      'isDefinedMessage',
+      'notUndefinedMessage',
       TestClass.prototype,
       'noOptions',
     );

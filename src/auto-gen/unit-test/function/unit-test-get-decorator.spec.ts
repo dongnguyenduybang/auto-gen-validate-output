@@ -26,15 +26,16 @@ class CreateChannel {
 describe('Unit test for function getDecorators()', () => {
   it("should return correct metadata for a property 'workspaceId' ", () => {
     const decorators = getDecorators(CreateChannel.prototype, 'workspaceId');
+    console.log(decorators)
     expect(decorators).toMatchObject({
       type: 'string',
-      isStringMessage: 'Could not resolve permission type',
-      isNotEmpty: true,
-      isNotEmptyMessage: 'Could not resolve permission type',
+      stringMessage: 'Could not resolve permission type',
+      notEmpty: true,
+      notEmptyMessage: 'Could not resolve permission type',
       isInvalid: true,
       isInvalidMessage: 'Invalid channel',
       isDefined: true,
-      isDefinedMessage: 'Could not resolve permission type',
+      notUndefinedMessage: 'Could not resolve permission type',
     });
   });
 
