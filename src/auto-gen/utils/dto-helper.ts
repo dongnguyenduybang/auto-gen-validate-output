@@ -83,6 +83,7 @@ export function generateErrorVariantsForField(
 
   // 2. Sai kiểu dữ liệu
   const fieldType = decorators['type'] || 'string';
+  console.log(fieldType)
   switch (fieldType) {
     case 'string':
       variants.push(123);
@@ -606,7 +607,9 @@ function checkEnum(field: string, value: unknown, decorators: Record<string, any
   const errors: string[] = [];
   if (decorators['type'] === 'enum') {
     if (!decorators['enumType'] || !Object.values(decorators['enumType']).includes(value)) {
-      addErrorIfNotExist(errors, decorators['enumMessage'], `${field} ${ErrorMessage.INVALID_ENUM}`);
+
+      const enumValues = Object.values(decorators['enumType']).filter(v => typeof v === 'number') as number[];
+      addErrorIfNotExist(errors, decorators['enumMessage'], `${field} ${ErrorMessage.INVALID_ENUM} ${enumValues}, received '${value}'`);
       return errors;
     }
   }
