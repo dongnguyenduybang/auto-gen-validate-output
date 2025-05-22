@@ -44,7 +44,7 @@ export interface ExpectResult {
 export interface Step<T = any> {
   action: string;
   body?: T;
-  headers?: any;
+  headers?: Record<string, string>;
   expect?: Expect;
   delay?: number;
 }
@@ -54,8 +54,16 @@ export interface SagaTestSuite {
   steps: TestCase[];
 }
 
+export interface RequestTestSuite {
+  action: string;
+  headers: Record<string, string>;
+  body: Object;
+  options: FirstStep[]
+}
+
 interface FirstStep {
   beforeEach?: Step[];
+  beforeAll?: Step[]
   afterEach?: Step[];
   afterAll?: Step[];
 }

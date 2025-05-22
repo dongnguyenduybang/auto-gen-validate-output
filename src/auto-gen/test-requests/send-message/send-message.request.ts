@@ -1,6 +1,7 @@
+import { RequestTestSuite } from '../../utils/declarations';
 import { ACTION, HEADER_LIST, VAR } from '../../enums';
 
-export const SendMessageRequest = {
+export const SendMessageRequest: RequestTestSuite = {
   action: ACTION.SEND_MESSAGE,
   headers: HEADER_LIST.create({ token: VAR.token }),
   body: {
