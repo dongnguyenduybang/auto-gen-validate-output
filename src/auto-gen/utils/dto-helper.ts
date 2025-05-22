@@ -194,7 +194,7 @@ export function generateCombinations(
 //   // 2. Kiểm tra isDefined
 //   if (value === undefined || value === null) {
 //     if (decorators['isDefined']) {
-//       if (decorators['isChecked']) {
+//       if (decorators['isInvalid']) {
 //         if (field === 'channelId') {
 //           addError(
 //             decorators['isDefinedMessage'],
@@ -223,7 +223,7 @@ export function generateCombinations(
 
 //   // 3. Kiểm tra notEmpty
 //   if (value === '' && decorators['notEmpty']) {
-//     if (decorators['isChecked']) {
+//     if (decorators['isInvalid']) {
 //       if (
 //         field === 'workspaceId' ||
 //         field === 'channelId' ||
@@ -272,7 +272,7 @@ export function generateCombinations(
 //   // 4. Kiểm tra kiểu string và các điều kiện liên quan
 //   if (decorators['type'] === 'string') {
 //     if (typeof value !== 'string') {
-//       if (decorators['isChecked']) {
+//       if (decorators['isInvalid']) {
 //         if (
 //           field === 'workspaceId' ||
 //           field === 'channelId' ||
@@ -294,22 +294,22 @@ export function generateCombinations(
 //       return errors;
 //     }
 
-//     if (typeof value === 'string' && decorators['isChecked']) {
+//     if (typeof value === 'string' && decorators['isInvalid']) {
 //       const isWorkspaceInvalid = field === 'workspaceId' && value !== '0';
 //       const isChannelInvalid = field === 'channelId' && !value.startsWith('{{');
 //       const isUserInvalid = field === 'userId' && !value.startsWith('{{');
 
 //       if (isWorkspaceInvalid) {
-//         addError(decorators['isCheckedMessage'], 'Invalid channel');
+//         addError(decorators['isInvalidMessage'], 'Invalid channel');
 //         return errors;
 //       }
 
 //       if (isChannelInvalid) {
-//         addError(decorators['isCheckedMessage'], 'Invalid channel');
+//         addError(decorators['isInvalidMessage'], 'Invalid channel');
 //         return errors;
 //       }
 //       if (isUserInvalid) {
-//         addError(decorators['isCheckedMessage'], 'Unauthorized request');
+//         addError(decorators['isInvalidMessage'], 'Unauthorized request');
 //         return errors;
 //       }
 //     }
@@ -452,10 +452,10 @@ function checkIsDefined(field: string, value: unknown, decorators: Record<string
   const errors: string[] = [];
   if (value === undefined || value === null) {
     if (decorators['isDefined']) {
-      if (decorators['isChecked']) {
-        addErrorIfNotExist(errors, decorators['isDefinedMessage'], getDefinedErrorMessage(field));
+      if (decorators['isInvalid']) {
+        addErrorIfNotExist(errors, decorators['notUndefinedMessage'], getDefinedErrorMessage(field));
       } else {
-        addErrorIfNotExist(errors, decorators['isDefinedMessage'],`${field} ${ErrorMessage.DEFINED}`);
+        addErrorIfNotExist(errors, decorators['notUndefinedMessage'],`${field} ${ErrorMessage.DEFINED}`);
       }
       return errors;
     }
@@ -466,7 +466,7 @@ function checkIsDefined(field: string, value: unknown, decorators: Record<string
 function checkNotEmpty(field: string, value: unknown, decorators: Record<string, any>): string[] {
   const errors: string[] = [];
   if (value === '' && decorators['notEmpty']) {
-    if (decorators['isChecked']) {
+    if (decorators['IsInvalid']) {
       if (field === 'workspaceId' || field === 'channelId' || field === 'userId') {
         addErrorIfNotExist(errors, decorators['notEmptyMessage'], 'Could not resolve permission type');
       } else {
@@ -511,7 +511,7 @@ function checkTypeString(field: string, value: unknown, decorators: Record<strin
 
   if (decorators['type'] === 'string') {
     if (typeof value !== 'string') {
-      if (decorators['isChecked']) {
+      if (decorators['isInvalid']) {
         if (field === 'workspaceId' || field === 'channelId' || field === 'userId') {
           addErrorIfNotExist(errors, decorators['stringMessage'], null);
         } else {
@@ -523,17 +523,17 @@ function checkTypeString(field: string, value: unknown, decorators: Record<strin
       return errors;
     }
 
-    if (decorators['isChecked']) {
+    if (decorators['isInvalid']) {
       if (field === 'workspaceId' && value !== '0') {
-        addErrorIfNotExist(errors, decorators['isCheckedMessage'], 'Invalid channel');
+        addErrorIfNotExist(errors, decorators['isInvalidMessage'], 'Invalid channel');
         return errors;
       }
       if (field === 'channelId' && !value.startsWith('{{')) {
-        addErrorIfNotExist(errors, decorators['isCheckedMessage'], 'Invalid channel');
+        addErrorIfNotExist(errors, decorators['isInvalidMessage'], 'Invalid channel');
         return errors;
       }
       if (field === 'userId' && !value.startsWith('{{')) {
-        addErrorIfNotExist(errors, decorators['isCheckedMessage'], 'Unauthorized request');
+        addErrorIfNotExist(errors, decorators['isInvalidMessage'], 'Unauthorized request');
         return errors;
       }
     }
