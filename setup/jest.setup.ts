@@ -21,7 +21,7 @@ beforeAll(async () => {
         action: ACTION.MOCK_USER,
         body: {
           quantity: 2,
-          prefix: 'testabcssd',
+          prefix: VAR.prefix,
           badge: 0,
         },
       },
@@ -40,7 +40,6 @@ beforeAll(async () => {
       prefix: steps[0].body.prefix,
       context: globalThis.globalContext
     };
-    writeFileSync('temp.json', JSON.stringify(dataToSave));
   } catch (error) {
     console.error('Setup failed:', error);
     throw error;

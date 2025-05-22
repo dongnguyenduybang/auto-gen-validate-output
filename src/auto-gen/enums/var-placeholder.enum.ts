@@ -1,4 +1,5 @@
 export enum VAR {
+  prefix = 'testabc123',
   userId = '{{userId}}',
   userId1 = '{{userId1}}',
   userId2 = '{{userId2}}',
