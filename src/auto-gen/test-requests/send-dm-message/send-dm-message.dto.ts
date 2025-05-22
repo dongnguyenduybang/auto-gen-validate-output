@@ -2,7 +2,7 @@ import {
   IsString,
   MaxLength,
   MinLength,
-  IsChecked,
+  IsInvalid,
   IsDefined,
   IsNotEmpty,
   IsNotNull,
@@ -18,7 +18,7 @@ export class SendDmMessageDTO {
   @IsNotEmpty({
     message: `Could not resolve permission type`,
   })
-  @IsChecked({
+  @IsInvalid({
     message: `Unauthorized request`,
   })
   @IsNotNull({ message: `Could not resolve permission type` })

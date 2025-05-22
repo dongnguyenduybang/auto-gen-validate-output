@@ -70,12 +70,12 @@ export function IsAny() {
 }
 
 /* xác định value có custom message error */
-export function IsChecked(options?: { message?: string }) {
+export function IsInvalid(options?: { message?: string }) {
   return (target: any, propertyKey: string) => {
-    Reflect.defineMetadata('isChecked', true, target, propertyKey);
+    Reflect.defineMetadata('isInvalid', true, target, propertyKey);
     if (options?.message) {
       Reflect.defineMetadata(
-        'notCheckedMessage',
+        'isInvalidMessage',
         options.message,
         target,
         propertyKey,

@@ -2,7 +2,7 @@ import {
   IsDefined,
   IsNotEmpty,
   IsULID,
-  IsChecked,
+  IsInvalid,
   IsOptional,
   IsString,
   MaxLength,
@@ -11,13 +11,13 @@ import {
 
 export class UpdateMessageDTO {
   @IsDefined({ message: `Could not resolve permission type` })
-  @IsChecked({ message: `Invalid channel` })
+  @IsInvalid({ message: `Invalid channel` })
   @IsNotEmpty({ message: `Could not resolve permission type` })
   @IsString({ message: `Could not resolve permission type` })
   workspaceId: string = '';
 
   @IsDefined({ message: `Could not resolve permission type` })
-  @IsChecked({ message: `Unsupported permission type` })
+  @IsInvalid({ message: `Unsupported permission type` })
   @IsNotEmpty({ message: `Could not resolve permission type` })
   @IsString({ message: `Could not resolve permission type` })
   channelId: string = '';
