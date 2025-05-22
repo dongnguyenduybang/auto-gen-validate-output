@@ -144,10 +144,24 @@ export interface TestResult {
   passed201?: number;
 }
 
+export interface ResumeEvent {
+  title: string;
+  type: string;
+  data: {
+    id: string;
+    time: string;
+  };
+}
+
+export interface ResumeEntry {
+  action: string;
+  resume: ResumeEvent[];
+}
+
 export interface EventValidationResult {
   isValid: boolean;
   errors: {
-    type: 'missing' | 'unexpected' | 'count' | 'duplicate';
+    type: 'missing' | 'unexpected' | 'count' | 'duplicate'| 'order';
     message: string;
     expected?: string[];
     received?: string[];

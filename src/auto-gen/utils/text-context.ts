@@ -1,4 +1,4 @@
-import { IContext } from './declarations';
+import { IContext, ResumeEntry, ResumeEvent } from './declarations';
 
 export class TestContext implements IContext {
   private data: Record<string, any> = {};
@@ -88,65 +88,38 @@ export class WSSContext implements IContext {
   }
 }
 
-// export class EventContext {
-//   private data: Array<{ action: string; events: string[]; stepIndex: number }> =
-//     [];
-//   private stepIndex: number = 0; // Biến nội bộ để theo dõi stepIndex
-
-//   setValue(action: string, events: string[]): void {
-//     this.data.push({ action, events, stepIndex: this.stepIndex });
-//     this.stepIndex++; // Tăng stepIndex sau mỗi lần setValue
-//   }
-
-//   getValue(
-//     path: string | string[],
-//   ):
-//     | Array<{ action: string; events: string[]; stepIndex: number }>
-//     | undefined {
-//     if (!path || path === 'all' || (Array.isArray(path) && path.length === 0)) {
-//       return this.data;
-//     }
-//     const action = Array.isArray(path) ? path.join('.') : path;
-//     return this.data.filter((item) => item.action === action);
-//   }
-
-//   debug(): void {
-//     console.log('EventContext:', JSON.stringify(this.data, null, 2));
-//   }
-// }
 
 export class EventContext {
-  private events: Array<{
+  public events: Array<{
     action: string;
     events: any[];
     stepIndex: number;
   }> = [];
 
   public addEvent(action: string, newEvents: any[], stepIndex: number) {
-    // Lọc các sự kiện trùng lặp dựa trên id
-    const uniqueNewEvents = newEvents.filter(
-      (newEvent) =>
-        !this.events
-          .filter((e) => e.action === action)
-          .flatMap((e) => e.events)
-          .some((existingEvent) => existingEvent.id === newEvent.id),
-    );
 
-    if (uniqueNewEvents.length === 0) {
-      return; // Không có sự kiện mới để thêm
-    }
+    // const uniqueNewEvents = newEvents.filter(
+    //   (newEvent) =>
+    //     !this.events
+    //       .filter((e) => e.action === action)
+    //       .flatMap((e) => e.events)
+    //       .some((existingEvent) => existingEvent.id === newEvent.id),
+    // );
 
-    // Tìm mục hiện có cho action, bỏ qua stepIndex
+    // if (uniqueNewEvents.length === 0) {
+    //   return;
+    // }
+
     const existingEntry = this.events.find((e) => e.action === action);
 
     if (existingEntry) {
-      existingEntry.events.push(...uniqueNewEvents);
-      existingEntry.stepIndex = 0; // Luôn sử dụng stepIndex: 0
+      existingEntry.events.push(...newEvents);
+      existingEntry.stepIndex = 0; 
     } else {
       this.events.push({
         action,
-        events: uniqueNewEvents,
-        stepIndex: 0, // Ép buộc stepIndex là 0
+        events: newEvents,
+        stepIndex: 0,
       });
     }
   }
@@ -158,20 +131,6 @@ export class EventContext {
   public debug() {
     console.log('EventContext:', JSON.stringify(this.events, null, 2));
   }
-}
-
-export interface ResumeEvent {
-  title: string;
-  type: string;
-  data: {
-    id: string;
-    time: string;
-  };
-}
-
-export interface ResumeEntry {
-  action: string;
-  resume: ResumeEvent[];
 }
 
 export class ResumeContext {

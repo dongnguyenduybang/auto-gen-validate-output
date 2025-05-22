@@ -2,7 +2,7 @@ import { ACTION } from '../enums';
 
 export const EVENTS_BY_ACTION: Record<
   string,
-  { types: string[]; minCount: number }
+  { types: string[]; minCount: number, filedMappings?: any }
 > = {
   [ACTION.OPEN_CONNECTION_WS]: {
     types: ['com.halome.realtime.v3.gateway.connected'],
@@ -28,6 +28,19 @@ export const EVENTS_BY_ACTION: Record<
       'com.halome.chat.v3.unread_messages.updated',
     ],
     minCount: 2,
+    filedMappings: [
+      {
+        eventType: 'com.halome.chat.v3.unread_messages.updated',
+        fields: [
+          { wsField: 'workspaceId', apiField: 'message.workspaceId', required: true },
+          { wsField: 'channelId', apiField: 'message.channelId', required: true },
+          { wsField: 'userId', apiField: 'message.userId', required: true },
+          { wsField: 'lastSeenMessageId', apiField: 'message.messageId', required: true },
+          { wsField: 'destination.workspaceId', apiField: 'message.workspaceId', required: false },
+          { wsField: 'destination.channelId', apiField: 'message.channelId', required: false },
+        ],
+      },
+    ],
   },
   [ACTION.RESUME]: {
     types: ['com.halome.websocket.v3.reconnection_started'],
