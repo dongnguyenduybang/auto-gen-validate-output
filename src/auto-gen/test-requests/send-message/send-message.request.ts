@@ -11,8 +11,7 @@ export const SendMessageRequest = {
   },
   options: [
     {
-      beforeAll: [],
-      beforeEach: [
+      beforeAll: [
         {
           action: ACTION.MOCK_USER,
           body: {
@@ -32,6 +31,7 @@ export const SendMessageRequest = {
           })
         }
       ],
+      beforeEach: [],
       afterEach: [],
       afterAll: [
         {
