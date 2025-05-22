@@ -11,7 +11,6 @@ export async function handleExpectConfig(responseChecking: unknown, expectConfig
   if (expectConfig.ok) {
     let resultData: ExpectResult[] = [];
     let data = getValueByPath(responseChecking, 'ok');
-
     const rs = validateExpectValues(data, expectConfig.ok, `ok`);
     if (rs?.length) resultData.push(...rs);
     if (resultData.length > 0) results.push(...resultData);
@@ -174,7 +173,7 @@ function validateExpectValues(data: any, expectedValues: any, path: string) {
       result.push({
         type: 'value_mismatch',
         path,
-        message: `Boolean value mismatch`,
+        message: `Boolean value mismatch.`,
         actualValue: data,
         expectedValue: expectedValues
       });
