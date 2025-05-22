@@ -23,8 +23,12 @@ export const SendMessageResponseConfig = {
         {
           action: ACTION.CREATE_CHANNEL,
           body: {
-            
-          }
+            name: 'channel1',
+            workspaceId: VAR.workspaceId
+          },
+          headers: HEADER_LIST.create({
+            token: VAR.token
+          })
         }
       ],
       beforeEach: [],
