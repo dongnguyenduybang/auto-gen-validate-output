@@ -1,6 +1,6 @@
 import { ACTION, HEADER_LIST, VAR } from '../../enums';
 
-export const SendMessageResponse = {
+export const SendMessageResponseConfig = {
   action: ACTION.SEND_MESSAGE,
   body: {
     channelId: VAR.channelId,
@@ -8,19 +8,37 @@ export const SendMessageResponse = {
     content: 'test response send message',
     ref: 'ref',
   },
-  headers: HEADER_LIST.create({token: VAR.token}),
-  beforeAll: [
+  headers: HEADER_LIST.create({ token: VAR.token }),
+  options: [
     {
-      action: ACTION.MOCK_USER,
-      body: {
-        quantity: 2,
-        prefix: 'testABACDD',
-        badge: 0,
-      },
+      beforeAll: [
+        {
+          action: ACTION.MOCK_USER,
+          body: {
+            quantity: 2,
+            prefix: 'testABACDD',
+            badge: 0,
+          },
+        },
+        {
+          action: ACTION.CREATE_CHANNEL,
+          body: {
+            
+          }
+        }
+      ],
+      beforeEach: [],
+      afterEach: [],
+      afterAll: [
+        {
+          action: ACTION.DELETE_MOCKED_USER,
+          body: {
+            prefix: 'testABACDD'
+          }
+        }
+      ]
     },
-    {
-      action: ACTION.CREATE_CHANNEL,
-    },
+
   ],
-  afterAll: [],
 };
+

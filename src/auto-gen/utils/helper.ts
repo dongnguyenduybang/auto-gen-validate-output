@@ -9,26 +9,6 @@ import { getApiFunctions } from '../functions/api-registry';
 import { ClassConstructor, plainToClass } from 'class-transformer';
 import { validateResponses } from '../validates/validate-response';
 import { BaseResponse } from '../response';
-
-function getFileNameWithoutExtension(filePath: string): string {
-  const fileName = path.basename(filePath);
-  return fileName.split('.')[0];
-}
-
-// function getAllFiles(dirPath: string): string[] {
-//   let files: string[] = [];
-//   const items = fs.readdirSync(dirPath);
-//   items.forEach((item) => {
-//     const itemPath = path.join(dirPath, item);
-//     if (fs.statSync(itemPath).isDirectory()) {
-//       files = files.concat(getAllFiles(itemPath));
-//     } else {
-//       files.push(itemPath);
-//     }
-//   });
-//   return files;
-// }
-
 export function pairFiles(
   files: string[],
 ): { dtoPath: string; requestPath: string; className: string }[] {
@@ -185,31 +165,6 @@ export function groupFilesByName(
   });
   return fileMap;
 }
-
-// export function pairFiles(
-//   files: string[],
-// ): { dtoPath: string; requestPath: string; className: string }[] {
-//   const fileMap: Record<string, { dtoPath?: string; requestPath?: string }> = {};
-//   files.forEach((filePath) => {
-//     const fileName = path.basename(filePath, path.extname(filePath));
-//     if (filePath.endsWith('.dto.ts') || filePath.endsWith('.dto.js')) {
-//       const className = fileName.replace('.dto', '');
-//       fileMap[className] = fileMap[className] || {};
-//       fileMap[className].dtoPath = filePath;
-//     } else if (filePath.endsWith('.request.ts')) {
-//       const className = fileName.replace('.request', '');
-//       fileMap[className] = fileMap[className] || {};
-//       fileMap[className].requestPath = filePath;
-//     }
-//   });
-//   return Object.entries(fileMap).map(
-//     ([className, { dtoPath, requestPath }]) => ({
-//       dtoPath,
-//       requestPath,
-//       className,
-//     }),
-//   );
-// }
 
 export function getTime() {
   const now = new Date();

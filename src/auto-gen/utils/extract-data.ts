@@ -2,10 +2,9 @@ import { configMap } from './extract-config';
 export function extractDatas(
   response: object,
   action: string,
-): Record<string, any> {
-  const data: Record<string, any> = {};
+): Record<string, string> {
+  const data: Record<string, string> = {};
 
-  // Lấy cấu hình từ configMap dựa trên action
   const config = configMap[action];
   if (!config) {
     console.warn(`No config found for action: ${action}`);
@@ -24,7 +23,7 @@ export function extractDatas(
 
     if (Array.isArray(source)) {
       source.forEach((item: string, index: number) => {
-        const suffix = index === 0 ? '' : index; // Hậu tố: '', '2', '3', ...
+        const suffix = index === 0 ? '' : index; 
         fields.forEach((field) => {
           if (item[field] !== undefined) {
             data[`${field}${suffix}`] = item[field];

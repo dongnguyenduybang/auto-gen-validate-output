@@ -10,13 +10,25 @@ async function generateSpecContent(
   startIndex: number = 0,
   totalChunks?: number
 ): Promise<string> {
+
+      const requestFilePathWithoutExt = className.replace('.request.ts', '');
+    const classNameCapitalized = requestFilePathWithoutExt
+      .split('-')
+      .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+      .join('');
+
+
   return `
     import fs from 'fs';
     import path from 'path';
     import { summaryFields, resolveCallAPI, resolveVariables } from '../../utils/helper';
     import { TestResult } from '../../utils/declarations';
+    import { executeSteps } from '../../utils/text-execute-test';
+    import { TestContext } from '../../utils/text-context';
+    import { ${classNameCapitalized}Request } from './${requestFilePathWithoutExt}.request';
     describe('Testcase for ${className}${chunkNumber ? ` (Chunk ${chunkNumber})` : ''}', () => {
         let totalTests = 0;
+        let allSteps = [];
         let failedTests: any[] = [];
         let codedTest: any[] = [];
         let logicTests: any[] = [];
@@ -26,10 +38,51 @@ async function generateSpecContent(
         let testType: string;
         let resolvedData: any;
         let globalContext: any;
+        let testCaseNumber = 0;
+        let currentTestCaseTitle = ''
+        let context, contextData;
         
         beforeAll(async () => {
           testType = 'request';
           globalContext = globalThis.globalContext;
+          context = new TestContext();
+          const beforeAllSteps = ${classNameCapitalized}Request.options
+            ?.find((option) => option.beforeAll)
+            ?.beforeAll || [];
+
+          if (beforeAllSteps.length > 0) {
+            contextData = context.clone();
+            const results = await executeSteps(beforeAllSteps, contextData);
+            results.forEach((result) => {
+              allSteps.push({
+                ...result,
+                caseTitle: \`Case \${testCaseNumber}\`,
+                phase: 'beforeAll',
+              });
+            });
+          }else {
+            contextData = globalContext
+          }
+        });
+        beforeEach(async () => {
+          testCaseNumber++;
+          const beforeEachSteps = ${classNameCapitalized}Request.options
+            ?.find((option) => option.beforeEach)
+            ?.beforeEach || [];
+
+          if (beforeEachSteps.length > 0) {
+            contextData = context.clone();
+            const results = await executeSteps(beforeEachSteps, contextData);
+            results.forEach((result) => {
+              allSteps.push({
+                ...result,
+                caseTitle: \`Case \${testCaseNumber}\`,
+                phase: 'beforeEach',
+              });
+            });
+          }else {
+            contextData = globalContext
+          }
         });
 
         ${testCases
@@ -124,21 +177,45 @@ async function generateSpecContent(
             });`
       )
       .join('\n')}
+      afterEach(async () => {
+          testCaseNumber++;
+          const afterEachSteps = ${classNameCapitalized}Request.options
+            ?.find((option) => option.afterEach)
+            ?.afterEach || [];
+
+          if (afterEachSteps.length > 0) {
+            contextData = context.clone();
+            const results = await executeSteps(afterEachSteps, contextData);
+            results.forEach((result) => {
+              allSteps.push({
+                ...result,
+                caseTitle: \`Case \${testCaseNumber}\`,
+                phase: 'afterEach',
+              });
+            });
+          }else {
+            contextData = globalContext
+          }
+        });
 
          afterAll(async () => {
-        //   const response = await resolveCallAPI(
-        //           ${JSON.stringify(requestConfig.action)},
-        //           ${JSON.stringify(requestConfig.headers)},
-        //           globalContext
-        //         );
-        //   resultStep.forEach((step) => {
-        //     failedStep.push({
-        //       type: step.type,
-        //       status: step.status,
-        //       stepName: step.stepName,
-        //       error: step.error
-        //     });
-        //   });
+          const afterAllSteps = ${classNameCapitalized}Request.options
+            ?.find((option) => option.afterAll)
+            ?.afterAll || [];
+
+          if (afterAllSteps.length > 0) {
+            contextData = context.clone();
+            const results = await executeSteps(afterAllSteps, contextData);
+            results.forEach((result) => {
+              allSteps.push({
+                ...result,
+                caseTitle: \`Case \${testCaseNumber}\`,
+                phase: 'afterAll',
+              });
+            });
+          }else {
+            contextData = globalContext
+          }
           
           // Lưu kết quả vào biến toàn cục
           const testResult: TestResult = {
@@ -188,7 +265,7 @@ async function genTestCase(
     fs.mkdirSync(outputDir, { recursive: true });
   }
 
-  const MAX_TEST_CASES_PER_FILE = 1000;
+  const MAX_TEST_CASES_PER_FILE = 500;
   const CHUNK_SIZE = 500;
   const totalChunks = Math.ceil(payloadData.length / CHUNK_SIZE);
 

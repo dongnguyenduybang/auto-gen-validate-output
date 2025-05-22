@@ -6,49 +6,75 @@ async function genTestCase(
   className: string,
   outputDir: string,
 ) {
-  const classNameCapitalized = className
+  const responseFilePathWithoutExt = className.replace('.request.ts', '');
+  const classNameCapitalized = responseFilePathWithoutExt
     .split('-')
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join('');
   const responseModule = await import(responsePath);
-  const responseConfig = responseModule[`${classNameCapitalized}Response`];
+  const responseConfig = responseModule[`${classNameCapitalized}ResponseConfig`];
   const specContent = `
     import fs from 'fs';
     import path from 'path';
+    let allSteps = [];
     import { getTime, summarizeErrors, resolveCallAPI, resolveVariables } from '../../utils/helper';
     import { ${classNameCapitalized}Response } from '../../response/${className}.response';
     import { plainToInstance } from 'class-transformer';
     import { validateResponses } from '../../validates/validate-response';
-    import { executeAllSteps } from '../../utils/test-executor';
     import { TestContext } from '../../utils/text-context';
-
+    import { ${classNameCapitalized}ResponseConfig } from './${responseFilePathWithoutExt}.response';
+    import { executeSteps } from '../../utils/text-execute-test';
     describe('Test response for ${className}', () => {
       let failedTests = [];
       let failedStep = []
       let passedTests = 0;
       let testNumber = 0;
       let totalTests = 0;
-      let requestUrl, globalContext, resolvedHeader, pathRequest, methodRequest, headerRequest, payloadResponse, testType
+      let testCaseNumber = 0;
+      let currentTestCaseTitle = ''
+      let context,contextData, globalContext, pathRequest, payloadResponse, testType
       beforeAll(async () => {
         testType = 'response'
-        globalContext = new TestContext();
-        
-        const resultStep = await executeAllSteps(${JSON.stringify(responseConfig.beforeAll)},globalContext)
-        resultStep.forEach((step, index) => {
-          failedStep.push({
-            type: step.type,
-            status: step.status,
-            stepName: step.stepName,
-            error: step.error
-          })
-        })
-        
-        headerRequest = ${JSON.stringify(responseConfig.headers)}
-        resolvedHeader = resolveVariables(headerRequest, globalContext)
-        pathRequest = ${JSON.stringify(responseConfig.path, null, 2)}
-        methodRequest = ${JSON.stringify(responseConfig.method, null, 2)}
-        payloadResponse = resolveVariables(${JSON.stringify(responseConfig.body, null, 2)}, globalContext);
-        requestUrl = \`\${globalThis.url}\${pathRequest}\`
+        globalContext = globalThis.globalContext;
+        context = new TestContext();
+        const beforeAllSteps = ${classNameCapitalized}ResponseConfig.options
+            ?.find((option) => option.beforeAll)
+            ?.beforeAll || [];
+
+          if (beforeAllSteps.length > 0) {
+            contextData = context.clone();
+            const results = await executeSteps(beforeAllSteps, contextData);
+            results.forEach((result) => {
+              allSteps.push({
+                ...result,
+                caseTitle: \`Case \${testCaseNumber}\`,
+                phase: 'beforeAll',
+              });
+            });
+          }else {
+            contextData = globalContext
+          }
+
+      });
+      beforeEach(async () => {
+          testCaseNumber++;
+          const beforeEachSteps = ${classNameCapitalized}ResponseConfig.options
+            ?.find((option) => option.beforeEach)
+            ?.beforeEach || [];
+
+          if (beforeEachSteps.length > 0) {
+            contextData = context.clone();
+            const results = await executeSteps(beforeEachSteps, contextData);
+            results.forEach((result) => {
+              allSteps.push({
+                ...result,
+                caseTitle: \`Case \${testCaseNumber}\`,
+                phase: 'beforeEach',
+              });
+            });
+          }else {
+            contextData = globalContext
+          }
         });
 
       it('should validate response structure', async () => {
@@ -86,17 +112,46 @@ async function genTestCase(
         }
       });
 
+      afterEach(async () => {
+          testCaseNumber++;
+          const afterEachSteps = ${classNameCapitalized}ResponseConfig.options
+            ?.find((option) => option.afterEach)
+            ?.afterEach || [];
+
+          if (afterEachSteps.length > 0) {
+            contextData = context.clone();
+            const results = await executeSteps(afterEachSteps, contextData);
+            results.forEach((result) => {
+              allSteps.push({
+                ...result,
+                caseTitle: \`Case \${testCaseNumber}\`,
+                phase: 'afterEach',
+              });
+            });
+          }else {
+            contextData = globalContext
+          }
+        });
+
       afterAll(async () => {
 
-        const resultStep = await executeAllSteps(${JSON.stringify(responseConfig.afterAll)},globalContext)
-        resultStep.forEach((step, index) => {
-          failedStep.push({
-            type: step.type,
-            status: step.status,
-            stepName: step.stepName,
-            error: step.error
-          })
-        })
+        const afterAllSteps = ${classNameCapitalized}ResponseConfig.options
+            ?.find((option) => option.afterAll)
+            ?.afterAll || [];
+
+          if (afterAllSteps.length > 0) {
+            contextData = context.clone();
+            const results = await executeSteps(afterAllSteps, contextData);
+            results.forEach((result) => {
+              allSteps.push({
+                ...result,
+                caseTitle: \`Case \${testCaseNumber}\`,
+                phase: 'afterAll',
+              });
+            });
+          }else {
+            contextData = globalContext
+          }
         const folderPath = path.join(__dirname, '../reports/${className}');
         if (!fs.existsSync(folderPath)) {
           fs.mkdirSync(folderPath, { recursive: true });

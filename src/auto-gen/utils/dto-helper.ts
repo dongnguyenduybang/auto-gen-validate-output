@@ -83,7 +83,6 @@ export function generateErrorVariantsForField(
 
   // 2. Sai kiểu dữ liệu
   const fieldType = decorators['type'] || 'string';
-  console.log(fieldType)
   switch (fieldType) {
     case 'string':
       variants.push(123);
