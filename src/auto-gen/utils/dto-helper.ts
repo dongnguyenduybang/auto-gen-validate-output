@@ -87,7 +87,6 @@ export function generateErrorVariantsForField(
     case 'string':
       variants.push(123);
       variants.push(fieldValue);
-      variants.push('check_ulid');
       break;
     case 'number':
       variants.push('invalid_number');
@@ -143,6 +142,13 @@ export function generateErrorVariantsForField(
   if (decorators['notNull']) {
     variants.push('');
   }
+
+  if(decorators['isULID']){
+    variants.push('invalid_ULID')
+  }
+    if(decorators['isInvalid']){
+    variants.push('invalid_value')
+  }
   return [...new Set(variants)];
 }
 export function combineFields(arrays: FieldValueObject[][]): FieldValueObject[][] {
@@ -165,261 +171,11 @@ export function generateCombinations(
       [field]: errorVariant,
     }));
   });
-  // console.log(fieldErrorVariants);
+  console.log(fieldErrorVariants);
   return combineFields(fieldErrorVariants).map((combination) => {
     return combination.reduce((acc, curr) => ({ ...acc, ...curr }), {});
   });
 }
-// export function mapError(
-//   field: string,
-//   value: unknown,
-//   decorators: Record<string, any>,
-// ): string[] {
-//   const errors: string[] = [];
-//   const addError = (
-//     customMessage: string,
-//     defaultMessage: string,
-//   ) => {
-//     const errorMessage = customMessage || defaultMessage;
-//     if (errorMessage && !errors.includes(errorMessage)) {
-//       errors.push(errorMessage);
-//     }
-//   };
-
-//   // 1. Kiểm tra optional
-//   if (decorators['optional'] && (value === undefined || value === null)) {
-//     return errors;
-//   }
-
-//   // 2. Kiểm tra isDefined
-//   if (value === undefined || value === null) {
-//     if (decorators['isDefined']) {
-//       if (decorators['isInvalid']) {
-//         if (field === 'channelId') {
-//           addError(
-//             decorators['isDefinedMessage'],
-//             'Unsupported permission type',
-//           );
-//         } else if (field === 'workspaceId' || field === 'userId') {
-//           addError(
-//             decorators['isDefinedMessage'],
-//             'Could not resolve permission type',
-//           );
-//         } else {
-//           addError(
-//             decorators['isDefinedMessage'],
-//             `${ErrorMessage.DEFINED} '${field}'`,
-//           );
-//         }
-//       } else {
-//         addError(
-//           decorators['isDefinedMessage'],
-//           `${ErrorMessage.DEFINED} '${field}'`,
-//         );
-//       }
-//       return errors;
-//     }
-//   }
-
-//   // 3. Kiểm tra notEmpty
-//   if (value === '' && decorators['notEmpty']) {
-//     if (decorators['isInvalid']) {
-//       if (
-//         field === 'workspaceId' ||
-//         field === 'channelId' ||
-//         field === 'userId'
-//       ) {
-//         addError(
-//           decorators['notEmptyMessage'],
-//           'Could not resolve permission type',
-//         );
-//       } else {
-//         addError(
-//           decorators['notEmptyMessage'],
-//           `${ErrorMessage.DEFINED} '${field}'`,
-//         );
-//       }
-//     } else {
-//       addError(decorators['notEmptyMessage'], `${field} ${ErrorMessage.EMPTY}`);
-//     }
-
-//     // `${field} ${ErrorMessage.INVALID_RANGE_STRING_LENGTH} ${decorators['minLength']} to ${decorators['maxLength']} length`
-//     // return errors;
-//   }
-
-//   // 5. Kiểm tra ULID
-//   if (decorators['isULID']) {
-//     if (
-//       typeof value === 'string' &&
-//       (value === '' || !value.startsWith('{{'))
-//     ) {
-//       addError(null, `${field} ${ErrorMessage.INVALID_ULID}`);
-//     } else if (typeof value === 'string' && !checkULID(value)) {
-//       addError(null, `${field} ${ErrorMessage.INVALID_ULID}`);
-//     }
-//   }
-
-//   // 6. Kiểm tra emoji
-//   if (decorators['isEmoji']) {
-//     const isInvalid =
-//       typeof value === 'string' && (value === '' || !isEmoji(value));
-//     if (isInvalid) {
-//       addError(null, `${field} ${ErrorMessage.INVALID_EMOJI}`);
-//       addError(null, `${field} ${ErrorMessage.INVALID_EMOJI_LENGTH}`);
-//     }
-//   }
-
-//   // 4. Kiểm tra kiểu string và các điều kiện liên quan
-//   if (decorators['type'] === 'string') {
-//     if (typeof value !== 'string') {
-//       if (decorators['isInvalid']) {
-//         if (
-//           field === 'workspaceId' ||
-//           field === 'channelId' ||
-//           field === 'userId'
-//         ) {
-//           addError(decorators['stringMessage'], null);
-//         } else {
-//           addError(
-//             decorators['stringMessage'],
-//             `${field} ${ErrorMessage.INVALID_TYPE_STRING}`,
-//           );
-//         }
-//       } else {
-//         addError(
-//           decorators['stringMessage'],
-//           `${field} ${ErrorMessage.INVALID_TYPE_STRING}`,
-//         );
-//       }
-//       return errors;
-//     }
-
-//     if (typeof value === 'string' && decorators['isInvalid']) {
-//       const isWorkspaceInvalid = field === 'workspaceId' && value !== '0';
-//       const isChannelInvalid = field === 'channelId' && !value.startsWith('{{');
-//       const isUserInvalid = field === 'userId' && !value.startsWith('{{');
-
-//       if (isWorkspaceInvalid) {
-//         addError(decorators['isInvalidMessage'], 'Invalid channel');
-//         return errors;
-//       }
-
-//       if (isChannelInvalid) {
-//         addError(decorators['isInvalidMessage'], 'Invalid channel');
-//         return errors;
-//       }
-//       if (isUserInvalid) {
-//         addError(decorators['isInvalidMessage'], 'Unauthorized request');
-//         return errors;
-//       }
-//     }
-
-//     // Kiểm tra độ dài chuỗi (minLength, maxLength)
-//     if (decorators['minLength'] || decorators['maxLength']) {
-//       const len = value.length;
-//       const hasMin = decorators['minLength'] != null;
-//       const hasMax = decorators['maxLength'] != null;
-
-//       if (hasMin && hasMax) {
-//         const minViolated = len < decorators['minLength'];
-//         const maxViolated = len > decorators['maxLength'];
-//         if (minViolated || maxViolated) {
-//           addError(
-//             null,
-//             `${field} ${ErrorMessage.INVALID_RANGE_STRING_LENGTH} ${decorators['minLength']} to ${decorators['maxLength']} length`,
-//           );
-//         }
-//       } else if (hasMin && len < decorators['minLength']) {
-//         addError(
-//           null,
-//           `${field} ${ErrorMessage.MIN_LENGTH} ${decorators['minLength']} length`,
-//         );
-//       } else if (hasMax && len > decorators['maxLength']) {
-//         addError(
-//           null,
-//           `${field} ${ErrorMessage.MAX_LENGTH} ${decorators['maxLength']} length`,
-//         );
-//       }
-//     }
-//   }
-
-//   // 5. Kiểm tra kiểu number
-//   if (decorators['type'] === 'number') {
-//     if (typeof value !== 'number' || isNaN(value)) {
-//       addError(
-//         decorators['numberMessage'],
-//         `${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`,
-//       );
-//       return errors;
-//     }
-
-//     const minViolated = decorators['min'] && value < decorators['min'];
-//     const maxViolated = decorators['max'] && value > decorators['max'];
-//     if (minViolated) {
-//       addError(
-//         decorators['minMessage'],
-//         `${field} must be at least ${decorators['min']}`,
-//       );
-//     }
-//     if (maxViolated) {
-//       addError(
-//         decorators['maxMessage'],
-//         `${field} must be at most ${decorators['max']}`,
-//       );
-//     }
-//   }
-
-//   // 6. Kiểm tra kiểu array
-//   if (decorators['type'] === 'array') {
-//     if (!Array.isArray(value)) {
-//       addError(
-//         decorators['arrayMessage'],
-//         `${field} ${ErrorMessage.INVALID_TYPE_ARRAY}`,
-//       );
-//       return errors;
-//     }
-
-//     if (decorators['minArray'] && value.length < decorators['minArray']) {
-//       addError(
-//         decorators['minArrayMessage'],
-//         `${field} must have at least ${decorators['minArray']} items`,
-//       );
-//     }
-//     if (decorators['maxArray'] && value.length > decorators['maxArray']) {
-//       addError(
-//         decorators['maxArrayMessage'],
-//         `${field} must have at most ${decorators['maxArray']} items`,
-//       );
-//     }
-//   }
-
-//   // 7. Kiểm tra kiểu object
-//   if (decorators['type'] === 'object') {
-//     if (typeof value !== 'object' || Array.isArray(value) || value === null) {
-//       addError(
-//         decorators['objectMessage'],
-//         `${field} ${ErrorMessage.INVALID_TYPE_OBJ}`,
-//       );
-//       return errors;
-//     }
-//   }
-
-//   // 8. Kiểm tra enum
-//   if (decorators['type'] === 'enum') {
-//     if (
-//       !decorators['enumType'] ||
-//       !Object.values(decorators['enumType']).includes(value)
-//     ) {
-//       addError(
-//         decorators['enumMessage'],
-//         `${field} ${ErrorMessage.INVALID_ENUM}`,
-//       );
-//       return errors;
-//     }
-//   }
-
-//   return errors;
-// }
 
 function addErrorIfNotExist(errors: string[], customMessage: string | null, defaultMessage: string) {
   const errorMessage = customMessage || defaultMessage;
