@@ -5,6 +5,7 @@ import {
   IsString,
   MaxLength,
   MinLength,
+  IsULID,
 } from '../../decorator';
 
 export class SendMessageDTO {

@@ -280,11 +280,14 @@ function checkTypeString(field: string, value: unknown, decorators: Record<strin
     }
 
     if (decorators['isInvalid']) {
+             
       if (field === 'workspaceId' && value !== '0') {
+
         addErrorIfNotExist(errors, decorators['isInvalidMessage'], 'Invalid channel');
         return errors;
       }
       if (field === 'channelId' && !value.startsWith('{{')) {
+
         addErrorIfNotExist(errors, decorators['isInvalidMessage'], 'Invalid channel');
         return errors;
       }

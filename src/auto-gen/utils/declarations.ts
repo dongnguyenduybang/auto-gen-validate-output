@@ -124,6 +124,7 @@ export interface ApiFunctionParams {
 export interface TestResult {
   path: string;
     className: string;
+    allSteps: any[];
     chunkNumber?: number;
     failedTests: any[];
     codedTest: any[];

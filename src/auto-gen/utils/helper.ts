@@ -208,8 +208,8 @@ export function resolveValidIf(
   }
 
   // So sánh sau khi chuẩn hóa kiểu chuỗi
-  const v1 = Number(value1);
-  const v2 = Number(value2);
+  const v1 = String(value1).trim();
+  const v2 = String(value2).trim();
 
   const ops: Record<string, boolean> = {
     '>': v1 > v2,
@@ -300,7 +300,6 @@ export function resolveExpectConfig(expectConfig: any, context: TestContext): an
   return expectConfig;
 }
 export function formatErrors(errors: ValidationError[]): any {
-  // <-- Thay string bằng any
   if (!Array.isArray(errors)) return { message: 'No error details available' };
 
   const formattedErrors = errors
@@ -324,7 +323,6 @@ export async function resolveCallAPI(action: string, header: any, body: any, con
   const actionInfo = ACTION_CONFIG[action as keyof typeof ACTION_CONFIG];
   const resolveBody = resolveVariables(body, context);
   const resolveHeader = resolveVariables(header, context);
-
   const apiFunction = getApiFunctions(action, context);
 
   const response = await apiFunction({

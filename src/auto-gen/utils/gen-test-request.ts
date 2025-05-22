@@ -92,14 +92,14 @@ async function generateSpecContent(
               testNumber = ${startIndex + index + 1};
               totalTests++;
               const payloadObj = ${JSON.stringify(testCase.body)};
-              resolvedData = resolveVariables(payloadObj, globalContext);
+              resolvedData = resolveVariables(payloadObj, contextData);
               
               try {
                 const response = await resolveCallAPI(
                   ${JSON.stringify(requestConfig.action)},
                   ${JSON.stringify(requestConfig.headers)},
                   ${JSON.stringify(testCase.body)},
-                  globalContext
+                  contextData
                 );
                 const data = response.data;
                 const expectJson = ${JSON.stringify(testCase.expects)}.sort();

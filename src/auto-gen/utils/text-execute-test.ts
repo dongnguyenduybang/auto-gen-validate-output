@@ -16,7 +16,7 @@ export async function executeSteps(
     try {
       const result = await executeSingleStep(step, context);
       results.push(result);
-      // if(!result.status) break;
+      if(!result.status) break;
     } catch (error) {
       console.error(`Error executing step ${index}:`, error);
     }
@@ -44,6 +44,7 @@ async function executeSingleStep(
     headers: resolveHeaders,
     body: resolveBody,
   });
+  console.log(action, response.data)
   const hasExpectConfig = !!expectConfig;
   if ((!response?.data?.ok) && !hasExpectConfig) {
     return {
