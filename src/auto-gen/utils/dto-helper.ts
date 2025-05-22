@@ -453,9 +453,9 @@ function checkIsDefined(field: string, value: unknown, decorators: Record<string
   if (value === undefined || value === null) {
     if (decorators['isDefined']) {
       if (decorators['isInvalid']) {
-        addErrorIfNotExist(errors, decorators['isDefinedMessage'], getDefinedErrorMessage(field));
+        addErrorIfNotExist(errors, decorators['notUndefinedMessage'], getDefinedErrorMessage(field));
       } else {
-        addErrorIfNotExist(errors, decorators['isDefinedMessage'],`${field} ${ErrorMessage.DEFINED}`);
+        addErrorIfNotExist(errors, decorators['notUndefinedMessage'],`${field} ${ErrorMessage.DEFINED}`);
       }
       return errors;
     }
