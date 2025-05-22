@@ -3,81 +3,95 @@ Mục đích: Gen body và expect error dựa vào decorator DTO. Với cấu tr
 
 - 📂 root
   - 📂 test-requests
-    - 📂 update-message
-      - 📄 update-message.request.ts
-      - 📄 update-message.dto.ts
-      - 📄 update-message.payload.json
-      - 📄 update-message.spec.ts
+    - 📂 send-message
+      - 📄 send-message.request.ts
+      - 📄 send-message.dto.ts
+      - 📄 send-message.payload.json
+      - 📄 send-message.spec.ts
 
-Bước 1: Định nghĩa 2 file update-message-dto và update-message-request
+Bước 1: Định nghĩa 2 file send-message-dto và send-message-request
 
-**📄 update-message.request.ts**
+**📄 send-message.request.ts**
 ``` 
- import { VAR, ACTION, HEADER_LIST } from '../../enums';
+ import { RequestTestSuite } from '../../utils/declarations';
+import { ACTION, HEADER_LIST, VAR } from '../../enums';
 
-export const UpdateMessageRequest = {
-  action: ACTION.UPDATE_MESSAGE,
+export const SendMessageRequest: RequestTestSuite = {
+  action: ACTION.SEND_MESSAGE,
+  headers: HEADER_LIST.create({ token: VAR.token }),
   body: {
     channelId: VAR.channelId,
-    messageId: VAR.messageId1,
-    workspaceId: '0',
-    content: 'test response update message',
+    workspaceId: VAR.workspaceId,
+    content: 'test DTO send message',
     ref: 'ref',
   },
-  headers: HEADER_LIST.create({token: VAR.token}),
-  beforeAll: [
+  options: [
     {
-      action: ACTION.SEND_MESSAGE,
-      body: {
-        workspaceId: '0',
-        channelId: VAR.channelId,
-        content: 'duybang12345',
-        ref: 'abc',
-      },
-      headers: HEADER_LIST.create({token: VAR.token}),
+      beforeAll: [
+        {
+          action: ACTION.MOCK_USER,
+          body: {
+            prefix: 'testabc',
+            quantity: 2,
+            badge: 0,
+          }
+        },
+        {
+          action: ACTION.CREATE_CHANNEL,
+          body: {
+            name: 'channel1',
+            workspaceId: VAR.workspaceId
+          },
+          headers: HEADER_LIST.create({
+            token: VAR.token
+          })
+        }
+      ],
+      beforeEach: [],
+      afterEach: [],
+      afterAll: [
+        {
+          action: ACTION.DELETE_MOCKED_USER,
+          body: {
+            prefix: 'testabc'
+          }
+        }
+      ]
     },
+
   ],
- };
+};
+
 
 ```
 + **Action**: Định nghĩa hành động thực hiện.
 + **Body**: Định nghĩa body đầu vào
-+ **beforeAll**: Định nghĩa các step chuẩn bị data trước khi test
++ **Options**: Định nghĩa các step chuẩn bị data trước và sau khi test (beforeAll, beforeEach, afterAll, afterEach)
 
-**📄 update-message.dto.ts**
+**📄 send-message.dto.ts**
 ``` 
-import { IsDefined, IsNotEmpty, IsChecked } from '../../decorator/general-decorator';
 import {
-  IsString,
-  MaxLength,
-  MinLength,
-} from '../../decorator/string-decorator';
-
-import {
-  IsString,
-  MaxLength,
-  MinLength,
-  IsChecked,
   IsDefined,
   IsNotEmpty,
-  IsNotNull,
+  IsInvalid,
+  IsString,
+  MaxLength,
+  MinLength,
+  IsULID,
 } from '../../decorator';
 
-export class SendDmMessageDTO {
-  @IsString({
-    message: `Could not resolve permission type`,
-  })
-  @IsDefined({
-    message: `Could not resolve permission type`,
-  })
-  @IsNotEmpty({
-    message: `Could not resolve permission type`,
-  })
-  @IsChecked({
-    message: `Unauthorized request`,
-  })
-  @IsNotNull({ message: `Could not resolve permission type` })
-  userId: string = '';
+export class SendMessageDTO {
+  @IsDefined({ message: `Could not resolve permission type` })
+  @IsInvalid({ message: `Invalid channel` })
+  @IsNotEmpty({ message: `Could not resolve permission type` })
+  @IsString({ message: `Could not resolve permission type` })
+  workspaceId: string = '';
+
+  @IsDefined({ message: `Unsupported permission type` })
+  @IsInvalid({ message: `Invalid channel` })
+  @IsNotEmpty({ message: `Could not resolve permission type` })
+  @IsString({ message: `Could not resolve permission type` })
+  channelId: string = '';
 
   @IsString()
   @IsDefined()
@@ -102,7 +116,7 @@ Bước 2: Tiến hành chạy gen script
   - 📄 send-message.payload.json
   - 📄 send-message.spec.ts
 
-   Đối với những endpoint nào có số lượng case quá lớn ( > 1000 case ) sẽ tách các case ra từng file với mỗi file là 500 case.
+   Đối với những endpoint nào có số lượng case quá lớn ( > 500 case ) sẽ tách các case ra từng file với mỗi file là 500 case.
 
 Bước 3: Tiến hành chạy test script
 
@@ -119,7 +133,7 @@ Bước 4: Tiến hành chạy script gen reports
 
 - Note:
   + Những decorator có custom message nếu có lỗi sẽ dừng test filed đó và push lỗi custom đó ra 
-  + Decorator IsChecked để bắt những trường hợp ngoại lệ đúng typeof nhưng sai giá trị. Sẽ dừng test field đó và push lỗi custom đó ra
+  + Decorator Isinvalid để bắt những trường hợp ngoại lệ đúng typeof nhưng sai giá trị. Sẽ dừng test field đó và push lỗi custom đó ra
     + Example: field workspaceId có payload là chuỗi "abcdef" nhưng khác "0" => Invalid channel, field channelId có payload là chuỗi "abcdef" nhưng khác template {{channelId}}(ULID) => Invalid channel
 
 

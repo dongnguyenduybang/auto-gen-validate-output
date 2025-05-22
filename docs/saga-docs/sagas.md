@@ -67,31 +67,77 @@ export const CreateChannelSaga: SagaTestSuite = {
             invitationLink: VAR.invitationLink,
           },
           headers: HEADER_LIST.create({
-            token: VAR.token1,
+            token: VAR.token,
           }),
           expect: {
             ok: true,
             data: executeFunction(
-              'data.channel',
-              ACTION.GET_CHANNEL,
-              {
-                body: { channelId: VAR.channelId, workspaceId: VAR.workspaceId }
-              },
-              null,
-              null
+              'includes.users',
+              ACTION.GET_USER,
+              [null,
+                { userId: VAR.userId1 }
+              ],
+              ['userId'],
             ),
             includes: [
               executeFunction(
-                'includes.members',
-                ACTION.LIST_MEMBERS,
-                {
-                  body: { channelId: VAR.channelId, workspaceId: VAR.workspaceId }
-                },
-                null,
-                null
+                'includes.users',
+                ACTION.GET_USER,
+                [null,
+                  { userId: VAR.userId1 }
+                ],
+                ['userId'],
               ),
             ]
           },
+        },
+        {
+          action: ACTION.UPDATE_CHANNEL_NAME,
+          body: {
+            workspaceId: VAR.workspaceId, channelId: VAR.channelId, name: 'new name gr'
+          },
+          headers: HEADER_LIST.create({ token: VAR.token1 }),
+          expect: {
+            ok: true
+          }
+        },
+
+      ],
+    },
+    {
+      title: 'should return true when owner update channel name',
+      step: [
+        {
+          action: ACTION.ACCEPT_INVITATION,
+          body: {
+            invitationLink: VAR.invitationLink,
+          },
+          headers: HEADER_LIST.create({
+            token: VAR.token1,
+          }),
+          expect: {
+            ok: true,
+            includes: [
+              executeFunction(
+                'includes.users',
+                ACTION.GET_USER,
+                [null,
+                  { userId: VAR.userId1 }
+                ],
+                ['userId'],
+              ),
+            ]
+          },
+        },
+        {
+          action: ACTION.UPDATE_CHANNEL_NAME,
+          body: {
+            workspaceId: VAR.workspaceId, channelId: VAR.channelId, name: 'new name gr'
+          },
+          headers: HEADER_LIST.create({ token: VAR.token }),
+          expect: {
+            ok: true
+          }
         },
       ],
     },
@@ -127,36 +173,33 @@ Sau khi chạy script gen reports thì file reports sẽ được ghi vào folde
 
         + Cấu trúc của expect
         ```
-          {
+          expect: {
             ok: true,
             data: executeFunction(
-              'data.channel',
-              ACTION.GET_CHANNEL,
-              {
-                body: { channelId: VAR.channelId, workspaceId: VAR.workspaceId }
-              },
-              null,
-              null
+              'includes.users',
+              ACTION.GET_USER,
+              [null,
+                { userId: VAR.userId1 }
+              ],
+              ['userId'],
             ),
             includes: [
               executeFunction(
-                'includes.members',
-                ACTION.LIST_MEMBERS,
-                {
-                  body: { channelId: VAR.channelId, workspaceId: VAR.workspaceId }
-                },
-                null,
-                null
-              )
+                'includes.users',
+                ACTION.GET_USER,
+                [null,
+                  { userId: VAR.userId1 }
+                ],
+                ['userId'],
+              ),
             ]
-          }
+          },
         ```
     - Cấu trúc expect: Expect theo cấu trúc call function để check
-        + executeFunction: có 5 tham số tuỳ chỉnh và 1 tham số cố định
-            + Tham số tuỳ chỉnh:
-              - Path: path đang thực hiện gọi function để check ( includes.members, ...)
-              - Action: action gọi đến một API khác để lấy response và so sánh với response đang check
-              - Payload: body của action, và header là tham số cố định mặc định sẽ lấy token đầu tiên của context
-              - Filter: filter các filed của response đang check (optional)
-              - Expect: defined giá trị sẽ so sánh với response đang check dựa vào filter
+        + executeFunction: có 4 tham số tuỳ chỉnh là
+            - Path: path đang thực hiện gọi function để check ( includes.members, ...)
+            - Action: action gọi đến một API khác để lấy response và so sánh với response đang check dừa vào path
+            - Payload: là một mảng, mỗi mảng là một body để call API và cũng là index để expect nếu response đang check nó là một mảng ( includes.user[user1, user2] thì user1 sẽ tương ứng với mảng đầu tiên tương tự như user2, user3, ...)  
+            - Filter: filter các filed của response đang check (optional)
+              
       
