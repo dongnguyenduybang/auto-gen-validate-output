@@ -51,7 +51,7 @@ export const CreateChannelSaga: SagaTestSuite = {
             invitationLink: VAR.invitationLink,
           },
           headers: HEADER_LIST.create({
-            token: VAR.token1,
+            token: VAR.token,
           }),
           expect: {
             ok: true,
