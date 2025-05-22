@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { TestContext } from '../utils/text-context';
+import { ApiConfig, ApiFunctionParams } from '../utils/declarations';
 import { resolveVariables } from '../utils/helper';
-import { ApiConfig, ApiFunctionParams, ApiResponse } from '../utils/declarations';
 
 export function createApiFunction(config: ApiConfig, context: TestContext) {
   return async ({
@@ -9,7 +9,7 @@ export function createApiFunction(config: ApiConfig, context: TestContext) {
     path,
     headers,
     body,
-  }: ApiFunctionParams): Promise<ApiResponse> => {
+  }: ApiFunctionParams): Promise<any> => {
     try {
       // 1. Validate required headers
       const finalHeaders: Record<string, string> = {};
@@ -23,7 +23,7 @@ export function createApiFunction(config: ApiConfig, context: TestContext) {
             : headers[source];
 
           if (!resolvedValue) {
-            return { ok: false, error: errorMessage };
+            return { error: errorMessage };
           }
           finalHeaders[headerName] = resolvedValue;
         }
@@ -47,6 +47,7 @@ export function createApiFunction(config: ApiConfig, context: TestContext) {
         method: finalMethod,
         url,
         headers: header,
+        validateStatus: () => true
       };
 
       if (['post', 'put'].includes(finalMethod)) {
@@ -55,13 +56,10 @@ export function createApiFunction(config: ApiConfig, context: TestContext) {
         axiosConfig.params = payload;
       }
       const response = await axios(axiosConfig);
-      return {
-        ok: true,
-        data: response.data,
-      };
+      return response
+
     } catch (error: any) {
       return {
-        ok: false,
         error:
           error.response?.data?.error?.details ||
           error.response?.data ||

@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 
 /*
-    Gán điều kiện với condition là value filed đang set, operator là toán tử, condition 2 là value muốn so sánh 
+    check điều kiện với condition là value filed đang set, operator là toán tử, condition 2 là value muốn so sánh 
     với condition2: string => 'aaa'
                     number => '0'
                     var => '{{...}}'*/
@@ -35,7 +35,7 @@ export function ValidIf(condition: string, operator: string, condition2: any) {
   };
 }
 /*
-   Gán chuỗi kí tự đầu tiên có bằng với value không 
+   check chuỗi kí tự đầu tiên có bằng với value không 
    với filed là property muốn check
        value là chuỗi muốn check*/
 export function StartWith(fieldCheck: string, value: string) {
@@ -65,28 +65,23 @@ export function StartWith(fieldCheck: string, value: string) {
 }
 
 /*
-   Gán chuỗi kí tự cuối cùng có bằng với value không 
+   check chuỗi kí tự cuối cùng có bằng với value không 
    với filed là property muốn check
        value là chuỗi muốn check*/
-export function EndWith(fieldCheck: string, value: string) {
+export function EndWith(field: string, value: string) {
   return (target: any, propertyKey: string) => {
-    Reflect.defineMetadata(
-      'endWith',
-      { fieldCheck, value },
-      target,
-      propertyKey,
-    );
+    Reflect.defineMetadata('endWith', { field, value }, target, propertyKey);
     if (typeof target === 'function') {
       Reflect.defineMetadata(
         'endWith',
-        { fieldCheck, value },
+        { field, value },
         target.prototype,
         propertyKey,
       );
     } else {
       Reflect.defineMetadata(
         'endWith',
-        { fieldCheck, value },
+        { field, value },
         target.constructor.prototype,
         propertyKey,
       );

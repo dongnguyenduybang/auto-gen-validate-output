@@ -13,11 +13,11 @@ export function IsOptional() {
    check property đó không được null*/
 export function IsNotNull(options?: { message?: string }) {
   return (target: any, propertyKey: string) => {
-    Reflect.defineMetadata('isNotNull', true, target, propertyKey);
+    Reflect.defineMetadata('notNull', true, target, propertyKey);
 
     if (options?.message) {
       Reflect.defineMetadata(
-        'isNotNullMessage',
+        'notNullMessage',
         options.message,
         target,
         propertyKey,
@@ -30,11 +30,11 @@ export function IsNotNull(options?: { message?: string }) {
    */
 export function IsNotEmpty(options?: { message?: string }) {
   return (target: any, propertyKey: string) => {
-    Reflect.defineMetadata('isNotEmpty', true, target, propertyKey);
+    Reflect.defineMetadata('notEmpty', true, target, propertyKey);
 
     if (options?.message) {
       Reflect.defineMetadata(
-        'isNotEmptyMessage',
+        'notEmptyMessage',
         options.message,
         target,
         propertyKey,
@@ -51,7 +51,7 @@ export function IsDefined(options?: { message?: string }) {
     Reflect.defineMetadata('isDefined', true, target, propertyKey);
     if (options?.message) {
       Reflect.defineMetadata(
-        'isDefinedMessage',
+        'notUndefinedMessage',
         options.message,
         target,
         propertyKey,
@@ -70,12 +70,12 @@ export function IsAny() {
 }
 
 /* xác định value có custom message error */
-export function IsInvalid(options: { message: string }) {
+export function IsChecked(options?: { message?: string }) {
   return (target: any, propertyKey: string) => {
-    Reflect.defineMetadata('isInvalid', true, target, propertyKey);
+    Reflect.defineMetadata('isChecked', true, target, propertyKey);
     if (options?.message) {
       Reflect.defineMetadata(
-        'isInvalidMessage',
+        'notCheckedMessage',
         options.message,
         target,
         propertyKey,
@@ -88,6 +88,28 @@ export function IsInvalid(options: { message: string }) {
 export function IsULID() {
   return function (target: any, propertyKey: string) {
     Reflect.defineMetadata('isULID', true, target, propertyKey);
+  };
+}
+
+export function IsMath(options?: {
+  message?: string;
+  value?: any;
+}): PropertyDecorator {
+  return (target: any, propertyKey: string) => {
+    Reflect.defineMetadata('isMath', true, target, propertyKey);
+
+    if (options?.message) {
+      Reflect.defineMetadata(
+        'mathMessage',
+        options.message,
+        target,
+        propertyKey,
+      );
+    }
+
+    if (options?.value !== undefined) {
+      Reflect.defineMetadata('fieldValue', options.value, target, propertyKey);
+    }
   };
 }
 

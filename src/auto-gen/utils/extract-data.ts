@@ -1,12 +1,10 @@
 import { configMap } from './extract-config';
-
 export function extractDatas(
-  response: any,
+  response: object,
   action: string,
-): Record<string, any> {
-  const data: Record<string, any> = {};
+): Record<string, string> {
+  const data: Record<string, string> = {};
 
-  // Lấy cấu hình từ configMap dựa trên action
   const config = configMap[action];
   if (!config) {
     console.warn(`No config found for action: ${action}`);
@@ -24,18 +22,18 @@ export function extractDatas(
     }
 
     if (Array.isArray(source)) {
-      source.forEach((item: any, index: number) => {
-        const suffix = index === 0 ? '' : index; // Hậu tố: '', '2', '3', ...
+      source.forEach((item: string, index: number) => {
+        const suffix = index === 0 ? '' : index; 
         fields.forEach((field) => {
           if (item[field] !== undefined) {
             data[`${field}${suffix}`] = item[field];
           }
         });
       });
-    } else if (typeof source === 'object' && source !== null) {
+    } else {
       fields.forEach((field) => {
         if (source[field] !== undefined) {
-          data[field] = source[field]; // Tạo key trực tiếp như channelId, name
+          data[field] = source[field];
         }
       });
     }

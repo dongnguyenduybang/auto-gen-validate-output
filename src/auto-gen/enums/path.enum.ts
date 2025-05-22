@@ -1,4 +1,4 @@
-export const APIPath = {
+export const APIPath =  {
   Invitation: {
     AcceptInvitation: '/Invitation/AcceptInvitation',
     DeclineInvitation: '/Invitation/DeclineInvitation',
@@ -74,6 +74,22 @@ export const APIPath = {
     SyncStickerCollections: '/StickerView/SyncStickerCollections',
   },
   Faker: {
+    MockedUsers: '/InternalFaker/MockUsers',
     DeleteMockedUsers: '/InternalFaker/DeleteMockedUsers',
   },
+  Friend: {
+    AddFriend: '/Friend/AddFriend',
+    RemoveFriend: '/Friend/RemoveFriend',
+    BlockUser: '/Friend/BlockUser',
+    UnblockUser: '/Friend/UnblockUser',
+    AcceptFriendRequest: '/Friend/AcceptFriendRequest',
+    RejectFriendRequest: '/Friend/RejectFriendRequest',
+    CancelFriendRequest: '/Friend/CancelFriendRequest',
+  },
+  UserProfile: {
+    UpdateUserDisplayName: '/UserProfile/UpdateUserDisplayName'
+  },
+  ViewMember: {
+    ListMembers: '/MemberView/ListMembers'
+  }
 };

@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 
 /*
-Gán property kiểu object*/
+Check xem có phải là kiểu object hay không*/
 export function IsObject() {
   return (target: any, propertyKey: string) => {
     Reflect.defineMetadata('type', 'object', target, propertyKey);
