@@ -221,6 +221,7 @@ async function generateSpecContent(
           const testResult: TestResult = {
             path: '${resolveActionPath(requestConfig.action)}',
             className: '${className}',
+            allSteps: allSteps,
             chunkNumber: ${chunkNumber || 'undefined'},
             failedTests: [...failedTests],
             codedTest: [...codedTest],

@@ -20,7 +20,8 @@ export enum ACTION {
   SEARCH_USERS = 'searchUsers',
   LIST_MEMBERS = 'listMembers',
   GET_USER = 'getUser',
-  LIST_MESSAGE= 'listMessage'
+  LIST_MESSAGE= 'listMessage',
+  LIST_ALL_CHANNEL = 'listAllChannel'
 }
 
 export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
@@ -81,4 +82,8 @@ export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
     [ACTION.LIST_MESSAGE]: {
     path: APIPath.ViewMessage.ListMessages, method: METHOD.GET
   },
+  [ACTION.LIST_ALL_CHANNEL]: {
+    path: APIPath.ViewChannel.ListAllChannels, method: METHOD.GET
+  },
+  
 }
