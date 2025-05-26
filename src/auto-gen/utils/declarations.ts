@@ -1,11 +1,11 @@
-import { AcceptInvitationResponse } from "../response/accept-invitation.response";
-import { CreateChannelResponse } from "../response/create-channel.response";
-import { GetChannelResponse } from "../response/get-channel.response";
-import { MockUserResponse } from "../response/mock-user";
-import { SendDmMessageResponse } from "../response/send-dm-message.response";
-import { SendMessageResponse } from "../response/send-message.response";
-import { UpdateMessageResponse } from "../response/update-message.response";
-import { TestContext } from "./text-context";
+import { AcceptInvitationResponse } from '../response/accept-invitation.response';
+import { CreateChannelResponse } from '../response/create-channel.response';
+import { GetChannelResponse } from '../response/get-channel.response';
+import { MockUserResponse } from '../response/mock-user';
+import { SendDmMessageResponse } from '../response/send-dm-message.response';
+import { SendMessageResponse } from '../response/send-message.response';
+import { UpdateMessageResponse } from '../response/update-message.response';
+import { TestContext } from './text-context';
 
 export interface ValidationError {
   path: string;
@@ -13,6 +13,7 @@ export interface ValidationError {
   actual: any;
   message?: string;
 }
+
 interface ApiRequestConfig {
   body?: any;
   header?: Record<string, string>;
@@ -27,10 +28,16 @@ interface ExpectData {
   isArrayMapping?: boolean;
   headers?: Record<string, string>;
 }
+
 export interface Expect {
-  ok?: boolean,
-  data?: ExpectData
-  includes?: ExpectData[]
+  ok?: boolean;
+  data?: ExpectData;
+  error?: {
+    code: number;
+    message: string;
+    details: string[];
+  };
+  includes?: ExpectData[];
 }
 
 export interface ExpectResult {
@@ -39,8 +46,8 @@ export interface ExpectResult {
   message: string;
   actualValue?: string;
   expectedValue?: string;
-
 }
+
 export interface Step<T = any> {
   action: string;
   body?: T;
@@ -58,17 +65,17 @@ export interface RequestTestSuite {
   action: string;
   headers: Record<string, string>;
   body: Object;
-  options: FirstStep[]
+  options: FirstStep[];
 }
 
 interface FirstStep {
   beforeEach?: Step[];
-  beforeAll?: Step[]
+  beforeAll?: Step[];
   afterEach?: Step[];
   afterAll?: Step[];
 }
 
-interface TestCase {
+export interface TestCase {
   title: string;
   step: Step[];
 }
@@ -82,8 +89,11 @@ export interface StepResult {
 
 export interface IContext {
   getValue(path: string | string[]): any;
+
   setValue(key: string, value: any): void;
+
   mergeData(newData: Record<string, any>): void;
+
   debug(): void;
 }
 
@@ -131,19 +141,18 @@ export interface ApiFunctionParams {
 
 export interface TestResult {
   path: string;
-    className: string;
-    allSteps: any[];
-    chunkNumber?: number;
-    failedTests: any[];
-    codedTest: any[];
-    passedTests: number;
-    totalTests: number;
-    logicTests: any[];
-    failedStep: any[];
-    passed200?: number;
-    passed201?: number;
+  className: string;
+  allSteps: any[];
+  chunkNumber?: number;
+  failedTests: any[];
+  codedTest: any[];
+  passedTests: number;
+  totalTests: number;
+  logicTests: any[];
+  failedStep: any[];
+  passed200?: number;
+  passed201?: number;
 }
-
 
 export type ActionHandler = (dtoName: string) => Promise<void> | void;
 export type ApiRegistry = Record<string, ApiConfig>;
@@ -159,9 +168,9 @@ export type HeaderOptions = {
 
 export type Actual = {
   ok: boolean;
-  data: object
+  data: object;
   includes: object;
-}
+};
 
 export const responseClassMap = {
   CreateChannelResponse,
