@@ -1,4 +1,4 @@
-export const APIPath =  {
+export const APIPath = {
   Invitation: {
     AcceptInvitation: '/Invitation/AcceptInvitation',
     DeclineInvitation: '/Invitation/DeclineInvitation',
@@ -87,9 +87,11 @@ export const APIPath =  {
     CancelFriendRequest: '/Friend/CancelFriendRequest',
   },
   UserProfile: {
-    UpdateUserDisplayName: '/UserProfile/UpdateUserDisplayName'
+    UpdateUserDisplayName: '/UserProfile/UpdateUserDisplayName',
+    AddUserStatus: '/UserProfile/AddUserStatus',
+    UpdateUserStatus: '/UserProfile/UpdateUserStatus',
   },
   ViewMember: {
-    ListMembers: '/MemberView/ListMembers'
-  }
+    ListMembers: '/MemberView/ListMembers',
+  },
 };

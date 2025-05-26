@@ -16,11 +16,11 @@
     "incremental": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "esModuleInterop": true, 
-    "paths": {
-      "@modules/*": [
-        "../../*"
-      ]
-    }
+    "esModuleInterop": true
+    //    "paths": {
+    //      "@modules/*": [
+    //        "../../*"
+    //      ]
+    //    }
   }
 }
