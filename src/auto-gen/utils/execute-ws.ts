@@ -1,15 +1,16 @@
-import { Step, StepResult, Resume } from './declarations';
+import { Step, StepResult, Resume, EventStep } from './declarations';
 import {
   executeAfterAll,
   executeAfterEach,
   executeBeforeAll,
   executeBeforeEach,
+  executeEvents,
   executeResume,
   executeStepWS,
 } from './execute-list';
 import { EventContext, ResumeContext, TestContext } from './text-context';
 import { WebSocketEventCollector } from './ws-event-collector';
-type ExtendedStep = Step | Resume;
+type ExtendedStep = Step | Resume | EventStep;
 export async function executeWS(
   steps: ExtendedStep[],
   context: TestContext,
@@ -18,7 +19,7 @@ export async function executeWS(
   type: string,
   collectors: Record<string, WebSocketEventCollector> = {},
 ) {
-  const results: StepResult[] = [];
+  const results: [] = [];
   for (const [index, step] of steps.entries()) {
     switch (type) {
       case 'beforeAll':
@@ -46,8 +47,17 @@ export async function executeWS(
           eventContext,
           resumeContext,
           collectors,
-          index,
         );
+        break;
+      case 'events':
+        const resultEvent = await executeEvents(
+          [step],
+          context,
+          eventContext,
+          resumeContext,
+          collectors,
+        );
+       console.log(JSON.stringify(resultEvent,null,2))
         break;
       default:
         const resultStepWS = await executeStepWS(

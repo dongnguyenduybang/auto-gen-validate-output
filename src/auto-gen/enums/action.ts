@@ -27,7 +27,10 @@ export enum ACTION {
   RESUME = 'resume',
 }
 
-export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
+export const ACTION_CONFIG: Record<
+  ACTION,
+  { path: string; method: METHOD; body?: any }
+> = {
   [ACTION.MOCK_USER]: {
     path: APIPath.Faker.MockedUsers,
     method: METHOD.POST,
@@ -35,10 +38,20 @@ export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
   [ACTION.CREATE_CHANNEL]: {
     path: APIPath.Channel.CreateChannel,
     method: METHOD.POST,
+    body: {
+      workspaceId: VAR.workspaceId,
+      name: 'channel1',
+    },
   },
   [ACTION.SEND_MESSAGE]: {
     path: APIPath.Message.SendMessage,
     method: METHOD.POST,
+    body: {
+      workspaceId: VAR.workspaceId,
+      channelId: VAR.channelId,
+      content: 'send message 1',
+      ref: 'ref',
+    },
   },
   [ACTION.SEND_DM_MESSAGE]: {
     path: APIPath.Message.SendDMMessage,

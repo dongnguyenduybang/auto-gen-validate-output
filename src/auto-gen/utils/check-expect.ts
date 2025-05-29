@@ -82,7 +82,7 @@ export async function handleExpectConfig(
         headers: payload.header,
         body: payload.body,
       });
-      let responseData = getValueByPath(response.data, 'data');
+      const responseData = getValueByPath(response.data, 'data');
       const nestedKey =
         pathKey === 'users'
           ? 'user'

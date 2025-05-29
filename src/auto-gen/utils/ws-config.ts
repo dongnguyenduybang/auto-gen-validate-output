@@ -88,6 +88,7 @@ export const API_EVENT = {
         CHANNEL_CREATION_FAILED: 'com.halome.chat.v3.channel.creation_failed',
         CHANNEL_DELETED: 'com.halome.chat.v3.channel.deleted',
         CHANNEL_NAME_UPDATED: 'com.halome.chat.v3.channel.name_updated',
+        CHANNEL_UPDATED_EVENT: 'com.halome.chat.v3.channel.updated',
         CHANNEL_NOTIFICATION_STATUS_UPDATED:
           'com.halome.chat.v3.channel.notification_status_updated',
         CHANNEL_TYPING_SIGNAL: 'com.halome.chat.v3.channel.typing_signal',
@@ -156,5 +157,27 @@ export const API_EVENT = {
         CALL_SIGNAL_UPDATE: 'com.halome.call.v3.signal_updated',
       },
     },
+    cloudevent: {
+      system: 'messages.v3.halome.com/cloudevents/system',
+    },
   },
 };
+export const SYSTEM_MESSAGE = {
+  CREATE_CHANNEL: '%s created this channel',
+  CREATE_BROADCAST_CHANNEL: 'Channel created',
+  UPDATE_CHANNEL_NAME: '%s changed this channel name to %s',
+  UPDATE_CHANNEL_AVATAR: '%s changed this channel avatar',
+  ASSIGN_ADMIN: '%s assigned %s as an admin',
+  DISMISS_ADMIN: '%s removed the admin right of %s',
+  REMOVE_FROM_CHANNEL: '%s removed %s from this channel',
+  LEFT_CHANNEL: '%s left this channel',
+  TRANSFER_OWNERSHIP: '%s transferred channel ownership to %s',
+  REMOVE_THE_NICKNAME: '%s removed the nickname of %s',
+  SET_NICKNAME: '%s set a nickname for %s to %s',
+  SEND_INVITATION: '%s sent an invitation ',
+  JOINED_THIS_CHANNEL: '%s joined this channel',
+  DELETE_CHANNEL_AVATAR: "%s removed the channel's profile avatar",
+  PINNED_MESSAGE: '%s pinned a message.',
+  UNPINNED_MESSAGE: '%s unpinned a message.',
+};
+export const CLOUD_EVENT_PATH = 'chat.v3.halome.com/cloudevents/?';

@@ -514,3 +514,39 @@ export async function checkResponse(
     };
   }
 }
+
+export async function callAPIForSystem(body, header, action){
+  const actionInfo = ACTION_CONFIG[action as keyof typeof ACTION_CONFIG];
+  const resolveBody = {
+    workspaceId: '0',
+    channelId: body.channelId,
+    messageId: body.msgId
+  }
+  const apiFunction = getApiFunctions(action, null, null);
+
+  const response = await apiFunction({
+    method: actionInfo?.method,
+    path: actionInfo?.path,
+    headers: header,
+    body: resolveBody,
+  });
+
+  
+  return transformApiData(response.data)
+}
+
+export function transformApiData(apiData) {
+  // Kiểm tra nếu apiData không hợp lệ
+  if (!apiData || typeof apiData !== 'object' || !apiData.ok) {
+    throw new Error('Invalid apiData');
+  }
+
+  const result = {
+    data: {
+      ...apiData.data,  // Copy tất cả các trường từ apiData.data
+      includes: apiData.includes ? {...apiData.includes} : {}  // Thêm includes vào trong data
+    }
+  };
+
+  return result;
+}

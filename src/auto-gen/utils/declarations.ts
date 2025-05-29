@@ -1,3 +1,4 @@
+import { isEqual } from 'lodash';
 import { AcceptInvitationResponse } from '../response/accept-invitation.response';
 import { CreateChannelResponse } from '../response/create-channel.response';
 import { GetChannelResponse } from '../response/get-channel.response';
@@ -36,13 +37,75 @@ export interface ExpectResult {
   index: number;
   key: string;
 }
+export interface MatcherResult {
+  isEqual: boolean;
+  allDifferences?: string[];
+}
+
+export interface CustomMatcher extends Function {
+  (actual: any, context?: TestContext): Promise<MatcherResult>;
+  matcherType: string;
+  expectedValue: any;
+  toString(): string;
+}
 export interface Step<T = any> {
   title?: string;
+  author?: string;
   action?: string;
   body?: T;
   headers?: any;
   expect?: Expect;
   delay?: number;
+}
+export interface EventStep {
+  [key: string]: any | EventMatcher;
+  title: string;
+  author: string;
+}
+
+export interface EventValidation {
+  eventIndex: number;
+  eventType: string;
+  isPassed: boolean;
+  error?: string;// true nếu cả SOURCE, TYPE và DATA đều pass
+  specversionResult?: {
+    isEqual: boolean;
+    differences?: string[];
+  }
+  versionResult?: {
+    isEqual: boolean;
+    differences?: string[];
+  }
+  sourceResult?: {
+    isEqual: boolean;
+    differences?: string[];
+  };
+  typeResult?: {
+    isEqual: boolean;
+    differences?: string[];
+  };
+  dataResult?: {
+    isEqual: boolean;
+    differences?: string[];
+  };
+}
+
+export interface StepValidationResult {
+  author: string;
+  stepAction: string;
+  totalEvents: number;
+  eventList: string[];
+  passedEvents: number;
+  failedEvents: number;
+  orderIsValid: boolean, // New field to track order validation
+  duplicateEvents: string[],
+  eventResults: EventValidation[];
+}
+
+interface EventMatcher {
+  type: string;
+  source?: (source: any) => boolean;
+  data?: (data: any) => boolean;
 }
 
 export interface SagaTestSuite {
@@ -57,7 +120,9 @@ export interface SagaWSTestSuite {
 
 export interface Resume<T = any> {
   title: string;
+  author: string;
   type?: string;
+  index?: number;
   data: string;
 }
 
@@ -161,7 +226,7 @@ export interface ResumeEntry {
 export interface EventValidationResult {
   isValid: boolean;
   errors: {
-    type: 'missing' | 'unexpected' | 'count' | 'duplicate'| 'order';
+    type: 'missing' | 'unexpected' | 'count' | 'duplicate' | 'order';
     message: string;
     expected?: string[];
     received?: string[];

@@ -16,26 +16,26 @@ export function genTestWS(dtoName: string) {
     const wsModule = await import(path.join(baseFolder, wsFile));
     const wsConfig = wsModule[`${classNameCapitalized}WS`];
 
-    const itBlocks = wsConfig.steps
+    // Generate it blocks for steps
+    const itBlocks = wsConfig.options[0].steps
       .map(
         (step: { title: string; step: any[] }, index: number) =>
           `
         it('${step.title}', async () => {
           currentTestCaseTitle = '${step.title}';
-          const results = await executeAllSteps(${classNameCapitalized}WS.steps[${index}].step, contextData);
-            results.forEach((result) => {
-              allSteps.push({
-                ...result,
-                caseTitle: currentTestCaseTitle ,
-                phase: 'test',
-              });
-          });        
-        })
+          const results = await executeAllSteps(${classNameCapitalized}WS.options[0].steps[${index}].step, contextData, eventContext);
+          results.forEach((result) => {
+            allSteps.push({
+              ...result,
+              caseTitle: currentTestCaseTitle,
+              phase: 'test',
+            });
+          });
+        });
       `,
       )
       .join('\n');
 
-    const outputDir = path.join(__dirname, `../test-ws/${dtoName}`);
     const specContent = `
     import path from 'path';
     import fs from 'fs';
@@ -44,6 +44,7 @@ export function genTestWS(dtoName: string) {
     import { executeWS } from '../../utils/execute-ws';
     import { executeAllSteps } from '../../utils/test-executor';
     import { ${classNameCapitalized}WS } from './${dtoName}.ws';
+
     describe('Test sagas for ${dtoName}', () => {
       let pathRequest: string;
       let testType: string;
@@ -53,31 +54,31 @@ export function genTestWS(dtoName: string) {
       let allSteps: any[] = [];
       let contextData;
       let currentTestCaseTitle;
+
       beforeAll(async () => {
-        pathRequest = '${classNameCapitalized}WS'
+        pathRequest = '${classNameCapitalized}WS';
         testType = 'ws';
         context = new TestContext();
         globalWSSContext = new WSSContext();
         eventContext = new EventContext();
 
-         const beforeAllSteps = ${classNameCapitalized}WS.options
-            ?.find((option) => option.beforeAll)
-            ?.beforeAll || [];
+        const beforeEachSteps = ${classNameCapitalized}WS.options
+          ?.find((option) => option.beforeEach)
+          ?.beforeEach || [];
 
-          if (beforeAllSteps.length > 0) {
-            contextData = context.clone();
-            const results = await executeWS(beforeAllSteps, contextData, eventContext);
-            results.forEach((result) => {
-              allSteps.push({
-                ...result,
-                caseTitle: \`Case\`,
-                phase: 'beforeEach',
-              });
+        if (beforeEachSteps.length > 0) {
+          contextData = context.clone();
+          const results = await executeWS(beforeEachSteps, contextData, eventContext);
+          results.forEach((result) => {
+            allSteps.push({
+              ...result,
+              caseTitle: 'Case',
+              phase: 'beforeEach',
             });
-          }else {
-            contextData = context
-          }
-
+          });
+        } else {
+          contextData = context;
+        }
       });
 
       ${itBlocks}
@@ -88,28 +89,29 @@ export function genTestWS(dtoName: string) {
           fs.mkdirSync(folderPath, { recursive: true });
         }
         const classNames = \`${dtoName}\`;
-        const reportFileName = \`${dtoName}-sagas-\${getTime()}.report.txt\`;  
+        const reportFileName = \`${dtoName}-sagas-\${getTime()}.report.txt\`;
         const { combinedReportTemplate } = await import('../../utils/report-file');
         const reportContent = combinedReportTemplate(
-            classNames,
-            globalThis.url,
-            pathRequest,
-            allSteps,
-            null,
-            null,
-            null,
-            null,
-            null,
-            testType
+          classNames,
+          globalThis.url,
+          pathRequest,
+          allSteps,
+          null,
+          null,
+          null,
+          null,
+          null,
+          testType
         );
-        
+
         const reportPath = path.join(folderPath, reportFileName);
         fs.writeFileSync(reportPath, reportContent, 'utf-8');
         console.log(\`📄 WS test report generated: \${reportPath}\`);
       });
     });
-  `;
+    `;
 
+    const outputDir = path.join(__dirname, `../test-ws/${dtoName}`);
     const outputPath = path.join(outputDir, `${dtoName}.ws.spec.ts`);
     fs.writeFileSync(outputPath, specContent, 'utf-8');
     console.log(`✅ Generated WS test: ${outputPath}`);

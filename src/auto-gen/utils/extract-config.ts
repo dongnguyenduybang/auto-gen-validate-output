@@ -19,8 +19,8 @@ const createChannelConfig: ExtractConfig = {
     ],
   },
   users: {
-    path: ['includes', 'users'],
-    fields: ['username'],
+    path: ['includes', 'channelMetadata'],
+    fields: ['lastMessageId'],
   },
 };
 
@@ -92,6 +92,13 @@ const wsOpenConfigActor: ExtractConfig = {
   },
 };
 
+const connectWSConfig: ExtractConfig = {
+  device: {
+    path: ['data'],
+    fields: ['deviceId'],
+  },
+};
+
 const openConnectionResumeConfig: ExtractConfig = {};
 // Ánh xạ action tới cấu hình
 export const configMap: Record<string, ExtractConfig> = {
@@ -109,4 +116,5 @@ export const configMap: Record<string, ExtractConfig> = {
   wsActor: wsOpenConfigActor,
   wsRecipient: wsOpenConfigRecipient,
   openConnectionResume: openConnectionResumeConfig,
+  connectWS: connectWSConfig,
 };

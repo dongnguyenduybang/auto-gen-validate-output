@@ -1,9 +1,9 @@
-import { IContext, ResumeEntry, ResumeEvent } from './declarations';
+import { IContext, ResumeEntry, ResumeEvent, Step } from './declarations';
 
 export class TestContext implements IContext {
   private data: Record<string, any> = {};
   private versions: Record<string, number> = {};
-
+  private steps: Step[];
   setValue(key: string, value: any): void {
     const version = this.versions[key] || 0;
     const versionedKey = version > 0 ? `${key}${version}` : key;
@@ -88,16 +88,13 @@ export class WSSContext implements IContext {
   }
 }
 
-
 export class EventContext {
   public events: Array<{
-    action: string;
+    author: string;
     events: any[];
-    stepIndex: number;
   }> = [];
 
-  public addEvent(action: string, newEvents: any[], stepIndex: number) {
-
+  public addEvent(author: string, newEvents: any[], stepIndex: number) {
     // const uniqueNewEvents = newEvents.filter(
     //   (newEvent) =>
     //     !this.events
@@ -110,16 +107,14 @@ export class EventContext {
     //   return;
     // }
 
-    const existingEntry = this.events.find((e) => e.action === action);
+    const existingEntry = this.events.find((e) => e.author === author);
 
     if (existingEntry) {
       existingEntry.events.push(...newEvents);
-      existingEntry.stepIndex = 0; 
     } else {
       this.events.push({
-        action,
+        author,
         events: newEvents,
-        stepIndex: 0,
       });
     }
   }

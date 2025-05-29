@@ -11,6 +11,9 @@ export enum VAR {
   messageId1 = '{{messageId1}}',
   messageId2 = '{{messageId2}}',
   messageId3 = '{{messageId3}}',
+  lastMessageId = '{{lastMessageId}}',
+  lastMessageId1 = '{{lastMessageId1}}',
+  lastMessageId2 = '{{lastMessageId2}}',
   token = '{{token}}',
   token1 = '{{token1}}',
   token2 = '{{token2}}',
@@ -28,4 +31,7 @@ export enum VAR {
   url1 = '{{url1}}',
   time = 'time',
   id = 'id',
+  actor = 'Actor',
+  recipient = 'Recipient',
+  deviceId = '{{deviceId}}',
 }

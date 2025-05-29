@@ -5,7 +5,7 @@ import { resolveVariables } from './helper';
 import { WebSocketEventCollector } from './ws-event-collector';
 
 export async function executeOpenWS(
-  title: string,
+  author: string,
   urlConnect: string,
   context: TestContext,
   collectors: Record<string, WebSocketEventCollector>,
@@ -20,19 +20,18 @@ export async function executeOpenWS(
     );
   });
   // save ws
-  const lastWord = title.trim().split(' ').pop();
-  const key = `ws__${lastWord}`;
+  const key = `ws__${author}`;
   let isTrue;
-  if (lastWord === 'Actor') {
+  if (author === 'Actor') {
     isTrue = true;
   } else {
     isTrue = false;
   }
-  console.log(key);
+
   setWebSocket(key, ws);
 
   collectors[key] = new WebSocketEventCollector(ws, isTrue);
-  const wsSave = getWebSocket(`ws__${lastWord}`);
+  const wsSave = getWebSocket(`ws__${author}`);
 
   return ws;
 }
