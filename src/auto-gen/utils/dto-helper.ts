@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { ErrorMessage } from '../enums';
-import { checkRegexULID, isEmoji } from './helper';
+import { checkRegexULID, checkURL, isEmoji } from './helper';
 import { FieldValueObject, PayloadGen } from './declarations';
 export function getDecorators(
   target: Object,
@@ -313,6 +313,14 @@ function checkTypeString(field: string, value: unknown, decorators: Record<strin
         }
       } else {
         addErrorIfNotExist(errors, decorators['stringMessage'], `${field} ${ErrorMessage.INVALID_TYPE_STRING}`);
+      }
+      return errors;
+    }
+
+    if (decorators['isValidURL']) {
+      const isInvalid = typeof value === 'string' && (value === '' || !checkURL(value));
+      if (isInvalid) {
+        addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_URL}`);
       }
       return errors;
     }
