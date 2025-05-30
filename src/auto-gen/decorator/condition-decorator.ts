@@ -6,12 +6,12 @@ import 'reflect-metadata';
                     number => '0'
                     var => '{{...}}'*/
 
-export function ValidIf(condition: string, operator: string, condition2: any) {
+export function ValidIf(condition: string, operator: string, condition2: any, result?: any) {
   return (target: any, propertyKey: string) => {
     // Lưu metadata vào target
     Reflect.defineMetadata(
       'validIf',
-      { condition, operator, condition2 },
+      { condition, operator, condition2, result },
       target,
       propertyKey,
     );
@@ -20,14 +20,14 @@ export function ValidIf(condition: string, operator: string, condition2: any) {
     if (typeof target === 'function') {
       Reflect.defineMetadata(
         'validIf',
-        { condition, operator, condition2 },
+        { condition, operator, condition2, result },
         target.prototype,
         propertyKey,
       );
     } else {
       Reflect.defineMetadata(
         'validIf',
-        { condition, operator, condition2 },
+        { condition, operator, condition2, result },
         target.constructor.prototype,
         propertyKey,
       );
