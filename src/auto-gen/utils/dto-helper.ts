@@ -95,6 +95,13 @@ export function generateErrorVariantsForField(
     case 'enum':
       variants.push('invalid_enum_value');
       variants.push(fieldValue);
+      const enumObj = decorators['enumType'];
+      const enumValues = Object.values(enumObj)
+        .filter(v => typeof v === 'number') as number[];
+
+      for (const val of enumValues) {
+        variants.push(val);
+      }
       break;
     case 'array':
       variants.push('not_an_array');
@@ -143,10 +150,10 @@ export function generateErrorVariantsForField(
     variants.push('');
   }
 
-  if(decorators['isULID']){
+  if (decorators['isULID']) {
     variants.push('invalid_ULID')
   }
-    if(decorators['isInvalid']){
+  if (decorators['isInvalid']) {
     variants.push('invalid_value')
   }
   return [...new Set(variants)];
@@ -191,7 +198,38 @@ function checkOptional(value: unknown, decorators: Record<string, any>): string[
   return null;
 }
 
+function checkValidIf(
+  field: string,
+  value: unknown,
+  decorators: Record<string, any>,
+  payload: Record<string, any>
+) {
 
+  if (decorators['validIf']) {
+    const { condition, operator, condition2, result } = decorators['validIf'];
+
+    const targetFieldValue = payload[condition];
+
+    let conditionMet = false;
+    switch (operator) {
+      case '===':
+        conditionMet = targetFieldValue === condition2;
+        break;
+      default:
+        throw new Error(`Unsupported operator: ${operator}`);
+    }
+
+    if (conditionMet && result?.optional === false) {
+      return { isRequired: true }
+    }
+
+    if (!conditionMet) {
+      return { isRequired: false };
+    }
+  }
+
+  return null;
+}
 function getDefinedErrorMessage(field: string): string {
   switch (field) {
     case 'channelId':
@@ -211,7 +249,7 @@ function checkIsDefined(field: string, value: unknown, decorators: Record<string
       if (decorators['isInvalid']) {
         addErrorIfNotExist(errors, decorators['notUndefinedMessage'], getDefinedErrorMessage(field));
       } else {
-        addErrorIfNotExist(errors, decorators['notUndefinedMessage'],`${field} ${ErrorMessage.DEFINED}`);
+        addErrorIfNotExist(errors, decorators['notUndefinedMessage'], `${field} ${ErrorMessage.DEFINED}`);
       }
       return errors;
     }
@@ -280,7 +318,7 @@ function checkTypeString(field: string, value: unknown, decorators: Record<strin
     }
 
     if (decorators['isInvalid']) {
-             
+
       if (field === 'workspaceId' && value !== '0') {
 
         addErrorIfNotExist(errors, decorators['isInvalidMessage'], 'Invalid channel');
@@ -301,12 +339,12 @@ function checkTypeString(field: string, value: unknown, decorators: Record<strin
       const len = value.length;
       const hasMin = decorators['minLength'] != null;
       const hasMax = decorators['maxLength'] != null;
-  //  if (hasMin && hasMax) {
-  //       if (len < decorators['minLength'] || len > decorators['maxLength']) {
-  //         addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_RANGE_STRING_LENGTH} ${decorators['minLength']} to ${decorators['maxLength']} length`);
-  //       }
-  //     } else
-    if (hasMin && len < decorators['minLength']) {
+      //  if (hasMin && hasMax) {
+      //       if (len < decorators['minLength'] || len > decorators['maxLength']) {
+      //         addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_RANGE_STRING_LENGTH} ${decorators['minLength']} to ${decorators['maxLength']} length`);
+      //       }
+      //     } else
+      if (hasMin && len < decorators['minLength']) {
         addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.MIN_LENGTH} ${decorators['minLength']} character(s)`);
       } else if (hasMax && len > decorators['maxLength']) {
         addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.MAX_LENGTH} ${decorators['maxLength']} character(s)`);
@@ -375,13 +413,25 @@ function checkEnum(field: string, value: unknown, decorators: Record<string, any
   return errors;
 }
 
-export function mapError(field: string, value: unknown, decorators: Record<string, any>): string[] {
+export function mapError(field: string, value: unknown, decorators: Record<string, any>, dto) {
   // Kiểm tra từng nhóm lỗi
   const errors: string[] = [];
 
-  const optionalErrors = checkOptional(value, decorators);
-  if (optionalErrors !== null) return optionalErrors;
 
+  const validIfErrors = checkValidIf(field, value, decorators, dto);
+  if (validIfErrors !== null) {
+    if (!validIfErrors.isRequired) {
+      // Trường tùy chọn: Nếu value là undefined hoặc null, không có lỗi
+      if (value === undefined || value === null) {
+        return [];
+      }
+    }
+    // Nếu isRequired: true, bỏ qua checkOptional và chạy checks
+  } else {
+    // Không có ValidIf: Kiểm tra optional như bình thường
+    const optionalErrors = checkOptional(value, decorators);
+    if (optionalErrors !== null) return optionalErrors;
+  }
 
   const checks = [
     checkIsDefined,
@@ -441,6 +491,7 @@ export function softErrorFromMap(
       'workspaceId',
       workspaceId,
       workspaceIdDecorators,
+      payload
     );
     if (workspaceIdErrors.length > 0) {
       return ['Could not resolve permission type'];
@@ -454,6 +505,7 @@ export function softErrorFromMap(
       'channelId',
       channelId,
       channelIdDecorators,
+      payload
     );
     if (channelIdErrors.length > 0) {
       return ['Could not resolve permission type'];
@@ -467,6 +519,7 @@ export function softErrorFromMap(
       'channelId',
       undefined,
       channelIdDecorators,
+      payload
     );
     if (channelIdErrors.length > 0) {
       return ['Unsupported permission type'];
@@ -480,6 +533,7 @@ export function softErrorFromMap(
       'channelId',
       undefined,
       channelIdDecorators,
+      payload
     );
     if (channelIdErrors.length > 0) {
       return ['Could not resolve permission type'];
@@ -493,6 +547,7 @@ export function softErrorFromMap(
       'workspaceId',
       undefined,
       workspaceIdDecorators,
+      payload
     );
     if (workspaceIdErrors.length > 0) {
       return ['Could not resolve permission type'];
@@ -511,6 +566,7 @@ export function softErrorFromMap(
       'channelId',
       channelId,
       channelIdDecorators,
+      payload
     );
     if (channelIdErrors.length > 0) {
       return ['Invalid channel'];
@@ -529,6 +585,7 @@ export function softErrorFromMap(
       'workspaceId',
       workspaceId,
       workspaceIdDecorators,
+      payload
     );
     if (workspaceIdErrors.length > 0) {
       return ['Invalid channel'];
@@ -542,6 +599,7 @@ export function softErrorFromMap(
       'channelId',
       channelId,
       channelIdDecorators,
+      payload
     );
     if (channelIdErrors.length > 0) {
       return ['Could not resolve permission type'];
@@ -551,7 +609,7 @@ export function softErrorFromMap(
   for (const field of Object.keys(payload)) {
     const value = payload[field];
     const decorators = getDecorators(instance, field);
-    const fieldErrors = mapError(field, value, decorators);
+    const fieldErrors = mapError(field, value, decorators, payload);
     errors.push(...fieldErrors);
   }
 
