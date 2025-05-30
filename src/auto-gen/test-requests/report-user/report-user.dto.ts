@@ -1,6 +1,6 @@
 
 import { ErrorMessage, PretendingTo, ReportCategory } from "../../enums";
-import { IsDefined, IsEnum,IsOptional, IsInvalid, IsNotEmpty, IsString, ValidIf, MinLength, MaxLength } from "../../decorator";
+import { IsDefined, IsEnum,IsOptional,IsNumber, IsInvalid, IsNotEmpty, IsString, ValidIf, MinLength, MaxLength, IsEmoji } from "../../decorator";
 
 export class ReportUserDTO {
     @IsString({
@@ -33,5 +33,6 @@ export class ReportUserDTO {
     @ValidIf('reportCategory', '===', ReportCategory.REPORT_CATEGORY_PRETENDING_TO_BE_SOMEONE, { optional: false })
     @IsEnum(PretendingTo)
     @IsDefined()
+    @IsEmoji()
     pretendingTo: PretendingTo = 0
 }

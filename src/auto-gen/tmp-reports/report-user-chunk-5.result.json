@@ -1,0 +1,1664 @@
+{
+  "path": "/UserReport/ReportUser",
+  "className": "report-user",
+  "allSteps": [],
+  "chunkNumber": 5,
+  "failedTests": [
+    {
+      "testcase": 2001,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 9,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 1
+      },
+      "missing": [
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2002,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 9,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2003,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 9,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 3
+      },
+      "missing": [
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2004,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 9,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "missing": [
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2005,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 9,
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value'",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2006,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 9,
+        "pretendingTo": 0
+      },
+      "missing": [
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2007,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 9,
+        "pretendingTo": 1
+      },
+      "missing": [
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2008,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 9,
+        "pretendingTo": 2
+      },
+      "missing": [
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2009,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 9,
+        "pretendingTo": 3
+      },
+      "missing": [
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2010,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 9
+      },
+      "missing": [
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2011,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 20,
+        "reportReason": 123,
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value'",
+        "reportReason expected string, received number",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2012,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 20,
+        "reportReason": 123,
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportReason expected string, received number",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2013,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 20,
+        "reportReason": 123,
+        "pretendingTo": 1
+      },
+      "missing": [
+        "reportReason expected string, received number",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2014,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 20,
+        "reportReason": 123,
+        "pretendingTo": 2
+      },
+      "missing": [
+        "reportReason expected string, received number",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2015,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 20,
+        "reportReason": 123,
+        "pretendingTo": 3
+      },
+      "missing": [
+        "reportReason expected string, received number",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2016,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 20,
+        "reportReason": 123
+      },
+      "missing": [
+        "reportReason expected string, received number",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2017,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 20,
+        "reportReason": "report user",
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value'",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2018,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 20,
+        "reportReason": "report user",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2019,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 20,
+        "reportReason": "report user",
+        "pretendingTo": 1
+      },
+      "missing": [
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2020,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 20,
+        "reportReason": "report user",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2021,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 20,
+        "reportReason": "report user",
+        "pretendingTo": 3
+      },
+      "missing": [
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2022,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 20,
+        "reportReason": "report user"
+      },
+      "missing": [
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2023,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 20,
+        "reportReason": "",
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value'",
+        "reportReason string must contain at least 1 character(s)",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2024,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 20,
+        "reportReason": "",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "must have required property reportreason",
+        "reportReason string must contain at least 1 character(s)",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2025,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 20,
+        "reportReason": "",
+        "pretendingTo": 1
+      },
+      "missing": [
+        "must have required property reportreason",
+        "reportReason string must contain at least 1 character(s)",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2026,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 20,
+        "reportReason": "",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "must have required property reportreason",
+        "reportReason string must contain at least 1 character(s)",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2027,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 20,
+        "reportReason": "",
+        "pretendingTo": 3
+      },
+      "missing": [
+        "must have required property reportreason",
+        "reportReason string must contain at least 1 character(s)",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2028,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 20,
+        "reportReason": ""
+      },
+      "missing": [
+        "must have required property reportreason",
+        "reportReason string must contain at least 1 character(s)",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2029,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 20,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value'",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2030,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 20,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2031,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 20,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 1
+      },
+      "missing": [
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2032,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 20,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2033,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 20,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 3
+      },
+      "missing": [
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2034,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 20,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "missing": [
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2035,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 20,
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value'",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2036,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 20,
+        "pretendingTo": 0
+      },
+      "missing": [
+        "must have required property reportreason",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2037,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 20,
+        "pretendingTo": 1
+      },
+      "missing": [
+        "must have required property reportreason",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2038,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 20,
+        "pretendingTo": 2
+      },
+      "missing": [
+        "must have required property reportreason",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2039,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 20,
+        "pretendingTo": 3
+      },
+      "missing": [
+        "must have required property reportreason",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2040,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 20
+      },
+      "missing": [
+        "must have required property reportreason",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2041,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportReason": 123,
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value'",
+        "reportCategory required",
+        "reportReason expected string, received number",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2042,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportReason": 123,
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportCategory required",
+        "reportReason expected string, received number",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2043,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportReason": 123,
+        "pretendingTo": 1
+      },
+      "missing": [
+        "reportCategory required",
+        "reportReason expected string, received number",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2044,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportReason": 123,
+        "pretendingTo": 2
+      },
+      "missing": [
+        "reportCategory required",
+        "reportReason expected string, received number",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2045,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportReason": 123,
+        "pretendingTo": 3
+      },
+      "missing": [
+        "reportCategory required",
+        "reportReason expected string, received number",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2046,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportReason": 123
+      },
+      "missing": [
+        "reportCategory required",
+        "reportReason expected string, received number",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2047,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportReason": "report user",
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value'",
+        "reportCategory required",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2048,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportReason": "report user",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportCategory required",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2049,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportReason": "report user",
+        "pretendingTo": 1
+      },
+      "missing": [
+        "reportCategory required",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2050,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportReason": "report user",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "reportCategory required",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2051,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportReason": "report user",
+        "pretendingTo": 3
+      },
+      "missing": [
+        "reportCategory required",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2052,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportReason": "report user"
+      },
+      "missing": [
+        "reportCategory required",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2053,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportReason": "",
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value'",
+        "reportCategory required",
+        "reportReason string must contain at least 1 character(s)",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2054,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportReason": "",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportCategory required",
+        "reportReason string must contain at least 1 character(s)",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2055,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportReason": "",
+        "pretendingTo": 1
+      },
+      "missing": [
+        "reportCategory required",
+        "reportReason string must contain at least 1 character(s)",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2056,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportReason": "",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "reportCategory required",
+        "reportReason string must contain at least 1 character(s)",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2057,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportReason": "",
+        "pretendingTo": 3
+      },
+      "missing": [
+        "reportCategory required",
+        "reportReason string must contain at least 1 character(s)",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2058,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportReason": ""
+      },
+      "missing": [
+        "reportCategory required",
+        "reportReason string must contain at least 1 character(s)",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2059,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value'",
+        "reportCategory required",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2060,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportCategory required",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2061,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 1
+      },
+      "missing": [
+        "reportCategory required",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2062,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "reportCategory required",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2063,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 3
+      },
+      "missing": [
+        "reportCategory required",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2064,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "missing": [
+        "reportCategory required",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2065,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value'",
+        "reportCategory required",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2066,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportCategory required",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2067,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "pretendingTo": 1
+      },
+      "missing": [
+        "reportCategory required",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2068,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "reportCategory required",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2069,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "pretendingTo": 3
+      },
+      "missing": [
+        "reportCategory required",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2070,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value"
+      },
+      "missing": [
+        "reportCategory required",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2071,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": "",
+        "reportReason": 123,
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value'",
+        "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "reportReason expected string, received number",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2072,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": "",
+        "reportReason": 123,
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "reportReason expected string, received number",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2073,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": "",
+        "reportReason": 123,
+        "pretendingTo": 1
+      },
+      "missing": [
+        "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "reportReason expected string, received number",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2074,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": "",
+        "reportReason": 123,
+        "pretendingTo": 2
+      },
+      "missing": [
+        "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "reportReason expected string, received number",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2075,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": "",
+        "reportReason": 123,
+        "pretendingTo": 3
+      },
+      "missing": [
+        "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "reportReason expected string, received number",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2076,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": "",
+        "reportReason": 123
+      },
+      "missing": [
+        "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "reportReason expected string, received number",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2077,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": "",
+        "reportReason": "report user",
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value'",
+        "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2078,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": "",
+        "reportReason": "report user",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2079,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": "",
+        "reportReason": "report user",
+        "pretendingTo": 1
+      },
+      "missing": [
+        "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2080,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": "",
+        "reportReason": "report user",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2081,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": "",
+        "reportReason": "report user",
+        "pretendingTo": 3
+      },
+      "missing": [
+        "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2082,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": "",
+        "reportReason": "report user"
+      },
+      "missing": [
+        "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2083,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": "",
+        "reportReason": "",
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value'",
+        "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "reportReason string must contain at least 1 character(s)",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2084,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": "",
+        "reportReason": "",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "reportReason string must contain at least 1 character(s)",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2085,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": "",
+        "reportReason": "",
+        "pretendingTo": 1
+      },
+      "missing": [
+        "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "reportReason string must contain at least 1 character(s)",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2086,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": "",
+        "reportReason": "",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "reportReason string must contain at least 1 character(s)",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2087,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": "",
+        "reportReason": "",
+        "pretendingTo": 3
+      },
+      "missing": [
+        "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "reportReason string must contain at least 1 character(s)",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2088,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": "",
+        "reportReason": ""
+      },
+      "missing": [
+        "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "reportReason string must contain at least 1 character(s)",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2089,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": "",
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value'",
+        "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2090,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": "",
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2091,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": "",
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 1
+      },
+      "missing": [
+        "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2092,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": "",
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2093,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": "",
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 3
+      },
+      "missing": [
+        "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2094,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": "",
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "missing": [
+        "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2095,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": "",
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value'",
+        "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2096,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": "",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2097,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": "",
+        "pretendingTo": 1
+      },
+      "missing": [
+        "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2098,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": "",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2099,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": "",
+        "pretendingTo": 3
+      },
+      "missing": [
+        "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 2100,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": ""
+      },
+      "missing": [
+        "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    }
+  ],
+  "codedTest": [],
+  "passedTests": 0,
+  "totalTests": 100,
+  "logicTests": [],
+  "failedStep": []
+}
