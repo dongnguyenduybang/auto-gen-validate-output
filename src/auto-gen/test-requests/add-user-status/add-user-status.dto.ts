@@ -4,6 +4,7 @@ import { ExpireAfterTimeEnum } from "../../enums";
 
 export class AddUserStatusDTO {
 
+        @IsOptional()
     @IsString()
     @IsDefined()
     @IsNotEmpty()
@@ -13,6 +14,7 @@ export class AddUserStatusDTO {
 
     @IsEmoji({value: 1})
     @IsDefined()
+    @IsString()
     @IsOptional()
     @IsNotNull()
     status: string = ''

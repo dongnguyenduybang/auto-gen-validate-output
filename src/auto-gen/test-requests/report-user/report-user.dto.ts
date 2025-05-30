@@ -27,12 +27,11 @@ export class ReportUserDTO {
     @IsString()
     @IsNotEmpty()
     @MinLength(1)
-    @MaxLength(250)
+    @MaxLength(255)
     reportReason: string = ''
 
     @ValidIf('reportCategory', '===', ReportCategory.REPORT_CATEGORY_PRETENDING_TO_BE_SOMEONE, { optional: false })
     @IsEnum(PretendingTo)
     @IsDefined()
-    @IsEmoji()
     pretendingTo: PretendingTo = 0
 }

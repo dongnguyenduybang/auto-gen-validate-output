@@ -91,6 +91,6 @@ export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
     path: APIPath.UserReport.ReportUser, method: METHOD.POST
   },
     [ACTION.ADD_USER_STATUS]: {
-    path: APIPath.UserReport.ReportUser, method: METHOD.POST
+    path: APIPath.UserProfile.AddUserStatus, method: METHOD.POST
   },
 }
