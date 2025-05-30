@@ -1,0 +1,1249 @@
+[
+    {
+        "body": {
+            "userId": 123,
+            "reportCategory": "invalid_enum_value",
+            "reportReason": 123,
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "reportCategory": "invalid_enum_value",
+            "reportReason": 123,
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "reportCategory": "invalid_enum_value",
+            "reportReason": "report user",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "reportCategory": "invalid_enum_value",
+            "reportReason": "report user",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "reportCategory": "invalid_enum_value",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "reportCategory": "invalid_enum_value",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "reportCategory": "invalid_enum_value",
+            "reportReason": "",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "reportCategory": "invalid_enum_value",
+            "reportReason": "",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "reportCategory": 0,
+            "reportReason": 123,
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "reportCategory": 0,
+            "reportReason": 123,
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "reportCategory": 0,
+            "reportReason": "report user",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "reportCategory": 0,
+            "reportReason": "report user",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "reportCategory": 0,
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "reportCategory": 0,
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "reportCategory": 0,
+            "reportReason": "",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "reportCategory": 0,
+            "reportReason": "",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "reportReason": 123,
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "reportReason": 123,
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "reportReason": "report user",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "reportReason": "report user",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "reportReason": "",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "reportReason": "",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "reportCategory": "invalid_enum_value",
+            "reportReason": 123,
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'invalid_enum_value'",
+            "reportReason expected string, received number",
+            "pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value'"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "reportCategory": "invalid_enum_value",
+            "reportReason": 123,
+            "pretendingTo": 0
+        },
+        "expects": [
+            "reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'invalid_enum_value'",
+            "reportReason expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "reportCategory": "invalid_enum_value",
+            "reportReason": "report user",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'invalid_enum_value'",
+            "pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value'"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "reportCategory": "invalid_enum_value",
+            "reportReason": "report user",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'invalid_enum_value'"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "reportCategory": "invalid_enum_value",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'invalid_enum_value'",
+            "reportReason required",
+            "pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value'"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "reportCategory": "invalid_enum_value",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'invalid_enum_value'",
+            "reportReason required"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "reportCategory": "invalid_enum_value",
+            "reportReason": "",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'invalid_enum_value'",
+            "reportReason should not be empty",
+            "pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value'"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "reportCategory": "invalid_enum_value",
+            "reportReason": "",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'invalid_enum_value'",
+            "reportReason should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "reportCategory": 0,
+            "reportReason": 123,
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "reportReason expected string, received number",
+            "pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value'"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "reportCategory": 0,
+            "reportReason": 123,
+            "pretendingTo": 0
+        },
+        "expects": [
+            "reportReason expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "reportCategory": 0,
+            "reportReason": "report user",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value'"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "reportCategory": 0,
+            "reportReason": "report user",
+            "pretendingTo": 0
+        },
+        "expects": []
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "reportCategory": 0,
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "reportReason required",
+            "pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value'"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "reportCategory": 0,
+            "pretendingTo": 0
+        },
+        "expects": [
+            "reportReason required"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "reportCategory": 0,
+            "reportReason": "",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "reportReason should not be empty",
+            "pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value'"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "reportCategory": 0,
+            "reportReason": "",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "reportReason should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "reportReason": 123,
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'undefined'",
+            "reportReason expected string, received number",
+            "pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value'"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "reportReason": 123,
+            "pretendingTo": 0
+        },
+        "expects": [
+            "reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'undefined'",
+            "reportReason expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "reportReason": "report user",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'undefined'",
+            "pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value'"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "reportReason": "report user",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'undefined'"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'undefined'",
+            "reportReason required",
+            "pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value'"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'undefined'",
+            "reportReason required"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "reportReason": "",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'undefined'",
+            "reportReason should not be empty",
+            "pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value'"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "reportReason": "",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'undefined'",
+            "reportReason should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "reportCategory": "invalid_enum_value",
+            "reportReason": 123,
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "reportCategory": "invalid_enum_value",
+            "reportReason": 123,
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "reportCategory": "invalid_enum_value",
+            "reportReason": "report user",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "reportCategory": "invalid_enum_value",
+            "reportReason": "report user",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "reportCategory": "invalid_enum_value",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "reportCategory": "invalid_enum_value",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "reportCategory": "invalid_enum_value",
+            "reportReason": "",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "reportCategory": "invalid_enum_value",
+            "reportReason": "",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "reportCategory": 0,
+            "reportReason": 123,
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "reportCategory": 0,
+            "reportReason": 123,
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "reportCategory": 0,
+            "reportReason": "report user",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "reportCategory": 0,
+            "reportReason": "report user",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "reportCategory": 0,
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "reportCategory": 0,
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "reportCategory": 0,
+            "reportReason": "",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "reportCategory": 0,
+            "reportReason": "",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "reportReason": 123,
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "reportReason": 123,
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "reportReason": "report user",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "reportReason": "report user",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "reportReason": "",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "reportReason": "",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "reportCategory": "invalid_enum_value",
+            "reportReason": 123,
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "reportCategory": "invalid_enum_value",
+            "reportReason": 123,
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "reportCategory": "invalid_enum_value",
+            "reportReason": "report user",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "reportCategory": "invalid_enum_value",
+            "reportReason": "report user",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "reportCategory": "invalid_enum_value",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "reportCategory": "invalid_enum_value",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "reportCategory": "invalid_enum_value",
+            "reportReason": "",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "reportCategory": "invalid_enum_value",
+            "reportReason": "",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "reportCategory": 0,
+            "reportReason": 123,
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "reportCategory": 0,
+            "reportReason": 123,
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "reportCategory": 0,
+            "reportReason": "report user",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "reportCategory": 0,
+            "reportReason": "report user",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "reportCategory": 0,
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "reportCategory": 0,
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "reportCategory": 0,
+            "reportReason": "",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "reportCategory": 0,
+            "reportReason": "",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "reportReason": 123,
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "reportReason": 123,
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "reportReason": "report user",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "reportReason": "report user",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "reportReason": "",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "reportReason": "",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "reportCategory": "invalid_enum_value",
+            "reportReason": 123,
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "reportCategory": "invalid_enum_value",
+            "reportReason": 123,
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "reportCategory": "invalid_enum_value",
+            "reportReason": "report user",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "reportCategory": "invalid_enum_value",
+            "reportReason": "report user",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "reportCategory": "invalid_enum_value",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "reportCategory": "invalid_enum_value",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "reportCategory": "invalid_enum_value",
+            "reportReason": "",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "reportCategory": "invalid_enum_value",
+            "reportReason": "",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "reportCategory": 0,
+            "reportReason": 123,
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "reportCategory": 0,
+            "reportReason": 123,
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "reportCategory": 0,
+            "reportReason": "report user",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "reportCategory": 0,
+            "reportReason": "report user",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "reportCategory": 0,
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "reportCategory": 0,
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "reportCategory": 0,
+            "reportReason": "",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "reportCategory": 0,
+            "reportReason": "",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "reportReason": 123,
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "reportReason": 123,
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "reportReason": "report user",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "reportReason": "report user",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "reportReason": "",
+            "pretendingTo": "invalid_enum_value"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "reportReason": "",
+            "pretendingTo": 0
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    }
+]

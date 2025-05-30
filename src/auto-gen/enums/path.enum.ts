@@ -91,5 +91,8 @@ export const APIPath =  {
   },
   ViewMember: {
     ListMembers: '/MemberView/ListMembers'
+  },
+  UserReport: {
+    ReportUser: '/UserReport/ReportUser'
   }
 };

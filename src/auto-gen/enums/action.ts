@@ -20,8 +20,9 @@ export enum ACTION {
   SEARCH_USERS = 'searchUsers',
   LIST_MEMBERS = 'listMembers',
   GET_USER = 'getUser',
-  LIST_MESSAGE= 'listMessage',
-  LIST_ALL_CHANNEL = 'listAllChannel'
+  LIST_MESSAGE = 'listMessage',
+  LIST_ALL_CHANNEL = 'listAllChannel',
+  REPORT_USER = 'reportUser'
 }
 
 export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
@@ -73,17 +74,19 @@ export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
   [ACTION.SEARCH_USERS]: {
     path: APIPath.Search.SearchUsers, method: METHOD.POST
   },
-    [ACTION.LIST_MEMBERS]: {
+  [ACTION.LIST_MEMBERS]: {
     path: APIPath.ViewMember.ListMembers, method: METHOD.GET
   },
-    [ACTION.GET_USER]: {
+  [ACTION.GET_USER]: {
     path: APIPath.ViewUser.GetUser, method: METHOD.GET
   },
-    [ACTION.LIST_MESSAGE]: {
+  [ACTION.LIST_MESSAGE]: {
     path: APIPath.ViewMessage.ListMessages, method: METHOD.GET
   },
   [ACTION.LIST_ALL_CHANNEL]: {
     path: APIPath.ViewChannel.ListAllChannels, method: METHOD.GET
   },
-  
+  [ACTION.REPORT_USER]: {
+    path: APIPath.UserReport.ReportUser, method: METHOD.POST
+  },
 }
