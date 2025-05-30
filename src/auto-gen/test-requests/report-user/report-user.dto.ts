@@ -1,32 +1,37 @@
 
-import { PretendingTo, ReportCategory } from "../../enums";
-import { IsDefined, IsEnum,IsOptional, IsInvalid, IsNotEmpty, IsString } from "../../decorator";
+import { ErrorMessage, PretendingTo, ReportCategory } from "../../enums";
+import { IsDefined, IsEnum,IsOptional, IsInvalid, IsNotEmpty, IsString, ValidIf, MinLength, MaxLength } from "../../decorator";
 
 export class ReportUserDTO {
     @IsString({
-        message: `Could not resolve permission type`,
+        message: ErrorMessage.COULD_NOT_PERMISSION,
     })
     @IsDefined({
-        message: `Could not resolve permission type`,
+        message: ErrorMessage.COULD_NOT_PERMISSION,
     })
     @IsNotEmpty({
-        message: `Could not resolve permission type`,
+        message: ErrorMessage.COULD_NOT_PERMISSION,
     })
     @IsInvalid({
-        message: `Unauthorized request`,
+        message: ErrorMessage.UNAUTHORIZED_REQUEST,
     })
     userId: string = '';
 
     @IsEnum(ReportCategory)
     @IsDefined()
+    @IsNotEmpty()
     reportCategory: ReportCategory = 0
 
+    @ValidIf('reportCategory', '===', ReportCategory.REPORT_CATEGORY_OTHER, { optional: false })
     @IsDefined()
     @IsString()
     @IsNotEmpty()
+    @MinLength(1)
+    @MaxLength(250)
     reportReason: string = ''
 
-    @IsOptional()
+    @ValidIf('reportCategory', '===', ReportCategory.REPORT_CATEGORY_PRETENDING_TO_BE_SOMEONE, { optional: false })
     @IsEnum(PretendingTo)
+    @IsDefined()
     pretendingTo: PretendingTo = 0
 }

@@ -26,4 +26,7 @@ export enum ErrorMessage {
   INVALID_ULID = 'invalid ulid',
   INVALID_EMOJI = 'invalid Emoji format',
   INVALID_EMOJI_LENGTH = 'must have length equals 1',
+  COULD_NOT_PERMISSION = 'Could not resolve permission type',
+  UNAUTHORIZED_REQUEST = 'Unauthorized request',
+  INVALID_CHANNEL = 'Invalid channel'
 }
