@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { ErrorMessage } from '../enums';
-import { checkRegexULID, checkURL, isEmoji } from './helper';
+import { checkRegexULID, checkURL, countEmojis, isEmoji } from './helper';
 import { FieldValueObject, PayloadGen } from './declarations';
 export function getDecorators(
   target: Object,
@@ -76,7 +76,7 @@ export function generateErrorCases(
   });
 }
 export function generateErrorVariantsForField(
-  fieldValue: unknown,
+  fieldValue: any,
   decorators: Record<string, any>,
 ): unknown[] {
   const variants: unknown[] = [];
@@ -128,6 +128,12 @@ export function generateErrorVariantsForField(
   }
   if (decorators['maxLength']) {
     variants.push('a'.repeat(decorators['maxLength'] + 1));
+  }
+
+  if (decorators['isEmoji']) {
+    const expectedCount = decorators['isEmoji'];
+    variants.push(fieldValue.repeat(expectedCount + 1))
+    variants.push(fieldValue.repeat(expectedCount - 1))
   }
 
   // 5. Vi phạm kích thước mảng
@@ -285,13 +291,25 @@ function checkULID(field: string, value: unknown, decorators: Record<string, any
   return errors;
 }
 
-function checkEmoji(field: string, value: unknown, decorators: Record<string, any>): string[] {
+function checkEmoji(field: string, value: string, decorators: Record<string, any>): string[] {
   const errors: string[] = [];
   if (decorators['isEmoji']) {
-    const isInvalid = typeof value === 'string' && (value === '' || !isEmoji(value));
-    if (isInvalid) {
-      addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_EMOJI}`);
-      addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_EMOJI_LENGTH}`);
+    if (decorators['isValidEmoji']) {
+      console.log(value)
+        const actualCount =  countEmojis(String(value));
+        console.log(actualCount)
+       const isInvalid = typeof value === 'string' && (value === '' || !isEmoji(value)) || actualCount > decorators['isValidEmoji'] || actualCount < decorators['isValidEmoji'];
+
+       if (isInvalid) {
+        addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_EMOJI}`);
+        addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_EMOJI_LENGTH_1}`);
+      }
+    } else {
+      const isInvalid = typeof value === 'string' && (value === '' || !isEmoji(value));
+      if (isInvalid) {
+        addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_EMOJI}`);
+        addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_EMOJI_LENGTH_1}`);
+      }
     }
   }
   return errors;

@@ -434,3 +434,14 @@ export async function checkResponse(step, response: object, resolveBody: object,
     };
   }
 }
+
+export function checkURL(value: string): boolean {
+  const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
+  return urlRegex.test(value);
+}
+
+export function countEmojis(str: unknown): number {
+  if (typeof str !== 'string') return 0;
+  const regex = emojiRegex();
+  return Array.from(str.matchAll(regex)).length;
+}

@@ -24,9 +24,11 @@ export enum ErrorMessage {
   END_WITH = 'must end with',
   INVALID_RANGE_STRING_LENGTH = 'must to range from',
   INVALID_ULID = 'invalid ulid',
-  INVALID_EMOJI = 'invalid Emoji format',
-  INVALID_EMOJI_LENGTH = 'must have length equals 1',
+  INVALID_EMOJI = 'invalid emoji',
+  INVALID_RANGE_EMOJI = 'only accepts',
+  INVALID_URL = 'invalid URL format',
+  INVALID_EMOJI_LENGTH_1 = 'only accepts 1 emoji',
   COULD_NOT_PERMISSION = 'Could not resolve permission type',
   UNAUTHORIZED_REQUEST = 'Unauthorized request',
-  INVALID_CHANNEL = 'Invalid channel'
+  INVALID_CHANNEL = 'Invalid channel',
 }

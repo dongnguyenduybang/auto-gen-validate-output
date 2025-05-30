@@ -22,7 +22,8 @@ export enum ACTION {
   GET_USER = 'getUser',
   LIST_MESSAGE = 'listMessage',
   LIST_ALL_CHANNEL = 'listAllChannel',
-  REPORT_USER = 'reportUser'
+  REPORT_USER = 'reportUser',
+  ADD_USER_STATUS = 'addUserStatus'
 }
 
 export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
@@ -87,6 +88,9 @@ export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
     path: APIPath.ViewChannel.ListAllChannels, method: METHOD.GET
   },
   [ACTION.REPORT_USER]: {
+    path: APIPath.UserReport.ReportUser, method: METHOD.POST
+  },
+    [ACTION.ADD_USER_STATUS]: {
     path: APIPath.UserReport.ReportUser, method: METHOD.POST
   },
 }

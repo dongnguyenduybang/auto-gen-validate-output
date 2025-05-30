@@ -3,9 +3,17 @@ import 'reflect-metadata';
 /*
    check có phải là kiểu optional hay không 
 */
-export function IsOptional() {
+export function IsOptional(options?: {value?: any}) {
   return function (target: any, propertyKey: string) {
     Reflect.defineMetadata('optional', true, target, propertyKey);
+     if (options?.value) {
+      Reflect.defineMetadata(
+        'optionalValid',
+        options.value,
+        target,
+        propertyKey,
+      );
+    }
   };
 }
 
@@ -84,6 +92,35 @@ export function IsInvalid(options?: { message?: string }) {
   };
 }
 
+export function isValidURL(options?:{url?: string}) {
+ return (target: any, propertyKey: string) => {
+    Reflect.defineMetadata('isInvalid', true, target, propertyKey);
+    if (options?.url) {
+      Reflect.defineMetadata(
+        'isValidURL',
+        options.url,
+        target,
+        propertyKey,
+      );
+    }
+  };
+}
+
+export function IsEmoji(options?: {value?: number}) {
+   return (target: any, propertyKey: string) => {
+    Reflect.defineMetadata('isEmoji', true, target, propertyKey);
+    if (options?.value) {
+      Reflect.defineMetadata(
+        'isValidEmoji',
+        options.value,
+        target,
+        propertyKey,
+      );
+    }
+  };
+}
+
+
 /* check value là một ULID */
 export function IsULID() {
   return function (target: any, propertyKey: string) {
@@ -113,8 +150,8 @@ export function IsMath(options?: {
   };
 }
 
-export function IsEmoji() {
-  return function (target: any, propertyKey: string) {
-    Reflect.defineMetadata('isEmoji', true, target, propertyKey);
-  };
+
+export function GenIsEmoji(option?: {emoji: any, quantity: number}){
+
 }
+
