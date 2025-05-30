@@ -295,14 +295,11 @@ function checkEmoji(field: string, value: string, decorators: Record<string, any
   const errors: string[] = [];
   if (decorators['isEmoji']) {
     if (decorators['isValidEmoji']) {
-      console.log(value)
         const actualCount =  countEmojis(String(value));
-        console.log(actualCount)
        const isInvalid = typeof value === 'string' && (value === '' || !isEmoji(value)) || actualCount > decorators['isValidEmoji'] || actualCount < decorators['isValidEmoji'];
 
        if (isInvalid) {
-        addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_EMOJI}`);
-        addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_EMOJI_LENGTH_1}`);
+        addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_RANGE_EMOJI} ${decorators['isValidEmoji']} emoji`);
       }
     } else {
       const isInvalid = typeof value === 'string' && (value === '' || !isEmoji(value));
