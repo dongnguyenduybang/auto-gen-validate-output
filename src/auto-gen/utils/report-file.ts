@@ -63,6 +63,7 @@ export const combinedReportTemplate = (
     // );
   }
 };
+
 const requestReportTemplate = (
   className,
   url,
@@ -74,7 +75,30 @@ const requestReportTemplate = (
   logicTests,
   summary,
 ) => {
-  console.log(summary);
+
+  const uniqueErrors = new Map();
+  if (failedTests) {
+    failedTests.forEach((failCase) => {
+     
+      // if (failCase.missing && Array.isArray(failCase.missing)) {
+      //   failCase.missing.forEach((error) => {
+      //     uniqueErrors.set(
+      //       error,
+      //       (uniqueErrors.get(error) || 0) + 1,
+      //     );
+      //   });
+      // }
+
+      if (failCase.extra && Array.isArray(failCase.extra)) {
+        failCase.extra.forEach((error) => {
+          uniqueErrors.set(
+            error,
+            (uniqueErrors.get(error) || 0) + 1,
+          );
+        });
+      }
+    });
+  }
   return [
     `=== Request Test Report for ${className} ===`,
     `• Host: ${url}`,
@@ -102,6 +126,11 @@ const requestReportTemplate = (
     ` 🟠 403: ${summary.statusCodes[403] || 0}`,
     ` 🟠 404: ${summary.statusCodes[404] || 0}`,
     ` 🔴 500: ${summary.statusCodes[500] || 0}`,
+    '',
+    '=== Unique Errors ===',
+    ...Array.from(uniqueErrors.entries()).map(([error, count], index) =>
+      ` 🟣 ${index + 1}. ${error} (Occurred: ${count} time${count > 1 ? 's' : ''})`
+    ),
     '',
     '[DTO Validation Issues]',
     ...failedTests.map((test, index) =>

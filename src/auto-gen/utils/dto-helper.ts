@@ -367,7 +367,8 @@ function checkEnum(field: string, value: unknown, decorators: Record<string, any
     if (!decorators['enumType'] || !Object.values(decorators['enumType']).includes(value)) {
 
       const enumValues = Object.values(decorators['enumType']).filter(v => typeof v === 'number') as number[];
-      addErrorIfNotExist(errors, decorators['enumMessage'], `${field} ${ErrorMessage.INVALID_ENUM} ${enumValues}, received '${value}'`);
+      const expectedText = enumValues.join(' | ');
+      addErrorIfNotExist(errors, decorators['enumMessage'], `${field} ${ErrorMessage.INVALID_ENUM} ${expectedText}, received '${value}'`);
       return errors;
     }
   }

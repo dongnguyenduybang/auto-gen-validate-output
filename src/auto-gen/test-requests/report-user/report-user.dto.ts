@@ -18,6 +18,7 @@ export class ReportUserDTO {
     userId: string = '';
 
     @IsEnum(ReportCategory)
+    @IsDefined()
     reportCategory: ReportCategory = 0
 
     @IsDefined()

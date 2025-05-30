@@ -1,23 +1,30 @@
 === Request Test Report for report-user ===
 • Host: N/A
 • Endpoint: /UserReport/ReportUser
-• Date: 30/05/2025, 09:30:31
+• Date: 30/05/2025, 10:54:50
 
 === Execution Steps ===
 
 === Test Summary ===
-✅ Passed: 2
-❌ Failed: 118
+✅ Passed: 8
+❌ Failed: 112
 📊 Total: 120
 
 === System Metrics ===
 ▧ Status Code Distribution:
- 🟢 200: 2
+ 🟢 200: 8
  🟢 201: 0
  🟠 400: 0
  🟠 403: 0
  🟠 404: 0
  🔴 500: 0
+
+=== Unique Errors ===
+ 🟣 1. Could not resolve permission type (Occurred: 72 times)
+ 🟣 2. reportReason required (Occurred: 6 times)
+ 🟣 3. reportReason should not be empty (Occurred: 6 times)
+ 🟣 4. reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined' (Occurred: 8 times)
+ 🟣 5. Unauthorized request (Occurred: 24 times)
 
 [DTO Validation Issues]
 
@@ -189,658 +196,616 @@
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 25. Case #25
+ 🟣 25. Case #29
      ├─ Status: 200
-     ├─ Body: {"userId":"01JWFG8YHGH0RTQRRXTZ4BQ9SD","reportCategory":"invalid_enum_value","reportReason":123,"pretendingTo":"invalid_enum_value"}
-     ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'
-     ├─ Extra: pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value', reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'invalid_enum_value'
-     └─ Details: No details
-
- 🟣 26. Case #26
-     ├─ Status: 200
-     ├─ Body: {"userId":"01JWFG8YHGH0RTQRRXTZ4BQ9SD","reportCategory":"invalid_enum_value","reportReason":123,"pretendingTo":0}
-     ├─ Missing: reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'
-     ├─ Extra: reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'invalid_enum_value'
-     └─ Details: No details
-
- 🟣 27. Case #27
-     ├─ Status: 200
-     ├─ Body: {"userId":"01JWFG8YHGH0RTQRRXTZ4BQ9SD","reportCategory":"invalid_enum_value","reportReason":"report user","pretendingTo":"invalid_enum_value"}
-     ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'
-     ├─ Extra: pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value', reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'invalid_enum_value'
-     └─ Details: No details
-
- 🟣 28. Case #28
-     ├─ Status: 200
-     ├─ Body: {"userId":"01JWFG8YHGH0RTQRRXTZ4BQ9SD","reportCategory":"invalid_enum_value","reportReason":"report user","pretendingTo":0}
-     ├─ Missing: reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'
-     ├─ Extra: reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'invalid_enum_value'
-     └─ Details: No details
-
- 🟣 29. Case #29
-     ├─ Status: 200
-     ├─ Body: {"userId":"01JWFG8YHGH0RTQRRXTZ4BQ9SD","reportCategory":"invalid_enum_value","pretendingTo":"invalid_enum_value"}
-     ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'
-     ├─ Extra: pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value', reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'invalid_enum_value', reportReason required
-     └─ Details: No details
-
- 🟣 30. Case #30
-     ├─ Status: 200
-     ├─ Body: {"userId":"01JWFG8YHGH0RTQRRXTZ4BQ9SD","reportCategory":"invalid_enum_value","pretendingTo":0}
-     ├─ Missing: reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'
-     ├─ Extra: reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'invalid_enum_value', reportReason required
-     └─ Details: No details
-
- 🟣 31. Case #31
-     ├─ Status: 200
-     ├─ Body: {"userId":"01JWFG8YHGH0RTQRRXTZ4BQ9SD","reportCategory":"invalid_enum_value","reportReason":"","pretendingTo":"invalid_enum_value"}
-     ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', reportReason string must contain at least 1 character(s)
-     ├─ Extra: pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value', reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'invalid_enum_value', reportReason should not be empty
-     └─ Details: No details
-
- 🟣 32. Case #32
-     ├─ Status: 200
-     ├─ Body: {"userId":"01JWFG8YHGH0RTQRRXTZ4BQ9SD","reportCategory":"invalid_enum_value","reportReason":"","pretendingTo":0}
-     ├─ Missing: reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', reportReason string must contain at least 1 character(s)
-     ├─ Extra: reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'invalid_enum_value', reportReason should not be empty
-     └─ Details: No details
-
- 🟣 33. Case #33
-     ├─ Status: 200
-     ├─ Body: {"userId":"01JWFG8YHGH0RTQRRXTZ4BQ9SD","reportCategory":0,"reportReason":123,"pretendingTo":"invalid_enum_value"}
-     ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value'
-     ├─ Extra: pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value'
-     └─ Details: No details
-
- 🟣 34. Case #35
-     ├─ Status: 200
-     ├─ Body: {"userId":"01JWFG8YHGH0RTQRRXTZ4BQ9SD","reportCategory":0,"reportReason":"report user","pretendingTo":"invalid_enum_value"}
-     ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value'
-     ├─ Extra: pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value'
-     └─ Details: No details
-
- 🟣 35. Case #37
-     ├─ Status: 200
-     ├─ Body: {"userId":"01JWFG8YHGH0RTQRRXTZ4BQ9SD","reportCategory":0,"pretendingTo":"invalid_enum_value"}
-     ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value'
-     ├─ Extra: pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value', reportReason required
-     └─ Details: No details
-
- 🟣 36. Case #38
-     ├─ Status: 200
-     ├─ Body: {"userId":"01JWFG8YHGH0RTQRRXTZ4BQ9SD","reportCategory":0,"pretendingTo":0}
-     ├─ Missing: This report user is existed
+     ├─ Body: {"userId":"01JWFN7DNA41G8479JMJ1E72F7","reportCategory":"invalid_enum_value","pretendingTo":"invalid_enum_value"}
+     ├─ Missing: None
      ├─ Extra: reportReason required
      └─ Details: No details
 
- 🟣 37. Case #39
+ 🟣 26. Case #30
      ├─ Status: 200
-     ├─ Body: {"userId":"01JWFG8YHGH0RTQRRXTZ4BQ9SD","reportCategory":0,"reportReason":"","pretendingTo":"invalid_enum_value"}
-     ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportReason string must contain at least 1 character(s)
-     ├─ Extra: pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value', reportReason should not be empty
+     ├─ Body: {"userId":"01JWFN7DNA41G8479JMJ1E72F7","reportCategory":"invalid_enum_value","pretendingTo":0}
+     ├─ Missing: None
+     ├─ Extra: reportReason required
      └─ Details: No details
 
- 🟣 38. Case #40
+ 🟣 27. Case #31
      ├─ Status: 200
-     ├─ Body: {"userId":"01JWFG8YHGH0RTQRRXTZ4BQ9SD","reportCategory":0,"reportReason":"","pretendingTo":0}
+     ├─ Body: {"userId":"01JWFN7DNA41G8479JMJ1E72F7","reportCategory":"invalid_enum_value","reportReason":"","pretendingTo":"invalid_enum_value"}
      ├─ Missing: reportReason string must contain at least 1 character(s)
      ├─ Extra: reportReason should not be empty
      └─ Details: No details
 
- 🟣 39. Case #41
+ 🟣 28. Case #32
      ├─ Status: 200
-     ├─ Body: {"userId":"01JWFG8YHGH0RTQRRXTZ4BQ9SD","reportReason":123,"pretendingTo":"invalid_enum_value"}
-     ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory required
-     ├─ Extra: pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value', reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'undefined'
+     ├─ Body: {"userId":"01JWFN7DNA41G8479JMJ1E72F7","reportCategory":"invalid_enum_value","reportReason":"","pretendingTo":0}
+     ├─ Missing: reportReason string must contain at least 1 character(s)
+     ├─ Extra: reportReason should not be empty
      └─ Details: No details
 
- 🟣 40. Case #42
+ 🟣 29. Case #37
      ├─ Status: 200
-     ├─ Body: {"userId":"01JWFG8YHGH0RTQRRXTZ4BQ9SD","reportReason":123,"pretendingTo":0}
-     ├─ Missing: reportCategory required
-     ├─ Extra: reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'undefined'
+     ├─ Body: {"userId":"01JWFN7DNA41G8479JMJ1E72F7","reportCategory":0,"pretendingTo":"invalid_enum_value"}
+     ├─ Missing: None
+     ├─ Extra: reportReason required
      └─ Details: No details
 
- 🟣 41. Case #43
+ 🟣 30. Case #38
      ├─ Status: 200
-     ├─ Body: {"userId":"01JWFG8YHGH0RTQRRXTZ4BQ9SD","reportReason":"report user","pretendingTo":"invalid_enum_value"}
-     ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory required
-     ├─ Extra: pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value', reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'undefined'
+     ├─ Body: {"userId":"01JWFN7DNA41G8479JMJ1E72F7","reportCategory":0,"pretendingTo":0}
+     ├─ Missing: This report user is existed
+     ├─ Extra: reportReason required
      └─ Details: No details
 
- 🟣 42. Case #44
+ 🟣 31. Case #39
      ├─ Status: 200
-     ├─ Body: {"userId":"01JWFG8YHGH0RTQRRXTZ4BQ9SD","reportReason":"report user","pretendingTo":0}
-     ├─ Missing: reportCategory required
-     ├─ Extra: reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'undefined'
+     ├─ Body: {"userId":"01JWFN7DNA41G8479JMJ1E72F7","reportCategory":0,"reportReason":"","pretendingTo":"invalid_enum_value"}
+     ├─ Missing: reportReason string must contain at least 1 character(s)
+     ├─ Extra: reportReason should not be empty
      └─ Details: No details
 
- 🟣 43. Case #45
+ 🟣 32. Case #40
      ├─ Status: 200
-     ├─ Body: {"userId":"01JWFG8YHGH0RTQRRXTZ4BQ9SD","pretendingTo":"invalid_enum_value"}
-     ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory required
-     ├─ Extra: pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value', reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'undefined', reportReason required
+     ├─ Body: {"userId":"01JWFN7DNA41G8479JMJ1E72F7","reportCategory":0,"reportReason":"","pretendingTo":0}
+     ├─ Missing: reportReason string must contain at least 1 character(s)
+     ├─ Extra: reportReason should not be empty
      └─ Details: No details
 
- 🟣 44. Case #46
+ 🟣 33. Case #41
      ├─ Status: 200
-     ├─ Body: {"userId":"01JWFG8YHGH0RTQRRXTZ4BQ9SD","pretendingTo":0}
-     ├─ Missing: reportCategory required
-     ├─ Extra: reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'undefined', reportReason required
+     ├─ Body: {"userId":"01JWFN7DNA41G8479JMJ1E72F7","reportReason":123,"pretendingTo":"invalid_enum_value"}
+     ├─ Missing: None
+     ├─ Extra: reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'
      └─ Details: No details
 
- 🟣 45. Case #47
+ 🟣 34. Case #42
      ├─ Status: 200
-     ├─ Body: {"userId":"01JWFG8YHGH0RTQRRXTZ4BQ9SD","reportReason":"","pretendingTo":"invalid_enum_value"}
-     ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory required, reportReason string must contain at least 1 character(s)
-     ├─ Extra: pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value', reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'undefined', reportReason should not be empty
+     ├─ Body: {"userId":"01JWFN7DNA41G8479JMJ1E72F7","reportReason":123,"pretendingTo":0}
+     ├─ Missing: None
+     ├─ Extra: reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'
      └─ Details: No details
 
- 🟣 46. Case #48
+ 🟣 35. Case #43
      ├─ Status: 200
-     ├─ Body: {"userId":"01JWFG8YHGH0RTQRRXTZ4BQ9SD","reportReason":"","pretendingTo":0}
-     ├─ Missing: reportCategory required, reportReason string must contain at least 1 character(s)
-     ├─ Extra: reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'undefined', reportReason should not be empty
+     ├─ Body: {"userId":"01JWFN7DNA41G8479JMJ1E72F7","reportReason":"report user","pretendingTo":"invalid_enum_value"}
+     ├─ Missing: None
+     ├─ Extra: reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'
      └─ Details: No details
 
- 🟣 47. Case #49
+ 🟣 36. Case #44
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JWFN7DNA41G8479JMJ1E72F7","reportReason":"report user","pretendingTo":0}
+     ├─ Missing: None
+     ├─ Extra: reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'
+     └─ Details: No details
+
+ 🟣 37. Case #45
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JWFN7DNA41G8479JMJ1E72F7","pretendingTo":"invalid_enum_value"}
+     ├─ Missing: None
+     ├─ Extra: reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined', reportReason required
+     └─ Details: No details
+
+ 🟣 38. Case #46
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JWFN7DNA41G8479JMJ1E72F7","pretendingTo":0}
+     ├─ Missing: None
+     ├─ Extra: reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined', reportReason required
+     └─ Details: No details
+
+ 🟣 39. Case #47
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JWFN7DNA41G8479JMJ1E72F7","reportReason":"","pretendingTo":"invalid_enum_value"}
+     ├─ Missing: reportReason string must contain at least 1 character(s)
+     ├─ Extra: reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined', reportReason should not be empty
+     └─ Details: No details
+
+ 🟣 40. Case #48
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JWFN7DNA41G8479JMJ1E72F7","reportReason":"","pretendingTo":0}
+     ├─ Missing: reportReason string must contain at least 1 character(s)
+     ├─ Extra: reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined', reportReason should not be empty
+     └─ Details: No details
+
+ 🟣 41. Case #49
      ├─ Status: 200
      ├─ Body: {"reportCategory":"invalid_enum_value","reportReason":123,"pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', reportReason expected string, received number, userId required
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 48. Case #50
+ 🟣 42. Case #50
      ├─ Status: 200
      ├─ Body: {"reportCategory":"invalid_enum_value","reportReason":123,"pretendingTo":0}
      ├─ Missing: reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', reportReason expected string, received number, userId required
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 49. Case #51
+ 🟣 43. Case #51
      ├─ Status: 200
      ├─ Body: {"reportCategory":"invalid_enum_value","reportReason":"report user","pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', userId required
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 50. Case #52
+ 🟣 44. Case #52
      ├─ Status: 200
      ├─ Body: {"reportCategory":"invalid_enum_value","reportReason":"report user","pretendingTo":0}
      ├─ Missing: reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', userId required
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 51. Case #53
+ 🟣 45. Case #53
      ├─ Status: 200
      ├─ Body: {"reportCategory":"invalid_enum_value","pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', userId required
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 52. Case #54
+ 🟣 46. Case #54
      ├─ Status: 200
      ├─ Body: {"reportCategory":"invalid_enum_value","pretendingTo":0}
      ├─ Missing: reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', userId required
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 53. Case #55
+ 🟣 47. Case #55
      ├─ Status: 200
      ├─ Body: {"reportCategory":"invalid_enum_value","reportReason":"","pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', reportReason string must contain at least 1 character(s), userId required
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 54. Case #56
+ 🟣 48. Case #56
      ├─ Status: 200
      ├─ Body: {"reportCategory":"invalid_enum_value","reportReason":"","pretendingTo":0}
      ├─ Missing: reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', reportReason string must contain at least 1 character(s), userId required
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 55. Case #57
+ 🟣 49. Case #57
      ├─ Status: 200
      ├─ Body: {"reportCategory":0,"reportReason":123,"pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportReason expected string, received number, userId required
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 56. Case #58
+ 🟣 50. Case #58
      ├─ Status: 200
      ├─ Body: {"reportCategory":0,"reportReason":123,"pretendingTo":0}
      ├─ Missing: reportReason expected string, received number, userId required
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 57. Case #59
+ 🟣 51. Case #59
      ├─ Status: 200
      ├─ Body: {"reportCategory":0,"reportReason":"report user","pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', userId required
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 58. Case #60
+ 🟣 52. Case #60
      ├─ Status: 200
      ├─ Body: {"reportCategory":0,"reportReason":"report user","pretendingTo":0}
      ├─ Missing: userId required
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 59. Case #61
+ 🟣 53. Case #61
      ├─ Status: 200
      ├─ Body: {"reportCategory":0,"pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', userId required
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 60. Case #62
+ 🟣 54. Case #62
      ├─ Status: 200
      ├─ Body: {"reportCategory":0,"pretendingTo":0}
      ├─ Missing: userId required
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 61. Case #63
+ 🟣 55. Case #63
      ├─ Status: 200
      ├─ Body: {"reportCategory":0,"reportReason":"","pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportReason string must contain at least 1 character(s), userId required
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 62. Case #64
+ 🟣 56. Case #64
      ├─ Status: 200
      ├─ Body: {"reportCategory":0,"reportReason":"","pretendingTo":0}
      ├─ Missing: reportReason string must contain at least 1 character(s), userId required
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 63. Case #65
+ 🟣 57. Case #65
      ├─ Status: 200
      ├─ Body: {"reportReason":123,"pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory required, reportReason expected string, received number, userId required
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 64. Case #66
+ 🟣 58. Case #66
      ├─ Status: 200
      ├─ Body: {"reportReason":123,"pretendingTo":0}
      ├─ Missing: reportCategory required, reportReason expected string, received number, userId required
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 65. Case #67
+ 🟣 59. Case #67
      ├─ Status: 200
      ├─ Body: {"reportReason":"report user","pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory required, userId required
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 66. Case #68
+ 🟣 60. Case #68
      ├─ Status: 200
      ├─ Body: {"reportReason":"report user","pretendingTo":0}
      ├─ Missing: reportCategory required, userId required
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 67. Case #69
+ 🟣 61. Case #69
      ├─ Status: 200
      ├─ Body: {"pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory required, userId required
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 68. Case #70
+ 🟣 62. Case #70
      ├─ Status: 200
      ├─ Body: {"pretendingTo":0}
      ├─ Missing: reportCategory required, userId required
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 69. Case #71
+ 🟣 63. Case #71
      ├─ Status: 200
      ├─ Body: {"reportReason":"","pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory required, reportReason string must contain at least 1 character(s), userId required
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 70. Case #72
+ 🟣 64. Case #72
      ├─ Status: 200
      ├─ Body: {"reportReason":"","pretendingTo":0}
      ├─ Missing: reportCategory required, reportReason string must contain at least 1 character(s), userId required
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 71. Case #73
+ 🟣 65. Case #73
      ├─ Status: 200
      ├─ Body: {"userId":"","reportCategory":"invalid_enum_value","reportReason":123,"pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', reportReason expected string, received number, userId invalid ulid, userId string must contain at least 1 character(s)
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 72. Case #74
+ 🟣 66. Case #74
      ├─ Status: 200
      ├─ Body: {"userId":"","reportCategory":"invalid_enum_value","reportReason":123,"pretendingTo":0}
      ├─ Missing: reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', reportReason expected string, received number, userId invalid ulid, userId string must contain at least 1 character(s)
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 73. Case #75
+ 🟣 67. Case #75
      ├─ Status: 200
      ├─ Body: {"userId":"","reportCategory":"invalid_enum_value","reportReason":"report user","pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', userId invalid ulid, userId string must contain at least 1 character(s)
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 74. Case #76
+ 🟣 68. Case #76
      ├─ Status: 200
      ├─ Body: {"userId":"","reportCategory":"invalid_enum_value","reportReason":"report user","pretendingTo":0}
      ├─ Missing: reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', userId invalid ulid, userId string must contain at least 1 character(s)
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 75. Case #77
+ 🟣 69. Case #77
      ├─ Status: 200
      ├─ Body: {"userId":"","reportCategory":"invalid_enum_value","pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', userId invalid ulid, userId string must contain at least 1 character(s)
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 76. Case #78
+ 🟣 70. Case #78
      ├─ Status: 200
      ├─ Body: {"userId":"","reportCategory":"invalid_enum_value","pretendingTo":0}
      ├─ Missing: reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', userId invalid ulid, userId string must contain at least 1 character(s)
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 77. Case #79
+ 🟣 71. Case #79
      ├─ Status: 200
      ├─ Body: {"userId":"","reportCategory":"invalid_enum_value","reportReason":"","pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', reportReason string must contain at least 1 character(s), userId invalid ulid, userId string must contain at least 1 character(s)
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 78. Case #80
+ 🟣 72. Case #80
      ├─ Status: 200
      ├─ Body: {"userId":"","reportCategory":"invalid_enum_value","reportReason":"","pretendingTo":0}
      ├─ Missing: reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', reportReason string must contain at least 1 character(s), userId invalid ulid, userId string must contain at least 1 character(s)
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 79. Case #81
+ 🟣 73. Case #81
      ├─ Status: 200
      ├─ Body: {"userId":"","reportCategory":0,"reportReason":123,"pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportReason expected string, received number, userId invalid ulid, userId string must contain at least 1 character(s)
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 80. Case #82
+ 🟣 74. Case #82
      ├─ Status: 200
      ├─ Body: {"userId":"","reportCategory":0,"reportReason":123,"pretendingTo":0}
      ├─ Missing: reportReason expected string, received number, userId invalid ulid, userId string must contain at least 1 character(s)
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 81. Case #83
+ 🟣 75. Case #83
      ├─ Status: 200
      ├─ Body: {"userId":"","reportCategory":0,"reportReason":"report user","pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', userId invalid ulid, userId string must contain at least 1 character(s)
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 82. Case #84
+ 🟣 76. Case #84
      ├─ Status: 200
      ├─ Body: {"userId":"","reportCategory":0,"reportReason":"report user","pretendingTo":0}
      ├─ Missing: userId invalid ulid, userId string must contain at least 1 character(s)
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 83. Case #85
+ 🟣 77. Case #85
      ├─ Status: 200
      ├─ Body: {"userId":"","reportCategory":0,"pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', userId invalid ulid, userId string must contain at least 1 character(s)
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 84. Case #86
+ 🟣 78. Case #86
      ├─ Status: 200
      ├─ Body: {"userId":"","reportCategory":0,"pretendingTo":0}
      ├─ Missing: userId invalid ulid, userId string must contain at least 1 character(s)
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 85. Case #87
+ 🟣 79. Case #87
      ├─ Status: 200
      ├─ Body: {"userId":"","reportCategory":0,"reportReason":"","pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportReason string must contain at least 1 character(s), userId invalid ulid, userId string must contain at least 1 character(s)
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 86. Case #88
+ 🟣 80. Case #88
      ├─ Status: 200
      ├─ Body: {"userId":"","reportCategory":0,"reportReason":"","pretendingTo":0}
      ├─ Missing: reportReason string must contain at least 1 character(s), userId invalid ulid, userId string must contain at least 1 character(s)
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 87. Case #89
+ 🟣 81. Case #89
      ├─ Status: 200
      ├─ Body: {"userId":"","reportReason":123,"pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory required, reportReason expected string, received number, userId invalid ulid, userId string must contain at least 1 character(s)
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 88. Case #90
+ 🟣 82. Case #90
      ├─ Status: 200
      ├─ Body: {"userId":"","reportReason":123,"pretendingTo":0}
      ├─ Missing: reportCategory required, reportReason expected string, received number, userId invalid ulid, userId string must contain at least 1 character(s)
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 89. Case #91
+ 🟣 83. Case #91
      ├─ Status: 200
      ├─ Body: {"userId":"","reportReason":"report user","pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory required, userId invalid ulid, userId string must contain at least 1 character(s)
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 90. Case #92
+ 🟣 84. Case #92
      ├─ Status: 200
      ├─ Body: {"userId":"","reportReason":"report user","pretendingTo":0}
      ├─ Missing: reportCategory required, userId invalid ulid, userId string must contain at least 1 character(s)
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 91. Case #93
+ 🟣 85. Case #93
      ├─ Status: 200
      ├─ Body: {"userId":"","pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory required, userId invalid ulid, userId string must contain at least 1 character(s)
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 92. Case #94
+ 🟣 86. Case #94
      ├─ Status: 200
      ├─ Body: {"userId":"","pretendingTo":0}
      ├─ Missing: reportCategory required, userId invalid ulid, userId string must contain at least 1 character(s)
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 93. Case #95
+ 🟣 87. Case #95
      ├─ Status: 200
      ├─ Body: {"userId":"","reportReason":"","pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory required, reportReason string must contain at least 1 character(s), userId invalid ulid, userId string must contain at least 1 character(s)
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 94. Case #96
+ 🟣 88. Case #96
      ├─ Status: 200
      ├─ Body: {"userId":"","reportReason":"","pretendingTo":0}
      ├─ Missing: reportCategory required, reportReason string must contain at least 1 character(s), userId invalid ulid, userId string must contain at least 1 character(s)
      ├─ Extra: Could not resolve permission type
      └─ Details: No details
 
- 🟣 95. Case #97
+ 🟣 89. Case #97
      ├─ Status: 200
      ├─ Body: {"userId":"invalid_value","reportCategory":"invalid_enum_value","reportReason":123,"pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', reportReason expected string, received number, userId invalid ulid
      ├─ Extra: Unauthorized request
      └─ Details: No details
 
- 🟣 96. Case #98
+ 🟣 90. Case #98
      ├─ Status: 200
      ├─ Body: {"userId":"invalid_value","reportCategory":"invalid_enum_value","reportReason":123,"pretendingTo":0}
      ├─ Missing: reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', reportReason expected string, received number, userId invalid ulid
      ├─ Extra: Unauthorized request
      └─ Details: No details
 
- 🟣 97. Case #99
+ 🟣 91. Case #99
      ├─ Status: 200
      ├─ Body: {"userId":"invalid_value","reportCategory":"invalid_enum_value","reportReason":"report user","pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', userId invalid ulid
      ├─ Extra: Unauthorized request
      └─ Details: No details
 
- 🟣 98. Case #100
+ 🟣 92. Case #100
      ├─ Status: 200
      ├─ Body: {"userId":"invalid_value","reportCategory":"invalid_enum_value","reportReason":"report user","pretendingTo":0}
      ├─ Missing: reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', userId invalid ulid
      ├─ Extra: Unauthorized request
      └─ Details: No details
 
- 🟣 99. Case #101
+ 🟣 93. Case #101
      ├─ Status: 200
      ├─ Body: {"userId":"invalid_value","reportCategory":"invalid_enum_value","pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', userId invalid ulid
      ├─ Extra: Unauthorized request
      └─ Details: No details
 
- 🟣 100. Case #102
+ 🟣 94. Case #102
      ├─ Status: 200
      ├─ Body: {"userId":"invalid_value","reportCategory":"invalid_enum_value","pretendingTo":0}
      ├─ Missing: reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', userId invalid ulid
      ├─ Extra: Unauthorized request
      └─ Details: No details
 
- 🟣 101. Case #103
+ 🟣 95. Case #103
      ├─ Status: 200
      ├─ Body: {"userId":"invalid_value","reportCategory":"invalid_enum_value","reportReason":"","pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', reportReason string must contain at least 1 character(s), userId invalid ulid
      ├─ Extra: Unauthorized request
      └─ Details: No details
 
- 🟣 102. Case #104
+ 🟣 96. Case #104
      ├─ Status: 200
      ├─ Body: {"userId":"invalid_value","reportCategory":"invalid_enum_value","reportReason":"","pretendingTo":0}
      ├─ Missing: reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', reportReason string must contain at least 1 character(s), userId invalid ulid
      ├─ Extra: Unauthorized request
      └─ Details: No details
 
- 🟣 103. Case #105
+ 🟣 97. Case #105
      ├─ Status: 200
      ├─ Body: {"userId":"invalid_value","reportCategory":0,"reportReason":123,"pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportReason expected string, received number, userId invalid ulid
      ├─ Extra: Unauthorized request
      └─ Details: No details
 
- 🟣 104. Case #106
+ 🟣 98. Case #106
      ├─ Status: 200
      ├─ Body: {"userId":"invalid_value","reportCategory":0,"reportReason":123,"pretendingTo":0}
      ├─ Missing: reportReason expected string, received number, userId invalid ulid
      ├─ Extra: Unauthorized request
      └─ Details: No details
 
- 🟣 105. Case #107
+ 🟣 99. Case #107
      ├─ Status: 200
      ├─ Body: {"userId":"invalid_value","reportCategory":0,"reportReason":"report user","pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', userId invalid ulid
      ├─ Extra: Unauthorized request
      └─ Details: No details
 
- 🟣 106. Case #108
+ 🟣 100. Case #108
      ├─ Status: 200
      ├─ Body: {"userId":"invalid_value","reportCategory":0,"reportReason":"report user","pretendingTo":0}
      ├─ Missing: userId invalid ulid
      ├─ Extra: Unauthorized request
      └─ Details: No details
 
- 🟣 107. Case #109
+ 🟣 101. Case #109
      ├─ Status: 200
      ├─ Body: {"userId":"invalid_value","reportCategory":0,"pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', userId invalid ulid
      ├─ Extra: Unauthorized request
      └─ Details: No details
 
- 🟣 108. Case #110
+ 🟣 102. Case #110
      ├─ Status: 200
      ├─ Body: {"userId":"invalid_value","reportCategory":0,"pretendingTo":0}
      ├─ Missing: userId invalid ulid
      ├─ Extra: Unauthorized request
      └─ Details: No details
 
- 🟣 109. Case #111
+ 🟣 103. Case #111
      ├─ Status: 200
      ├─ Body: {"userId":"invalid_value","reportCategory":0,"reportReason":"","pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportReason string must contain at least 1 character(s), userId invalid ulid
      ├─ Extra: Unauthorized request
      └─ Details: No details
 
- 🟣 110. Case #112
+ 🟣 104. Case #112
      ├─ Status: 200
      ├─ Body: {"userId":"invalid_value","reportCategory":0,"reportReason":"","pretendingTo":0}
      ├─ Missing: reportReason string must contain at least 1 character(s), userId invalid ulid
      ├─ Extra: Unauthorized request
      └─ Details: No details
 
- 🟣 111. Case #113
+ 🟣 105. Case #113
      ├─ Status: 200
      ├─ Body: {"userId":"invalid_value","reportReason":123,"pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory required, reportReason expected string, received number, userId invalid ulid
      ├─ Extra: Unauthorized request
      └─ Details: No details
 
- 🟣 112. Case #114
+ 🟣 106. Case #114
      ├─ Status: 200
      ├─ Body: {"userId":"invalid_value","reportReason":123,"pretendingTo":0}
      ├─ Missing: reportCategory required, reportReason expected string, received number, userId invalid ulid
      ├─ Extra: Unauthorized request
      └─ Details: No details
 
- 🟣 113. Case #115
+ 🟣 107. Case #115
      ├─ Status: 200
      ├─ Body: {"userId":"invalid_value","reportReason":"report user","pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory required, userId invalid ulid
      ├─ Extra: Unauthorized request
      └─ Details: No details
 
- 🟣 114. Case #116
+ 🟣 108. Case #116
      ├─ Status: 200
      ├─ Body: {"userId":"invalid_value","reportReason":"report user","pretendingTo":0}
      ├─ Missing: reportCategory required, userId invalid ulid
      ├─ Extra: Unauthorized request
      └─ Details: No details
 
- 🟣 115. Case #117
+ 🟣 109. Case #117
      ├─ Status: 200
      ├─ Body: {"userId":"invalid_value","pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory required, userId invalid ulid
      ├─ Extra: Unauthorized request
      └─ Details: No details
 
- 🟣 116. Case #118
+ 🟣 110. Case #118
      ├─ Status: 200
      ├─ Body: {"userId":"invalid_value","pretendingTo":0}
      ├─ Missing: reportCategory required, userId invalid ulid
      ├─ Extra: Unauthorized request
      └─ Details: No details
 
- 🟣 117. Case #119
+ 🟣 111. Case #119
      ├─ Status: 200
      ├─ Body: {"userId":"invalid_value","reportReason":"","pretendingTo":"invalid_enum_value"}
      ├─ Missing: pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory required, reportReason string must contain at least 1 character(s), userId invalid ulid
      ├─ Extra: Unauthorized request
      └─ Details: No details
 
- 🟣 118. Case #120
+ 🟣 112. Case #120
      ├─ Status: 200
      ├─ Body: {"userId":"invalid_value","reportReason":"","pretendingTo":0}
      ├─ Missing: reportCategory required, reportReason string must contain at least 1 character(s), userId invalid ulid

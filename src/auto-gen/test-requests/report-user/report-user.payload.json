@@ -257,9 +257,9 @@
             "pretendingTo": "invalid_enum_value"
         },
         "expects": [
-            "reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'invalid_enum_value'",
+            "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'",
             "reportReason expected string, received number",
-            "pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value'"
+            "pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value'"
         ]
     },
     {
@@ -270,7 +270,7 @@
             "pretendingTo": 0
         },
         "expects": [
-            "reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'invalid_enum_value'",
+            "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'",
             "reportReason expected string, received number"
         ]
     },
@@ -282,8 +282,8 @@
             "pretendingTo": "invalid_enum_value"
         },
         "expects": [
-            "reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'invalid_enum_value'",
-            "pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value'"
+            "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'",
+            "pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value'"
         ]
     },
     {
@@ -294,7 +294,7 @@
             "pretendingTo": 0
         },
         "expects": [
-            "reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'invalid_enum_value'"
+            "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'"
         ]
     },
     {
@@ -304,9 +304,9 @@
             "pretendingTo": "invalid_enum_value"
         },
         "expects": [
-            "reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'invalid_enum_value'",
+            "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'",
             "reportReason required",
-            "pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value'"
+            "pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value'"
         ]
     },
     {
@@ -316,7 +316,7 @@
             "pretendingTo": 0
         },
         "expects": [
-            "reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'invalid_enum_value'",
+            "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'",
             "reportReason required"
         ]
     },
@@ -328,9 +328,9 @@
             "pretendingTo": "invalid_enum_value"
         },
         "expects": [
-            "reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'invalid_enum_value'",
+            "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'",
             "reportReason should not be empty",
-            "pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value'"
+            "pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value'"
         ]
     },
     {
@@ -341,7 +341,7 @@
             "pretendingTo": 0
         },
         "expects": [
-            "reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'invalid_enum_value'",
+            "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'",
             "reportReason should not be empty"
         ]
     },
@@ -354,7 +354,7 @@
         },
         "expects": [
             "reportReason expected string, received number",
-            "pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value'"
+            "pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value'"
         ]
     },
     {
@@ -376,7 +376,7 @@
             "pretendingTo": "invalid_enum_value"
         },
         "expects": [
-            "pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value'"
+            "pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value'"
         ]
     },
     {
@@ -396,7 +396,7 @@
         },
         "expects": [
             "reportReason required",
-            "pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value'"
+            "pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value'"
         ]
     },
     {
@@ -418,7 +418,7 @@
         },
         "expects": [
             "reportReason should not be empty",
-            "pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value'"
+            "pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value'"
         ]
     },
     {
@@ -439,9 +439,10 @@
             "pretendingTo": "invalid_enum_value"
         },
         "expects": [
-            "reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'undefined'",
+            "reportCategory required",
+            "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'",
             "reportReason expected string, received number",
-            "pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value'"
+            "pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value'"
         ]
     },
     {
@@ -451,7 +452,8 @@
             "pretendingTo": 0
         },
         "expects": [
-            "reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'undefined'",
+            "reportCategory required",
+            "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'",
             "reportReason expected string, received number"
         ]
     },
@@ -462,8 +464,9 @@
             "pretendingTo": "invalid_enum_value"
         },
         "expects": [
-            "reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'undefined'",
-            "pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value'"
+            "reportCategory required",
+            "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'",
+            "pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value'"
         ]
     },
     {
@@ -473,7 +476,8 @@
             "pretendingTo": 0
         },
         "expects": [
-            "reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'undefined'"
+            "reportCategory required",
+            "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'"
         ]
     },
     {
@@ -482,9 +486,10 @@
             "pretendingTo": "invalid_enum_value"
         },
         "expects": [
-            "reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'undefined'",
+            "reportCategory required",
+            "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'",
             "reportReason required",
-            "pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value'"
+            "pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value'"
         ]
     },
     {
@@ -493,7 +498,8 @@
             "pretendingTo": 0
         },
         "expects": [
-            "reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'undefined'",
+            "reportCategory required",
+            "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'",
             "reportReason required"
         ]
     },
@@ -504,9 +510,10 @@
             "pretendingTo": "invalid_enum_value"
         },
         "expects": [
-            "reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'undefined'",
+            "reportCategory required",
+            "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'",
             "reportReason should not be empty",
-            "pretendingTo invalid enum value, expected 0,1,2,3, received 'invalid_enum_value'"
+            "pretendingTo invalid enum value. expected 0 | 1 | 2 | 3, received 'invalid_enum_value'"
         ]
     },
     {
@@ -516,7 +523,8 @@
             "pretendingTo": 0
         },
         "expects": [
-            "reportCategory invalid enum value, expected 0,1,2,3,4,5,6,7,8,9,20, received 'undefined'",
+            "reportCategory required",
+            "reportCategory invalid enum value. expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'",
             "reportReason should not be empty"
         ]
     },
