@@ -87,6 +87,10 @@ export function generateErrorVariantsForField(
     case 'string':
       variants.push(123);
       variants.push(fieldValue);
+      if(decorators['genEmoji']){
+        const {emoji, quantity} = decorators['genEmoji']
+        variants.push(emoji)
+      }
       break;
     case 'number':
       variants.push('invalid_number');
@@ -125,9 +129,17 @@ export function generateErrorVariantsForField(
   // 4. Vi phạm độ dài
   if (decorators['minLength']) {
     variants.push('a'.repeat(decorators['minLength'] - 1));
+    if(decorators['genEmoji']){
+        const {emoji, quantity} = decorators['genEmoji']
+        variants.push(emoji.repeat(decorators['minLength'] - 1))
+      }
   }
   if (decorators['maxLength']) {
     variants.push('a'.repeat(decorators['maxLength'] + 1));
+    if(decorators['genEmoji']){
+        const {emoji, quantity} = decorators['genEmoji']
+        variants.push(emoji.repeat(decorators['maxLength'] + 1))
+      }
   }
 
   if (decorators['isEmoji']) {

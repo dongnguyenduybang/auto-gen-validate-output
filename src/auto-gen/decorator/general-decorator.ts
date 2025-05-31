@@ -3,10 +3,10 @@ import 'reflect-metadata';
 /*
    check có phải là kiểu optional hay không 
 */
-export function IsOptional(options?: {value?: any}) {
+export function IsOptional(options?: { value?: any }) {
   return function (target: any, propertyKey: string) {
     Reflect.defineMetadata('optional', true, target, propertyKey);
-     if (options?.value) {
+    if (options?.value) {
       Reflect.defineMetadata(
         'optionalValid',
         options.value,
@@ -92,8 +92,8 @@ export function IsInvalid(options?: { message?: string }) {
   };
 }
 
-export function isValidURL(options?:{url?: string}) {
- return (target: any, propertyKey: string) => {
+export function isValidURL(options?: { url?: string }) {
+  return (target: any, propertyKey: string) => {
     Reflect.defineMetadata('isInvalid', true, target, propertyKey);
     if (options?.url) {
       Reflect.defineMetadata(
@@ -106,13 +106,27 @@ export function isValidURL(options?:{url?: string}) {
   };
 }
 
-export function IsEmoji(options?: {value?: number}) {
-   return (target: any, propertyKey: string) => {
+export function IsEmoji(options?: { value?: number }) {
+  return (target: any, propertyKey: string) => {
     Reflect.defineMetadata('isEmoji', true, target, propertyKey);
     if (options?.value) {
       Reflect.defineMetadata(
         'isValidEmoji',
         options.value,
+        target,
+        propertyKey,
+      );
+    }
+  };
+}
+
+export function GenIsEmoji(emoji: any, quantity?: number) {
+  return (target: any, propertyKey: string) => {
+    Reflect.defineMetadata('genEmoji', true, target, propertyKey);
+    if (emoji) {
+      Reflect.defineMetadata(
+        'genEmoji',
+         {emoji, quantity },
         target,
         propertyKey,
       );
@@ -150,8 +164,4 @@ export function IsMath(options?: {
   };
 }
 
-
-export function GenIsEmoji(option?: {emoji: any, quantity: number}){
-
-}
 
