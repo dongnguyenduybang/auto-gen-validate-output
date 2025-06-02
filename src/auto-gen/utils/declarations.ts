@@ -192,3 +192,20 @@ export interface PayloadGen {
   body: Object;
   expects: string[];
 }
+
+export interface ValidIfCondition {
+  field: string;
+  operator: string;
+  value: any;
+}
+
+
+export interface ValidIfOptions {
+  conditions: ValidIfCondition | ValidIfCondition[];
+  result?: {
+    required?: boolean;
+    message?: string;
+    [key: string]: any;
+  };
+  logicalOperator?: 'AND' | 'OR';
+}
