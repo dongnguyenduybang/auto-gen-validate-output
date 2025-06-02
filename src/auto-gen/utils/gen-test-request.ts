@@ -52,7 +52,7 @@ async function generateSpecContent(
 
           if (beforeAllSteps.length > 0) {
             contextData = context.clone();
-            const results = await executeSteps(beforeAllSteps, contextData);
+            const results = await executeSteps(beforeAllSteps, globalContext);
             results.forEach((result) => {
               allSteps.push({
                 ...result,
@@ -72,7 +72,7 @@ async function generateSpecContent(
 
           if (beforeEachSteps.length > 0) {
             contextData = context.clone();
-            const results = await executeSteps(beforeEachSteps, contextData);
+            const results = await executeSteps(beforeEachSteps, globalContext);
             results.forEach((result) => {
               allSteps.push({
                 ...result,
@@ -92,7 +92,7 @@ async function generateSpecContent(
               testNumber = ${startIndex + index + 1};
               totalTests++;
               const payloadObj = ${JSON.stringify(testCase.body)};
-              resolvedData = resolveVariables(payloadObj, contextData);
+              resolvedData = resolveVariables(payloadObj, globalContext);
               
               try {
                 const response = await resolveCallAPI(
@@ -185,7 +185,7 @@ async function generateSpecContent(
 
           if (afterEachSteps.length > 0) {
             contextData = context.clone();
-            const results = await executeSteps(afterEachSteps, contextData);
+            const results = await executeSteps(afterEachSteps, globalContext);
             results.forEach((result) => {
               allSteps.push({
                 ...result,
@@ -205,7 +205,7 @@ async function generateSpecContent(
 
           if (afterAllSteps.length > 0) {
             contextData = context.clone();
-            const results = await executeSteps(afterAllSteps, contextData);
+            const results = await executeSteps(afterAllSteps, globalContext);
             results.forEach((result) => {
               allSteps.push({
                 ...result,
