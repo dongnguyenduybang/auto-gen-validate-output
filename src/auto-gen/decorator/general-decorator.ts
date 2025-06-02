@@ -94,7 +94,7 @@ export function IsInvalid(options?: { message?: string }) {
 
 export function isValidURL(options?: { url?: string }) {
   return (target: any, propertyKey: string) => {
-    Reflect.defineMetadata('isInvalid', true, target, propertyKey);
+    Reflect.defineMetadata('isValidURL', true, target, propertyKey);
     if (options?.url) {
       Reflect.defineMetadata(
         'isValidURL',
@@ -120,7 +120,7 @@ export function IsEmoji(options?: { value?: number }) {
   };
 }
 
-export function GenIsEmoji(emoji: any, quantity?: number) {
+export function GenEmoji(emoji: any, quantity?: number) {
   return (target: any, propertyKey: string) => {
     Reflect.defineMetadata('genEmoji', true, target, propertyKey);
     if (emoji) {
