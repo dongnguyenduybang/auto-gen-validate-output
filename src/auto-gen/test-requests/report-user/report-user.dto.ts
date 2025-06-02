@@ -1,6 +1,5 @@
-
 import { ErrorMessage, PretendingTo, ReportCategory } from "../../enums";
-import { IsDefined, IsEnum,IsOptional,IsNumber, IsInvalid, IsNotEmpty, IsString, ValidIf, MinLength, MaxLength, IsEmoji, GenIsEmoji } from "../../decorator";
+import { IsDefined, IsEnum, IsInvalid, IsNotEmpty, IsString, ValidIf, MinLength, MaxLength, IsEmoji, GenEmoji } from "../../decorator";
 
 export class ReportUserDTO {
     @IsString({
@@ -28,7 +27,7 @@ export class ReportUserDTO {
     @IsNotEmpty()
     @MinLength(1)
     @MaxLength(255)
-    @GenIsEmoji('🚀')
+    @GenEmoji('🚀')
     reportReason: string = ''
 
     @ValidIf('reportCategory', '===', ReportCategory.REPORT_CATEGORY_PRETENDING_TO_BE_SOMEONE, { optional: false })

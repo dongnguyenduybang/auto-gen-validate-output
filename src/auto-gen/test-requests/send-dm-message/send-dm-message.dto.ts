@@ -9,18 +9,10 @@ import {
 } from '../../decorator';
 
 export class SendDmMessageDTO {
-  @IsString({
-    message: `Could not resolve permission type`,
-  })
-  @IsDefined({
-    message: `Could not resolve permission type`,
-  })
-  @IsNotEmpty({
-    message: `Could not resolve permission type`,
-  })
-  @IsInvalid({
-    message: `Unauthorized request`,
-  })
+  @IsString({ message: `Could not resolve permission type` })
+  @IsDefined({ message: `Could not resolve permission type` })
+  @IsNotEmpty({ message: `Could not resolve permission type` })
+  @IsInvalid({ message: `Unauthorized request` })
   @IsNotNull({ message: `Could not resolve permission type` })
   userId: string = '';
 
