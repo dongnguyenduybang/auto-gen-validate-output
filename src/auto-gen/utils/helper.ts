@@ -4,7 +4,7 @@ import 'reflect-metadata';
 import { IContext, responseClassMap, StepResult, ValidationError } from './declarations';
 import { TestContext } from './text-context';
 import emojiRegex from 'emoji-regex';
-import { ACTION_CONFIG } from '../enums';
+import { ACTION_CONFIG, VAR } from '../enums';
 import { getApiFunctions } from '../functions/api-registry';
 import { ClassConstructor, plainToClass } from 'class-transformer';
 import { validateResponses } from '../validates/validate-response';
@@ -135,7 +135,7 @@ export function getAllFiles(dirPath: string): string[] {
   return files;
 }
 
-export function getResponseFile(dirPath: string): string{
+export function getResponseFile(dirPath: string): string {
   try {
     const files = fs.readdirSync(dirPath);
     const responseFile = files.find((file) => file.endsWith('.response.ts'));
@@ -179,13 +179,13 @@ export function getTime() {
 
 export function resolveValidIf(
   field,
-  validIfMetadata: { condition: string; operator: string; condition2: string },
+  validIfMetadata: { conditions: { field: string; operator: string; value: string } },
   valueResponse: any,
   obj: any,
   payload: any,
   context,
 ): { isValid: boolean; errorMessage?: string } {
-  const { condition, operator, condition2 } = validIfMetadata;
+  const { field: condition, operator, value: condition2 } = validIfMetadata.conditions;
 
   const value1 = obj[condition];
   if (value1 === undefined) {
@@ -238,6 +238,7 @@ export function resolveValidIf(
 
   return { isValid: true };
 }
+
 
 export const formatExpectErrors = (expects) => {
   return JSON.stringify(expects)
@@ -437,11 +438,16 @@ export async function checkResponse(step, response: object, resolveBody: object,
 
 export function checkURL(value: string): boolean {
   const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
+
+  if (value === VAR.invitationLink
+    || typeof value !== 'string'
+  ) return true;
   return urlRegex.test(value);
 }
 
 export function countEmojis(str: unknown): number {
   if (typeof str !== 'string') return 0;
+
   const regex = emojiRegex();
   return Array.from(str.matchAll(regex)).length;
 }

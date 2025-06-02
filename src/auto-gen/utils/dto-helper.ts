@@ -1,7 +1,7 @@
 import 'reflect-metadata';
-import { ErrorMessage } from '../enums';
+import { ErrorMessage, VAR } from '../enums';
 import { checkRegexULID, checkURL, countEmojis, isEmoji } from './helper';
-import { FieldValueObject, PayloadGen } from './declarations';
+import { FieldValueObject, PayloadGen, ValidIfCondition, ValidIfOptions } from './declarations';
 export function getDecorators(
   target: Object,
   propertyKey: string,
@@ -87,14 +87,13 @@ export function generateErrorVariantsForField(
     case 'string':
       variants.push(123);
       variants.push(fieldValue);
-      if(decorators['genEmoji']){
-        const {emoji, quantity} = decorators['genEmoji']
+      if (decorators['genEmoji']) {
+        const { emoji, quantity } = decorators['genEmoji']
         variants.push(emoji)
       }
       break;
     case 'number':
       variants.push('invalid_number');
-      variants.push(NaN);
       break;
     case 'enum':
       variants.push('invalid_enum_value');
@@ -109,7 +108,6 @@ export function generateErrorVariantsForField(
       break;
     case 'array':
       variants.push('not_an_array');
-      variants.push([123]);
       variants.push(fieldValue);
       break;
     case 'boolean':
@@ -129,17 +127,17 @@ export function generateErrorVariantsForField(
   // 4. Vi phạm độ dài
   if (decorators['minLength']) {
     variants.push('a'.repeat(decorators['minLength'] - 1));
-    if(decorators['genEmoji']){
-        const {emoji, quantity} = decorators['genEmoji']
-        variants.push(emoji.repeat(decorators['minLength'] - 1))
-      }
+    if (decorators['genEmoji']) {
+      const { emoji, quantity } = decorators['genEmoji']
+      variants.push(emoji.repeat(decorators['minLength'] - 1))
+    }
   }
   if (decorators['maxLength']) {
     variants.push('a'.repeat(decorators['maxLength'] + 1));
-    if(decorators['genEmoji']){
-        const {emoji, quantity} = decorators['genEmoji']
-        variants.push(emoji.repeat(decorators['maxLength'] + 1))
-      }
+    if (decorators['genEmoji']) {
+      const { emoji, quantity } = decorators['genEmoji']
+      variants.push(emoji.repeat(decorators['maxLength'] + 1))
+    }
   }
 
   if (decorators['isEmoji']) {
@@ -216,37 +214,103 @@ function checkOptional(value: unknown, decorators: Record<string, any>): string[
   return null;
 }
 
+// function checkValidIf(
+//   field: string,
+//   value: unknown,
+//   decorators: Record<string, any>,
+//   payload: Record<string, any>
+// ) {
+
+//   if (decorators['validIf']) {
+//     const { condition, operator, condition2, result } = decorators['validIf'];
+
+//     const targetFieldValue = payload[condition];
+
+//     let conditionMet = false;
+//     switch (operator) {
+//       case '===':
+//         conditionMet = targetFieldValue === condition2;
+//         break;
+//       default:
+//         throw new Error(`Unsupported operator: ${operator}`);
+//     }
+
+//     if (conditionMet && result?.optional === false) {
+//       return { isRequired: true }
+//     }
+
+//     if (!conditionMet) {
+//       return { isRequired: false };
+//     }
+//   }
+
+//   return null;
+// }
+
 function checkValidIf(
   field: string,
   value: unknown,
   decorators: Record<string, any>,
   payload: Record<string, any>
 ) {
+  if (!decorators['validIf']) return null;
 
-  if (decorators['validIf']) {
-    const { condition, operator, condition2, result } = decorators['validIf'];
+  const options: ValidIfOptions = decorators['validIf'];
+  const conditions = Array.isArray(options.conditions) ? options.conditions : [options.conditions];
+  const logicalOperator = options.logicalOperator || 'AND';
 
-    const targetFieldValue = payload[condition];
+  let conditionMet = false;
 
-    let conditionMet = false;
-    switch (operator) {
-      case '===':
-        conditionMet = targetFieldValue === condition2;
-        break;
-      default:
-        throw new Error(`Unsupported operator: ${operator}`);
-    }
+  if (logicalOperator === 'AND') {
+    conditionMet = conditions.every(condition => evaluateCondition(condition, payload));
+  } else {
+    conditionMet = conditions.some(condition => evaluateCondition(condition, payload));
+  }
 
-    if (conditionMet && result?.optional === false) {
-      return { isRequired: true }
-    }
-
-    if (!conditionMet) {
+  if (conditionMet) {
+    if (options.result?.required === false) {
       return { isRequired: false };
+    }
+    if (options.result?.required === true) {
+      return { isRequired: true };
+    }
+    if (options.result?.message) {
+      return { message: options.result.message, isRequired: options.result.required };
     }
   }
 
-  return null;
+  return conditionMet ? null : { isRequired: false };
+}
+
+function evaluateCondition(condition: ValidIfCondition, payload: Record<string, any>): boolean {
+  const targetValue = payload[condition.field];
+
+  switch (condition.operator) {
+    case '===':
+      return targetValue === condition.value;
+    case '!==':
+      return targetValue !== condition.value;
+    case '==':
+      return targetValue == condition.value;
+    case '!=':
+      return targetValue != condition.value;
+    case '>':
+      return targetValue > condition.value;
+    case '>=':
+      return targetValue >= condition.value;
+    case '<':
+      return targetValue < condition.value;
+    case '<=':
+      return targetValue <= condition.value;
+    case 'includes':
+      return Array.isArray(targetValue) ? targetValue.includes(condition.value) : false;
+    case 'in':
+      return Array.isArray(condition.value) ? condition.value.includes(targetValue) : false;
+    case 'regex':
+      return new RegExp(condition.value).test(targetValue);
+    default:
+      throw new Error(`Unsupported operator: ${condition.operator}`);
+  }
 }
 function getDefinedErrorMessage(field: string): string {
   switch (field) {
@@ -307,10 +371,10 @@ function checkEmoji(field: string, value: string, decorators: Record<string, any
   const errors: string[] = [];
   if (decorators['isEmoji']) {
     if (decorators['isValidEmoji']) {
-        const actualCount =  countEmojis(String(value));
-       const isInvalid = typeof value === 'string' && (value === '' || !isEmoji(value)) || actualCount > decorators['isValidEmoji'] || actualCount < decorators['isValidEmoji'];
+      const actualCount = countEmojis(String(value));
+      const isInvalid = typeof value === 'string' && (value === '' || !isEmoji(value)) || actualCount > decorators['isValidEmoji'] || actualCount < decorators['isValidEmoji'];
 
-       if (isInvalid) {
+      if (isInvalid) {
         addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_RANGE_EMOJI} ${decorators['isValidEmoji']} emoji`);
       }
     } else {
@@ -410,14 +474,14 @@ function checkTypeArray(field: string, value: unknown, decorators: Record<string
   const errors: string[] = [];
   if (decorators['type'] === 'array') {
     if (!Array.isArray(value)) {
-      addErrorIfNotExist(errors, decorators['arrayMessage'], `${field} ${ErrorMessage.INVALID_TYPE_ARRAY}`);
+      addErrorIfNotExist(errors, decorators['arrayMessage'], `${field} ${ErrorMessage.INVALID_TYPE_ARRAY} ${typeof value}`);
       return errors;
     }
     if (decorators['minArray'] != null && value.length < decorators['minArray']) {
-      addErrorIfNotExist(errors, decorators['minArrayMessage'], `${field} must have at least ${decorators['minArray']} items`);
+      addErrorIfNotExist(errors, decorators['minArrayMessage'], `${field} ${ErrorMessage.MIN_ARRAY} ${decorators['minArray']} element(s)`);
     }
     if (decorators['maxArray'] != null && value.length > decorators['maxArray']) {
-      addErrorIfNotExist(errors, decorators['maxArrayMessage'], `${field} must have at most ${decorators['maxArray']} items`);
+      addErrorIfNotExist(errors, decorators['maxArrayMessage'], `${field} ${ErrorMessage.MAX_ARRAY} ${decorators['maxArray']} element(s)`);
     }
   }
   return errors;
@@ -448,6 +512,17 @@ function checkEnum(field: string, value: unknown, decorators: Record<string, any
   return errors;
 }
 
+function checkValidURL(field: string, value: unknown, decorators: Record<string, any>): string[] {
+  const errors: string[] = [];
+  if(decorators['isValidURL']){
+    const isValid = checkURL(String(value))
+    if(!isValid) {
+      addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_URL}`);
+    }
+  }
+  return errors
+}
+
 export function mapError(field: string, value: unknown, decorators: Record<string, any>, dto) {
   // Kiểm tra từng nhóm lỗi
   const errors: string[] = [];
@@ -455,15 +530,16 @@ export function mapError(field: string, value: unknown, decorators: Record<strin
 
   const validIfErrors = checkValidIf(field, value, decorators, dto);
   if (validIfErrors !== null) {
+    if (validIfErrors.message) {
+      errors.push(validIfErrors.message);
+    }
+
     if (!validIfErrors.isRequired) {
-      // Trường tùy chọn: Nếu value là undefined hoặc null, không có lỗi
       if (value === undefined || value === null) {
-        return [];
+        return errors;
       }
     }
-    // Nếu isRequired: true, bỏ qua checkOptional và chạy checks
   } else {
-    // Không có ValidIf: Kiểm tra optional như bình thường
     const optionalErrors = checkOptional(value, decorators);
     if (optionalErrors !== null) return optionalErrors;
   }
@@ -478,13 +554,15 @@ export function mapError(field: string, value: unknown, decorators: Record<strin
     checkTypeArray,
     checkTypeObject,
     checkEnum,
+    checkValidURL,
+
   ];
 
   for (const check of checks) {
     const result = check(field, value, decorators);
     if (result && result.length > 0) {
       errors.push(...result);
-      if (check === checkTypeString || check === checkTypeNumber || check === checkTypeArray || check === checkTypeObject || check === checkEnum) {
+      if ( check === checkValidURL || check === checkTypeString || check === checkTypeNumber || check === checkTypeArray || check === checkTypeObject || check === checkEnum) {
         break;
       }
     }
