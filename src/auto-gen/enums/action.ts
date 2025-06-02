@@ -7,10 +7,12 @@ export enum ACTION {
   SEND_MESSAGE = 'sendMessage',
   SEND_DM_MESSAGE = 'sendDmMessage',
   REPORT_DM_MESSAGE = 'reportDmMessage',
+  REPORT_MESSAGE = 'reportMessage',
   UPDATE_MESSAGE = 'updateMessage',
   GET_CHANNEL = 'getChannel',
   GET_MESSAGE = 'getMessage',
   ACCEPT_INVITATION = 'acceptInvitation',
+  CREATE_INVITATION = 'createInvitation',
   ADD_MESSAGE_REACTION = 'addMessageReaction',
   DELETE_MOCKED_USER = 'deleteMockedUsers',
   ADD_FRIEND = 'addFriend',
@@ -23,7 +25,16 @@ export enum ACTION {
   LIST_MESSAGE = 'listMessage',
   LIST_ALL_CHANNEL = 'listAllChannel',
   REPORT_USER = 'reportUser',
-  ADD_USER_STATUS = 'addUserStatus'
+  ADD_USER_STATUS = 'addUserStatus',
+  SEND_INVITATION = 'sendInvitation',
+  UPDATE_NICKNAME = 'updateNickname',
+  ASSIGN_AS_ADMIN = 'assignAsAdmin',
+  DISMISS_AS_ADMIN = 'dismissAsAdmin',
+  BAN_FROM_CHANNEL = 'banFromChannel',
+  UNBAN_FROM_CHANNEL = 'unbanFromChannel',
+  TRANSFER_OWNERSHIP = 'transferOwnership',
+  TRANSFER_OWNERSHIP_LEAVE_CHANNEL = 'transferOwnershipLeaveChannel',
+  LEAVE_CHANNEL = 'leaveChannel',
 }
 
 export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
@@ -41,6 +52,9 @@ export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
   },
   [ACTION.REPORT_DM_MESSAGE]: {
     path: APIPath.Message.ReportDMMessage, method: METHOD.POST
+  },
+  [ACTION.REPORT_MESSAGE]: {
+    path: APIPath.Message.ReportMessage, method: METHOD.POST
   },
   [ACTION.UPDATE_MESSAGE]: {
     path: APIPath.Message.UpdateMessage, method: METHOD.PUT
@@ -90,7 +104,37 @@ export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
   [ACTION.REPORT_USER]: {
     path: APIPath.UserReport.ReportUser, method: METHOD.POST
   },
-    [ACTION.ADD_USER_STATUS]: {
+  [ACTION.ADD_USER_STATUS]: {
     path: APIPath.UserProfile.AddUserStatus, method: METHOD.POST
+  },
+  [ACTION.CREATE_INVITATION]: {
+    path: APIPath.Invitation.CreateInvitation, method: METHOD.POST
+  },
+  [ACTION.SEND_INVITATION]: {
+    path: APIPath.Invitation.SendInvitation, method: METHOD.POST
+  },
+  [ACTION.UPDATE_NICKNAME]: {
+    path: APIPath.Member.UpdateNickname, method: METHOD.PUT
+  },
+  [ACTION.ASSIGN_AS_ADMIN]: {
+    path: APIPath.Member.AssignAsAdmin, method: METHOD.POST
+  },
+  [ACTION.DISMISS_AS_ADMIN]: {
+    path: APIPath.Member.AssignAsAdmin, method: METHOD.POST
+  },
+  [ACTION.BAN_FROM_CHANNEL]: {
+    path: APIPath.Member.BanFromChannel, method: METHOD.POST
+  },
+  [ACTION.UNBAN_FROM_CHANNEL]: {
+    path: APIPath.Member.UnbanFromChannel, method: METHOD.POST
+  },
+  [ACTION.TRANSFER_OWNERSHIP]: {
+    path: APIPath.Member.TransferOwnership, method: METHOD.POST
+  },
+  [ACTION.TRANSFER_OWNERSHIP_LEAVE_CHANNEL]: {
+    path: APIPath.Member.TransferOwnershipAndLeaveChannel, method: METHOD.POST
+  },
+  [ACTION.LEAVE_CHANNEL]: {
+    path: APIPath.Member.LeaveChannel, method: METHOD.POST
   },
 }

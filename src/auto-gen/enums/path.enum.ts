@@ -1,4 +1,4 @@
-export const APIPath =  {
+export const APIPath = {
   Invitation: {
     AcceptInvitation: '/Invitation/AcceptInvitation',
     DeclineInvitation: '/Invitation/DeclineInvitation',
@@ -95,5 +95,15 @@ export const APIPath =  {
   },
   UserReport: {
     ReportUser: '/UserReport/ReportUser'
+  },
+  Member: {
+    UpdateNickname: '/Member/UpdateNickname',
+    AssignAsAdmin: '/Member/AssignAsAdmin',
+    DismissAsAdmin: '/Member/DismissAsAdmin',
+    BanFromChannel: '/Member/BanFromChannel',
+    UnbanFromChannel: '/Member/UnbanFromChannel',
+    TransferOwnership: '/Member/TransferOwnership',
+    TransferOwnershipAndLeaveChannel: '/Member/TransferOwnershipAndLeaveChannel',
+    LeaveChannel: '/Member/LeaveChannel',
   }
 };
