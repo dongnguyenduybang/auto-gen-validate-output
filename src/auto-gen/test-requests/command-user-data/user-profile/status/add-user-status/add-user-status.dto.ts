@@ -1,10 +1,10 @@
 
-import { IsDefined, IsEnum, IsOptional, IsNotEmpty, IsString, MaxLength, IsEmoji, IsNotNull } from "../../decorator";
-import { ExpireAfterTimeEnum } from "../../enums";
+import { IsDefined, IsEnum, IsOptional, IsNotEmpty, IsString, MaxLength, IsEmoji, IsNotNull } from "../../../../../decorator";
+import { ExpireAfterTimeEnum } from "../../../../../enums";
 
 export class AddUserStatusDTO {
 
-        @IsOptional()
+    @IsOptional()
     @IsString()
     @IsDefined()
     @IsNotEmpty()
@@ -12,7 +12,7 @@ export class AddUserStatusDTO {
     @MaxLength(50)
     content: string = ''
 
-    @IsEmoji({value: 1})
+    @IsEmoji({ value: 1 })
     @IsDefined()
     @IsString()
     @IsOptional()
