@@ -1,0 +1,49 @@
+=== Request Test Report for update-dm-media-permission ===
+• Host: N/A
+• Endpoint: /Channel/UpdateDMMediaPermissionSetting
+• Date: 02/06/2025, 16:03:14
+
+=== Execution Steps ===
+
+=== Test Summary ===
+✅ Passed: 17
+❌ Failed: 3
+📊 Total: 20
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 1
+ 🟢 201: 0
+ 🟠 400: 0
+ 🟠 403: 16
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Unique Errors ===
+ 🟣 1. mediaPermissionSetting invalid enum value. Expected 0 | 1 | 2, received 'undefined' (Occurred: 1 time)
+ 🟣 2. mediaPermissionSetting should not be empty (Occurred: 1 time)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #6
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JWQY2BCT5DQZSW0QPAFT6TSB","mediaPermissionSetting":1}
+     ├─ Missing: Code: 404. Message: Data not found. Details: Data not found.
+     ├─ Extra: None
+     └─ Details: No details
+
+ 🟣 2. Case #7
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JWQY2BCT5DQZSW0QPAFT6TSB"}
+     ├─ Missing: None
+     ├─ Extra: mediaPermissionSetting invalid enum value. Expected 0 | 1 | 2, received 'undefined'
+     └─ Details: No details
+
+ 🟣 3. Case #8
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JWQY2BCT5DQZSW0QPAFT6TSB","mediaPermissionSetting":""}
+     ├─ Missing: None
+     ├─ Extra: mediaPermissionSetting should not be empty
+     └─ Details: No details
+
+=== End of Report ===

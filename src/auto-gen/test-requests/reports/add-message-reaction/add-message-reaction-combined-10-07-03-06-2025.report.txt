@@ -1,0 +1,26 @@
+=== Request Test Report for add-message-reaction ===
+• Host: N/A
+• Endpoint: /Message/AddMessageReaction
+• Date: 03/06/2025, 10:07:00
+
+=== Execution Steps ===
+
+=== Test Summary ===
+✅ Passed: 400
+❌ Failed: 0
+📊 Total: 400
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 16
+ 🟢 201: 0
+ 🟠 400: 0
+ 🟠 403: 384
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Unique Errors ===
+
+[DTO Validation Issues]
+
+=== End of Report ===

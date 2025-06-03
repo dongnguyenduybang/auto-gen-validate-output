@@ -1,0 +1,90 @@
+=== Request Test Report for update-user-status ===
+• Host: N/A
+• Endpoint: /UserProfile/UpdateUserStatus
+• Date: 02/06/2025, 16:16:07
+
+=== Execution Steps ===
+
+=== Test Summary ===
+✅ Passed: 3
+❌ Failed: 9
+📊 Total: 12
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 3
+ 🟢 201: 0
+ 🟠 400: 0
+ 🟠 403: 0
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Unique Errors ===
+ 🟣 1. status only accepts 1 emoji (Occurred: 9 times)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #1
+     ├─ Status: 200
+     ├─ Body: {"content":123,"status":123}
+     ├─ Missing: None
+     ├─ Extra: status only accepts 1 emoji
+     └─ Details: No details
+
+ 🟣 2. Case #3
+     ├─ Status: 200
+     ├─ Body: {"content":123,"status":"🧑🏼‍❤️‍💋‍🧑🏿🧑🏼‍❤️‍💋‍🧑🏿"}
+     ├─ Missing: None
+     ├─ Extra: status only accepts 1 emoji
+     └─ Details: No details
+
+ 🟣 3. Case #4
+     ├─ Status: 200
+     ├─ Body: {"content":123,"status":""}
+     ├─ Missing: None
+     ├─ Extra: status only accepts 1 emoji
+     └─ Details: No details
+
+ 🟣 4. Case #5
+     ├─ Status: 200
+     ├─ Body: {"content":"Hi hi","status":123}
+     ├─ Missing: None
+     ├─ Extra: status only accepts 1 emoji
+     └─ Details: No details
+
+ 🟣 5. Case #7
+     ├─ Status: 200
+     ├─ Body: {"content":"Hi hi","status":"🧑🏼‍❤️‍💋‍🧑🏿🧑🏼‍❤️‍💋‍🧑🏿"}
+     ├─ Missing: only accepts 1 emoji
+     ├─ Extra: status only accepts 1 emoji
+     └─ Details: No details
+
+ 🟣 6. Case #8
+     ├─ Status: 200
+     ├─ Body: {"content":"Hi hi","status":""}
+     ├─ Missing: None
+     ├─ Extra: status only accepts 1 emoji
+     └─ Details: No details
+
+ 🟣 7. Case #9
+     ├─ Status: 200
+     ├─ Body: {"content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","status":123}
+     ├─ Missing: None
+     ├─ Extra: status only accepts 1 emoji
+     └─ Details: No details
+
+ 🟣 8. Case #11
+     ├─ Status: 200
+     ├─ Body: {"content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","status":"🧑🏼‍❤️‍💋‍🧑🏿🧑🏼‍❤️‍💋‍🧑🏿"}
+     ├─ Missing: only accepts 1 emoji
+     ├─ Extra: status only accepts 1 emoji
+     └─ Details: No details
+
+ 🟣 9. Case #12
+     ├─ Status: 200
+     ├─ Body: {"content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","status":""}
+     ├─ Missing: None
+     ├─ Extra: status only accepts 1 emoji
+     └─ Details: No details
+
+=== End of Report ===
