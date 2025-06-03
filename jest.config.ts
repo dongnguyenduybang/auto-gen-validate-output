@@ -24,7 +24,7 @@ export default {
         },
     },
     extensionsToTreatAsEsm: ['.ts', '.tsx'],
-    maxWorkers: '50%',
+    maxWorkers: '75%',
     cache: true,
     bail: true,
     collectCoverage: false, 
