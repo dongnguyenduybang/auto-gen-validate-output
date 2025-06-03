@@ -142,6 +142,18 @@ export function IsULID() {
   };
 }
 
+export function IsUnique() {
+  return function (target: any, propertyKey: string) {
+    Reflect.defineMetadata('isUnique', true, target, propertyKey);
+  };
+}
+
+export function GenULID() {
+  return function (target: any, propertyKey: string) {
+    Reflect.defineMetadata('genULID', true, target, propertyKey);
+  };
+}
+
 export function IsMath(options?: {
   message?: string;
   value?: any;
