@@ -9,6 +9,7 @@ export enum ACTION {
   REPORT_DM_MESSAGE = 'reportDmMessage',
   REPORT_MESSAGE = 'reportMessage',
   UPDATE_MESSAGE = 'updateMessage',
+  UPDATE_DM_MESSAGE = 'updateDmMessage',
   GET_CHANNEL = 'getChannel',
   GET_MESSAGE = 'getMessage',
   ACCEPT_INVITATION = 'acceptInvitation',
@@ -26,6 +27,7 @@ export enum ACTION {
   LIST_ALL_CHANNEL = 'listAllChannel',
   REPORT_USER = 'reportUser',
   ADD_USER_STATUS = 'addUserStatus',
+  UPDATE_USER_STATUS = 'updateUserStatus',
   SEND_INVITATION = 'sendInvitation',
   UPDATE_NICKNAME = 'updateNickname',
   ASSIGN_AS_ADMIN = 'assignAsAdmin',
@@ -35,6 +37,14 @@ export enum ACTION {
   TRANSFER_OWNERSHIP = 'transferOwnership',
   TRANSFER_OWNERSHIP_LEAVE_CHANNEL = 'transferOwnershipLeaveChannel',
   LEAVE_CHANNEL = 'leaveChannel',
+  REMOVE_FROM_CHANNEL = 'removeFromChannel',
+  REVOKE_INVITATION = 'revokeInvitation',
+  UPDATE_CHANNEL_AVATAR = 'updateChannelAvatar',
+  DELETE_CHANNEL = 'deleteChannel',
+  UPDATE_DM_MEDIA_PERMISSION_SETTING = 'updateDmMediaPermissionSetting',
+  REVOKE_MESSAGE_REACTION = 'revokeMessageReaction',
+  QUOTE_MESSAGE = 'quoteMessage',
+  FORWARD_MESSAGE_CHANNEL = 'forwardMessageChannel',
 }
 
 export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
@@ -136,5 +146,35 @@ export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
   },
   [ACTION.LEAVE_CHANNEL]: {
     path: APIPath.Member.LeaveChannel, method: METHOD.POST
+  },
+  [ACTION.REMOVE_FROM_CHANNEL]: {
+    path: APIPath.Member.RemoveFromChannel, method: METHOD.DELETE
+  },
+  [ACTION.REVOKE_INVITATION]: {
+    path: APIPath.Invitation.RevokeInvitation, method: METHOD.DELETE
+  },
+  [ACTION.UPDATE_CHANNEL_AVATAR]: {
+    path: APIPath.Channel.UpdateChannelAvatar, method: METHOD.PUT
+  },
+  [ACTION.DELETE_CHANNEL]: {
+    path: APIPath.Channel.DeleteChannel, method: METHOD.DELETE
+  },
+  [ACTION.UPDATE_DM_MEDIA_PERMISSION_SETTING]: {
+    path: APIPath.Channel.UpdateDMMediaPermissionSetting, method: METHOD.PUT
+  },
+  [ACTION.UPDATE_USER_STATUS]: {
+    path: APIPath.UserProfile.UpdateUserStatus, method: METHOD.PUT
+  },
+  [ACTION.UPDATE_DM_MESSAGE]: {
+    path: APIPath.Message.UpdateDMMessage, method: METHOD.PUT
+  },
+  [ACTION.REVOKE_MESSAGE_REACTION]: {
+    path: APIPath.Message.RevokeMessageReaction, method: METHOD.PUT
+  },
+  [ACTION.QUOTE_MESSAGE]: {
+    path: APIPath.Message.QuoteMessage, method: METHOD.POST
+  },
+    [ACTION.FORWARD_MESSAGE_CHANNEL]: {
+    path: APIPath.Message.ForwardMessagesToChannel, method: METHOD.POST
   },
 }

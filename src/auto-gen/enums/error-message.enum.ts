@@ -8,9 +8,9 @@ export enum ErrorMessage {
   MIN = 'must not be less than',
   MAX = 'must not be greater than',
   MIN_ARRAY = 'array must contain at least',
-  MAX_ARRAY = 'must contain at most',
+  MAX_ARRAY = 'array must contain at most',
   INVALID_TYPE_NUMBER = 'must be a number conforming to the specified constraints',
-  INVALID_TYPE_STRING = 'expected string, received number',
+  INVALID_TYPE_STRING = 'expected string, received',
   INVALID_TYPE_BOOLEAN = 'must be a boolean',
   INVALID_TYPE_ARRAY = 'expected array, received',
   INVALID_TYPE_DATE = 'must be a date',
@@ -30,5 +30,6 @@ export enum ErrorMessage {
   COULD_NOT_PERMISSION = 'Could not resolve permission type',
   UNAUTHORIZED_REQUEST = 'Unauthorized request',
   INVALID_CHANNEL = 'Invalid channel',
-  INVALID_URL = 'invalid url'
+  INVALID_URL = 'invalid url',
+  UNIQUE_ARRAY_ITEM = 'array must contain unique items'
 }

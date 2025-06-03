@@ -25,4 +25,6 @@ export enum VAR {
   name1 = '{{name1}}',
   name2 = '{{name2}}',
   workspaceId = '0',
+  code = '{{code}}',
+  avatarPath = 'https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg',
 }

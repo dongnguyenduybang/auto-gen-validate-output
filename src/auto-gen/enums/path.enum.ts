@@ -4,6 +4,7 @@ export const APIPath = {
     DeclineInvitation: '/Invitation/DeclineInvitation',
     CreateInvitation: '/Invitation/CreateInvitation',
     SendInvitation: '/Invitation/SendInvitation',
+    RevokeInvitation: '/Invitation/RevokeInvitation'
   },
   Message: {
     SendMessage: '/Message/SendMessage',
@@ -59,6 +60,7 @@ export const APIPath = {
     UpdateDMMediaPermissionSetting: '/Channel/UpdateDMMediaPermissionSetting',
     AcceptMessageRequest: '/Channel/AcceptMessageRequest',
     RejectMessageRequest: '/Channel/RejectMessageRequest',
+    DeleteChannel: '/Channel/DeleteChannel',
   },
   Search: {
     SearchChannels: '/Search/SearchChannels',
@@ -88,7 +90,8 @@ export const APIPath = {
   },
   UserProfile: {
     UpdateUserDisplayName: '/UserProfile/UpdateUserDisplayName',
-    AddUserStatus: '/UserProfile/AddUserStatus'
+    AddUserStatus: '/UserProfile/AddUserStatus',
+    UpdateUserStatus: '/UserProfile/UpdateUserStatus'
   },
   ViewMember: {
     ListMembers: '/MemberView/ListMembers'
@@ -105,5 +108,6 @@ export const APIPath = {
     TransferOwnership: '/Member/TransferOwnership',
     TransferOwnershipAndLeaveChannel: '/Member/TransferOwnershipAndLeaveChannel',
     LeaveChannel: '/Member/LeaveChannel',
+    RemoveFromChannel: '/Member/RemoveFromChannel',
   }
 };
