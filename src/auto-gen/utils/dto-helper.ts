@@ -44,18 +44,6 @@ export function getDecorators(
     });
   }
 
-  // let proto = Object.getPrototypeOf(target);
-  // while (proto && proto !== Object.prototype) {
-  //   metadataKeys = Reflect.getMetadataKeys(proto, propertyKey);
-
-  //   metadataKeys.forEach((key) => {
-  //     if (!decorators[key]) {
-  //       decorators[key] = Reflect.getMetadata(key, proto, propertyKey);
-  //     }
-  //   });
-  //   proto = Object.getPrototypeOf(proto);
-  // }
-
   return decorators;
 }
 export function generateErrorCases(
@@ -150,8 +138,8 @@ export function generateErrorVariantsForField(
         }
       });
       break;
-    case 'boolean': `
-      variants.push('invalid_boolean');`
+    case 'boolean':
+      variants.push('invalid_boolean');
       variants.push(fieldValue);
       break;
   }
@@ -202,8 +190,8 @@ export function generateErrorVariantsForField(
     variants.push('');
   }
 
-  if (decorators['notNull']) {
-    variants.push('');
+  if (decorators['isNotNull']) {
+    variants.push(null);
   }
 
   if (decorators['isULID']) {
@@ -212,6 +200,10 @@ export function generateErrorVariantsForField(
   if (decorators['isInvalid']) {
     variants.push('invalid_value')
   }
+
+  //   if (decorators['isDefined']) {
+  //   variants.push('invalid_value')
+  // }
 
   return [...new Set(variants)];
 }
@@ -248,8 +240,8 @@ function addErrorIfNotExist(errors: string[], customMessage: string | null, defa
   }
 }
 
-function checkOptional(value: unknown, decorators: Record<string, any>): string[] | null {
-  if (decorators['optional'] && (value === undefined || value === null)) {
+function checkOptional(value: unknown, decorators: Record<string, any>): string[] {
+  if (decorators['optional'] && (value === undefined)) {
     return [];
   }
   return null;
@@ -323,23 +315,24 @@ function evaluateCondition(condition: ValidIfCondition, payload: Record<string, 
 function getDefinedErrorMessage(field: string): string {
   switch (field) {
     case 'channelId':
-      return 'Unsupported permission type';
+      return ErrorMessage.UNSUPPORTED_PERMISSION_TYPE;
     case 'workspaceId':
+      return ErrorMessage.COULD_NOT_PERMISSION;
     case 'userId':
-      return 'Could not resolve permission type';
+      return ErrorMessage.COULD_NOT_PERMISSION;
     default:
-      return `${ErrorMessage.DEFINED} '${field}'`;
+      return `${field} ${ErrorMessage.DEFINED}`;
   }
 }
 
 function checkIsDefined(field: string, value: unknown, decorators: Record<string, any>): string[] {
   const errors: string[] = [];
-  if (value === undefined || value === null) {
+  if (value === undefined) {
     if (decorators['isDefined']) {
       if (decorators['isInvalid']) {
         addErrorIfNotExist(errors, decorators['notUndefinedMessage'], getDefinedErrorMessage(field));
       } else {
-        addErrorIfNotExist(errors, decorators['notUndefinedMessage'], `${field} ${ErrorMessage.DEFINED}`);
+        addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.DEFINED}`);
       }
       return errors;
     }
@@ -347,12 +340,40 @@ function checkIsDefined(field: string, value: unknown, decorators: Record<string
   return null;
 }
 
+function checkIsNotNull(field: string, value: unknown, decorators: Record<string, any>): string[] {
+  const errors: string[] = [];
+  if (value === null && decorators['isNotNull']) {
+    if (decorators['IsInvalid']) {
+      if (field === 'workspaceId' || field === 'channelId' || field === 'userId') {
+        addErrorIfNotExist(errors, decorators['isNotNullMessage'], ErrorMessage.COULD_NOT_PERMISSION);
+      } else {
+        addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.NULL}`);
+      }
+    } else {
+      addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.NULL}`);
+    }
+  }
+  return errors;
+}
+
+
+function checkTypeBoolean(field: string, value: any, decorators: Record<string, any>): string[] {
+  const errors: string[] = [];
+  if (decorators['type'] === 'boolean' && typeof value !== 'boolean' && value === null) {
+    addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_TYPE_BOOLEAN} null`);
+  }
+  if (decorators['type'] === 'boolean' && typeof value !== 'boolean' && value !== null) {
+    addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_TYPE_BOOLEAN} ${typeof value}`);
+  }
+  return errors
+}
+
 function checkNotEmpty(field: string, value: unknown, decorators: Record<string, any>): string[] {
   const errors: string[] = [];
   if (value === '' && decorators['notEmpty']) {
     if (decorators['IsInvalid']) {
       if (field === 'workspaceId' || field === 'channelId' || field === 'userId') {
-        addErrorIfNotExist(errors, decorators['notEmptyMessage'], 'Could not resolve permission type');
+        addErrorIfNotExist(errors, decorators['notEmptyMessage'], ErrorMessage.COULD_NOT_PERMISSION);
       } else {
         addErrorIfNotExist(errors, decorators['notEmptyMessage'], `${field} ${ErrorMessage.EMPTY}`);
       }
@@ -412,11 +433,19 @@ function checkTypeString(field: string, value: unknown, decorators: Record<strin
       if (decorators['isInvalid']) {
         if (field === 'workspaceId' || field === 'channelId' || field === 'userId') {
           addErrorIfNotExist(errors, decorators['stringMessage'], null);
+        } else if (decorators['isNotNull'] && typeof value === 'object') {
+          addErrorIfNotExist(errors, decorators['stringMessage'], `${field} ${ErrorMessage.INVALID_TYPE_STRING} null`);
         } else {
-          addErrorIfNotExist(errors, decorators['stringMessage'], `${field} ${ErrorMessage.INVALID_TYPE_STRING}`);
+          addErrorIfNotExist(errors, decorators['stringMessage'], `${field} ${ErrorMessage.INVALID_TYPE_STRING} ${typeof value}`);
         }
+
       } else {
-        addErrorIfNotExist(errors, decorators['stringMessage'], `${field} ${ErrorMessage.INVALID_TYPE_STRING}`);
+        if (decorators['isNotNull'] && typeof value === 'object') {
+          addErrorIfNotExist(errors, decorators['stringMessage'], `${field} ${ErrorMessage.INVALID_TYPE_STRING} null`);
+        } else {
+          addErrorIfNotExist(errors, decorators['stringMessage'], `${field} ${ErrorMessage.INVALID_TYPE_STRING} ${typeof value}`);
+        }
+
       }
       return errors;
     }
@@ -445,6 +474,10 @@ function checkTypeString(field: string, value: unknown, decorators: Record<strin
         addErrorIfNotExist(errors, decorators['isInvalidMessage'], 'Unauthorized request');
         return errors;
       }
+      if (field === 'stickerId' && value !== VAR.stickerId) {
+        addErrorIfNotExist(errors, decorators['isInvalidMessage'], null);
+        return errors;
+      }
     }
 
     if (decorators['minLength'] || decorators['maxLength']) {
@@ -465,7 +498,6 @@ function checkTypeString(field: string, value: unknown, decorators: Record<strin
   }
   return errors;
 }
-
 function checkTypeNumber(field: string, value: unknown, decorators: Record<string, any>): string[] {
   const errors: string[] = [];
   if (decorators['type'] === 'number') {
@@ -488,7 +520,14 @@ function checkTypeArray(field: string, value: unknown, decorators: Record<string
 
   if (decorators['type'] === 'array') {
     // Kiểm tra xem giá trị có phải là mảng không
-    if (!Array.isArray(value)) {
+    if (!Array.isArray(value) && value === null) {
+      addErrorIfNotExist(
+        errors,
+        decorators['arrayMessage'],
+        `${field} ${ErrorMessage.INVALID_TYPE_ARRAY} null`
+      );
+      return errors;
+    } else if (!Array.isArray(value)) {
       addErrorIfNotExist(
         errors,
         decorators['arrayMessage'],
@@ -523,8 +562,12 @@ function checkTypeArray(field: string, value: unknown, decorators: Record<string
           const { name, params, message } = dec;
 
           //check type
-          if(typeof item !== 'string' && name === 'IsString'){
-
+          if (typeof item !== 'string' && name === 'IsString') {
+            addErrorIfNotExist(
+              errors,
+              null,
+              `${field} has element ${index} ${ErrorMessage.INVALID_TYPE_STRING} ${typeof item}`
+            )
           }
 
           //check min item
@@ -548,11 +591,10 @@ function checkTypeArray(field: string, value: unknown, decorators: Record<string
               `${field} has element ${index} ${ErrorMessage.INVALID_ULID}`
             )
           }
-          if(name === 'IsULID' && checkRegexULID(item) && !item.startsWith('{{')) {
-            console.log(item, value)
+          if (name === 'IsULID' && checkRegexULID(item) && !item.startsWith('{{')) {
             addErrorIfNotExist(
               errors,
-              null,
+              message,
               `${field} ${message}`
             )
           }
@@ -563,7 +605,7 @@ function checkTypeArray(field: string, value: unknown, decorators: Record<string
             if (uniqueItems.size !== value.length) {
               addErrorIfNotExist(
                 errors,
-                decorators['uniqueMessage'],
+                null,
                 `${field} ${ErrorMessage.UNIQUE_ARRAY_ITEM}`
               );
             }
@@ -572,11 +614,19 @@ function checkTypeArray(field: string, value: unknown, decorators: Record<string
         });
 
       } else {
-        addErrorIfNotExist(
-          errors,
-          null,
-          `${field} has element ${index} ${ErrorMessage.INVALID_TYPE_STRING} ${typeof item}`
-        )
+        if (item === null) {
+          addErrorIfNotExist(
+            errors,
+            null,
+            `${field} has element ${index} ${ErrorMessage.INVALID_TYPE_STRING} null`
+          )
+        } else {
+          addErrorIfNotExist(
+            errors,
+            null,
+            `${field} has element ${index} ${ErrorMessage.INVALID_TYPE_STRING} ${typeof item}`
+          )
+        }
       }
     });
   }
@@ -652,14 +702,15 @@ export function mapError(field: string, value: unknown, decorators: Record<strin
     checkTypeObject,
     checkEnum,
     checkValidURL,
-
+    checkTypeBoolean,
+    checkIsNotNull
   ];
 
   for (const check of checks) {
     const result = check(field, value, decorators);
     if (result && result.length > 0) {
       errors.push(...result);
-      if (check === checkValidURL || check === checkTypeString || check === checkTypeNumber || check === checkTypeArray || check === checkTypeObject || check === checkEnum) {
+      if (check === checkIsNotNull || check === checkTypeBoolean || check === checkValidURL || check === checkTypeString || check === checkTypeNumber || check === checkTypeArray || check === checkTypeObject || check === checkEnum) {
         break;
       }
     }
@@ -667,7 +718,6 @@ export function mapError(field: string, value: unknown, decorators: Record<strin
 
   return Array.from(new Set(errors));
 }
-
 export function softErrorFromMap(
   payload: Record<string, any>,
   dtoClass: any,

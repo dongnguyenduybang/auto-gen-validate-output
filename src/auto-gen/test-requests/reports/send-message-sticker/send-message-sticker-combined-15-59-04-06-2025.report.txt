@@ -1,0 +1,91 @@
+=== Request Test Report for send-message-sticker ===
+• Host: N/A
+• Endpoint: /Message/SendMessageSticker, /Message/SendMessageSticker, /Message/SendMessageSticker
+• Date: 04/06/2025, 15:59:13
+
+=== Execution Steps ===
+
+=== Test Summary ===
+✅ Passed: 1071
+❌ Failed: 9
+📊 Total: 1080
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 21
+ 🟢 201: 0
+ 🟠 400: 0
+ 🟠 403: 1050
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Unique Errors ===
+ 🟣 1. Message: This sticker has not been exists. (Occurred: 9 times)
+ 🟣 2. stickerId should not be empty (Occurred: 5 times)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #226
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":"0","channelId":"01JWX2JZW37EC1VHR98FW66YEW","stickerId":"","ref":123}
+     ├─ Missing: stickerId string must contain at least 1 character(s)
+     ├─ Extra: Message: This sticker has not been exists., stickerId should not be empty
+     └─ Details: No details
+
+ 🟣 2. Case #227
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":"0","channelId":"01JWX2JZW37EC1VHR98FW66YEW","stickerId":"","ref":"ref"}
+     ├─ Missing: stickerId string must contain at least 1 character(s)
+     ├─ Extra: Message: This sticker has not been exists., stickerId should not be empty
+     └─ Details: No details
+
+ 🟣 3. Case #228
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":"0","channelId":"01JWX2JZW37EC1VHR98FW66YEW","stickerId":"","ref":""}
+     ├─ Missing: stickerId string must contain at least 1 character(s)
+     ├─ Extra: Message: This sticker has not been exists., stickerId should not be empty
+     └─ Details: No details
+
+ 🟣 4. Case #229
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":"0","channelId":"01JWX2JZW37EC1VHR98FW66YEW","stickerId":""}
+     ├─ Missing: stickerId string must contain at least 1 character(s)
+     ├─ Extra: Message: This sticker has not been exists., stickerId should not be empty
+     └─ Details: No details
+
+ 🟣 5. Case #230
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":"0","channelId":"01JWX2JZW37EC1VHR98FW66YEW","stickerId":"","ref":null}
+     ├─ Missing: stickerId string must contain at least 1 character(s)
+     ├─ Extra: Message: This sticker has not been exists., stickerId should not be empty
+     └─ Details: No details
+
+ 🟣 6. Case #236
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":"0","channelId":"01JWX2JZW37EC1VHR98FW66YEW","stickerId":"invalid_value","ref":123}
+     ├─ Missing: None
+     ├─ Extra: Message: This sticker has not been exists.
+     └─ Details: No details
+
+ 🟣 7. Case #238
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":"0","channelId":"01JWX2JZW37EC1VHR98FW66YEW","stickerId":"invalid_value","ref":""}
+     ├─ Missing: None
+     ├─ Extra: Message: This sticker has not been exists.
+     └─ Details: No details
+
+ 🟣 8. Case #239
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":"0","channelId":"01JWX2JZW37EC1VHR98FW66YEW","stickerId":"invalid_value"}
+     ├─ Missing: None
+     ├─ Extra: Message: This sticker has not been exists.
+     └─ Details: No details
+
+ 🟣 9. Case #240
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":"0","channelId":"01JWX2JZW37EC1VHR98FW66YEW","stickerId":"invalid_value","ref":null}
+     ├─ Missing: None
+     ├─ Extra: Message: This sticker has not been exists.
+     └─ Details: No details
+
+=== End of Report ===

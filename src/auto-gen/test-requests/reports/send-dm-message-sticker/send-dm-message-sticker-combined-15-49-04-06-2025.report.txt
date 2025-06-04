@@ -1,0 +1,98 @@
+=== Request Test Report for send-dm-message-sticker ===
+• Host: N/A
+• Endpoint: /Message/SendDMMessageSticker
+• Date: 04/06/2025, 15:49:10
+
+=== Execution Steps ===
+
+=== Test Summary ===
+✅ Passed: 170
+❌ Failed: 10
+📊 Total: 180
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 20
+ 🟢 201: 0
+ 🟠 400: 0
+ 🟠 403: 150
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Unique Errors ===
+ 🟣 1. Message: This sticker has not been exists. (Occurred: 10 times)
+ 🟣 2. stickerId should not be empty (Occurred: 5 times)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #46
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JWX2198HR7RFRXNQYWKZY61K","stickerId":"","ref":123}
+     ├─ Missing: stickerId string must contain at least 1 character(s)
+     ├─ Extra: Message: This sticker has not been exists., stickerId should not be empty
+     └─ Details: No details
+
+ 🟣 2. Case #47
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JWX2198HR7RFRXNQYWKZY61K","stickerId":"","ref":"ref"}
+     ├─ Missing: stickerId string must contain at least 1 character(s)
+     ├─ Extra: Message: This sticker has not been exists., stickerId should not be empty
+     └─ Details: No details
+
+ 🟣 3. Case #48
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JWX2198HR7RFRXNQYWKZY61K","stickerId":"","ref":""}
+     ├─ Missing: stickerId string must contain at least 1 character(s)
+     ├─ Extra: Message: This sticker has not been exists., stickerId should not be empty
+     └─ Details: No details
+
+ 🟣 4. Case #49
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JWX2198HR7RFRXNQYWKZY61K","stickerId":""}
+     ├─ Missing: stickerId string must contain at least 1 character(s)
+     ├─ Extra: Message: This sticker has not been exists., stickerId should not be empty
+     └─ Details: No details
+
+ 🟣 5. Case #50
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JWX2198HR7RFRXNQYWKZY61K","stickerId":"","ref":null}
+     ├─ Missing: stickerId string must contain at least 1 character(s)
+     ├─ Extra: Message: This sticker has not been exists., stickerId should not be empty
+     └─ Details: No details
+
+ 🟣 6. Case #56
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JWX2198HR7RFRXNQYWKZY61K","stickerId":"invalid_value","ref":123}
+     ├─ Missing: None
+     ├─ Extra: Message: This sticker has not been exists.
+     └─ Details: No details
+
+ 🟣 7. Case #57
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JWX2198HR7RFRXNQYWKZY61K","stickerId":"invalid_value","ref":"ref"}
+     ├─ Missing: Code: 404. Message: Data not found. Details: Data not found.
+     ├─ Extra: Message: This sticker has not been exists.
+     └─ Details: No details
+
+ 🟣 8. Case #58
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JWX2198HR7RFRXNQYWKZY61K","stickerId":"invalid_value","ref":""}
+     ├─ Missing: None
+     ├─ Extra: Message: This sticker has not been exists.
+     └─ Details: No details
+
+ 🟣 9. Case #59
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JWX2198HR7RFRXNQYWKZY61K","stickerId":"invalid_value"}
+     ├─ Missing: None
+     ├─ Extra: Message: This sticker has not been exists.
+     └─ Details: No details
+
+ 🟣 10. Case #60
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JWX2198HR7RFRXNQYWKZY61K","stickerId":"invalid_value","ref":null}
+     ├─ Missing: None
+     ├─ Extra: Message: This sticker has not been exists.
+     └─ Details: No details
+
+=== End of Report ===

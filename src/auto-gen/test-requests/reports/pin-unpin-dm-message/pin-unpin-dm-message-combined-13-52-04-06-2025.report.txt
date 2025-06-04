@@ -1,0 +1,128 @@
+=== Request Test Report for pin-unpin-dm-message ===
+• Host: N/A
+• Endpoint: /Message/PinUnpinDMMessage
+• Date: 04/06/2025, 13:52:38
+
+=== Execution Steps ===
+
+=== Test Summary ===
+✅ Passed: 130
+❌ Failed: 14
+📊 Total: 144
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 10
+ 🟢 201: 0
+ 🟠 400: 0
+ 🟠 403: 120
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Unique Errors ===
+ 🟣 1. status expected boolean, received undefined (Occurred: 6 times)
+ 🟣 2. status required (Occurred: 6 times)
+ 🟣 3. status expected boolean, received null (Occurred: 6 times)
+ 🟣 4. messageId should not be empty (Occurred: 4 times)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #27
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JWWVBTDG1SF9VF09DNVB55QG","messageId":123}
+     ├─ Missing: None
+     ├─ Extra: status expected boolean, received undefined, status required
+     └─ Details: No details
+
+ 🟣 2. Case #28
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JWWVBTDG1SF9VF09DNVB55QG","messageId":123,"status":null}
+     ├─ Missing: None
+     ├─ Extra: status expected boolean, received null
+     └─ Details: No details
+
+ 🟣 3. Case #31
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JWWVBTDG1SF9VF09DNVB55QG","messageId":"01JWWVBVMHB7QP049E3X7W69CT"}
+     ├─ Missing: None
+     ├─ Extra: status expected boolean, received undefined, status required
+     └─ Details: No details
+
+ 🟣 4. Case #32
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JWWVBTDG1SF9VF09DNVB55QG","messageId":"01JWWVBVMHB7QP049E3X7W69CT","status":null}
+     ├─ Missing: None
+     ├─ Extra: status expected boolean, received null
+     └─ Details: No details
+
+ 🟣 5. Case #35
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JWWVBTDG1SF9VF09DNVB55QG"}
+     ├─ Missing: None
+     ├─ Extra: status expected boolean, received undefined, status required
+     └─ Details: No details
+
+ 🟣 6. Case #36
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JWWVBTDG1SF9VF09DNVB55QG","status":null}
+     ├─ Missing: None
+     ├─ Extra: status expected boolean, received null
+     └─ Details: No details
+
+ 🟣 7. Case #37
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JWWVBTDG1SF9VF09DNVB55QG","messageId":"","status":"invalid_boolean"}
+     ├─ Missing: messageId string must contain at least 1 character(s)
+     ├─ Extra: messageId should not be empty
+     └─ Details: No details
+
+ 🟣 8. Case #38
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JWWVBTDG1SF9VF09DNVB55QG","messageId":"","status":true}
+     ├─ Missing: messageId string must contain at least 1 character(s)
+     ├─ Extra: messageId should not be empty
+     └─ Details: No details
+
+ 🟣 9. Case #39
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JWWVBTDG1SF9VF09DNVB55QG","messageId":""}
+     ├─ Missing: messageId string must contain at least 1 character(s)
+     ├─ Extra: messageId should not be empty, status expected boolean, received undefined, status required
+     └─ Details: No details
+
+ 🟣 10. Case #40
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JWWVBTDG1SF9VF09DNVB55QG","messageId":"","status":null}
+     ├─ Missing: messageId string must contain at least 1 character(s)
+     ├─ Extra: messageId should not be empty, status expected boolean, received null
+     └─ Details: No details
+
+ 🟣 11. Case #43
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JWWVBTDG1SF9VF09DNVB55QG","messageId":null}
+     ├─ Missing: None
+     ├─ Extra: status expected boolean, received undefined, status required
+     └─ Details: No details
+
+ 🟣 12. Case #44
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JWWVBTDG1SF9VF09DNVB55QG","messageId":null,"status":null}
+     ├─ Missing: None
+     ├─ Extra: status expected boolean, received null
+     └─ Details: No details
+
+ 🟣 13. Case #47
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JWWVBTDG1SF9VF09DNVB55QG","messageId":"invalid_ULID"}
+     ├─ Missing: None
+     ├─ Extra: status expected boolean, received undefined, status required
+     └─ Details: No details
+
+ 🟣 14. Case #48
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JWWVBTDG1SF9VF09DNVB55QG","messageId":"invalid_ULID","status":null}
+     ├─ Missing: None
+     ├─ Extra: status expected boolean, received null
+     └─ Details: No details
+
+=== End of Report ===
