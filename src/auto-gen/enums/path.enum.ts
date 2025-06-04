@@ -15,7 +15,9 @@ export const APIPath = {
     ForwardMessagesToChannel: '/Message/ForwardMessagesToChannel',
     ReportMessage: '/Message/ReportMessage',
     MarkAsRead: '/Message/MarkAsRead',
+    MarkDmAsRead: '/Message/MarkDMAsRead',
     SendMessageSticker: '/Message/SendMessageSticker',
+    SendDmMessageSticker: '/Message/SendDMMessageSticker',
     MarkAllChannelsAsRead: '/Message/MarkAllChannelsAsRead',
     SendDMMessage: '/Message/SendDMMessage',
     SendDMMessageSticker: '/Message/SendDMMessageSticker',
@@ -27,6 +29,12 @@ export const APIPath = {
     ReportDMMessage: '/Message/ReportDMMessage',
     MarkDMAsRead: '/Message/MarkDMAsRead',
     Translation: '/Message/Translation',
+    PinUnpinDmMessage: '/Message/PinUnpinDMMessage',
+    PinUnpinMessage: '/Message/PinUnpinMessage',
+    SendLocation: '/Message/SendLocation',
+    SendDmLocation: '/Message/SendDMLocation',
+    SendPokeMessage: '/Message/SendPokeMessage',
+
   },
   ViewChannel: {
     GetChannel: '/ChannelView/GetChannel',

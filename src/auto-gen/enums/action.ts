@@ -44,7 +44,20 @@ export enum ACTION {
   UPDATE_DM_MEDIA_PERMISSION_SETTING = 'updateDmMediaPermissionSetting',
   REVOKE_MESSAGE_REACTION = 'revokeMessageReaction',
   QUOTE_MESSAGE = 'quoteMessage',
+  QUOTE_DM_MESSAGE = 'quoteDmMessage',
   FORWARD_MESSAGE_CHANNEL = 'forwardMessageChannel',
+  MARK_AS_READ = 'markAsRead',
+  MARK_DM_AS_READ = 'markDmAsRead',
+  PIN_UNPIN_DM_MESSAGE = 'pinUnpinDmMessage',
+  PIN_UNPIN_MESSAGE = 'pinUnpinMessage',
+  SEND_LOCATION = 'sendLocation',
+  SEND_DM_LOCATION = 'sendDmLocation',
+  SEND_POKE_MESSAGE = 'sendPokeMessage',
+  SEND_DM_MESSAGE_STICKER = 'sendDmMessageSticker',
+  SEND_MESSAGE_STICKER = 'sendMessageSticker',
+  ADD_DM_MESSAGE_REACTION = 'addDmMessageReaction',
+  REVOKE_DM_MESSAGE_REACTION = 'revokeDmMessageReaction',
+  FORWARD_DM_MESSAGE_CHANNEL = 'forwardDmMessageChannel'
 }
 
 export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
@@ -174,7 +187,46 @@ export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
   [ACTION.QUOTE_MESSAGE]: {
     path: APIPath.Message.QuoteMessage, method: METHOD.POST
   },
-    [ACTION.FORWARD_MESSAGE_CHANNEL]: {
+  [ACTION.FORWARD_MESSAGE_CHANNEL]: {
     path: APIPath.Message.ForwardMessagesToChannel, method: METHOD.POST
+  },
+  [ACTION.MARK_AS_READ]: {
+    path: APIPath.Message.MarkAsRead, method: METHOD.POST
+  },
+  [ACTION.MARK_DM_AS_READ]: {
+    path: APIPath.Message.MarkDmAsRead, method: METHOD.POST
+  },
+  [ACTION.PIN_UNPIN_DM_MESSAGE]: {
+    path: APIPath.Message.PinUnpinDmMessage, method: METHOD.POST
+  },
+  [ACTION.PIN_UNPIN_MESSAGE]: {
+    path: APIPath.Message.PinUnpinMessage, method: METHOD.POST
+  },
+  [ACTION.SEND_LOCATION]: {
+    path: APIPath.Message.PinUnpinMessage, method: METHOD.POST
+  },
+  [ACTION.SEND_DM_LOCATION]: {
+    path: APIPath.Message.SendDmLocation, method: METHOD.POST
+  },
+  [ACTION.SEND_POKE_MESSAGE]: {
+    path: APIPath.Message.SendPokeMessage, method: METHOD.POST
+  },
+  [ACTION.SEND_DM_MESSAGE_STICKER]: {
+    path: APIPath.Message.SendDMMessageSticker, method: METHOD.POST
+  },
+  [ACTION.SEND_MESSAGE_STICKER]: {
+    path: APIPath.Message.SendMessageSticker, method: METHOD.POST
+  },
+  [ACTION.QUOTE_DM_MESSAGE]: {
+    path: APIPath.Message.QuoteDMMessage, method: METHOD.POST
+  },
+  [ACTION.ADD_DM_MESSAGE_REACTION]: {
+    path: APIPath.Message.AddDMMessageReaction, method: METHOD.POST
+  },
+  [ACTION.REVOKE_DM_MESSAGE_REACTION]: {
+    path: APIPath.Message.RevokeDMMessageReaction, method: METHOD.PUT
+  },
+  [ACTION.FORWARD_DM_MESSAGE_CHANNEL]: {
+    path: APIPath.Message.ForwardMessagesToDMChannel, method: METHOD.POST
   },
 }
