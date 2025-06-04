@@ -21,11 +21,11 @@ export function IsOptional(options?: { value?: any }) {
    check property đó không được null*/
 export function IsNotNull(options?: { message?: string }) {
   return (target: any, propertyKey: string) => {
-    Reflect.defineMetadata('notNull', true, target, propertyKey);
+    Reflect.defineMetadata('isNotNull', true, target, propertyKey);
 
     if (options?.message) {
       Reflect.defineMetadata(
-        'notNullMessage',
+        'isNotNullMessage',
         options.message,
         target,
         propertyKey,
