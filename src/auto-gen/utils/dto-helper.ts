@@ -227,7 +227,6 @@ export function generateCombinations(
       [field]: errorVariant,
     }));
   });
-  console.log(JSON.stringify(fieldErrorVariants, null, 2));
   return combineFields(fieldErrorVariants).map((combination) => {
     return combination.reduce((acc, curr) => ({ ...acc, ...curr }), {});
   });

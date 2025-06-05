@@ -13,14 +13,9 @@ import {
 export class SendLocationDTO {
   @IsDefined({ message: ErrorMessage.COULD_NOT_PERMISSION })
   @IsInvalid({ message: ErrorMessage.INVALID_CHANNEL })
-  @IsNotEmpty({ message: ErrorMessage.COULD_NOT_PERMISSION })
-  @IsString({ message: ErrorMessage.COULD_NOT_PERMISSION })
   workspaceId: string = '';
 
-  @IsDefined({ message: ErrorMessage.UNSUPPORTED_PERMISSION_TYPE })
   @IsInvalid({ message: ErrorMessage.INVALID_CHANNEL })
-  @IsNotEmpty({ message: ErrorMessage.COULD_NOT_PERMISSION })
-  @IsString({ message: ErrorMessage.COULD_NOT_PERMISSION })
   channelId: string = '';
 
   @IsString()
