@@ -1,4 +1,4 @@
-import { ErrorMessage } from '@enum/';
+import { ErrorMessage } from '../../../../enums/index';
 import {
   IsDefined,
   IsNotEmpty,
@@ -7,7 +7,7 @@ import {
   IsArray,
   MinArray,
   IsNotNull,
-} from '@decorators/';
+} from '../../../../decorator/index';
 
 export class ForwardDmMessageChannelDTO {
   @IsString({ message: ErrorMessage.COULD_NOT_PERMISSION })

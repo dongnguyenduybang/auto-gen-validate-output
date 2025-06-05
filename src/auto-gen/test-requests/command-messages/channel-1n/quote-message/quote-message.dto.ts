@@ -6,7 +6,7 @@ import {
     MaxLength,
     MinLength,
     IsULID,
-} from '@decorators/';
+} from '../../../../decorator/index';
 
 export class QuoteMessageDTO {
     @IsDefined({ message: `Could not resolve permission type` })

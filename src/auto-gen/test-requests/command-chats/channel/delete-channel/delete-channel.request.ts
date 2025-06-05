@@ -1,5 +1,5 @@
-import { RequestTestSuite } from '@utils/declarations';
-import { ACTION, HEADER_LIST, VAR } from '@enum/';
+import { RequestTestSuite } from '../../../../utils/declarations';
+import { ACTION, HEADER_LIST, VAR } from '../../../../enums';
 
 export const DeleteChannelRequest: RequestTestSuite = {
   action: ACTION.DELETE_CHANNEL,

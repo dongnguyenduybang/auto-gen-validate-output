@@ -1,4 +1,4 @@
-import { VAR, ACTION, HEADER_LIST } from '@enum/';
+import { VAR, ACTION, HEADER_LIST } from '../../../../enums/index';
 
 export const UnbanFromChannelRequest = {
   action: ACTION.UNBAN_FROM_CHANNEL,

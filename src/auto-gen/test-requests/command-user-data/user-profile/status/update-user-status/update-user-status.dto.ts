@@ -1,4 +1,4 @@
-import { IsOptional, IsString, MaxLength, IsEmoji } from "@decorators/";
+import { IsOptional, IsString, MaxLength, IsEmoji } from "../../../../../decorator/index";
 
 
 export class UpdateUserStatusDTO {

@@ -1,7 +1,7 @@
 import { readFileSync, unlinkSync } from 'fs';
-import { ACTION, VAR } from '@enum/';
-import { executeSteps } from '@utils/text-execute-test';
-import { getOrThrow, setupConfiguration } from '@utils/get-config';
+import { ACTION, VAR } from '../enums/index';
+import { executeSteps } from '../utils/text-execute-test';
+import { getOrThrow, setupConfiguration } from '../utils/get-config';
 
 setupConfiguration();
 

@@ -1,4 +1,4 @@
-import { ErrorMessage } from '@enum/';
+import { ErrorMessage } from '../../../../enums/index';
 import {
     IsDefined,
     IsNotEmpty,
@@ -8,7 +8,7 @@ import {
     MinLength,
     IsULID,
     IsNotNull,
-} from '@decorators/';
+} from '../../../../decorator/index';
 
 export class QuoteDmMessageDTO {
     @IsString({ message: ErrorMessage.COULD_NOT_PERMISSION })

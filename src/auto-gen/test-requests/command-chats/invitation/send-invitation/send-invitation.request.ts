@@ -1,5 +1,5 @@
-import { ACTION, HEADER_LIST, VAR } from "@enum/";
-import { RequestTestSuite } from "@utils/declarations";
+import { ACTION, HEADER_LIST, VAR } from "../../../../enums/index";
+import { RequestTestSuite } from "../../../../utils/declarations";
 
 export const SendInvitationRequest: RequestTestSuite = {
   action: ACTION.SEND_INVITATION,

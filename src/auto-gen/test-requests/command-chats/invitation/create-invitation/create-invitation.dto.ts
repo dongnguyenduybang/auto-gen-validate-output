@@ -1,5 +1,5 @@
-import { ErrorMessage } from "@enum/";
-import { IsDefined, IsInvalid, IsNotEmpty, IsString, IsNumber, Min } from "@decorators/";
+import { ErrorMessage } from "../../../../enums/index";
+import { IsDefined, IsInvalid, IsNotEmpty, IsString, IsNumber, Min } from "../../../../decorator/index";
 
 export class CreateInvitationDTO {
     @IsDefined({ message: ErrorMessage.COULD_NOT_PERMISSION })

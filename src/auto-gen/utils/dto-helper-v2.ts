@@ -1,4 +1,4 @@
-import { generateErrorVariantsForField, getDecorators, softErrorFromMap } from "@utils/dto-helper";
+import { generateErrorVariantsForField, getDecorators, softErrorFromMap } from "./dto-helper";
 
 export function generateStructuredErrorCases(
   dtoClass: any,

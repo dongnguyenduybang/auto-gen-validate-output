@@ -2,10 +2,10 @@ import { writeFileSync } from 'fs';
 import {
   getOrThrow,
   setupConfiguration,
-} from '@utils/get-config';
-import { ACTION, VAR } from '@enum/';
-import { TestContext } from '@utils/text-context';
-import { executeSteps } from '@utils/text-execute-test';
+} from '../utils/get-config';
+import { ACTION, VAR } from '../enums';
+import { TestContext } from '../utils/text-context';
+import { executeSteps } from '../utils/text-execute-test';
 
 setupConfiguration();
 

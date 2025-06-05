@@ -1,5 +1,5 @@
-import { ACTION, HEADER_LIST, MediaDmPermissionSettingEnum, VAR } from "@enum/";
-import { RequestTestSuite } from "@utils/declarations";
+import { ACTION, HEADER_LIST, MediaDmPermissionSettingEnum, VAR } from "../../../../enums/index";
+import { RequestTestSuite } from "../../../../utils/declarations";
 
 export const UpdateDmMediaPermissionRequest: RequestTestSuite = {
   action: ACTION.UPDATE_DM_MEDIA_PERMISSION_SETTING,

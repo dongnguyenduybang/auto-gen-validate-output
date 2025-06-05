@@ -5,7 +5,7 @@ import {
   IsString,
   MaxLength,
   MinLength,
-} from '@decorators/';
+} from '../../../../decorator/index';
 
 export class SendMessageDTO {
   @IsDefined({ message: `Could not resolve permission type` })

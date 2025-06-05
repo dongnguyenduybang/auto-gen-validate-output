@@ -11,8 +11,8 @@ export default {
     },
 
     setupFiles: ['dotenv/config'],
-    setupFilesAfterEnv: ['./setup/jest.setup.ts'],
-    globalTeardown: './setup/jest.teardown.ts',
+    setupFilesAfterEnv: ['./src/auto-gen/setup/jest.setup.ts'],
+    globalTeardown: './src/auto-gen/setup/jest.teardown.ts',
 
     preset: 'ts-jest',
     moduleNameMapper: {

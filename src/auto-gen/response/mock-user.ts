@@ -6,7 +6,7 @@ import {
   IsBoolean,
   IsDefined,
   IsNumber,
-} from '@decorators/';
+} from '../decorator';
 
 export class MockUserData {
   @IsString()

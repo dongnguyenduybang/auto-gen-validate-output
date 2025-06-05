@@ -4,7 +4,7 @@ import {
   IsInvalid,
   IsString,
   IsNotNull,
-} from '@decorators/';
+} from '../../../../decorator/index';
 
 export class UnbanFromChannelDTO {
   @IsDefined({ message: `Could not resolve permission type` })

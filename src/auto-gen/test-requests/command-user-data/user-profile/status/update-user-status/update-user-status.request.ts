@@ -1,5 +1,5 @@
-import { ACTION, ExpireAfterTimeEnum, HEADER_LIST, VAR } from "@enum/";
-import { RequestTestSuite } from "@utils/declarations";
+import { ACTION, ExpireAfterTimeEnum, HEADER_LIST, VAR } from "../../../../../enums/index";
+import { RequestTestSuite } from "../../../../../utils/declarations";
 
 export const UpdateUserStatusRequest: RequestTestSuite = {
   action: ACTION.UPDATE_USER_STATUS,

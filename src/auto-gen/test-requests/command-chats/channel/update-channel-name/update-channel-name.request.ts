@@ -1,4 +1,4 @@
-import { VAR, ACTION, HEADER_LIST } from '@enum/';
+import { VAR, ACTION, HEADER_LIST } from '../../../../enums/index';
 
 export const UpdateChannelNameRequest = {
   action: ACTION.UPDATE_CHANNEL_NAME,

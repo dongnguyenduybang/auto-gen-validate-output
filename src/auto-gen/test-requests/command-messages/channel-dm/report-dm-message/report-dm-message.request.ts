@@ -1,5 +1,5 @@
-import { ACTION, HEADER_LIST, PretendingTo, ReportCategory, VAR } from "@enum/";
-import { RequestTestSuite } from "@utils/declarations";
+import { ACTION, HEADER_LIST, PretendingTo, ReportCategory, VAR } from "../../../../enums/index";
+import { RequestTestSuite } from "../../../../utils/declarations";
 
 export const ReportDmMessageRequest: RequestTestSuite = {
   action: ACTION.REPORT_DM_MESSAGE,

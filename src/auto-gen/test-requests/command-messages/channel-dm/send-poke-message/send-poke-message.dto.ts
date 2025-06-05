@@ -1,4 +1,4 @@
-import { ErrorMessage } from '@enum/';
+import { ErrorMessage } from '../../../../enums/index';
 import {
     IsString,
     MinLength,
@@ -6,7 +6,7 @@ import {
     IsDefined,
     IsNotEmpty,
     IsNotNull,
-} from '@decorators/';
+} from '../../../../decorator/index';
 
 export class SendPokeMessageDTO {
     @IsString({ message: ErrorMessage.COULD_NOT_PERMISSION })

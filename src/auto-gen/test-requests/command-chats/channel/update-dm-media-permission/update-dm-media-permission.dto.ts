@@ -1,4 +1,4 @@
-import { MediaPermissionSettingEnum } from '@enum/';
+import { MediaPermissionSettingEnum } from '../../../../enums/index';
 import {
   IsDefined,
   IsNotEmpty,
@@ -6,7 +6,7 @@ import {
   IsString,
   IsNotNull,
   IsEnum,
-} from '@decorators/';
+} from '../../../../decorator/index';
 
 export class UpdateDmMediaPermissionDTO {
 

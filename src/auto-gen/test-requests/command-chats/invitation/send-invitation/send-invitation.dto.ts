@@ -1,4 +1,4 @@
-import { IsDefined, IsNotEmpty, IsString, IsArray, MinArray, isValidURL } from "@decorators/";
+import { IsDefined, IsNotEmpty, IsString, IsArray, MinArray, isValidURL } from "../../../../decorator/index";
 
 export class SendInvitationDTO {
 

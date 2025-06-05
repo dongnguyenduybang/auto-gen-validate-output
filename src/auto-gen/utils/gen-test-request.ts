@@ -2,10 +2,16 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { findAllFoldersWithDtoAndRequest, formatExpectErrors, getAllFiles, getMatchedFilePaths, pairFiles, readJsonFile, resolveActionPath } from './helper';
 
+function getRelativeImportPath(fromPath: string, toPath: string): string {
+  const relativePath = path.relative(path.dirname(fromPath), toPath);
+  return relativePath.split(path.sep).join('/'); // Đảm bảo dùng forward slash
+}
+
 async function generateSpecContent(
   testCases: any[],
   requestConfig: any,
   className: string,
+   outputPath: string, // Thêm outputPath để tính relative path
   chunkNumber?: number,
   startIndex: number = 0,
   totalChunks?: number
@@ -17,15 +23,20 @@ async function generateSpecContent(
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join('');
 
+  const utilsPath = path.join(__dirname, '../utils');
+  const requestImportPath = `./${requestFilePathWithoutExt}.request`;
+  
+  const utilsImportPath = getRelativeImportPath(outputPath, utilsPath) || '@utils';
+
 
   return `
     import fs from 'fs';
     import path from 'path';
-    import { summaryFields, resolveCallAPI, resolveVariables } from '@utils/helper';
-    import { TestResult } from '@utils/declarations';
-    import { executeSteps } from '@utils/text-execute-test';
-    import { TestContext } from '@utils/text-context';
-    import { ${classNameCapitalized}Request } from './${requestFilePathWithoutExt}.request';
+    import { summaryFields, resolveCallAPI, resolveVariables } from '${utilsImportPath}/helper';
+    import { TestResult } from '${utilsImportPath}/declarations';
+    import { executeSteps } from '${utilsImportPath}/text-execute-test';
+    import { TestContext } from '${utilsImportPath}/text-context';
+    import { ${classNameCapitalized}Request } from './${requestImportPath}';
     describe('Testcase for ${className}${chunkNumber ? ` (Chunk ${chunkNumber})` : ''}', () => {
         let totalTests = 0;
         let allSteps = [];
@@ -230,7 +241,7 @@ async function generateSpecContent(
             logicTests: [...logicTests],
             failedStep: [...failedStep]
           };
-          const reportDir = path.join(__dirname, '../../tmp-reports');
+          const reportDir = path.join(__dirname, '../../../../tmp-reports');
   if (!fs.existsSync(reportDir)) {
     fs.mkdirSync(reportDir, { recursive: true });
   }
@@ -249,6 +260,7 @@ async function genTestCase(
   requestPath: string,
   className: string,
   outputDir: string,
+  
 ) {
   const payloadData = readJsonFile(payloadPath);
   console.log(`Total test cases in ${payloadPath}: ${payloadData.length}`);
@@ -275,31 +287,34 @@ async function genTestCase(
       const startIdx = i * CHUNK_SIZE;
       const endIdx = startIdx + CHUNK_SIZE;
       const chunkData = payloadData.slice(startIdx, endIdx);
-
+     const chunkFileName = `${className}-chunk-${i + 1}.spec.ts`;
+      const outputPath = path.join(outputDir, chunkFileName);
       const chunkSpecContent = await generateSpecContent(
         chunkData,
         requestConfig,
         className,
+        outputPath,
         i + 1,
         startIdx,
         totalChunks
       );
 
-      const chunkFileName = `${className}-chunk-${i + 1}.spec.ts`;
-      const outputPath = path.join(outputDir, chunkFileName);
+
+      
 
       fs.writeFileSync(outputPath, chunkSpecContent, 'utf-8');
       console.log(`Generated test file: ${outputPath}`);
     }
   } else {
-
+ const outputPath = path.join(outputDir, `${className}.spec.ts`);
     const specContent = await generateSpecContent(
       payloadData,
       requestConfig,
-      className
+      className,
+      outputPath
     );
 
-    const outputPath = path.join(outputDir, `${className}.spec.ts`);
+   
     fs.writeFileSync(outputPath, specContent, 'utf-8');
     console.log(`Success: ${outputPath}`);
   }

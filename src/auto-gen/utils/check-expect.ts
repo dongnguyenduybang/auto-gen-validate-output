@@ -1,4 +1,4 @@
-import { ACTION_CONFIG } from "@enum/";
+import { ACTION_CONFIG } from "../enums";
 import { getApiFunctions } from "../functions/api-registry";
 import { Expect, ExpectResult } from "./declarations";
 import { resolveVariables } from "./helper";

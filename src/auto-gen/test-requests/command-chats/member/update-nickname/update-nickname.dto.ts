@@ -6,7 +6,7 @@ import {
   MaxLength,
   MinLength,
   IsNotNull,
-} from '@decorators/';
+} from '../../../../decorator/index';
 
 export class UpdateNicknameDTO {
   @IsDefined({ message: `Could not resolve permission type` })

@@ -1,5 +1,5 @@
 
-import { GetChannelResponse,MockUserResponse, AcceptInvitationResponse, CreateChannelResponse, SendDmMessageResponse, SendMessageResponse, UpdateMessageResponse } from "@responses/";
+import { GetChannelResponse,MockUserResponse, AcceptInvitationResponse, CreateChannelResponse, SendDmMessageResponse, SendMessageResponse, UpdateMessageResponse } from "../response";
 import { TestContext } from "./text-context";
 
 export interface ValidationError {

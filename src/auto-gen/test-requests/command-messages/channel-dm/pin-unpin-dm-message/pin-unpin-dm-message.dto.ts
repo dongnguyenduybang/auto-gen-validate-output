@@ -7,7 +7,7 @@ import {
   IsNotNull,
   IsULID,
   IsBoolean,
-} from '@decorators/';
+} from '../../../../decorator/index';
 
 export class PinUnpinDmMessageDTO {
   @IsString({ message: `Could not resolve permission type` })

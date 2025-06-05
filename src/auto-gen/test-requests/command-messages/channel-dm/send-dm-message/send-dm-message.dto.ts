@@ -6,7 +6,7 @@ import {
   IsDefined,
   IsNotEmpty,
   IsNotNull,
-} from '@decorators/';
+} from '../../../../decorator/index';
 
 export class SendDmMessageDTO {
   @IsString({ message: `Could not resolve permission type` })
