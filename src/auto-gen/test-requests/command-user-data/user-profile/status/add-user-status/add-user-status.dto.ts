@@ -1,6 +1,5 @@
-
-import { IsDefined, IsEnum, IsOptional, IsNotEmpty, IsString, MaxLength, IsEmoji, IsNotNull } from "../../../../../decorator";
-import { ExpireAfterTimeEnum } from "../../../../../enums";
+import { IsDefined, IsEnum, IsOptional, IsNotEmpty, IsString, MaxLength, IsEmoji, IsNotNull } from "@decorators/";
+import { ExpireAfterTimeEnum } from "@enum/";
 
 export class AddUserStatusDTO {
 

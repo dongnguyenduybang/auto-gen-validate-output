@@ -1,14 +1,14 @@
 import fs from 'fs';
 import path from 'path';
 import 'reflect-metadata';
-import { genBodyRequest } from './utils/gen-body-request';
-import { genTestRequest } from './utils/gen-test-request';
+import { genBodyRequest } from '@utils/gen-body-request';
+import { genTestRequest } from '@utils/gen-test-request';
 import { execSync } from 'child_process';
-import { genTestResponse } from './utils/gen-test-response';
-import { genTestSaga } from './utils/gen-test-saga';
-import { ActionHandler } from './utils/declarations';
-import { generateAllReports } from './utils/combine-report';
-import { findTestPath } from './utils/helper';
+import { genTestResponse } from '@utils/gen-test-response';
+import { genTestSaga } from '@utils/gen-test-saga';
+import { ActionHandler } from '@utils/declarations';
+import { generateAllReports } from '@utils/combine-report';
+import { findTestPath } from '@utils/helper';
 
 const args = process.argv.slice(2);
 if (args.length < 2) {

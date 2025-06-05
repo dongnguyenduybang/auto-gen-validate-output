@@ -20,8 +20,8 @@ import {
   IsArray,
   IsBoolean,
   IsObject,
-} from '../decorator';
-import { DirectMessageStatusEnum } from '../enums';
+} from '@decorators/';
+import { DirectMessageStatusEnum } from '@enum/';
 
 export class Profile {}
 

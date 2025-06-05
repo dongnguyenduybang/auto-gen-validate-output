@@ -1,5 +1,5 @@
-import { ErrorMessage, PretendingTo, ReportCategory } from "../../../../enums";
-import { IsDefined, IsEnum, IsInvalid, IsNotEmpty, IsString, ValidIf, MinLength, MaxLength, GenEmoji } from "../../../../decorator";
+import { ErrorMessage, PretendingTo, ReportCategory } from "@enum/";
+import { IsDefined, IsEnum, IsInvalid, IsNotEmpty, IsString, ValidIf, MinLength, MaxLength, GenEmoji } from "@decorators/";
 
 export class ReportUserDTO {
     @IsString({

@@ -4,11 +4,11 @@ import 'reflect-metadata';
 import { IContext, responseClassMap, StepResult, ValidationError } from './declarations';
 import { TestContext } from './text-context';
 import emojiRegex from 'emoji-regex';
-import { ACTION_CONFIG, VAR } from '../enums';
+import { ACTION_CONFIG, VAR } from '@enum/';
 import { getApiFunctions } from '../functions/api-registry';
 import { ClassConstructor, plainToClass } from 'class-transformer';
 import { validateResponses } from '../validates/validate-response';
-import { BaseResponse } from '../response';
+import { BaseResponse } from '@responses/';
 export function pairFiles(
   files: string[],
 ): { dtoPath: string; requestPath: string; className: string }[] {

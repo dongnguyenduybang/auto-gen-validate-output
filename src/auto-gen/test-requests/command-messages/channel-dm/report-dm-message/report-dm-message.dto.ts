@@ -1,6 +1,6 @@
 
-import { ErrorMessage, PretendingTo, ReportCategory } from "../../../../enums";
-import { IsDefined, IsEnum, IsInvalid, IsNotEmpty, IsString, ValidIf, MinLength, MaxLength, IsEmoji, GenEmoji, IsULID, IsNotNull } from "../../../../decorator";
+import { ErrorMessage, PretendingTo, ReportCategory } from "@enum/";
+import { IsDefined, IsEnum, IsInvalid, IsNotEmpty, IsString, ValidIf, MinLength, MaxLength, IsULID, IsNotNull } from "@decorators/";
 
 export class ReportDmMessageDTO {
     @IsString({ message: ErrorMessage.COULD_NOT_PERMISSION })

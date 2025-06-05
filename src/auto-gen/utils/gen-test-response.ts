@@ -17,13 +17,13 @@ async function genTestCase(
     import fs from 'fs';
     import path from 'path';
     let allSteps = [];
-    import { getTime, summarizeErrors, resolveCallAPI, resolveVariables } from '../../utils/helper';
+    import { getTime, summarizeErrors, resolveCallAPI, resolveVariables } from '@ultils/helper';
     import { ${classNameCapitalized}Response } from '../../response/${className}.response';
     import { plainToInstance } from 'class-transformer';
     import { validateResponses } from '../../validates/validate-response';
-    import { TestContext } from '../../utils/text-context';
+    import { TestContext } from '@ultils/text-context';
     import { ${classNameCapitalized}ResponseConfig } from './${responseFilePathWithoutExt}.response';
-    import { executeSteps } from '../../utils/text-execute-test';
+    import { executeSteps } from '@ultils/text-execute-test';
     describe('Test response for ${className}', () => {
       let failedTests = [];
       let failedStep = []
@@ -160,7 +160,7 @@ async function genTestCase(
         const summary = summarizeErrors(failedTests, null, null);
         const classNames = \`${className}\`;
         const reportFileName = \`${className}-response-\${getTime()}.report.txt\`;  
-        const { combinedReportTemplate } = await import('../../utils/report-file');
+        const { combinedReportTemplate } = await import('@ultils/report-file');
         const reportContent = combinedReportTemplate(
             classNames,
             globalThis.url,

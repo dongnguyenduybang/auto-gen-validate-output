@@ -3,7 +3,7 @@ import {
   IsNotEmpty,
   IsInvalid,
   IsString,
-} from '../../../../decorator';
+} from '@decorators/';
 
 export class LeaveChannelDTO {
   @IsDefined({ message: `Could not resolve permission type` })

@@ -1,4 +1,4 @@
-import { VAR, ACTION, HEADER_LIST } from '../../../../enums';
+import { VAR, ACTION, HEADER_LIST } from '@enum/';
 
 export const BanFromChannelRequest = {
   action: ACTION.BAN_FROM_CHANNEL,

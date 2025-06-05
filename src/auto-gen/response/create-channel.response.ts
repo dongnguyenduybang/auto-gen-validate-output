@@ -18,8 +18,8 @@ import {
   IsObject,
   IsString,
   ValidIf,
-} from '../decorator';
-import { DirectMessageStatusEnum } from '../enums';
+} from '@decorators/';
+import { DirectMessageStatusEnum } from '@enum/';
 
 export class Message extends GeneralMessage {
   @ValidIf('workspaceId', '===', '0')

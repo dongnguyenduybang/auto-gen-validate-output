@@ -3,7 +3,7 @@ import {
   IsNotEmpty,
   IsInvalid,
   IsString,
-} from '../../../../decorator';
+} from '@decorators/';
 
 export class RevokeInvitationDTO {
   @IsDefined({ message: `Could not resolve permission type` })

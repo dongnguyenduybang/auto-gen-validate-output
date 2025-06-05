@@ -1,4 +1,4 @@
-import { VAR, ACTION, HEADER_LIST } from '../../../../enums';
+import { VAR, ACTION, HEADER_LIST } from '@enum/';
 
 export const ForwardDmMessageChannelRequest = {
   action: ACTION.FORWARD_DM_MESSAGE_CHANNEL,

@@ -1,5 +1,5 @@
-import { RequestTestSuite } from '../../../../utils/declarations';
-import { ACTION, HEADER_LIST, VAR } from '../../../../enums';
+import { RequestTestSuite } from '@utils/declarations';
+import { ACTION, HEADER_LIST, VAR } from '@enum/';
 
 export const MarkDmAsReadRequest: RequestTestSuite = {
   action: ACTION.MARK_DM_AS_READ,

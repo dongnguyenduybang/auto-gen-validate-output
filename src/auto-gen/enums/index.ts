@@ -8,6 +8,7 @@ export * from './embed-type.enum';
 export * from './error-message.enum';
 export * from './header.enum';
 export * from './media-permission-setting.enum';
+export * from './media-dm-permission-setting.enum';
 export * from './message-status.enum';
 export * from './message-type.enum';
 export * from './method.enum';

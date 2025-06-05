@@ -16,13 +16,23 @@
     "incremental": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "esModuleInterop": true, 
+    "esModuleInterop": true,
     "paths": {
       "@modules/*": [
         "../../*"
       ],
-      "@utils/*": ["auto-gen/utils/*"]
+      "@utils/*": [
+        "auto-gen/utils/*"
+      ],
+      "@enum/*": [
+        "auto-gen/enums/index"
+      ],
+      "@decorators/*": [
+        "auto-gen/decorator/index"
+      ],
+      "@responses/*": [
+        "auto-gen/response/index"
+      ]
     },
-    
   }
 }

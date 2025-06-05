@@ -1,7 +1,7 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import { generateErrorCases } from './dto-helper-v2';
-import { findAllFoldersWithDtoAndRequest, getAllFiles, getMatchedFilePaths, groupFilesByName } from './helper';
+import { findAllFoldersWithDtoAndRequest, getMatchedFilePaths, groupFilesByName } from './helper';
 export async function genBodyRequest(dtoName) {
   const baseRequestsPath = path.join(__dirname, '../test-requests');
   const foundFolders = findAllFoldersWithDtoAndRequest(baseRequestsPath, dtoName);

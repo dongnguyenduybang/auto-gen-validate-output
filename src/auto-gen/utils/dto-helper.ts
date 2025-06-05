@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { ErrorMessage, VAR } from '../enums';
+import { ErrorMessage, VAR } from '@enum/';
 import { checkRegexULID, checkURL, countEmojis, isEmoji } from './helper';
 import { FieldValueObject, PayloadGen, ValidIfCondition, ValidIfOptions } from './declarations';
 import { ulid } from 'ulidx';
