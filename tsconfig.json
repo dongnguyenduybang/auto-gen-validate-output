@@ -12,7 +12,7 @@
     "target": "ES6",
     "sourceMap": true,
     "outDir": "./dist",
-    "baseUrl": "./",
+    "baseUrl": "src",
     "incremental": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
@@ -20,7 +20,9 @@
     "paths": {
       "@modules/*": [
         "../../*"
-      ]
-    }
+      ],
+      "@utils/*": ["auto-gen/utils/*"]
+    },
+    
   }
 }
