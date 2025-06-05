@@ -1,4 +1,4 @@
-import { ErrorMessage } from '../../../../enums';
+import { ErrorMessage } from '../../enums';
 import {
   IsDefined,
   IsNotEmpty,
@@ -8,7 +8,7 @@ import {
   IsString,
   IsEmoji,
   IsNotNull,
-} from '../../../../decorator';
+} from '../../decorator';
 
 export class AddMessageReactionDTO {
   @IsDefined({ message: ErrorMessage.COULD_NOT_PERMISSION })
