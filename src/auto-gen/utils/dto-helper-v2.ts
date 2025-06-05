@@ -27,19 +27,14 @@ export function generateStructuredErrorCases(
 
   const allTestCases = [];
 
-  // Duyệt qua từng field làm "root"
   keys.forEach((rootField) => {
     const errorVariants = errorCasesByField[rootField];
-
-    // Với mỗi error variant của root field
     errorVariants.forEach((errorValue) => {
-      // Tạo base case với tất cả các field khác có giá trị đúng
+
       const baseCase = { ...validValues };
       
-      // Thay thế giá trị của root field bằng error value
       baseCase[rootField] = errorValue;
       
-      // Tạo test case cho trường hợp này
       const testCase = { ...baseCase };
       const errors = softErrorFromMap(testCase, dtoClass);
       allTestCases.push({
@@ -47,7 +42,6 @@ export function generateStructuredErrorCases(
         expects: errors.length > 0 ? errors : []
       });
       
-      // Tạo thêm các case kết hợp với từng field khác bị lỗi
       keys.forEach((otherField) => {
         if (otherField !== rootField) {
           const otherErrorVariants = errorCasesByField[otherField];
@@ -68,7 +62,6 @@ export function generateStructuredErrorCases(
     });
   });
 
-  // Thêm case tất cả đều đúng
   const allValidCase = { ...validValues };
   const validErrors = softErrorFromMap(allValidCase, dtoClass);
   allTestCases.push({
@@ -76,11 +69,9 @@ export function generateStructuredErrorCases(
     expects: validErrors.length > 0 ? validErrors : []
   });
 
-  // Loại bỏ các test case trùng lặp
   return removeDuplicateTestCases(allTestCases);
 }
 
-// Hàm loại bỏ test cases trùng lặp
 function removeDuplicateTestCases(testCases) {
   const seen = new Set<string>();
   const uniqueTestCases = [];
@@ -97,7 +88,6 @@ function removeDuplicateTestCases(testCases) {
   return uniqueTestCases;
 }
 
-// Hàm thay thế cho generateErrorCases gốc
 export function generateErrorCases(
   dtoClass: any,
   payload: Record<string, any>,
