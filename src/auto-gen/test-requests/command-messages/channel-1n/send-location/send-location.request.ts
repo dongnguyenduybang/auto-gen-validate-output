@@ -1,5 +1,5 @@
-import { RequestTestSuite } from '../../../../utils/declarations';
-import { ACTION, HEADER_LIST, VAR } from '../../../../enums';
+import { RequestTestSuite } from '@utils/declarations';
+import { ACTION, HEADER_LIST, VAR } from '@enum/';
 
 export const SendLocationRequest: RequestTestSuite = {
   action: ACTION.SEND_LOCATION,

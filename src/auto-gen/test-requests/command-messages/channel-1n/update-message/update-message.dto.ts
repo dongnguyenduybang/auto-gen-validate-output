@@ -7,7 +7,7 @@ import {
   IsString,
   MaxLength,
   MinLength,
-} from '../../../../decorator';
+} from '@utils/declarations';
 
 export class UpdateMessageDTO {
   @IsDefined({ message: `Could not resolve permission type` })

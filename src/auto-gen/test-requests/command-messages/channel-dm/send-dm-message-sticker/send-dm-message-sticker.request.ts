@@ -1,4 +1,4 @@
-import { VAR, ACTION, HEADER_LIST } from '../../../../enums';
+import { VAR, ACTION, HEADER_LIST } from '@enum/';
 
 export const SendDmMessageStickerRequest = {
   action: ACTION.SEND_DM_MESSAGE_STICKER,

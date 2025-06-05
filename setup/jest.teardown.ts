@@ -1,7 +1,7 @@
 import { readFileSync, unlinkSync } from 'fs';
-import { ACTION, VAR } from '../src/auto-gen/enums';
-import { executeSteps } from '../src/auto-gen/utils/text-execute-test';
-import { getOrThrow, setupConfiguration } from '../src/auto-gen/utils/get-config';
+import { ACTION, VAR } from '@enum/';
+import { executeSteps } from '@utils/text-execute-test';
+import { getOrThrow, setupConfiguration } from '@utils/get-config';
 
 setupConfiguration();
 

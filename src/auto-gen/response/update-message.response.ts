@@ -20,8 +20,8 @@ import {
   IsDefined,
   IsObject,
   IsString,
-} from '../decorator';
-import { DirectMessageStatusEnum } from '../enums';
+} from '@decorators/';
+import { DirectMessageStatusEnum } from '@enum/';
 
 export class Profile {}
 

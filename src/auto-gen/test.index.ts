@@ -1,13 +1,14 @@
 import fs from 'fs';
 import path from 'path';
 import 'reflect-metadata';
-import { genBodyRequest } from './utils/gen-body-request';
-import { genTestRequest } from './utils/gen-test-request';
+import { genBodyRequest } from '@utils/gen-body-request';
+import { genTestRequest } from '@utils/gen-test-request';
 import { execSync } from 'child_process';
-import { genTestResponse } from './utils/gen-test-response';
-import { genTestSaga } from './utils/gen-test-saga';
-import { ActionHandler } from './utils/declarations';
-import { generateAllReports } from './utils/combine-report';
+import { genTestResponse } from '@utils/gen-test-response';
+import { genTestSaga } from '@utils/gen-test-saga';
+import { ActionHandler } from '@utils/declarations';
+import { generateAllReports } from '@utils/combine-report';
+import { findTestPath } from '@utils/helper';
 
 const args = process.argv.slice(2);
 if (args.length < 2) {
@@ -21,13 +22,13 @@ const [action, type, ...restArgs] = args;
 let subType, dtoName;
 
 if (type === 'report') {
-  
+
   [subType, dtoName] = restArgs;
 } else if (type !== 'reports') {
 
   dtoName = restArgs[0];
 } else {
-  dtoName = restArgs[0]; 
+  dtoName = restArgs[0];
 }
 const validTypes = ['request', 'response', 'saga', 'report', 'reports'];
 
@@ -95,12 +96,25 @@ function getSubDirectories(dirPath: string): string[] {
     )
     .map((dirent) => dirent.name);
 }
+
+
+
 function runTests(testType: string): ActionHandler {
   return async (dtoName) => {
     console.log(`Running test for ${testType} "${dtoName}"...`);
     try {
-      const testPath = `src/auto-gen/${testType}/${dtoName}`;
-      execSync(`jest ${testPath}`, { stdio: 'inherit' });
+      const basePath = path.resolve(__dirname, testType);
+      const testPath = findTestPath(basePath, dtoName);
+
+      if (!testPath) {
+        console.error(`Test file not found for ${dtoName} in ${basePath}`);
+        process.exit(1);
+      }
+
+      const normalizedPath = testPath.replace(/\\/g, '/');
+      console.log(`Running test at: ${normalizedPath}`);
+
+      execSync(`jest "${normalizedPath}"`, { stdio: 'inherit' });
     } catch (error) {
       console.error(`Test failed for ${dtoName}:`, error.message);
       process.exit(1);
@@ -110,20 +124,33 @@ function runTests(testType: string): ActionHandler {
 
 function clearFiles(testType: string): ActionHandler {
   return async (dtoName) => {
-    const targetDir = path.join(__dirname, testType, dtoName);
-    if (!fs.existsSync(targetDir)) {
-      console.error(`${testType} directory not found: ${targetDir}`);
+    const basePath = path.join(__dirname, testType);
+    if (!fs.existsSync(basePath)) {
+      console.error(`${testType} directory not found: ${basePath}`);
       return;
     }
 
-    fs.readdirSync(targetDir)
-      .filter((file) => file.endsWith('.spec.ts'))
-      .forEach((file) => {
-        const filePath = path.join(targetDir, file);
-        fs.unlinkSync(filePath);
-        console.log(`Deleted: ${filePath}`);
-      });
+    function clearDirectory(dir: string) {
+      const entries = fs.readdirSync(dir, { withFileTypes: true });
+
+      for (const entry of entries) {
+        const fullPath = path.join(dir, entry.name);
+
+        if (entry.isDirectory()) {
+          clearDirectory(fullPath);
+        } else if (
+          entry.name.toLowerCase().includes(dtoName.toLowerCase()) &&
+          entry.name.endsWith('.spec.ts')
+        ) {
+          fs.unlinkSync(fullPath);
+          console.log(`Deleted: ${fullPath}`);
+        }
+      }
+    }
+
+    clearDirectory(basePath);
   };
+
 }
 
 function clearReports(reportType: string): ActionHandler {
@@ -143,6 +170,7 @@ function clearReports(reportType: string): ActionHandler {
       });
   };
 }
+
 async function main() {
   console.log(
     `Processing "${type}${subType ? ` ${subType}` : ''}"${dtoName ? ` for: ${dtoName}` : ''

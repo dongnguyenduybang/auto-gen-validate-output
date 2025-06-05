@@ -4,7 +4,7 @@ import {
   IsInvalid,
   IsString,
   isValidURL,
-} from '../../../../decorator';
+} from '@decorators/';
 
 export class UpdateChannelAvatarDTO {
   @IsDefined({ message: `Could not resolve permission type` })

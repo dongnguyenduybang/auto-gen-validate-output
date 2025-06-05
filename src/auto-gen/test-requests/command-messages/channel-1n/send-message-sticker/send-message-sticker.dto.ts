@@ -1,4 +1,4 @@
-import { ErrorMessage } from '../../../../enums';
+import { ErrorMessage } from '@enum/';
 import {
   IsString,
   MinLength,
@@ -6,7 +6,7 @@ import {
   IsDefined,
   IsNotEmpty,
   IsNotNull,
-} from '../../../../decorator';
+} from '@decorators/';
 
 export class SendMessageStickerDTO {
   @IsDefined({ message: ErrorMessage.COULD_NOT_PERMISSION })

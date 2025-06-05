@@ -4,7 +4,7 @@ import {
   IsInvalid,
   IsString,
   IsNotNull,
-} from '../../../../decorator';
+} from '@decorators/';
 
 export class AssignAsAdminDTO {
   @IsDefined({ message: `Could not resolve permission type` })

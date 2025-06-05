@@ -1,4 +1,4 @@
-import { ErrorMessage } from '../../../../enums';
+import { ErrorMessage } from '@enum/';
 import {
   IsString,
   IsInvalid,
@@ -7,7 +7,7 @@ import {
   IsNotNull,
   IsULID,
   IsBoolean,
-} from '../../../../decorator';
+} from '@decorators/';
 
 export class PinUnpinMessageDTO {
   @IsDefined({ message: ErrorMessage.COULD_NOT_PERMISSION })

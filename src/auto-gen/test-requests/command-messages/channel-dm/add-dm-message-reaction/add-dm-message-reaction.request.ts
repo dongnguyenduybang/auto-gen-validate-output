@@ -1,4 +1,4 @@
-import { VAR, ACTION, HEADER_LIST } from '../../../../enums';
+import { VAR, ACTION, HEADER_LIST } from '@enum/';
 
 export const AddDmMessageReactionRequest = {
   action: ACTION.ADD_DM_MESSAGE_REACTION,

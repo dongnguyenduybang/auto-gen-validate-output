@@ -203,7 +203,7 @@ export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
     path: APIPath.Message.PinUnpinMessage, method: METHOD.POST
   },
   [ACTION.SEND_LOCATION]: {
-    path: APIPath.Message.PinUnpinMessage, method: METHOD.POST
+    path: APIPath.Message.SendLocation, method: METHOD.POST
   },
   [ACTION.SEND_DM_LOCATION]: {
     path: APIPath.Message.SendDmLocation, method: METHOD.POST

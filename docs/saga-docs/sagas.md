@@ -14,13 +14,13 @@ Bước 1: Định nghĩa file cấu trúc các step sẽ check
 
 - 📄 send-message.saga.ts 
 ```
-import { SagaTestSuite } from '../../utils/declarations';
+import { SagaTestSuite } from '@ultils/declarations';
 import {
   VAR,
   ACTION,
   HEADER_LIST,
 } from '../../enums';
-import { executeFunction } from '../../utils/expect-config';
+import { executeFunction } from '@ultils/expect-config';
 
 export const CreateChannelSaga: SagaTestSuite = {
   options: [

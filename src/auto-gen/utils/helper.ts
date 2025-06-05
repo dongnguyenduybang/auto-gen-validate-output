@@ -4,11 +4,11 @@ import 'reflect-metadata';
 import { IContext, responseClassMap, StepResult, ValidationError } from './declarations';
 import { TestContext } from './text-context';
 import emojiRegex from 'emoji-regex';
-import { ACTION_CONFIG, VAR } from '../enums';
+import { ACTION_CONFIG, VAR } from '@enum/';
 import { getApiFunctions } from '../functions/api-registry';
 import { ClassConstructor, plainToClass } from 'class-transformer';
 import { validateResponses } from '../validates/validate-response';
-import { BaseResponse } from '../response';
+import { BaseResponse } from '@responses/';
 export function pairFiles(
   files: string[],
 ): { dtoPath: string; requestPath: string; className: string }[] {
@@ -119,10 +119,9 @@ export function summarizeErrors(
   return summary;
 }
 
-export function getAllFiles(dirPath: string): string[] {
-  let files: string[] = [];
+export function getAllFiles(dirPath: string): string[]{
+  let files: string[] = []
   const items = fs.readdirSync(dirPath);
-  console.log(items);
   items.forEach((item) => {
     const itemPath = path.join(dirPath, item);
     if (fs.statSync(itemPath).isDirectory()) {
@@ -135,7 +134,28 @@ export function getAllFiles(dirPath: string): string[] {
   return files;
 }
 
-export function getResponseFile(dirPath: string): string {
+export function getMatchedFilePaths(foundFolders: Array<{
+  path: string;
+  dtoFiles: string[];
+  requestFiles: string[];
+}>): string[] {
+  const result: string[] = [];
+
+  for (const folder of foundFolders) {
+    // Thêm đường dẫn đầy đủ cho các file .dto.ts
+    folder.dtoFiles.forEach(file => {
+      result.push(path.join(folder.path, file));
+    });
+
+    // Thêm đường dẫn đầy đủ cho các file .request.ts
+    folder.requestFiles.forEach(file => {
+      result.push(path.join(folder.path, file));
+    });
+  }
+
+  return result;
+}
+export function getResponseFile(dirPath: string): string | string {
   try {
     const files = fs.readdirSync(dirPath);
     const responseFile = files.find((file) => file.endsWith('.response.ts'));
@@ -450,4 +470,69 @@ export function countEmojis(str: unknown): number {
 
   const regex = emojiRegex();
   return Array.from(str.matchAll(regex)).length;
+}
+
+export function findTestPath(basePath: string, dtoName: string): string | null {
+  const absoluteBasePath = path.resolve(basePath);
+  const findSpecFiles = (dir: string): string[] => {
+    try {
+      const entries = fs.readdirSync(dir, { withFileTypes: true });
+      const files = entries
+        .filter(file => !file.isDirectory() &&
+          file.name.toLowerCase().includes(dtoName.toLowerCase()) &&
+          file.name.endsWith('.spec.ts'))
+        .map(file => path.join(dir, file.name));
+
+      const folders = entries.filter(entry => entry.isDirectory());
+      for (const folder of folders) {
+        files.push(...findSpecFiles(path.join(dir, folder.name)));
+      }
+      return files;
+    } catch (error) {
+      return [];
+    }
+  };
+
+  const specFiles = findSpecFiles(absoluteBasePath);
+  return specFiles.length > 0 ? specFiles[0] : null;
+}
+
+export function findAllFoldersWithDtoAndRequest(basePath: string, folderName: string) {
+  const results: {
+    path: string;
+    dtoFiles: string[];
+    requestFiles: string[];
+  }[] = [];
+
+  function scanDirectory(dir: string) {
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+    const currentFolder = path.basename(dir);
+    
+    // Nếu là thư mục cần tìm
+    if (currentFolder.toLowerCase() === folderName.toLowerCase()) {
+      const dtoFiles = entries
+        .filter(e => !e.isDirectory() && e.name.endsWith('.dto.ts'))
+        .map(e => e.name);
+      
+      const requestFiles = entries
+        .filter(e => !e.isDirectory() && e.name.endsWith('.request.ts'))
+        .map(e => e.name);
+
+      // Nếu có cả 2 loại file thì thêm vào kết quả
+      if (dtoFiles.length > 0 && requestFiles.length > 0) {
+        results.push({
+          path: dir,
+          dtoFiles,
+          requestFiles
+        });
+      }
+    }
+    
+    entries
+      .filter(e => e.isDirectory())
+      .forEach(e => scanDirectory(path.join(dir, e.name)));
+  }
+
+  scanDirectory(basePath);
+  return results;
 }
