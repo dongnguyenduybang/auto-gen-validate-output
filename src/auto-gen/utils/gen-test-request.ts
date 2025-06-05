@@ -1,6 +1,6 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import { formatExpectErrors, getAllFiles, pairFiles, readJsonFile, resolveActionPath } from './helper';
+import { findAllFoldersWithDtoAndRequest, formatExpectErrors, getAllFiles, getMatchedFilePaths, pairFiles, readJsonFile, resolveActionPath } from './helper';
 
 async function generateSpecContent(
   testCases: any[],
@@ -11,20 +11,20 @@ async function generateSpecContent(
   totalChunks?: number
 ): Promise<string> {
 
-      const requestFilePathWithoutExt = className.replace('.request.ts', '');
-    const classNameCapitalized = requestFilePathWithoutExt
-      .split('-')
-      .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-      .join('');
+  const requestFilePathWithoutExt = className.replace('.request.ts', '');
+  const classNameCapitalized = requestFilePathWithoutExt
+    .split('-')
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join('');
 
 
   return `
     import fs from 'fs';
     import path from 'path';
-    import { summaryFields, resolveCallAPI, resolveVariables } from '../../utils/helper';
-    import { TestResult } from '../../utils/declarations';
-    import { executeSteps } from '../../utils/text-execute-test';
-    import { TestContext } from '../../utils/text-context';
+    import { summaryFields, resolveCallAPI, resolveVariables } from '@utils/helper';
+    import { TestResult } from '@utils/declarations';
+    import { executeSteps } from '@utils/text-execute-test';
+    import { TestContext } from '@utils/text-context';
     import { ${classNameCapitalized}Request } from './${requestFilePathWithoutExt}.request';
     describe('Testcase for ${className}${chunkNumber ? ` (Chunk ${chunkNumber})` : ''}', () => {
         let totalTests = 0;
@@ -248,7 +248,7 @@ async function genTestCase(
   payloadPath: string,
   requestPath: string,
   className: string,
-  outputDir: string
+  outputDir: string,
 ) {
   const payloadData = readJsonFile(payloadPath);
   console.log(`Total test cases in ${payloadPath}: ${payloadData.length}`);
@@ -305,22 +305,27 @@ async function genTestCase(
   }
 }
 export function genTestRequest(dtoName: string) {
-  const dtosDir = path.join(__dirname, '../test-requests', dtoName);
-  const payloadsDir = path.join(__dirname, '../test-requests', dtoName);
-  const allFiles = getAllFiles(dtosDir);
-  const pairedFiles = pairFiles(allFiles);
+  const dtoFolderPath = path.join(__dirname, '../test-requests', dtoName);
+  const baseRequestsPath = path.join(__dirname, '../test-requests');
+  const foundFolders = findAllFoldersWithDtoAndRequest(baseRequestsPath, dtoName);
+  const file = getMatchedFilePaths(foundFolders)
+  const pairedFiles = pairFiles(file);
 
   pairedFiles.forEach(({ dtoPath, requestPath, className }) => {
     if (dtoPath && requestPath) {
-      const payloadPath = path.join(payloadsDir, `${className}.payload.json`);
-      const outputDir = path.join(__dirname, `../test-requests/${className}`);
 
-      if (fs.existsSync(payloadPath)) {
-        genTestCase(payloadPath, requestPath, className, outputDir)
-          .catch(err => console.error(`Error generating tests for ${className}:`, err));
-      } else {
-        console.warn(`Missing payload file for class: ${className}`);
+      for (const folder of foundFolders) {
+        const outputDir = folder.path;
+        const payloadPath = path.join(outputDir, `${className}.payload.json`);
+        if (fs.existsSync(payloadPath)) {
+          genTestCase(payloadPath, requestPath, className, outputDir)
+            .catch(err => console.error(`Error generating tests for ${className}:`, err));
+        } else {
+          console.warn(`Missing payload file for class: ${className}`);
+        }
       }
+
+
     } else {
       console.warn(`Missing .dto or .request.ts for class: ${className}`);
     }
