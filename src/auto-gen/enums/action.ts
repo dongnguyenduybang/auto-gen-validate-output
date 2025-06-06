@@ -59,7 +59,9 @@ export enum ACTION {
   REVOKE_DM_MESSAGE_REACTION = 'revokeDmMessageReaction',
   FORWARD_DM_MESSAGE_CHANNEL = 'forwardDmMessageChannel',
   SEND_DM_MESSAGE_MEDIA = 'sendDmMessageMedia',
-  SEND_MESSAGE_MEDIA = 'sendMessageMedia'
+  UPDATE_DM_MEDIA_ATTACHMENT = 'updateDmMediaAttachment',
+  SEND_MESSAGE_MEDIA = 'sendMessageMedia',
+  UPDATE_MEDIA_ATTACHMENT= 'updateMediaAttachment',
 }
 
 export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
@@ -234,7 +236,13 @@ export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
   [ACTION.SEND_DM_MESSAGE_MEDIA]: {
     path: APIPath.Message.SendDmMessageMedia, method: METHOD.POST
   },
+  [ACTION.UPDATE_DM_MEDIA_ATTACHMENT]: {
+    path: APIPath.Message.UpdateDmMediaAttachments, method: METHOD.POST
+  },
   [ACTION.SEND_MESSAGE_MEDIA]: {
     path: APIPath.Message.SendMessageMedia, method: METHOD.POST
+  },
+  [ACTION.UPDATE_MEDIA_ATTACHMENT]: {
+    path: APIPath.Message.UpdateMediaAttachments, method: METHOD.POST
   },
 }

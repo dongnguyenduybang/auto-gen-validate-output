@@ -35,6 +35,8 @@ export const APIPath = {
     SendDmLocation: '/Message/SendDMLocation',
     SendPokeMessage: '/Message/SendPokeMessage',
     SendDmMessageMedia: '/Message/SendDmMessageMedia',
+    UpdateDmMediaAttachments: '/Message/UpdateDmMediaAttachments',
+    UpdateMediaAttachments: '/Message/UpdateMediaAttachments',
     SendMessageMedia: '/Message/SendMessageMedia'
   },
   ViewChannel: {
