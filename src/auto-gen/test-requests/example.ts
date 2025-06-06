@@ -52,24 +52,6 @@ const validPayload = {
     reportReason: 'report message',
 };
 
-// // Display the results
-// console.log(`Generated ${testCases.length} test cases:`);
-// testCases.forEach((testCase, index) => {
-//     console.log(`\nTest Case #${index + 1}:`);
-//     console.log('Payload:', testCase.body);
-//     console.log('Expected Errors:', testCase.expects);
-// });
-
-// // You can also filter to see just the cases with errors
-// const errorCases = testCases.filter(tc => tc.expects.length > 0);
-// console.log(`\nFound ${errorCases.length} cases with expected errors:`);
-// errorCases.forEach((testCase, index) => {
-//     console.log(`\nError Case #${index + 1}:`);
-//     console.log('Invalid Payload:', testCase.body);
-//     console.log('Expected Errors:', testCase.expects);
-// });
-
-
 function analyzeTestCases(testCases: any[], dtoClass: any) {
     const keys = Object.keys(new dtoClass());
 
@@ -105,8 +87,6 @@ function analyzeTestCases(testCases: any[], dtoClass: any) {
 async function exportToExcel() {
     const workbook = new ExcelJS.Workbook();
     const worksheet = workbook.addWorksheet('Test Cases');
-
-    // Định nghĩa header
     worksheet.columns = [
         { header: 'Test Case #', key: 'testCase', width: 15 },
         { header: 'Single Field', key: 'SingleField', width: 15 },
@@ -120,34 +100,33 @@ async function exportToExcel() {
     ];
 
     let type;
-    // Thêm dữ liệu vào worksheet
     testCases.forEach((testCase, index) => {
-    const isSingle = singleErrorCases.includes(testCase);
-    const isPairwise = pairwiseErrorCases.includes(testCase);
-    if(isSingle === true) {
-     type = true;
-    }else {
-        type = false
-    }
-    worksheet.addRow({
-        index: index + 1,
-        SingleField: type ? "✓" : "", 
-        workspaceId: testCase.body.workspaceId,
-        channelId: testCase.body.channelId,
-        messageId: testCase.body.messageId,
-        reportCategory: testCase.body.reportCategory,
-        reportReason: testCase.body.reportReason,
-        pretendingTo: testCase.body.pretendingTo,
-        expectedErrors: testCase.expects
+        const isSingle = singleErrorCases.includes(testCase);
+        const isPairwise = pairwiseErrorCases.includes(testCase);
+        if (isSingle === true) {
+            type = true;
+        } else {
+            type = false
+        }
+        worksheet.addRow({
+            index: index + 1,
+            SingleField: type ? "✓" : "",
+            workspaceId: testCase.body.workspaceId,
+            channelId: testCase.body.channelId,
+            messageId: testCase.body.messageId,
+            reportCategory: testCase.body.reportCategory,
+            reportReason: testCase.body.reportReason,
+            pretendingTo: testCase.body.pretendingTo,
+            expectedErrors: testCase.expects
+        });
     });
-});
 
     worksheet.getRow(1).eachCell((cell) => {
         cell.font = { bold: true };
         cell.fill = {
             type: 'pattern',
             pattern: 'solid',
-            fgColor: { argb: 'FFCCCCCC' }, // Màu xám nhạt
+            fgColor: { argb: 'FFCCCCCC' },
         };
         cell.border = {
             top: { style: 'thin' },
@@ -160,12 +139,8 @@ async function exportToExcel() {
     const filePath = `test-cases-${new Date().toISOString().split('T')[0]}.xlsx`;
     await workbook.xlsx.writeFile(filePath);
 }
-const testCases = generateStructuredErrorCases(ReportMessageDTO, validPayload);
-const test = [];
-test.push(testCases);
-analyzeTestCases(testCases, ReportMessageDTO)
-exportToMarkdown(testCases, singleErrorCases, pairwiseErrorCases);
-exportToExcel().catch((err) => console.error('Lỗi khi xuất Excel:', err));
+
+
 function exportToMarkdown(testCases: any[], singleErrorCases: any[], pairwiseErrorCases: any[]) {
     let markdown = `# Test Cases Report\n\n`;
     markdown += `**Total cases**: ${testCases.length}  \n`;
@@ -180,16 +155,15 @@ function exportToMarkdown(testCases: any[], singleErrorCases: any[], pairwiseErr
     markdown += `| Pairwise-error | ${pairwiseErrorCases.length} |\n`;
     markdown += `| Valid cases | ${testCases.length - singleErrorCases.length - pairwiseErrorCases.length} |\n\n`;
 
-    // Chi tiết từng test case
     markdown += `## Detailed Test Cases\n`;
     testCases.forEach((testCase, index) => {
         const isSingle = singleErrorCases.includes(testCase);
         const isPairwise = pairwiseErrorCases.includes(testCase);
-        
+
         markdown += `### Test Case #${index + 1}\n`;
         markdown += `**Type**: ${isSingle ? 'Single-error' : isPairwise ? 'Pairwise-error' : 'Valid'}\n\n`;
         markdown += `**Payload**:\n\`\`\`json\n${JSON.stringify(testCase.body, null, 2)}\n\`\`\`\n\n`;
-        
+
         if (testCase.expects.length > 0) {
             markdown += `**Expected Errors**:\n`;
             markdown += `${testCase.expects}\n`;
@@ -199,9 +173,16 @@ function exportToMarkdown(testCases: any[], singleErrorCases: any[], pairwiseErr
         markdown += `\n---\n`;
     });
 
-    // Lưu file
     const fs = require('fs');
     const filename = `test-cases-${new Date().toISOString().split('T')[0]}.md`;
     fs.writeFileSync(filename, markdown);
     console.log(`Markdown file generated: ${filename}`);
 }
+
+const testCases = generateStructuredErrorCases(ReportMessageDTO, validPayload);
+const test = [];
+test.push(testCases);
+
+analyzeTestCases(testCases, ReportMessageDTO)
+exportToMarkdown(testCases, singleErrorCases, pairwiseErrorCases);
+exportToExcel().catch((err) => console.error('Lỗi khi xuất Excel:', err));
