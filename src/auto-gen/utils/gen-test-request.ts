@@ -4,19 +4,18 @@ import { findAllFoldersWithDtoAndRequest, formatExpectErrors, getAllFiles, getMa
 
 function getRelativeImportPath(fromPath: string, toPath: string): string {
   const relativePath = path.relative(path.dirname(fromPath), toPath);
-  return relativePath.split(path.sep).join('/'); // Đảm bảo dùng forward slash
+  return relativePath.split(path.sep).join('/'); 
 }
 
 async function generateSpecContent(
   testCases: any[],
   requestConfig: any,
   className: string,
-   outputPath: string, // Thêm outputPath để tính relative path
+  outputPath: string,
   chunkNumber?: number,
   startIndex: number = 0,
   totalChunks?: number
 ): Promise<string> {
-
   const requestFilePathWithoutExt = className.replace('.request.ts', '');
   const classNameCapitalized = requestFilePathWithoutExt
     .split('-')
@@ -25,7 +24,7 @@ async function generateSpecContent(
 
   const utilsPath = path.join(__dirname, '../utils');
   const requestImportPath = `./${requestFilePathWithoutExt}.request`;
-  
+
   const utilsImportPath = getRelativeImportPath(outputPath, utilsPath) || '@utils';
 
 
@@ -260,7 +259,7 @@ async function genTestCase(
   requestPath: string,
   className: string,
   outputDir: string,
-  
+
 ) {
   const payloadData = readJsonFile(payloadPath);
   console.log(`Total test cases in ${payloadPath}: ${payloadData.length}`);
@@ -287,7 +286,7 @@ async function genTestCase(
       const startIdx = i * CHUNK_SIZE;
       const endIdx = startIdx + CHUNK_SIZE;
       const chunkData = payloadData.slice(startIdx, endIdx);
-     const chunkFileName = `${className}-chunk-${i + 1}.spec.ts`;
+      const chunkFileName = `${className}-chunk-${i + 1}.spec.ts`;
       const outputPath = path.join(outputDir, chunkFileName);
       const chunkSpecContent = await generateSpecContent(
         chunkData,
@@ -300,13 +299,13 @@ async function genTestCase(
       );
 
 
-      
+
 
       fs.writeFileSync(outputPath, chunkSpecContent, 'utf-8');
       console.log(`Generated test file: ${outputPath}`);
     }
   } else {
- const outputPath = path.join(outputDir, `${className}.spec.ts`);
+    const outputPath = path.join(outputDir, `${className}.spec.ts`);
     const specContent = await generateSpecContent(
       payloadData,
       requestConfig,
@@ -314,7 +313,7 @@ async function genTestCase(
       outputPath
     );
 
-   
+
     fs.writeFileSync(outputPath, specContent, 'utf-8');
     console.log(`Success: ${outputPath}`);
   }
