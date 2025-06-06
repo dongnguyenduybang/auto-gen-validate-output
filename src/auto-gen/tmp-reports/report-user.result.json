@@ -1,0 +1,1532 @@
+{
+  "path": "/UserReport/ReportUser",
+  "className": "report-user",
+  "allSteps": [],
+  "failedTests": [
+    {
+      "testcase": 1,
+      "code": 200,
+      "body": {
+        "userId": 123,
+        "reportCategory": 0,
+        "reportReason": "report user",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "userId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 2,
+      "code": 200,
+      "body": {
+        "userId": 123,
+        "reportCategory": "invalid_enum_value",
+        "reportReason": "report user",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'",
+        "userId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 3,
+      "code": 200,
+      "body": {
+        "userId": 123,
+        "reportCategory": 20,
+        "reportReason": "report user",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "userId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 4,
+      "code": 200,
+      "body": {
+        "userId": 123,
+        "reportCategory": 3,
+        "reportReason": "report user",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "userId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 5,
+      "code": 200,
+      "body": {
+        "userId": 123,
+        "reportReason": "report user",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportCategory required",
+        "userId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 6,
+      "code": 200,
+      "body": {
+        "userId": 123,
+        "reportCategory": "",
+        "reportReason": "report user",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "userId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 7,
+      "code": 200,
+      "body": {
+        "userId": 123,
+        "reportCategory": 0,
+        "reportReason": 123,
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportReason expected string, received number",
+        "userId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 8,
+      "code": 200,
+      "body": {
+        "userId": 123,
+        "reportCategory": 0,
+        "reportReason": "",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportReason string must contain at least 1 character(s)",
+        "userId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 9,
+      "code": 200,
+      "body": {
+        "userId": 123,
+        "reportCategory": 0,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportReason string must contain at most 255 character(s)",
+        "userId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 10,
+      "code": 200,
+      "body": {
+        "userId": 123,
+        "reportCategory": 0,
+        "reportReason": "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportReason string must contain at most 255 character(s)",
+        "userId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 11,
+      "code": 200,
+      "body": {
+        "userId": 123,
+        "reportCategory": 0,
+        "pretendingTo": 0
+      },
+      "missing": [
+        "userId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 12,
+      "code": 200,
+      "body": {
+        "userId": 123,
+        "reportCategory": 0,
+        "reportReason": "report user",
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'",
+        "userId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 13,
+      "code": 200,
+      "body": {
+        "userId": 123,
+        "reportCategory": 0,
+        "reportReason": "report user"
+      },
+      "missing": [
+        "userId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 17,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": 3,
+        "reportReason": "report user",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "pretendingTo required"
+      ],
+      "extra": []
+    },
+    {
+      "testcase": 18,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportReason": "report user",
+        "pretendingTo": 0
+      },
+      "missing": [],
+      "extra": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'"
+      ]
+    },
+    {
+      "testcase": 19,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": "",
+        "reportReason": "report user",
+        "pretendingTo": 0
+      },
+      "missing": [],
+      "extra": [
+        "reportCategory should not be empty"
+      ]
+    },
+    {
+      "testcase": 21,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": 0,
+        "reportReason": "",
+        "pretendingTo": 0
+      },
+      "missing": [],
+      "extra": [
+        "reportReason should not be empty"
+      ]
+    },
+    {
+      "testcase": 27,
+      "code": 200,
+      "body": {
+        "reportCategory": 0,
+        "reportReason": "report user",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "userId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 28,
+      "code": 200,
+      "body": {
+        "reportCategory": "invalid_enum_value",
+        "reportReason": "report user",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'",
+        "userId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 29,
+      "code": 200,
+      "body": {
+        "reportCategory": 20,
+        "reportReason": "report user",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "userId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 30,
+      "code": 200,
+      "body": {
+        "reportCategory": 3,
+        "reportReason": "report user",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "userId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 31,
+      "code": 200,
+      "body": {
+        "reportReason": "report user",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportCategory required",
+        "userId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 32,
+      "code": 200,
+      "body": {
+        "reportCategory": "",
+        "reportReason": "report user",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "userId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 33,
+      "code": 200,
+      "body": {
+        "reportCategory": 0,
+        "reportReason": 123,
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportReason expected string, received number",
+        "userId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 34,
+      "code": 200,
+      "body": {
+        "reportCategory": 0,
+        "reportReason": "",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportReason string must contain at least 1 character(s)",
+        "userId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 35,
+      "code": 200,
+      "body": {
+        "reportCategory": 0,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportReason string must contain at most 255 character(s)",
+        "userId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 36,
+      "code": 200,
+      "body": {
+        "reportCategory": 0,
+        "reportReason": "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportReason string must contain at most 255 character(s)",
+        "userId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 37,
+      "code": 200,
+      "body": {
+        "reportCategory": 0,
+        "pretendingTo": 0
+      },
+      "missing": [
+        "userId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 38,
+      "code": 200,
+      "body": {
+        "reportCategory": 0,
+        "reportReason": "report user",
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'",
+        "userId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 39,
+      "code": 200,
+      "body": {
+        "reportCategory": 0,
+        "reportReason": "report user"
+      },
+      "missing": [
+        "userId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 40,
+      "code": 200,
+      "body": {
+        "userId": "",
+        "reportCategory": 0,
+        "reportReason": "report user",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "userId invalid ulid",
+        "userId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 41,
+      "code": 200,
+      "body": {
+        "userId": "",
+        "reportCategory": "invalid_enum_value",
+        "reportReason": "report user",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'",
+        "userId invalid ulid",
+        "userId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 42,
+      "code": 200,
+      "body": {
+        "userId": "",
+        "reportCategory": 20,
+        "reportReason": "report user",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "userId invalid ulid",
+        "userId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 43,
+      "code": 200,
+      "body": {
+        "userId": "",
+        "reportCategory": 3,
+        "reportReason": "report user",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "pretendingTo required",
+        "userId invalid ulid",
+        "userId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 44,
+      "code": 200,
+      "body": {
+        "userId": "",
+        "reportReason": "report user",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportCategory required",
+        "userId invalid ulid",
+        "userId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 45,
+      "code": 200,
+      "body": {
+        "userId": "",
+        "reportCategory": "",
+        "reportReason": "report user",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "userId invalid ulid",
+        "userId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 46,
+      "code": 200,
+      "body": {
+        "userId": "",
+        "reportCategory": 0,
+        "reportReason": 123,
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportReason expected string, received number",
+        "userId invalid ulid",
+        "userId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 47,
+      "code": 200,
+      "body": {
+        "userId": "",
+        "reportCategory": 0,
+        "reportReason": "",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportReason string must contain at least 1 character(s)",
+        "userId invalid ulid",
+        "userId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 48,
+      "code": 200,
+      "body": {
+        "userId": "",
+        "reportCategory": 0,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportReason string must contain at most 255 character(s)",
+        "userId invalid ulid",
+        "userId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 49,
+      "code": 200,
+      "body": {
+        "userId": "",
+        "reportCategory": 0,
+        "reportReason": "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportReason string must contain at most 255 character(s)",
+        "userId invalid ulid",
+        "userId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 50,
+      "code": 200,
+      "body": {
+        "userId": "",
+        "reportCategory": 0,
+        "pretendingTo": 0
+      },
+      "missing": [
+        "userId invalid ulid",
+        "userId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 51,
+      "code": 200,
+      "body": {
+        "userId": "",
+        "reportCategory": 0,
+        "reportReason": "report user",
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'",
+        "userId invalid ulid",
+        "userId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 52,
+      "code": 200,
+      "body": {
+        "userId": "",
+        "reportCategory": 0,
+        "reportReason": "report user"
+      },
+      "missing": [
+        "userId invalid ulid",
+        "userId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 53,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 0,
+        "reportReason": "report user",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 54,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": "invalid_enum_value",
+        "reportReason": "report user",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 55,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 20,
+        "reportReason": "report user",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 56,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 3,
+        "reportReason": "report user",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "pretendingTo required",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 57,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportReason": "report user",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportCategory required",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 58,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": "",
+        "reportReason": "report user",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 59,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 0,
+        "reportReason": 123,
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportReason expected string, received number",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 60,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 0,
+        "reportReason": "",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportReason string must contain at least 1 character(s)",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 61,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 0,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportReason string must contain at most 255 character(s)",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 62,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 0,
+        "reportReason": "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "reportReason string must contain at most 255 character(s)",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 63,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 0,
+        "pretendingTo": 0
+      },
+      "missing": [
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 64,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 0,
+        "reportReason": "report user",
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'",
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 65,
+      "code": 200,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 0,
+        "reportReason": "report user"
+      },
+      "missing": [
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    },
+    {
+      "testcase": 67,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": "invalid_enum_value",
+        "reportReason": "",
+        "pretendingTo": 0
+      },
+      "missing": [],
+      "extra": [
+        "reportReason should not be empty"
+      ]
+    },
+    {
+      "testcase": 74,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": 20,
+        "reportReason": "",
+        "pretendingTo": 0
+      },
+      "missing": [],
+      "extra": [
+        "reportReason should not be empty"
+      ]
+    },
+    {
+      "testcase": 81,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": 3,
+        "reportReason": "",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "pretendingTo required"
+      ],
+      "extra": [
+        "reportReason should not be empty"
+      ]
+    },
+    {
+      "testcase": 82,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": 3,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "pretendingTo required"
+      ],
+      "extra": []
+    },
+    {
+      "testcase": 83,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": 3,
+        "reportReason": "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀",
+        "pretendingTo": 0
+      },
+      "missing": [
+        "pretendingTo required"
+      ],
+      "extra": []
+    },
+    {
+      "testcase": 84,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": 3,
+        "pretendingTo": 0
+      },
+      "missing": [
+        "pretendingTo required"
+      ],
+      "extra": []
+    },
+    {
+      "testcase": 86,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": 3,
+        "reportReason": "report user"
+      },
+      "missing": [],
+      "extra": [
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined'"
+      ]
+    },
+    {
+      "testcase": 87,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportReason": 123,
+        "pretendingTo": 0
+      },
+      "missing": [],
+      "extra": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'"
+      ]
+    },
+    {
+      "testcase": 88,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportReason": "",
+        "pretendingTo": 0
+      },
+      "missing": [],
+      "extra": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'",
+        "reportReason should not be empty"
+      ]
+    },
+    {
+      "testcase": 89,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 0
+      },
+      "missing": [],
+      "extra": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'"
+      ]
+    },
+    {
+      "testcase": 90,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportReason": "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀",
+        "pretendingTo": 0
+      },
+      "missing": [],
+      "extra": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'"
+      ]
+    },
+    {
+      "testcase": 91,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "pretendingTo": 0
+      },
+      "missing": [],
+      "extra": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'"
+      ]
+    },
+    {
+      "testcase": 92,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportReason": "report user",
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [],
+      "extra": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'"
+      ]
+    },
+    {
+      "testcase": 93,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportReason": "report user"
+      },
+      "missing": [],
+      "extra": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'"
+      ]
+    },
+    {
+      "testcase": 94,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": "",
+        "reportReason": 123,
+        "pretendingTo": 0
+      },
+      "missing": [],
+      "extra": [
+        "reportCategory should not be empty"
+      ]
+    },
+    {
+      "testcase": 95,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": "",
+        "reportReason": "",
+        "pretendingTo": 0
+      },
+      "missing": [],
+      "extra": [
+        "reportCategory should not be empty",
+        "reportReason should not be empty"
+      ]
+    },
+    {
+      "testcase": 96,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": "",
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 0
+      },
+      "missing": [],
+      "extra": [
+        "reportCategory should not be empty"
+      ]
+    },
+    {
+      "testcase": 97,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": "",
+        "reportReason": "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀",
+        "pretendingTo": 0
+      },
+      "missing": [],
+      "extra": [
+        "reportCategory should not be empty"
+      ]
+    },
+    {
+      "testcase": 98,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": "",
+        "pretendingTo": 0
+      },
+      "missing": [],
+      "extra": [
+        "reportCategory should not be empty"
+      ]
+    },
+    {
+      "testcase": 99,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": "",
+        "reportReason": "report user",
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [],
+      "extra": [
+        "reportCategory should not be empty"
+      ]
+    },
+    {
+      "testcase": 100,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": "",
+        "reportReason": "report user"
+      },
+      "missing": [],
+      "extra": [
+        "reportCategory should not be empty"
+      ]
+    },
+    {
+      "testcase": 103,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": 0,
+        "reportReason": "",
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [],
+      "extra": [
+        "reportReason should not be empty"
+      ]
+    },
+    {
+      "testcase": 104,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": 0,
+        "reportReason": ""
+      },
+      "missing": [],
+      "extra": [
+        "reportReason should not be empty"
+      ]
+    }
+  ],
+  "codedTest": [
+    {
+      "testcase": 14,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": 0,
+        "reportReason": "report user",
+        "pretendingTo": 0
+      }
+    },
+    {
+      "testcase": 15,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": "invalid_enum_value",
+        "reportReason": "report user",
+        "pretendingTo": 0
+      }
+    },
+    {
+      "testcase": 16,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": 20,
+        "reportReason": "report user",
+        "pretendingTo": 0
+      }
+    },
+    {
+      "testcase": 20,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": 0,
+        "reportReason": 123,
+        "pretendingTo": 0
+      }
+    },
+    {
+      "testcase": 22,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": 0,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 0
+      }
+    },
+    {
+      "testcase": 23,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": 0,
+        "reportReason": "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀",
+        "pretendingTo": 0
+      }
+    },
+    {
+      "testcase": 24,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": 0,
+        "pretendingTo": 0
+      }
+    },
+    {
+      "testcase": 25,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": 0,
+        "reportReason": "report user",
+        "pretendingTo": "invalid_enum_value"
+      }
+    },
+    {
+      "testcase": 26,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": 0,
+        "reportReason": "report user"
+      }
+    },
+    {
+      "testcase": 66,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": "invalid_enum_value",
+        "reportReason": 123,
+        "pretendingTo": 0
+      }
+    },
+    {
+      "testcase": 68,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": "invalid_enum_value",
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 0
+      }
+    },
+    {
+      "testcase": 69,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": "invalid_enum_value",
+        "reportReason": "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀",
+        "pretendingTo": 0
+      }
+    },
+    {
+      "testcase": 70,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": "invalid_enum_value",
+        "pretendingTo": 0
+      }
+    },
+    {
+      "testcase": 71,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": "invalid_enum_value",
+        "reportReason": "report user",
+        "pretendingTo": "invalid_enum_value"
+      }
+    },
+    {
+      "testcase": 72,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": "invalid_enum_value",
+        "reportReason": "report user"
+      }
+    },
+    {
+      "testcase": 73,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": 20,
+        "reportReason": 123,
+        "pretendingTo": 0
+      }
+    },
+    {
+      "testcase": 75,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": 20,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 0
+      }
+    },
+    {
+      "testcase": 76,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": 20,
+        "reportReason": "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀",
+        "pretendingTo": 0
+      }
+    },
+    {
+      "testcase": 77,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": 20,
+        "pretendingTo": 0
+      }
+    },
+    {
+      "testcase": 78,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": 20,
+        "reportReason": "report user",
+        "pretendingTo": "invalid_enum_value"
+      }
+    },
+    {
+      "testcase": 79,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": 20,
+        "reportReason": "report user"
+      }
+    },
+    {
+      "testcase": 80,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": 3,
+        "reportReason": 123,
+        "pretendingTo": 0
+      }
+    },
+    {
+      "testcase": 85,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": 3,
+        "reportReason": "report user",
+        "pretendingTo": "invalid_enum_value"
+      }
+    },
+    {
+      "testcase": 101,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": 0,
+        "reportReason": 123,
+        "pretendingTo": "invalid_enum_value"
+      }
+    },
+    {
+      "testcase": 102,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": 0,
+        "reportReason": 123
+      }
+    },
+    {
+      "testcase": 105,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": 0,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": "invalid_enum_value"
+      }
+    },
+    {
+      "testcase": 106,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": 0,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    {
+      "testcase": 107,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": 0,
+        "reportReason": "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀",
+        "pretendingTo": "invalid_enum_value"
+      }
+    },
+    {
+      "testcase": 108,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": 0,
+        "reportReason": "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀"
+      }
+    },
+    {
+      "testcase": 109,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": 0,
+        "pretendingTo": "invalid_enum_value"
+      }
+    },
+    {
+      "testcase": 110,
+      "code": 200,
+      "body": {
+        "userId": "01JX36ZG9M6RH8F5G538Z6P1B6",
+        "reportCategory": 0
+      }
+    }
+  ],
+  "passedTests": 31,
+  "totalTests": 110,
+  "logicTests": [],
+  "failedStep": []
+}

@@ -72,6 +72,7 @@ export const APIPath = {
     AcceptMessageRequest: '/Channel/AcceptMessageRequest',
     RejectMessageRequest: '/Channel/RejectMessageRequest',
     DeleteChannel: '/Channel/DeleteChannel',
+    DeleteChannelAvatar: '/Channel/DeleteChannelAvatar',
   },
   Search: {
     SearchChannels: '/Search/SearchChannels',
@@ -92,17 +93,28 @@ export const APIPath = {
   },
   Friend: {
     AddFriend: '/Friend/AddFriend',
+    Unfriend: '/Friend/Unfriend',
     RemoveFriend: '/Friend/RemoveFriend',
     BlockUser: '/Friend/BlockUser',
     UnblockUser: '/Friend/UnblockUser',
     AcceptFriendRequest: '/Friend/AcceptFriendRequest',
     RejectFriendRequest: '/Friend/RejectFriendRequest',
     CancelFriendRequest: '/Friend/CancelFriendRequest',
+    DeleteFriendRequest: '/Friend/DeleteFriendRequest',
   },
   UserProfile: {
     UpdateUserDisplayName: '/UserProfile/UpdateUserDisplayName',
     AddUserStatus: '/UserProfile/AddUserStatus',
     UpdateUserStatus: '/UserProfile/UpdateUserStatus',
+    DeleteUserVisitProfile: '/UserProfile/DeleteUserVisitedProfile',
+    VisitProfile: '/UserProfile/VisitedProfile',
+    AddCoverPhoto: '/UserProfile/AddCoverPhoto',
+    UpdateCoverPhoto: '/UserProfile/UpdateCoverPhoto',
+    AvatarFramePath: '/AvatarFrame/CreateAvatarFrame',
+    DeleteAvatarFrame: '/AvatarFrame/DeleteAvatarFrame',
+    DeleteUserAvatar: '/UserProfile/DeleteUserAvatar',
+    UpdateUserEmail: '/UserProfile/UpdateUserEmail',
+    UpdateUserAvatar: 'UserProfile/UpdateUserAvatar'
   },
   ViewMember: {
     ListMembers: '/MemberView/ListMembers',
@@ -122,4 +134,13 @@ export const APIPath = {
     LeaveChannel: '/Member/LeaveChannel',
     RemoveFromChannel: '/Member/RemoveFromChannel',
   },
+  UserSetting: {
+    BlockUser: '/UserSetting/BlockUser',
+    UnBlockUser: '/UserSetting/UnblockUser'
+  },
+  RingBackTone: {
+    RingBackToneCreate: '/RingbackTone/RingbackToneCreate',
+    RingBackToneRename: '/RingbackTone/RingbackToneRename',
+    SetRingBackTone: '/RingbackTone/SetRingbackTone',
+  }
 };

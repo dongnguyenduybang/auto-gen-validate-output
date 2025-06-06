@@ -1,0 +1,3264 @@
+{
+  "path": "/Channel/CreateChannel",
+  "className": "create-channel",
+  "allSteps": [],
+  "failedTests": [
+    {
+      "testcase": 1,
+      "code": 200,
+      "body": {
+        "workspaceId": 123,
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 2,
+      "code": 200,
+      "body": {
+        "workspaceId": 123,
+        "name": 123,
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name expected string, received number",
+        "workspaceId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 3,
+      "code": 200,
+      "body": {
+        "workspaceId": 123,
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 4,
+      "code": 200,
+      "body": {
+        "workspaceId": 123,
+        "name": "aa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name string must contain at least 3 character(s)",
+        "workspaceId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 5,
+      "code": 200,
+      "body": {
+        "workspaceId": 123,
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name string must contain at most 50 character(s)",
+        "workspaceId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 6,
+      "code": 200,
+      "body": {
+        "workspaceId": 123,
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name required",
+        "workspaceId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 7,
+      "code": 200,
+      "body": {
+        "workspaceId": 123,
+        "name": "",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name string must contain at least 3 character(s)",
+        "workspaceId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 8,
+      "code": 200,
+      "body": {
+        "workspaceId": 123,
+        "name": "channel1",
+        "avatar": 123,
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 9,
+      "code": 200,
+      "body": {
+        "workspaceId": 123,
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 10,
+      "code": 200,
+      "body": {
+        "workspaceId": 123,
+        "name": "channel1",
+        "avatar": "",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 11,
+      "code": 200,
+      "body": {
+        "workspaceId": 123,
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": "invalid_enum_value"
+      },
+      "missing": [
+        "channelType invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value'",
+        "workspaceId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 12,
+      "code": 200,
+      "body": {
+        "workspaceId": 123,
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 13,
+      "code": 200,
+      "body": {
+        "workspaceId": 123,
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": ""
+      },
+      "missing": [
+        "channelType invalid enum value. Expected 0 | 1 | 2, received ''",
+        "workspaceId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 20,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [],
+      "extra": [
+        "name should not be empty"
+      ]
+    },
+    {
+      "testcase": 21,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": 123,
+        "channelType": 1
+      },
+      "missing": [],
+      "extra": [
+        "avatar expected string, received number"
+      ]
+    },
+    {
+      "testcase": 23,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "",
+        "channelType": 1
+      },
+      "missing": [],
+      "extra": [
+        "avatar should not be empty"
+      ]
+    },
+    {
+      "testcase": 26,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": ""
+      },
+      "missing": [],
+      "extra": [
+        "channelType should not be empty"
+      ]
+    },
+    {
+      "testcase": 27,
+      "code": 200,
+      "body": {
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 28,
+      "code": 200,
+      "body": {
+        "name": 123,
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name expected string, received number",
+        "workspaceId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 29,
+      "code": 200,
+      "body": {
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 30,
+      "code": 200,
+      "body": {
+        "name": "aa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name string must contain at least 3 character(s)",
+        "workspaceId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 31,
+      "code": 200,
+      "body": {
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name string must contain at most 50 character(s)",
+        "workspaceId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 32,
+      "code": 200,
+      "body": {
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name required",
+        "workspaceId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 33,
+      "code": 200,
+      "body": {
+        "name": "",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name string must contain at least 3 character(s)",
+        "workspaceId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 34,
+      "code": 200,
+      "body": {
+        "name": "channel1",
+        "avatar": 123,
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 35,
+      "code": 200,
+      "body": {
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 36,
+      "code": 200,
+      "body": {
+        "name": "channel1",
+        "avatar": "",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 37,
+      "code": 200,
+      "body": {
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": "invalid_enum_value"
+      },
+      "missing": [
+        "channelType invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value'",
+        "workspaceId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 38,
+      "code": 200,
+      "body": {
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 39,
+      "code": 200,
+      "body": {
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": ""
+      },
+      "missing": [
+        "channelType invalid enum value. Expected 0 | 1 | 2, received ''",
+        "workspaceId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 40,
+      "code": 200,
+      "body": {
+        "workspaceId": "",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId must be 0",
+        "workspaceId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 41,
+      "code": 200,
+      "body": {
+        "workspaceId": "",
+        "name": 123,
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name expected string, received number",
+        "workspaceId must be 0",
+        "workspaceId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 42,
+      "code": 200,
+      "body": {
+        "workspaceId": "",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId must be 0",
+        "workspaceId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 43,
+      "code": 200,
+      "body": {
+        "workspaceId": "",
+        "name": "aa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name string must contain at least 3 character(s)",
+        "workspaceId must be 0",
+        "workspaceId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 44,
+      "code": 200,
+      "body": {
+        "workspaceId": "",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name string must contain at most 50 character(s)",
+        "workspaceId must be 0",
+        "workspaceId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 45,
+      "code": 200,
+      "body": {
+        "workspaceId": "",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name required",
+        "workspaceId must be 0",
+        "workspaceId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 46,
+      "code": 200,
+      "body": {
+        "workspaceId": "",
+        "name": "",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name string must contain at least 3 character(s)",
+        "workspaceId must be 0",
+        "workspaceId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 47,
+      "code": 200,
+      "body": {
+        "workspaceId": "",
+        "name": "channel1",
+        "avatar": 123,
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId must be 0",
+        "workspaceId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 48,
+      "code": 200,
+      "body": {
+        "workspaceId": "",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId must be 0",
+        "workspaceId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 49,
+      "code": 200,
+      "body": {
+        "workspaceId": "",
+        "name": "channel1",
+        "avatar": "",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId must be 0",
+        "workspaceId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 50,
+      "code": 200,
+      "body": {
+        "workspaceId": "",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": "invalid_enum_value"
+      },
+      "missing": [
+        "channelType invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value'",
+        "workspaceId must be 0",
+        "workspaceId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 51,
+      "code": 200,
+      "body": {
+        "workspaceId": "",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId must be 0",
+        "workspaceId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 52,
+      "code": 200,
+      "body": {
+        "workspaceId": "",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": ""
+      },
+      "missing": [
+        "channelType invalid enum value. Expected 0 | 1 | 2, received ''",
+        "workspaceId must be 0",
+        "workspaceId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 53,
+      "code": 200,
+      "body": {
+        "workspaceId": "invalid_value",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId must be 0"
+      ],
+      "extra": [
+        "Invalid channel"
+      ]
+    },
+    {
+      "testcase": 54,
+      "code": 200,
+      "body": {
+        "workspaceId": "invalid_value",
+        "name": 123,
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name expected string, received number",
+        "workspaceId must be 0"
+      ],
+      "extra": [
+        "Invalid channel"
+      ]
+    },
+    {
+      "testcase": 55,
+      "code": 200,
+      "body": {
+        "workspaceId": "invalid_value",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId must be 0"
+      ],
+      "extra": [
+        "Invalid channel"
+      ]
+    },
+    {
+      "testcase": 56,
+      "code": 200,
+      "body": {
+        "workspaceId": "invalid_value",
+        "name": "aa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name string must contain at least 3 character(s)",
+        "workspaceId must be 0"
+      ],
+      "extra": [
+        "Invalid channel"
+      ]
+    },
+    {
+      "testcase": 57,
+      "code": 200,
+      "body": {
+        "workspaceId": "invalid_value",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name string must contain at most 50 character(s)",
+        "workspaceId must be 0"
+      ],
+      "extra": [
+        "Invalid channel"
+      ]
+    },
+    {
+      "testcase": 58,
+      "code": 200,
+      "body": {
+        "workspaceId": "invalid_value",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name required",
+        "workspaceId must be 0"
+      ],
+      "extra": [
+        "Invalid channel"
+      ]
+    },
+    {
+      "testcase": 59,
+      "code": 200,
+      "body": {
+        "workspaceId": "invalid_value",
+        "name": "",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name string must contain at least 3 character(s)",
+        "workspaceId must be 0"
+      ],
+      "extra": [
+        "Invalid channel"
+      ]
+    },
+    {
+      "testcase": 60,
+      "code": 200,
+      "body": {
+        "workspaceId": "invalid_value",
+        "name": "channel1",
+        "avatar": 123,
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId must be 0"
+      ],
+      "extra": [
+        "Invalid channel"
+      ]
+    },
+    {
+      "testcase": 61,
+      "code": 200,
+      "body": {
+        "workspaceId": "invalid_value",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId must be 0"
+      ],
+      "extra": [
+        "Invalid channel"
+      ]
+    },
+    {
+      "testcase": 62,
+      "code": 200,
+      "body": {
+        "workspaceId": "invalid_value",
+        "name": "channel1",
+        "avatar": "",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId must be 0"
+      ],
+      "extra": [
+        "Invalid channel"
+      ]
+    },
+    {
+      "testcase": 63,
+      "code": 200,
+      "body": {
+        "workspaceId": "invalid_value",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": "invalid_enum_value"
+      },
+      "missing": [
+        "channelType invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value'",
+        "workspaceId must be 0"
+      ],
+      "extra": [
+        "Invalid channel"
+      ]
+    },
+    {
+      "testcase": 64,
+      "code": 200,
+      "body": {
+        "workspaceId": "invalid_value",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId must be 0"
+      ],
+      "extra": [
+        "Invalid channel"
+      ]
+    },
+    {
+      "testcase": 65,
+      "code": 200,
+      "body": {
+        "workspaceId": "invalid_value",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": ""
+      },
+      "missing": [
+        "channelType invalid enum value. Expected 0 | 1 | 2, received ''",
+        "workspaceId must be 0"
+      ],
+      "extra": [
+        "Invalid channel"
+      ]
+    },
+    {
+      "testcase": 67,
+      "code": 200,
+      "body": {
+        "workspaceId": 123,
+        "name": 123,
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name expected string, received number",
+        "workspaceId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 69,
+      "code": 200,
+      "body": {
+        "name": 123,
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name expected string, received number",
+        "workspaceId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 70,
+      "code": 200,
+      "body": {
+        "workspaceId": "",
+        "name": 123,
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name expected string, received number",
+        "workspaceId must be 0",
+        "workspaceId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 71,
+      "code": 200,
+      "body": {
+        "workspaceId": "invalid_value",
+        "name": 123,
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name expected string, received number",
+        "workspaceId must be 0"
+      ],
+      "extra": [
+        "Invalid channel"
+      ]
+    },
+    {
+      "testcase": 72,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": 123,
+        "avatar": 123,
+        "channelType": 1
+      },
+      "missing": [],
+      "extra": [
+        "avatar expected string, received number"
+      ]
+    },
+    {
+      "testcase": 74,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": 123,
+        "avatar": "",
+        "channelType": 1
+      },
+      "missing": [],
+      "extra": [
+        "avatar should not be empty"
+      ]
+    },
+    {
+      "testcase": 77,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": 123,
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": ""
+      },
+      "missing": [],
+      "extra": [
+        "channelType should not be empty"
+      ]
+    },
+    {
+      "testcase": 79,
+      "code": 200,
+      "body": {
+        "workspaceId": 123,
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 81,
+      "code": 200,
+      "body": {
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 82,
+      "code": 200,
+      "body": {
+        "workspaceId": "",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId must be 0",
+        "workspaceId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 83,
+      "code": 200,
+      "body": {
+        "workspaceId": "invalid_value",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId must be 0"
+      ],
+      "extra": [
+        "Invalid channel"
+      ]
+    },
+    {
+      "testcase": 84,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": 123,
+        "channelType": 1
+      },
+      "missing": [],
+      "extra": [
+        "avatar expected string, received number"
+      ]
+    },
+    {
+      "testcase": 86,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "",
+        "channelType": 1
+      },
+      "missing": [],
+      "extra": [
+        "avatar should not be empty"
+      ]
+    },
+    {
+      "testcase": 89,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": ""
+      },
+      "missing": [],
+      "extra": [
+        "channelType should not be empty"
+      ]
+    },
+    {
+      "testcase": 91,
+      "code": 200,
+      "body": {
+        "workspaceId": 123,
+        "name": "aa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name string must contain at least 3 character(s)",
+        "workspaceId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 93,
+      "code": 200,
+      "body": {
+        "name": "aa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name string must contain at least 3 character(s)",
+        "workspaceId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 94,
+      "code": 200,
+      "body": {
+        "workspaceId": "",
+        "name": "aa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name string must contain at least 3 character(s)",
+        "workspaceId must be 0",
+        "workspaceId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 95,
+      "code": 200,
+      "body": {
+        "workspaceId": "invalid_value",
+        "name": "aa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name string must contain at least 3 character(s)",
+        "workspaceId must be 0"
+      ],
+      "extra": [
+        "Invalid channel"
+      ]
+    },
+    {
+      "testcase": 96,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "aa",
+        "avatar": 123,
+        "channelType": 1
+      },
+      "missing": [],
+      "extra": [
+        "avatar expected string, received number"
+      ]
+    },
+    {
+      "testcase": 98,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "aa",
+        "avatar": "",
+        "channelType": 1
+      },
+      "missing": [],
+      "extra": [
+        "avatar should not be empty"
+      ]
+    },
+    {
+      "testcase": 101,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "aa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": ""
+      },
+      "missing": [],
+      "extra": [
+        "channelType should not be empty"
+      ]
+    },
+    {
+      "testcase": 103,
+      "code": 200,
+      "body": {
+        "workspaceId": 123,
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name string must contain at most 50 character(s)",
+        "workspaceId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 105,
+      "code": 200,
+      "body": {
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name string must contain at most 50 character(s)",
+        "workspaceId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 106,
+      "code": 200,
+      "body": {
+        "workspaceId": "",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name string must contain at most 50 character(s)",
+        "workspaceId must be 0",
+        "workspaceId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 107,
+      "code": 200,
+      "body": {
+        "workspaceId": "invalid_value",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name string must contain at most 50 character(s)",
+        "workspaceId must be 0"
+      ],
+      "extra": [
+        "Invalid channel"
+      ]
+    },
+    {
+      "testcase": 108,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "avatar": 123,
+        "channelType": 1
+      },
+      "missing": [],
+      "extra": [
+        "avatar expected string, received number"
+      ]
+    },
+    {
+      "testcase": 110,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "avatar": "",
+        "channelType": 1
+      },
+      "missing": [],
+      "extra": [
+        "avatar should not be empty"
+      ]
+    },
+    {
+      "testcase": 113,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": ""
+      },
+      "missing": [],
+      "extra": [
+        "channelType should not be empty"
+      ]
+    },
+    {
+      "testcase": 115,
+      "code": 200,
+      "body": {
+        "workspaceId": 123,
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name required",
+        "workspaceId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 117,
+      "code": 200,
+      "body": {
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name required",
+        "workspaceId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 118,
+      "code": 200,
+      "body": {
+        "workspaceId": "",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name required",
+        "workspaceId must be 0",
+        "workspaceId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 119,
+      "code": 200,
+      "body": {
+        "workspaceId": "invalid_value",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name required",
+        "workspaceId must be 0"
+      ],
+      "extra": [
+        "Invalid channel"
+      ]
+    },
+    {
+      "testcase": 120,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "avatar": 123,
+        "channelType": 1
+      },
+      "missing": [],
+      "extra": [
+        "avatar expected string, received number"
+      ]
+    },
+    {
+      "testcase": 122,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "avatar": "",
+        "channelType": 1
+      },
+      "missing": [],
+      "extra": [
+        "avatar should not be empty"
+      ]
+    },
+    {
+      "testcase": 125,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": ""
+      },
+      "missing": [],
+      "extra": [
+        "channelType should not be empty"
+      ]
+    },
+    {
+      "testcase": 126,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [],
+      "extra": [
+        "name should not be empty"
+      ]
+    },
+    {
+      "testcase": 127,
+      "code": 200,
+      "body": {
+        "workspaceId": 123,
+        "name": "",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name string must contain at least 3 character(s)",
+        "workspaceId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 128,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [],
+      "extra": [
+        "name should not be empty"
+      ]
+    },
+    {
+      "testcase": 129,
+      "code": 200,
+      "body": {
+        "name": "",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name string must contain at least 3 character(s)",
+        "workspaceId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 130,
+      "code": 200,
+      "body": {
+        "workspaceId": "",
+        "name": "",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name string must contain at least 3 character(s)",
+        "workspaceId must be 0",
+        "workspaceId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 131,
+      "code": 200,
+      "body": {
+        "workspaceId": "invalid_value",
+        "name": "",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "name string must contain at least 3 character(s)",
+        "workspaceId must be 0"
+      ],
+      "extra": [
+        "Invalid channel"
+      ]
+    },
+    {
+      "testcase": 132,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "",
+        "avatar": 123,
+        "channelType": 1
+      },
+      "missing": [],
+      "extra": [
+        "avatar expected string, received number",
+        "name should not be empty"
+      ]
+    },
+    {
+      "testcase": 133,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [],
+      "extra": [
+        "name should not be empty"
+      ]
+    },
+    {
+      "testcase": 134,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "",
+        "avatar": "",
+        "channelType": 1
+      },
+      "missing": [],
+      "extra": [
+        "avatar should not be empty",
+        "name should not be empty"
+      ]
+    },
+    {
+      "testcase": 135,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": "invalid_enum_value"
+      },
+      "missing": [],
+      "extra": [
+        "name should not be empty"
+      ]
+    },
+    {
+      "testcase": 136,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [],
+      "extra": [
+        "name should not be empty"
+      ]
+    },
+    {
+      "testcase": 137,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": ""
+      },
+      "missing": [],
+      "extra": [
+        "channelType should not be empty",
+        "name should not be empty"
+      ]
+    },
+    {
+      "testcase": 138,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": 123,
+        "channelType": 1
+      },
+      "missing": [
+        "User not found"
+      ],
+      "extra": [
+        "avatar expected string, received number"
+      ]
+    },
+    {
+      "testcase": 139,
+      "code": 200,
+      "body": {
+        "workspaceId": 123,
+        "name": "channel1",
+        "avatar": 123,
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 140,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": 123,
+        "channelType": 1
+      },
+      "missing": [
+        "User not found"
+      ],
+      "extra": [
+        "avatar expected string, received number"
+      ]
+    },
+    {
+      "testcase": 141,
+      "code": 200,
+      "body": {
+        "name": "channel1",
+        "avatar": 123,
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 142,
+      "code": 200,
+      "body": {
+        "workspaceId": "",
+        "name": "channel1",
+        "avatar": 123,
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId must be 0",
+        "workspaceId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 143,
+      "code": 200,
+      "body": {
+        "workspaceId": "invalid_value",
+        "name": "channel1",
+        "avatar": 123,
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId must be 0"
+      ],
+      "extra": [
+        "Invalid channel"
+      ]
+    },
+    {
+      "testcase": 144,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": 123,
+        "avatar": 123,
+        "channelType": 1
+      },
+      "missing": [],
+      "extra": [
+        "avatar expected string, received number"
+      ]
+    },
+    {
+      "testcase": 145,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": 123,
+        "channelType": 1
+      },
+      "missing": [
+        "User not found"
+      ],
+      "extra": [
+        "avatar expected string, received number"
+      ]
+    },
+    {
+      "testcase": 146,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "aa",
+        "avatar": 123,
+        "channelType": 1
+      },
+      "missing": [],
+      "extra": [
+        "avatar expected string, received number"
+      ]
+    },
+    {
+      "testcase": 147,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "avatar": 123,
+        "channelType": 1
+      },
+      "missing": [],
+      "extra": [
+        "avatar expected string, received number"
+      ]
+    },
+    {
+      "testcase": 148,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "avatar": 123,
+        "channelType": 1
+      },
+      "missing": [],
+      "extra": [
+        "avatar expected string, received number"
+      ]
+    },
+    {
+      "testcase": 149,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "",
+        "avatar": 123,
+        "channelType": 1
+      },
+      "missing": [],
+      "extra": [
+        "avatar expected string, received number",
+        "name should not be empty"
+      ]
+    },
+    {
+      "testcase": 150,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": 123,
+        "channelType": "invalid_enum_value"
+      },
+      "missing": [],
+      "extra": [
+        "avatar expected string, received number"
+      ]
+    },
+    {
+      "testcase": 151,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": 123,
+        "channelType": 1
+      },
+      "missing": [
+        "User not found"
+      ],
+      "extra": [
+        "avatar expected string, received number"
+      ]
+    },
+    {
+      "testcase": 152,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": 123,
+        "channelType": ""
+      },
+      "missing": [],
+      "extra": [
+        "avatar expected string, received number",
+        "channelType should not be empty"
+      ]
+    },
+    {
+      "testcase": 153,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "User not found"
+      ],
+      "extra": []
+    },
+    {
+      "testcase": 154,
+      "code": 200,
+      "body": {
+        "workspaceId": 123,
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 155,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "User not found"
+      ],
+      "extra": []
+    },
+    {
+      "testcase": 156,
+      "code": 200,
+      "body": {
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 157,
+      "code": 200,
+      "body": {
+        "workspaceId": "",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId must be 0",
+        "workspaceId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 158,
+      "code": 200,
+      "body": {
+        "workspaceId": "invalid_value",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId must be 0"
+      ],
+      "extra": [
+        "Invalid channel"
+      ]
+    },
+    {
+      "testcase": 160,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "User not found"
+      ],
+      "extra": []
+    },
+    {
+      "testcase": 164,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [],
+      "extra": [
+        "name should not be empty"
+      ]
+    },
+    {
+      "testcase": 166,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "User not found"
+      ],
+      "extra": []
+    },
+    {
+      "testcase": 167,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": ""
+      },
+      "missing": [],
+      "extra": [
+        "channelType should not be empty"
+      ]
+    },
+    {
+      "testcase": 168,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "",
+        "channelType": 1
+      },
+      "missing": [
+        "User not found"
+      ],
+      "extra": [
+        "avatar should not be empty"
+      ]
+    },
+    {
+      "testcase": 169,
+      "code": 200,
+      "body": {
+        "workspaceId": 123,
+        "name": "channel1",
+        "avatar": "",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 170,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "",
+        "channelType": 1
+      },
+      "missing": [
+        "User not found"
+      ],
+      "extra": [
+        "avatar should not be empty"
+      ]
+    },
+    {
+      "testcase": 171,
+      "code": 200,
+      "body": {
+        "name": "channel1",
+        "avatar": "",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 172,
+      "code": 200,
+      "body": {
+        "workspaceId": "",
+        "name": "channel1",
+        "avatar": "",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId must be 0",
+        "workspaceId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 173,
+      "code": 200,
+      "body": {
+        "workspaceId": "invalid_value",
+        "name": "channel1",
+        "avatar": "",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId must be 0"
+      ],
+      "extra": [
+        "Invalid channel"
+      ]
+    },
+    {
+      "testcase": 174,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": 123,
+        "avatar": "",
+        "channelType": 1
+      },
+      "missing": [],
+      "extra": [
+        "avatar should not be empty"
+      ]
+    },
+    {
+      "testcase": 175,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "",
+        "channelType": 1
+      },
+      "missing": [
+        "User not found"
+      ],
+      "extra": [
+        "avatar should not be empty"
+      ]
+    },
+    {
+      "testcase": 176,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "aa",
+        "avatar": "",
+        "channelType": 1
+      },
+      "missing": [],
+      "extra": [
+        "avatar should not be empty"
+      ]
+    },
+    {
+      "testcase": 177,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "avatar": "",
+        "channelType": 1
+      },
+      "missing": [],
+      "extra": [
+        "avatar should not be empty"
+      ]
+    },
+    {
+      "testcase": 178,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "avatar": "",
+        "channelType": 1
+      },
+      "missing": [],
+      "extra": [
+        "avatar should not be empty"
+      ]
+    },
+    {
+      "testcase": 179,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "",
+        "avatar": "",
+        "channelType": 1
+      },
+      "missing": [],
+      "extra": [
+        "avatar should not be empty",
+        "name should not be empty"
+      ]
+    },
+    {
+      "testcase": 180,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "",
+        "channelType": "invalid_enum_value"
+      },
+      "missing": [],
+      "extra": [
+        "avatar should not be empty"
+      ]
+    },
+    {
+      "testcase": 181,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "",
+        "channelType": 1
+      },
+      "missing": [
+        "User not found"
+      ],
+      "extra": [
+        "avatar should not be empty"
+      ]
+    },
+    {
+      "testcase": 182,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "",
+        "channelType": ""
+      },
+      "missing": [],
+      "extra": [
+        "avatar should not be empty",
+        "channelType should not be empty"
+      ]
+    },
+    {
+      "testcase": 184,
+      "code": 200,
+      "body": {
+        "workspaceId": 123,
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": "invalid_enum_value"
+      },
+      "missing": [
+        "channelType invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value'",
+        "workspaceId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 186,
+      "code": 200,
+      "body": {
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": "invalid_enum_value"
+      },
+      "missing": [
+        "channelType invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value'",
+        "workspaceId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 187,
+      "code": 200,
+      "body": {
+        "workspaceId": "",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": "invalid_enum_value"
+      },
+      "missing": [
+        "channelType invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value'",
+        "workspaceId must be 0",
+        "workspaceId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 188,
+      "code": 200,
+      "body": {
+        "workspaceId": "invalid_value",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": "invalid_enum_value"
+      },
+      "missing": [
+        "channelType invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value'",
+        "workspaceId must be 0"
+      ],
+      "extra": [
+        "Invalid channel"
+      ]
+    },
+    {
+      "testcase": 194,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": "invalid_enum_value"
+      },
+      "missing": [],
+      "extra": [
+        "name should not be empty"
+      ]
+    },
+    {
+      "testcase": 195,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": 123,
+        "channelType": "invalid_enum_value"
+      },
+      "missing": [],
+      "extra": [
+        "avatar expected string, received number"
+      ]
+    },
+    {
+      "testcase": 197,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "",
+        "channelType": "invalid_enum_value"
+      },
+      "missing": [],
+      "extra": [
+        "avatar should not be empty"
+      ]
+    },
+    {
+      "testcase": 198,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "User not found"
+      ],
+      "extra": []
+    },
+    {
+      "testcase": 199,
+      "code": 200,
+      "body": {
+        "workspaceId": 123,
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 200,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "User not found"
+      ],
+      "extra": []
+    },
+    {
+      "testcase": 201,
+      "code": 200,
+      "body": {
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 202,
+      "code": 200,
+      "body": {
+        "workspaceId": "",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId must be 0",
+        "workspaceId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 203,
+      "code": 200,
+      "body": {
+        "workspaceId": "invalid_value",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "workspaceId must be 0"
+      ],
+      "extra": [
+        "Invalid channel"
+      ]
+    },
+    {
+      "testcase": 205,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "User not found"
+      ],
+      "extra": []
+    },
+    {
+      "testcase": 209,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [],
+      "extra": [
+        "name should not be empty"
+      ]
+    },
+    {
+      "testcase": 210,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": 123,
+        "channelType": 1
+      },
+      "missing": [
+        "User not found"
+      ],
+      "extra": [
+        "avatar expected string, received number"
+      ]
+    },
+    {
+      "testcase": 211,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "User not found"
+      ],
+      "extra": []
+    },
+    {
+      "testcase": 212,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "",
+        "channelType": 1
+      },
+      "missing": [
+        "User not found"
+      ],
+      "extra": [
+        "avatar should not be empty"
+      ]
+    },
+    {
+      "testcase": 213,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": ""
+      },
+      "missing": [],
+      "extra": [
+        "channelType should not be empty"
+      ]
+    },
+    {
+      "testcase": 214,
+      "code": 200,
+      "body": {
+        "workspaceId": 123,
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": ""
+      },
+      "missing": [
+        "channelType invalid enum value. Expected 0 | 1 | 2, received ''",
+        "workspaceId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 215,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": ""
+      },
+      "missing": [],
+      "extra": [
+        "channelType should not be empty"
+      ]
+    },
+    {
+      "testcase": 216,
+      "code": 200,
+      "body": {
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": ""
+      },
+      "missing": [
+        "channelType invalid enum value. Expected 0 | 1 | 2, received ''",
+        "workspaceId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 217,
+      "code": 200,
+      "body": {
+        "workspaceId": "",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": ""
+      },
+      "missing": [
+        "channelType invalid enum value. Expected 0 | 1 | 2, received ''",
+        "workspaceId must be 0",
+        "workspaceId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 218,
+      "code": 200,
+      "body": {
+        "workspaceId": "invalid_value",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": ""
+      },
+      "missing": [
+        "channelType invalid enum value. Expected 0 | 1 | 2, received ''",
+        "workspaceId must be 0"
+      ],
+      "extra": [
+        "Invalid channel"
+      ]
+    },
+    {
+      "testcase": 219,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": 123,
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": ""
+      },
+      "missing": [],
+      "extra": [
+        "channelType should not be empty"
+      ]
+    },
+    {
+      "testcase": 220,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": ""
+      },
+      "missing": [],
+      "extra": [
+        "channelType should not be empty"
+      ]
+    },
+    {
+      "testcase": 221,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "aa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": ""
+      },
+      "missing": [],
+      "extra": [
+        "channelType should not be empty"
+      ]
+    },
+    {
+      "testcase": 222,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": ""
+      },
+      "missing": [],
+      "extra": [
+        "channelType should not be empty"
+      ]
+    },
+    {
+      "testcase": 223,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": ""
+      },
+      "missing": [],
+      "extra": [
+        "channelType should not be empty"
+      ]
+    },
+    {
+      "testcase": 224,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": ""
+      },
+      "missing": [],
+      "extra": [
+        "channelType should not be empty",
+        "name should not be empty"
+      ]
+    },
+    {
+      "testcase": 225,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": 123,
+        "channelType": ""
+      },
+      "missing": [],
+      "extra": [
+        "avatar expected string, received number",
+        "channelType should not be empty"
+      ]
+    },
+    {
+      "testcase": 226,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": ""
+      },
+      "missing": [],
+      "extra": [
+        "channelType should not be empty"
+      ]
+    },
+    {
+      "testcase": 227,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "",
+        "channelType": ""
+      },
+      "missing": [],
+      "extra": [
+        "avatar should not be empty",
+        "channelType should not be empty"
+      ]
+    },
+    {
+      "testcase": 228,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      },
+      "missing": [
+        "User not found"
+      ],
+      "extra": []
+    }
+  ],
+  "codedTest": [
+    {
+      "testcase": 14,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 15,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": 123,
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 16,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 17,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "aa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 18,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 19,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 22,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 24,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": "invalid_enum_value"
+      }
+    },
+    {
+      "testcase": 25,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 66,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": 123,
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 68,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": 123,
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 73,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": 123,
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 75,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": 123,
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": "invalid_enum_value"
+      }
+    },
+    {
+      "testcase": 76,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": 123,
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 78,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 80,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 85,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 87,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": "invalid_enum_value"
+      }
+    },
+    {
+      "testcase": 88,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 90,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "aa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 92,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "aa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 97,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "aa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 99,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "aa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": "invalid_enum_value"
+      }
+    },
+    {
+      "testcase": 100,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "aa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 102,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 104,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 109,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 111,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": "invalid_enum_value"
+      }
+    },
+    {
+      "testcase": 112,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 114,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 116,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 121,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 123,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": "invalid_enum_value"
+      }
+    },
+    {
+      "testcase": 124,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 159,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": 123,
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 161,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "aa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 162,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 163,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 165,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": "invalid_enum_value"
+      }
+    },
+    {
+      "testcase": 183,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": "invalid_enum_value"
+      }
+    },
+    {
+      "testcase": 185,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": "invalid_enum_value"
+      }
+    },
+    {
+      "testcase": 189,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": 123,
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": "invalid_enum_value"
+      }
+    },
+    {
+      "testcase": 190,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": "invalid_enum_value"
+      }
+    },
+    {
+      "testcase": 191,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "aa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": "invalid_enum_value"
+      }
+    },
+    {
+      "testcase": 192,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": "invalid_enum_value"
+      }
+    },
+    {
+      "testcase": 193,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": "invalid_enum_value"
+      }
+    },
+    {
+      "testcase": 196,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel1",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": "invalid_enum_value"
+      }
+    },
+    {
+      "testcase": 204,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": 123,
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 206,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "aa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 207,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    },
+    {
+      "testcase": 208,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+        "channelType": 1
+      }
+    }
+  ],
+  "passedTests": 51,
+  "totalTests": 228,
+  "logicTests": [],
+  "failedStep": []
+}

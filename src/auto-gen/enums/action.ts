@@ -2,8 +2,21 @@ import { METHOD } from './method.enum';
 import { APIPath } from './path.enum';
 
 export enum ACTION {
+    UNFRIEND = 'unfriend',
+  CANCEL_FRIEND_REQUEST = 'cancelFriendRequest',
+  DELETE_FRIEND_REQUEST = 'deleteFriendRequest',
+  ACCEPT_MESSAGE_REQUEST = 'acceptMessageRequest',
+  REJECT_MESSAGE_REQUEST = 'rejectMessageRequest',
+  SET_RING_BACK_TONE = 'setRingBackTone',
+  RING_BACK_TONE_CREATE = 'ringBackToneCreate',
+  RING_BACK_TONE_RENAME = 'ringBackToneRename',
+  BLOCK_USER = 'blockUser',
+  UNBLOCK_USER = 'unBlockUser',
+  UPDATE_USER_EMAIL = 'updateUserEmail',
+  DELETE_USER_AVATAR = 'deleteUserAvatar',
   MOCK_USER = 'mockUser',
   CREATE_CHANNEL = 'createChannel',
+  DELETE_CHANNEL_AVATAR = 'deleteChannelAvatar',
   SEND_MESSAGE = 'sendMessage',
   SEND_DM_MESSAGE = 'sendDmMessage',
   REPORT_DM_MESSAGE = 'reportDmMessage',
@@ -62,9 +75,95 @@ export enum ACTION {
   UPDATE_DM_MEDIA_ATTACHMENT = 'updateDmMediaAttachment',
   SEND_MESSAGE_MEDIA = 'sendMessageMedia',
   UPDATE_MEDIA_ATTACHMENT = 'updateMediaAttachment',
+  DELETE_USER_VISIT_PROFILE = 'deleteUserVisitProfile',
+  VISIT_PROFILE = 'visitProfile',
+  ADD_COVER_PHOTO = 'addCoverPhoto',
+  UPDATE_COVER_PHOTO = 'updateCoverPhoto',
+  AVATAR_FRAME_PATH = 'avatarFramePath',
+  DELETE_AVATAR_FRAME = 'deleteAvatarFrame',
+  UPDATE_USER_AVATAR = 'updateUserAvatar'
 }
 
 export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
+  [ACTION.DELETE_USER_AVATAR]: {
+    path: APIPath.UserProfile.DeleteUserAvatar,
+    method: METHOD.DELETE,
+  },
+  [ACTION.UPDATE_USER_EMAIL]: {
+    path: APIPath.UserProfile.UpdateUserEmail,
+    method: METHOD.PUT,
+  },
+  [ACTION.BLOCK_USER]: {
+    path: APIPath.UserSetting.BlockUser,
+    method: METHOD.POST,
+  },
+  [ACTION.UNBLOCK_USER]: {
+    path: APIPath.UserSetting.UnBlockUser,
+    method: METHOD.POST,
+  },
+  [ACTION.RING_BACK_TONE_CREATE]: {
+    path: APIPath.RingBackTone.RingBackToneCreate,
+    method: METHOD.POST,
+  },
+  [ACTION.RING_BACK_TONE_RENAME]: {
+    path: APIPath.RingBackTone.RingBackToneRename,
+    method: METHOD.PUT,
+  },
+  [ACTION.SET_RING_BACK_TONE]: {
+    path: APIPath.RingBackTone.SetRingBackTone,
+    method: METHOD.POST,
+  },
+  [ACTION.DELETE_CHANNEL_AVATAR]: {
+    path: APIPath.RingBackTone.SetRingBackTone,
+    method: METHOD.POST,
+  },
+  [ACTION.ACCEPT_MESSAGE_REQUEST]: {
+    path: APIPath.Channel.AcceptMessageRequest,
+    method: METHOD.POST,
+  },
+  [ACTION.REJECT_MESSAGE_REQUEST]: {
+    path: APIPath.Channel.RejectMessageRequest,
+    method: METHOD.POST,
+  },
+  [ACTION.CANCEL_FRIEND_REQUEST]: {
+    path: APIPath.Friend.CancelFriendRequest,
+    method: METHOD.POST,
+  },
+  [ACTION.ACCEPT_FRIEND_REQUEST]: {
+    path: APIPath.Friend.AcceptFriendRequest,
+    method: METHOD.POST,
+  },
+  [ACTION.DELETE_FRIEND_REQUEST]: {
+    path: APIPath.Friend.DeleteFriendRequest,
+    method: METHOD.DELETE,
+  },
+
+  [ACTION.UNFRIEND]: {
+    path: APIPath.Friend.Unfriend,
+    method: METHOD.DELETE,
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   [ACTION.MOCK_USER]: {
     path: APIPath.Faker.MockedUsers,
     method: METHOD.POST,
@@ -115,10 +214,6 @@ export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
   },
   [ACTION.ADD_FRIEND]: {
     path: APIPath.Friend.AddFriend,
-    method: METHOD.POST,
-  },
-  [ACTION.ACCEPT_FRIEND_REQUEST]: {
-    path: APIPath.Friend.AcceptFriendRequest,
     method: METHOD.POST,
   },
   [ACTION.UPDATE_CHANNEL_NAME]: {
@@ -304,5 +399,33 @@ export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
   [ACTION.UPDATE_MEDIA_ATTACHMENT]: {
     path: APIPath.Message.UpdateMediaAttachments,
     method: METHOD.POST,
+  },
+  [ACTION.DELETE_USER_VISIT_PROFILE]: {
+    path: APIPath.UserProfile.DeleteUserVisitProfile,
+    method: METHOD.DELETE,
+  },
+  [ACTION.VISIT_PROFILE]: {
+    path: APIPath.UserProfile.VisitProfile,
+    method: METHOD.POST,
+  },
+  [ACTION.ADD_COVER_PHOTO]: {
+    path: APIPath.UserProfile.AddCoverPhoto,
+    method: METHOD.POST,
+  },
+  [ACTION.UPDATE_COVER_PHOTO]: {
+    path: APIPath.UserProfile.UpdateCoverPhoto,
+    method: METHOD.PUT,
+  },
+  [ACTION.AVATAR_FRAME_PATH]: {
+    path: APIPath.UserProfile.AvatarFramePath,
+    method: METHOD.POST,
+  },
+  [ACTION.DELETE_AVATAR_FRAME]: {
+    path: APIPath.UserProfile.DeleteAvatarFrame,
+    method: METHOD.POST,
+  },
+  [ACTION.UPDATE_USER_AVATAR]: {
+    path: APIPath.UserProfile.UpdateUserAvatar,
+    method: METHOD.PUT,
   },
 };

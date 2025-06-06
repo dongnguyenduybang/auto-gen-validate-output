@@ -1,0 +1,1694 @@
+{
+  "path": "/Channel/UpdateChannelName",
+  "className": "update-channel-name",
+  "allSteps": [],
+  "failedTests": [
+    {
+      "testcase": 15,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "channel name 2"
+      },
+      "missing": [
+        "Unable update with the same name"
+      ],
+      "extra": []
+    },
+    {
+      "testcase": 20,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "channel name 2"
+      },
+      "missing": [
+        "Unable update with the same name"
+      ],
+      "extra": []
+    },
+    {
+      "testcase": 24,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": ""
+      },
+      "missing": [],
+      "extra": [
+        "name should not be empty"
+      ]
+    },
+    {
+      "testcase": 73,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "channel name 2"
+      },
+      "missing": [
+        "Unable update with the same name"
+      ],
+      "extra": []
+    },
+    {
+      "testcase": 75,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "channel name 2"
+      },
+      "missing": [
+        "Unable update with the same name"
+      ],
+      "extra": []
+    },
+    {
+      "testcase": 80,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "channel name 2"
+      },
+      "missing": [
+        "Unable update with the same name"
+      ],
+      "extra": []
+    },
+    {
+      "testcase": 84,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": ""
+      },
+      "missing": [],
+      "extra": [
+        "name should not be empty"
+      ]
+    },
+    {
+      "testcase": 132,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "channel name 2"
+      },
+      "missing": [
+        "Unable update with the same name"
+      ],
+      "extra": []
+    },
+    {
+      "testcase": 134,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "channel name 2"
+      },
+      "missing": [
+        "Unable update with the same name"
+      ],
+      "extra": []
+    },
+    {
+      "testcase": 139,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "channel name 2"
+      },
+      "missing": [
+        "Unable update with the same name"
+      ],
+      "extra": []
+    },
+    {
+      "testcase": 176,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": ""
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "name should not be empty",
+        "name string must contain at least 3 character(s)"
+      ]
+    },
+    {
+      "testcase": 178,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": ""
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "name should not be empty",
+        "name string must contain at least 3 character(s)"
+      ]
+    },
+    {
+      "testcase": 183,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": ""
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "name should not be empty",
+        "name string must contain at least 3 character(s)"
+      ]
+    },
+    {
+      "testcase": 187,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "channel name 2"
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": []
+    }
+  ],
+  "codedTest": [
+    {
+      "testcase": 1,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 2,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": 123,
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 3,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 4,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 5,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 6,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "invalid_value",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 7,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": 123
+      }
+    },
+    {
+      "testcase": 8,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 9,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "aa"
+      }
+    },
+    {
+      "testcase": 10,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    {
+      "testcase": 11,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN"
+      }
+    },
+    {
+      "testcase": 12,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": ""
+      }
+    },
+    {
+      "testcase": 13,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 14,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 16,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 17,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 18,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 19,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": 123
+      }
+    },
+    {
+      "testcase": 21,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "aa"
+      }
+    },
+    {
+      "testcase": 22,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    {
+      "testcase": 23,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN"
+      }
+    },
+    {
+      "testcase": 25,
+      "code": 403,
+      "body": {
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 26,
+      "code": 403,
+      "body": {
+        "channelId": 123,
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 27,
+      "code": 403,
+      "body": {
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 28,
+      "code": 403,
+      "body": {
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 29,
+      "code": 403,
+      "body": {
+        "channelId": "",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 30,
+      "code": 403,
+      "body": {
+        "channelId": "invalid_value",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 31,
+      "code": 403,
+      "body": {
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": 123
+      }
+    },
+    {
+      "testcase": 32,
+      "code": 403,
+      "body": {
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 33,
+      "code": 403,
+      "body": {
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "aa"
+      }
+    },
+    {
+      "testcase": 34,
+      "code": 403,
+      "body": {
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    {
+      "testcase": 35,
+      "code": 403,
+      "body": {
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN"
+      }
+    },
+    {
+      "testcase": 36,
+      "code": 403,
+      "body": {
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": ""
+      }
+    },
+    {
+      "testcase": 37,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 38,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": 123,
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 39,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 40,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 41,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 42,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "invalid_value",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 43,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": 123
+      }
+    },
+    {
+      "testcase": 44,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 45,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "aa"
+      }
+    },
+    {
+      "testcase": 46,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    {
+      "testcase": 47,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN"
+      }
+    },
+    {
+      "testcase": 48,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": ""
+      }
+    },
+    {
+      "testcase": 49,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 50,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": 123,
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 51,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 52,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 53,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 54,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "invalid_value",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 55,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": 123
+      }
+    },
+    {
+      "testcase": 56,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 57,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "aa"
+      }
+    },
+    {
+      "testcase": 58,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    {
+      "testcase": 59,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN"
+      }
+    },
+    {
+      "testcase": 60,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": ""
+      }
+    },
+    {
+      "testcase": 61,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 62,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": 123,
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 63,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 64,
+      "code": 403,
+      "body": {
+        "channelId": 123,
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 65,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": 123,
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 66,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": 123,
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 67,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "name": 123
+      }
+    },
+    {
+      "testcase": 68,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 69,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "name": "aa"
+      }
+    },
+    {
+      "testcase": 70,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    {
+      "testcase": 71,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123
+      }
+    },
+    {
+      "testcase": 72,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "name": ""
+      }
+    },
+    {
+      "testcase": 74,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 76,
+      "code": 403,
+      "body": {
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 77,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 78,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 79,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": 123
+      }
+    },
+    {
+      "testcase": 81,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "aa"
+      }
+    },
+    {
+      "testcase": 82,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    {
+      "testcase": 83,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN"
+      }
+    },
+    {
+      "testcase": 85,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 86,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 87,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 88,
+      "code": 403,
+      "body": {
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 89,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 90,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 91,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "name": 123
+      }
+    },
+    {
+      "testcase": 92,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 93,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "name": "aa"
+      }
+    },
+    {
+      "testcase": 94,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    {
+      "testcase": 95,
+      "code": 403,
+      "body": {
+        "workspaceId": "0"
+      }
+    },
+    {
+      "testcase": 96,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "name": ""
+      }
+    },
+    {
+      "testcase": 97,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 98,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 99,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 100,
+      "code": 403,
+      "body": {
+        "channelId": "",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 101,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 102,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 103,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "name": 123
+      }
+    },
+    {
+      "testcase": 104,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 105,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "name": "aa"
+      }
+    },
+    {
+      "testcase": 106,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    {
+      "testcase": 107,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": ""
+      }
+    },
+    {
+      "testcase": 108,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "name": ""
+      }
+    },
+    {
+      "testcase": 109,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 110,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "invalid_value",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 111,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 112,
+      "code": 403,
+      "body": {
+        "channelId": "invalid_value",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 113,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "invalid_value",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 114,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "invalid_value",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 115,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "name": 123
+      }
+    },
+    {
+      "testcase": 116,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 117,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "name": "aa"
+      }
+    },
+    {
+      "testcase": 118,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    {
+      "testcase": 119,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value"
+      }
+    },
+    {
+      "testcase": 120,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "name": ""
+      }
+    },
+    {
+      "testcase": 121,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": 123
+      }
+    },
+    {
+      "testcase": 122,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": 123
+      }
+    },
+    {
+      "testcase": 123,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": 123
+      }
+    },
+    {
+      "testcase": 124,
+      "code": 403,
+      "body": {
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": 123
+      }
+    },
+    {
+      "testcase": 125,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": 123
+      }
+    },
+    {
+      "testcase": 126,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": 123
+      }
+    },
+    {
+      "testcase": 127,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "name": 123
+      }
+    },
+    {
+      "testcase": 128,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": 123
+      }
+    },
+    {
+      "testcase": 129,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "name": 123
+      }
+    },
+    {
+      "testcase": 130,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "name": 123
+      }
+    },
+    {
+      "testcase": 131,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "name": 123
+      }
+    },
+    {
+      "testcase": 133,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 135,
+      "code": 403,
+      "body": {
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 136,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 137,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 138,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 140,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 141,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 142,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "name": "channel name 2"
+      }
+    },
+    {
+      "testcase": 143,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "aa"
+      }
+    },
+    {
+      "testcase": 144,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "aa"
+      }
+    },
+    {
+      "testcase": 145,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "aa"
+      }
+    },
+    {
+      "testcase": 146,
+      "code": 403,
+      "body": {
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "aa"
+      }
+    },
+    {
+      "testcase": 147,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "aa"
+      }
+    },
+    {
+      "testcase": 148,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "aa"
+      }
+    },
+    {
+      "testcase": 149,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "name": "aa"
+      }
+    },
+    {
+      "testcase": 150,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "aa"
+      }
+    },
+    {
+      "testcase": 151,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "name": "aa"
+      }
+    },
+    {
+      "testcase": 152,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "name": "aa"
+      }
+    },
+    {
+      "testcase": 153,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "name": "aa"
+      }
+    },
+    {
+      "testcase": 154,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    {
+      "testcase": 155,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    {
+      "testcase": 156,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    {
+      "testcase": 157,
+      "code": 403,
+      "body": {
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    {
+      "testcase": 158,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    {
+      "testcase": 159,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    {
+      "testcase": 160,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    {
+      "testcase": 161,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    {
+      "testcase": 162,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    {
+      "testcase": 163,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    {
+      "testcase": 164,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    {
+      "testcase": 165,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN"
+      }
+    },
+    {
+      "testcase": 166,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN"
+      }
+    },
+    {
+      "testcase": 167,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN"
+      }
+    },
+    {
+      "testcase": 168,
+      "code": 403,
+      "body": {
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN"
+      }
+    },
+    {
+      "testcase": 169,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN"
+      }
+    },
+    {
+      "testcase": 170,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN"
+      }
+    },
+    {
+      "testcase": 171,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123
+      }
+    },
+    {
+      "testcase": 172,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN"
+      }
+    },
+    {
+      "testcase": 173,
+      "code": 403,
+      "body": {
+        "workspaceId": "0"
+      }
+    },
+    {
+      "testcase": 174,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": ""
+      }
+    },
+    {
+      "testcase": 175,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value"
+      }
+    },
+    {
+      "testcase": 177,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": ""
+      }
+    },
+    {
+      "testcase": 179,
+      "code": 403,
+      "body": {
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": ""
+      }
+    },
+    {
+      "testcase": 180,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": ""
+      }
+    },
+    {
+      "testcase": 181,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JX36ZGMQ1JT0EPSFGDJVYJXN",
+        "name": ""
+      }
+    },
+    {
+      "testcase": 182,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "name": ""
+      }
+    },
+    {
+      "testcase": 184,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "name": ""
+      }
+    },
+    {
+      "testcase": 185,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "name": ""
+      }
+    },
+    {
+      "testcase": 186,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "name": ""
+      }
+    }
+  ],
+  "passedTests": 173,
+  "totalTests": 187,
+  "logicTests": [],
+  "failedStep": []
+}

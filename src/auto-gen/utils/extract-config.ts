@@ -68,6 +68,12 @@ const ejectMessageConfig: ExtractConfig = {
   },
 };
 
+const ringbackToneCreateConfig: ExtractConfig = {
+  data: {
+    path: ['data'],
+    fields: ['ringbackToneId']
+  }
+}
 const createInvitationConfig: ExtractConfig = {};
 
 // Ánh xạ action tới cấu hình
@@ -82,4 +88,5 @@ export const configMap: Record<string, ExtractConfig> = {
   acceptMessage: acceptMessageConfig,
   ejectMessage: ejectMessageConfig,
   createInvitation: createInvitationConfig,
+  ringbackToneCreate: ringbackToneCreateConfig,
 };

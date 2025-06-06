@@ -1,0 +1,1309 @@
+{
+  "path": "/Channel/UpdateChannelAvatar",
+  "className": "update-channel-avatar",
+  "allSteps": [],
+  "failedTests": [
+    {
+      "testcase": 19,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A"
+      },
+      "missing": [],
+      "extra": [
+        "avatarPath invalid url"
+      ]
+    },
+    {
+      "testcase": 20,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": ""
+      },
+      "missing": [
+        "avatarPath string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "avatarPath should not be empty"
+      ]
+    },
+    {
+      "testcase": 69,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A"
+      },
+      "missing": [],
+      "extra": [
+        "avatarPath invalid url"
+      ]
+    },
+    {
+      "testcase": 70,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": ""
+      },
+      "missing": [
+        "avatarPath string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "avatarPath should not be empty"
+      ]
+    },
+    {
+      "testcase": 123,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A"
+      },
+      "missing": [],
+      "extra": [
+        "avatarPath invalid url"
+      ]
+    },
+    {
+      "testcase": 125,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A"
+      },
+      "missing": [],
+      "extra": [
+        "avatarPath invalid url"
+      ]
+    },
+    {
+      "testcase": 130,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A"
+      },
+      "missing": [],
+      "extra": [
+        "avatarPath invalid url"
+      ]
+    },
+    {
+      "testcase": 134,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": ""
+      },
+      "missing": [
+        "avatarPath string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "avatarPath should not be empty"
+      ]
+    },
+    {
+      "testcase": 136,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": ""
+      },
+      "missing": [
+        "avatarPath string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "avatarPath should not be empty"
+      ]
+    },
+    {
+      "testcase": 141,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": ""
+      },
+      "missing": [
+        "avatarPath string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "avatarPath should not be empty"
+      ]
+    }
+  ],
+  "codedTest": [
+    {
+      "testcase": 1,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 2,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": 123,
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 3,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 4,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 5,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 6,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "invalid_value",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 7,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": 123
+      }
+    },
+    {
+      "testcase": 8,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 9,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A"
+      }
+    },
+    {
+      "testcase": 10,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": ""
+      }
+    },
+    {
+      "testcase": 11,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 12,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 13,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 14,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 15,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 16,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 17,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": 123
+      }
+    },
+    {
+      "testcase": 18,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 21,
+      "code": 403,
+      "body": {
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 22,
+      "code": 403,
+      "body": {
+        "channelId": 123,
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 23,
+      "code": 403,
+      "body": {
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 24,
+      "code": 403,
+      "body": {
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 25,
+      "code": 403,
+      "body": {
+        "channelId": "",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 26,
+      "code": 403,
+      "body": {
+        "channelId": "invalid_value",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 27,
+      "code": 403,
+      "body": {
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": 123
+      }
+    },
+    {
+      "testcase": 28,
+      "code": 403,
+      "body": {
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 29,
+      "code": 403,
+      "body": {
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A"
+      }
+    },
+    {
+      "testcase": 30,
+      "code": 403,
+      "body": {
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": ""
+      }
+    },
+    {
+      "testcase": 31,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 32,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": 123,
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 33,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 34,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 35,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 36,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "invalid_value",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 37,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": 123
+      }
+    },
+    {
+      "testcase": 38,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 39,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A"
+      }
+    },
+    {
+      "testcase": 40,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": ""
+      }
+    },
+    {
+      "testcase": 41,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 42,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": 123,
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 43,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 44,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 45,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 46,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "invalid_value",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 47,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": 123
+      }
+    },
+    {
+      "testcase": 48,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 49,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A"
+      }
+    },
+    {
+      "testcase": 50,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": ""
+      }
+    },
+    {
+      "testcase": 51,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 52,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": 123,
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 53,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 54,
+      "code": 403,
+      "body": {
+        "channelId": 123,
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 55,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": 123,
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 56,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": 123,
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 57,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "avatarPath": 123
+      }
+    },
+    {
+      "testcase": 58,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 59,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123
+      }
+    },
+    {
+      "testcase": 60,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "avatarPath": ""
+      }
+    },
+    {
+      "testcase": 61,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 62,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 63,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 64,
+      "code": 403,
+      "body": {
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 65,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 66,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 67,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": 123
+      }
+    },
+    {
+      "testcase": 68,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 71,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 72,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 73,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 74,
+      "code": 403,
+      "body": {
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 75,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 76,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 77,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "avatarPath": 123
+      }
+    },
+    {
+      "testcase": 78,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 79,
+      "code": 403,
+      "body": {
+        "workspaceId": "0"
+      }
+    },
+    {
+      "testcase": 80,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "avatarPath": ""
+      }
+    },
+    {
+      "testcase": 81,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 82,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 83,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 84,
+      "code": 403,
+      "body": {
+        "channelId": "",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 85,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 86,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 87,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "avatarPath": 123
+      }
+    },
+    {
+      "testcase": 88,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 89,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": ""
+      }
+    },
+    {
+      "testcase": 90,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "avatarPath": ""
+      }
+    },
+    {
+      "testcase": 91,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 92,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "invalid_value",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 93,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 94,
+      "code": 403,
+      "body": {
+        "channelId": "invalid_value",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 95,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "invalid_value",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 96,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "invalid_value",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 97,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "avatarPath": 123
+      }
+    },
+    {
+      "testcase": 98,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 99,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value"
+      }
+    },
+    {
+      "testcase": 100,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "avatarPath": ""
+      }
+    },
+    {
+      "testcase": 101,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": 123
+      }
+    },
+    {
+      "testcase": 102,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": 123
+      }
+    },
+    {
+      "testcase": 103,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": 123
+      }
+    },
+    {
+      "testcase": 104,
+      "code": 403,
+      "body": {
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": 123
+      }
+    },
+    {
+      "testcase": 105,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": 123
+      }
+    },
+    {
+      "testcase": 106,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": 123
+      }
+    },
+    {
+      "testcase": 107,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "avatarPath": 123
+      }
+    },
+    {
+      "testcase": 108,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": 123
+      }
+    },
+    {
+      "testcase": 109,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "avatarPath": 123
+      }
+    },
+    {
+      "testcase": 110,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "avatarPath": 123
+      }
+    },
+    {
+      "testcase": 111,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "avatarPath": 123
+      }
+    },
+    {
+      "testcase": 112,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 113,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 114,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 115,
+      "code": 403,
+      "body": {
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 116,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 117,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 118,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 119,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 120,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 121,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 122,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    },
+    {
+      "testcase": 124,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A"
+      }
+    },
+    {
+      "testcase": 126,
+      "code": 403,
+      "body": {
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A"
+      }
+    },
+    {
+      "testcase": 127,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A"
+      }
+    },
+    {
+      "testcase": 128,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A"
+      }
+    },
+    {
+      "testcase": 129,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123
+      }
+    },
+    {
+      "testcase": 131,
+      "code": 403,
+      "body": {
+        "workspaceId": "0"
+      }
+    },
+    {
+      "testcase": 132,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": ""
+      }
+    },
+    {
+      "testcase": 133,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value"
+      }
+    },
+    {
+      "testcase": 135,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": ""
+      }
+    },
+    {
+      "testcase": 137,
+      "code": 403,
+      "body": {
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": ""
+      }
+    },
+    {
+      "testcase": 138,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": ""
+      }
+    },
+    {
+      "testcase": 139,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": ""
+      }
+    },
+    {
+      "testcase": 140,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "avatarPath": ""
+      }
+    },
+    {
+      "testcase": 142,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "avatarPath": ""
+      }
+    },
+    {
+      "testcase": 143,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "avatarPath": ""
+      }
+    },
+    {
+      "testcase": 144,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "avatarPath": ""
+      }
+    },
+    {
+      "testcase": 145,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZH23BWHE01N0FENSK37A",
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      }
+    }
+  ],
+  "passedTests": 135,
+  "totalTests": 145,
+  "logicTests": [],
+  "failedStep": []
+}

@@ -1,0 +1,619 @@
+{
+  "path": "/Channel/DeleteChannel",
+  "className": "delete-channel",
+  "allSteps": [],
+  "failedTests": [
+    {
+      "testcase": 1,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JX36ZGSTFK2DJJ39QQAQGNE6"
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 2,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": 123
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 3,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JX36ZGSTFK2DJJ39QQAQGNE6"
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 4,
+      "code": 403,
+      "body": {
+        "workspaceId": 123
+      },
+      "missing": [
+        "Unsupported permission type"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 5,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": ""
+      },
+      "missing": [
+        "Unsupported permission type"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 6,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "invalid_value"
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 8,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 9,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGSTFK2DJJ39QQAQGNE6"
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": []
+    },
+    {
+      "testcase": 11,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": ""
+      },
+      "missing": [
+        "Unsupported permission type"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 26,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": 123
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 29,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": ""
+      },
+      "missing": [
+        "Unsupported permission type"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 31,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 32,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": 123
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 33,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 36,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": 123
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 37,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGSTFK2DJJ39QQAQGNE6"
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": []
+    },
+    {
+      "testcase": 38,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JX36ZGSTFK2DJJ39QQAQGNE6"
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 39,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGSTFK2DJJ39QQAQGNE6"
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": []
+    },
+    {
+      "testcase": 44,
+      "code": 403,
+      "body": {
+        "workspaceId": 123
+      },
+      "missing": [
+        "Unsupported permission type"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 49,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": ""
+      },
+      "missing": [
+        "Unsupported permission type"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 50,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": ""
+      },
+      "missing": [
+        "Unsupported permission type"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 51,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": ""
+      },
+      "missing": [
+        "Unsupported permission type"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 54,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": ""
+      },
+      "missing": [
+        "Unsupported permission type"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 56,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "invalid_value"
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 61,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGSTFK2DJJ39QQAQGNE6"
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": []
+    }
+  ],
+  "codedTest": [
+    {
+      "testcase": 7,
+      "code": 200,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JX36ZGSTFK2DJJ39QQAQGNE6"
+      }
+    },
+    {
+      "testcase": 10,
+      "code": 403,
+      "body": {
+        "workspaceId": "0"
+      }
+    },
+    {
+      "testcase": 12,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value"
+      }
+    },
+    {
+      "testcase": 13,
+      "code": 403,
+      "body": {
+        "channelId": "01JX36ZGSTFK2DJJ39QQAQGNE6"
+      }
+    },
+    {
+      "testcase": 14,
+      "code": 403,
+      "body": {
+        "channelId": 123
+      }
+    },
+    {
+      "testcase": 15,
+      "code": 403,
+      "body": {
+        "channelId": "01JX36ZGSTFK2DJJ39QQAQGNE6"
+      }
+    },
+    {
+      "testcase": 16,
+      "code": 403,
+      "body": {}
+    },
+    {
+      "testcase": 17,
+      "code": 403,
+      "body": {
+        "channelId": ""
+      }
+    },
+    {
+      "testcase": 18,
+      "code": 403,
+      "body": {
+        "channelId": "invalid_value"
+      }
+    },
+    {
+      "testcase": 19,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JX36ZGSTFK2DJJ39QQAQGNE6"
+      }
+    },
+    {
+      "testcase": 20,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": 123
+      }
+    },
+    {
+      "testcase": 21,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JX36ZGSTFK2DJJ39QQAQGNE6"
+      }
+    },
+    {
+      "testcase": 22,
+      "code": 403,
+      "body": {
+        "workspaceId": ""
+      }
+    },
+    {
+      "testcase": 23,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": ""
+      }
+    },
+    {
+      "testcase": 24,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "invalid_value"
+      }
+    },
+    {
+      "testcase": 25,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JX36ZGSTFK2DJJ39QQAQGNE6"
+      }
+    },
+    {
+      "testcase": 27,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JX36ZGSTFK2DJJ39QQAQGNE6"
+      }
+    },
+    {
+      "testcase": 28,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value"
+      }
+    },
+    {
+      "testcase": 30,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "invalid_value"
+      }
+    },
+    {
+      "testcase": 34,
+      "code": 403,
+      "body": {
+        "channelId": 123
+      }
+    },
+    {
+      "testcase": 35,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": 123
+      }
+    },
+    {
+      "testcase": 40,
+      "code": 403,
+      "body": {
+        "channelId": "01JX36ZGSTFK2DJJ39QQAQGNE6"
+      }
+    },
+    {
+      "testcase": 41,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JX36ZGSTFK2DJJ39QQAQGNE6"
+      }
+    },
+    {
+      "testcase": 42,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JX36ZGSTFK2DJJ39QQAQGNE6"
+      }
+    },
+    {
+      "testcase": 43,
+      "code": 403,
+      "body": {
+        "workspaceId": "0"
+      }
+    },
+    {
+      "testcase": 45,
+      "code": 403,
+      "body": {
+        "workspaceId": "0"
+      }
+    },
+    {
+      "testcase": 46,
+      "code": 403,
+      "body": {}
+    },
+    {
+      "testcase": 47,
+      "code": 403,
+      "body": {
+        "workspaceId": ""
+      }
+    },
+    {
+      "testcase": 48,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value"
+      }
+    },
+    {
+      "testcase": 52,
+      "code": 403,
+      "body": {
+        "channelId": ""
+      }
+    },
+    {
+      "testcase": 53,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": ""
+      }
+    },
+    {
+      "testcase": 55,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value"
+      }
+    },
+    {
+      "testcase": 57,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value"
+      }
+    },
+    {
+      "testcase": 58,
+      "code": 403,
+      "body": {
+        "channelId": "invalid_value"
+      }
+    },
+    {
+      "testcase": 59,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "invalid_value"
+      }
+    },
+    {
+      "testcase": 60,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "invalid_value"
+      }
+    }
+  ],
+  "passedTests": 36,
+  "totalTests": 61,
+  "logicTests": [],
+  "failedStep": []
+}
