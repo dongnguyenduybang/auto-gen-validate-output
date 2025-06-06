@@ -13,15 +13,15 @@ export async function handleExpectConfig(
 
   // ok
   if (expectConfig.ok) {
-    let resultData: ExpectResult[] = [];
-    let data = getValueByPath(responseChecking, 'ok');
+    const resultData: ExpectResult[] = [];
+    const data = getValueByPath(responseChecking, 'ok');
     const rs = validateExpectValues(data, expectConfig.ok, `ok`);
     if (rs?.length) resultData.push(...rs);
     if (resultData.length > 0) results.push(...resultData);
   }
   // data
   if (expectConfig.data) {
-    let resultData: ExpectResult[] = [];
+    const resultData: ExpectResult[] = [];
     let itemData, itemPayload;
     const { path, action, payload, filter, isArrayMapping, headers } =
       expectConfig.data;
@@ -37,7 +37,7 @@ export async function handleExpectConfig(
     const resolveHeader = resolveVariables(headers, context);
     const actionInfo = ACTION_CONFIG[action as keyof typeof ACTION_CONFIG];
 
-    let data = getValueByPath(responseChecking, path);
+    const data = getValueByPath(responseChecking, path);
     if (isArrayMapping && Array.isArray(payload) && Array.isArray(data)) {
       for (let i = 0; i < payload.length; i++) {
         const itemPayload = payload[i];
@@ -65,7 +65,7 @@ export async function handleExpectConfig(
         });
       }
 
-      let responseData = getValueByPath(response.data, path);
+      const responseData = getValueByPath(response.data, path);
       if (filter.length > 0) {
         itemData = pickFields(data, filter); // của data
         itemPayload = pickFields(responseData, filter); // của call api expect
@@ -95,7 +95,7 @@ export async function handleExpectConfig(
               ? 'member'
               : undefined;
 
-      let dataInclude = getValueByPath(responseChecking, path);
+      const dataInclude = getValueByPath(responseChecking, path);
       const resolveHeader = resolveVariables(headers, context);
 
       if (

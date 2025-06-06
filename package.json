@@ -6,7 +6,6 @@
   "license": "MIT",
   "scripts": {
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "nest start",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "gen": "npx ts-node -r tsconfig-paths/register src/auto-gen/test.index.ts gen",
     "test": "npx ts-node -r tsconfig-paths/register src/auto-gen/test.index.ts test",

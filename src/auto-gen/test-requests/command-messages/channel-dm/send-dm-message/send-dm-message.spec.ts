@@ -11,18 +11,18 @@ import { TestContext } from '../../../../utils/text-context';
 import { SendDmMessageRequest } from '././send-dm-message.request';
 describe('Testcase for send-dm-message', () => {
   let totalTests = 0;
-  let allSteps = [];
-  let failedTests: any[] = [];
-  let codedTest: any[] = [];
-  let logicTests: any[] = [];
+  const allSteps = [];
+  const failedTests: any[] = [];
+  const codedTest: any[] = [];
+  const logicTests: any[] = [];
   let passedTests = 0;
   let testNumber: number;
-  let failedStep: any[] = [];
+  const failedStep: any[] = [];
   let testType: string;
   let resolvedData: any;
   let globalContext: any;
   let testCaseNumber = 0;
-  let currentTestCaseTitle = '';
+  const currentTestCaseTitle = '';
   let context, contextData;
 
   beforeAll(async () => {

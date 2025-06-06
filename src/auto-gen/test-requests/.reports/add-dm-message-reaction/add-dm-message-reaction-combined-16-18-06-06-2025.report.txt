@@ -1,0 +1,105 @@
+=== Request Test Report for add-dm-message-reaction ===
+• Host: N/A
+• Endpoint: /Message/AddDMMessageReaction
+• Date: 06/06/2025, 16:18:01
+
+=== Execution Steps ===
+
+=== Test Summary ===
+✅ Passed: 80
+❌ Failed: 11
+📊 Total: 91
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 25
+ 🟢 201: 0
+ 🟠 400: 0
+ 🟠 403: 55
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Unique Errors ===
+ 🟣 1. messageId should not be empty (Occurred: 6 times)
+ 🟣 2. emoji should not be empty (Occurred: 6 times)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #15
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JX28DK4T0S3TGKEZ8WPBBC7C","messageId":"","emoji":"🚀"}
+     ├─ Actual (Missing): messageId string must contain at least 1 character(s)
+     ├─ Expected (Extra): messageId should not be empty
+     └─ Details: No details
+
+ 🟣 2. Case #20
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JX28DK4T0S3TGKEZ8WPBBC7C","messageId":"01JX28DMZJHW1N2QQXE8RB1J3W","emoji":""}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): emoji should not be empty
+     └─ Details: No details
+
+ 🟣 3. Case #69
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JX28DK4T0S3TGKEZ8WPBBC7C","messageId":123,"emoji":""}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): emoji should not be empty
+     └─ Details: No details
+
+ 🟣 4. Case #74
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JX28DK4T0S3TGKEZ8WPBBC7C","emoji":""}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): emoji should not be empty
+     └─ Details: No details
+
+ 🟣 5. Case #77
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JX28DK4T0S3TGKEZ8WPBBC7C","messageId":"","emoji":123}
+     ├─ Actual (Missing): messageId string must contain at least 1 character(s)
+     ├─ Expected (Extra): messageId should not be empty
+     └─ Details: No details
+
+ 🟣 6. Case #78
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JX28DK4T0S3TGKEZ8WPBBC7C","messageId":"","emoji":"🚀🚀"}
+     ├─ Actual (Missing): messageId string must contain at least 1 character(s)
+     ├─ Expected (Extra): messageId should not be empty
+     └─ Details: No details
+
+ 🟣 7. Case #79
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JX28DK4T0S3TGKEZ8WPBBC7C","messageId":"","emoji":""}
+     ├─ Actual (Missing): messageId string must contain at least 1 character(s)
+     ├─ Expected (Extra): emoji should not be empty, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 8. Case #80
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JX28DK4T0S3TGKEZ8WPBBC7C","messageId":""}
+     ├─ Actual (Missing): messageId string must contain at least 1 character(s)
+     ├─ Expected (Extra): messageId should not be empty
+     └─ Details: No details
+
+ 🟣 9. Case #81
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JX28DK4T0S3TGKEZ8WPBBC7C","messageId":"","emoji":null}
+     ├─ Actual (Missing): messageId string must contain at least 1 character(s)
+     ├─ Expected (Extra): messageId should not be empty
+     └─ Details: No details
+
+ 🟣 10. Case #84
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JX28DK4T0S3TGKEZ8WPBBC7C","messageId":null,"emoji":""}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): emoji should not be empty
+     └─ Details: No details
+
+ 🟣 11. Case #89
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JX28DK4T0S3TGKEZ8WPBBC7C","messageId":"invalid_ULID","emoji":""}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): emoji should not be empty
+     └─ Details: No details
+
+=== End of Report ===
