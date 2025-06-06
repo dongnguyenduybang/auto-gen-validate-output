@@ -44,7 +44,6 @@ async function executeSingleStep(
     headers: resolveHeaders,
     body: resolveBody,
   });
-  console.log(action, response.data)
   const hasExpectConfig = !!expectConfig;
   if ((!response?.data?.ok) && !hasExpectConfig) {
     return {
