@@ -122,27 +122,32 @@ export function generateErrorVariantsForField(
       variants.push('not_an_array'); //invalid type array
       variants.push(fieldValue); // valid case
       const itemDecorators = decorators['itemDecorators']
-      itemDecorators.forEach((decorator: { name: string; params?: any }) => {
-        const { name, params } = decorator;
-        let filedPush = decoratorItemValidations[name];
-        if (typeof filedPush === 'function' && params !== undefined) {
-          filedPush = filedPush(params);
-        }
-        if (filedPush) {
-          if (filedPush.invalid) {
-            variants.push(filedPush.invalid());
+      if (!itemDecorators) {
+        return;
+      } else {
+        itemDecorators.forEach((decorator: { name: string; params?: any }) => {
+          const { name, params } = decorator;
+          let filedPush = decoratorItemValidations[name];
+          if (typeof filedPush === 'function' && params !== undefined) {
+            filedPush = filedPush(params);
           }
-          if (filedPush.valid) {
-            variants.push(filedPush.valid());
+          if (filedPush) {
+            if (filedPush.invalid) {
+              variants.push(filedPush.invalid());
+            }
+            if (filedPush.valid) {
+              variants.push(filedPush.valid());
+            }
           }
-        }
-      });
+        });
+      }
       break;
     case 'boolean':
       variants.push('invalid_boolean');
       variants.push(fieldValue);
       break;
   }
+
 
   // 3. Vi phạm min/max
   if (decorators['min'] !== undefined) {
@@ -678,6 +683,7 @@ export function mapError(field: string, value: unknown, decorators: Record<strin
   if (validIfErrors !== null) {
     if (validIfErrors.message) {
       errors.push(validIfErrors.message);
+      return errors;
     }
 
     if (!validIfErrors.isRequired) {
