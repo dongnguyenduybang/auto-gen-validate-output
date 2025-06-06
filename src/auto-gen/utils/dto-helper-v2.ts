@@ -77,16 +77,18 @@ export function generateStructuredErrorCases(
     body: allValidCase,
     expects: validErrors.length > 0 ? validErrors : []
   });
-
+  // return allTestCases;
   return removeDuplicateTestCases(allTestCases)
 }
 
-function removeDuplicateTestCases(testCases) {
+function removeDuplicateTestCases(testCases: any[]) {
   const seen = new Set<string>();
   const uniqueTestCases = [];
 
   testCases.forEach((testCase) => {
-    const bodyString = JSON.stringify(testCase.body, Object.keys(testCase.body).sort());
+    // Sắp xếp keys ở tất cả các cấp độ
+    const normalizedBody = sortObjectKeys(testCase.body);
+    const bodyString = JSON.stringify(normalizedBody);
 
     if (!seen.has(bodyString)) {
       seen.add(bodyString);
@@ -95,6 +97,21 @@ function removeDuplicateTestCases(testCases) {
   });
 
   return uniqueTestCases;
+}
+
+function sortObjectKeys(obj: any): any {
+  if (typeof obj !== 'object' || obj === null) return obj;
+
+  if (Array.isArray(obj)) {
+    return obj.map(sortObjectKeys);
+  }
+
+  const sortedObj: Record<string, any> = {};
+  Object.keys(obj).sort().forEach(key => {
+    sortedObj[key] = sortObjectKeys(obj[key]);
+  });
+
+  return sortedObj;
 }
 
 export function generateErrorCases(
@@ -124,8 +141,8 @@ const decoratorItemValidations = {
     invalid: () => [null]
   },
   IsObject: {
-    invalid: () => [[]],
-    valid: () => [{}]
+    valid: () => [{}],
+    invalid: () => ['string'],
   }
 };
 
@@ -761,7 +778,7 @@ function checkTypeArray(field: string, value: unknown, decorators: Record<string
   const errors: string[] = [];
 
   if (decorators['type'] === 'array') {
-    // Kiểm tra xem giá trị có phải là mảng không
+
     if (!Array.isArray(value) && value === null) {
       addErrorIfNotExist(
         errors,
@@ -797,23 +814,29 @@ function checkTypeArray(field: string, value: unknown, decorators: Record<string
     }
 
     value.forEach((item: unknown, index: number) => {
+      const typeItem = typeof item;
       if (typeof item === 'string') {
-
         const itemDecorator = decorators['itemDecorators'];
         itemDecorator.forEach((dec: { name: string; params?: any; message?: string }) => {
           const { name, params, message } = dec;
           //check type
-          console.log(dec)
-          if (typeof item !== 'string' && name === 'IsString') {
+          if (name === 'IsObject' && typeof item !== 'object') {
             addErrorIfNotExist(
               errors,
               null,
-              `${field} has element ${index} ${ErrorMessage.INVALID_TYPE_STRING} ${typeof item}`
+              `${field} has element ${index} ${ErrorMessage.INVALID_TYPE_OBJ} ${typeof item}`
             )
           }
-
           //check min item
           if (item === "" && name === 'MinArrayItem') {
+            addErrorIfNotExist(
+              errors,
+              null,
+              `${field} has element ${index} ${ErrorMessage.MIN_LENGTH} ${params} character(s)`
+            )
+
+          }
+          if (item === "" && name === 'MinArrayItem' && decorators['IsULID']) {
             addErrorIfNotExist(
               errors,
               null,
@@ -825,6 +848,8 @@ function checkTypeArray(field: string, value: unknown, decorators: Record<string
               `${field} has element ${index} ${ErrorMessage.INVALID_ULID}`
             )
           }
+
+
           //check ulid
           if (name === 'IsULID' && !checkRegexULID(item) && !item.startsWith('{{')) {
             addErrorIfNotExist(
@@ -860,17 +885,27 @@ function checkTypeArray(field: string, value: unknown, decorators: Record<string
           addErrorIfNotExist(
             errors,
             null,
-            `${field} has element ${index} ${ErrorMessage.INVALID_TYPE_STRING} null`
+            `${field} has element ${index} ${ErrorMessage.INVALID_TYPE_OBJ} null`
           )
         } else {
-          addErrorIfNotExist(
-            errors,
-            null,
-            `${field} has element ${index} ${ErrorMessage.INVALID_TYPE_STRING} ${typeof item}`
-          )
+          if (typeof item !== 'object') {
+            addErrorIfNotExist(
+              errors,
+              null,
+              `${field} has element ${index} ${ErrorMessage.INVALID_TYPE_OBJ} ${typeof item}`
+            )
+          } else {
+            return;
+          }
         }
       }
     });
+
+  }
+
+  if (decorators['isValidateNested'] && value !== undefined && value !== null) {
+    const nestedErrors = checkNestedValidation(field, value, decorators)
+    errors.push(...nestedErrors);
   }
 
   return errors;
@@ -963,24 +998,23 @@ export function mapError(field: string, value: unknown, decorators: Record<strin
 
 // Helper function để lấy nested class từ decorators
 function getNestedClass(decorators: Record<string, any>): any {
-  console.log('Getting nested class from decorators:', decorators);
+
 
   // Ưu tiên lấy nestedType từ decorator Type
   if (decorators['nestedType']) {
-    console.log('Found nestedType:', decorators['nestedType']);
+
     return decorators['nestedType'];
   }
 
   // Chỉ lấy design:type nếu nó không phải là Array
   if (decorators['design:type'] && decorators['design:type'] !== Array) {
-    console.log('Found design:type:', decorators['design:type']);
+
     return decorators['design:type'];
   }
 
-  console.log('No nested class found');
   return null;
 }
-// Helper function để tạo variants cho nested array
+
 function generateNestedArrayVariants(arrayValue: any[], nestedClass: any, depth: number = 0): unknown[] {
   const variants: unknown[] = [];
   console.log('generateNestedArrayVariants called with:', arrayValue, nestedClass, 'depth:', depth);
@@ -996,16 +1030,10 @@ function generateNestedArrayVariants(arrayValue: any[], nestedClass: any, depth:
     return variants;
   }
 
-  // Lấy object đầu tiên làm template
   const templateObject = arrayValue[0];
-  console.log('Template object:', templateObject);
-
   const nestedInstance = new nestedClass();
-  console.log('Nested instance:', nestedInstance);
   const nestedFields = Object.keys(nestedInstance);
-  console.log('Nested fields:', nestedFields);
 
-  // Tạo variants cho từng field trong nested object
   nestedFields.forEach(nestedField => {
     const nestedDecorators = getDecorators(nestedInstance, nestedField);
     const nestedValue = templateObject?.[nestedField] || nestedInstance[nestedField];
@@ -1064,6 +1092,50 @@ function generateNestedArrayVariants(arrayValue: any[], nestedClass: any, depth:
     }
   });
 
-  console.log('Total variants generated:', variants.length);
   return variants;
+}
+
+function checkNestedValidation(field: string, value: unknown, decorators: Record<string, any>): string[] {
+  const errors: string[] = [];
+  const nestedClass = getNestedClass(decorators);
+
+  if (!nestedClass) {
+    console.log('No nested class found for field:', field);
+    return errors;
+  }
+  // Xử lý nested array
+  if (decorators['type'] === 'array' && Array.isArray(value)) {
+    value.forEach((item, index) => {
+      if (item && typeof item === 'object') {
+        const nestedErrors = validateNestedObject(item, nestedClass, `${field}[${index}]`);
+        errors.push(...nestedErrors);
+      }
+    });
+  }
+  // Xử lý nested object
+  else if (decorators['type'] === 'object' && value && typeof value === 'object') {
+    const nestedErrors = validateNestedObject(value, nestedClass, field);
+    errors.push(...nestedErrors);
+  } else {
+    const nestedErrors = validateNestedObject(value, nestedClass, field);
+    errors.push(...nestedErrors);
+  }
+
+  return errors;
+}
+
+
+function validateNestedObject(obj: any, nestedClass: any, parentField: string): string[] {
+  const errors: string[] = [];
+  const nestedInstance = new nestedClass();
+  const nestedFields = Object.keys(nestedInstance);
+
+  nestedFields.forEach(nestedField => {
+    const nestedValue = obj[nestedField];
+    const nestedDecorators = getDecorators(nestedInstance, nestedField);
+    const fieldErrors = mapError(nestedField, nestedValue, nestedDecorators, obj);
+    errors.push(...fieldErrors);
+  });
+
+  return errors;
 }

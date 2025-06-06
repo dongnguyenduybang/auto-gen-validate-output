@@ -120,7 +120,7 @@ async function combineReports(className: string) {
 
     const reportContent = combinedReportTemplate(
         className,
-        globalThis.url,
+        globalThis.urls,
         pathRequest.join(', '),
         combinedFailedStep,
         totalPassedTests,
@@ -131,7 +131,7 @@ async function combineReports(className: string) {
         'request'
     );
 
-    const outputDir = path.join(__dirname, '../test-requests/reports', className);
+    const outputDir = path.join(__dirname, '../test-requests/.reports', className);
     ensureDirExists(outputDir);
 
     const reportFileName = `${className}-combined-${getTime()}.report.txt`;

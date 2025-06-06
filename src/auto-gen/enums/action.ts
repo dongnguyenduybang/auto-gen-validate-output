@@ -57,7 +57,9 @@ export enum ACTION {
   SEND_MESSAGE_STICKER = 'sendMessageSticker',
   ADD_DM_MESSAGE_REACTION = 'addDmMessageReaction',
   REVOKE_DM_MESSAGE_REACTION = 'revokeDmMessageReaction',
-  FORWARD_DM_MESSAGE_CHANNEL = 'forwardDmMessageChannel'
+  FORWARD_DM_MESSAGE_CHANNEL = 'forwardDmMessageChannel',
+  SEND_DM_MESSAGE_MEDIA = 'sendDmMessageMedia',
+  SEND_MESSAGE_MEDIA = 'sendMessageMedia'
 }
 
 export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
@@ -228,5 +230,11 @@ export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
   },
   [ACTION.FORWARD_DM_MESSAGE_CHANNEL]: {
     path: APIPath.Message.ForwardMessagesToDMChannel, method: METHOD.POST
+  },
+  [ACTION.SEND_DM_MESSAGE_MEDIA]: {
+    path: APIPath.Message.SendDmMessageMedia, method: METHOD.POST
+  },
+  [ACTION.SEND_MESSAGE_MEDIA]: {
+    path: APIPath.Message.SendMessageMedia, method: METHOD.POST
   },
 }

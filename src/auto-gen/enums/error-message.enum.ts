@@ -14,7 +14,7 @@ export enum ErrorMessage {
   INVALID_TYPE_BOOLEAN = 'expected boolean, received',
   INVALID_TYPE_ARRAY = 'expected array, received',
   INVALID_TYPE_DATE = 'must be a date',
-  INVALID_TYPE_OBJ = 'must be an object',
+  INVALID_TYPE_OBJ = 'expected object, received',
   INVALID_ENUM = 'invalid enum value. Expected',
   INVALID_DATE_OVER_CURRENT = 'must not dates greater than or equal to the current date',
   INVALID_DATE_EQUAL_CURRENT = 'must not dates equal to the current date',

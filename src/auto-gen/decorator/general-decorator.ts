@@ -106,6 +106,30 @@ export function isValidURL(options?: { url?: string }) {
   };
 }
 
+export function ValidateNested(options?: { each?: boolean }) {
+  return (target: any, propertyKey: string) => {
+    Reflect.defineMetadata('isValidateNested', true, target, propertyKey);
+    if (options?.each) {
+      Reflect.defineMetadata(
+        'isValidateNested',
+        options.each,
+        target,
+        propertyKey,
+      );
+    }
+  };
+}
+
+// Đảm bảo decorator Type lưu metadata đúng cách
+export function Type(typeFunction: () => any) {
+  return (target: any, propertyKey: string) => {
+    const type = typeFunction();
+    // Lưu metadata vào prototype của class
+    Reflect.defineMetadata('nestedType', type, target, propertyKey);
+    // Không ghi đè design:type để tránh xung đột với TypeScript
+    // Reflect.defineMetadata('design:type', type, target, propertyKey);
+  };
+}
 export function IsEmoji(options?: { value?: number }) {
   return (target: any, propertyKey: string) => {
     Reflect.defineMetadata('isEmoji', true, target, propertyKey);
