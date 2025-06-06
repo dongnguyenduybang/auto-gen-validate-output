@@ -104,23 +104,22 @@ function runTests(testType: string): ActionHandler {
     console.log(`Running test for ${testType} "${dtoName}"...`);
     try {
       const basePath = path.resolve(__dirname, testType);
-      const testPath = findTestPath(basePath, dtoName);
+      const testPaths = findTestPath(basePath, dtoName);
 
-      if (!testPath) {
+      if (!testPaths || testPaths.length === 0) {
         console.error(`Test file not found for ${dtoName} in ${basePath}`);
         process.exit(1);
       }
 
-      const normalizedPath = testPath.replace(/\\/g, '/');
-      console.log(`Running test at: ${normalizedPath}`);
-
-      execSync(`jest "${normalizedPath}"`, { stdio: 'inherit' });
+      const normalizedPaths = testPaths.map(p => `"${p.replace(/\\/g, '/')}"`).join(' ');
+      execSync(`jest ${normalizedPaths}`, { stdio: 'inherit' });
     } catch (error) {
       console.error(`Test failed for ${dtoName}:`, error.message);
       process.exit(1);
     }
   };
 }
+
 
 function clearFiles(testType: string): ActionHandler {
   return async (dtoName) => {

@@ -472,7 +472,7 @@ export function countEmojis(str: unknown): number {
   return Array.from(str.matchAll(regex)).length;
 }
 
-export function findTestPath(basePath: string, dtoName: string): string | null {
+export function findTestPath(basePath: string, dtoName: string): string[] | null {
   const absoluteBasePath = path.resolve(basePath);
   const findSpecFiles = (dir: string): string[] => {
     try {
@@ -494,7 +494,7 @@ export function findTestPath(basePath: string, dtoName: string): string | null {
   };
 
   const specFiles = findSpecFiles(absoluteBasePath);
-  return specFiles.length > 0 ? specFiles[0] : null;
+  return specFiles.length > 0 ? specFiles : null;
 }
 
 export function findAllFoldersWithDtoAndRequest(basePath: string, folderName: string) {
