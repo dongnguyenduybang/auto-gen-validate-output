@@ -1,5 +1,5 @@
-import { ACTION, ChannelTypeEnum, HEADER_LIST, VAR } from "../../../../enums";
-import { RequestTestSuite } from "../../../../utils/declarations";
+import { ACTION, ChannelTypeEnum, HEADER_LIST, VAR } from '../../../../enums';
+import { RequestTestSuite } from '../../../../utils/declarations';
 
 export const CreateChannelRequest: RequestTestSuite = {
   action: ACTION.CREATE_CHANNEL,
@@ -7,15 +7,16 @@ export const CreateChannelRequest: RequestTestSuite = {
   body: {
     workspaceId: VAR.workspaceId,
     name: 'channel1',
-    avatar: 'https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024',
-    channelType: ChannelTypeEnum.CHANNEL_TYPE_ENUM_CHANNEL
+    avatar:
+      'https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024',
+    channelType: ChannelTypeEnum.CHANNEL_TYPE_ENUM_CHANNEL,
   },
   options: [
-    {   
+    {
       beforeAll: [],
       beforeEach: [],
       afterEach: [],
-      afterAll: []
+      afterAll: [],
     },
   ],
 };

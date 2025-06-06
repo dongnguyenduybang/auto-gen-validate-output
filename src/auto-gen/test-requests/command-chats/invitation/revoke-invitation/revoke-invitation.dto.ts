@@ -22,9 +22,8 @@ export class RevokeInvitationDTO {
   @IsString({ message: ErrorMessage.COULD_NOT_PERMISSION })
   channelId: string = '';
 
-
   @IsString()
   @IsDefined()
   @IsNotEmpty()
-  code: string = ''
+  code: string = '';
 }

@@ -22,10 +22,8 @@ const [action, type, ...restArgs] = args;
 let subType, dtoName;
 
 if (type === 'report') {
-
   [subType, dtoName] = restArgs;
 } else if (type !== 'reports') {
-
   dtoName = restArgs[0];
 } else {
   dtoName = restArgs[0];
@@ -97,8 +95,6 @@ function getSubDirectories(dirPath: string): string[] {
     .map((dirent) => dirent.name);
 }
 
-
-
 function runTests(testType: string): ActionHandler {
   return async (dtoName) => {
     console.log(`Running test for ${testType} "${dtoName}"...`);
@@ -111,7 +107,9 @@ function runTests(testType: string): ActionHandler {
         process.exit(1);
       }
 
-      const normalizedPaths = testPaths.map(p => `"${p.replace(/\\/g, '/')}"`).join(' ');
+      const normalizedPaths = testPaths
+        .map((p) => `"${p.replace(/\\/g, '/')}"`)
+        .join(' ');
       execSync(`jest ${normalizedPaths}`, { stdio: 'inherit' });
     } catch (error) {
       console.error(`Test failed for ${dtoName}:`, error.message);
@@ -119,7 +117,6 @@ function runTests(testType: string): ActionHandler {
     }
   };
 }
-
 
 function clearFiles(testType: string): ActionHandler {
   return async (dtoName) => {
@@ -149,7 +146,6 @@ function clearFiles(testType: string): ActionHandler {
 
     clearDirectory(basePath);
   };
-
 }
 
 function clearReports(reportType: string): ActionHandler {
@@ -172,7 +168,8 @@ function clearReports(reportType: string): ActionHandler {
 
 async function main() {
   console.log(
-    `Processing "${type}${subType ? ` ${subType}` : ''}"${dtoName ? ` for: ${dtoName}` : ''
+    `Processing "${type}${subType ? ` ${subType}` : ''}"${
+      dtoName ? ` for: ${dtoName}` : ''
     }`,
   );
 

@@ -23,7 +23,7 @@ export function extractDatas(
 
     if (Array.isArray(source)) {
       source.forEach((item: string, index: number) => {
-        const suffix = index === 0 ? '' : index; 
+        const suffix = index === 0 ? '' : index;
         fields.forEach((field) => {
           if (item[field] !== undefined) {
             data[`${field}${suffix}`] = item[field];

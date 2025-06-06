@@ -22,7 +22,7 @@ export class SendDmMessageStickerDTO {
   @IsNotEmpty()
   @IsNotNull()
   @IsDefined()
-  stickerId: string = ''
+  stickerId: string = '';
 
   @IsString()
   @IsDefined()

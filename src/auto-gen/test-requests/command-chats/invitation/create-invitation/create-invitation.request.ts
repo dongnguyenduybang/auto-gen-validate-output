@@ -1,5 +1,5 @@
-import { ACTION, HEADER_LIST, VAR } from "../../../../enums/index";
-import { RequestTestSuite } from "../../../../utils/declarations";
+import { ACTION, HEADER_LIST, VAR } from '../../../../enums/index';
+import { RequestTestSuite } from '../../../../utils/declarations';
 
 export const CreateInvitationRequest: RequestTestSuite = {
   action: ACTION.CREATE_CHANNEL,
@@ -8,14 +8,14 @@ export const CreateInvitationRequest: RequestTestSuite = {
     workspaceId: VAR.workspaceId,
     channelId: VAR.channelId,
     expiresIn: 1000,
-    maxUsers: 1
+    maxUsers: 1,
   },
   options: [
-    {   
+    {
       beforeAll: [],
       beforeEach: [],
       afterEach: [],
-      afterAll: []
+      afterAll: [],
     },
   ],
 };

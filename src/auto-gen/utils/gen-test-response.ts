@@ -12,7 +12,8 @@ async function genTestCase(
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join('');
   const responseModule = await import(responsePath);
-  const responseConfig = responseModule[`${classNameCapitalized}ResponseConfig`];
+  const responseConfig =
+    responseModule[`${classNameCapitalized}ResponseConfig`];
   const specContent = `
     import fs from 'fs';
     import path from 'path';

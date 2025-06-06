@@ -32,9 +32,7 @@ export const RevokeDmMessageReactionRequest = {
       ],
       beforeEach: [],
       afterEach: [],
-      afterAll: [
-      ]
+      afterAll: [],
     },
-
   ],
 };

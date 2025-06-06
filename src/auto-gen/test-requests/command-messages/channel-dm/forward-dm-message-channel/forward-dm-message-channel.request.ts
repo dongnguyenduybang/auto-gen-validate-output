@@ -23,8 +23,7 @@ export const ForwardDmMessageChannelRequest = {
       ],
       beforeEach: [],
       afterEach: [],
-      afterAll: []
+      afterAll: [],
     },
-
   ],
 };

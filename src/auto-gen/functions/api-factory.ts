@@ -47,7 +47,7 @@ export function createApiFunction(config: ApiConfig, context: TestContext) {
         method: finalMethod,
         url,
         headers: header,
-        validateStatus: () => true
+        validateStatus: () => true,
       };
 
       if (['post', 'put'].includes(finalMethod)) {
@@ -56,8 +56,7 @@ export function createApiFunction(config: ApiConfig, context: TestContext) {
         axiosConfig.params = payload;
       }
       const response = await axios(axiosConfig);
-      return response
-
+      return response;
     } catch (error: any) {
       return {
         error:

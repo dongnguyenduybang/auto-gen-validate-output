@@ -1,7 +1,12 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import 'reflect-metadata';
-import { IContext, responseClassMap, StepResult, ValidationError } from './declarations';
+import {
+  IContext,
+  responseClassMap,
+  StepResult,
+  ValidationError,
+} from './declarations';
 import { TestContext } from './text-context';
 import emojiRegex from 'emoji-regex';
 import { ACTION_CONFIG, VAR } from '../enums';
@@ -12,7 +17,8 @@ import { BaseResponse } from '../response';
 export function pairFiles(
   files: string[],
 ): { dtoPath: string; requestPath: string; className: string }[] {
-  const fileMap: Record<string, { dtoPath?: string; requestPath?: string }> = {};
+  const fileMap: Record<string, { dtoPath?: string; requestPath?: string }> =
+    {};
   files.forEach((filePath) => {
     const fileName = path.basename(filePath, path.extname(filePath));
     if (filePath.endsWith('.dto.ts') || filePath.endsWith('.dto.js')) {
@@ -119,8 +125,8 @@ export function summarizeErrors(
   return summary;
 }
 
-export function getAllFiles(dirPath: string): string[]{
-  let files: string[] = []
+export function getAllFiles(dirPath: string): string[] {
+  let files: string[] = [];
   const items = fs.readdirSync(dirPath);
   items.forEach((item) => {
     const itemPath = path.join(dirPath, item);
@@ -134,21 +140,23 @@ export function getAllFiles(dirPath: string): string[]{
   return files;
 }
 
-export function getMatchedFilePaths(foundFolders: Array<{
-  path: string;
-  dtoFiles: string[];
-  requestFiles: string[];
-}>): string[] {
+export function getMatchedFilePaths(
+  foundFolders: Array<{
+    path: string;
+    dtoFiles: string[];
+    requestFiles: string[];
+  }>,
+): string[] {
   const result: string[] = [];
 
   for (const folder of foundFolders) {
     // Thêm đường dẫn đầy đủ cho các file .dto.ts
-    folder.dtoFiles.forEach(file => {
+    folder.dtoFiles.forEach((file) => {
       result.push(path.join(folder.path, file));
     });
 
     // Thêm đường dẫn đầy đủ cho các file .request.ts
-    folder.requestFiles.forEach(file => {
+    folder.requestFiles.forEach((file) => {
       result.push(path.join(folder.path, file));
     });
   }
@@ -199,13 +207,19 @@ export function getTime() {
 
 export function resolveValidIf(
   field,
-  validIfMetadata: { conditions: { field: string; operator: string; value: string } },
+  validIfMetadata: {
+    conditions: { field: string; operator: string; value: string };
+  },
   valueResponse: any,
   obj: any,
   payload: any,
   context,
 ): { isValid: boolean; errorMessage?: string } {
-  const { field: condition, operator, value: condition2 } = validIfMetadata.conditions;
+  const {
+    field: condition,
+    operator,
+    value: condition2,
+  } = validIfMetadata.conditions;
 
   const value1 = obj[condition];
   if (value1 === undefined) {
@@ -259,7 +273,6 @@ export function resolveValidIf(
   return { isValid: true };
 }
 
-
 export const formatExpectErrors = (expects) => {
   return JSON.stringify(expects)
     .replace(/'/g, "\\'")
@@ -297,7 +310,10 @@ export function resolveVariables(obj: any, context: TestContext): any {
   return obj;
 }
 
-export function resolveExpectConfig(expectConfig: any, context: TestContext): any {
+export function resolveExpectConfig(
+  expectConfig: any,
+  context: TestContext,
+): any {
   if (typeof expectConfig === 'string') {
     return resolveVariables(expectConfig, context);
   }
@@ -340,7 +356,12 @@ export function formatErrors(errors: ValidationError[]): any {
   return formattedErrors.length === 1 ? formattedErrors[0] : formattedErrors;
 }
 
-export async function resolveCallAPI(action: string, header: any, body: any, context) {
+export async function resolveCallAPI(
+  action: string,
+  header: any,
+  body: any,
+  context,
+) {
   const actionInfo = ACTION_CONFIG[action as keyof typeof ACTION_CONFIG];
   const resolveBody = resolveVariables(body, context);
   const resolveHeader = resolveVariables(header, context);
@@ -350,16 +371,16 @@ export async function resolveCallAPI(action: string, header: any, body: any, con
     method: actionInfo.method,
     path: actionInfo.path,
     headers: resolveHeader,
-    body: resolveBody
-  })
+    body: resolveBody,
+  });
 
-  return response
+  return response;
 }
 
 export function resolveActionPath(action: string) {
   const actionInfo = ACTION_CONFIG[action as keyof typeof ACTION_CONFIG];
 
-  return actionInfo.path
+  return actionInfo.path;
 }
 
 export function comparedValue(a: any, b: any, context: IContext): boolean {
@@ -374,7 +395,7 @@ export function comparedValue(a: any, b: any, context: IContext): boolean {
     );
   }
   return String(a).trim() === String(b).trim();
-};
+}
 
 export function getNestedValue(obj: any, pathStr: string): any[] {
   const parts = pathStr.split('.');
@@ -386,16 +407,26 @@ export function getNestedValue(obj: any, pathStr: string): any[] {
       if (Array.isArray(item)) {
         return item.flatMap((i) => {
           const val = i?.[part];
-          return val !== undefined ? (Array.isArray(val) ? val.flat(Infinity) : [val]) : [];
+          return val !== undefined
+            ? Array.isArray(val)
+              ? val.flat(Infinity)
+              : [val]
+            : [];
         });
       }
       const val = item[part];
-      return val !== undefined ? (Array.isArray(val) ? val.flat(Infinity) : [val]) : [];
+      return val !== undefined
+        ? Array.isArray(val)
+          ? val.flat(Infinity)
+          : [val]
+        : [];
     });
   }
 
-  return current.flat(Infinity).filter((val) => val !== undefined && val !== null);
-};
+  return current
+    .flat(Infinity)
+    .filter((val) => val !== undefined && val !== null);
+}
 
 export function resolveValue(value: any, context): any {
   if (typeof value === 'string') {
@@ -410,22 +441,30 @@ export function resolveValue(value: any, context): any {
   }
   if (typeof value === 'object' && value !== null) {
     return Object.fromEntries(
-      Object.entries(value).map(([key, val]) => [key, resolveValue(val, context)]),
+      Object.entries(value).map(([key, val]) => [
+        key,
+        resolveValue(val, context),
+      ]),
     );
   }
   return value;
-};
+}
 
 export function isOperatorObject(obj: object): boolean {
   return obj && typeof obj === 'object' && 'operator' in obj && 'expect' in obj;
-};
+}
 
 export function delay(delayTime: number): Promise<number> {
   const ms = typeof delayTime === 'number' && delayTime >= 0 ? delayTime : 0;
   return new Promise((resolve) => setTimeout(resolve, ms));
-};
+}
 
-export async function checkResponse(step, response: object, resolveBody: object, context: TestContext): Promise<StepResult> {
+export async function checkResponse(
+  step,
+  response: object,
+  resolveBody: object,
+  context: TestContext,
+): Promise<StepResult> {
   const stepName =
     step.action.charAt(0).toUpperCase() + step.action.slice(1) + 'Response';
   const responseClass =
@@ -459,9 +498,7 @@ export async function checkResponse(step, response: object, resolveBody: object,
 export function checkURL(value: string): boolean {
   const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
 
-  if (value === VAR.invitationLink
-    || typeof value !== 'string'
-  ) return true;
+  if (value === VAR.invitationLink || typeof value !== 'string') return true;
   return urlRegex.test(value);
 }
 
@@ -472,18 +509,24 @@ export function countEmojis(str: unknown): number {
   return Array.from(str.matchAll(regex)).length;
 }
 
-export function findTestPath(basePath: string, dtoName: string): string[] | null {
+export function findTestPath(
+  basePath: string,
+  dtoName: string,
+): string[] | null {
   const absoluteBasePath = path.resolve(basePath);
   const findSpecFiles = (dir: string): string[] => {
     try {
       const entries = fs.readdirSync(dir, { withFileTypes: true });
       const files = entries
-        .filter(file => !file.isDirectory() &&
-          file.name.toLowerCase().includes(dtoName.toLowerCase()) &&
-          file.name.endsWith('.spec.ts'))
-        .map(file => path.join(dir, file.name));
+        .filter(
+          (file) =>
+            !file.isDirectory() &&
+            file.name.toLowerCase().includes(dtoName.toLowerCase()) &&
+            file.name.endsWith('.spec.ts'),
+        )
+        .map((file) => path.join(dir, file.name));
 
-      const folders = entries.filter(entry => entry.isDirectory());
+      const folders = entries.filter((entry) => entry.isDirectory());
       for (const folder of folders) {
         files.push(...findSpecFiles(path.join(dir, folder.name)));
       }
@@ -497,7 +540,10 @@ export function findTestPath(basePath: string, dtoName: string): string[] | null
   return specFiles.length > 0 ? specFiles : null;
 }
 
-export function findAllFoldersWithDtoAndRequest(basePath: string, folderName: string) {
+export function findAllFoldersWithDtoAndRequest(
+  basePath: string,
+  folderName: string,
+) {
   const results: {
     path: string;
     dtoFiles: string[];
@@ -507,30 +553,30 @@ export function findAllFoldersWithDtoAndRequest(basePath: string, folderName: st
   function scanDirectory(dir: string) {
     const entries = fs.readdirSync(dir, { withFileTypes: true });
     const currentFolder = path.basename(dir);
-    
+
     // Nếu là thư mục cần tìm
     if (currentFolder.toLowerCase() === folderName.toLowerCase()) {
       const dtoFiles = entries
-        .filter(e => !e.isDirectory() && e.name.endsWith('.dto.ts'))
-        .map(e => e.name);
-      
+        .filter((e) => !e.isDirectory() && e.name.endsWith('.dto.ts'))
+        .map((e) => e.name);
+
       const requestFiles = entries
-        .filter(e => !e.isDirectory() && e.name.endsWith('.request.ts'))
-        .map(e => e.name);
+        .filter((e) => !e.isDirectory() && e.name.endsWith('.request.ts'))
+        .map((e) => e.name);
 
       // Nếu có cả 2 loại file thì thêm vào kết quả
       if (dtoFiles.length > 0 && requestFiles.length > 0) {
         results.push({
           path: dir,
           dtoFiles,
-          requestFiles
+          requestFiles,
         });
       }
     }
-    
+
     entries
-      .filter(e => e.isDirectory())
-      .forEach(e => scanDirectory(path.join(dir, e.name)));
+      .filter((e) => e.isDirectory())
+      .forEach((e) => scanDirectory(path.join(dir, e.name)));
   }
 
   scanDirectory(basePath);

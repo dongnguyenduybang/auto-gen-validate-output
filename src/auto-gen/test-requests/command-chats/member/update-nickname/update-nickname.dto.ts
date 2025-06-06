@@ -25,7 +25,7 @@ export class UpdateNicknameDTO {
   @IsDefined({ message: `Could not resolve permission type` })
   @IsNotEmpty({ message: `Could not resolve permission type` })
   @IsInvalid({ message: `Unauthorized request` })
-  @IsNotNull({ message: `Could not resolve permission type`})
+  @IsNotNull({ message: `Could not resolve permission type` })
   userId: string = '';
 
   @IsString()

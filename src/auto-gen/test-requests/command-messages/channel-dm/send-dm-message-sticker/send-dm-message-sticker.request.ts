@@ -10,14 +10,10 @@ export const SendDmMessageStickerRequest = {
   },
   options: [
     {
-      beforeAll: [
-
-      ],
-      beforeEach: [
-
-      ],
+      beforeAll: [],
+      beforeEach: [],
       afterEach: [],
-      afterAll: []
+      afterAll: [],
     },
   ],
 };

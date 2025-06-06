@@ -1,4 +1,4 @@
-import { Entry, ErrorItem } from "./declarations";
+import { Entry, ErrorItem } from './declarations';
 
 // Template cho type 'request'
 export const combinedReportTemplate = (
@@ -75,11 +75,9 @@ const requestReportTemplate = (
   logicTests,
   summary,
 ) => {
-
   const uniqueErrors = new Map();
   if (failedTests) {
     failedTests.forEach((failCase) => {
-     
       // if (failCase.missing && Array.isArray(failCase.missing)) {
       //   failCase.missing.forEach((error) => {
       //     uniqueErrors.set(
@@ -91,10 +89,7 @@ const requestReportTemplate = (
 
       if (failCase.extra && Array.isArray(failCase.extra)) {
         failCase.extra.forEach((error) => {
-          uniqueErrors.set(
-            error,
-            (uniqueErrors.get(error) || 0) + 1,
-          );
+          uniqueErrors.set(error, (uniqueErrors.get(error) || 0) + 1);
         });
       }
     });
@@ -128,8 +123,9 @@ const requestReportTemplate = (
     ` 🔴 500: ${summary.statusCodes[500] || 0}`,
     '',
     '=== Unique Errors ===',
-    ...Array.from(uniqueErrors.entries()).map(([error, count], index) =>
-      ` 🟣 ${index + 1}. ${error} (Occurred: ${count} time${count > 1 ? 's' : ''})`
+    ...Array.from(uniqueErrors.entries()).map(
+      ([error, count], index) =>
+        ` 🟣 ${index + 1}. ${error} (Occurred: ${count} time${count > 1 ? 's' : ''})`,
     ),
     '',
     '[DTO Validation Issues]',
@@ -186,13 +182,13 @@ const responseReportTemplate = (
         `   ├─ Error: ${test.error || 'No details'}`,
         ...(test.expected
           ? [
-            `   ├─ Expected: ${JSON.stringify(test.expected, null, 2).split('\n').join('\n      ')}`,
-          ]
+              `   ├─ Expected: ${JSON.stringify(test.expected, null, 2).split('\n').join('\n      ')}`,
+            ]
           : []),
         ...(test.actual
           ? [
-            `   └─ Actual: ${JSON.stringify(test.actual, null, 2).split('\n').join('\n      ')}`,
-          ]
+              `   └─ Actual: ${JSON.stringify(test.actual, null, 2).split('\n').join('\n      ')}`,
+            ]
           : []),
       ].join('\n'),
     ),
@@ -207,11 +203,12 @@ const sagaReportTemplate = (
   sagaName: string,
   failedSteps: any[],
 ) => {
-
   const beforeAllFailures = failedSteps.filter((s) => s.phase === 'beforeAll');
   const testCaseFailures = failedSteps.filter((s) => s.phase === 'test');
   const afterAllFailures = failedSteps.filter((s) => s.phase === 'afterAll');
-  const beforeEachFailures = failedSteps.filter((s) => s.phase === 'beforeEach');
+  const beforeEachFailures = failedSteps.filter(
+    (s) => s.phase === 'beforeEach',
+  );
   const afterEachFailures = failedSteps.filter((s) => s.phase === 'afterEach');
 
   // group beforeEach
@@ -252,47 +249,51 @@ const sagaReportTemplate = (
     '',
     ...(beforeAllFailures.length > 0
       ? [
-        '=== BeforeAll Failures ===',
-        ...beforeAllFailures.map((step, i) => formatStep(step, i)),
-      ]
+          '=== BeforeAll Failures ===',
+          ...beforeAllFailures.map((step, i) => formatStep(step, i)),
+        ]
       : []),
     '',
     ...(Object.keys(beforeEachGroups).length > 0
       ? [
-        '=== BeforeEach Failures ===',
-        ...Object.entries(beforeEachGroups).flatMap(([caseTitle, failures]) => [
-          `📄 Case: ${caseTitle}`,
-          ...(failures as any[]).map((step, i) => formatStep(step, i)),
-          '',
-        ]),
-      ]
+          '=== BeforeEach Failures ===',
+          ...Object.entries(beforeEachGroups).flatMap(
+            ([caseTitle, failures]) => [
+              `📄 Case: ${caseTitle}`,
+              ...(failures as any[]).map((step, i) => formatStep(step, i)),
+              '',
+            ],
+          ),
+        ]
       : []),
     '',
     '=== Test Case ===',
     ...(Object.keys(testCaseGroups).length > 0
       ? Object.entries(testCaseGroups).flatMap(([caseTitle, failures]) => [
-        `📄 Case: ${caseTitle}`,
-        ...(failures as any[]).map((step, i) => formatStep(step, i)),
-        '',
-      ])
+          `📄 Case: ${caseTitle}`,
+          ...(failures as any[]).map((step, i) => formatStep(step, i)),
+          '',
+        ])
       : ['✅ All test cases passed']),
     '',
     ...(Object.keys(afterEachGroups).length > 0
       ? [
-        '=== AfterEach Failures ===',
-        ...Object.entries(afterEachGroups).flatMap(([caseTitle, failures]) => [
-          `📄 Case: ${caseTitle}`,
-          ...(failures as any[]).map((step, i) => formatStep(step, i)),
-          '',
-        ]),
-      ]
+          '=== AfterEach Failures ===',
+          ...Object.entries(afterEachGroups).flatMap(
+            ([caseTitle, failures]) => [
+              `📄 Case: ${caseTitle}`,
+              ...(failures as any[]).map((step, i) => formatStep(step, i)),
+              '',
+            ],
+          ),
+        ]
       : []),
     '',
     ...(afterAllFailures.length > 0
       ? [
-        '=== AfterAll Failures ===',
-        ...afterAllFailures.map((step, i) => formatStep(step, i)),
-      ]
+          '=== AfterAll Failures ===',
+          ...afterAllFailures.map((step, i) => formatStep(step, i)),
+        ]
       : []),
     '',
     '=== End of Report ===',
@@ -322,7 +323,11 @@ function groupEntriesByPath(entries: Entry[]): Record<string, ErrorItem[]> {
   }, {});
 }
 
-function formatGroupedPath(path: string, items: ErrorItem[], errorType: string): string {
+function formatGroupedPath(
+  path: string,
+  items: ErrorItem[],
+  errorType: string,
+): string {
   const lines = [`         └─ Path: ${path}`];
 
   for (const item of items) {
@@ -334,7 +339,7 @@ function formatGroupedPath(path: string, items: ErrorItem[], errorType: string):
     ) {
       lines.push(
         `                  - ActualValue: ${JSON.stringify(item.actualValue)}`,
-        `                  - ExpectedValue: ${JSON.stringify(item.expectedValue)}`
+        `                  - ExpectedValue: ${JSON.stringify(item.expectedValue)}`,
       );
     }
   }
@@ -342,19 +347,20 @@ function formatGroupedPath(path: string, items: ErrorItem[], errorType: string):
   return lines.join('\n');
 }
 function formatErrorDetails(error: Record<string, Entry[]>): string {
-  return Object.entries(error).map(([errorType, entries]) => {
+  return Object.entries(error)
+    .map(([errorType, entries]) => {
       if (!Array.isArray(entries)) return '';
 
       const groupedByPath = groupEntriesByPath(entries);
 
-      const formattedGroups = Object.entries(groupedByPath)
-        .map(([path, items]) => formatGroupedPath(path, items, errorType));
+      const formattedGroups = Object.entries(groupedByPath).map(
+        ([path, items]) => formatGroupedPath(path, items, errorType),
+      );
 
       return `      └─ ${errorType}:\n${formattedGroups.join('\n')}`;
     })
     .join('\n');
 }
-
 
 // const formatError = (error: any) => {
 //   const formatSingleError = (err: any) => {

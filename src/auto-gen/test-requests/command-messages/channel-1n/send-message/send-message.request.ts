@@ -19,18 +19,18 @@ export const SendMessageRequest: RequestTestSuite = {
             prefix: 'testabc',
             quantity: 2,
             badge: 0,
-          }
+          },
         },
         {
           action: ACTION.CREATE_CHANNEL,
           body: {
             name: 'channel1',
-            workspaceId: VAR.workspaceId
+            workspaceId: VAR.workspaceId,
           },
           headers: HEADER_LIST.create({
-            token: VAR.token
-          })
-        }
+            token: VAR.token,
+          }),
+        },
       ],
       beforeEach: [],
       afterEach: [],
@@ -38,11 +38,10 @@ export const SendMessageRequest: RequestTestSuite = {
         {
           action: ACTION.DELETE_MOCKED_USER,
           body: {
-            prefix: 'testabc'
-          }
-        }
-      ]
+            prefix: 'testabc',
+          },
+        },
+      ],
     },
-
   ],
 };

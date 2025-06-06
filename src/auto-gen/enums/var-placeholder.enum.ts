@@ -29,5 +29,5 @@ export enum VAR {
   avatarPath = 'https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg',
   latitude = '10.0324312',
   longitude = '105.7833368',
-  stickerId = '01HXTX9THMYNP2DSPDT4B48E91'
+  stickerId = '01HXTX9THMYNP2DSPDT4B48E91',
 }

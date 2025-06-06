@@ -11,13 +11,9 @@ export const UpdateChannelNameRequest = {
   options: [
     {
       beforeAll: [],
-      beforeEach: [
-       
-      ],
+      beforeEach: [],
       afterEach: [],
-      afterAll: [
-      ]
+      afterAll: [],
     },
-
   ],
 };

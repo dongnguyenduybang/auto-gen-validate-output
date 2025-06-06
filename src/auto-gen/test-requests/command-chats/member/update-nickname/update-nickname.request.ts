@@ -14,7 +14,7 @@ export const UpdateNicknameRequest = {
       beforeAll: [],
       beforeEach: [],
       afterEach: [],
-      afterAll: []
+      afterAll: [],
     },
   ],
 };

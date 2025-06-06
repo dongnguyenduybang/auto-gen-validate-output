@@ -21,11 +21,9 @@ export const PinUnpinDmMessageRequest = {
           headers: HEADER_LIST.create({ token: VAR.token }),
         },
       ],
-      beforeEach: [
-
-      ],
+      beforeEach: [],
       afterEach: [],
-      afterAll: []
+      afterAll: [],
     },
   ],
 };

@@ -24,11 +24,10 @@ export class UpdateChannelNameDTO {
   @IsString({ message: ErrorMessage.COULD_NOT_PERMISSION })
   channelId: string = '';
 
-
   @IsString()
   @IsDefined()
   @IsNotEmpty()
   @MinLength(3)
   @MaxLength(50)
-  name: string = ''
+  name: string = '';
 }

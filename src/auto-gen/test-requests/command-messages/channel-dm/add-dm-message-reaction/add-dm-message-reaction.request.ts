@@ -23,9 +23,7 @@ export const AddDmMessageReactionRequest = {
       ],
       beforeEach: [],
       afterEach: [],
-      afterAll: [
-      ]
+      afterAll: [],
     },
-
   ],
 };

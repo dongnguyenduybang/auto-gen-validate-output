@@ -27,5 +27,5 @@ export class UpdateChannelAvatarDTO {
   @IsDefined()
   @IsNotEmpty()
   @isValidURL()
-  avatarPath: string = ''
+  avatarPath: string = '';
 }

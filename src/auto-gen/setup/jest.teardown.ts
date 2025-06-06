@@ -15,7 +15,7 @@ export default async function () {
       {
         action: ACTION.DELETE_MOCKED_USER,
         body: {
-          prefix: VAR.prefix
+          prefix: VAR.prefix,
         },
       },
     ];
@@ -23,9 +23,7 @@ export default async function () {
     const results = await executeSteps(steps, globalThis.globalContext);
 
     results.forEach((result) => {
-
       if (!result.status) {
-
         console.error(`Error: ${result.error}`);
       } else {
         console.log(`Step ${result.stepName} executed successfully`);

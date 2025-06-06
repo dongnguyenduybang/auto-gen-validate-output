@@ -22,14 +22,10 @@ export const QuoteDmMessageRequest: RequestTestSuite = {
           },
           headers: HEADER_LIST.create({ token: VAR.token }),
         },
-
       ],
       beforeEach: [],
       afterEach: [],
-      afterAll: [
-
-      ]
+      afterAll: [],
     },
-
   ],
 };

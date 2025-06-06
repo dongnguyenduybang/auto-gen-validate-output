@@ -11,19 +11,14 @@ export const SendLocationRequest: RequestTestSuite = {
     ref: 'ref',
     description: 'description',
     latitude: VAR.latitude,
-    longitude: VAR.longitude
+    longitude: VAR.longitude,
   },
   options: [
     {
-      beforeAll: [
-
-      ],
+      beforeAll: [],
       beforeEach: [],
       afterEach: [],
-      afterAll: [
-
-      ]
+      afterAll: [],
     },
-
   ],
 };

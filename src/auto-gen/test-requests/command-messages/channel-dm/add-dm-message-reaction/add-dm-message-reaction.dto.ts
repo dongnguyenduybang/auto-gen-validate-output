@@ -30,5 +30,4 @@ export class AddDmMessageReactionDTO {
   @IsNotEmpty()
   @IsNotNull()
   emoji: string = '';
-
 }

@@ -18,13 +18,13 @@ export const UpdateDmMessageRequest = {
           body: {
             content: 'aaaaa',
             userId: VAR.userId1,
-            ref: 'ref'
-          }
-        }
+            ref: 'ref',
+          },
+        },
       ],
       beforeEach: [],
       afterEach: [],
-      afterAll: []
+      afterAll: [],
     },
   ],
 };

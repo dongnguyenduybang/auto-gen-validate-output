@@ -17,5 +17,4 @@ export class LeaveChannelDTO {
   @IsNotEmpty({ message: `Could not resolve permission type` })
   @IsString({ message: `Could not resolve permission type` })
   channelId: string = '';
-
 }

@@ -1,8 +1,5 @@
 import { writeFileSync } from 'fs';
-import {
-  getOrThrow,
-  setupConfiguration,
-} from '../utils/get-config';
+import { getOrThrow, setupConfiguration } from '../utils/get-config';
 import { ACTION, VAR } from '../enums';
 import { TestContext } from '../utils/text-context';
 import { executeSteps } from '../utils/text-execute-test';
@@ -14,7 +11,7 @@ beforeAll(async () => {
     // set urls from file yaml
     globalThis.urls = getOrThrow<string>('host');
     globalThis.globalVar = new Map<string, any>();
-    globalThis.globalContext = new TestContext(); // set context 
+    globalThis.globalContext = new TestContext(); // set context
 
     const steps = [
       {
@@ -29,16 +26,16 @@ beforeAll(async () => {
         action: ACTION.CREATE_CHANNEL,
         body: {
           workspaceId: VAR.workspaceId,
-          name: 'channel1'
-        }
-      }
-    ]
+          name: 'channel1',
+        },
+      },
+    ];
 
     await executeSteps(steps, globalThis.globalContext);
     const dataToSave = {
       urls: globalThis.urls,
       prefix: steps[0].body.prefix,
-      context: globalThis.globalContext
+      context: globalThis.globalContext,
     };
   } catch (error) {
     console.error('Setup failed:', error);

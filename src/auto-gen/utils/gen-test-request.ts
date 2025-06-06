@@ -1,10 +1,18 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import { findAllFoldersWithDtoAndRequest, formatExpectErrors, getAllFiles, getMatchedFilePaths, pairFiles, readJsonFile, resolveActionPath } from './helper';
+import {
+  findAllFoldersWithDtoAndRequest,
+  formatExpectErrors,
+  getAllFiles,
+  getMatchedFilePaths,
+  pairFiles,
+  readJsonFile,
+  resolveActionPath,
+} from './helper';
 
 function getRelativeImportPath(fromPath: string, toPath: string): string {
   const relativePath = path.relative(path.dirname(fromPath), toPath);
-  return relativePath.split(path.sep).join('/'); 
+  return relativePath.split(path.sep).join('/');
 }
 
 async function generateSpecContent(
@@ -14,7 +22,7 @@ async function generateSpecContent(
   outputPath: string,
   chunkNumber?: number,
   startIndex: number = 0,
-  totalChunks?: number
+  totalChunks?: number,
 ): Promise<string> {
   const requestFilePathWithoutExt = className.replace('.request.ts', '');
   const classNameCapitalized = requestFilePathWithoutExt
@@ -25,8 +33,8 @@ async function generateSpecContent(
   const utilsPath = path.join(__dirname, '../utils');
   const requestImportPath = `./${requestFilePathWithoutExt}.request`;
 
-  const utilsImportPath = getRelativeImportPath(outputPath, utilsPath) || '@utils';
-
+  const utilsImportPath =
+    getRelativeImportPath(outputPath, utilsPath) || '@utils';
 
   return `
     import fs from 'fs';
@@ -96,8 +104,8 @@ async function generateSpecContent(
         });
 
         ${testCases
-      .map(
-        (testCase, index) => `
+          .map(
+            (testCase, index) => `
             it('Test case #${startIndex + index + 1} should return errors ${formatExpectErrors(testCase.expects)} when body ${JSON.stringify(testCase.body)}', async () => {
               testNumber = ${startIndex + index + 1};
               totalTests++;
@@ -184,9 +192,9 @@ async function generateSpecContent(
                   error: error.message
                 });
               }
-            });`
-      )
-      .join('\n')}
+            });`,
+          )
+          .join('\n')}
       afterEach(async () => {
           testCaseNumber++;
           const afterEachSteps = ${classNameCapitalized}Request.options
@@ -259,7 +267,6 @@ async function genTestCase(
   requestPath: string,
   className: string,
   outputDir: string,
-
 ) {
   const payloadData = readJsonFile(payloadPath);
   console.log(`Total test cases in ${payloadPath}: ${payloadData.length}`);
@@ -295,11 +302,8 @@ async function genTestCase(
         outputPath,
         i + 1,
         startIdx,
-        totalChunks
+        totalChunks,
       );
-
-
-
 
       fs.writeFileSync(outputPath, chunkSpecContent, 'utf-8');
       console.log(`Generated test file: ${outputPath}`);
@@ -310,9 +314,8 @@ async function genTestCase(
       payloadData,
       requestConfig,
       className,
-      outputPath
+      outputPath,
     );
-
 
     fs.writeFileSync(outputPath, specContent, 'utf-8');
     console.log(`Success: ${outputPath}`);
@@ -321,25 +324,27 @@ async function genTestCase(
 export function genTestRequest(dtoName: string) {
   const dtoFolderPath = path.join(__dirname, '../test-requests', dtoName);
   const baseRequestsPath = path.join(__dirname, '../test-requests');
-  const foundFolders = findAllFoldersWithDtoAndRequest(baseRequestsPath, dtoName);
-  const file = getMatchedFilePaths(foundFolders)
+  const foundFolders = findAllFoldersWithDtoAndRequest(
+    baseRequestsPath,
+    dtoName,
+  );
+  const file = getMatchedFilePaths(foundFolders);
   const pairedFiles = pairFiles(file);
 
   pairedFiles.forEach(({ dtoPath, requestPath, className }) => {
     if (dtoPath && requestPath) {
-
       for (const folder of foundFolders) {
         const outputDir = folder.path;
         const payloadPath = path.join(outputDir, `${className}.payload.json`);
         if (fs.existsSync(payloadPath)) {
-          genTestCase(payloadPath, requestPath, className, outputDir)
-            .catch(err => console.error(`Error generating tests for ${className}:`, err));
+          genTestCase(payloadPath, requestPath, className, outputDir).catch(
+            (err) =>
+              console.error(`Error generating tests for ${className}:`, err),
+          );
         } else {
           console.warn(`Missing payload file for class: ${className}`);
         }
       }
-
-
     } else {
       console.warn(`Missing .dto or .request.ts for class: ${className}`);
     }

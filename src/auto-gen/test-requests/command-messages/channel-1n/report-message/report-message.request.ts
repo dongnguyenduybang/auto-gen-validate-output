@@ -1,5 +1,11 @@
-import { ACTION, HEADER_LIST, PretendingTo, ReportCategory, VAR } from "../../../../enums/index";
-import { RequestTestSuite } from "../../../../utils/declarations";
+import {
+  ACTION,
+  HEADER_LIST,
+  PretendingTo,
+  ReportCategory,
+  VAR,
+} from '../../../../enums/index';
+import { RequestTestSuite } from '../../../../utils/declarations';
 
 export const ReportMessageRequest: RequestTestSuite = {
   action: ACTION.REPORT_MESSAGE,
@@ -17,25 +23,25 @@ export const ReportMessageRequest: RequestTestSuite = {
       beforeAll: [
         {
           action: ACTION.ACCEPT_INVITATION,
-          headers: HEADER_LIST.create({token: VAR.token1}),
+          headers: HEADER_LIST.create({ token: VAR.token1 }),
           body: {
-            invitationLink: VAR.invitationLink
-          }
+            invitationLink: VAR.invitationLink,
+          },
         },
-                {
+        {
           action: ACTION.SEND_MESSAGE,
-          headers: HEADER_LIST.create({token: VAR.token}),
+          headers: HEADER_LIST.create({ token: VAR.token }),
           body: {
             workspaceId: VAR.workspaceId,
             content: 'aaaaa',
             channelId: VAR.channelId,
-            ref: 'ref'
-          }
-        }
+            ref: 'ref',
+          },
+        },
       ],
       beforeEach: [],
       afterEach: [],
-      afterAll: []
+      afterAll: [],
     },
   ],
 };

@@ -1,10 +1,10 @@
 import { ErrorMessage } from '../../../../enums';
 import {
-    IsDefined,
-    IsNotEmpty,
-    IsInvalid,
-    IsString,
-    IsNotNull,
+  IsDefined,
+  IsNotEmpty,
+  IsInvalid,
+  IsString,
+  IsNotNull,
 } from '../../../../decorator';
 
 export class DeleteChannelDTO {
@@ -21,5 +21,4 @@ export class DeleteChannelDTO {
   @IsNotEmpty({ message: ErrorMessage.COULD_NOT_PERMISSION })
   @IsString({ message: ErrorMessage.COULD_NOT_PERMISSION })
   channelId: string = '';
-
 }

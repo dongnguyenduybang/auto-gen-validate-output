@@ -32,5 +32,5 @@ export enum ErrorMessage {
   UNSUPPORTED_PERMISSION_TYPE = 'Unsupported permission type',
   INVALID_CHANNEL = 'Invalid channel',
   INVALID_URL = 'invalid url',
-  UNIQUE_ARRAY_ITEM = 'array must contain unique items'
+  UNIQUE_ARRAY_ITEM = 'array must contain unique items',
 }

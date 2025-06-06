@@ -20,7 +20,7 @@ export function MaxArray(value: number) {
 Check xem có phải là 1 array hay không */
 export function IsArray(itemOptions?: {
   type?: string;
-  decorators?: Array<{ name: string; params?: any; message?: string}>;
+  decorators?: Array<{ name: string; params?: any; message?: string }>;
 }) {
   return (target: any, propertyKey: string) => {
     Reflect.defineMetadata('type', 'array', target, propertyKey);
@@ -28,7 +28,12 @@ export function IsArray(itemOptions?: {
       Reflect.defineMetadata('itemType', itemOptions.type, target, propertyKey);
     }
     if (itemOptions?.decorators) {
-      Reflect.defineMetadata('itemDecorators', itemOptions.decorators, target, propertyKey);
+      Reflect.defineMetadata(
+        'itemDecorators',
+        itemOptions.decorators,
+        target,
+        propertyKey,
+      );
     }
   };
 }

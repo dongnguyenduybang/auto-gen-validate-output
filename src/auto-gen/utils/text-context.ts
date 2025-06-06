@@ -1,16 +1,14 @@
-import { IContext } from "./declarations";
+import { IContext } from './declarations';
 
 export class TestContext implements IContext {
   private data: Record<string, any> = {};
   private versions: Record<string, number> = {};
 
   setValue(key: string, value: any): void {
-
-      const version = this.versions[key] || 0;
-      const versionedKey = version > 0 ? `${key}${version}` : key;
-      this.data[versionedKey] = value;
-      this.versions[key] = version + 1;
-    
+    const version = this.versions[key] || 0;
+    const versionedKey = version > 0 ? `${key}${version}` : key;
+    this.data[versionedKey] = value;
+    this.versions[key] = version + 1;
   }
 
   clone(): TestContext {

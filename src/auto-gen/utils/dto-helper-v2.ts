@@ -1,8 +1,8 @@
-import { ulid } from "ulidx";
-import { getUsedEnumValuesFromValidIf } from "./dto-helper";
-import { ErrorMessage, VAR } from "../enums";
-import { checkRegexULID, checkURL, countEmojis, isEmoji } from "./helper";
-import { ValidIfCondition, ValidIfOptions } from "./declarations";
+import { ulid } from 'ulidx';
+import { getUsedEnumValuesFromValidIf } from './dto-helper';
+import { ErrorMessage, VAR } from '../enums';
+import { checkRegexULID, checkURL, countEmojis, isEmoji } from './helper';
+import { ValidIfCondition, ValidIfOptions } from './declarations';
 
 export function generateStructuredErrorCases(
   dtoClass: any,
@@ -21,11 +21,17 @@ export function generateStructuredErrorCases(
 
   keys.forEach((field) => {
     const decorators = getDecorators(instance, field);
-    const fieldValue = payload[field] !== undefined ? payload[field] : instance[field];
+    const fieldValue =
+      payload[field] !== undefined ? payload[field] : instance[field];
 
     validValues[field] = fieldValue;
 
-    const variants = generateErrorVariantsForField(fieldValue, decorators, dtoClass, field);
+    const variants = generateErrorVariantsForField(
+      fieldValue,
+      decorators,
+      dtoClass,
+      field,
+    );
 
     errorCasesByField[field] = Array.isArray(variants) ? variants : [];
   });
@@ -36,7 +42,6 @@ export function generateStructuredErrorCases(
     const errorVariants = errorCasesByField[rootField];
 
     errorVariants.forEach((errorValue) => {
-
       const baseCase = { ...validValues };
 
       baseCase[rootField] = errorValue;
@@ -47,7 +52,7 @@ export function generateStructuredErrorCases(
       // console.log(JSON.stringify(errors, null ,2))
       allTestCases.push({
         body: testCase,
-        expects: errors.length > 0 ? errors : []
+        expects: errors.length > 0 ? errors : [],
       });
 
       keys.forEach((otherField) => {
@@ -62,7 +67,7 @@ export function generateStructuredErrorCases(
 
             allTestCases.push({
               body: combinedCase,
-              expects: combinedErrors.length > 0 ? combinedErrors : []
+              expects: combinedErrors.length > 0 ? combinedErrors : [],
             });
           });
         }
@@ -75,10 +80,10 @@ export function generateStructuredErrorCases(
   const validErrors = softErrorFromMap(allValidCase, dtoClass);
   allTestCases.push({
     body: allValidCase,
-    expects: validErrors.length > 0 ? validErrors : []
+    expects: validErrors.length > 0 ? validErrors : [],
   });
   // return allTestCases;
-  return removeDuplicateTestCases(allTestCases)
+  return removeDuplicateTestCases(allTestCases);
 }
 
 function removeDuplicateTestCases(testCases: any[]) {
@@ -107,9 +112,11 @@ function sortObjectKeys(obj: any): any {
   }
 
   const sortedObj: Record<string, any> = {};
-  Object.keys(obj).sort().forEach(key => {
-    sortedObj[key] = sortObjectKeys(obj[key]);
-  });
+  Object.keys(obj)
+    .sort()
+    .forEach((key) => {
+      sortedObj[key] = sortObjectKeys(obj[key]);
+    });
 
   return sortedObj;
 }
@@ -118,10 +125,8 @@ export function generateErrorCases(
   dtoClass: any,
   payload: Record<string, any>,
 ) {
-
   return generateStructuredErrorCases(dtoClass, payload);
 }
-
 
 const decoratorItemValidations = {
   IsString: {
@@ -132,18 +137,18 @@ const decoratorItemValidations = {
     valid: () => [ulid()],
   },
   IsUnique: {
-    invalid: () => ['uniqueItem', 'uniqueItem']
+    invalid: () => ['uniqueItem', 'uniqueItem'],
   },
   MinArrayItem: (length: number) => ({
-    invalid: () => length > 0 ? ['a'.repeat(length - 1)] : [''],
+    invalid: () => (length > 0 ? ['a'.repeat(length - 1)] : ['']),
   }),
   IsNotNull: {
-    invalid: () => [null]
+    invalid: () => [null],
   },
   IsObject: {
     valid: () => [{}],
     invalid: () => ['string'],
-  }
+  },
 };
 
 // export function getDecorators(
@@ -173,7 +178,10 @@ const decoratorItemValidations = {
 //   return decorators;
 // }
 
-export function getDecorators(target: Object, propertyKey: string): Record<string, any> {
+export function getDecorators(
+  target: Object,
+  propertyKey: string,
+): Record<string, any> {
   const decorators: Record<string, any> = {};
   // Lấy metadata từ instance
   let metadataKeys = Reflect.getMetadataKeys(target, propertyKey);
@@ -182,10 +190,17 @@ export function getDecorators(target: Object, propertyKey: string): Record<strin
   });
 
   // Lấy metadata từ prototype
-  metadataKeys = Reflect.getMetadataKeys(target.constructor.prototype, propertyKey);
+  metadataKeys = Reflect.getMetadataKeys(
+    target.constructor.prototype,
+    propertyKey,
+  );
   metadataKeys.forEach((key) => {
     if (!decorators[key]) {
-      decorators[key] = Reflect.getMetadata(key, target.constructor.prototype, propertyKey);
+      decorators[key] = Reflect.getMetadata(
+        key,
+        target.constructor.prototype,
+        propertyKey,
+      );
     }
   });
 
@@ -196,7 +211,7 @@ export function generateErrorVariantsForField(
   fieldValue: any,
   decorators: Record<string, any>,
   dtoClass: unknown,
-  fieldName: string
+  fieldName: string,
 ): unknown[] {
   const variants: unknown[] = [];
   // 2. Sai kiểu dữ liệu
@@ -211,15 +226,15 @@ export function generateErrorVariantsForField(
       if (decorators['minLength']) {
         variants.push('a'.repeat(decorators['minLength'] - 1));
         if (decorators['genEmoji']) {
-          const { emoji, quantity } = decorators['genEmoji']
-          variants.push(emoji.repeat(decorators['minLength'] - 1))
+          const { emoji, quantity } = decorators['genEmoji'];
+          variants.push(emoji.repeat(decorators['minLength'] - 1));
         }
       }
       if (decorators['maxLength']) {
         variants.push('a'.repeat(decorators['maxLength'] + 1));
         if (decorators['genEmoji']) {
-          const { emoji, quantity } = decorators['genEmoji']
-          variants.push(emoji.repeat(decorators['maxLength'] + 1))
+          const { emoji, quantity } = decorators['genEmoji'];
+          variants.push(emoji.repeat(decorators['maxLength'] + 1));
         }
       }
       break;
@@ -239,7 +254,7 @@ export function generateErrorVariantsForField(
       variants.push(fieldValue);
       const usedEnumValues = getUsedEnumValuesFromValidIf(dtoClass, fieldName);
       if (usedEnumValues.length > 0) {
-        usedEnumValues.forEach(enumValue => {
+        usedEnumValues.forEach((enumValue) => {
           variants.push(enumValue);
         });
       }
@@ -257,7 +272,7 @@ export function generateErrorVariantsForField(
         variants.push(new Array(decorators['maxArray'] + 1).fill(null));
       }
 
-      const itemDecorators = decorators['itemDecorators']
+      const itemDecorators = decorators['itemDecorators'];
       if (!itemDecorators) {
         return;
       } else {
@@ -282,7 +297,10 @@ export function generateErrorVariantsForField(
         const nestedClass = getNestedClass(decorators);
 
         if (nestedClass && Array.isArray(fieldValue)) {
-          const nestedVariants = generateNestedArrayVariants(fieldValue, nestedClass);
+          const nestedVariants = generateNestedArrayVariants(
+            fieldValue,
+            nestedClass,
+          );
           variants.push(...nestedVariants);
         } else {
           console.log('No nested class found or fieldValue is not array');
@@ -297,12 +315,11 @@ export function generateErrorVariantsForField(
 
   if (decorators['isEmoji']) {
     const expectedCount = decorators['isEmoji'];
-    variants.push(fieldValue.repeat(expectedCount + 1))
-    variants.push(fieldValue.repeat(expectedCount - 1))
+    variants.push(fieldValue.repeat(expectedCount + 1));
+    variants.push(fieldValue.repeat(expectedCount - 1));
   }
 
   // 5. Vi phạm kích thước mảng
-
 
   if (!decorators['optional']) {
     variants.push(undefined);
@@ -317,10 +334,10 @@ export function generateErrorVariantsForField(
   }
 
   if (decorators['isULID']) {
-    variants.push('invalid_ULID')
+    variants.push('invalid_ULID');
   }
   if (decorators['isInvalid']) {
-    variants.push('invalid_value')
+    variants.push('invalid_value');
   }
 
   return [...new Set(variants)];
@@ -359,7 +376,7 @@ export function softErrorFromMap(
       'workspaceId',
       workspaceId,
       workspaceIdDecorators,
-      payload
+      payload,
     );
     if (workspaceIdErrors.length > 0) {
       return ['Could not resolve permission type'];
@@ -373,7 +390,7 @@ export function softErrorFromMap(
       'channelId',
       channelId,
       channelIdDecorators,
-      payload
+      payload,
     );
     if (channelIdErrors.length > 0) {
       return ['Could not resolve permission type'];
@@ -387,7 +404,7 @@ export function softErrorFromMap(
       'channelId',
       undefined,
       channelIdDecorators,
-      payload
+      payload,
     );
     if (channelIdErrors.length > 0) {
       return ['Unsupported permission type'];
@@ -401,7 +418,7 @@ export function softErrorFromMap(
       'channelId',
       undefined,
       channelIdDecorators,
-      payload
+      payload,
     );
     if (channelIdErrors.length > 0) {
       return ['Could not resolve permission type'];
@@ -415,7 +432,7 @@ export function softErrorFromMap(
       'workspaceId',
       undefined,
       workspaceIdDecorators,
-      payload
+      payload,
     );
     if (workspaceIdErrors.length > 0) {
       return ['Could not resolve permission type'];
@@ -434,7 +451,7 @@ export function softErrorFromMap(
       'channelId',
       channelId,
       channelIdDecorators,
-      payload
+      payload,
     );
     if (channelIdErrors.length > 0) {
       return ['Invalid channel'];
@@ -453,7 +470,7 @@ export function softErrorFromMap(
       'workspaceId',
       workspaceId,
       workspaceIdDecorators,
-      payload
+      payload,
     );
     if (workspaceIdErrors.length > 0) {
       return ['Invalid channel'];
@@ -467,7 +484,7 @@ export function softErrorFromMap(
       'channelId',
       channelId,
       channelIdDecorators,
-      payload
+      payload,
     );
     if (channelIdErrors.length > 0) {
       return ['Could not resolve permission type'];
@@ -491,16 +508,22 @@ export function softErrorFromMap(
   return errors;
 }
 
-
-function addErrorIfNotExist(errors: string[], customMessage: string | null, defaultMessage: string) {
+function addErrorIfNotExist(
+  errors: string[],
+  customMessage: string | null,
+  defaultMessage: string,
+) {
   const errorMessage = customMessage || defaultMessage;
   if (errorMessage && !errors.includes(errorMessage)) {
     errors.push(errorMessage);
   }
 }
 
-function checkOptional(value: unknown, decorators: Record<string, any>): string[] {
-  if (decorators['optional'] && (value === undefined)) {
+function checkOptional(
+  value: unknown,
+  decorators: Record<string, any>,
+): string[] {
+  if (decorators['optional'] && value === undefined) {
     return [];
   }
   return null;
@@ -510,20 +533,26 @@ function checkValidIf(
   field: string,
   value: unknown,
   decorators: Record<string, any>,
-  payload: Record<string, any>
+  payload: Record<string, any>,
 ) {
   if (!decorators['validIf']) return null;
 
   const options: ValidIfOptions = decorators['validIf'];
-  const conditions = Array.isArray(options.conditions) ? options.conditions : [options.conditions];
+  const conditions = Array.isArray(options.conditions)
+    ? options.conditions
+    : [options.conditions];
   const logicalOperator = options.logicalOperator || 'AND';
 
   let conditionMet = false;
 
   if (logicalOperator === 'AND') {
-    conditionMet = conditions.every(condition => evaluateCondition(condition, payload));
+    conditionMet = conditions.every((condition) =>
+      evaluateCondition(condition, payload),
+    );
   } else {
-    conditionMet = conditions.some(condition => evaluateCondition(condition, payload));
+    conditionMet = conditions.some((condition) =>
+      evaluateCondition(condition, payload),
+    );
   }
 
   if (conditionMet) {
@@ -534,14 +563,20 @@ function checkValidIf(
       return { isRequired: true };
     }
     if (options.result?.message) {
-      return { message: options.result.message, isRequired: options.result.required };
+      return {
+        message: options.result.message,
+        isRequired: options.result.required,
+      };
     }
   }
 
   return conditionMet ? null : { isRequired: false };
 }
 
-function evaluateCondition(condition: ValidIfCondition, payload: Record<string, any>): boolean {
+function evaluateCondition(
+  condition: ValidIfCondition,
+  payload: Record<string, any>,
+): boolean {
   const targetValue = payload[condition.field];
 
   switch (condition.operator) {
@@ -562,9 +597,13 @@ function evaluateCondition(condition: ValidIfCondition, payload: Record<string, 
     case '<=':
       return targetValue <= condition.value;
     case 'includes':
-      return Array.isArray(targetValue) ? targetValue.includes(condition.value) : false;
+      return Array.isArray(targetValue)
+        ? targetValue.includes(condition.value)
+        : false;
     case 'in':
-      return Array.isArray(condition.value) ? condition.value.includes(targetValue) : false;
+      return Array.isArray(condition.value)
+        ? condition.value.includes(targetValue)
+        : false;
     case 'regex':
       return new RegExp(condition.value).test(targetValue);
     default:
@@ -584,12 +623,20 @@ function getDefinedErrorMessage(field: string): string {
   }
 }
 
-function checkIsDefined(field: string, value: unknown, decorators: Record<string, any>): string[] {
+function checkIsDefined(
+  field: string,
+  value: unknown,
+  decorators: Record<string, any>,
+): string[] {
   const errors: string[] = [];
   if (value === undefined) {
     if (decorators['isDefined']) {
       if (decorators['isInvalid']) {
-        addErrorIfNotExist(errors, decorators['notUndefinedMessage'], getDefinedErrorMessage(field));
+        addErrorIfNotExist(
+          errors,
+          decorators['notUndefinedMessage'],
+          getDefinedErrorMessage(field),
+        );
       } else {
         addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.DEFINED}`);
       }
@@ -599,12 +646,24 @@ function checkIsDefined(field: string, value: unknown, decorators: Record<string
   return null;
 }
 
-function checkIsNotNull(field: string, value: unknown, decorators: Record<string, any>): string[] {
+function checkIsNotNull(
+  field: string,
+  value: unknown,
+  decorators: Record<string, any>,
+): string[] {
   const errors: string[] = [];
   if (value === null && decorators['isNotNull']) {
     if (decorators['IsInvalid']) {
-      if (field === 'workspaceId' || field === 'channelId' || field === 'userId') {
-        addErrorIfNotExist(errors, decorators['isNotNullMessage'], ErrorMessage.COULD_NOT_PERMISSION);
+      if (
+        field === 'workspaceId' ||
+        field === 'channelId' ||
+        field === 'userId'
+      ) {
+        addErrorIfNotExist(
+          errors,
+          decorators['isNotNullMessage'],
+          ErrorMessage.COULD_NOT_PERMISSION,
+        );
       } else {
         addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.NULL}`);
       }
@@ -615,46 +674,100 @@ function checkIsNotNull(field: string, value: unknown, decorators: Record<string
   return errors;
 }
 
-
-function checkTypeBoolean(field: string, value: any, decorators: Record<string, any>): string[] {
+function checkTypeBoolean(
+  field: string,
+  value: any,
+  decorators: Record<string, any>,
+): string[] {
   const errors: string[] = [];
-  if (decorators['type'] === 'boolean' && typeof value !== 'boolean' && value === null) {
-    addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_TYPE_BOOLEAN} null`);
+  if (
+    decorators['type'] === 'boolean' &&
+    typeof value !== 'boolean' &&
+    value === null
+  ) {
+    addErrorIfNotExist(
+      errors,
+      null,
+      `${field} ${ErrorMessage.INVALID_TYPE_BOOLEAN} null`,
+    );
   }
-  if (decorators['type'] === 'boolean' && typeof value !== 'boolean' && value !== null) {
-    addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_TYPE_BOOLEAN} ${typeof value}`);
+  if (
+    decorators['type'] === 'boolean' &&
+    typeof value !== 'boolean' &&
+    value !== null
+  ) {
+    addErrorIfNotExist(
+      errors,
+      null,
+      `${field} ${ErrorMessage.INVALID_TYPE_BOOLEAN} ${typeof value}`,
+    );
   }
-  return errors
+  return errors;
 }
 
-function checkNotEmpty(field: string, value: unknown, decorators: Record<string, any>): string[] {
+function checkNotEmpty(
+  field: string,
+  value: unknown,
+  decorators: Record<string, any>,
+): string[] {
   const errors: string[] = [];
   if (value === '' && decorators['notEmpty']) {
     if (decorators['IsInvalid']) {
-      if (field === 'workspaceId' || field === 'channelId' || field === 'userId') {
-        addErrorIfNotExist(errors, decorators['notEmptyMessage'], ErrorMessage.COULD_NOT_PERMISSION);
+      if (
+        field === 'workspaceId' ||
+        field === 'channelId' ||
+        field === 'userId'
+      ) {
+        addErrorIfNotExist(
+          errors,
+          decorators['notEmptyMessage'],
+          ErrorMessage.COULD_NOT_PERMISSION,
+        );
       } else {
-        addErrorIfNotExist(errors, decorators['notEmptyMessage'], `${field} ${ErrorMessage.EMPTY}`);
+        addErrorIfNotExist(
+          errors,
+          decorators['notEmptyMessage'],
+          `${field} ${ErrorMessage.EMPTY}`,
+        );
       }
     } else {
-      addErrorIfNotExist(errors, decorators['notEmptyMessage'], `${field} ${ErrorMessage.EMPTY}`);
+      addErrorIfNotExist(
+        errors,
+        decorators['notEmptyMessage'],
+        `${field} ${ErrorMessage.EMPTY}`,
+      );
     }
   }
   return errors;
 }
 
-function checkULID(field: string, value: any, decorators: Record<string, any>): string[] {
+function checkULID(
+  field: string,
+  value: any,
+  decorators: Record<string, any>,
+): string[] {
   const errors: string[] = [];
   if (decorators['isULID']) {
-    if (typeof value === 'string' && (value === '' || !value.startsWith('{{'))) {
+    if (
+      typeof value === 'string' &&
+      (value === '' || !value.startsWith('{{'))
+    ) {
       addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_ULID}`);
-    } else if (typeof value === 'string' && !value.startsWith('{{') && !checkRegexULID(value)) {
+    } else if (
+      typeof value === 'string' &&
+      !value.startsWith('{{') &&
+      !checkRegexULID(value)
+    ) {
       addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_ULID}`);
     }
   }
   return errors;
 }
-function checkEmoji(field: string, value: unknown, decorators: Record<string, any>): string[] {
+function checkEmoji(
+  field: string,
+  value: unknown,
+  decorators: Record<string, any>,
+): string[] {
   const errors: string[] = [];
   if (decorators['isEmoji']) {
     if (typeof value !== 'string') {
@@ -663,25 +776,47 @@ function checkEmoji(field: string, value: unknown, decorators: Record<string, an
     if (decorators['isValidEmoji']) {
       const actualCount = countEmojis(value);
       const isInvalid = value === '' || !isEmoji(value);
-      const isInvalidCount = actualCount > decorators['isValidEmoji'] || actualCount < decorators['isValidEmoji'];
+      const isInvalidCount =
+        actualCount > decorators['isValidEmoji'] ||
+        actualCount < decorators['isValidEmoji'];
 
       if (isInvalid) {
-        addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_EMOJI}`);
+        addErrorIfNotExist(
+          errors,
+          null,
+          `${field} ${ErrorMessage.INVALID_EMOJI}`,
+        );
       }
       if (isInvalidCount) {
-        addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_RANGE_EMOJI} ${decorators['isValidEmoji']} emoji`);
+        addErrorIfNotExist(
+          errors,
+          null,
+          `${field} ${ErrorMessage.INVALID_RANGE_EMOJI} ${decorators['isValidEmoji']} emoji`,
+        );
       }
     } else {
       const isInvalid = value === '' || !isEmoji(value);
       if (isInvalid) {
-        addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_EMOJI}`);
-        addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_EMOJI_LENGTH_1}`);
+        addErrorIfNotExist(
+          errors,
+          null,
+          `${field} ${ErrorMessage.INVALID_EMOJI}`,
+        );
+        addErrorIfNotExist(
+          errors,
+          null,
+          `${field} ${ErrorMessage.INVALID_EMOJI_LENGTH_1}`,
+        );
       }
     }
   }
   return errors;
 }
-function checkTypeString(field: string, value: unknown, decorators: Record<string, any>): string[] {
+function checkTypeString(
+  field: string,
+  value: unknown,
+  decorators: Record<string, any>,
+): string[] {
   const errors: string[] = [];
   if (value === undefined) {
     return [];
@@ -690,47 +825,79 @@ function checkTypeString(field: string, value: unknown, decorators: Record<strin
   if (decorators['type'] === 'string') {
     if (typeof value !== 'string') {
       if (decorators['isInvalid']) {
-        if (field === 'workspaceId' || field === 'channelId' || field === 'userId') {
+        if (
+          field === 'workspaceId' ||
+          field === 'channelId' ||
+          field === 'userId'
+        ) {
           addErrorIfNotExist(errors, decorators['stringMessage'], null);
         } else if (decorators['isNotNull'] && typeof value === 'object') {
-          addErrorIfNotExist(errors, decorators['stringMessage'], `${field} ${ErrorMessage.INVALID_TYPE_STRING} null`);
+          addErrorIfNotExist(
+            errors,
+            decorators['stringMessage'],
+            `${field} ${ErrorMessage.INVALID_TYPE_STRING} null`,
+          );
         } else {
-          addErrorIfNotExist(errors, decorators['stringMessage'], `${field} ${ErrorMessage.INVALID_TYPE_STRING} ${typeof value}`);
+          addErrorIfNotExist(
+            errors,
+            decorators['stringMessage'],
+            `${field} ${ErrorMessage.INVALID_TYPE_STRING} ${typeof value}`,
+          );
         }
-
       } else {
         if (decorators['isNotNull'] && typeof value === 'object') {
-          addErrorIfNotExist(errors, decorators['stringMessage'], `${field} ${ErrorMessage.INVALID_TYPE_STRING} null`);
+          addErrorIfNotExist(
+            errors,
+            decorators['stringMessage'],
+            `${field} ${ErrorMessage.INVALID_TYPE_STRING} null`,
+          );
         } else {
-          addErrorIfNotExist(errors, decorators['stringMessage'], `${field} ${ErrorMessage.INVALID_TYPE_STRING} ${typeof value}`);
+          addErrorIfNotExist(
+            errors,
+            decorators['stringMessage'],
+            `${field} ${ErrorMessage.INVALID_TYPE_STRING} ${typeof value}`,
+          );
         }
-
       }
       return errors;
     }
 
     if (decorators['isValidURL']) {
-      const isInvalid = typeof value === 'string' && (value === '' || !checkURL(value));
+      const isInvalid =
+        typeof value === 'string' && (value === '' || !checkURL(value));
       if (isInvalid) {
-        addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_URL}`);
+        addErrorIfNotExist(
+          errors,
+          null,
+          `${field} ${ErrorMessage.INVALID_URL}`,
+        );
       }
       return errors;
     }
 
     if (decorators['isInvalid']) {
-
       if (field === 'workspaceId' && value !== '0') {
-
-        addErrorIfNotExist(errors, decorators['isInvalidMessage'], 'Invalid channel');
+        addErrorIfNotExist(
+          errors,
+          decorators['isInvalidMessage'],
+          'Invalid channel',
+        );
         return errors;
       }
       if (field === 'channelId' && !value.startsWith('{{')) {
-
-        addErrorIfNotExist(errors, decorators['isInvalidMessage'], 'Invalid channel');
+        addErrorIfNotExist(
+          errors,
+          decorators['isInvalidMessage'],
+          'Invalid channel',
+        );
         return errors;
       }
       if (field === 'userId' && !value.startsWith('{{')) {
-        addErrorIfNotExist(errors, decorators['isInvalidMessage'], 'Unauthorized request');
+        addErrorIfNotExist(
+          errors,
+          decorators['isInvalidMessage'],
+          'Unauthorized request',
+        );
         return errors;
       }
       if (field === 'stickerId' && value !== VAR.stickerId) {
@@ -749,67 +916,100 @@ function checkTypeString(field: string, value: unknown, decorators: Record<strin
       //       }
       //     } else
       if (hasMin && len < decorators['minLength']) {
-        addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.MIN_LENGTH} ${decorators['minLength']} character(s)`);
+        addErrorIfNotExist(
+          errors,
+          null,
+          `${field} ${ErrorMessage.MIN_LENGTH} ${decorators['minLength']} character(s)`,
+        );
       } else if (hasMax && len > decorators['maxLength']) {
-        addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.MAX_LENGTH} ${decorators['maxLength']} character(s)`);
+        addErrorIfNotExist(
+          errors,
+          null,
+          `${field} ${ErrorMessage.MAX_LENGTH} ${decorators['maxLength']} character(s)`,
+        );
       }
     }
   }
   return errors;
 }
-function checkTypeNumber(field: string, value: unknown, decorators: Record<string, any>): string[] {
+function checkTypeNumber(
+  field: string,
+  value: unknown,
+  decorators: Record<string, any>,
+): string[] {
   const errors: string[] = [];
   if (decorators['type'] === 'number') {
     if (typeof value !== 'number' || isNaN(value)) {
-      addErrorIfNotExist(errors, decorators['numberMessage'], `${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`);
+      addErrorIfNotExist(
+        errors,
+        decorators['numberMessage'],
+        `${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`,
+      );
       return errors;
     }
     if (decorators['min'] != null && value < decorators['min']) {
-      addErrorIfNotExist(errors, decorators['minMessage'], `${field} must be at least ${decorators['min']}`);
+      addErrorIfNotExist(
+        errors,
+        decorators['minMessage'],
+        `${field} must be at least ${decorators['min']}`,
+      );
     }
     if (decorators['max'] != null && value > decorators['max']) {
-      addErrorIfNotExist(errors, decorators['maxMessage'], `${field} must be at most ${decorators['max']}`);
+      addErrorIfNotExist(
+        errors,
+        decorators['maxMessage'],
+        `${field} must be at most ${decorators['max']}`,
+      );
     }
   }
   return errors;
 }
 
-function checkTypeArray(field: string, value: unknown, decorators: Record<string, any>): string[] {
+function checkTypeArray(
+  field: string,
+  value: unknown,
+  decorators: Record<string, any>,
+): string[] {
   const errors: string[] = [];
 
   if (decorators['type'] === 'array') {
-
     if (!Array.isArray(value) && value === null) {
       addErrorIfNotExist(
         errors,
         decorators['arrayMessage'],
-        `${field} ${ErrorMessage.INVALID_TYPE_ARRAY} null`
+        `${field} ${ErrorMessage.INVALID_TYPE_ARRAY} null`,
       );
       return errors;
     } else if (!Array.isArray(value)) {
       addErrorIfNotExist(
         errors,
         decorators['arrayMessage'],
-        `${field} ${ErrorMessage.INVALID_TYPE_ARRAY} ${typeof value}`
+        `${field} ${ErrorMessage.INVALID_TYPE_ARRAY} ${typeof value}`,
       );
       return errors;
     }
 
     // Kiểm tra độ dài tối thiểu của mảng
-    if (decorators['minArray'] != null && value.length < decorators['minArray']) {
+    if (
+      decorators['minArray'] != null &&
+      value.length < decorators['minArray']
+    ) {
       addErrorIfNotExist(
         errors,
         decorators['minArrayMessage'],
-        `${field} ${ErrorMessage.MIN_ARRAY} ${decorators['minArray']} element(s)`
+        `${field} ${ErrorMessage.MIN_ARRAY} ${decorators['minArray']} element(s)`,
       );
     }
 
     // Kiểm tra độ dài tối đa của mảng
-    if (decorators['maxArray'] != null && value.length > decorators['maxArray']) {
+    if (
+      decorators['maxArray'] != null &&
+      value.length > decorators['maxArray']
+    ) {
       addErrorIfNotExist(
         errors,
         decorators['maxArrayMessage'],
-        `${field} ${ErrorMessage.MAX_ARRAY} ${decorators['maxArray']} element(s)`
+        `${field} ${ErrorMessage.MAX_ARRAY} ${decorators['maxArray']} element(s)`,
       );
     }
 
@@ -817,140 +1017,173 @@ function checkTypeArray(field: string, value: unknown, decorators: Record<string
       const typeItem = typeof item;
       if (typeof item === 'string') {
         const itemDecorator = decorators['itemDecorators'];
-        itemDecorator.forEach((dec: { name: string; params?: any; message?: string }) => {
-          const { name, params, message } = dec;
-          //check type
-          if (name === 'IsObject' && typeof item !== 'object') {
-            addErrorIfNotExist(
-              errors,
-              null,
-              `${field} has element ${index} ${ErrorMessage.INVALID_TYPE_OBJ} ${typeof item}`
-            )
-          }
-          //check min item
-          if (item === "" && name === 'MinArrayItem') {
-            addErrorIfNotExist(
-              errors,
-              null,
-              `${field} has element ${index} ${ErrorMessage.MIN_LENGTH} ${params} character(s)`
-            )
-
-          }
-          if (item === "" && name === 'MinArrayItem' && decorators['IsULID']) {
-            addErrorIfNotExist(
-              errors,
-              null,
-              `${field} has element ${index} ${ErrorMessage.MIN_LENGTH} ${params} character(s)`
-            )
-            addErrorIfNotExist(
-              errors,
-              null,
-              `${field} has element ${index} ${ErrorMessage.INVALID_ULID}`
-            )
-          }
-
-
-          //check ulid
-          if (name === 'IsULID' && !checkRegexULID(item) && !item.startsWith('{{')) {
-            addErrorIfNotExist(
-              errors,
-              null,
-              `${field} has element ${index} ${ErrorMessage.INVALID_ULID}`
-            )
-          }
-          if (name === 'IsULID' && checkRegexULID(item) && !item.startsWith('{{')) {
-            addErrorIfNotExist(
-              errors,
-              message,
-              `${field} ${message}`
-            )
-          }
-
-          //check unique item
-          if (name === 'IsUnique') {
-            const uniqueItems = new Set(value);
-            if (uniqueItems.size !== value.length) {
+        itemDecorator.forEach(
+          (dec: { name: string; params?: any; message?: string }) => {
+            const { name, params, message } = dec;
+            //check type
+            if (name === 'IsObject' && typeof item !== 'object') {
               addErrorIfNotExist(
                 errors,
                 null,
-                `${field} ${ErrorMessage.UNIQUE_ARRAY_ITEM}`
+                `${field} has element ${index} ${ErrorMessage.INVALID_TYPE_OBJ} ${typeof item}`,
               );
             }
-          }
+            //check min item
+            if (item === '' && name === 'MinArrayItem') {
+              addErrorIfNotExist(
+                errors,
+                null,
+                `${field} has element ${index} ${ErrorMessage.MIN_LENGTH} ${params} character(s)`,
+              );
+            }
+            if (
+              item === '' &&
+              name === 'MinArrayItem' &&
+              decorators['IsULID']
+            ) {
+              addErrorIfNotExist(
+                errors,
+                null,
+                `${field} has element ${index} ${ErrorMessage.MIN_LENGTH} ${params} character(s)`,
+              );
+              addErrorIfNotExist(
+                errors,
+                null,
+                `${field} has element ${index} ${ErrorMessage.INVALID_ULID}`,
+              );
+            }
 
-        });
+            //check ulid
+            if (
+              name === 'IsULID' &&
+              !checkRegexULID(item) &&
+              !item.startsWith('{{')
+            ) {
+              addErrorIfNotExist(
+                errors,
+                null,
+                `${field} has element ${index} ${ErrorMessage.INVALID_ULID}`,
+              );
+            }
+            if (
+              name === 'IsULID' &&
+              checkRegexULID(item) &&
+              !item.startsWith('{{')
+            ) {
+              addErrorIfNotExist(errors, message, `${field} ${message}`);
+            }
 
+            //check unique item
+            if (name === 'IsUnique') {
+              const uniqueItems = new Set(value);
+              if (uniqueItems.size !== value.length) {
+                addErrorIfNotExist(
+                  errors,
+                  null,
+                  `${field} ${ErrorMessage.UNIQUE_ARRAY_ITEM}`,
+                );
+              }
+            }
+          },
+        );
       } else {
         if (item === null) {
           addErrorIfNotExist(
             errors,
             null,
-            `${field} has element ${index} ${ErrorMessage.INVALID_TYPE_OBJ} null`
-          )
+            `${field} has element ${index} ${ErrorMessage.INVALID_TYPE_OBJ} null`,
+          );
         } else {
           if (typeof item !== 'object') {
             addErrorIfNotExist(
               errors,
               null,
-              `${field} has element ${index} ${ErrorMessage.INVALID_TYPE_OBJ} ${typeof item}`
-            )
+              `${field} has element ${index} ${ErrorMessage.INVALID_TYPE_OBJ} ${typeof item}`,
+            );
           } else {
             return;
           }
         }
       }
     });
-
   }
 
   if (decorators['isValidateNested'] && value !== undefined && value !== null) {
-    const nestedErrors = checkNestedValidation(field, value, decorators)
+    const nestedErrors = checkNestedValidation(field, value, decorators);
     errors.push(...nestedErrors);
   }
 
   return errors;
 }
 
-function checkTypeObject(field: string, value: unknown, decorators: Record<string, any>): string[] {
+function checkTypeObject(
+  field: string,
+  value: unknown,
+  decorators: Record<string, any>,
+): string[] {
   const errors: string[] = [];
   if (decorators['type'] === 'object') {
     if (typeof value !== 'object' || Array.isArray(value) || value === null) {
-      addErrorIfNotExist(errors, decorators['objectMessage'], `${field} ${ErrorMessage.INVALID_TYPE_OBJ}`);
+      addErrorIfNotExist(
+        errors,
+        decorators['objectMessage'],
+        `${field} ${ErrorMessage.INVALID_TYPE_OBJ}`,
+      );
       return errors;
     }
   }
   return errors;
 }
 
-function checkEnum(field: string, value: unknown, decorators: Record<string, any>): string[] {
+function checkEnum(
+  field: string,
+  value: unknown,
+  decorators: Record<string, any>,
+): string[] {
   const errors: string[] = [];
   if (decorators['type'] === 'enum') {
-    if (!decorators['enumType'] || !Object.values(decorators['enumType']).includes(value)) {
-
-      const enumValues = Object.values(decorators['enumType']).filter(v => typeof v === 'number') as number[];
+    if (
+      !decorators['enumType'] ||
+      !Object.values(decorators['enumType']).includes(value)
+    ) {
+      const enumValues = Object.values(decorators['enumType']).filter(
+        (v) => typeof v === 'number',
+      ) as number[];
       const expectedText = enumValues.join(' | ');
-      addErrorIfNotExist(errors, decorators['enumMessage'], `${field} ${ErrorMessage.INVALID_ENUM} ${expectedText}, received '${value}'`);
+      addErrorIfNotExist(
+        errors,
+        decorators['enumMessage'],
+        `${field} ${ErrorMessage.INVALID_ENUM} ${expectedText}, received '${value}'`,
+      );
       return errors;
     }
   }
   return errors;
 }
 
-function checkValidURL(field: string, value: unknown, decorators: Record<string, any>): string[] {
+function checkValidURL(
+  field: string,
+  value: unknown,
+  decorators: Record<string, any>,
+): string[] {
   const errors: string[] = [];
   if (decorators['isValidURL']) {
-    const isValid = checkURL(String(value))
+    const isValid = checkURL(String(value));
     if (!isValid) {
       addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_URL}`);
     }
   }
-  return errors
+  return errors;
 }
 
-export function mapError(field: string, value: unknown, decorators: Record<string, any>, dto) {
+export function mapError(
+  field: string,
+  value: unknown,
+  decorators: Record<string, any>,
+  dto,
+) {
   // Kiểm tra từng nhóm lỗi
   const errors: string[] = [];
-
 
   const validIfErrors = checkValidIf(field, value, decorators, dto);
   if (validIfErrors !== null) {
@@ -980,14 +1213,23 @@ export function mapError(field: string, value: unknown, decorators: Record<strin
     checkEnum,
     checkValidURL,
     checkTypeBoolean,
-    checkIsNotNull
+    checkIsNotNull,
   ];
 
   for (const check of checks) {
     const result = check(field, value, decorators);
     if (result && result.length > 0) {
       errors.push(...result);
-      if (check === checkIsNotNull || check === checkTypeBoolean || check === checkValidURL || check === checkTypeString || check === checkTypeNumber || check === checkTypeArray || check === checkTypeObject || check === checkEnum) {
+      if (
+        check === checkIsNotNull ||
+        check === checkTypeBoolean ||
+        check === checkValidURL ||
+        check === checkTypeString ||
+        check === checkTypeNumber ||
+        check === checkTypeArray ||
+        check === checkTypeObject ||
+        check === checkEnum
+      ) {
         break;
       }
     }
@@ -998,26 +1240,32 @@ export function mapError(field: string, value: unknown, decorators: Record<strin
 
 // Helper function để lấy nested class từ decorators
 function getNestedClass(decorators: Record<string, any>): any {
-
-
   // Ưu tiên lấy nestedType từ decorator Type
   if (decorators['nestedType']) {
-
     return decorators['nestedType'];
   }
 
   // Chỉ lấy design:type nếu nó không phải là Array
   if (decorators['design:type'] && decorators['design:type'] !== Array) {
-
     return decorators['design:type'];
   }
 
   return null;
 }
 
-function generateNestedArrayVariants(arrayValue: any[], nestedClass: any, depth: number = 0): unknown[] {
+function generateNestedArrayVariants(
+  arrayValue: any[],
+  nestedClass: any,
+  depth: number = 0,
+): unknown[] {
   const variants: unknown[] = [];
-  console.log('generateNestedArrayVariants called with:', arrayValue, nestedClass, 'depth:', depth);
+  console.log(
+    'generateNestedArrayVariants called with:',
+    arrayValue,
+    nestedClass,
+    'depth:',
+    depth,
+  );
 
   // Giới hạn độ sâu đệ quy
   if (depth > 5) {
@@ -1034,17 +1282,23 @@ function generateNestedArrayVariants(arrayValue: any[], nestedClass: any, depth:
   const nestedInstance = new nestedClass();
   const nestedFields = Object.keys(nestedInstance);
 
-  nestedFields.forEach(nestedField => {
+  nestedFields.forEach((nestedField) => {
     const nestedDecorators = getDecorators(nestedInstance, nestedField);
-    const nestedValue = templateObject?.[nestedField] || nestedInstance[nestedField];
+    const nestedValue =
+      templateObject?.[nestedField] || nestedInstance[nestedField];
 
-    if (nestedDecorators['isValidateNested'] && nestedDecorators['nestedType']) {
-
+    if (
+      nestedDecorators['isValidateNested'] &&
+      nestedDecorators['nestedType']
+    ) {
       const subNestedClass = getNestedClass(nestedDecorators);
       if (subNestedClass && nestedValue && subNestedClass !== nestedClass) {
-
-        const subNestedVariants = generateNestedArrayVariants([nestedValue], subNestedClass, depth + 1);
-        subNestedVariants.forEach(subVariant => {
+        const subNestedVariants = generateNestedArrayVariants(
+          [nestedValue],
+          subNestedClass,
+          depth + 1,
+        );
+        subNestedVariants.forEach((subVariant) => {
           const errorArray = arrayValue.map((item, index) => {
             if (index === 0) {
               return { ...item, [nestedField]: subVariant[0] };
@@ -1054,7 +1308,9 @@ function generateNestedArrayVariants(arrayValue: any[], nestedClass: any, depth:
           variants.push(errorArray);
         });
       } else {
-        console.log('Skipping recursion: invalid subNestedClass or same as nestedClass');
+        console.log(
+          'Skipping recursion: invalid subNestedClass or same as nestedClass',
+        );
       }
     } else {
       // Tạo error variants cho field này
@@ -1062,11 +1318,11 @@ function generateNestedArrayVariants(arrayValue: any[], nestedClass: any, depth:
         nestedValue,
         nestedDecorators,
         nestedClass,
-        nestedField
+        nestedField,
       );
       console.log('Field variants for', nestedField, ':', fieldVariants);
 
-      fieldVariants.forEach(errorValue => {
+      fieldVariants.forEach((errorValue) => {
         // Tạo array với object có lỗi ở field này
         const errorArray = arrayValue.map((item, index) => {
           if (index === 0) {
@@ -1095,7 +1351,11 @@ function generateNestedArrayVariants(arrayValue: any[], nestedClass: any, depth:
   return variants;
 }
 
-function checkNestedValidation(field: string, value: unknown, decorators: Record<string, any>): string[] {
+function checkNestedValidation(
+  field: string,
+  value: unknown,
+  decorators: Record<string, any>,
+): string[] {
   const errors: string[] = [];
   const nestedClass = getNestedClass(decorators);
 
@@ -1107,13 +1367,21 @@ function checkNestedValidation(field: string, value: unknown, decorators: Record
   if (decorators['type'] === 'array' && Array.isArray(value)) {
     value.forEach((item, index) => {
       if (item && typeof item === 'object') {
-        const nestedErrors = validateNestedObject(item, nestedClass, `${field}[${index}]`);
+        const nestedErrors = validateNestedObject(
+          item,
+          nestedClass,
+          `${field}[${index}]`,
+        );
         errors.push(...nestedErrors);
       }
     });
   }
   // Xử lý nested object
-  else if (decorators['type'] === 'object' && value && typeof value === 'object') {
+  else if (
+    decorators['type'] === 'object' &&
+    value &&
+    typeof value === 'object'
+  ) {
     const nestedErrors = validateNestedObject(value, nestedClass, field);
     errors.push(...nestedErrors);
   } else {
@@ -1124,16 +1392,24 @@ function checkNestedValidation(field: string, value: unknown, decorators: Record
   return errors;
 }
 
-
-function validateNestedObject(obj: any, nestedClass: any, parentField: string): string[] {
+function validateNestedObject(
+  obj: any,
+  nestedClass: any,
+  parentField: string,
+): string[] {
   const errors: string[] = [];
   const nestedInstance = new nestedClass();
   const nestedFields = Object.keys(nestedInstance);
 
-  nestedFields.forEach(nestedField => {
+  nestedFields.forEach((nestedField) => {
     const nestedValue = obj[nestedField];
     const nestedDecorators = getDecorators(nestedInstance, nestedField);
-    const fieldErrors = mapError(nestedField, nestedValue, nestedDecorators, obj);
+    const fieldErrors = mapError(
+      nestedField,
+      nestedValue,
+      nestedDecorators,
+      obj,
+    );
     errors.push(...fieldErrors);
   });
 

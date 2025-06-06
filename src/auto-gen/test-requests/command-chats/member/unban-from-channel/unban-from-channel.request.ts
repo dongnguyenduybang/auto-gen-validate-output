@@ -15,8 +15,8 @@ export const UnbanFromChannelRequest = {
           action: ACTION.ACCEPT_INVITATION,
           headers: HEADER_LIST.create({ token: VAR.token1 }),
           body: {
-            invitationLink: VAR.invitationLink
-          }
+            invitationLink: VAR.invitationLink,
+          },
         },
         {
           action: ACTION.BAN_FROM_CHANNEL,
@@ -26,11 +26,11 @@ export const UnbanFromChannelRequest = {
             userId: VAR.userId1,
           },
           headers: HEADER_LIST.create({ token: VAR.token }),
-        }
+        },
       ],
       beforeEach: [],
       afterEach: [],
-      afterAll: []
+      afterAll: [],
     },
   ],
 };

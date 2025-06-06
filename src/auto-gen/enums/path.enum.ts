@@ -4,7 +4,7 @@ export const APIPath = {
     DeclineInvitation: '/Invitation/DeclineInvitation',
     CreateInvitation: '/Invitation/CreateInvitation',
     SendInvitation: '/Invitation/SendInvitation',
-    RevokeInvitation: '/Invitation/RevokeInvitation'
+    RevokeInvitation: '/Invitation/RevokeInvitation',
   },
   Message: {
     SendMessage: '/Message/SendMessage',
@@ -37,7 +37,7 @@ export const APIPath = {
     SendDmMessageMedia: '/Message/SendDmMessageMedia',
     UpdateDmMediaAttachments: '/Message/UpdateDmMediaAttachments',
     UpdateMediaAttachments: '/Message/UpdateMediaAttachments',
-    SendMessageMedia: '/Message/SendMessageMedia'
+    SendMessageMedia: '/Message/SendMessageMedia',
   },
   ViewChannel: {
     GetChannel: '/ChannelView/GetChannel',
@@ -102,13 +102,13 @@ export const APIPath = {
   UserProfile: {
     UpdateUserDisplayName: '/UserProfile/UpdateUserDisplayName',
     AddUserStatus: '/UserProfile/AddUserStatus',
-    UpdateUserStatus: '/UserProfile/UpdateUserStatus'
+    UpdateUserStatus: '/UserProfile/UpdateUserStatus',
   },
   ViewMember: {
-    ListMembers: '/MemberView/ListMembers'
+    ListMembers: '/MemberView/ListMembers',
   },
   UserReport: {
-    ReportUser: '/UserReport/ReportUser'
+    ReportUser: '/UserReport/ReportUser',
   },
   Member: {
     UpdateNickname: '/Member/UpdateNickname',
@@ -117,8 +117,9 @@ export const APIPath = {
     BanFromChannel: '/Member/BanFromChannel',
     UnbanFromChannel: '/Member/UnbanFromChannel',
     TransferOwnership: '/Member/TransferOwnership',
-    TransferOwnershipAndLeaveChannel: '/Member/TransferOwnershipAndLeaveChannel',
+    TransferOwnershipAndLeaveChannel:
+      '/Member/TransferOwnershipAndLeaveChannel',
     LeaveChannel: '/Member/LeaveChannel',
     RemoveFromChannel: '/Member/RemoveFromChannel',
-  }
+  },
 };

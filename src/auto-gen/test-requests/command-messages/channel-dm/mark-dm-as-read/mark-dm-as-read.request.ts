@@ -6,7 +6,7 @@ export const MarkDmAsReadRequest: RequestTestSuite = {
   headers: HEADER_LIST.create({ token: VAR.token }),
   body: {
     userId: VAR.userId1,
-    messageId: VAR.messageId
+    messageId: VAR.messageId,
   },
   options: [
     {
@@ -21,11 +21,9 @@ export const MarkDmAsReadRequest: RequestTestSuite = {
           headers: HEADER_LIST.create({ token: VAR.token }),
         },
       ],
-      beforeEach: [
-
-      ],
+      beforeEach: [],
       afterEach: [],
-      afterAll: []
+      afterAll: [],
     },
   ],
 };

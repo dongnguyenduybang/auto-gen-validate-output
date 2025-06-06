@@ -25,9 +25,7 @@ export const AddMessageReactionRequest = {
       ],
       beforeEach: [],
       afterEach: [],
-      afterAll: [
-      ]
+      afterAll: [],
     },
-
   ],
 };

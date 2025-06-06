@@ -14,14 +14,13 @@ export const LeaveChannelRequest = {
           action: ACTION.ACCEPT_INVITATION,
           headers: HEADER_LIST.create({ token: VAR.token1 }),
           body: {
-            invitationLink: VAR.invitationLink
-          }
+            invitationLink: VAR.invitationLink,
+          },
         },
-        
       ],
       beforeEach: [],
       afterEach: [],
-      afterAll: []
+      afterAll: [],
     },
   ],
 };

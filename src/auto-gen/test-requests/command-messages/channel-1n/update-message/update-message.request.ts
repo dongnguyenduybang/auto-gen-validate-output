@@ -33,8 +33,7 @@ export const UpdateMessageRequest = {
             prefix: 'testUpdateMessage',
           },
         },
-      ]
+      ],
     },
-
   ],
 };

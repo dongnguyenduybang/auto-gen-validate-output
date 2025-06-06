@@ -1,4 +1,4 @@
-import { ExtractConfig } from "./declarations";
+import { ExtractConfig } from './declarations';
 
 const mockUserConfig: ExtractConfig = {
   user: {
@@ -68,9 +68,7 @@ const ejectMessageConfig: ExtractConfig = {
   },
 };
 
-const createInvitationConfig: ExtractConfig = {
-
-}
+const createInvitationConfig: ExtractConfig = {};
 
 // Ánh xạ action tới cấu hình
 export const configMap: Record<string, ExtractConfig> = {

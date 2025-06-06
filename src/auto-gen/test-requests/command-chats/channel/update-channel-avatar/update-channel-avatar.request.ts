@@ -5,19 +5,15 @@ export const UpdateChannelAvatarRequest = {
   body: {
     channelId: VAR.channelId,
     workspaceId: VAR.workspaceId,
-    avatarPath: VAR.avatarPath
+    avatarPath: VAR.avatarPath,
   },
   headers: HEADER_LIST.create({ token: VAR.token }),
   options: [
     {
       beforeAll: [],
-      beforeEach: [
-       
-      ],
+      beforeEach: [],
       afterEach: [],
-      afterAll: [
-      ]
+      afterAll: [],
     },
-
   ],
 };

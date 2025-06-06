@@ -1,10 +1,17 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import { generateErrorCases } from './dto-helper-v2';
-import { findAllFoldersWithDtoAndRequest, getMatchedFilePaths, groupFilesByName } from './helper';
+import {
+  findAllFoldersWithDtoAndRequest,
+  getMatchedFilePaths,
+  groupFilesByName,
+} from './helper';
 export async function genBodyRequest(dtoName) {
   const baseRequestsPath = path.join(__dirname, '../test-requests');
-  const foundFolders = findAllFoldersWithDtoAndRequest(baseRequestsPath, dtoName);
+  const foundFolders = findAllFoldersWithDtoAndRequest(
+    baseRequestsPath,
+    dtoName,
+  );
 
   for (const folder of foundFolders) {
     const outputDir = folder.path;
@@ -12,11 +19,13 @@ export async function genBodyRequest(dtoName) {
     if (!fs.existsSync(outputDir)) {
       fs.mkdirSync(outputDir, { recursive: true });
     }
-    const file = getMatchedFilePaths(foundFolders)
+    const file = getMatchedFilePaths(foundFolders);
 
     const fileMap = groupFilesByName(file);
 
-    for (const [className, { dtoPath, requestPath }] of Object.entries(fileMap)) {
+    for (const [className, { dtoPath, requestPath }] of Object.entries(
+      fileMap,
+    )) {
       if (!dtoPath) {
         console.warn(`Missing .dto file for class: ${className}`);
         continue;
@@ -47,10 +56,13 @@ export async function genBodyRequest(dtoName) {
         const result = await generateErrorCases(dtoClass, payload);
         const testCasePayload = result.map(({ body, expects }) => ({
           body,
-          expects
+          expects,
         }));
 
-        const outputFilePath = path.join(outputDir, `${className}.payload.json`);
+        const outputFilePath = path.join(
+          outputDir,
+          `${className}.payload.json`,
+        );
         fs.writeFileSync(
           outputFilePath,
           JSON.stringify(testCasePayload, null, 4),
@@ -62,5 +74,4 @@ export async function genBodyRequest(dtoName) {
       }
     }
   }
-
 }

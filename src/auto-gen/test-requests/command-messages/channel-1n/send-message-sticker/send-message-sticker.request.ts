@@ -11,14 +11,10 @@ export const SendMessageStickerRequest = {
   },
   options: [
     {
-      beforeAll: [
-
-      ],
-      beforeEach: [
-
-      ],
+      beforeAll: [],
+      beforeEach: [],
       afterEach: [],
-      afterAll: []
+      afterAll: [],
     },
   ],
 };

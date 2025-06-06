@@ -1,7 +1,12 @@
 import { Element } from '../enums/element.enum';
 import { Operator } from '../enums/operator.enum';
 import { IContext, ValidationError } from './declarations';
-import { comparedValue, getNestedValue, isOperatorObject, resolveValue } from './helper';
+import {
+  comparedValue,
+  getNestedValue,
+  isOperatorObject,
+  resolveValue,
+} from './helper';
 
 interface OperatorConfig {
   field?: string;
@@ -20,7 +25,8 @@ export const createApiValidator = (context: IContext) => {
     message?: string,
   ): ValidationError => ({
     path: path.join('.'),
-    expected: typeof expected === 'string' ? expected : JSON.stringify(expected),
+    expected:
+      typeof expected === 'string' ? expected : JSON.stringify(expected),
     actual: JSON.stringify(actual),
     message: message || `Validation failed at ${path.join('.')}`,
   });
@@ -35,17 +41,21 @@ export const createApiValidator = (context: IContext) => {
   ): boolean => {
     const rules = [
       {
-        condition: parentType === 'object' && config.operator === Operator.INCLUDE,
-        message: `Object property '${path.join('.')}' must use EQUAL operator, not INCLUDE`
+        condition:
+          parentType === 'object' && config.operator === Operator.INCLUDE,
+        message: `Object property '${path.join('.')}' must use EQUAL operator, not INCLUDE`,
       },
       {
         condition: parentType === 'array' && config.operator === Operator.EQUAL,
-        message: `Array element '${path.join('.')}' must use INCLUDE operator, not EQUAL`
+        message: `Array element '${path.join('.')}' must use INCLUDE operator, not EQUAL`,
       },
       {
-        condition: config.operator === Operator.INCLUDE && parentType === 'array' && !config.element,
-        message: `INCLUDE operator for array element '${path.join('.')}' requires element (ALL, FIRST, LAST)`
-      }
+        condition:
+          config.operator === Operator.INCLUDE &&
+          parentType === 'array' &&
+          !config.element,
+        message: `INCLUDE operator for array element '${path.join('.')}' requires element (ALL, FIRST, LAST)`,
+      },
     ];
 
     for (const rule of rules) {
@@ -72,26 +82,56 @@ export const createApiValidator = (context: IContext) => {
     }
 
     if (!Array.isArray(actual)) {
-      errors.push(createError(path, `Expected array for element type '${elementType}'`, actual));
+      errors.push(
+        createError(
+          path,
+          `Expected array for element type '${elementType}'`,
+          actual,
+        ),
+      );
       return;
     }
 
     const validators = {
       [Element.ALL]: () => {
         if (!actual.every((item) => comparedValue(item, expected, context))) {
-          errors.push(createError(path, `All elements must equal ${JSON.stringify(expected)}`, actual));
+          errors.push(
+            createError(
+              path,
+              `All elements must equal ${JSON.stringify(expected)}`,
+              actual,
+            ),
+          );
         }
       },
       [Element.FIRST]: () => {
-        if (actual.length === 0 || !comparedValue(actual[0], expected, context)) {
-          errors.push(createError(path, `First element must equal ${JSON.stringify(expected)}`, actual));
+        if (
+          actual.length === 0 ||
+          !comparedValue(actual[0], expected, context)
+        ) {
+          errors.push(
+            createError(
+              path,
+              `First element must equal ${JSON.stringify(expected)}`,
+              actual,
+            ),
+          );
         }
       },
       [Element.LAST]: () => {
-        if (actual.length === 0 || !comparedValue(actual[actual.length - 1], expected, context)) {
-          errors.push(createError(path, `Last element must equal ${JSON.stringify(expected)}`, actual));
+        if (
+          actual.length === 0 ||
+          !comparedValue(actual[actual.length - 1], expected, context)
+        ) {
+          errors.push(
+            createError(
+              path,
+              `Last element must equal ${JSON.stringify(expected)}`,
+              actual,
+            ),
+          );
         }
-      }
+      },
     };
 
     if (validators[elementType]) {
@@ -106,21 +146,37 @@ export const createApiValidator = (context: IContext) => {
     path: string[],
     errors: ValidationError[],
   ) => {
-    const normalizedActual = Array.isArray(actual) ? actual.flat(Infinity) : [actual];
-    const expectedArray = Array.isArray(expectedValues) ? expectedValues.flat(Infinity) : [expectedValues];
+    const normalizedActual = Array.isArray(actual)
+      ? actual.flat(Infinity)
+      : [actual];
+    const expectedArray = Array.isArray(expectedValues)
+      ? expectedValues.flat(Infinity)
+      : [expectedValues];
 
     if (elementType === Element.ALL) {
-      return validateAllElementsInclusion(normalizedActual, expectedArray, path, errors);
+      return validateAllElementsInclusion(
+        normalizedActual,
+        expectedArray,
+        path,
+        errors,
+      );
     }
 
     const valuesToCheck = getValuesToCheck(normalizedActual, elementType);
     if (valuesToCheck.length === 0) {
-      errors.push(createError(path, `No values found at path '${path.join('.')}'`, valuesToCheck));
+      errors.push(
+        createError(
+          path,
+          `No values found at path '${path.join('.')}'`,
+          valuesToCheck,
+        ),
+      );
       return;
     }
 
     const missing = expectedArray.filter(
-      (expected) => !valuesToCheck.some((val) => comparedValue(val, expected, context)),
+      (expected) =>
+        !valuesToCheck.some((val) => comparedValue(val, expected, context)),
     );
 
     if (missing.length > 0) {
@@ -143,11 +199,13 @@ export const createApiValidator = (context: IContext) => {
     }
 
     const missingInActual = expected.filter(
-      (expected) => !actual.some((val) => comparedValue(val, expected, context)),
+      (expected) =>
+        !actual.some((val) => comparedValue(val, expected, context)),
     );
 
     const missingInExpected = actual.filter(
-      (val) => !expected.some((expected) => comparedValue(val, expected, context)),
+      (val) =>
+        !expected.some((expected) => comparedValue(val, expected, context)),
     );
 
     if (missingInActual.length > 0 || missingInExpected.length > 0) {
@@ -163,12 +221,15 @@ export const createApiValidator = (context: IContext) => {
   };
 
   const getValuesToCheck = (values: any[], elementType: Element): any[] => {
-    console.log(values)
-    console.log(values.slice(0, 1))
+    console.log(values);
+    console.log(values.slice(0, 1));
     switch (elementType) {
-      case Element.FIRST: return values.slice(0, 1);
-      case Element.LAST: return values.slice(-1);
-      default: return values;
+      case Element.FIRST:
+        return values.slice(0, 1);
+      case Element.LAST:
+        return values.slice(-1);
+      default:
+        return values;
     }
   };
 
@@ -194,24 +255,29 @@ export const createApiValidator = (context: IContext) => {
     }
 
     if (element && !Array.isArray(targetValue)) {
-      errors.push(createError(
-        path,
-        `Expected array for element validation but got ${typeof targetValue}`,
-        targetValue,
-      ));
+      errors.push(
+        createError(
+          path,
+          `Expected array for element validation but got ${typeof targetValue}`,
+          targetValue,
+        ),
+      );
       return;
     }
 
-    const processedExpect = operator === Operator.INCLUDE && !Array.isArray(resolvedExpect)
-      ? [resolvedExpect]
-      : resolvedExpect;
+    const processedExpect =
+      operator === Operator.INCLUDE && !Array.isArray(resolvedExpect)
+        ? [resolvedExpect]
+        : resolvedExpect;
 
     if (operator === Operator.INCLUDE) {
       validateInclusion(targetValue, processedExpect, element, path, errors);
     } else if (operator === Operator.EQUAL) {
       validateEquality(targetValue, processedExpect, element, path, errors);
     } else {
-      errors.push(createError(path, `Unknown operator: ${operator}`, targetValue));
+      errors.push(
+        createError(path, `Unknown operator: ${operator}`, targetValue),
+      );
     }
   };
 
@@ -232,7 +298,6 @@ export const createApiValidator = (context: IContext) => {
       parentType,
     );
   };
-
 
   const validateObject = (
     actual: Record<string, any>,
@@ -289,7 +354,12 @@ export const createApiValidator = (context: IContext) => {
     }
 
     expected.forEach((expectedItem, index) => {
-      validateRecursive(actual[index], expectedItem, [...path, `[${index}]`], errors);
+      validateRecursive(
+        actual[index],
+        expectedItem,
+        [...path, `[${index}]`],
+        errors,
+      );
     });
   };
 
@@ -311,7 +381,9 @@ export const createApiValidator = (context: IContext) => {
     } else if (rule.operator === Operator.EQUAL) {
       validateEquality(values, resolvedExpect, rule.element, path, errors);
     } else {
-      errors.push(createError(path, `Unknown operator: ${rule.operator}`, values));
+      errors.push(
+        createError(path, `Unknown operator: ${rule.operator}`, values),
+      );
     }
   };
 
@@ -321,14 +393,16 @@ export const createApiValidator = (context: IContext) => {
     path: string[],
     errors: ValidationError[],
   ) => {
-
     if (isOperatorObject(expected)) {
       validateOperatorObject(actual, expected as OperatorConfig, path, errors);
     } else if (typeof expected === 'object' && expected !== null) {
       Array.isArray(expected)
         ? validateArray(actual, expected, path, errors)
         : validateObject(actual, expected, path, errors);
-    } else if (typeof expected === 'string' && !comparedValue(actual, expected, context)) {
+    } else if (
+      typeof expected === 'string' &&
+      !comparedValue(actual, expected, context)
+    ) {
       errors.push(createError(path, expected, actual));
     }
   };

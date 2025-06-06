@@ -10,15 +10,10 @@ export const DeleteChannelRequest: RequestTestSuite = {
   },
   options: [
     {
-      beforeAll: [
-       
-      ],
+      beforeAll: [],
       beforeEach: [],
       afterEach: [],
-      afterAll: [
-        
-      ]
+      afterAll: [],
     },
-
   ],
 };

@@ -10,19 +10,21 @@ export const RevokeInvitationRequest = {
   headers: HEADER_LIST.create({ token: VAR.token }),
   options: [
     {
-      beforeAll: [{
-        action: ACTION.CREATE_INVITATION,
-        headers: HEADER_LIST.create({ token: VAR.token }),
-        body: {
-          workspaceId: VAR.workspaceId,
-          channelId: VAR.channelId,
-          expiresIn: 10000,
-          maxUses: 1
-        }
-      }],
+      beforeAll: [
+        {
+          action: ACTION.CREATE_INVITATION,
+          headers: HEADER_LIST.create({ token: VAR.token }),
+          body: {
+            workspaceId: VAR.workspaceId,
+            channelId: VAR.channelId,
+            expiresIn: 10000,
+            maxUses: 1,
+          },
+        },
+      ],
       beforeEach: [],
       afterEach: [],
-      afterAll: []
+      afterAll: [],
     },
   ],
 };

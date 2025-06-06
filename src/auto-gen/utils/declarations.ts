@@ -1,6 +1,13 @@
-
-import { GetChannelResponse,MockUserResponse, AcceptInvitationResponse, CreateChannelResponse, SendDmMessageResponse, SendMessageResponse, UpdateMessageResponse } from "../response";
-import { TestContext } from "./text-context";
+import {
+  GetChannelResponse,
+  MockUserResponse,
+  AcceptInvitationResponse,
+  CreateChannelResponse,
+  SendDmMessageResponse,
+  SendMessageResponse,
+  UpdateMessageResponse,
+} from '../response';
+import { TestContext } from './text-context';
 
 export interface ValidationError {
   path: string;
@@ -23,9 +30,9 @@ interface ExpectData {
   headers?: Record<string, string>;
 }
 export interface Expect {
-  ok?: boolean,
-  data?: ExpectData
-  includes?: ExpectData[]
+  ok?: boolean;
+  data?: ExpectData;
+  includes?: ExpectData[];
 }
 
 export interface ExpectResult {
@@ -34,7 +41,6 @@ export interface ExpectResult {
   message: string;
   actualValue?: string;
   expectedValue?: string;
-
 }
 export interface Step<T = any> {
   action: string;
@@ -53,12 +59,12 @@ export interface RequestTestSuite {
   action: string;
   headers: Record<string, string>;
   body: Object;
-  options: FirstStep[]
+  options: FirstStep[];
 }
 
 interface FirstStep {
   beforeEach?: Step[];
-  beforeAll?: Step[]
+  beforeAll?: Step[];
   afterEach?: Step[];
   afterAll?: Step[];
 }
@@ -126,19 +132,18 @@ export interface ApiFunctionParams {
 
 export interface TestResult {
   path: string;
-    className: string;
-    allSteps: any[];
-    chunkNumber?: number;
-    failedTests: any[];
-    codedTest: any[];
-    passedTests: number;
-    totalTests: number;
-    logicTests: any[];
-    failedStep: any[];
-    passed200?: number;
-    passed201?: number;
+  className: string;
+  allSteps: any[];
+  chunkNumber?: number;
+  failedTests: any[];
+  codedTest: any[];
+  passedTests: number;
+  totalTests: number;
+  logicTests: any[];
+  failedStep: any[];
+  passed200?: number;
+  passed201?: number;
 }
-
 
 export type ActionHandler = (dtoName: string) => Promise<void> | void;
 export type ApiRegistry = Record<string, ApiConfig>;
@@ -154,9 +159,9 @@ export type HeaderOptions = {
 
 export type Actual = {
   ok: boolean;
-  data: object
+  data: object;
   includes: object;
-}
+};
 
 export const responseClassMap = {
   CreateChannelResponse,
@@ -193,7 +198,6 @@ export interface ValidIfCondition {
   operator: string;
   value: any;
 }
-
 
 export interface ValidIfOptions {
   conditions: ValidIfCondition | ValidIfCondition[];

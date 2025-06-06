@@ -1,5 +1,11 @@
-import { ACTION, HEADER_LIST, PretendingTo, ReportCategory, VAR } from "../../../../enums/index";
-import { RequestTestSuite } from "../../../../utils/declarations";
+import {
+  ACTION,
+  HEADER_LIST,
+  PretendingTo,
+  ReportCategory,
+  VAR,
+} from '../../../../enums/index';
+import { RequestTestSuite } from '../../../../utils/declarations';
 
 export const ReportUserRequest: RequestTestSuite = {
   action: ACTION.REPORT_USER,
@@ -15,7 +21,7 @@ export const ReportUserRequest: RequestTestSuite = {
       beforeAll: [],
       beforeEach: [],
       afterEach: [],
-      afterAll: []
+      afterAll: [],
     },
   ],
 };

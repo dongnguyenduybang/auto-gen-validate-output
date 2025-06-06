@@ -96,12 +96,7 @@ export function isValidURL(options?: { url?: string }) {
   return (target: any, propertyKey: string) => {
     Reflect.defineMetadata('isValidURL', true, target, propertyKey);
     if (options?.url) {
-      Reflect.defineMetadata(
-        'isValidURL',
-        options.url,
-        target,
-        propertyKey,
-      );
+      Reflect.defineMetadata('isValidURL', options.url, target, propertyKey);
     }
   };
 }
@@ -150,14 +145,13 @@ export function GenEmoji(emoji: any, quantity?: number) {
     if (emoji) {
       Reflect.defineMetadata(
         'genEmoji',
-         {emoji, quantity },
+        { emoji, quantity },
         target,
         propertyKey,
       );
     }
   };
 }
-
 
 /* check value là một ULID */
 export function IsULID() {
@@ -199,5 +193,3 @@ export function IsMath(options?: {
     }
   };
 }
-
-

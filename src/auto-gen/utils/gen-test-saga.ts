@@ -17,7 +17,7 @@ export function genTestSaga(dtoName: string) {
       .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
       .join('');
 
-    // dynamic define it 
+    // dynamic define it
     const sagaModule = await import(path.join(baseFolder, sagaFile));
     const sagaConfig = sagaModule[`${classNameCapitalized}Saga`];
     const itBlocks = sagaConfig.steps

@@ -1,10 +1,14 @@
-import { ACTION_CONFIG } from "../enums";
-import { getApiFunctions } from "../functions/api-registry";
-import { Expect, ExpectResult } from "./declarations";
-import { resolveVariables } from "./helper";
-import { TestContext } from "./text-context";
+import { ACTION_CONFIG } from '../enums';
+import { getApiFunctions } from '../functions/api-registry';
+import { Expect, ExpectResult } from './declarations';
+import { resolveVariables } from './helper';
+import { TestContext } from './text-context';
 
-export async function handleExpectConfig(responseChecking: unknown, expectConfig: Expect, context: TestContext) {
+export async function handleExpectConfig(
+  responseChecking: unknown,
+  expectConfig: Expect,
+  context: TestContext,
+) {
   const results: ExpectResult[] = [];
 
   // ok
@@ -19,17 +23,22 @@ export async function handleExpectConfig(responseChecking: unknown, expectConfig
   if (expectConfig.data) {
     let resultData: ExpectResult[] = [];
     let itemData, itemPayload;
-    const { path, action, payload, filter, isArrayMapping, headers } = expectConfig.data;
+    const { path, action, payload, filter, isArrayMapping, headers } =
+      expectConfig.data;
     const pathKey = path.split('.').pop();
-    const nestedKey = pathKey === 'users' ? 'user' :
-      pathKey === 'messages' ? 'message' :
-        pathKey === 'members' ? 'member' : undefined;
+    const nestedKey =
+      pathKey === 'users'
+        ? 'user'
+        : pathKey === 'messages'
+          ? 'message'
+          : pathKey === 'members'
+            ? 'member'
+            : undefined;
     const resolveHeader = resolveVariables(headers, context);
     const actionInfo = ACTION_CONFIG[action as keyof typeof ACTION_CONFIG];
 
     let data = getValueByPath(responseChecking, path);
     if (isArrayMapping && Array.isArray(payload) && Array.isArray(data)) {
-
       for (let i = 0; i < payload.length; i++) {
         const itemPayload = payload[i];
         let itemData = data[i];
@@ -41,26 +50,25 @@ export async function handleExpectConfig(responseChecking: unknown, expectConfig
         }
       }
     } else {
-
       const apiFunction = getApiFunctions(action, context);
       const response = await apiFunction({
         method: actionInfo.method,
         path: actionInfo.path,
         headers: resolveHeader,
-        body: payload
+        body: payload,
       });
       if (response.data.error) {
         resultData.push({
           type: 'dto',
           path: `${path}`,
-          message: `${response.data.error.details}, Check payload again`
-        })
+          message: `${response.data.error.details}, Check payload again`,
+        });
       }
 
       let responseData = getValueByPath(response.data, path);
       if (filter.length > 0) {
         itemData = pickFields(data, filter); // của data
-        itemPayload = pickFields(responseData, filter) // của call api expect
+        itemPayload = pickFields(responseData, filter); // của call api expect
       } else {
         itemData = data;
         itemPayload = responseData;
@@ -74,17 +82,27 @@ export async function handleExpectConfig(responseChecking: unknown, expectConfig
   // includes
   if (expectConfig.includes) {
     for (const include of expectConfig.includes) {
-      const { path, action, payload, filter, isArrayMapping, headers } = include;
+      const { path, action, payload, filter, isArrayMapping, headers } =
+        include;
       const actionInfo = ACTION_CONFIG[action as keyof typeof ACTION_CONFIG];
       const pathKey = path.split('.').pop();
-      const nestedKey = pathKey === 'users' ? 'user' :
-        pathKey === 'messages' ? 'message' :
-          pathKey === 'members' ? 'member' : undefined;
+      const nestedKey =
+        pathKey === 'users'
+          ? 'user'
+          : pathKey === 'messages'
+            ? 'message'
+            : pathKey === 'members'
+              ? 'member'
+              : undefined;
 
       let dataInclude = getValueByPath(responseChecking, path);
       const resolveHeader = resolveVariables(headers, context);
 
-      if (isArrayMapping && Array.isArray(payload) && Array.isArray(dataInclude)) {
+      if (
+        isArrayMapping &&
+        Array.isArray(payload) &&
+        Array.isArray(dataInclude)
+      ) {
         const resultsForInclude: ExpectResult[] = [];
         for (let i = 0; i < payload.length; i++) {
           const itemPayload = payload[i];
@@ -101,15 +119,15 @@ export async function handleExpectConfig(responseChecking: unknown, expectConfig
             method: actionInfo.method,
             path: actionInfo.path,
             headers: resolveHeader,
-            body: itemPayload
+            body: itemPayload,
           });
 
           if (response.data.error) {
             resultsForInclude.push({
               type: 'dto',
               path: `${path}[${i}]`,
-              message: `${response.data.error.details}, Check payload again`
-            })
+              message: `${response.data.error.details}, Check payload again`,
+            });
           }
 
           let responseData = getValueByPath(response.data, 'data');
@@ -122,7 +140,11 @@ export async function handleExpectConfig(responseChecking: unknown, expectConfig
             responseData = pickFields(responseData, filter);
           }
 
-          const rs = validateExpectValues(itemData, responseData, `${path}[${i}]`);
+          const rs = validateExpectValues(
+            itemData,
+            responseData,
+            `${path}[${i}]`,
+          );
           if (rs?.length) resultsForInclude.push(...rs);
         }
 
@@ -143,13 +165,12 @@ function getValueByPath(obj: Object, path: string): Object {
 
 function processNestedKey(data: unknown, nestedKey: string): Object {
   if (Array.isArray(data)) {
-    return data.map(item => item[nestedKey] || item);
+    return data.map((item) => item[nestedKey] || item);
   } else if (data && typeof data === 'object') {
     return data[nestedKey] || data;
   }
   return data;
 }
-
 
 function pickFields(obj: Object, fields: string[]): Object {
   if (!obj || typeof obj !== 'object') return obj;
@@ -167,7 +188,7 @@ function pickFields(obj: Object, fields: string[]): Object {
 function validateExpectValues(data: any, expectedValues: any, path: string) {
   const result: any[] = [];
 
-    // boolean và boolean
+  // boolean và boolean
   if (typeof data === 'boolean' && typeof expectedValues === 'boolean') {
     if (data !== expectedValues) {
       result.push({
@@ -175,22 +196,30 @@ function validateExpectValues(data: any, expectedValues: any, path: string) {
         path,
         message: `Boolean value mismatch.`,
         actualValue: data,
-        expectedValue: expectedValues
+        expectedValue: expectedValues,
       });
     }
     return result;
   }
 
-
   // actual là mảng, expected là object. object check trong mảng
-  if (Array.isArray(data) && !Array.isArray(expectedValues) && expectedValues && typeof expectedValues === 'object') {
+  if (
+    Array.isArray(data) &&
+    !Array.isArray(expectedValues) &&
+    expectedValues &&
+    typeof expectedValues === 'object'
+  ) {
     let foundMatch = false;
     const allErrors: any[] = [];
 
     // Kiểm tra từng item trong mảng
     for (let i = 0; i < data.length; i++) {
       const item = data[i];
-      const itemErrors = compareAllFields(item, expectedValues, `${path}[${i}]`);
+      const itemErrors = compareAllFields(
+        item,
+        expectedValues,
+        `${path}[${i}]`,
+      );
 
       if (itemErrors.length === 0) {
         foundMatch = true;
@@ -211,7 +240,7 @@ function validateExpectValues(data: any, expectedValues: any, path: string) {
           path,
           message: `Expected object not found in the array`,
           actualValue: data,
-          expectedValue: expectedValues
+          expectedValue: expectedValues,
         });
       }
     }
@@ -245,7 +274,7 @@ function validateExpectValues(data: any, expectedValues: any, path: string) {
           path,
           message: `Data object not found in expected array`,
           actualValue: data,
-          expectedValue: expectedValues
+          expectedValue: expectedValues,
         });
       }
     }
@@ -259,13 +288,13 @@ function validateExpectValues(data: any, expectedValues: any, path: string) {
     return compareObjects(data, expectedValues, path);
   }
 
-
   result.push({
     type: 'invalid_format',
-    message: 'Invalid actual or expected format: both must be arrays or objects',
+    message:
+      'Invalid actual or expected format: both must be arrays or objects',
     path,
     actualValue: data,
-    expectedValue: expectedValues
+    expectedValue: expectedValues,
   });
   return result;
 }
@@ -279,7 +308,7 @@ function compareArrays(data: string[], expectedValues: string[], path: string) {
       path,
       message: `Array length mismatch: Actual has ${data.length} items, Expected has ${expectedValues.length} items`,
       actualValue: data.length,
-      expectedValue: expectedValues.length
+      expectedValue: expectedValues.length,
     });
     return result;
   }
@@ -291,12 +320,16 @@ function compareArrays(data: string[], expectedValues: string[], path: string) {
         type: 'missing_expected_item',
         path: `${path}[${index}]`,
         message: `Expected[${index}] is undefined or missing`,
-        index
+        index,
       });
       return;
     }
 
-    const itemResult = compareObjects(dataItem, expectedItem, `${path}[${index}]`);
+    const itemResult = compareObjects(
+      dataItem,
+      expectedItem,
+      `${path}[${index}]`,
+    );
     result.push(...itemResult);
   });
 
@@ -317,7 +350,7 @@ function compareObjects(data: Object, expectedValues: Object, path: string) {
         path: `${path}.${key}`,
         message: `Field '${key}' exists in actual, not exists in expected`,
         key,
-        actualValue: data[key]
+        actualValue: data[key],
       });
     }
   }
@@ -329,7 +362,7 @@ function compareObjects(data: Object, expectedValues: Object, path: string) {
         path: `${path}.${key}`,
         message: `Field '${key}' exists in expected, not exists in actual`,
         key,
-        expectedValue: expectedValues[key]
+        expectedValue: expectedValues[key],
       });
     } else if (!deepEqual(data[key], expectedValues[key])) {
       result.push({
@@ -338,7 +371,7 @@ function compareObjects(data: Object, expectedValues: Object, path: string) {
         message: `Field '${key}' value mismatch`,
         key,
         actualValue: data[key],
-        expectedValue: expectedValues[key]
+        expectedValue: expectedValues[key],
       });
     }
   }
@@ -346,17 +379,26 @@ function compareObjects(data: Object, expectedValues: Object, path: string) {
   return result;
 }
 
-function compareAllFields(actual: unknown, expected: unknown, path: string): unknown[] {
+function compareAllFields(
+  actual: unknown,
+  expected: unknown,
+  path: string,
+): unknown[] {
   const result: unknown[] = [];
 
-  if (typeof actual !== 'object' || typeof expected !== 'object' || actual === null || expected === null) {
+  if (
+    typeof actual !== 'object' ||
+    typeof expected !== 'object' ||
+    actual === null ||
+    expected === null
+  ) {
     if (!deepEqual(actual, expected)) {
       result.push({
         type: 'value_mismatch',
         path,
         message: `Value mismatch`,
         actualValue: actual,
-        expectedValue: expected
+        expectedValue: expected,
       });
     }
     return result;
@@ -372,7 +414,7 @@ function compareAllFields(actual: unknown, expected: unknown, path: string): unk
         path: `${path}.${key}`,
         message: `Field '${key}' exists in actual, not exists expected`,
         key,
-        actualValue: actual[key]
+        actualValue: actual[key],
       });
     }
   }
@@ -384,12 +426,18 @@ function compareAllFields(actual: unknown, expected: unknown, path: string): unk
         path: `${path}.${key}`,
         message: `Field '${key}' exists in expected but not in actual`,
         key,
-        expectedValue: expected[key]
+        expectedValue: expected[key],
       });
     } else if (!deepEqual(actual[key], expected[key])) {
-      if (typeof actual[key] === 'object' && typeof expected[key] === 'object') {
-
-        const nestedResult = compareAllFields(actual[key], expected[key], `${path}.${key}`);
+      if (
+        typeof actual[key] === 'object' &&
+        typeof expected[key] === 'object'
+      ) {
+        const nestedResult = compareAllFields(
+          actual[key],
+          expected[key],
+          `${path}.${key}`,
+        );
         result.push(...nestedResult);
       } else {
         result.push({
@@ -398,7 +446,7 @@ function compareAllFields(actual: unknown, expected: unknown, path: string): unk
           message: `Field '${key}' value mismatch`,
           key,
           actualValue: actual[key],
-          expectedValue: expected[key]
+          expectedValue: expected[key],
         });
       }
     }
@@ -412,7 +460,8 @@ function deepEqual(obj1: Object, obj2: Object): boolean {
 
   if (obj1 == null || obj2 == null) return obj1 === obj2;
 
-  if (typeof obj1 !== 'object' || typeof obj2 !== 'object') return obj1 === obj2;
+  if (typeof obj1 !== 'object' || typeof obj2 !== 'object')
+    return obj1 === obj2;
 
   if (Array.isArray(obj1) !== Array.isArray(obj2)) return false;
   if (Array.isArray(obj1) && Array.isArray(obj2)) {

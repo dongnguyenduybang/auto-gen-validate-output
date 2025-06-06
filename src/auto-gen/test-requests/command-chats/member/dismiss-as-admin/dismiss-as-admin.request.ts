@@ -15,8 +15,8 @@ export const DismissAsAdminRequest = {
           action: ACTION.ACCEPT_INVITATION,
           headers: HEADER_LIST.create({ token: VAR.token1 }),
           body: {
-            invitationLink: VAR.invitationLink
-          }
+            invitationLink: VAR.invitationLink,
+          },
         },
         {
           action: ACTION.ASSIGN_AS_ADMIN,
@@ -26,11 +26,11 @@ export const DismissAsAdminRequest = {
             userId: VAR.userId1,
           },
           headers: HEADER_LIST.create({ token: VAR.token }),
-        }
+        },
       ],
       beforeEach: [],
       afterEach: [],
-      afterAll: []
+      afterAll: [],
     },
   ],
 };

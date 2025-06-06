@@ -7,7 +7,7 @@ export const MarkAsReadRequest: RequestTestSuite = {
   body: {
     channelId: VAR.channelId,
     workspaceId: VAR.workspaceId,
-    messageId: VAR.messageId
+    messageId: VAR.messageId,
   },
   options: [
     {
@@ -23,11 +23,9 @@ export const MarkAsReadRequest: RequestTestSuite = {
           headers: HEADER_LIST.create({ token: VAR.token }),
         },
       ],
-      beforeEach: [
-
-      ],
+      beforeEach: [],
       afterEach: [],
-      afterAll: []
+      afterAll: [],
     },
   ],
 };
