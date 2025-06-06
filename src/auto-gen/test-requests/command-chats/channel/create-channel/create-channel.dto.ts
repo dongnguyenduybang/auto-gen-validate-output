@@ -1,9 +1,10 @@
 import { ChannelTypeEnum, ErrorMessage } from "../../../../enums/index";
-import { IsDefined, IsEnum, IsInvalid, IsNotEmpty, IsString, MinLength, MaxLength, IsOptional, ValidIf } from "../../../../decorator/index";
+import { IsDefined, IsEnum, IsInvalid, IsNotEmpty, IsString, MinLength, MaxLength, IsOptional, ValidIf, IsNotNull } from "../../../../decorator/index";
 
 export class CreateChannelDTO {
     @IsDefined({ message: ErrorMessage.COULD_NOT_PERMISSION })
     @IsInvalid({ message: ErrorMessage.INVALID_CHANNEL })
+    @IsNotNull({ message: ErrorMessage.COULD_NOT_PERMISSION })
     @IsNotEmpty({ message: ErrorMessage.COULD_NOT_PERMISSION })
     @IsString({ message: ErrorMessage.COULD_NOT_PERMISSION })
     workspaceId: string = '';

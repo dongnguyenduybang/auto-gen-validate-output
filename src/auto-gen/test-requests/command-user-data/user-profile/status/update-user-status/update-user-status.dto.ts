@@ -1,9 +1,11 @@
-import { IsOptional, IsString, MaxLength, IsEmoji } from "../../../../../decorator/index";
+import { IsOptional, IsString, MaxLength, IsEmoji, IsNotEmpty, IsNotNull } from "../../../../../decorator/index";
 
 
 export class UpdateUserStatusDTO {
 
     @IsOptional()
+    @IsNotEmpty()
+    @IsNotNull()
     @IsString()
     @MaxLength(50)
     content: string = ''
@@ -11,6 +13,8 @@ export class UpdateUserStatusDTO {
     @IsEmoji({ value: 1 })
     @IsString()
     @IsOptional()
+    @IsNotEmpty()
+    @IsNotNull()
     status: string = ''
 
 }

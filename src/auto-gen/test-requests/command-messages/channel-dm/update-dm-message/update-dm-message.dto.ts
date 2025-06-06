@@ -1,3 +1,4 @@
+import { ErrorMessage } from '../../../../enums';
 import {
   IsString,
   MaxLength,
@@ -6,17 +7,21 @@ import {
   IsDefined,
   IsNotEmpty,
   IsULID,
+  IsNotNull,
 } from '../../../../decorator/index';
 
 export class UpdateDmMessageDTO {
-  @IsString({ message: `Could not resolve permission type` })
-  @IsDefined({ message: `Could not resolve permission type` })
-  @IsNotEmpty({ message: `Could not resolve permission type` })
-  @IsInvalid({ message: `Unauthorized request` })
+  @IsString({ message: ErrorMessage.COULD_NOT_PERMISSION })
+  @IsNotNull({ message: ErrorMessage.COULD_NOT_PERMISSION })
+  @IsDefined({ message: ErrorMessage.COULD_NOT_PERMISSION })
+  @IsNotEmpty({ message: ErrorMessage.COULD_NOT_PERMISSION })
+  @IsInvalid({ message: ErrorMessage.UNAUTHORIZED_REQUEST })
   userId: string = '';
 
   @IsString()
   @IsDefined()
+  @IsNotEmpty()
+  @IsNotNull()
   @MinLength(1)
   @MaxLength(2000)
   content: string = '';

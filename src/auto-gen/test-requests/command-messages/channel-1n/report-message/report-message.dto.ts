@@ -1,22 +1,25 @@
 import { ErrorMessage, PretendingTo, ReportCategory } from "../../../../enums/index";
-import { IsDefined, IsEnum, IsInvalid, IsNotEmpty, IsString, ValidIf, MinLength, MaxLength, IsULID } from "../../../../decorator/index";
+import { IsDefined, IsEnum, IsInvalid, IsNotEmpty, IsString, ValidIf, MinLength, MaxLength, IsULID, IsNotNull } from "../../../../decorator/index";
 
 export class ReportMessageDTO {
     @IsDefined({ message: ErrorMessage.COULD_NOT_PERMISSION })
     @IsInvalid({ message: ErrorMessage.INVALID_CHANNEL })
+    @IsNotNull({ message: ErrorMessage.COULD_NOT_PERMISSION })
     @IsNotEmpty({ message: ErrorMessage.COULD_NOT_PERMISSION })
     @IsString({ message: ErrorMessage.COULD_NOT_PERMISSION })
     workspaceId: string = '';
 
-    @IsDefined({ message: `Could not resolve permission type` })
+    @IsDefined({ message: ErrorMessage.UNSUPPORTED_PERMISSION_TYPE })
     @IsInvalid({ message: ErrorMessage.INVALID_CHANNEL })
-    @IsNotEmpty({ message: `Could not resolve permission type` })
-    @IsString({ message: `Could not resolve permission type` })
+    @IsNotNull({ message: ErrorMessage.COULD_NOT_PERMISSION })
+    @IsNotEmpty({ message: ErrorMessage.COULD_NOT_PERMISSION })
+    @IsString({ message: ErrorMessage.COULD_NOT_PERMISSION })
     channelId: string = '';
 
     @IsString()
-    @IsNotEmpty()
     @IsULID()
+    @IsNotEmpty()
+    @IsNotNull()
     @IsDefined()
     messageId: string = '';
 

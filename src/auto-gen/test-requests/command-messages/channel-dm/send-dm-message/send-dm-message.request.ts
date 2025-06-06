@@ -8,4 +8,16 @@ export const SendDmMessageRequest = {
     content: 'test response send dm message',
     ref: 'ref',
   },
+   options: [
+    {
+      beforeAll: [
+
+      ],
+      beforeEach: [
+
+      ],
+      afterEach: [],
+      afterAll: []
+    },
+  ],
 };

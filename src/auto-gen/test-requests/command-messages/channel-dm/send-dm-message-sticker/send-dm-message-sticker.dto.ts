@@ -27,6 +27,6 @@ export class SendDmMessageStickerDTO {
   @IsString()
   @IsDefined()
   @MinLength(1)
-    @IsNotNull()
+  @IsNotNull()
   ref: string = '';
 }

@@ -1,3 +1,4 @@
+import { ErrorMessage } from '../../../../enums';
 import {
   IsString,
   MinLength,
@@ -10,11 +11,11 @@ import {
 } from '../../../../decorator/index';
 
 export class PinUnpinDmMessageDTO {
-  @IsString({ message: `Could not resolve permission type` })
-  @IsDefined({ message: `Could not resolve permission type` })
-  @IsNotEmpty({ message: `Could not resolve permission type` })
-  @IsInvalid({ message: `Unauthorized request` })
-  @IsNotNull({ message: `Could not resolve permission type` })
+  @IsString({ message: ErrorMessage.COULD_NOT_PERMISSION })
+  @IsNotNull({ message: ErrorMessage.COULD_NOT_PERMISSION })
+  @IsDefined({ message: ErrorMessage.COULD_NOT_PERMISSION })
+  @IsNotEmpty({ message: ErrorMessage.COULD_NOT_PERMISSION })
+  @IsInvalid({ message: ErrorMessage.UNAUTHORIZED_REQUEST })
   userId: string = '';
 
   @IsString()
