@@ -12,6 +12,10 @@ export enum VAR {
   messageId1 = '{{messageId1}}',
   messageId2 = '{{messageId2}}',
   messageId3 = '{{messageId3}}',
+  username = '{{username}}',
+  username1 = '{{username1}}',
+  username2 = '{{username2}}',
+  username3 = '{{username3}}',
   token = '{{token}}',
   token1 = '{{token1}}',
   token2 = '{{token2}}',
@@ -33,5 +37,7 @@ export enum VAR {
   stickerId = '01HXTX9THMYNP2DSPDT4B48E91',
   email = 'ziichat@halome.com',
   ringBackTone = 'https://fs.ugc.ziicdn.net/01JEZJ0GPMSHH2RVX9QTSJJNRX/heic_300kB.heic',
-  ringBackToneId = '{{ringbackToneId}}'
+  ringBackToneId = '{{ringbackToneId}}',
+  defaultEmoji = '🚀',
+  defaultCollectionId =  '01JPPHQFHCC697M93K6PTZTZ8Q'
 }

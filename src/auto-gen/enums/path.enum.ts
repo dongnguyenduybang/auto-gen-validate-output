@@ -38,6 +38,10 @@ export const APIPath = {
     UpdateDmMediaAttachments: '/Message/UpdateDmMediaAttachments',
     UpdateMediaAttachments: '/Message/UpdateMediaAttachments',
     SendMessageMedia: '/Message/SendMessageMedia',
+    DeleteDmMessagesOnlyMe: '/Message/DeleteDMMessagesOnlyMe',
+    DeleteDmMessagesForEveryone: '/Message/DeleteDMMessageForEveryone',
+    DeleteMessagesOnlyMe: '/Message/DeleteMessagesOnlyMe',
+    DeleteMessagesForEveryone: '/Message/DeleteMessageForEveryone',
   },
   ViewChannel: {
     GetChannel: '/ChannelView/GetChannel',
@@ -56,6 +60,11 @@ export const APIPath = {
     ListDMMessages: '/MessageView/ListDMMessages',
     JumpToDMMessage: '/MessageView/JumpToDMMessage',
     JumpToMessage: '/MessageView/JumpToMessage',
+    ListDMMessageReaction: '/MessageView/ListDMMessageReactions',
+    ListMessageReaction: '/MessageView/ListMessageReactions',
+    GetPinnedMessage: '/MessageView/GetPinnedMessage',
+    GetPinnedDMMessage: '/MessageView/GetPinnedDMMessage',
+    ListMessagesFragment: '/MessageView/ListMessageFragments',
   },
   ViewUser: {
     GetUser: '/UserView/GetUser',
@@ -63,6 +72,16 @@ export const APIPath = {
     GetMe: '/UserView/GetMe',
     SyncUsers: '/UserView/SyncUsers',
     ListBlockedUsers: '/UserView/ListBlockedUsers',
+  },
+  ViewFriend: {
+    ListFriend: '/FriendView/ListFriends',
+    GetFriend: '/FriendView/GetFriend',
+    ListInComingFriendRequests: '/FriendView/ListInComingFriendRequests',
+    ListOutGoingFriendRequests: '/FriendView/ListOutGoingFriendRequests'
+  },
+  ViewInvitation: {
+    ListInvitation: '/InvitationView/ListInvitation',
+    GetInvitation: '/InvitationView/GetInvitation',
   },
   Channel: {
     CreateChannel: '/Channel/CreateChannel',
@@ -118,6 +137,8 @@ export const APIPath = {
   },
   ViewMember: {
     ListMembers: '/MemberView/ListMembers',
+    GetMember: '/MemberView/GetMember',
+    ListBannedUser: 'Member/ListBannedUsers'
   },
   UserReport: {
     ReportUser: '/UserReport/ReportUser',

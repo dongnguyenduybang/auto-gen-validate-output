@@ -2,7 +2,38 @@ import { METHOD } from './method.enum';
 import { APIPath } from './path.enum';
 
 export enum ACTION {
-    UNFRIEND = 'unfriend',
+  GET_STICKER_COLLECTION = 'getStickerCollection',
+  GET_STICKER = 'getSticker',
+  LIST_STICKER = 'listSticker',
+  LIST_MESSAGE_FRAGMENT = 'listMessageFragment',
+  GET_PINNED_MESSAGE = 'getPinnedMessage',
+  GET_PINNED_DM_MESSAGE = 'getPinnedDmMessage',
+  JUMP_TO_DM_MESSAGE = 'jumpToDmMessage',
+  JUMP_TO_MESSAGE = 'jumpToMessage',
+  LIST_DM_MESSAGE = 'listDmMessage',
+  LIST_DM_MESSAGE_REACTION = 'listDmMessageReaction',
+  LIST_MESSAGE_REACTION = 'listMessageReaction',
+  GET_DM_MESSAGE = 'getDmMessage',
+  LIST_BLOCK_USER = 'listBlockUser',
+  GET_USER_BY_USERNAME = 'getUserByUsername',
+  GET_INVITATION = 'getInvitation',
+  LIST_INVITATION = 'listInvitation',
+  LIST_INCOMING_FRIEND_REQUEST = 'listIncomingFriendRequest',
+  LIST_OUTGOING_FRIEND_REQUEST = 'listOutgoingFriendRequest',
+  GET_FRIEND = 'getFriend',
+  LIST_FRIEND = 'listFriend',
+  LIST_INCOMING_MESSAGE_REQUEST = 'listIncomingMessageRequest',
+  LIST_OUTGOING_MESSAGE_REQUEST = 'listOutgoingMessageRequest',
+  LIST_CHANNEL = 'listChannel',
+  LIST_DM_CHANNEL = 'listDmChannel',
+  GET_DM_CHANNEL = 'getDmChannel',
+  LIST_BANNED_USER = 'listBannedUser',
+  GET_MEMBER = 'getMember',
+  UNFRIEND = 'unfriend',
+  DELETE_DM_MESSAGES_ONLY_ME = 'deleteDmMessagesOnlyMe',
+  DELETE_DM_MESSAGES_FOR_EVERYONE = 'deleteDmMessagesForEveryone',
+  DELETE_MESSAGES_ONLY_ME = 'deleteMessagesOnlyMe',
+  DELETE_MESSAGES_FOR_EVERYONE = 'deleteMessagesForEveryone',
   CANCEL_FRIEND_REQUEST = 'cancelFriendRequest',
   DELETE_FRIEND_REQUEST = 'deleteFriendRequest',
   ACCEPT_MESSAGE_REQUEST = 'acceptMessageRequest',
@@ -137,26 +168,134 @@ export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
     path: APIPath.Friend.DeleteFriendRequest,
     method: METHOD.DELETE,
   },
-
   [ACTION.UNFRIEND]: {
     path: APIPath.Friend.Unfriend,
     method: METHOD.DELETE,
   },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  [ACTION.DELETE_DM_MESSAGES_ONLY_ME]: {
+    path: APIPath.Message.DeleteDmMessagesOnlyMe,
+    method: METHOD.DELETE,
+  },
+  [ACTION.DELETE_DM_MESSAGES_FOR_EVERYONE]: {
+    path: APIPath.Message.DeleteDmMessagesForEveryone,
+    method: METHOD.DELETE,
+  },
+  [ACTION.DELETE_MESSAGES_ONLY_ME]: {
+    path: APIPath.Message.DeleteMessagesOnlyMe,
+    method: METHOD.DELETE,
+  },
+  [ACTION.DELETE_MESSAGES_FOR_EVERYONE]: {
+    path: APIPath.Message.DeleteMessagesForEveryone,
+    method: METHOD.DELETE,
+  },
+  [ACTION.GET_MEMBER]: {
+    path: APIPath.ViewMember.GetMember,
+    method: METHOD.GET,
+  },
+  [ACTION.LIST_BANNED_USER]: {
+    path: APIPath.ViewMember.ListBannedUser,
+    method: METHOD.GET,
+  },
+  [ACTION.GET_DM_CHANNEL]: {
+    path: APIPath.ViewChannel.GetDMChannel,
+    method: METHOD.GET,
+  },
+  [ACTION.LIST_CHANNEL]: {
+    path: APIPath.ViewChannel.ListChannels,
+    method: METHOD.GET,
+  },
+  [ACTION.LIST_DM_CHANNEL]: {
+    path: APIPath.ViewChannel.ListDMChannels,
+    method: METHOD.GET,
+  },
+  [ACTION.LIST_INCOMING_MESSAGE_REQUEST]: {
+    path: APIPath.ViewChannel.ListInComingMessageRequests,
+    method: METHOD.GET,
+  },
+  [ACTION.LIST_OUTGOING_MESSAGE_REQUEST]: {
+    path: APIPath.ViewChannel.ListOutGoingMessageRequests,
+    method: METHOD.GET,
+  },
+  [ACTION.LIST_FRIEND]: {
+    path: APIPath.ViewFriend.ListFriend,
+    method: METHOD.GET,
+  },
+  [ACTION.GET_FRIEND]: {
+    path: APIPath.ViewFriend.GetFriend,
+    method: METHOD.GET,
+  },
+  [ACTION.LIST_INCOMING_FRIEND_REQUEST]: {
+    path: APIPath.ViewFriend.ListInComingFriendRequests,
+    method: METHOD.GET,
+  },
+  [ACTION.LIST_OUTGOING_FRIEND_REQUEST]: {
+    path: APIPath.ViewFriend.ListOutGoingFriendRequests,
+    method: METHOD.GET,
+  },
+  [ACTION.LIST_INVITATION]: {
+    path: APIPath.ViewInvitation.ListInvitation,
+    method: METHOD.GET,
+  },
+  [ACTION.GET_INVITATION]: {
+    path: APIPath.ViewInvitation.GetInvitation,
+    method: METHOD.GET,
+  },
+  [ACTION.GET_USER_BY_USERNAME]: {
+    path: APIPath.ViewUser.GetUserByUsername,
+    method: METHOD.GET,
+  },
+  [ACTION.LIST_BLOCK_USER]: {
+    path: APIPath.ViewUser.ListBlockedUsers,
+    method: METHOD.GET,
+  },
+  [ACTION.GET_DM_MESSAGE]: {
+    path: APIPath.ViewMessage.GetDMMessage,
+    method: METHOD.GET,
+  },
+  [ACTION.LIST_DM_MESSAGE]: {
+    path: APIPath.ViewMessage.ListDMMessages,
+    method: METHOD.GET,
+  },
+  [ACTION.LIST_DM_MESSAGE_REACTION]: {
+    path: APIPath.ViewMessage.ListDMMessageReaction,
+    method: METHOD.GET,
+  },
+  [ACTION.LIST_MESSAGE_REACTION]: {
+    path: APIPath.ViewMessage.ListMessageReaction,
+    method: METHOD.GET,
+  },
+  [ACTION.JUMP_TO_MESSAGE]: {
+    path: APIPath.ViewMessage.JumpToMessage,
+    method: METHOD.GET,
+  },
+  [ACTION.JUMP_TO_DM_MESSAGE]: {
+    path: APIPath.ViewMessage.JumpToDMMessage,
+    method: METHOD.GET,
+  },
+  [ACTION.GET_PINNED_MESSAGE]: {
+    path: APIPath.ViewMessage.GetPinnedMessage,
+    method: METHOD.GET,
+  },
+  [ACTION.GET_PINNED_DM_MESSAGE]: {
+    path: APIPath.ViewMessage.GetPinnedDMMessage,
+    method: METHOD.GET,
+  },
+  [ACTION.LIST_MESSAGE_FRAGMENT]: {
+    path: APIPath.ViewMessage.ListMessagesFragment,
+    method: METHOD.GET,
+  },
+  [ACTION.LIST_STICKER]: {
+    path: APIPath.ViewSticker.ListStickers,
+    method: METHOD.GET,
+  },
+  [ACTION.GET_STICKER]: {
+    path: APIPath.ViewSticker.GetSticker,
+    method: METHOD.GET,
+  },
+  [ACTION.GET_STICKER_COLLECTION]: {
+    path: APIPath.ViewSticker.GetStickerCollection,
+    method: METHOD.GET,
+  },
 
 
 
