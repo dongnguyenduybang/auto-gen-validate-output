@@ -3,7 +3,7 @@ import { ExtractConfig } from './declarations';
 const mockUserConfig: ExtractConfig = {
   user: {
     path: ['data'],
-    fields: ['userId', 'token'],
+    fields: ['userId', 'token', 'username'],
   },
 };
 
