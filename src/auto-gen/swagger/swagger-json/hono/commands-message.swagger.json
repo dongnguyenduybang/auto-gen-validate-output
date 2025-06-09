@@ -1,0 +1,5512 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Commands message",
+    "description": "Commands message ajv decorator swagger",
+    "version": "1.0.0"
+  },
+  "components": {
+    "schemas": {
+      "V3AttachmentTypeEnum": {
+        "type": "number",
+        "additionalProperties": false,
+        "$id": "V3AttachmentTypeEnum",
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "x-enum-varnames": [
+          "ATTACHMENT_TYPE_ENUM_UNSPECIFIED",
+          "ATTACHMENT_TYPE_ENUM_PHOTO",
+          "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE",
+          "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE",
+          "ATTACHMENT_TYPE_ENUM_AUDIO",
+          "ATTACHMENT_TYPE_ENUM_VIDEO",
+          "ATTACHMENT_TYPE_ENUM_LINKS",
+          "ATTACHMENT_TYPE_ENUM_STICKER",
+          "ATTACHMENT_TYPE_ENUM_MEDIA",
+          "ATTACHMENT_TYPE_ENUM_MENTION",
+          "ATTACHMENT_TYPE_ENUM_LOCATION",
+          "ATTACHMENT_TYPE_ENUM_FILE"
+        ]
+      },
+      "V3PretendingTo": {
+        "type": "number",
+        "additionalProperties": false,
+        "$id": "V3PretendingTo",
+        "enum": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "x-enum-varnames": [
+          "PRETENDING_TO_UNSPECIFIED",
+          "PRETENDING_TO_ME",
+          "PRETENDING_TO_FRIEND",
+          "PRETENDING_TO_CELEBRITY"
+        ]
+      },
+      "V3ReportCategory": {
+        "type": "number",
+        "additionalProperties": false,
+        "$id": "V3ReportCategory",
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          20
+        ],
+        "x-enum-varnames": [
+          "REPORT_CATEGORY_UNSPECIFIED",
+          "REPORT_CATEGORY_HARASSMENT",
+          "REPORT_CATEGORY_SUICIDE_OR_SELF_INJURY",
+          "REPORT_CATEGORY_PRETENDING_TO_BE_SOMEONE",
+          "REPORT_CATEGORY_SHARING_INAPPROPRIATE_CONTENT",
+          "REPORT_CATEGORY_HATE_SPEECH",
+          "REPORT_CATEGORY_UNAUTHORIZED_SALES",
+          "REPORT_CATEGORY_SCAMS",
+          "REPORT_CATEGORY_SPAM",
+          "REPORT_CATEGORY_COPYRIGHT",
+          "REPORT_CATEGORY_OTHER"
+        ]
+      },
+      "V3AddDMMessageReactionRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The user identify whom receive message"
+          },
+          "messageId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The message identify"
+          },
+          "emoji": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1,
+              "max": 1
+            },
+            "format": "isEmoji",
+            "errorMessage": {
+              "format": "invalid Emoji format",
+              "isTrimData": "must have length equals 1"
+            },
+            "description": "The emoji data"
+          }
+        },
+        "required": [
+          "userId",
+          "messageId",
+          "emoji"
+        ],
+        "$id": "V3AddDMMessageReactionRequest"
+      },
+      "V3AddMessageReactionRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "workspaceId": {
+            "type": "string",
+            "minLength": 1,
+            "errorMessage": {
+              "const": "must be equal 0 values"
+            },
+            "description": "The workspace identify"
+          },
+          "channelId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The channel identify"
+          },
+          "messageId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The message identify"
+          },
+          "emoji": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1,
+              "max": 1
+            },
+            "format": "isEmoji",
+            "errorMessage": {
+              "format": "invalid Emoji format",
+              "isTrimData": "must have length equals 1"
+            },
+            "description": "The emoji data"
+          }
+        },
+        "required": [
+          "workspaceId",
+          "channelId",
+          "messageId",
+          "emoji"
+        ],
+        "$id": "V3AddMessageReactionRequest"
+      },
+      "V3AudioMetadata": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "samples": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "$id": "V3AudioMetadata"
+      },
+      "V3ClearDMMessagesForEveryoneRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The user identify whom receive message"
+          }
+        },
+        "required": [
+          "userId"
+        ],
+        "$id": "V3ClearDMMessagesForEveryoneRequest"
+      },
+      "V3ClearDMMessagesOnlyMeRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The user identify whom receive message"
+          }
+        },
+        "required": [
+          "userId"
+        ],
+        "$id": "V3ClearDMMessagesOnlyMeRequest"
+      },
+      "V3DeleteAllDMMessagesForEveryoneRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The user identify whom receive message"
+          }
+        },
+        "required": [
+          "userId"
+        ],
+        "$id": "V3DeleteAllDMMessagesForEveryoneRequest"
+      },
+      "V3DeleteAllDMMessagesOnlyMeRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The user identify whom receive message"
+          }
+        },
+        "required": [
+          "userId"
+        ],
+        "$id": "V3DeleteAllDMMessagesOnlyMeRequest"
+      },
+      "V3DeleteAllMessagesOnlyMeRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "workspaceId": {
+            "type": "string",
+            "minLength": 1,
+            "errorMessage": {
+              "const": "must be equal 0 values"
+            },
+            "description": "The workspace identify"
+          },
+          "channelId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The channel identify"
+          }
+        },
+        "required": [
+          "workspaceId",
+          "channelId"
+        ],
+        "$id": "V3DeleteAllMessagesOnlyMeRequest"
+      },
+      "V3DeleteDMMessagesForEveryoneRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The user identify whom receive message"
+          },
+          "messageIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "format": "isULID",
+              "errorMessage": {
+                "format": "invalid ULID format"
+              }
+            },
+            "uniqueItems": true,
+            "minItems": 1,
+            "description": "The list message identify to delete"
+          }
+        },
+        "required": [
+          "userId",
+          "messageIds"
+        ],
+        "$id": "V3DeleteDMMessagesForEveryoneRequest"
+      },
+      "V3DeleteDMMessagesOnlyMeRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The user identify whom receive message"
+          },
+          "messageIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "format": "isULID",
+              "errorMessage": {
+                "format": "invalid ULID format"
+              }
+            },
+            "uniqueItems": true,
+            "minItems": 1,
+            "description": "The list messages identify to delete"
+          }
+        },
+        "required": [
+          "userId",
+          "messageIds"
+        ],
+        "$id": "V3DeleteDMMessagesOnlyMeRequest"
+      },
+      "V3DeleteMessagesForEveryoneRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "workspaceId": {
+            "type": "string",
+            "minLength": 1,
+            "errorMessage": {
+              "const": "must be equal 0 values"
+            },
+            "description": "The workspace identify"
+          },
+          "channelId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The channel identify"
+          },
+          "messageIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "format": "isULID",
+              "errorMessage": {
+                "format": "invalid ULID format"
+              }
+            },
+            "uniqueItems": true,
+            "minItems": 1,
+            "description": "The list message identify to delete"
+          }
+        },
+        "required": [
+          "workspaceId",
+          "channelId",
+          "messageIds"
+        ],
+        "$id": "V3DeleteMessagesForEveryoneRequest"
+      },
+      "V3DeleteMessagesOnlyMeRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "workspaceId": {
+            "type": "string",
+            "minLength": 1,
+            "errorMessage": {
+              "const": "must be equal 0 values"
+            },
+            "description": "The workspace identify"
+          },
+          "channelId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The channel identify"
+          },
+          "messageIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "isULID",
+              "errorMessage": {
+                "format": "invalid ULID format"
+              }
+            },
+            "uniqueItems": true,
+            "minItems": 1,
+            "description": "The list message identify to delete"
+          }
+        },
+        "required": [
+          "workspaceId",
+          "channelId",
+          "messageIds"
+        ],
+        "$id": "V3DeleteMessagesOnlyMeRequest"
+      },
+      "V3FileMetadataRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "filesize": {
+            "type": "number",
+            "minimum": 1,
+            "nullable": true,
+            "description": "The size of the file in bytes."
+          },
+          "duration": {
+            "type": "number",
+            "minimum": 1,
+            "nullable": true,
+            "description": "duration of video or record file, unit second"
+          },
+          "dimensions": {
+            "type": "object",
+            "nullable": true,
+            "description": "The dimensions data"
+          },
+          "mimetype": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet."
+          },
+          "filename": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The name of file."
+          },
+          "extension": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The file extension."
+          }
+        },
+        "required": [
+          "mimetype",
+          "filename",
+          "extension"
+        ],
+        "$id": "V3FileMetadataRequest"
+      },
+      "V3ForwardMessagesToChannelRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "workspaceId": {
+            "type": "string",
+            "minLength": 1,
+            "errorMessage": {
+              "const": "must be equal 0 values"
+            },
+            "description": "The workspace identify"
+          },
+          "channelId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The channel identify"
+          },
+          "originalMessageIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "format": "isULID",
+              "errorMessage": {
+                "format": "invalid ULID format"
+              }
+            },
+            "uniqueItems": true,
+            "minItems": 1,
+            "description": "The original message identify"
+          }
+        },
+        "required": [
+          "workspaceId",
+          "channelId",
+          "originalMessageIds"
+        ],
+        "$id": "V3ForwardMessagesToChannelRequest"
+      },
+      "V3ForwardMessagesToDMChannelRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The user identify whom receive message"
+          },
+          "originalMessageIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "format": "isULID",
+              "errorMessage": {
+                "format": "invalid ULID format"
+              }
+            },
+            "uniqueItems": true,
+            "minItems": 1,
+            "description": "The original message identify"
+          }
+        },
+        "required": [
+          "userId",
+          "originalMessageIds"
+        ],
+        "$id": "V3ForwardMessagesToDMChannelRequest"
+      },
+      "V3MarkAllChannelsAsReadRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "$id": "V3MarkAllChannelsAsReadRequest",
+        "properties": { }
+      },
+      "V3MarkAsReadRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "workspaceId": {
+            "type": "string",
+            "minLength": 1,
+            "errorMessage": {
+              "const": "must be equal 0 values"
+            },
+            "description": "The workspace identify"
+          },
+          "channelId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The channel identify"
+          },
+          "messageId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The message identify"
+          }
+        },
+        "required": [
+          "workspaceId",
+          "channelId",
+          "messageId"
+        ],
+        "$id": "V3MarkAsReadRequest"
+      },
+      "V3MarkDMAsReadRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The user identify"
+          },
+          "messageId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The message identify"
+          }
+        },
+        "required": [
+          "userId",
+          "messageId"
+        ],
+        "$id": "V3MarkDMAsReadRequest"
+      },
+      "V3MediaObject": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "fileId": {
+            "type": "string"
+          },
+          "attachmentType": {
+            "$ref": "#/components/schemas/V3AttachmentTypeEnum"
+          },
+          "fileUrl": {
+            "type": "string"
+          },
+          "fileMetadata": {
+            "$ref": "#/components/schemas/V3FileMetadata"
+          },
+          "thumbnailUrl": {
+            "type": "string"
+          },
+          "audioMetadata": {
+            "$ref": "#/components/schemas/V3AudioMetadata"
+          },
+          "fileRef": {
+            "type": "string"
+          },
+          "attachmentId": {
+            "type": "string"
+          },
+          "channelId": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "messageId": {
+            "type": "string"
+          },
+          "isQrCode": {
+            "type": "boolean"
+          }
+        },
+        "$id": "V3MediaObject"
+      },
+      "V3PinUnpinDMMessageRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The user identify pin message"
+          },
+          "messageId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The message identify pinned"
+          },
+          "status": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "The status of pin message"
+          }
+        },
+        "required": [
+          "userId",
+          "messageId"
+        ],
+        "$id": "V3PinUnpinDMMessageRequest"
+      },
+      "V3PinUnpinMessageRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "workspaceId": {
+            "type": "string",
+            "minLength": 1,
+            "errorMessage": {
+              "const": "must be equal 0 values"
+            },
+            "description": "The workspace identify"
+          },
+          "channelId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The channel identify"
+          },
+          "messageId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The message identify"
+          },
+          "status": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "The status pin or unpin message"
+          }
+        },
+        "required": [
+          "workspaceId",
+          "channelId",
+          "messageId"
+        ],
+        "$id": "V3PinUnpinMessageRequest"
+      },
+      "V3QuoteDMMessageRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The user identify whom receive message"
+          },
+          "messageId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The message identify"
+          },
+          "content": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1,
+              "max": 280
+            },
+            "errorMessage": {
+              "isTrimData": "must to range from 1 to 280 length"
+            },
+            "description": "The message content"
+          },
+          "ref": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1
+            },
+            "errorMessage": {
+              "isTrimData": "must have more than 1 length"
+            },
+            "description": "Is a random value created by the client, which is used as a similar attribute to the local ID"
+          },
+          "contentLocale": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1
+            },
+            "errorMessage": {
+              "isTrimData": "must have more than 1 length"
+            },
+            "nullable": true,
+            "description": "The location language of content"
+          }
+        },
+        "required": [
+          "userId",
+          "messageId",
+          "content",
+          "ref"
+        ],
+        "$id": "V3QuoteDMMessageRequest"
+      },
+      "V3QuoteMessageRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "workspaceId": {
+            "type": "string",
+            "minLength": 1,
+            "errorMessage": {
+              "const": "must be equal 0 values"
+            },
+            "description": "The workspace identify"
+          },
+          "channelId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The channel identify"
+          },
+          "messageId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The message identify"
+          },
+          "content": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1,
+              "max": 280
+            },
+            "errorMessage": {
+              "isTrimData": "must to range from 1 to 280 length"
+            },
+            "description": "The message content"
+          },
+          "ref": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1
+            },
+            "errorMessage": {
+              "isTrimData": "must have more than 1 length"
+            },
+            "description": "Is a random value created by the client, which is used as a similar attribute to the local ID"
+          },
+          "contentLocale": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1
+            },
+            "errorMessage": {
+              "isTrimData": "must have more than 1 length"
+            },
+            "nullable": true,
+            "description": "The location language of content"
+          }
+        },
+        "required": [
+          "workspaceId",
+          "channelId",
+          "messageId",
+          "content",
+          "ref"
+        ],
+        "$id": "V3QuoteMessageRequest"
+      },
+      "V3ReportDMMessageRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The user identify"
+          },
+          "messageId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The message identify"
+          },
+          "reportCategory": {
+            "$ref": "#/components/schemas/V3ReportCategory",
+            "description": "The category report"
+          },
+          "pretendingTo": {
+            "$ref": "#/components/schemas/V3PretendingTo",
+            "description": "The user must choose who is being pretended from PretendingToEnum"
+          },
+          "reportReason": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1,
+              "max": 255
+            },
+            "errorMessage": {
+              "isTrimData": "range from 1 to 255 length"
+            },
+            "description": "The reason report"
+          }
+        },
+        "required": [
+          "userId",
+          "messageId",
+          "reportCategory"
+        ],
+        "if": {
+          "properties": {
+            "reportCategory": {
+              "const": 3
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "pretendingTo"
+          ]
+        },
+        "else": {
+          "if": {
+            "properties": {
+              "reportCategory": {
+                "const": 20
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "reportReason"
+            ]
+          }
+        },
+        "$id": "V3ReportDMMessageRequest"
+      },
+      "V3ReportMessageRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "workspaceId": {
+            "type": "string",
+            "minLength": 1,
+            "errorMessage": {
+              "const": "must be equal 0 values"
+            },
+            "description": "The workspace identify"
+          },
+          "channelId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The channel identify"
+          },
+          "messageId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The message identify"
+          },
+          "reportCategory": {
+            "$ref": "#/components/schemas/V3ReportCategory",
+            "description": "The category report"
+          },
+          "pretendingTo": {
+            "$ref": "#/components/schemas/V3PretendingTo",
+            "description": "The user must choose who is being pretended from PretendingToEnum"
+          },
+          "reportReason": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1,
+              "max": 255
+            },
+            "errorMessage": {
+              "isTrimData": "range from 1 to 255 length"
+            },
+            "description": "The report reason"
+          }
+        },
+        "required": [
+          "workspaceId",
+          "channelId",
+          "messageId",
+          "reportCategory"
+        ],
+        "if": {
+          "properties": {
+            "reportCategory": {
+              "const": 3
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "pretendingTo"
+          ]
+        },
+        "else": {
+          "if": {
+            "properties": {
+              "reportCategory": {
+                "const": 20
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "reportReason"
+            ]
+          }
+        },
+        "$id": "V3ReportMessageRequest"
+      },
+      "V3RevokeDMMessageReactionRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The user identify whom receive message"
+          },
+          "messageId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The message identify"
+          },
+          "emoji": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1,
+              "max": 1
+            },
+            "format": "isEmoji",
+            "errorMessage": {
+              "format": "invalid Emoji format",
+              "isTrimData": "must have length equals 1"
+            },
+            "description": "The emoji data"
+          }
+        },
+        "required": [
+          "userId",
+          "messageId",
+          "emoji"
+        ],
+        "$id": "V3RevokeDMMessageReactionRequest"
+      },
+      "V3RevokeMessageReactionRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "workspaceId": {
+            "type": "string",
+            "minLength": 1,
+            "errorMessage": {
+              "const": "must be equal 0 values"
+            },
+            "description": "The workspace identify"
+          },
+          "channelId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The channel identify"
+          },
+          "messageId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The message identify"
+          },
+          "emoji": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1,
+              "max": 1
+            },
+            "format": "isEmoji",
+            "errorMessage": {
+              "format": "invalid Emoji format",
+              "isTrimData": "must have length equals 1"
+            },
+            "description": "The emoji data"
+          }
+        },
+        "required": [
+          "workspaceId",
+          "channelId",
+          "messageId",
+          "emoji"
+        ],
+        "$id": "V3RevokeMessageReactionRequest"
+      },
+      "V3SendDMLocationRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The user identify"
+          },
+          "ref": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1
+            },
+            "errorMessage": {
+              "isTrimData": "must have more than 1 length"
+            },
+            "description": "The ref message"
+          },
+          "latitude": {
+            "type": "string",
+            "isMinMaxLength": {
+              "min": -90,
+              "max": 90,
+              "isNumber": true
+            },
+            "isTrimData": {
+              "min": -90
+            },
+            "errorMessage": {
+              "isMinMaxLength": "range from -90 to 90"
+            },
+            "description": "The latitue coordinate"
+          },
+          "longitude": {
+            "type": "string",
+            "isMinMaxLength": {
+              "min": -180,
+              "max": 180,
+              "isNumber": true
+            },
+            "isTrimData": {
+              "min": -180
+            },
+            "errorMessage": {
+              "isMinMaxLength": "range from -180 to 180"
+            },
+            "description": "The longtitude coordinate"
+          },
+          "content": {
+            "type": "string",
+            "isTrimData": {
+              "max": 2000
+            },
+            "errorMessage": {
+              "isTrimData": "max 2000 length"
+            },
+            "nullable": true,
+            "description": "The content of message"
+          },
+          "description": {
+            "type": "string",
+            "isTrimData": {
+              "max": 2000
+            },
+            "errorMessage": {
+              "isTrimData": "max 2000 length"
+            },
+            "nullable": true,
+            "description": "The description of location"
+          }
+        },
+        "required": [
+          "userId",
+          "ref",
+          "latitude",
+          "longitude"
+        ],
+        "$id": "V3SendDMLocationRequest"
+      },
+      "V3SendDMMessageRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The user identify whom receive message"
+          },
+          "content": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1,
+              "max": 280
+            },
+            "errorMessage": {
+              "isTrimData": "must to range from 1 to 280 length"
+            },
+            "description": "The message content"
+          },
+          "ref": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1
+            },
+            "errorMessage": {
+              "isTrimData": "must have more than 1 length"
+            },
+            "description": "Is a random value created by the client, which is used as a similar attribute to the local ID"
+          },
+          "contentLocale": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1
+            },
+            "errorMessage": {
+              "isTrimData": "must have more than 1 length"
+            },
+            "nullable": true,
+            "description": "The location language of content"
+          }
+        },
+        "required": [
+          "userId",
+          "content",
+          "ref"
+        ],
+        "$id": "V3SendDMMessageRequest"
+      },
+      "V3SendDmMessageMediaRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userId": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1
+            },
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The user identify"
+          },
+          "attachmentType": {
+            "$ref": "#/components/schemas/V3AttachmentTypeEnum",
+            "description": "The attachment type"
+          },
+          "mediaObjects": {
+            "type": "array",
+            "maxItems": 1,
+            "items": {
+              "$ref": "#/components/schemas/V3MediaObject"
+            },
+            "uniqueItems": true,
+            "minItems": 1,
+            "description": "The media object data"
+          },
+          "ref": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1
+            },
+            "errorMessage": {
+              "isTrimData": "must have more than 1 length"
+            },
+            "description": "The message ref"
+          }
+        },
+        "required": [
+          "userId",
+          "attachmentType",
+          "mediaObjects",
+          "ref"
+        ],
+        "$id": "V3SendDmMessageMediaRequest"
+      },
+      "V3SendDMMessageStickerRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The user identify"
+          },
+          "ref": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1
+            },
+            "errorMessage": {
+              "isTrimData": "must have more than 1 length"
+            },
+            "description": " Is a random value created by the client, which is used as a similar attribute to the local ID"
+          },
+          "stickerId": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The sticker identify"
+          },
+          "fileRef": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1
+            },
+            "errorMessage": {
+              "isTrimData": "must have more than 1 length"
+            },
+            "nullable": true,
+            "description": "The file identify of client send"
+          }
+        },
+        "required": [
+          "userId",
+          "ref",
+          "stickerId"
+        ],
+        "$id": "V3SendDMMessageStickerRequest"
+      },
+      "V3SendLocationRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "workspaceId": {
+            "type": "string",
+            "minLength": 1,
+            "errorMessage": {
+              "const": "must be equal 0 values"
+            },
+            "description": "The workspace identify"
+          },
+          "channelId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The channel identify"
+          },
+          "ref": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1
+            },
+            "errorMessage": {
+              "isTrimData": "must have more than 1 length"
+            },
+            "description": "The ref message"
+          },
+          "latitude": {
+            "type": "string",
+            "isMinMaxLength": {
+              "min": -90,
+              "max": 90,
+              "isNumber": true
+            },
+            "isTrimData": {
+              "min": -90
+            },
+            "errorMessage": {
+              "isMinMaxLength": "range from -90 to 90"
+            },
+            "description": "The latitude coordinate"
+          },
+          "longitude": {
+            "type": "string",
+            "isMinMaxLength": {
+              "min": -180,
+              "max": 180,
+              "isNumber": true
+            },
+            "isTrimData": {
+              "min": -180
+            },
+            "errorMessage": {
+              "isMinMaxLength": "range from -180 to 180"
+            },
+            "description": "The longtitude coordinate"
+          },
+          "content": {
+            "type": "string",
+            "isTrimData": {
+              "min": 0,
+              "max": 2000
+            },
+            "errorMessage": {
+              "isTrimData": "range from 1 length to 2000 length"
+            },
+            "nullable": true,
+            "description": "The content of message"
+          },
+          "description": {
+            "type": "string",
+            "isTrimData": {
+              "min": 0,
+              "max": 2000
+            },
+            "errorMessage": {
+              "isTrimData": "range from 1 length to 2000 length"
+            },
+            "nullable": true,
+            "description": "Description of location"
+          }
+        },
+        "required": [
+          "workspaceId",
+          "channelId",
+          "ref",
+          "latitude",
+          "longitude"
+        ],
+        "$id": "V3SendLocationRequest"
+      },
+      "V3SendMessageRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "workspaceId": {
+            "type": "string",
+            "minLength": 1,
+            "errorMessage": {
+              "const": "must be equal 0 values"
+            },
+            "description": "The workspace identify"
+          },
+          "channelId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The channel identify"
+          },
+          "content": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1,
+              "max": 280
+            },
+            "errorMessage": {
+              "isTrimData": "must to range from 1 to 280 length"
+            },
+            "description": "The message content"
+          },
+          "ref": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1
+            },
+            "errorMessage": {
+              "isTrimData": "must have more than 1 length"
+            },
+            "description": "Is a random value created by the client, which is used as a similar attribute to the local ID"
+          },
+          "contentLocale": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1
+            },
+            "errorMessage": {
+              "isTrimData": "must have more than 1 length"
+            },
+            "nullable": true,
+            "description": "The location language of content"
+          }
+        },
+        "required": [
+          "workspaceId",
+          "channelId",
+          "content",
+          "ref"
+        ],
+        "$id": "V3SendMessageRequest"
+      },
+      "V3SendMessageMediaRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "workspaceId": {
+            "type": "string",
+            "minLength": 1,
+            "errorMessage": {
+              "const": "must be equal 0 values"
+            },
+            "description": "The workspace identify"
+          },
+          "channelId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The channel identify"
+          },
+          "attachmentType": {
+            "$ref": "#/components/schemas/V3AttachmentTypeEnum",
+            "description": "The attachment type"
+          },
+          "mediaObjects": {
+            "type": "array",
+            "maxItems": 1,
+            "items": {
+              "$ref": "#/components/schemas/V3MediaObject"
+            },
+            "uniqueItems": true,
+            "minItems": 1,
+            "description": "The media object data"
+          },
+          "ref": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1
+            },
+            "errorMessage": {
+              "isTrimData": "must have more than 1 length"
+            },
+            "nullable": true,
+            "description": "The message ref"
+          }
+        },
+        "required": [
+          "workspaceId",
+          "channelId",
+          "attachmentType",
+          "mediaObjects"
+        ],
+        "$id": "V3SendMessageMediaRequest"
+      },
+      "V3SendMessageStickerRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "workspaceId": {
+            "type": "string",
+            "minLength": 1,
+            "errorMessage": {
+              "const": "must be equal 0 values"
+            },
+            "description": "The workspace identify"
+          },
+          "channelId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The channel identify"
+          },
+          "ref": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1
+            },
+            "errorMessage": {
+              "isTrimData": "must have more than 1 length"
+            },
+            "description": "Is a random value created by the client, which is used as a similar attribute to the local ID"
+          },
+          "stickerId": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1
+            },
+            "errorMessage": {
+              "isTrimData": "must have more than 1 length"
+            },
+            "description": "The sticker identify"
+          },
+          "fileRef": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1
+            },
+            "errorMessage": {
+              "isTrimData": "must have more than 1 length"
+            },
+            "nullable": true,
+            "description": "The file identify of client send"
+          }
+        },
+        "required": [
+          "workspaceId",
+          "channelId",
+          "ref",
+          "stickerId"
+        ],
+        "$id": "V3SendMessageStickerRequest"
+      },
+      "V3SendPokeMessageRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The user identify"
+          },
+          "ref": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1
+            },
+            "errorMessage": {
+              "isTrimData": "must have more than 1 length"
+            },
+            "description": "The ref message"
+          }
+        },
+        "required": [
+          "userId",
+          "ref"
+        ],
+        "$id": "V3SendPokeMessageRequest"
+      },
+      "V3UpdateDmMediaAttachmentsRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The user identify"
+          },
+          "messageId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The message identify"
+          },
+          "mediaObjects": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/V3MediaObject"
+            },
+            "minItems": 1,
+            "description": "The media object data"
+          },
+          "ref": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1
+            },
+            "errorMessage": {
+              "isTrimData": "must have more than 1 length"
+            },
+            "description": "The message ref"
+          }
+        },
+        "required": [
+          "userId",
+          "messageId",
+          "mediaObjects",
+          "ref"
+        ],
+        "$id": "V3UpdateDmMediaAttachmentsRequest"
+      },
+      "V3UpdateDMMessageRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The user identify whom receive message"
+          },
+          "messageId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The message identify"
+          },
+          "content": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1,
+              "max": 280
+            },
+            "errorMessage": {
+              "isTrimData": "must to range from 1 to 280 length"
+            },
+            "description": "The message content"
+          },
+          "contentLocale": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1
+            },
+            "errorMessage": {
+              "isTrimData": "must have more than 1 length"
+            },
+            "nullable": true,
+            "description": "The location language of content"
+          },
+          "ref": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1
+            },
+            "errorMessage": {
+              "isTrimData": "must have more than 1 length"
+            },
+            "nullable": true,
+            "description": "Is a random value created by the client, which is used as a similar attribute to the local ID"
+          }
+        },
+        "required": [
+          "userId",
+          "messageId",
+          "content"
+        ],
+        "$id": "V3UpdateDMMessageRequest"
+      },
+      "V3UpdateMediaAttachmentsRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "workspaceId": {
+            "type": "string",
+            "minLength": 1,
+            "errorMessage": {
+              "const": "must be equal 0 values"
+            },
+            "description": "The workspace identify"
+          },
+          "channelId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The channel identify"
+          },
+          "messageId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The message identify"
+          },
+          "mediaObjects": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/V3MediaObject"
+            },
+            "uniqueItems": true,
+            "minItems": 1,
+            "description": "New List media object data to update attachment"
+          },
+          "ref": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1
+            },
+            "errorMessage": {
+              "isTrimData": "must have more than 1 length"
+            },
+            "description": "The message ref"
+          }
+        },
+        "required": [
+          "workspaceId",
+          "channelId",
+          "messageId",
+          "mediaObjects",
+          "ref"
+        ],
+        "$id": "V3UpdateMediaAttachmentsRequest"
+      },
+      "V3UpdateMessageRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "workspaceId": {
+            "type": "string",
+            "minLength": 1,
+            "errorMessage": {
+              "const": "must be equal 0 values"
+            },
+            "description": "The workspace identify"
+          },
+          "channelId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The channel identify"
+          },
+          "messageId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The message identify"
+          },
+          "content": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1,
+              "max": 280
+            },
+            "errorMessage": {
+              "isTrimData": "must to range from 1 to 280 length"
+            },
+            "description": "The message content"
+          },
+          "ref": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1
+            },
+            "errorMessage": {
+              "isTrimData": "must have more than 1 length"
+            },
+            "nullable": true,
+            "description": "Is a random value created by the client, which is used as a similar attribute to the local ID"
+          },
+          "contentLocale": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1
+            },
+            "errorMessage": {
+              "isTrimData": "must have more than 1 length"
+            },
+            "nullable": true,
+            "description": "The location language of content"
+          }
+        },
+        "required": [
+          "workspaceId",
+          "channelId",
+          "messageId",
+          "content"
+        ],
+        "$id": "V3UpdateMessageRequest"
+      },
+      "V3UserMetadataRequest": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "x-user-id": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The x-user identify"
+          },
+          "x-country-code": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1
+            },
+            "errorMessage": {
+              "isTrimData": "must have more than 1 length"
+            },
+            "description": "The code of x-country "
+          },
+          "x-client-ip": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1
+            },
+            "errorMessage": {
+              "isTrimData": "must have more than 1 length"
+            },
+            "description": "the ip of x-client"
+          },
+          "x-geo-data": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isJSON",
+            "errorMessage": {
+              "format": "invalid JSON format"
+            },
+            "description": "The data of x-geo"
+          },
+          "x-device-id": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1
+            },
+            "errorMessage": {
+              "isTrimData": "must have more than 1 length"
+            },
+            "description": "The x-device identify"
+          }
+        },
+        "required": [
+          "x-user-id",
+          "x-device-id",
+          "x-country-code",
+          "x-geo-data",
+          "x-client-ip"
+        ],
+        "$id": "V3UserMetadataRequest"
+      },
+      "V3AddDMMessageReactionResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "data": {
+            "$ref": "#/components/schemas/V3MessageData",
+            "description": " Data for DM message that was updated"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "includes": {
+            "$ref": "#/components/schemas/V3DataIncludeResponse",
+            "description": "Information data and populate data for message"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3AddDMMessageReactionResponse"
+      },
+      "V3AddMessageReactionResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "data": {
+            "$ref": "#/components/schemas/V3MessageData",
+            "description": "The message's data"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "includes": {
+            "$ref": "#/components/schemas/V3DataIncludeResponse",
+            "description": "Information data and populate data for message"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3AddMessageReactionResponse"
+      },
+      "V3ClearDMMessagesForEveryoneResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3ClearDMMessagesForEveryoneResponse"
+      },
+      "V3ClearDMMessagesOnlyMeResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3ClearDMMessagesOnlyMeResponse"
+      },
+      "V3DataIncludeResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "users": {
+            "$ref": "#/components/schemas/V3User",
+            "description": "The list user information used for populate"
+          },
+          "messages": {
+            "$ref": "#/components/schemas/V3Message",
+            "description": "The list message information used for populate"
+          },
+          "channels": {
+            "$ref": "#/components/schemas/V3Channel",
+            "description": "The list channel information used for populate"
+          },
+          "members": {
+            "$ref": "#/components/schemas/V3Member",
+            "description": "The list member information used for populate"
+          },
+          "channelMetadata": {
+            "$ref": "#/components/schemas/V3ChannelMetadata",
+            "description": "The channel metadata data"
+          }
+        },
+        "$id": "V3DataIncludeResponse"
+      },
+      "V3DeleteAllDMMessagesForEveryoneResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3DeleteAllDMMessagesForEveryoneResponse"
+      },
+      "V3DeleteAllDMMessagesOnlyMeResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3DeleteAllDMMessagesOnlyMeResponse"
+      },
+      "V3DeleteAllMessagesOnlyMeResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3DeleteAllMessagesOnlyMeResponse"
+      },
+      "V3DeleteDMMessagesForEveryoneResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3DeleteDMMessagesForEveryoneResponse"
+      },
+      "V3DeleteDMMessagesOnlyMeResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3DeleteDMMessagesOnlyMeResponse"
+      },
+      "V3DeleteMessagesForEveryoneResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3DeleteMessagesForEveryoneResponse"
+      },
+      "V3DeleteMessagesOnlyMeResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3DeleteMessagesOnlyMeResponse"
+      },
+      "V3ErrorResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "number",
+            "description": "The error code"
+          },
+          "message": {
+            "type": "string",
+            "description": "The error message"
+          },
+          "details": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Detail about the error"
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "details"
+        ],
+        "$id": "V3ErrorResponse"
+      },
+      "V3ForwardMessagesToChannelResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3ForwardMessagesToChannelResponse"
+      },
+      "V3ForwardMessagesToDMChannelResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3ForwardMessagesToDMChannelResponse"
+      },
+      "V3MarkAllChannelsAsReadResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3MarkAllChannelsAsReadResponse"
+      },
+      "V3MarkAsReadResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "totalNewMessages": {
+            "type": "number",
+            "description": "Number total message"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "required": [
+          "ok",
+          "totalNewMessages"
+        ],
+        "$id": "V3MarkAsReadResponse"
+      },
+      "V3MarkDMAsReadResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3MarkDMAsReadResponse"
+      },
+      "V3PinUnpinDMMessageResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3PinUnpinDMMessageResponse"
+      },
+      "V3PinUnpinMessageResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3PinUnpinMessageResponse"
+      },
+      "V3QuoteDMMessageResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "data": {
+            "$ref": "#/components/schemas/V3MessageData",
+            "description": "Data for DM message that was updated"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "includes": {
+            "$ref": "#/components/schemas/V3DataIncludeResponse",
+            "description": "Information data and populate data for message"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3QuoteDMMessageResponse"
+      },
+      "V3QuoteMessageResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "data": {
+            "$ref": "#/components/schemas/V3MessageData",
+            "description": "Data for message that was created"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "includes": {
+            "$ref": "#/components/schemas/V3DataIncludeResponse",
+            "description": "Information data and populate data for message"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3QuoteMessageResponse"
+      },
+      "V3ReportDMMessageResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3ReportDMMessageResponse"
+      },
+      "V3ReportMessageResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3ReportMessageResponse"
+      },
+      "V3RevokeDMMessageReactionResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "data": {
+            "$ref": "#/components/schemas/V3MessageData",
+            "description": "Data for DM message that was updated"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "includes": {
+            "$ref": "#/components/schemas/V3DataIncludeResponse",
+            "description": "Information data and populate data for message"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3RevokeDMMessageReactionResponse"
+      },
+      "V3RevokeMessageReactionResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "data": {
+            "$ref": "#/components/schemas/V3MessageData",
+            "description": "The message's data"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "includes": {
+            "$ref": "#/components/schemas/V3DataIncludeResponse",
+            "description": "Information data and populate data for message"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3RevokeMessageReactionResponse"
+      },
+      "V3SendDMLocationResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "data": {
+            "$ref": "#/components/schemas/V3MessageData",
+            "description": "Data for message that was created"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "includes": {
+            "$ref": "#/components/schemas/V3DataIncludeResponse",
+            "description": "Information data and populate data for message"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3SendDMLocationResponse"
+      },
+      "V3SendDMMessageResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "data": {
+            "$ref": "#/components/schemas/V3MessageData",
+            "description": "Data for DM message that was created"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "includes": {
+            "$ref": "#/components/schemas/V3DataIncludeResponse",
+            "description": "Information data and populate data for message"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3SendDMMessageResponse"
+      },
+      "V3SendDmMessageMediaResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "data": {
+            "$ref": "#/components/schemas/V3MessageData",
+            "description": "Data for message that was updated"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "includes": {
+            "$ref": "#/components/schemas/V3DataIncludeResponse",
+            "description": "Information data and populate data for message"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3SendDmMessageMediaResponse"
+      },
+      "V3SendDMMessageStickerResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "data": {
+            "$ref": "#/components/schemas/V3MessageData",
+            "description": "Data for DM message that was created"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "includes": {
+            "$ref": "#/components/schemas/V3DataIncludeResponse",
+            "description": "Information data and populate data for message"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3SendDMMessageStickerResponse"
+      },
+      "V3SendLocationResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "data": {
+            "$ref": "#/components/schemas/V3MessageData",
+            "description": "Data for message that was created"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "includes": {
+            "$ref": "#/components/schemas/V3DataIncludeResponse",
+            "description": "Information data and populate data for message"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3SendLocationResponse"
+      },
+      "V3SendMessageResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "data": {
+            "$ref": "#/components/schemas/V3MessageData",
+            "description": "Data for message that was created"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "includes": {
+            "$ref": "#/components/schemas/V3DataIncludeResponse",
+            "description": "Information data and populate data for message"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3SendMessageResponse"
+      },
+      "V3SendMessageMediaResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "data": {
+            "$ref": "#/components/schemas/V3MessageData",
+            "description": "Data for message"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "includes": {
+            "$ref": "#/components/schemas/V3DataIncludeResponse",
+            "description": "Information data and populate data for message"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3SendMessageMediaResponse"
+      },
+      "V3SendMessageStickerResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "data": {
+            "$ref": "#/components/schemas/V3MessageData",
+            "description": "Data for message that was created"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "includes": {
+            "$ref": "#/components/schemas/V3DataIncludeResponse",
+            "description": "Information data and populate data for message"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3SendMessageStickerResponse"
+      },
+      "V3SendPokeMessageResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "data": {
+            "$ref": "#/components/schemas/V3MessageData",
+            "description": "Data for message that was created"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "includes": {
+            "$ref": "#/components/schemas/V3DataIncludeResponse",
+            "description": "Information data and populate data for message"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3SendPokeMessageResponse"
+      },
+      "V3UpdateDmMediaAttachmentsResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "data": {
+            "$ref": "#/components/schemas/V3MessageData",
+            "description": "Data for message that was updated"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "includes": {
+            "$ref": "#/components/schemas/V3DataIncludeResponse",
+            "description": "Information data and populate data for message"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3UpdateDmMediaAttachmentsResponse"
+      },
+      "V3UpdateDMMessageResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "data": {
+            "$ref": "#/components/schemas/V3MessageData",
+            "description": "Data for DM message that was updated"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "includes": {
+            "$ref": "#/components/schemas/V3DataIncludeResponse",
+            "description": "Information data and populate data for message"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3UpdateDMMessageResponse"
+      },
+      "V3UpdateMediaAttachmentsResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "data": {
+            "$ref": "#/components/schemas/V3MessageData",
+            "description": "Data for message"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "includes": {
+            "$ref": "#/components/schemas/V3DataIncludeResponse",
+            "description": "Information data and populate data for message"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3UpdateMediaAttachmentsResponse"
+      },
+      "V3UpdateMessageResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "data": {
+            "$ref": "#/components/schemas/V3MessageData",
+            "description": "Data for message that was updated"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "includes": {
+            "$ref": "#/components/schemas/V3DataIncludeResponse",
+            "description": "Information data and populate data for message"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3UpdateMessageResponse"
+      },
+      "V3ChannelMetadata": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "workspaceId": {
+            "type": "string"
+          },
+          "channelId": {
+            "type": "string"
+          },
+          "dmId": {
+            "type": "string"
+          },
+          "unreadCount": {
+            "type": "number"
+          },
+          "lastMessageId": {
+            "type": "string"
+          },
+          "notificationStatus": {
+            "type": "boolean"
+          },
+          "mediaPermissionSetting": {
+            "$ref": "#/components/schemas/V3MediaPermissionSettingEnum"
+          },
+          "permissions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/V3ChannelPermissionsEnum"
+            }
+          }
+        },
+        "$id": "V3ChannelMetadata"
+      },
+      "V3Channel": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "workspaceId": {
+            "type": "string"
+          },
+          "channelId": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "avatar": {
+            "type": "string"
+          },
+          "isPrivate": {
+            "type": "boolean"
+          },
+          "type": {
+            "$ref": "#/components/schemas/V3ChannelTypeEnum"
+          },
+          "invitationLink": {
+            "type": "string"
+          },
+          "privacySettings": {
+            "$ref": "#/components/schemas/V3PrivacySettings"
+          },
+          "premiumSettings": {
+            "$ref": "#/components/schemas/V3PremiumSettings"
+          },
+          "originalAvatar": {
+            "type": "string"
+          },
+          "totalMembers": {
+            "type": "number"
+          },
+          "dmStatus": {
+            "$ref": "#/components/schemas/V3DirectMessageStatusEnum"
+          },
+          "pinnedMessage": {
+            "$ref": "#/components/schemas/V3Message"
+          },
+          "participantIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "rejectTime": {
+            "type": "string"
+          },
+          "acceptTime": {
+            "type": "string"
+          },
+          "createTime": {
+            "type": "string"
+          },
+          "updateTime": {
+            "type": "string"
+          }
+        },
+        "$id": "V3Channel"
+      },
+      "V3ChannelPermissionsEnum": {
+        "type": "number",
+        "additionalProperties": false,
+        "$id": "V3ChannelPermissionsEnum",
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "x-enum-varnames": [
+          "OWNER",
+          "CHANNELS__VIEW_CHANNEL",
+          "CHANNELS__MANAGE",
+          "CHANNELS__MEMBERS_MANAGE",
+          "CHANNELS__STICKERS_MANAGE",
+          "CHANNELS__INVITATIONS_MANAGE",
+          "CHANNELS__INVITATIONS_CREATE",
+          "MESSAGES__MANAGE",
+          "MESSAGES__VIEW",
+          "MESSAGES__SEND_MESSAGE",
+          "MESSAGES__SEND_ATTACHMENTS",
+          "MESSAGES__EMBED_LINKS",
+          "MESSAGES__MENTION_EVERYONE",
+          "CHANNELS__VIEW_AUDIT_LOGS"
+        ]
+      },
+      "V3DataInclude": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "users": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/V3User"
+            }
+          },
+          "messages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/V3Message"
+            }
+          },
+          "channels": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/V3Channel"
+            }
+          },
+          "members": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/V3Member"
+            }
+          },
+          "channelMetadata": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/V3ChannelMetadata"
+            }
+          }
+        },
+        "$id": "V3DataInclude"
+      },
+      "V3Dimensions": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "height": {
+            "type": "number"
+          },
+          "width": {
+            "type": "number"
+          }
+        },
+        "$id": "V3Dimensions"
+      },
+      "V3Embed": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "meta": {
+            "type": "string"
+          },
+          "provider": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "type": {
+            "$ref": "#/components/schemas/V3EmbedTypeEnum"
+          },
+          "embedData": {
+            "$ref": "#/components/schemas/V3EmbedData"
+          },
+          "invitationData": {
+            "$ref": "#/components/schemas/V3InvitationData"
+          },
+          "locationData": {
+            "$ref": "#/components/schemas/V3LocationData"
+          }
+        },
+        "$id": "V3Embed"
+      },
+      "V3EmbedData": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "url": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "authorName": {
+            "type": "string"
+          },
+          "authorUrl": {
+            "type": "string"
+          },
+          "providerName": {
+            "type": "string"
+          },
+          "providerUrl": {
+            "type": "string"
+          },
+          "cacheAge": {
+            "type": "string"
+          },
+          "html": {
+            "type": "string"
+          },
+          "width": {
+            "type": "number"
+          },
+          "height": {
+            "type": "number"
+          },
+          "description": {
+            "type": "string"
+          },
+          "thumbnailUrl": {
+            "type": "string"
+          },
+          "thumbnailWidth": {
+            "type": "string"
+          },
+          "thumbnailHeight": {
+            "type": "string"
+          }
+        },
+        "$id": "V3EmbedData"
+      },
+      "V3FileMetadata": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "filename": {
+            "type": "string"
+          },
+          "filesize": {
+            "type": "number"
+          },
+          "extension": {
+            "type": "string"
+          },
+          "mimetype": {
+            "type": "string"
+          },
+          "dimensions": {
+            "$ref": "#/components/schemas/V3Dimensions"
+          },
+          "duration": {
+            "type": "number"
+          }
+        },
+        "$id": "V3FileMetadata"
+      },
+      "V3InvitationData": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "channel": {
+            "$ref": "#/components/schemas/V3InvitationDataChannelData"
+          },
+          "code": {
+            "type": "string"
+          },
+          "isExpired": {
+            "type": "boolean"
+          },
+          "expireTime": {
+            "type": "string"
+          },
+          "isJoined": {
+            "type": "boolean"
+          },
+          "invitationLink": {
+            "type": "string"
+          },
+          "createTime": {
+            "type": "string"
+          },
+          "updateTime": {
+            "type": "string"
+          }
+        },
+        "$id": "V3InvitationData"
+      },
+      "V3InvitationDataChannelData": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "workspaceId": {
+            "type": "string"
+          },
+          "channelId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "avatar": {
+            "type": "string"
+          },
+          "totalMembers": {
+            "type": "number"
+          },
+          "members": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/V3User"
+            }
+          }
+        },
+        "$id": "V3InvitationDataChannelData"
+      },
+      "V3LinkObject": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "attachmentType": {
+            "$ref": "#/components/schemas/V3AttachmentTypeEnum"
+          },
+          "url": {
+            "type": "string"
+          },
+          "shortUrl": {
+            "type": "string"
+          }
+        },
+        "$id": "V3LinkObject"
+      },
+      "V3LocationData": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "latitude": {
+            "type": "string"
+          },
+          "longitude": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "thumbnailUrl": {
+            "type": "string"
+          }
+        },
+        "$id": "V3LocationData"
+      },
+      "V3MediaAttachment": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "link": {
+            "$ref": "#/components/schemas/V3LinkObject"
+          },
+          "sticker": {
+            "$ref": "#/components/schemas/V3StickerObject"
+          },
+          "photo": {
+            "$ref": "#/components/schemas/V3MediaObject"
+          },
+          "audio": {
+            "$ref": "#/components/schemas/V3MediaObject"
+          },
+          "video": {
+            "$ref": "#/components/schemas/V3MediaObject"
+          },
+          "voiceMessage": {
+            "$ref": "#/components/schemas/V3MediaObject"
+          },
+          "videoMessage": {
+            "$ref": "#/components/schemas/V3MediaObject"
+          },
+          "mediaMessage": {
+            "$ref": "#/components/schemas/V3MediaObject"
+          },
+          "file": {
+            "$ref": "#/components/schemas/V3MediaObject"
+          }
+        },
+        "$id": "V3MediaAttachment"
+      },
+      "V3Member": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "workspaceId": {
+            "type": "string"
+          },
+          "channelId": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "nickname": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/V3MemberRole"
+            }
+          },
+          "createTime": {
+            "type": "string"
+          },
+          "updateTime": {
+            "type": "string"
+          }
+        },
+        "$id": "V3Member"
+      },
+      "V3MemberRole": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "role": {
+            "type": "string"
+          },
+          "weight": {
+            "type": "number"
+          }
+        },
+        "$id": "V3MemberRole"
+      },
+      "V3Message": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "workspaceId": {
+            "type": "string"
+          },
+          "channelId": {
+            "type": "string"
+          },
+          "messageId": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "ref": {
+            "type": "string"
+          },
+          "messageType": {
+            "$ref": "#/components/schemas/V3MessageTypeEnum"
+          },
+          "messageStatus": {
+            "$ref": "#/components/schemas/V3MessageStatusEnum"
+          },
+          "originalMessage": {
+            "$ref": "#/components/schemas/V3OriginalMessage"
+          },
+          "reactions": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/V3ReactionData"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "embed": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/V3Embed"
+            }
+          },
+          "attachmentType": {
+            "$ref": "#/components/schemas/V3AttachmentTypeEnum"
+          },
+          "reports": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/V3Report"
+            }
+          },
+          "isThread": {
+            "type": "boolean"
+          },
+          "reportCount": {
+            "type": "number"
+          },
+          "isReported": {
+            "type": "boolean"
+          },
+          "attachmentCount": {
+            "type": "number"
+          },
+          "mediaAttachments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/V3MediaAttachment"
+            }
+          },
+          "contentLocale": {
+            "type": "string"
+          },
+          "contentArguments": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "isPinned": {
+            "type": "boolean"
+          },
+          "pinTime": {
+            "type": "string"
+          },
+          "editTime": {
+            "type": "string"
+          },
+          "createTime": {
+            "type": "string"
+          },
+          "updateTime": {
+            "type": "string"
+          }
+        },
+        "$id": "V3Message"
+      },
+      "V3OriginalMessage": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "messageId": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "attachmentType": {
+            "$ref": "#/components/schemas/V3AttachmentTypeEnum"
+          },
+          "mediaAttachments": {
+            "$ref": "#/components/schemas/V3MediaAttachment"
+          },
+          "messageType": {
+            "$ref": "#/components/schemas/V3MessageTypeEnum"
+          },
+          "contentLocale": {
+            "type": "string"
+          },
+          "contentArguments": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "userId": {
+            "type": "string"
+          },
+          "editTime": {
+            "type": "string"
+          },
+          "createTime": {
+            "type": "string"
+          },
+          "updateTime": {
+            "type": "string"
+          }
+        },
+        "$id": "V3OriginalMessage"
+      },
+      "V3PremiumSettings": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "boosted": {
+            "$ref": "#/components/schemas/V3PremiumSettingsBoosted"
+          }
+        },
+        "$id": "V3PremiumSettings"
+      },
+      "V3PremiumSettingsBoosted": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enable": {
+            "type": "boolean"
+          }
+        },
+        "$id": "V3PremiumSettingsBoosted"
+      },
+      "V3PresenceData": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "lastUpdateTime": {
+            "type": "string"
+          },
+          "lastUpdateInSeconds": {
+            "type": "number"
+          },
+          "presenceState": {
+            "$ref": "#/components/schemas/V3PresenceStateEnum"
+          },
+          "customStatus": {
+            "type": "string"
+          }
+        },
+        "$id": "V3PresenceData"
+      },
+      "V3PrivacySettings": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "restrictSavingContent": {
+            "$ref": "#/components/schemas/V3RestrictSavingContent"
+          }
+        },
+        "$id": "V3PrivacySettings"
+      },
+      "V3Profile": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "avatar": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "cover": {
+            "type": "string"
+          },
+          "originalAvatar": {
+            "type": "string"
+          },
+          "avatarType": {
+            "$ref": "#/components/schemas/V3UserAvatarTypeEnum"
+          },
+          "videoAvatar": {
+            "type": "string"
+          },
+          "userBadgeType": {
+            "$ref": "#/components/schemas/V3UserBadgeTypeEnum"
+          },
+          "decoratedAvatar": {
+            "type": "string"
+          },
+          "originalDecoratedAvatar": {
+            "type": "string"
+          }
+        },
+        "$id": "V3Profile"
+      },
+      "V3ReactionData": {
+        "type": "object",
+        "additionalProperties": false,
+        "$id": "V3ReactionData",
+        "properties": { }
+      },
+      "V3Report": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "reportCategory": {
+            "$ref": "#/components/schemas/V3ReportCategory"
+          },
+          "pretendingTo": {
+            "$ref": "#/components/schemas/V3PretendingTo"
+          },
+          "reportReason": {
+            "type": "string"
+          },
+          "reportBy": {
+            "type": "string"
+          },
+          "reportTime": {
+            "type": "string"
+          }
+        },
+        "$id": "V3Report"
+      },
+      "V3RestrictSavingContent": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enable": {
+            "type": "boolean"
+          }
+        },
+        "$id": "V3RestrictSavingContent"
+      },
+      "V3StickerObject": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "collectionId": {
+            "type": "string"
+          },
+          "stickerId": {
+            "type": "string"
+          },
+          "attachmentType": {
+            "$ref": "#/components/schemas/V3AttachmentTypeEnum"
+          },
+          "stickerUrl": {
+            "type": "string"
+          },
+          "attachmentId": {
+            "type": "string"
+          },
+          "fileRef": {
+            "type": "string"
+          }
+        },
+        "$id": "V3StickerObject"
+      },
+      "V3User": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userId": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "createTime": {
+            "type": "string"
+          },
+          "updateTime": {
+            "type": "string"
+          },
+          "profile": {
+            "$ref": "#/components/schemas/V3Profile"
+          },
+          "userType": {
+            "$ref": "#/components/schemas/V3UserTypeEnum"
+          },
+          "presenceData": {
+            "$ref": "#/components/schemas/V3PresenceData"
+          },
+          "statusData": {
+            "$ref": "#/components/schemas/V3UserStatus"
+          }
+        },
+        "$id": "V3User"
+      },
+      "V3UserStatus": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "content": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "expireAfterTime": {
+            "$ref": "#/components/schemas/V3UserStatusExpireAfterTimeEnum"
+          },
+          "createTime": {
+            "type": "string"
+          },
+          "updateTime": {
+            "type": "string"
+          },
+          "endTime": {
+            "type": "string"
+          }
+        },
+        "$id": "V3UserStatus"
+      },
+      "V3ChannelData": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "channel": {
+            "$ref": "#/components/schemas/V3Channel"
+          }
+        },
+        "$id": "V3ChannelData"
+      },
+      "V3FriendData": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "friend": {
+            "$ref": "#/components/schemas/V3Friend"
+          }
+        },
+        "$id": "V3FriendData"
+      },
+      "V3Friend": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "requestedFromUserId": {
+            "type": "string"
+          },
+          "requestedToUserId": {
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/V3FriendStatusEnum"
+          },
+          "friendId": {
+            "type": "string"
+          },
+          "participantIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "readTime": {
+            "type": "string"
+          },
+          "acceptTime": {
+            "type": "string"
+          },
+          "createTime": {
+            "type": "string"
+          },
+          "updateTime": {
+            "type": "string"
+          },
+          "deleteTime": {
+            "type": "string"
+          }
+        },
+        "$id": "V3Friend"
+      },
+      "V3MemberData": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "member": {
+            "$ref": "#/components/schemas/V3Member"
+          }
+        },
+        "$id": "V3MemberData"
+      },
+      "V3MessageData": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "message": {
+            "$ref": "#/components/schemas/V3Message"
+          }
+        },
+        "$id": "V3MessageData"
+      },
+      "V3UserView": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userId": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "friendData": {
+            "$ref": "#/components/schemas/V3Friend"
+          },
+          "mediaPermissionSetting": {
+            "$ref": "#/components/schemas/V3MediaPermissionSettingEnum"
+          },
+          "createTime": {
+            "type": "string"
+          },
+          "updateTime": {
+            "type": "string"
+          },
+          "profile": {
+            "$ref": "#/components/schemas/V3Profile"
+          },
+          "userType": {
+            "$ref": "#/components/schemas/V3UserTypeEnum"
+          },
+          "presenceData": {
+            "$ref": "#/components/schemas/V3PresenceData"
+          },
+          "statusData": {
+            "$ref": "#/components/schemas/V3UserStatus"
+          },
+          "blocked": {
+            "type": "string"
+          }
+        },
+        "$id": "V3UserView"
+      },
+      "V3ChannelTypeEnum": {
+        "type": "number",
+        "additionalProperties": false,
+        "$id": "V3ChannelTypeEnum",
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "x-enum-varnames": [
+          "CHANNEL_TYPE_ENUM_DM",
+          "CHANNEL_TYPE_ENUM_CHANNEL",
+          "CHANNEL_TYPE_ENUM_BROADCAST"
+        ]
+      },
+      "V3DirectMessageStatusEnum": {
+        "type": "number",
+        "additionalProperties": false,
+        "$id": "V3DirectMessageStatusEnum",
+        "enum": [
+          0,
+          1
+        ],
+        "x-enum-varnames": [
+          "DIRECT_MESSAGE_STATUS_ENUM_PENDING",
+          "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED"
+        ]
+      },
+      "V3MediaPermissionSettingEnum": {
+        "type": "number",
+        "additionalProperties": false,
+        "$id": "V3MediaPermissionSettingEnum",
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "x-enum-varnames": [
+          "MEDIA_PERMISSION_SETTING_ENUM_ALWAYS_ASK",
+          "MEDIA_PERMISSION_SETTING_ENUM_ALLOW",
+          "MEDIA_PERMISSION_SETTING_ENUM_NOT_ALLOW"
+        ]
+      },
+      "V3FriendStatusEnum": {
+        "type": "number",
+        "additionalProperties": false,
+        "$id": "V3FriendStatusEnum",
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "x-enum-varnames": [
+          "FRIEND_STATUS_ENUM_UNSPECIFIED",
+          "FRIEND_STATUS_ENUM_NOT_FRIEND",
+          "FRIEND_STATUS_ENUM_REQUEST_SENT",
+          "FRIEND_STATUS_ENUM_REQUEST_RECEIVED",
+          "FRIEND_STATUS_ENUM_REQUEST_DELETED",
+          "FRIEND_STATUS_ENUM_FRIEND"
+        ]
+      },
+      "V3EmbedTypeEnum": {
+        "type": "number",
+        "additionalProperties": false,
+        "$id": "V3EmbedTypeEnum",
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "x-enum-varnames": [
+          "EMBED_TYPE_ENUM_UNSPECIFIED",
+          "EMBED_TYPE_ENUM_PHOTO",
+          "EMBED_TYPE_ENUM_VIDEO",
+          "EMBED_TYPE_ENUM_LINK",
+          "EMBED_TYPE_ENUM_INVITATION",
+          "EMBED_TYPE_ENUM_OTHER",
+          "EMBED_TYPE_ENUM_LOCATION"
+        ]
+      },
+      "V3MessageStatusEnum": {
+        "type": "number",
+        "additionalProperties": false,
+        "$id": "V3MessageStatusEnum",
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "x-enum-varnames": [
+          "MESSAGE_STATUS_ENUM_PENDING",
+          "MESSAGE_STATUS_ENUM_SUCCESS",
+          "MESSAGE_STATUS_ENUM_FAILURE"
+        ]
+      },
+      "V3MessageTypeEnum": {
+        "type": "number",
+        "additionalProperties": false,
+        "$id": "V3MessageTypeEnum",
+        "enum": [
+          0,
+          1
+        ],
+        "x-enum-varnames": [
+          "MESSAGE_TYPE_ENUM_DEFAULT",
+          "MESSAGE_TYPE_ENUM_AUDIT_LOG"
+        ]
+      },
+      "V3PresenceStateEnum": {
+        "type": "number",
+        "additionalProperties": false,
+        "$id": "V3PresenceStateEnum",
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "x-enum-varnames": [
+          "PRESENCE_STATUS_UNSPECIFIED",
+          "PRESENCE_STATUS_ONLINE",
+          "PRESENCE_STATUS_IDLE",
+          "PRESENCE_STATUS_DO_NOT_DISTURB",
+          "PRESENCE_STATUS_OFFLINE",
+          "PRESENCE_STATUS_OTHER"
+        ]
+      },
+      "V3UserAvatarTypeEnum": {
+        "type": "number",
+        "additionalProperties": false,
+        "$id": "V3UserAvatarTypeEnum",
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "x-enum-varnames": [
+          "USER_AVATAR_TYPE_ENUM_UNSPECIFIED",
+          "USER_AVATAR_TYPE_ENUM_PHOTO",
+          "USER_AVATAR_TYPE_ENUM_VIDEO"
+        ]
+      },
+      "V3UserBadgeTypeEnum": {
+        "type": "number",
+        "additionalProperties": false,
+        "$id": "V3UserBadgeTypeEnum",
+        "enum": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "x-enum-varnames": [
+          "USER_BADGE_TYPE_DEFAULT",
+          "USER_BADGE_TYPE_BLUE",
+          "USER_BADGE_TYPE_GRAY",
+          "USER_BADGE_TYPE_YELLOW"
+        ]
+      },
+      "V3UserStatusExpireAfterTimeEnum": {
+        "type": "number",
+        "additionalProperties": false,
+        "$id": "V3UserStatusExpireAfterTimeEnum",
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          99
+        ],
+        "x-enum-varnames": [
+          "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_UNSPECIFIED",
+          "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_1_HOUR",
+          "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_4_HOUR",
+          "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_8_HOUR",
+          "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_24_HOUR",
+          "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_NEVER"
+        ]
+      },
+      "V3UserTypeEnum": {
+        "type": "number",
+        "additionalProperties": false,
+        "$id": "V3UserTypeEnum",
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "x-enum-varnames": [
+          "USER_TYPE_ENUM_DEFAULT",
+          "USER_TYPE_ENUM_BOT",
+          "USER_TYPE_ENUM_GHOST"
+        ]
+      },
+      "V3calculatorPresenceTime": {
+        "type": "object",
+        "additionalProperties": false,
+        "$id": "V3calculatorPresenceTime",
+        "properties": { }
+      },
+      "V3extractActivatedPermissions": {
+        "type": "object",
+        "additionalProperties": false,
+        "$id": "V3extractActivatedPermissions",
+        "properties": { }
+      },
+      "V3getChannelNotificationStatus": {
+        "type": "object",
+        "additionalProperties": false,
+        "$id": "V3getChannelNotificationStatus",
+        "properties": { }
+      },
+      "V3getDataIncludeChannel": {
+        "type": "object",
+        "additionalProperties": false,
+        "$id": "V3getDataIncludeChannel",
+        "properties": { }
+      },
+      "V3getDataIncludeFriend": {
+        "type": "object",
+        "additionalProperties": false,
+        "$id": "V3getDataIncludeFriend",
+        "properties": { }
+      },
+      "V3getDataIncludeMember": {
+        "type": "object",
+        "additionalProperties": false,
+        "$id": "V3getDataIncludeMember",
+        "properties": { }
+      },
+      "V3getDataIncludeMessage": {
+        "type": "object",
+        "additionalProperties": false,
+        "$id": "V3getDataIncludeMessage",
+        "properties": { }
+      },
+      "V3getDataIncludeUser": {
+        "type": "object",
+        "additionalProperties": false,
+        "$id": "V3getDataIncludeUser",
+        "properties": { }
+      },
+      "V3getInitDataInclude": {
+        "type": "object",
+        "additionalProperties": false,
+        "$id": "V3getInitDataInclude",
+        "properties": { }
+      },
+      "V3getUserPermissions": {
+        "type": "object",
+        "additionalProperties": false,
+        "$id": "V3getUserPermissions",
+        "properties": { }
+      },
+      "V3mappingChannelData": {
+        "type": "object",
+        "additionalProperties": false,
+        "$id": "V3mappingChannelData",
+        "properties": { }
+      },
+      "V3mappingFriendData": {
+        "type": "object",
+        "additionalProperties": false,
+        "$id": "V3mappingFriendData",
+        "properties": { }
+      },
+      "V3mappingMemberData": {
+        "type": "object",
+        "additionalProperties": false,
+        "$id": "V3mappingMemberData",
+        "properties": { }
+      },
+      "V3mappingChannelMetadataForDMChannel": {
+        "type": "object",
+        "additionalProperties": false,
+        "$id": "V3mappingChannelMetadataForDMChannel",
+        "properties": { }
+      },
+      "V3mappingChannelMetadataForChannel": {
+        "type": "object",
+        "additionalProperties": false,
+        "$id": "V3mappingChannelMetadataForChannel",
+        "properties": { }
+      },
+      "V3mappingUserEntityToProto": {
+        "type": "object",
+        "additionalProperties": false,
+        "$id": "V3mappingUserEntityToProto",
+        "properties": { }
+      },
+      "V3wrapMessageEntityToResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "$id": "V3wrapMessageEntityToResponse",
+        "properties": { }
+      }
+    }
+  },
+  "paths": {
+    "/Message/SendDMMessage": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3SendDMMessageResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "SendDMMessage",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "userId",
+          "content",
+          "ref"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3SendDMMessageRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Message/AddDMMessageReaction": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3AddDMMessageReactionResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "AddDMMessageReaction",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "userId",
+          "messageId",
+          "emoji"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3AddDMMessageReactionRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Message/DeleteAllDMMessagesForEveryone": {
+      "delete": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3DeleteAllDMMessagesForEveryoneResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "DeleteAllDMMessagesForEveryone",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "userId",
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The user identify whom receive message"
+          }
+        ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "userId"
+        ]
+      }
+    },
+    "/Message/DeleteAllDMMessagesOnlyMe": {
+      "delete": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3DeleteAllDMMessagesOnlyMeResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "DeleteAllDMMessagesOnlyMe",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "userId",
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The user identify whom receive message"
+          }
+        ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "userId"
+        ]
+      }
+    },
+    "/Message/ClearDMMessageForEveryone": {
+      "delete": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3ClearDMMessagesForEveryoneResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "ClearDMMessageForEveryone",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "userId",
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The user identify whom receive message"
+          }
+        ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "userId"
+        ]
+      }
+    },
+    "/Message/ClearDMMessageOnlyMe": {
+      "delete": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3ClearDMMessagesOnlyMeResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "ClearDMMessageOnlyMe",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "userId",
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The user identify whom receive message"
+          }
+        ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "userId"
+        ]
+      }
+    },
+    "/Message/DeleteDMMessagesForEveryone": {
+      "delete": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3DeleteDMMessagesForEveryoneResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "DeleteDMMessagesForEveryone",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "userId",
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The user identify whom receive message"
+          },
+          {
+            "in": "query",
+            "name": "messageIds",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "format": "isULID",
+              "errorMessage": {
+                "format": "invalid ULID format"
+              }
+            },
+            "uniqueItems": true,
+            "minItems": 1,
+            "description": "The list message identify to delete"
+          }
+        ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "userId",
+          "messageIds"
+        ]
+      }
+    },
+    "/Message/DeleteDMMessagesOnlyMe": {
+      "delete": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3DeleteDMMessagesOnlyMeResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "DeleteDMMessagesOnlyMe",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "userId",
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The user identify whom receive message"
+          },
+          {
+            "in": "query",
+            "name": "messageIds",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "format": "isULID",
+              "errorMessage": {
+                "format": "invalid ULID format"
+              }
+            },
+            "uniqueItems": true,
+            "minItems": 1,
+            "description": "The list messages identify to delete"
+          }
+        ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "userId",
+          "messageIds"
+        ]
+      }
+    },
+    "/Message/ForwardMessagesToDMChannel": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3ForwardMessagesToDMChannelResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "ForwardMessagesToDMChannel",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "userId",
+          "originalMessageIds"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3ForwardMessagesToDMChannelRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Message/MarkDMAsRead": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3MarkDMAsReadResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "MarkDMAsRead",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "userId",
+          "messageId"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3MarkDMAsReadRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Message/PinUnpinDMMessage": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3PinUnpinDMMessageResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "PinUnpinDMMessage",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "userId",
+          "messageId"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3PinUnpinDMMessageRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Message/QuoteDMMessage": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3QuoteDMMessageResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "QuoteDMMessage",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "userId",
+          "messageId",
+          "content",
+          "ref"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3QuoteDMMessageRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Message/ReportDMMessage": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3ReportDMMessageResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "ReportDMMessage",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "userId",
+          "messageId",
+          "reportCategory"
+        ],
+        "if": {
+          "properties": {
+            "reportCategory": {
+              "const": 3
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "pretendingTo"
+          ]
+        },
+        "else": {
+          "if": {
+            "properties": {
+              "reportCategory": {
+                "const": 20
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "reportReason"
+            ]
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3ReportDMMessageRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Message/RevokeDMMessageReaction": {
+      "put": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3RevokeDMMessageReactionResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "RevokeDMMessageReaction",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "userId",
+          "messageId",
+          "emoji"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3RevokeDMMessageReactionRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Message/SendDMLocation": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3SendDMLocationResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "SendDMLocation",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "userId",
+          "ref",
+          "latitude",
+          "longitude"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3SendDMLocationRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Message/SendDmMessageMedia": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3SendDmMessageMediaResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "SendDmMessageMedia",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "userId",
+          "attachmentType",
+          "mediaObjects",
+          "ref"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3SendDmMessageMediaRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Message/SendDMMessageSticker": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3SendDMMessageStickerResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "SendDMMessageSticker",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "userId",
+          "ref",
+          "stickerId"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3SendDMMessageStickerRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Message/SendPokeMessage": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3SendPokeMessageResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "SendPokeMessage",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "userId",
+          "ref"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3SendPokeMessageRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Message/UpdateDmMediaAttachments": {
+      "put": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3UpdateDmMediaAttachmentsResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "UpdateDmMediaAttachments",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "userId",
+          "messageId",
+          "mediaObjects",
+          "ref"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3UpdateDmMediaAttachmentsRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Message/UpdateDMMessage": {
+      "put": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3UpdateDMMessageResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "UpdateDMMessage",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "userId",
+          "messageId",
+          "content"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3UpdateDMMessageRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Message/SendMessage": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3SendMessageResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "SendMessage",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "workspaceId",
+          "channelId",
+          "content",
+          "ref"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3SendMessageRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Message/MarkAllChannelsAsRead": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3MarkAllChannelsAsReadResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "MarkAllChannelsAsRead",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3MarkAllChannelsAsReadRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Message/MarkAsRead": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3MarkAsReadResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "MarkAsRead",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "workspaceId",
+          "channelId",
+          "messageId"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3MarkAsReadRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Message/AddMessageReaction": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3AddMessageReactionResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "AddMessageReaction",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "workspaceId",
+          "channelId",
+          "messageId",
+          "emoji"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3AddMessageReactionRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Message/RevokeMessageReaction": {
+      "put": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3RevokeMessageReactionResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "RevokeMessageReaction",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "workspaceId",
+          "channelId",
+          "messageId",
+          "emoji"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3RevokeMessageReactionRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Message/DeleteAllMessagesOnlyMe": {
+      "delete": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3DeleteAllMessagesOnlyMeResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "DeleteAllMessagesOnlyMe",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "workspaceId",
+            "type": "string",
+            "minLength": 1,
+            "errorMessage": {
+              "const": "must be equal 0 values"
+            },
+            "description": "The workspace identify"
+          },
+          {
+            "in": "query",
+            "name": "channelId",
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The channel identify"
+          }
+        ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "workspaceId",
+          "channelId"
+        ]
+      }
+    },
+    "/Message/DeleteMessagesForEveryone": {
+      "delete": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3DeleteMessagesForEveryoneResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "DeleteMessagesForEveryone",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "workspaceId",
+            "type": "string",
+            "minLength": 1,
+            "errorMessage": {
+              "const": "must be equal 0 values"
+            },
+            "description": "The workspace identify"
+          },
+          {
+            "in": "query",
+            "name": "channelId",
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The channel identify"
+          },
+          {
+            "in": "query",
+            "name": "messageIds",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "format": "isULID",
+              "errorMessage": {
+                "format": "invalid ULID format"
+              }
+            },
+            "uniqueItems": true,
+            "minItems": 1,
+            "description": "The list message identify to delete"
+          }
+        ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "workspaceId",
+          "channelId",
+          "messageIds"
+        ]
+      }
+    },
+    "/Message/DeleteMessagesOnlyMe": {
+      "delete": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3DeleteMessagesOnlyMeResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "DeleteMessagesOnlyMe",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "workspaceId",
+            "type": "string",
+            "minLength": 1,
+            "errorMessage": {
+              "const": "must be equal 0 values"
+            },
+            "description": "The workspace identify"
+          },
+          {
+            "in": "query",
+            "name": "channelId",
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The channel identify"
+          },
+          {
+            "in": "query",
+            "name": "messageIds",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "isULID",
+              "errorMessage": {
+                "format": "invalid ULID format"
+              }
+            },
+            "uniqueItems": true,
+            "minItems": 1,
+            "description": "The list message identify to delete"
+          }
+        ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "workspaceId",
+          "channelId",
+          "messageIds"
+        ]
+      }
+    },
+    "/Message/ForwardMessagesToChannel": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3ForwardMessagesToChannelResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "ForwardMessagesToChannel",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "workspaceId",
+          "channelId",
+          "originalMessageIds"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3ForwardMessagesToChannelRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Message/PinUnpinMessage": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3PinUnpinMessageResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "PinUnpinMessage",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "workspaceId",
+          "channelId",
+          "messageId"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3PinUnpinMessageRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Message/QuoteMessage": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3QuoteMessageResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "QuoteMessage",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "workspaceId",
+          "channelId",
+          "messageId",
+          "content",
+          "ref"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3QuoteMessageRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Message/ReportMessage": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3ReportMessageResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "ReportMessage",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "workspaceId",
+          "channelId",
+          "messageId",
+          "reportCategory"
+        ],
+        "if": {
+          "properties": {
+            "reportCategory": {
+              "const": 3
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "pretendingTo"
+          ]
+        },
+        "else": {
+          "if": {
+            "properties": {
+              "reportCategory": {
+                "const": 20
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "reportReason"
+            ]
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3ReportMessageRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Message/SendLocation": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3SendLocationResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "SendLocation",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "workspaceId",
+          "channelId",
+          "ref",
+          "latitude",
+          "longitude"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3SendLocationRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Message/SendMessageMedia": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3SendMessageMediaResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "SendMessageMedia",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "workspaceId",
+          "channelId",
+          "attachmentType",
+          "mediaObjects"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3SendMessageMediaRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Message/SendMessageSticker": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3SendMessageStickerResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "SendMessageSticker",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "workspaceId",
+          "channelId",
+          "ref",
+          "stickerId"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3SendMessageStickerRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Message/UpdateMediaAttachments": {
+      "put": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3UpdateMediaAttachmentsResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "UpdateMediaAttachments",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "workspaceId",
+          "channelId",
+          "messageId",
+          "mediaObjects",
+          "ref"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3UpdateMediaAttachmentsRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Message/UpdateMessage": {
+      "put": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3UpdateMessageResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "UpdateMessage",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "workspaceId",
+          "channelId",
+          "messageId",
+          "content"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3UpdateMessageRequest"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

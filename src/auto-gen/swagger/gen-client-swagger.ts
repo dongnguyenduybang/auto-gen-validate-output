@@ -26,7 +26,7 @@ export function genClientSwagger() {
         );
 
         execSync(
-            `npx swagger-typescript-api --extract-request-params -p ${file} -o ${outputDir} --single-http-client --templates swagger/templates/default --name "${serviceName}-client.ts" --api-class-name ${className}HttpClient`,
+            `npx swagger-typescript-api generate --extract-request-params -p ${file} -o ${outputDir} --single-http-client --templates swagger/templates/default --name "${serviceName}-client.ts" --api-class-name ${className}HttpClient`,
             { stdio: 'inherit' },
         );
 

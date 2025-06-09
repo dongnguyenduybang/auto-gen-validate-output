@@ -10,7 +10,8 @@
     "gen": "npx ts-node -r tsconfig-paths/register src/auto-gen/test.index.ts gen",
     "test": "npx ts-node -r tsconfig-paths/register src/auto-gen/test.index.ts test",
     "clear": "npx ts-node  src/auto-gen/test.index.ts clear",
-    "template:test": "jest src/auto-gen/test-case/base-testcase.spec.ts"
+    "template:test": "jest src/auto-gen/test-case/base-testcase.spec.ts",
+    "gen-client": "npx ts-node src/auto-gen/swagger/gen-client-swagger.ts"
   },
   "engines": {
     "npm": ">=8.0.0",

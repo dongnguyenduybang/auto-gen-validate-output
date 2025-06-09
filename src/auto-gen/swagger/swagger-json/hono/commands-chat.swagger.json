@@ -1472,7 +1472,10 @@
             "$ref": "#/components/schemas/V3MediaPermissionSettingEnum"
           },
           "permissions": {
-            "$ref": "#/components/schemas/V3ChannelPermissionsEnum"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/V3ChannelPermissionsEnum"
+            }
           }
         },
         "$id": "V3ChannelMetadata"
@@ -1648,7 +1651,7 @@
             "$ref": "#/components/schemas/V3EmbedTypeEnum"
           },
           "embedData": {
-            "$ref": "#/components/schemas/V3EmbedTypeEnum"
+            "$ref": "#/components/schemas/V3EmbedData"
           },
           "invitationData": {
             "$ref": "#/components/schemas/V3InvitationData"
@@ -1994,7 +1997,7 @@
           "mentions": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/V3OriginalMessage"
+              "type": "string"
             }
           },
           "embed": {
@@ -2315,9 +2318,6 @@
         "properties": {
           "channel": {
             "$ref": "#/components/schemas/V3Channel"
-          },
-          "channelMetadata": {
-            "$ref": "#/components/schemas/V3ChannelMetadata"
           }
         },
         "$id": "V3ChannelData"
@@ -2341,6 +2341,9 @@
           },
           "requestedToUserId": {
             "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/V3FriendStatusEnum"
           },
           "friendId": {
             "type": "string"
@@ -2418,7 +2421,7 @@
             "$ref": "#/components/schemas/V3UserTypeEnum"
           },
           "presenceData": {
-            "$ef": "PresenceData"
+            "$ref": "#/components/schemas/V3PresenceData"
           },
           "statusData": {
             "$ref": "#/components/schemas/V3UserStatus"
@@ -2719,7 +2722,7 @@
             "type": "number"
           },
           "status": {
-            "type": "number"
+            "$ref": "#/components/schemas/V3InvitationStatusEnum"
           },
           "expireTime": {
             "type": "string"

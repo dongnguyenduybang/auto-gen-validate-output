@@ -1,0 +1,625 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "halome/internal/faker/v3/services/faker.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "InternalFakerService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/InternalFaker/DeleteMockedChannels": {
+      "delete": {
+        "summary": "Method to support deleting multiple channels based on a prefix.",
+        "operationId": "DeleteMockedChannels",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v3DeleteMockedChannelsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "workspaceId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "prefix",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "InternalFakerService"
+        ]
+      }
+    },
+    "/InternalFaker/DeleteMockedUsers": {
+      "delete": {
+        "summary": "Method to support deleting multiple user accounts based on a prefix, facilitating data cleanup during testing.\nThe method is not supported in the production environment.",
+        "operationId": "DeleteMockedUsers",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v3DeleteMockedUsersResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "prefix",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "InternalFakerService"
+        ]
+      }
+    },
+    "/InternalFaker/GetTokens": {
+      "post": {
+        "operationId": "GetTokens",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v3GetTokensResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v3GetTokensRequest"
+            }
+          }
+        ],
+        "tags": [
+          "InternalFakerService"
+        ]
+      }
+    },
+    "/InternalFaker/MockChannels": {
+      "post": {
+        "summary": "Method to support creating multiple channels for testing purposes,\nas well as adding members and creating sample messages",
+        "operationId": "MockChannels",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v3MockChannelsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v3MockChannelsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "InternalFakerService"
+        ]
+      }
+    },
+    "/InternalFaker/MockFriends": {
+      "post": {
+        "summary": "Method supports creating multiple friends.",
+        "operationId": "MockFriends",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v3MockFriendsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v3MockFriendsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "InternalFakerService"
+        ]
+      }
+    },
+    "/InternalFaker/MockMessages": {
+      "post": {
+        "summary": "Method supports creating multiple messages including message, image, link...",
+        "operationId": "MockMessages",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v3MockMessagesResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v3MockMessagesRequest"
+            }
+          }
+        ],
+        "tags": [
+          "InternalFakerService"
+        ]
+      }
+    },
+    "/InternalFaker/MockUsers": {
+      "post": {
+        "summary": "Method to support creating multiple user accounts for testing purposes,\nAccounts created using this method cannot be logged in.\nThe method is not supported in the production environment.",
+        "operationId": "MockUsers",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v3MockUsersResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v3MockUsersRequest"
+            }
+          }
+        ],
+        "tags": [
+          "InternalFakerService"
+        ]
+      }
+    },
+    "/InternalFaker/SetBadge": {
+      "post": {
+        "operationId": "SetBadge",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v3SetBadgeResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v3SetBadgeRequest"
+            }
+          }
+        ],
+        "tags": [
+          "InternalFakerService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v3DeleteMockedChannelsResponse": {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "type": "boolean"
+        },
+        "error": {
+          "$ref": "#/definitions/v3Error"
+        }
+      }
+    },
+    "v3DeleteMockedUsersResponse": {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "type": "boolean"
+        },
+        "error": {
+          "$ref": "#/definitions/v3Error"
+        }
+      }
+    },
+    "v3Error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v3GetTokensRequest": {
+      "type": "object",
+      "properties": {
+        "usernames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v3GetTokensResponse": {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "type": "boolean"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "error": {
+          "$ref": "#/definitions/v3Error"
+        }
+      }
+    },
+    "v3MockChannelsRequest": {
+      "type": "object",
+      "properties": {
+        "quantity": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The number of channels you want to create."
+        },
+        "prefix": {
+          "type": "string",
+          "title": "The channel name structure would look like: channelName = {prefix} {random};"
+        },
+        "members": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "List of userIds you want to add to this channel to create members"
+        },
+        "totalMessages": {
+          "type": "integer",
+          "format": "int64",
+          "title": "Total number of messages you want to create initially for the channel"
+        },
+        "typeChannel": {
+          "type": "integer",
+          "format": "int64",
+          "title": "Type channel create\n0: channel 1-n\n1: channel 1-1\n2: incoming message request\n3: outgoing message request"
+        }
+      },
+      "title": "Mock channels"
+    },
+    "v3MockChannelsResponse": {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "type": "boolean"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v3MockedChannel"
+          }
+        },
+        "error": {
+          "$ref": "#/definitions/v3Error"
+        }
+      }
+    },
+    "v3MockFriendsRequest": {
+      "type": "object",
+      "properties": {
+        "quantity": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "type": {
+          "type": "integer",
+          "format": "int64",
+          "title": "0: Fake friend request\n1: Fake friend require\n2: Fake friend"
+        }
+      },
+      "title": "Mock friends"
+    },
+    "v3MockFriendsResponse": {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "type": "boolean"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "List of userIds"
+        },
+        "error": {
+          "$ref": "#/definitions/v3Error"
+        }
+      }
+    },
+    "v3MockMessagesRequest": {
+      "type": "object",
+      "properties": {
+        "workspaceId": {
+          "type": "string"
+        },
+        "channelId": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "Mock message"
+    },
+    "v3MockMessagesResponse": {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "type": "boolean"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "List of messageIds"
+        },
+        "error": {
+          "$ref": "#/definitions/v3Error"
+        }
+      }
+    },
+    "v3MockUsersRequest": {
+      "type": "object",
+      "properties": {
+        "quantity": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The number of accounts you want to create."
+        },
+        "prefix": {
+          "type": "string",
+          "title": "It is the prefix specifically assigned to each tester. EX: 'BO'\nThe account structure would look like: username = {prefix}{id};"
+        },
+        "badge": {
+          "$ref": "#/definitions/v3UserBadgeTypeEnum"
+        }
+      }
+    },
+    "v3MockUsersResponse": {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "type": "boolean"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v3MockedUser"
+          }
+        },
+        "error": {
+          "$ref": "#/definitions/v3Error"
+        }
+      }
+    },
+    "v3MockedChannel": {
+      "type": "object",
+      "properties": {
+        "channelId": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "ownerId": {
+          "type": "string"
+        },
+        "memberIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "List of userIds added to this channel"
+        },
+        "messageIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v3MockedUser": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        },
+        "securityKey": {
+          "type": "string"
+        },
+        "recoverKey": {
+          "type": "string"
+        },
+        "badge": {
+          "$ref": "#/definitions/v3UserBadgeTypeEnum"
+        }
+      }
+    },
+    "v3SetBadgeRequest": {
+      "type": "object",
+      "properties": {
+        "usernames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "badge": {
+          "$ref": "#/definitions/v3UserBadgeTypeEnum"
+        }
+      }
+    },
+    "v3SetBadgeResponse": {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "type": "boolean"
+        },
+        "error": {
+          "$ref": "#/definitions/v3Error"
+        }
+      }
+    },
+    "v3UserBadgeTypeEnum": {
+      "type": "integer",
+      "enum": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "default": "USER_BADGE_TYPE_DEFAULT",
+      "x-enum-varnames": [
+        "USER_BADGE_TYPE_DEFAULT",
+        "USER_BADGE_TYPE_BLUE",
+        "USER_BADGE_TYPE_GRAY",
+        "USER_BADGE_TYPE_YELLOW"
+      ]
+    }
+  }
+}
