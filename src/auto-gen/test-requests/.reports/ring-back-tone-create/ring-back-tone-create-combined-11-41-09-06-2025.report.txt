@@ -1,0 +1,156 @@
+=== Request Test Report for ring-back-tone-create ===
+• Host: N/A
+• Endpoint: /RingbackTone/RingbackToneCreate
+• Date: 09/06/2025, 11:41:22
+
+=== Execution Steps ===
+
+=== Test Summary ===
+✅ Passed: 12
+❌ Failed: 18
+📊 Total: 30
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 12
+ 🟢 201: 0
+ 🟠 400: 0
+ 🟠 403: 0
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Unique Errors ===
+ 🟣 1. ringbackTonePath invalid url (Occurred: 6 times)
+ 🟣 2. ringbackTonePath should not be empty (Occurred: 6 times)
+ 🟣 3. name string must contain at most 50 character(s) (Occurred: 5 times)
+ 🟣 4. name should not be empty (Occurred: 5 times)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #3
+     ├─ Status: 200
+     ├─ Body: {"name":123}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): ringbackTonePath invalid url
+     └─ Details: No details
+
+ 🟣 2. Case #4
+     ├─ Status: 200
+     ├─ Body: {"name":123,"ringbackTonePath":""}
+     ├─ Actual (Missing): ringbackTonePath string must contain at least 1 character(s)
+     ├─ Expected (Extra): ringbackTonePath should not be empty
+     └─ Details: No details
+
+ 🟣 3. Case #8
+     ├─ Status: 200
+     ├─ Body: {"name":"nhac cho"}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): ringbackTonePath invalid url
+     └─ Details: No details
+
+ 🟣 4. Case #9
+     ├─ Status: 200
+     ├─ Body: {"name":"nhac cho","ringbackTonePath":""}
+     ├─ Actual (Missing): ringbackTonePath string must contain at least 1 character(s)
+     ├─ Expected (Extra): ringbackTonePath should not be empty
+     └─ Details: No details
+
+ 🟣 5. Case #11
+     ├─ Status: 200
+     ├─ Body: {"name":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ringbackTonePath":"https://fs.ugc.ziicdn.net/01JEZJ0GPMSHH2RVX9QTSJJNRX/heic_300kB.heic"}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): name string must contain at most 50 character(s)
+     └─ Details: No details
+
+ 🟣 6. Case #12
+     ├─ Status: 200
+     ├─ Body: {"name":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ringbackTonePath":123}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): name string must contain at most 50 character(s)
+     └─ Details: No details
+
+ 🟣 7. Case #13
+     ├─ Status: 200
+     ├─ Body: {"name":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): name string must contain at most 50 character(s), ringbackTonePath invalid url
+     └─ Details: No details
+
+ 🟣 8. Case #14
+     ├─ Status: 200
+     ├─ Body: {"name":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ringbackTonePath":""}
+     ├─ Actual (Missing): ringbackTonePath string must contain at least 1 character(s)
+     ├─ Expected (Extra): name string must contain at most 50 character(s), ringbackTonePath should not be empty
+     └─ Details: No details
+
+ 🟣 9. Case #15
+     ├─ Status: 200
+     ├─ Body: {"name":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ringbackTonePath":null}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): name string must contain at most 50 character(s)
+     └─ Details: No details
+
+ 🟣 10. Case #18
+     ├─ Status: 200
+     ├─ Body: {}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): ringbackTonePath invalid url
+     └─ Details: No details
+
+ 🟣 11. Case #19
+     ├─ Status: 200
+     ├─ Body: {"ringbackTonePath":""}
+     ├─ Actual (Missing): ringbackTonePath string must contain at least 1 character(s)
+     ├─ Expected (Extra): ringbackTonePath should not be empty
+     └─ Details: No details
+
+ 🟣 12. Case #21
+     ├─ Status: 200
+     ├─ Body: {"name":"","ringbackTonePath":"https://fs.ugc.ziicdn.net/01JEZJ0GPMSHH2RVX9QTSJJNRX/heic_300kB.heic"}
+     ├─ Actual (Missing): name string must contain at least 1 character(s)
+     ├─ Expected (Extra): name should not be empty
+     └─ Details: No details
+
+ 🟣 13. Case #22
+     ├─ Status: 200
+     ├─ Body: {"name":"","ringbackTonePath":123}
+     ├─ Actual (Missing): name string must contain at least 1 character(s)
+     ├─ Expected (Extra): name should not be empty
+     └─ Details: No details
+
+ 🟣 14. Case #23
+     ├─ Status: 200
+     ├─ Body: {"name":""}
+     ├─ Actual (Missing): name string must contain at least 1 character(s)
+     ├─ Expected (Extra): name should not be empty, ringbackTonePath invalid url
+     └─ Details: No details
+
+ 🟣 15. Case #24
+     ├─ Status: 200
+     ├─ Body: {"name":"","ringbackTonePath":""}
+     ├─ Actual (Missing): name string must contain at least 1 character(s), ringbackTonePath string must contain at least 1 character(s)
+     ├─ Expected (Extra): name should not be empty, ringbackTonePath should not be empty
+     └─ Details: No details
+
+ 🟣 16. Case #25
+     ├─ Status: 200
+     ├─ Body: {"name":"","ringbackTonePath":null}
+     ├─ Actual (Missing): name string must contain at least 1 character(s)
+     ├─ Expected (Extra): name should not be empty
+     └─ Details: No details
+
+ 🟣 17. Case #28
+     ├─ Status: 200
+     ├─ Body: {"name":null}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): ringbackTonePath invalid url
+     └─ Details: No details
+
+ 🟣 18. Case #29
+     ├─ Status: 200
+     ├─ Body: {"name":null,"ringbackTonePath":""}
+     ├─ Actual (Missing): ringbackTonePath string must contain at least 1 character(s)
+     ├─ Expected (Extra): ringbackTonePath should not be empty
+     └─ Details: No details
+
+=== End of Report ===
