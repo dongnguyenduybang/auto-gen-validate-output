@@ -26,7 +26,7 @@ beforeAll(async () => {
         action: ACTION.CREATE_CHANNEL,
         body: {
           workspaceId: VAR.workspaceId,
-          name: 'channel1',
+          name: VAR.defaultChannelName
         },
       },
     ];

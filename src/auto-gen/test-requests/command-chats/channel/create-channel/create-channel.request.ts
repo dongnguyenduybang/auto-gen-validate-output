@@ -17,6 +17,7 @@ export const CreateChannelRequest: RequestTestSuite = {
       beforeEach: [],
       afterEach: [],
       afterAll: [],
-    },
+    },  
   ],
 };
+ 

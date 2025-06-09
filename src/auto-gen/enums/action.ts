@@ -2,6 +2,18 @@ import { METHOD } from './method.enum';
 import { APIPath } from './path.enum';
 
 export enum ACTION {
+  SUBSCRIBE_ALL = 'subscribeAll',
+  TURNON_GLOBAL_NOTIFICATION = 'turnonGlobalNotification',
+  TURNOFF_GLOBAL_NOTIFICATION = 'turnoffGlobalNotification',
+  UNSUBSCRIBE_ALL = 'unsubscribeAll',
+  SUBSCRIBE_CHANNEL = 'subscribeChannel',
+  UNSUBSCRIBE_CHANNEL = 'unsubscribeChannel',
+
+  SEARCH_CHANNEL = 'searchChannel',
+  SEARCH_USER = 'searchUser',
+  SEARCH_FRIEND = 'searchFriend',
+  SEARCH_MEMBER = 'searchMember',
+  LIST_SUGGEST_FRIEND_BY_TYPE = 'listSuggestFriendByType',
   GET_STICKER_COLLECTION = 'getStickerCollection',
   GET_STICKER = 'getSticker',
   LIST_STICKER = 'listSticker',
@@ -64,7 +76,6 @@ export enum ACTION {
   ACCEPT_FRIEND_REQUEST = 'acceptFriendRequest',
   UPDATE_CHANNEL_NAME = 'updateChannelName',
   UPDATE_USER_DISPLAY_NAME = 'updateUserDisplayName',
-  SEARCH_USERS = 'searchUsers',
   LIST_MEMBERS = 'listMembers',
   GET_USER = 'getUser',
   LIST_MESSAGE = 'listMessage',
@@ -296,13 +307,50 @@ export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
     path: APIPath.ViewSticker.GetStickerCollection,
     method: METHOD.GET,
   },
-
-
-
-
-
-
-
+  [ACTION.SEARCH_USER]: {
+    path: APIPath.Search.SearchUsers,
+    method: METHOD.POST,
+  },
+  [ACTION.SEARCH_FRIEND]: {
+    path: APIPath.Search.SearchFriends,
+    method: METHOD.POST,
+  },
+  [ACTION.SEARCH_MEMBER]: {
+    path: APIPath.Search.SearchMembers,
+    method: METHOD.POST,
+  },
+  [ACTION.SEARCH_CHANNEL]: {
+    path: APIPath.Search.SearchChannels,
+    method: METHOD.POST,
+  },
+  [ACTION.LIST_SUGGEST_FRIEND_BY_TYPE]: {
+    path: APIPath.Suggestion.ListSuggestedFriendsByType,
+    method: METHOD.GET,
+  },
+  [ACTION.SUBSCRIBE_ALL]: {
+    path: APIPath.Notification.SubscribeAll,
+    method: METHOD.POST,
+  },
+  [ACTION.TURNOFF_GLOBAL_NOTIFICATION]: {
+    path: APIPath.Notification.TurnOffGlobalNotification,
+    method: METHOD.POST,
+  },
+  [ACTION.TURNON_GLOBAL_NOTIFICATION]: {
+    path: APIPath.Notification.TurnOnGlobalNotification,
+    method: METHOD.POST,
+  },
+  [ACTION.UNSUBSCRIBE_CHANNEL]: {
+    path: APIPath.Notification.UnsubscribeChannel,
+    method: METHOD.POST,
+  },
+  [ACTION.UNSUBSCRIBE_ALL]: {
+    path: APIPath.Notification.UnsubscribeAll,
+    method: METHOD.POST,
+  },
+  [ACTION.SUBSCRIBE_CHANNEL]: {
+    path: APIPath.Notification.SubscribeChannel,
+    method: METHOD.POST,
+  },
   [ACTION.MOCK_USER]: {
     path: APIPath.Faker.MockedUsers,
     method: METHOD.POST,
@@ -362,10 +410,6 @@ export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
   [ACTION.UPDATE_USER_DISPLAY_NAME]: {
     path: APIPath.UserProfile.UpdateUserDisplayName,
     method: METHOD.PUT,
-  },
-  [ACTION.SEARCH_USERS]: {
-    path: APIPath.Search.SearchUsers,
-    method: METHOD.POST,
   },
   [ACTION.LIST_MEMBERS]: {
     path: APIPath.ViewMember.ListMembers,

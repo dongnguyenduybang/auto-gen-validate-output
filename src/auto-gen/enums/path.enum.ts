@@ -163,5 +163,16 @@ export const APIPath = {
     RingBackToneCreate: '/RingbackTone/RingbackToneCreate',
     RingBackToneRename: '/RingbackTone/RingbackToneRename',
     SetRingBackTone: '/RingbackTone/SetRingbackTone',
+  },
+  Suggestion: {
+    ListSuggestedFriendsByType: '/Suggestion/ListSuggestedFriendsByType'
+  },
+  Notification: {
+    SubscribeAll: '/Notification/SubscribeAll',
+    TurnOnGlobalNotification: '',
+    TurnOffGlobalNotification: '',
+    UnsubscribeAll: '/Notification/UnsubscribeAll',
+    SubscribeChannel: '/Notification/SubscribeChannel',
+    UnsubscribeChannel: '/Notification/UnsubscribeChannel',
   }
 };
