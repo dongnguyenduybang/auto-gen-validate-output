@@ -9,6 +9,7 @@ import { genTestSaga } from './utils/gen-test-saga';
 import { ActionHandler } from './utils/declarations';
 import { generateAllReports } from './utils/combine-report';
 import { findTestPath } from './utils/helper';
+import { genClientSwagger } from './swagger/gen-client-swagger';
 
 const args = process.argv.slice(2);
 if (args.length < 2) {
@@ -28,7 +29,7 @@ if (type === 'report') {
 } else {
   dtoName = restArgs[0];
 }
-const validTypes = ['request', 'response', 'saga', 'report', 'reports'];
+const validTypes = ['request', 'response', 'saga', 'report', 'reports', 'swagger'];
 
 if (!validTypes.includes(type)) {
   console.error(`Invalid type. Valid types: ${validTypes.join(', ')}`);
@@ -44,6 +45,7 @@ const actionHandlers: Record<string, Record<string, ActionHandler[]>> = {
     response: [(dto) => Promise.resolve(genTestResponse(dto))],
     saga: [(dto) => Promise.resolve(genTestSaga(dto))],
     reports: [(dto) => generateAllReports(dto)],
+    swagger: [() => genClientSwagger()]
   },
   test: {
     request: [runTests('test-requests')],
@@ -188,9 +190,9 @@ async function main() {
           dtoName.includes('-responses') ||
           dtoName.includes('-sagas'));
 
-      if (!dtoName) {
-        throw new Error('Missing dtoName parameter');
-      }
+      // if (!dtoName) {
+      //   throw new Error('Missing dtoName parameter');
+      // }
 
       if (isBulkAction) {
         await handleBulkAction(dtoName, handlers);
