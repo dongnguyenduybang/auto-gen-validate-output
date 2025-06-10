@@ -1312,6 +1312,432 @@ export interface RemoveFromChannelParams {
   reason?: string | null;
 }
 
+export namespace Friend {
+  /**
+   * No description
+   * @name AddFriend
+   * @request POST:/Friend/AddFriend
+   */
+  export namespace AddFriend {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3AddFriendRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3AddFriendResponse;
+  }
+
+  /**
+   * No description
+   * @name AcceptFriendRequest
+   * @request POST:/Friend/AcceptFriendRequest
+   */
+  export namespace AcceptFriendRequest {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3AcceptFriendRequestRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3AcceptFriendRequestResponse;
+  }
+
+  /**
+   * No description
+   * @name CancelFriendRequest
+   * @request POST:/Friend/CancelFriendRequest
+   */
+  export namespace CancelFriendRequest {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3CancelFriendRequestRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3CancelFriendRequestResponse;
+  }
+
+  /**
+   * No description
+   * @name Unfriend
+   * @request POST:/Friend/Unfriend
+   */
+  export namespace Unfriend {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3UnfriendRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UnfriendResponse;
+  }
+
+  /**
+   * No description
+   * @name DeleteFriendRequest
+   * @request DELETE:/Friend/DeleteFriendRequest
+   */
+  export namespace DeleteFriendRequest {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * The user identify to delete friend request
+       * @format isULID
+       * @minLength 1
+       */
+      userId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3DeleteFriendRequestResponse;
+  }
+
+  /**
+   * No description
+   * @name MarkAllAsRead
+   * @request POST:/Friend/MarkAllAsRead
+   */
+  export namespace MarkAllAsRead {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3MarkAllAsReadRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3MarkAllAsReadResponse;
+  }
+}
+
+export namespace Channel {
+  /**
+   * No description
+   * @name CreateChannel
+   * @request POST:/Channel/CreateChannel
+   */
+  export namespace CreateChannel {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3CreateChannelRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3CreateChannelResponse;
+  }
+
+  /**
+   * No description
+   * @name UpdateChannelName
+   * @request PUT:/Channel/UpdateChannelName
+   */
+  export namespace UpdateChannelName {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3UpdateChannelNameRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UpdateChannelNameResponse;
+  }
+
+  /**
+   * No description
+   * @name UpdateChannelAvatar
+   * @request PUT:/Channel/UpdateChannelAvatar
+   */
+  export namespace UpdateChannelAvatar {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3UpdateChannelAvatarRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UpdateChannelAvatarResponse;
+  }
+
+  /**
+   * No description
+   * @name DeleteChannel
+   * @request DELETE:/Channel/DeleteChannel
+   */
+  export namespace DeleteChannel {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * The workspace identify
+       * @minLength 1
+       */
+      workspaceId?: string;
+      /**
+       * The channel identify
+       * @format isULID
+       * @minLength 1
+       */
+      channelId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3DeleteChannelResponse;
+  }
+
+  /**
+   * No description
+   * @name DeleteChannelAvatar
+   * @request DELETE:/Channel/DeleteChannelAvatar
+   */
+  export namespace DeleteChannelAvatar {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * The workspace identify
+       * @minLength 1
+       */
+      workspaceId?: string;
+      /**
+       * The channel identify
+       * @format isULID
+       * @minLength 1
+       */
+      channelId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3DeleteChannelAvatarResponse;
+  }
+
+  /**
+   * No description
+   * @name AcceptMessageRequest
+   * @request POST:/Channel/AcceptMessageRequest
+   */
+  export namespace AcceptMessageRequest {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3AcceptMessageRequestRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3AcceptMessageRequestResponse;
+  }
+
+  /**
+   * No description
+   * @name RejectMessageRequest
+   * @request POST:/Channel/RejectMessageRequest
+   */
+  export namespace RejectMessageRequest {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3RejectMessageRequestRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3RejectMessageRequestResponse;
+  }
+
+  /**
+   * No description
+   * @name UpdateDmMediaPermissionSetting
+   * @request PUT:/Channel/UpdateDMMediaPermissionSetting
+   */
+  export namespace UpdateDmMediaPermissionSetting {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3UpdateDMMediaPermissionSettingRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UpdateDMMediaPermissionSettingResponse;
+  }
+}
+
+export namespace Invitation {
+  /**
+   * No description
+   * @name SendInvitation
+   * @request POST:/Invitation/SendInvitation
+   */
+  export namespace SendInvitation {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3SendInvitationRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3SendInvitationResponse;
+  }
+
+  /**
+   * No description
+   * @name AcceptInvitation
+   * @request POST:/Invitation/AcceptInvitation
+   */
+  export namespace AcceptInvitation {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3AcceptInvitationRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3AcceptInvitationResponse;
+  }
+
+  /**
+   * No description
+   * @name CreateInvitation
+   * @request POST:/Invitation/CreateInvitation
+   */
+  export namespace CreateInvitation {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3CreateInvitationRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3CreateInvitationResponse;
+  }
+
+  /**
+   * No description
+   * @name RevokeInvitation
+   * @request DELETE:/Invitation/RevokeInvitation
+   */
+  export namespace RevokeInvitation {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * The workspace identify
+       * @minLength 1
+       */
+      workspaceId?: string;
+      /**
+       * The channel identify
+       * @format isULID
+       * @minLength 1
+       */
+      channelId?: string;
+      /**
+       * Link to the channel acceptance invitation
+       * @minLength 1
+       */
+      code?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3RevokeInvitationResponse;
+  }
+}
+
+export namespace Member {
+  /**
+   * No description
+   * @name AssignAsAdmin
+   * @request POST:/Member/AssignAsAdmin
+   */
+  export namespace AssignAsAdmin {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3AssignAsAdminRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3AssignAsAdminResponse;
+  }
+
+  /**
+   * No description
+   * @name BanFromChannel
+   * @request POST:/Member/BanFromChannel
+   */
+  export namespace BanFromChannel {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3BanFromChannelRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3BanFromChannelResponse;
+  }
+
+  /**
+   * No description
+   * @name DismissAsAdmin
+   * @request POST:/Member/DismissAsAdmin
+   */
+  export namespace DismissAsAdmin {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3DismissAsAdminRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3DismissAsAdminResponse;
+  }
+
+  /**
+   * No description
+   * @name LeaveChannel
+   * @request POST:/Member/LeaveChannel
+   */
+  export namespace LeaveChannel {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3LeaveChannelRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3LeaveChannelResponse;
+  }
+
+  /**
+   * No description
+   * @name RemoveFromChannel
+   * @request DELETE:/Member/RemoveFromChannel
+   */
+  export namespace RemoveFromChannel {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * The workspace identify
+       * @minLength 1
+       */
+      workspaceId?: string;
+      /**
+       * @format isULID
+       * @minLength 1
+       */
+      channelId?: string;
+      /**
+       * The user identify
+       * @format isULID
+       * @minLength 1
+       */
+      userId?: string;
+      /** @minLength 1 */
+      reason?: string | null;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3RemoveFromChannelResponse;
+  }
+
+  /**
+   * No description
+   * @name UpdateNickname
+   * @request PUT:/Member/UpdateNickname
+   */
+  export namespace UpdateNickname {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3UpdateNicknameRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UpdateNicknameResponse;
+  }
+
+  /**
+   * No description
+   * @name UnbanFromChannel
+   * @request POST:/Member/UnbanFromChannel
+   */
+  export namespace UnbanFromChannel {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3UnbanFromChannelRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UnbanFromChannelResponse;
+  }
+
+  /**
+   * No description
+   * @name TransferOwnership
+   * @request POST:/Member/TransferOwnership
+   */
+  export namespace TransferOwnership {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3TransferOwnershipRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3TransferOwnershipResponse;
+  }
+
+  /**
+   * No description
+   * @name TransferOwnershipAndLeaveChannel
+   * @request POST:/Member/TransferOwnershipAndLeaveChannel
+   */
+  export namespace TransferOwnershipAndLeaveChannel {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3TransferOwnershipAndLeaveRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3TransferOwnershipAndLeaveResponse;
+  }
+}
+
 export type QueryParamsType = Record<string | number, any>;
 export type ResponseFormat = keyof Omit<Body, "body" | "bodyUsed">;
 

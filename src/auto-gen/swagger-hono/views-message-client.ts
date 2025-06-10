@@ -1572,6 +1572,489 @@ export interface ListMessageFragmentsParams {
   channelId?: string;
 }
 
+export namespace MessageView {
+  /**
+   * No description
+   * @name GetDmMessage
+   * @request GET:/MessageView/GetDMMessage
+   */
+  export namespace GetDmMessage {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * The user identify whom receive message
+       * @format isULID
+       * @minLength 1
+       */
+      userId?: string;
+      /**
+       * The message identify
+       * @format isULID
+       * @minLength 1
+       */
+      messageId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3GetDMMessageResponse;
+  }
+
+  /**
+   * No description
+   * @name GetMessage
+   * @request GET:/MessageView/GetMessage
+   */
+  export namespace GetMessage {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * The workspace identify
+       * @minLength 1
+       */
+      workspaceId?: string;
+      /**
+       * The channel identify
+       * @format isULID
+       * @minLength 1
+       */
+      channelId?: string;
+      /**
+       * The message identify
+       * @format isULID
+       * @minLength 1
+       */
+      messageId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3GetMessageResponse;
+  }
+
+  /**
+   * No description
+   * @name ListDmMessages
+   * @request GET:/MessageView/ListDMMessages
+   */
+  export namespace ListDmMessages {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The allowable value ranges from 1 to 500, with a default value of 100 */
+      limit?: string | null;
+      /**
+       * The last messageId of this page will be the next_page_token of the current page
+       * @format isULID
+       */
+      nextPageToken?: string;
+      /**
+       * The first messageId of this page will be the prev_page_token of the current page
+       * @format isULID
+       */
+      prevPageToken?: string;
+      /**
+       * The user identify whom receive message
+       * @format isULID
+       * @minLength 1
+       */
+      userId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ListDMMessagesResponse;
+  }
+
+  /**
+   * No description
+   * @name ListMessages
+   * @request GET:/MessageView/ListMessages
+   */
+  export namespace ListMessages {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The allowable value ranges from 1 to 500, with a default value of 100 */
+      limit?: string | null;
+      /**
+       * The last messageId of this page will be the next_page_token of the current page
+       * @format isULID
+       */
+      nextPageToken?: string;
+      /**
+       * The first messageId of this page will be the prev_page_token of the current page
+       * @format isULID
+       */
+      prevPageToken?: string;
+      /**
+       * The workspace identify
+       * @minLength 1
+       */
+      workspaceId?: string;
+      /**
+       * The channel identify
+       * @format isULID
+       * @minLength 1
+       */
+      channelId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ListMessagesResponse;
+  }
+
+  /**
+   * No description
+   * @name ListMessageReactions
+   * @request GET:/MessageView/ListMessageReactions
+   */
+  export namespace ListMessageReactions {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The allowable value ranges from 1 to 500, with a default value of 100 */
+      limit?: string | null;
+      /**
+       * The last messageId of this page will be the next_page_token of the current page
+       * @format isULID
+       */
+      nextPageToken?: string;
+      /**
+       * The first messageId of this page will be the prev_page_token of the current page
+       * @format isULID
+       */
+      prevPageToken?: string;
+      /**
+       * The workspace identify
+       * @minLength 1
+       */
+      workspaceId?: string;
+      /**
+       * The channel identify
+       * @format isULID
+       * @minLength 1
+       */
+      channelId?: string;
+      /**
+       * The message identify
+       * @format isULID
+       * @minLength 1
+       */
+      messageId?: string;
+      /**
+       * The emoji's data
+       * @format isEmoji
+       */
+      emoji?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ListMessageReactionsResponse;
+  }
+
+  /**
+   * No description
+   * @name ListDmMessageReactions
+   * @request GET:/MessageView/ListDMMessageReactions
+   */
+  export namespace ListDmMessageReactions {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * The user identify whom receive message
+       * @format isULID
+       * @minLength 1
+       */
+      userId?: string;
+      /**
+       * Status response
+       * @format isULID
+       * @minLength 1
+       */
+      messageId?: string;
+      /**
+       * The emoji's data
+       * @format isEmoji
+       */
+      emoji?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ListDMMessageReactionsResponse;
+  }
+
+  /**
+   * No description
+   * @name GetPinnedMessage
+   * @request GET:/MessageView/GetPinnedMessage
+   */
+  export namespace GetPinnedMessage {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * The workspace identify
+       * @minLength 1
+       */
+      workspaceId?: string;
+      /**
+       * The channel identify
+       * @format isULID
+       * @minLength 1
+       */
+      channelId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3GetPinnedMessageResponse;
+  }
+
+  /**
+   * No description
+   * @name GetPinnedDmMessage
+   * @request GET:/MessageView/GetPinnedDMMessage
+   */
+  export namespace GetPinnedDmMessage {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * The user identify
+       * @format isULID
+       * @minLength 1
+       */
+      userId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3GetPinnedDMMessageResponse;
+  }
+
+  /**
+   * No description
+   * @name JumpToDmMessage
+   * @request GET:/MessageView/JumpToDMMessage
+   */
+  export namespace JumpToDmMessage {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The allowable value ranges from 1 to 500, with a default value of 100 */
+      limit?: string | null;
+      /**
+       * The last messageId of this page will be the next_page_token of the current page
+       * @format isULID
+       */
+      nextPageToken?: string;
+      /**
+       * The first messageId of this page will be the prev_page_token of the current page
+       * @format isULID
+       */
+      prevPageToken?: string;
+      /**
+       * The user identify whom receive message
+       * @format isULID
+       * @minLength 1
+       */
+      userId?: string;
+      /**
+       * The message identify jump to
+       * @format isULID
+       * @minLength 1
+       */
+      messageId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3JumpToDMMessageResponse;
+  }
+
+  /**
+   * No description
+   * @name JumpToMessage
+   * @request GET:/MessageView/JumpToMessage
+   */
+  export namespace JumpToMessage {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The allowable value ranges from 1 to 500, with a default value of 100 */
+      limit?: string | null;
+      /**
+       * The last messageId of this page will be the next_page_token of the current page
+       * @format isULID
+       */
+      nextPageToken?: string;
+      /**
+       * The first messageId of this page will be the prev_page_token of the current page
+       * @format isULID
+       */
+      prevPageToken?: string;
+      /**
+       * The workspace identify
+       * @minLength 1
+       */
+      workspaceId?: string;
+      /**
+       * The channel identify
+       * @format isULID
+       * @minLength 1
+       */
+      channelId?: string;
+      /**
+       * The message identify
+       * @format isULID
+       * @minLength 1
+       */
+      messageId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3JumpToMessageResponse;
+  }
+
+  /**
+   * No description
+   * @name ListChannelAuditLogs
+   * @request GET:/MessageView/ListChannelAuditLogs
+   */
+  export namespace ListChannelAuditLogs {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The allowable value ranges from 1 to 500, with a default value of 100 */
+      limit?: string | null;
+      /**
+       * The last messageId of this page will be the next_page_token of the current page
+       * @format isULID
+       */
+      nextPageToken?: string;
+      /**
+       * The first messageId of this page will be the prev_page_token of the current page
+       * @format isULID
+       */
+      prevPageToken?: string;
+      /**
+       * The workspace identify
+       * @minLength 1
+       */
+      workspaceId?: string;
+      /**
+       * The channel Identify
+       * @format isULID
+       * @minLength 1
+       */
+      channelId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ListChannelAuditLogsResponse;
+  }
+
+  /**
+   * No description
+   * @name ListDmMessageFragments
+   * @request GET:/MessageView/ListDMMessageFragments
+   */
+  export namespace ListDmMessageFragments {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * messageId
+       * @format isULID
+       * @minLength 1
+       */
+      offsetId?: string | null;
+      /**
+       * Can be used to only return results with ID strictly smaller than max_id
+       * @format isULID
+       * @minLength 1
+       */
+      maxId?: string | null;
+      /**
+       * Can be used to only return results with ID strictly greater than min_id
+       * @format isULID
+       * @minLength 1
+       */
+      minId?: string | null;
+      /** default: 500, maximum 5k */
+      limit?: string | null;
+      /** based pagination */
+      addOffset?: string | null;
+      /**
+       * Can be used to only return results that are older than max_date
+       * @format isDateTime
+       * @minLength 1
+       */
+      maxDate?: string | null;
+      /**
+       * Can be used to only return results with are newer than min_date
+       * @format isDateTime
+       * @minLength 1
+       */
+      minDate?: string | null;
+      /**
+       * The user identify
+       * @format isULID
+       * @minLength 1
+       */
+      userId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ListDMMessageFragmentsResponse;
+  }
+
+  /**
+   * No description
+   * @name ListMessageFragments
+   * @request GET:/MessageView/ListMessageFragments
+   */
+  export namespace ListMessageFragments {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * messageId
+       * @format isULID
+       * @minLength 1
+       */
+      offsetId?: string | null;
+      /**
+       * Can be used to only return results with ID strictly smaller than max_id
+       * @format isULID
+       * @minLength 1
+       */
+      maxId?: string | null;
+      /**
+       * Can be used to only return results with ID strictly greater than min_id
+       * @format isULID
+       * @minLength 1
+       */
+      minId?: string | null;
+      /** default: 500, maximum 5k */
+      limit?: string | null;
+      /** based pagination */
+      addOffset?: string | null;
+      /**
+       * Can be used to only return results that are older than max_date
+       * @format isDateTime
+       * @minLength 1
+       */
+      maxDate?: string | null;
+      /**
+       * Can be used to only return results with are newer than min_date
+       * @format isDateTime
+       * @minLength 1
+       */
+      minDate?: string | null;
+      /**
+       * The workspace identify
+       * @minLength 1
+       */
+      workspaceId?: string;
+      /**
+       * The channel identify
+       * @format isULID
+       * @minLength 1
+       */
+      channelId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ListMessageFragmentsResponse;
+  }
+}
+
 export type QueryParamsType = Record<string | number, any>;
 export type ResponseFormat = keyof Omit<Body, "body" | "bodyUsed">;
 

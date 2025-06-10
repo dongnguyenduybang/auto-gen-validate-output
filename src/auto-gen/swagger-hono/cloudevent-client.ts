@@ -15235,6 +15235,14094 @@ export interface WebsocketResumeEventDataTParams {
   token?: string;
 }
 
+export namespace CloudEventServiceTemp {
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name AllMessagesDeletedEventDataT
+   * @request POST:/CloudEventServiceTemp/AllMessagesDeletedEventData
+   */
+  export namespace AllMessagesDeletedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      workspaceId?: string;
+      /** The channel identify */
+      channelId?: string;
+      /** The user identify whom delete message */
+      actorId?: string;
+      /** The workspace identify */
+      "destination.workspaceId"?: string;
+      /** The channel identify */
+      "destination.channelId"?: string;
+      /**
+       * The channel type
+       *
+       *  - CHANNEL_TYPE_ENUM_DM: DM: Direct message 1-1
+       *  - CHANNEL_TYPE_ENUM_CHANNEL: CHANNEL: A group can send message to multiple user 1-n
+       *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
+       * @default "CHANNEL_TYPE_ENUM_DM"
+       */
+      "destination.channelType"?:
+        | "CHANNEL_TYPE_ENUM_DM"
+        | "CHANNEL_TYPE_ENUM_CHANNEL"
+        | "CHANNEL_TYPE_ENUM_BROADCAST";
+      /** The user identify whom receive message */
+      "destination.recipientId"?: string;
+      /** The dm channel identify */
+      "destination.dmId"?: string;
+      /**
+       * The dm message status
+       *
+       *  - DIRECT_MESSAGE_STATUS_ENUM_PENDING: PENDING: The recipient has not replied or accept the message request
+       *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
+       * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+       */
+      "destination.dmStatus"?:
+        | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+        | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3AllMessagesDeletedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name AllUserMessagesDeletedEventDataT
+   * @request POST:/CloudEventServiceTemp/AllUserMessagesDeletedEventData
+   */
+  export namespace AllUserMessagesDeletedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      workspaceId?: string;
+      /** The channel identify */
+      channelId?: string;
+      /** The user identify whom delete message */
+      actorId?: string;
+      /** The workspace identify */
+      "destination.workspaceId"?: string;
+      /** The channel identify */
+      "destination.channelId"?: string;
+      /**
+       * The channel type
+       *
+       *  - CHANNEL_TYPE_ENUM_DM: DM: Direct message 1-1
+       *  - CHANNEL_TYPE_ENUM_CHANNEL: CHANNEL: A group can send message to multiple user 1-n
+       *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
+       * @default "CHANNEL_TYPE_ENUM_DM"
+       */
+      "destination.channelType"?:
+        | "CHANNEL_TYPE_ENUM_DM"
+        | "CHANNEL_TYPE_ENUM_CHANNEL"
+        | "CHANNEL_TYPE_ENUM_BROADCAST";
+      /** The user identify whom receive message */
+      "destination.recipientId"?: string;
+      /** The dm channel identify */
+      "destination.dmId"?: string;
+      /**
+       * The dm message status
+       *
+       *  - DIRECT_MESSAGE_STATUS_ENUM_PENDING: PENDING: The recipient has not replied or accept the message request
+       *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
+       * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+       */
+      "destination.dmStatus"?:
+        | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+        | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3AllUserMessagesDeletedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name AvatarFrameCreatedEventDataT
+   * @request POST:/CloudEventServiceTemp/AvatarFrameCreatedEventData
+   */
+  export namespace AvatarFrameCreatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify whom create avatar frame */
+      actorId?: string;
+      /** The URL avatar frame */
+      avatarFrame?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3AvatarFrameCreatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name AvatarFrameDeletedEventDataT
+   * @request POST:/CloudEventServiceTemp/AvatarFrameDeletedEventData
+   */
+  export namespace AvatarFrameDeletedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify whom delete avatar frame */
+      actorId?: string;
+      /** The URL avatar frame deleted */
+      avatarFrame?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3AvatarFrameDeletedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name CallCreatedEventDataT
+   * @request POST:/CloudEventServiceTemp/CallCreatedEventData
+   */
+  export namespace CallCreatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The call identify */
+      "callData.callId"?: string;
+      /**
+       * The state of call
+       *
+       *  - CALL_STATE_UNSPECIFIED: Call state unspecified
+       *  - CALL_STATE_DIALING: Call state returned by the API when the user initiates a call
+       *  - CALL_STATE_CALLING: Call state when the callee is being connected via websocket
+       *  - CALL_STATE_READY_TO_CONNECT: Call state when both the caller and the callee have updated enough ICE information
+       *  - CALL_STATE_CONNECTING: Call state is connecting
+       *  - CALL_STATE_CONNECTED: Call state when the caller and the callee have successfully established a webRTC connection
+       *  - CALL_STATE_RECONNECTING: Call state is reconnecting
+       *  - CALL_STATE_ENDED: Call state when either of the two users ends the call, cancels the call, or rejects the call
+       * @default "CALL_STATE_UNSPECIFIED"
+       */
+      "callData.state"?:
+        | "CALL_STATE_UNSPECIFIED"
+        | "CALL_STATE_DIALING"
+        | "CALL_STATE_CALLING"
+        | "CALL_STATE_READY_TO_CONNECT"
+        | "CALL_STATE_CONNECTING"
+        | "CALL_STATE_CONNECTED"
+        | "CALL_STATE_RECONNECTING"
+        | "CALL_STATE_ENDED";
+      /**
+       * The type of call
+       *
+       *  - CALL_TYPE_UNSPECIFIED: The unspecified call
+       *  - CALL_TYPE_VIDEO: The video call
+       *  - CALL_TYPE_AUDIO: The audio call
+       * @default "CALL_TYPE_UNSPECIFIED"
+       */
+      "callData.type"?:
+        | "CALL_TYPE_UNSPECIFIED"
+        | "CALL_TYPE_VIDEO"
+        | "CALL_TYPE_AUDIO";
+      /**
+       * The ended reason of call
+       *
+       *  - CALL_ENDED_REASON_UNSPECIFIED: The call ended due to reason unspecified
+       *  - CALL_ENDED_REASON_FAILED: The call ended due to reason failed
+       *  - CALL_ENDED_REASON_REMOTE_ENDED: The call ended due to reason remote ended
+       *  - CALL_ENDED_REASON_UNANSWERED: The call ended due to reason unanswered
+       *  - CALL_ENDED_REASON_ANSWERED_ELSEWHERE: The call ended due to reason answered elsewhere
+       *  - CALL_ENDED_REASON_DECLINED_ELSEWHERE: The call ended due to reason declined elsewhere
+       * @default "CALL_ENDED_REASON_UNSPECIFIED"
+       */
+      "callData.endedReason"?:
+        | "CALL_ENDED_REASON_UNSPECIFIED"
+        | "CALL_ENDED_REASON_FAILED"
+        | "CALL_ENDED_REASON_REMOTE_ENDED"
+        | "CALL_ENDED_REASON_UNANSWERED"
+        | "CALL_ENDED_REASON_ANSWERED_ELSEWHERE"
+        | "CALL_ENDED_REASON_DECLINED_ELSEWHERE";
+      /** The create time */
+      "callData.createTime"?: string;
+      /** The deadline */
+      "callData.deadline"?: string;
+      /** The user identify */
+      "callData.caller.userId"?: string;
+      /** The username */
+      "callData.caller.username"?: string;
+      /** The display name */
+      "callData.caller.displayName"?: string;
+      /** Path to avatar */
+      "callData.caller.avatar"?: string;
+      /** The display avatar of user */
+      "callData.caller.originalAvatar"?: string;
+      /**
+       * The type of session description
+       *
+       *  - SESSION_DESCRIPTION_TYPE_UNSPECIFIED: The session description unspecified
+       *  - SESSION_DESCRIPTION_TYPE_ANSWER: This session description describes the agreed-upon configuration, and is being sent to finalize negotiation.
+       *  - SESSION_DESCRIPTION_TYPE_OFFER: The session description object describes the initial proposal in an offer/answer exchange. The session negotiation process begins with an offer being sent from the caller to the callee.
+       *  - SESSION_DESCRIPTION_TYPE_PRANSWER: The session description object describes a provisional answer; that is, a response to a previous offer that is not the final answer. It is usually employed by legacy hardware.
+       *  - SESSION_DESCRIPTION_TYPE_ROLLBACK: This special type with an empty session description is used to roll back to the previous stable state.
+       * @default "SESSION_DESCRIPTION_TYPE_UNSPECIFIED"
+       */
+      "callData.caller.rtcSessionDescription.rtcSessionDescriptionType"?:
+        | "SESSION_DESCRIPTION_TYPE_UNSPECIFIED"
+        | "SESSION_DESCRIPTION_TYPE_ANSWER"
+        | "SESSION_DESCRIPTION_TYPE_OFFER"
+        | "SESSION_DESCRIPTION_TYPE_PRANSWER"
+        | "SESSION_DESCRIPTION_TYPE_ROLLBACK";
+      /** The SDP which describes the session. */
+      "callData.caller.rtcSessionDescription.rtcSessionDescriptionSdp"?: string;
+      /**
+       * The avatar type
+       *
+       *  - USER_AVATAR_TYPE_ENUM_UNSPECIFIED: User avatar type is unspecified
+       *  - USER_AVATAR_TYPE_ENUM_PHOTO: User avatar type is photo
+       *  - USER_AVATAR_TYPE_ENUM_VIDEO: User avatar type is video
+       * @default "USER_AVATAR_TYPE_ENUM_UNSPECIFIED"
+       */
+      "callData.caller.avatarType"?:
+        | "USER_AVATAR_TYPE_ENUM_UNSPECIFIED"
+        | "USER_AVATAR_TYPE_ENUM_PHOTO"
+        | "USER_AVATAR_TYPE_ENUM_VIDEO";
+      /**
+       * The user badge type
+       * @default "USER_BADGE_TYPE_DEFAULT"
+       */
+      "callData.caller.userBadgeType"?:
+        | "USER_BADGE_TYPE_DEFAULT"
+        | "USER_BADGE_TYPE_BLUE"
+        | "USER_BADGE_TYPE_GRAY"
+        | "USER_BADGE_TYPE_YELLOW";
+      /** The video avatar */
+      "callData.caller.videoAvatar"?: string;
+      /** The decorated avatar */
+      "callData.caller.decoratedAvatar"?: string;
+      /** The decorated avatar */
+      "callData.caller.originalDecoratedAvatar"?: string;
+      /** The thumbnail video avatar */
+      "callData.caller.thumbVideoAvatar"?: string;
+      /** The user identify */
+      "callData.callee.userId"?: string;
+      /** The username */
+      "callData.callee.username"?: string;
+      /** The display name */
+      "callData.callee.displayName"?: string;
+      /** Path to avatar */
+      "callData.callee.avatar"?: string;
+      /** The display avatar of user */
+      "callData.callee.originalAvatar"?: string;
+      /**
+       * The type of session description
+       *
+       *  - SESSION_DESCRIPTION_TYPE_UNSPECIFIED: The session description unspecified
+       *  - SESSION_DESCRIPTION_TYPE_ANSWER: This session description describes the agreed-upon configuration, and is being sent to finalize negotiation.
+       *  - SESSION_DESCRIPTION_TYPE_OFFER: The session description object describes the initial proposal in an offer/answer exchange. The session negotiation process begins with an offer being sent from the caller to the callee.
+       *  - SESSION_DESCRIPTION_TYPE_PRANSWER: The session description object describes a provisional answer; that is, a response to a previous offer that is not the final answer. It is usually employed by legacy hardware.
+       *  - SESSION_DESCRIPTION_TYPE_ROLLBACK: This special type with an empty session description is used to roll back to the previous stable state.
+       * @default "SESSION_DESCRIPTION_TYPE_UNSPECIFIED"
+       */
+      "callData.callee.rtcSessionDescription.rtcSessionDescriptionType"?:
+        | "SESSION_DESCRIPTION_TYPE_UNSPECIFIED"
+        | "SESSION_DESCRIPTION_TYPE_ANSWER"
+        | "SESSION_DESCRIPTION_TYPE_OFFER"
+        | "SESSION_DESCRIPTION_TYPE_PRANSWER"
+        | "SESSION_DESCRIPTION_TYPE_ROLLBACK";
+      /** The SDP which describes the session. */
+      "callData.callee.rtcSessionDescription.rtcSessionDescriptionSdp"?: string;
+      /**
+       * The avatar type
+       *
+       *  - USER_AVATAR_TYPE_ENUM_UNSPECIFIED: User avatar type is unspecified
+       *  - USER_AVATAR_TYPE_ENUM_PHOTO: User avatar type is photo
+       *  - USER_AVATAR_TYPE_ENUM_VIDEO: User avatar type is video
+       * @default "USER_AVATAR_TYPE_ENUM_UNSPECIFIED"
+       */
+      "callData.callee.avatarType"?:
+        | "USER_AVATAR_TYPE_ENUM_UNSPECIFIED"
+        | "USER_AVATAR_TYPE_ENUM_PHOTO"
+        | "USER_AVATAR_TYPE_ENUM_VIDEO";
+      /**
+       * The user badge type
+       * @default "USER_BADGE_TYPE_DEFAULT"
+       */
+      "callData.callee.userBadgeType"?:
+        | "USER_BADGE_TYPE_DEFAULT"
+        | "USER_BADGE_TYPE_BLUE"
+        | "USER_BADGE_TYPE_GRAY"
+        | "USER_BADGE_TYPE_YELLOW";
+      /** The video avatar */
+      "callData.callee.videoAvatar"?: string;
+      /** The decorated avatar */
+      "callData.callee.decoratedAvatar"?: string;
+      /** The decorated avatar */
+      "callData.callee.originalDecoratedAvatar"?: string;
+      /** The thumbnail video avatar */
+      "callData.callee.thumbVideoAvatar"?: string;
+      /**
+       * ICE connection state
+       *
+       *  - ICE_CONNECTION_STATE_UNSPECIFIED: The connection state are unspecified
+       *  - ICE_CONNECTION_STATE_NEW: The connection state is new
+       *  - ICE_CONNECTION_STATE_CHECKING: The connection state is checking
+       *  - ICE_CONNECTION_STATE_CONNECTED: The connection state is connected
+       *  - ICE_CONNECTION_STATE_COMPLETED: The connection state is complete
+       *  - ICE_CONNECTION_STATE_FAILED: The connection state is failed
+       *  - ICE_CONNECTION_STATE_DISCONNECTED: The connection state is disconnected
+       *  - ICE_CONNECTION_STATE_CLOSE: The connection state is close
+       * @default "ICE_CONNECTION_STATE_UNSPECIFIED"
+       */
+      "callData.iceConnectionState"?:
+        | "ICE_CONNECTION_STATE_UNSPECIFIED"
+        | "ICE_CONNECTION_STATE_NEW"
+        | "ICE_CONNECTION_STATE_CHECKING"
+        | "ICE_CONNECTION_STATE_CONNECTED"
+        | "ICE_CONNECTION_STATE_COMPLETED"
+        | "ICE_CONNECTION_STATE_FAILED"
+        | "ICE_CONNECTION_STATE_DISCONNECTED"
+        | "ICE_CONNECTION_STATE_CLOSE";
+      /** The ringback tone file url */
+      "callData.ringbackToneUrl"?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3CallCreatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name CallSignalUpdatedEventDataT
+   * @request POST:/CloudEventServiceTemp/CallSignalUpdatedEventData
+   */
+  export namespace CallSignalUpdatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The call identify */
+      callId?: string;
+      /** The user identify */
+      userId?: string;
+      /** The device identify */
+      deviceId?: string;
+      /** The user identify */
+      "recipientInfo.userId"?: string;
+      /** The device identify */
+      "recipientInfo.deviceId"?: string;
+      /** Describes the protocols and routing needed for WebRTC to be able to communicate with a remote device. When starting a WebRTC peer connection */
+      rtcIceCandidate?: string;
+      /**
+       * The type of session description
+       *
+       *  - SESSION_DESCRIPTION_TYPE_UNSPECIFIED: The session description unspecified
+       *  - SESSION_DESCRIPTION_TYPE_ANSWER: This session description describes the agreed-upon configuration, and is being sent to finalize negotiation.
+       *  - SESSION_DESCRIPTION_TYPE_OFFER: The session description object describes the initial proposal in an offer/answer exchange. The session negotiation process begins with an offer being sent from the caller to the callee.
+       *  - SESSION_DESCRIPTION_TYPE_PRANSWER: The session description object describes a provisional answer; that is, a response to a previous offer that is not the final answer. It is usually employed by legacy hardware.
+       *  - SESSION_DESCRIPTION_TYPE_ROLLBACK: This special type with an empty session description is used to roll back to the previous stable state.
+       * @default "SESSION_DESCRIPTION_TYPE_UNSPECIFIED"
+       */
+      "rtcSessionDescription.rtcSessionDescriptionType"?:
+        | "SESSION_DESCRIPTION_TYPE_UNSPECIFIED"
+        | "SESSION_DESCRIPTION_TYPE_ANSWER"
+        | "SESSION_DESCRIPTION_TYPE_OFFER"
+        | "SESSION_DESCRIPTION_TYPE_PRANSWER"
+        | "SESSION_DESCRIPTION_TYPE_ROLLBACK";
+      /** The SDP which describes the session. */
+      "rtcSessionDescription.rtcSessionDescriptionSdp"?: string;
+      /**
+       * The call signal intent data
+       *
+       *  - CALL_SIGNAL_INTENT_UNSPECIFIED: The call signal intent are unspecified
+       *  - CALL_SIGNAL_INTENT_CAMERA_ON: The call signal intent are camera on
+       *  - CALL_SIGNAL_INTENT_CAMERA_OFF: The call signal intent are camera of
+       *  - CALL_SIGNAL_INTENT_MIC_ON: The call signal intent is mic on
+       *  - CALL_SIGNAL_INTENT_MIC_OFF: The call signal intent are mic off
+       *  - CALL_SIGNAL_INTENT_WILL_END: The call signal intent are will end
+       * @default "CALL_SIGNAL_INTENT_UNSPECIFIED"
+       */
+      intent?:
+        | "CALL_SIGNAL_INTENT_UNSPECIFIED"
+        | "CALL_SIGNAL_INTENT_CAMERA_ON"
+        | "CALL_SIGNAL_INTENT_CAMERA_OFF"
+        | "CALL_SIGNAL_INTENT_MIC_ON"
+        | "CALL_SIGNAL_INTENT_MIC_OFF"
+        | "CALL_SIGNAL_INTENT_WILL_END";
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3CallSignalUpdatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name CallUpdatedEventDataT
+   * @request POST:/CloudEventServiceTemp/CallUpdatedEventData
+   */
+  export namespace CallUpdatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The call identify */
+      "callData.callId"?: string;
+      /**
+       * The state of call
+       *
+       *  - CALL_STATE_UNSPECIFIED: Call state unspecified
+       *  - CALL_STATE_DIALING: Call state returned by the API when the user initiates a call
+       *  - CALL_STATE_CALLING: Call state when the callee is being connected via websocket
+       *  - CALL_STATE_READY_TO_CONNECT: Call state when both the caller and the callee have updated enough ICE information
+       *  - CALL_STATE_CONNECTING: Call state is connecting
+       *  - CALL_STATE_CONNECTED: Call state when the caller and the callee have successfully established a webRTC connection
+       *  - CALL_STATE_RECONNECTING: Call state is reconnecting
+       *  - CALL_STATE_ENDED: Call state when either of the two users ends the call, cancels the call, or rejects the call
+       * @default "CALL_STATE_UNSPECIFIED"
+       */
+      "callData.state"?:
+        | "CALL_STATE_UNSPECIFIED"
+        | "CALL_STATE_DIALING"
+        | "CALL_STATE_CALLING"
+        | "CALL_STATE_READY_TO_CONNECT"
+        | "CALL_STATE_CONNECTING"
+        | "CALL_STATE_CONNECTED"
+        | "CALL_STATE_RECONNECTING"
+        | "CALL_STATE_ENDED";
+      /**
+       * The type of call
+       *
+       *  - CALL_TYPE_UNSPECIFIED: The unspecified call
+       *  - CALL_TYPE_VIDEO: The video call
+       *  - CALL_TYPE_AUDIO: The audio call
+       * @default "CALL_TYPE_UNSPECIFIED"
+       */
+      "callData.type"?:
+        | "CALL_TYPE_UNSPECIFIED"
+        | "CALL_TYPE_VIDEO"
+        | "CALL_TYPE_AUDIO";
+      /**
+       * The ended reason of call
+       *
+       *  - CALL_ENDED_REASON_UNSPECIFIED: The call ended due to reason unspecified
+       *  - CALL_ENDED_REASON_FAILED: The call ended due to reason failed
+       *  - CALL_ENDED_REASON_REMOTE_ENDED: The call ended due to reason remote ended
+       *  - CALL_ENDED_REASON_UNANSWERED: The call ended due to reason unanswered
+       *  - CALL_ENDED_REASON_ANSWERED_ELSEWHERE: The call ended due to reason answered elsewhere
+       *  - CALL_ENDED_REASON_DECLINED_ELSEWHERE: The call ended due to reason declined elsewhere
+       * @default "CALL_ENDED_REASON_UNSPECIFIED"
+       */
+      "callData.endedReason"?:
+        | "CALL_ENDED_REASON_UNSPECIFIED"
+        | "CALL_ENDED_REASON_FAILED"
+        | "CALL_ENDED_REASON_REMOTE_ENDED"
+        | "CALL_ENDED_REASON_UNANSWERED"
+        | "CALL_ENDED_REASON_ANSWERED_ELSEWHERE"
+        | "CALL_ENDED_REASON_DECLINED_ELSEWHERE";
+      /** The create time */
+      "callData.createTime"?: string;
+      /** The deadline */
+      "callData.deadline"?: string;
+      /** The user identify */
+      "callData.caller.userId"?: string;
+      /** The username */
+      "callData.caller.username"?: string;
+      /** The display name */
+      "callData.caller.displayName"?: string;
+      /** Path to avatar */
+      "callData.caller.avatar"?: string;
+      /** The display avatar of user */
+      "callData.caller.originalAvatar"?: string;
+      /**
+       * The type of session description
+       *
+       *  - SESSION_DESCRIPTION_TYPE_UNSPECIFIED: The session description unspecified
+       *  - SESSION_DESCRIPTION_TYPE_ANSWER: This session description describes the agreed-upon configuration, and is being sent to finalize negotiation.
+       *  - SESSION_DESCRIPTION_TYPE_OFFER: The session description object describes the initial proposal in an offer/answer exchange. The session negotiation process begins with an offer being sent from the caller to the callee.
+       *  - SESSION_DESCRIPTION_TYPE_PRANSWER: The session description object describes a provisional answer; that is, a response to a previous offer that is not the final answer. It is usually employed by legacy hardware.
+       *  - SESSION_DESCRIPTION_TYPE_ROLLBACK: This special type with an empty session description is used to roll back to the previous stable state.
+       * @default "SESSION_DESCRIPTION_TYPE_UNSPECIFIED"
+       */
+      "callData.caller.rtcSessionDescription.rtcSessionDescriptionType"?:
+        | "SESSION_DESCRIPTION_TYPE_UNSPECIFIED"
+        | "SESSION_DESCRIPTION_TYPE_ANSWER"
+        | "SESSION_DESCRIPTION_TYPE_OFFER"
+        | "SESSION_DESCRIPTION_TYPE_PRANSWER"
+        | "SESSION_DESCRIPTION_TYPE_ROLLBACK";
+      /** The SDP which describes the session. */
+      "callData.caller.rtcSessionDescription.rtcSessionDescriptionSdp"?: string;
+      /**
+       * The avatar type
+       *
+       *  - USER_AVATAR_TYPE_ENUM_UNSPECIFIED: User avatar type is unspecified
+       *  - USER_AVATAR_TYPE_ENUM_PHOTO: User avatar type is photo
+       *  - USER_AVATAR_TYPE_ENUM_VIDEO: User avatar type is video
+       * @default "USER_AVATAR_TYPE_ENUM_UNSPECIFIED"
+       */
+      "callData.caller.avatarType"?:
+        | "USER_AVATAR_TYPE_ENUM_UNSPECIFIED"
+        | "USER_AVATAR_TYPE_ENUM_PHOTO"
+        | "USER_AVATAR_TYPE_ENUM_VIDEO";
+      /**
+       * The user badge type
+       * @default "USER_BADGE_TYPE_DEFAULT"
+       */
+      "callData.caller.userBadgeType"?:
+        | "USER_BADGE_TYPE_DEFAULT"
+        | "USER_BADGE_TYPE_BLUE"
+        | "USER_BADGE_TYPE_GRAY"
+        | "USER_BADGE_TYPE_YELLOW";
+      /** The video avatar */
+      "callData.caller.videoAvatar"?: string;
+      /** The decorated avatar */
+      "callData.caller.decoratedAvatar"?: string;
+      /** The decorated avatar */
+      "callData.caller.originalDecoratedAvatar"?: string;
+      /** The thumbnail video avatar */
+      "callData.caller.thumbVideoAvatar"?: string;
+      /** The user identify */
+      "callData.callee.userId"?: string;
+      /** The username */
+      "callData.callee.username"?: string;
+      /** The display name */
+      "callData.callee.displayName"?: string;
+      /** Path to avatar */
+      "callData.callee.avatar"?: string;
+      /** The display avatar of user */
+      "callData.callee.originalAvatar"?: string;
+      /**
+       * The type of session description
+       *
+       *  - SESSION_DESCRIPTION_TYPE_UNSPECIFIED: The session description unspecified
+       *  - SESSION_DESCRIPTION_TYPE_ANSWER: This session description describes the agreed-upon configuration, and is being sent to finalize negotiation.
+       *  - SESSION_DESCRIPTION_TYPE_OFFER: The session description object describes the initial proposal in an offer/answer exchange. The session negotiation process begins with an offer being sent from the caller to the callee.
+       *  - SESSION_DESCRIPTION_TYPE_PRANSWER: The session description object describes a provisional answer; that is, a response to a previous offer that is not the final answer. It is usually employed by legacy hardware.
+       *  - SESSION_DESCRIPTION_TYPE_ROLLBACK: This special type with an empty session description is used to roll back to the previous stable state.
+       * @default "SESSION_DESCRIPTION_TYPE_UNSPECIFIED"
+       */
+      "callData.callee.rtcSessionDescription.rtcSessionDescriptionType"?:
+        | "SESSION_DESCRIPTION_TYPE_UNSPECIFIED"
+        | "SESSION_DESCRIPTION_TYPE_ANSWER"
+        | "SESSION_DESCRIPTION_TYPE_OFFER"
+        | "SESSION_DESCRIPTION_TYPE_PRANSWER"
+        | "SESSION_DESCRIPTION_TYPE_ROLLBACK";
+      /** The SDP which describes the session. */
+      "callData.callee.rtcSessionDescription.rtcSessionDescriptionSdp"?: string;
+      /**
+       * The avatar type
+       *
+       *  - USER_AVATAR_TYPE_ENUM_UNSPECIFIED: User avatar type is unspecified
+       *  - USER_AVATAR_TYPE_ENUM_PHOTO: User avatar type is photo
+       *  - USER_AVATAR_TYPE_ENUM_VIDEO: User avatar type is video
+       * @default "USER_AVATAR_TYPE_ENUM_UNSPECIFIED"
+       */
+      "callData.callee.avatarType"?:
+        | "USER_AVATAR_TYPE_ENUM_UNSPECIFIED"
+        | "USER_AVATAR_TYPE_ENUM_PHOTO"
+        | "USER_AVATAR_TYPE_ENUM_VIDEO";
+      /**
+       * The user badge type
+       * @default "USER_BADGE_TYPE_DEFAULT"
+       */
+      "callData.callee.userBadgeType"?:
+        | "USER_BADGE_TYPE_DEFAULT"
+        | "USER_BADGE_TYPE_BLUE"
+        | "USER_BADGE_TYPE_GRAY"
+        | "USER_BADGE_TYPE_YELLOW";
+      /** The video avatar */
+      "callData.callee.videoAvatar"?: string;
+      /** The decorated avatar */
+      "callData.callee.decoratedAvatar"?: string;
+      /** The decorated avatar */
+      "callData.callee.originalDecoratedAvatar"?: string;
+      /** The thumbnail video avatar */
+      "callData.callee.thumbVideoAvatar"?: string;
+      /**
+       * ICE connection state
+       *
+       *  - ICE_CONNECTION_STATE_UNSPECIFIED: The connection state are unspecified
+       *  - ICE_CONNECTION_STATE_NEW: The connection state is new
+       *  - ICE_CONNECTION_STATE_CHECKING: The connection state is checking
+       *  - ICE_CONNECTION_STATE_CONNECTED: The connection state is connected
+       *  - ICE_CONNECTION_STATE_COMPLETED: The connection state is complete
+       *  - ICE_CONNECTION_STATE_FAILED: The connection state is failed
+       *  - ICE_CONNECTION_STATE_DISCONNECTED: The connection state is disconnected
+       *  - ICE_CONNECTION_STATE_CLOSE: The connection state is close
+       * @default "ICE_CONNECTION_STATE_UNSPECIFIED"
+       */
+      "callData.iceConnectionState"?:
+        | "ICE_CONNECTION_STATE_UNSPECIFIED"
+        | "ICE_CONNECTION_STATE_NEW"
+        | "ICE_CONNECTION_STATE_CHECKING"
+        | "ICE_CONNECTION_STATE_CONNECTED"
+        | "ICE_CONNECTION_STATE_COMPLETED"
+        | "ICE_CONNECTION_STATE_FAILED"
+        | "ICE_CONNECTION_STATE_DISCONNECTED"
+        | "ICE_CONNECTION_STATE_CLOSE";
+      /** The ringback tone file url */
+      "callData.ringbackToneUrl"?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3CallUpdatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name ChannelAvatarUploadFailedEventDataT
+   * @request POST:/CloudEventServiceTemp/ChannelAvatarUploadFailedEventData
+   */
+  export namespace ChannelAvatarUploadFailedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      workspaceId?: string;
+      /** The channel identify */
+      channelId?: string;
+      /** The reason upload avatar false */
+      reason?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ChannelAvatarUploadFailedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name ChannelCreatedEventDataT
+   * @request POST:/CloudEventServiceTemp/ChannelCreatedEventData
+   */
+  export namespace ChannelCreatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      "channel.workspaceId"?: string;
+      /** The channel identify */
+      "channel.channelId"?: string;
+      /** The channel's creator is identified by the user. */
+      "channel.userId"?: string;
+      /** The name of channel */
+      "channel.name"?: string;
+      /** The avatar of channel */
+      "channel.avatar"?: string;
+      /** The channel is not yet private. */
+      "channel.isPrivate"?: boolean;
+      /**
+       * The type of channel
+       *
+       *  - CHANNEL_TYPE_ENUM_DM: DM: Direct message 1-1
+       *  - CHANNEL_TYPE_ENUM_CHANNEL: CHANNEL: A group can send message to multiple user 1-n
+       *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
+       * @default "CHANNEL_TYPE_ENUM_DM"
+       */
+      "channel.type"?:
+        | "CHANNEL_TYPE_ENUM_DM"
+        | "CHANNEL_TYPE_ENUM_CHANNEL"
+        | "CHANNEL_TYPE_ENUM_BROADCAST";
+      /** Invitation link after create channel */
+      "channel.invitationLink"?: string;
+      /** Is limited saving enabled? */
+      "channel.privacySettings.restrictSavingContent.enable"?: boolean;
+      "channel.premiumSettings.boosted.enable"?: boolean;
+      /** The original avatar */
+      "channel.originalAvatar"?: string;
+      /**
+       * Only return when get get channel
+       * @format int64
+       */
+      "channel.totalMembers"?: number;
+      /**
+       * Status of channel has type DM
+       *
+       *  - DIRECT_MESSAGE_STATUS_ENUM_PENDING: PENDING: The recipient has not replied or accept the message request
+       *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
+       * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+       */
+      "channel.dmStatus"?:
+        | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+        | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+      /** The workspace identify */
+      "channel.pinnedMessage.workspaceId"?: string;
+      /** The channel identify */
+      "channel.pinnedMessage.channelId"?: string;
+      /** The message identify */
+      "channel.pinnedMessage.messageId"?: string;
+      /** UserId send message */
+      "channel.pinnedMessage.userId"?: string;
+      /** Content of message */
+      "channel.pinnedMessage.content"?: string;
+      /** Is a random value created by the client, which is used as a similar attribute to the local ID */
+      "channel.pinnedMessage.ref"?: string;
+      /**
+       * Message type and message status
+       *
+       *  - MESSAGE_TYPE_ENUM_DEFAULT: Default is message of user
+       *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
+       * @default "MESSAGE_TYPE_ENUM_DEFAULT"
+       */
+      "channel.pinnedMessage.messageType"?:
+        | "MESSAGE_TYPE_ENUM_DEFAULT"
+        | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+      /**
+       * Status of message
+       *
+       *  - MESSAGE_STATUS_ENUM_PENDING: Waiting for process from server
+       *  - MESSAGE_STATUS_ENUM_SUCCESS: Send message success
+       *  - MESSAGE_STATUS_ENUM_FAILURE: Send message failed
+       * @default "MESSAGE_STATUS_ENUM_PENDING"
+       */
+      "channel.pinnedMessage.messageStatus"?:
+        | "MESSAGE_STATUS_ENUM_PENDING"
+        | "MESSAGE_STATUS_ENUM_SUCCESS"
+        | "MESSAGE_STATUS_ENUM_FAILURE";
+      /** The message identify */
+      "channel.pinnedMessage.originalMessage.messageId"?: string;
+      /** The message content */
+      "channel.pinnedMessage.originalMessage.content"?: string;
+      /**
+       * Attachment type
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.link.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** url */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.link.url"?: string;
+      /** short url */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.link.shortUrl"?: string;
+      /** collection_id of sticker file */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.collectionId"?: string;
+      /** sticker_id of sticker */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** url of sticker if attachment type is sticker */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerUrl"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentId"?: string;
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.fileRef"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.messageId"?: string;
+      /**
+       * Message type
+       *
+       *  - MESSAGE_TYPE_ENUM_DEFAULT: Default is message of user
+       *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
+       * @default "MESSAGE_TYPE_ENUM_DEFAULT"
+       */
+      "channel.pinnedMessage.originalMessage.messageType"?:
+        | "MESSAGE_TYPE_ENUM_DEFAULT"
+        | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+      /** The location language of content */
+      "channel.pinnedMessage.originalMessage.contentLocale"?: string;
+      /** The list arguments to replace in content message */
+      "channel.pinnedMessage.originalMessage.contentArguments"?: string[];
+      /** The user identify */
+      "channel.pinnedMessage.originalMessage.userId"?: string;
+      /** Time edit message */
+      "channel.pinnedMessage.originalMessage.editTime"?: string;
+      /** The create time */
+      "channel.pinnedMessage.originalMessage.createTime"?: string;
+      /** The update time */
+      "channel.pinnedMessage.originalMessage.updateTime"?: string;
+      /**
+       * Statistical react of message
+       *
+       * This is a request variable of the map type. The query format is "map_name[key]=value", e.g. If the map name is Age, the key type is string, and the value type is integer, the query parameter is expressed as Age["bob"]=18
+       */
+      "channel.pinnedMessage.reactions"?: any;
+      /** List username mentions */
+      "channel.pinnedMessage.mentions"?: string[];
+      /**
+       * Attachment type
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** State is thread of message, default = false */
+      "channel.pinnedMessage.isThread"?: boolean;
+      /**
+       * Number of times reported, default = 0
+       * @format int64
+       */
+      "channel.pinnedMessage.reportCount"?: number;
+      /** Flag report, default = false */
+      "channel.pinnedMessage.isReported"?: boolean;
+      /**
+       * Number of files, using for upload album
+       * @format int64
+       */
+      "channel.pinnedMessage.attachmentCount"?: number;
+      /** The location language of content */
+      "channel.pinnedMessage.contentLocale"?: string;
+      /** The list arguments to replace in content message */
+      "channel.pinnedMessage.contentArguments"?: string[];
+      /** Is pinned */
+      "channel.pinnedMessage.isPinned"?: boolean;
+      /** Pin time */
+      "channel.pinnedMessage.pinTime"?: string;
+      /** Time edit message */
+      "channel.pinnedMessage.editTime"?: string;
+      /** The first time message created */
+      "channel.pinnedMessage.createTime"?: string;
+      /** The time message updated */
+      "channel.pinnedMessage.updateTime"?: string;
+      /** The list participant id */
+      "channel.participantIds"?: string[];
+      /** Time recipient reject message request */
+      "channel.rejectTime"?: string;
+      /** Time recipient accept message request */
+      "channel.acceptTime"?: string;
+      /** The first time channel created */
+      "channel.createTime"?: string;
+      /** The time channel updated */
+      "channel.updateTime"?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ChannelCreatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name ChannelCreationCompletedEventDataT
+   * @request POST:/CloudEventServiceTemp/ChannelCreationCompletedEventData
+   */
+  export namespace ChannelCreationCompletedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      workspaceId?: string;
+      /** The channel identify */
+      channelId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ChannelCreationCompletedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name ChannelCreationFailedEventDataT
+   * @request POST:/CloudEventServiceTemp/ChannelCreationFailedEventData
+   */
+  export namespace ChannelCreationFailedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      workspaceId?: string;
+      /** The channel identify */
+      channelId?: string;
+      /** The reason create channel false */
+      reason?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ChannelCreationFailedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name ChannelDeletedEventDataT
+   * @request POST:/CloudEventServiceTemp/ChannelDeletedEventData
+   */
+  export namespace ChannelDeletedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      workspaceId?: string;
+      /** The channel identify */
+      channelId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ChannelDeletedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name ChannelDestinationCloudEventT
+   * @request POST:/CloudEventServiceTemp/ChannelDestinationCloudEventT
+   */
+  export namespace ChannelDestinationCloudEventT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      workspaceId?: string;
+      /** The channel identify */
+      channelId?: string;
+      /**
+       * The channel type
+       *
+       *  - CHANNEL_TYPE_ENUM_DM: DM: Direct message 1-1
+       *  - CHANNEL_TYPE_ENUM_CHANNEL: CHANNEL: A group can send message to multiple user 1-n
+       *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
+       * @default "CHANNEL_TYPE_ENUM_DM"
+       */
+      channelType?:
+        | "CHANNEL_TYPE_ENUM_DM"
+        | "CHANNEL_TYPE_ENUM_CHANNEL"
+        | "CHANNEL_TYPE_ENUM_BROADCAST";
+      /** The user identify whom receive message */
+      recipientId?: string;
+      /** The dm channel identify */
+      dmId?: string;
+      /**
+       * The dm message status
+       *
+       *  - DIRECT_MESSAGE_STATUS_ENUM_PENDING: PENDING: The recipient has not replied or accept the message request
+       *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
+       * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+       */
+      dmStatus?:
+        | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+        | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ChannelDestinationCloudEvent;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name ChannelNotificationStatusUpdatedEventDataT
+   * @request POST:/CloudEventServiceTemp/ChannelNotificationStatusUpdatedEventData
+   */
+  export namespace ChannelNotificationStatusUpdatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      workspaceId?: string;
+      /** The channel identify */
+      channelId?: string;
+      /** The user identify whom send */
+      actorId?: string;
+      /** The notification status */
+      notificationStatus?: boolean;
+      /** The workspace identify */
+      "destination.workspaceId"?: string;
+      /** The channel identify */
+      "destination.channelId"?: string;
+      /**
+       * The channel type
+       *
+       *  - CHANNEL_TYPE_ENUM_DM: DM: Direct message 1-1
+       *  - CHANNEL_TYPE_ENUM_CHANNEL: CHANNEL: A group can send message to multiple user 1-n
+       *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
+       * @default "CHANNEL_TYPE_ENUM_DM"
+       */
+      "destination.channelType"?:
+        | "CHANNEL_TYPE_ENUM_DM"
+        | "CHANNEL_TYPE_ENUM_CHANNEL"
+        | "CHANNEL_TYPE_ENUM_BROADCAST";
+      /** The user identify whom receive message */
+      "destination.recipientId"?: string;
+      /** The dm channel identify */
+      "destination.dmId"?: string;
+      /**
+       * The dm message status
+       *
+       *  - DIRECT_MESSAGE_STATUS_ENUM_PENDING: PENDING: The recipient has not replied or accept the message request
+       *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
+       * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+       */
+      "destination.dmStatus"?:
+        | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+        | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ChannelNotificationStatusUpdatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name ChannelTypingEventDataT
+   * @request POST:/CloudEventServiceTemp/ChannelTypingEventDataT
+   */
+  export namespace ChannelTypingEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      workspaceId?: string;
+      /** The channel identify */
+      channelId?: string;
+      /** The user identify whom typing */
+      actorId?: string;
+      /** The name's data */
+      name?: string;
+      /** The avatar's data */
+      avatar?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ChannelTypingEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name ChannelUpdatedEventDataT
+   * @request POST:/CloudEventServiceTemp/ChannelUpdatedEventData
+   */
+  export namespace ChannelUpdatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      "channel.workspaceId"?: string;
+      /** The channel identify */
+      "channel.channelId"?: string;
+      /** The channel's creator is identified by the user. */
+      "channel.userId"?: string;
+      /** The name of channel */
+      "channel.name"?: string;
+      /** The avatar of channel */
+      "channel.avatar"?: string;
+      /** The channel is not yet private. */
+      "channel.isPrivate"?: boolean;
+      /**
+       * The type of channel
+       *
+       *  - CHANNEL_TYPE_ENUM_DM: DM: Direct message 1-1
+       *  - CHANNEL_TYPE_ENUM_CHANNEL: CHANNEL: A group can send message to multiple user 1-n
+       *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
+       * @default "CHANNEL_TYPE_ENUM_DM"
+       */
+      "channel.type"?:
+        | "CHANNEL_TYPE_ENUM_DM"
+        | "CHANNEL_TYPE_ENUM_CHANNEL"
+        | "CHANNEL_TYPE_ENUM_BROADCAST";
+      /** Invitation link after create channel */
+      "channel.invitationLink"?: string;
+      /** Is limited saving enabled? */
+      "channel.privacySettings.restrictSavingContent.enable"?: boolean;
+      "channel.premiumSettings.boosted.enable"?: boolean;
+      /** The original avatar */
+      "channel.originalAvatar"?: string;
+      /**
+       * Only return when get get channel
+       * @format int64
+       */
+      "channel.totalMembers"?: number;
+      /**
+       * Status of channel has type DM
+       *
+       *  - DIRECT_MESSAGE_STATUS_ENUM_PENDING: PENDING: The recipient has not replied or accept the message request
+       *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
+       * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+       */
+      "channel.dmStatus"?:
+        | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+        | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+      /** The workspace identify */
+      "channel.pinnedMessage.workspaceId"?: string;
+      /** The channel identify */
+      "channel.pinnedMessage.channelId"?: string;
+      /** The message identify */
+      "channel.pinnedMessage.messageId"?: string;
+      /** UserId send message */
+      "channel.pinnedMessage.userId"?: string;
+      /** Content of message */
+      "channel.pinnedMessage.content"?: string;
+      /** Is a random value created by the client, which is used as a similar attribute to the local ID */
+      "channel.pinnedMessage.ref"?: string;
+      /**
+       * Message type and message status
+       *
+       *  - MESSAGE_TYPE_ENUM_DEFAULT: Default is message of user
+       *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
+       * @default "MESSAGE_TYPE_ENUM_DEFAULT"
+       */
+      "channel.pinnedMessage.messageType"?:
+        | "MESSAGE_TYPE_ENUM_DEFAULT"
+        | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+      /**
+       * Status of message
+       *
+       *  - MESSAGE_STATUS_ENUM_PENDING: Waiting for process from server
+       *  - MESSAGE_STATUS_ENUM_SUCCESS: Send message success
+       *  - MESSAGE_STATUS_ENUM_FAILURE: Send message failed
+       * @default "MESSAGE_STATUS_ENUM_PENDING"
+       */
+      "channel.pinnedMessage.messageStatus"?:
+        | "MESSAGE_STATUS_ENUM_PENDING"
+        | "MESSAGE_STATUS_ENUM_SUCCESS"
+        | "MESSAGE_STATUS_ENUM_FAILURE";
+      /** The message identify */
+      "channel.pinnedMessage.originalMessage.messageId"?: string;
+      /** The message content */
+      "channel.pinnedMessage.originalMessage.content"?: string;
+      /**
+       * Attachment type
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.link.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** url */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.link.url"?: string;
+      /** short url */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.link.shortUrl"?: string;
+      /** collection_id of sticker file */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.collectionId"?: string;
+      /** sticker_id of sticker */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** url of sticker if attachment type is sticker */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerUrl"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentId"?: string;
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.fileRef"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.messageId"?: string;
+      /**
+       * Message type
+       *
+       *  - MESSAGE_TYPE_ENUM_DEFAULT: Default is message of user
+       *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
+       * @default "MESSAGE_TYPE_ENUM_DEFAULT"
+       */
+      "channel.pinnedMessage.originalMessage.messageType"?:
+        | "MESSAGE_TYPE_ENUM_DEFAULT"
+        | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+      /** The location language of content */
+      "channel.pinnedMessage.originalMessage.contentLocale"?: string;
+      /** The list arguments to replace in content message */
+      "channel.pinnedMessage.originalMessage.contentArguments"?: string[];
+      /** The user identify */
+      "channel.pinnedMessage.originalMessage.userId"?: string;
+      /** Time edit message */
+      "channel.pinnedMessage.originalMessage.editTime"?: string;
+      /** The create time */
+      "channel.pinnedMessage.originalMessage.createTime"?: string;
+      /** The update time */
+      "channel.pinnedMessage.originalMessage.updateTime"?: string;
+      /**
+       * Statistical react of message
+       *
+       * This is a request variable of the map type. The query format is "map_name[key]=value", e.g. If the map name is Age, the key type is string, and the value type is integer, the query parameter is expressed as Age["bob"]=18
+       */
+      "channel.pinnedMessage.reactions"?: any;
+      /** List username mentions */
+      "channel.pinnedMessage.mentions"?: string[];
+      /**
+       * Attachment type
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** State is thread of message, default = false */
+      "channel.pinnedMessage.isThread"?: boolean;
+      /**
+       * Number of times reported, default = 0
+       * @format int64
+       */
+      "channel.pinnedMessage.reportCount"?: number;
+      /** Flag report, default = false */
+      "channel.pinnedMessage.isReported"?: boolean;
+      /**
+       * Number of files, using for upload album
+       * @format int64
+       */
+      "channel.pinnedMessage.attachmentCount"?: number;
+      /** The location language of content */
+      "channel.pinnedMessage.contentLocale"?: string;
+      /** The list arguments to replace in content message */
+      "channel.pinnedMessage.contentArguments"?: string[];
+      /** Is pinned */
+      "channel.pinnedMessage.isPinned"?: boolean;
+      /** Pin time */
+      "channel.pinnedMessage.pinTime"?: string;
+      /** Time edit message */
+      "channel.pinnedMessage.editTime"?: string;
+      /** The first time message created */
+      "channel.pinnedMessage.createTime"?: string;
+      /** The time message updated */
+      "channel.pinnedMessage.updateTime"?: string;
+      /** The list participant id */
+      "channel.participantIds"?: string[];
+      /** Time recipient reject message request */
+      "channel.rejectTime"?: string;
+      /** Time recipient accept message request */
+      "channel.acceptTime"?: string;
+      /** The first time channel created */
+      "channel.createTime"?: string;
+      /** The time channel updated */
+      "channel.updateTime"?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ChannelUpdatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name ClearUserVisitedProfileNotificationsEventDataT
+   * @request POST:/CloudEventServiceTemp/ClearUserVisitedProfileNotificationsEventData
+   */
+  export namespace ClearUserVisitedProfileNotificationsEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ClearUserVisitedProfileNotificationsEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name CloudEventT
+   * @request POST:/CloudEventServiceTemp/CloudEventT
+   */
+  export namespace CloudEventT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The cloud event identify */
+      id?: string;
+      /** The type of cloud event */
+      type?: string;
+      /** Identifies the context in which an event happened */
+      source?: string;
+      /** The version of the CloudEvents specification which the event uses. This enables the interpretation of the context. */
+      specversion?: string;
+      /** Content type of data value. This attribute enables data to carry any type of content, whereby format and encoding might differ from that of the chosen event format. */
+      datacontenttype?: string;
+      /** Identifies the schema that data adheres to. Incompatible changes to the schema SHOULD be reflected by a different URI. */
+      dataschema?: string;
+      /** This describes the subject of the event in the context of the event producer (identified by source) */
+      subject?: string;
+      /** Timestamp of when the occurrence happened */
+      time?: string;
+      /**
+       * A URL/resource name that uniquely identifies the type of the serialized
+       * protocol buffer message. This string must contain at least
+       * one "/" character. The last segment of the URL's path must represent
+       * the fully qualified name of the type (as in
+       * `path/google.protobuf.Duration`). The name should be in a canonical form
+       * (e.g., leading "." is not accepted).
+       *
+       * In practice, teams usually precompile into the binary all types that they
+       * expect it to use in the context of Any. However, for URLs which use the
+       * scheme `http`, `https`, or no scheme, one can optionally set up a type
+       * server that maps type URLs to message definitions as follows:
+       *
+       * * If no scheme is provided, `https` is assumed.
+       * * An HTTP GET on the URL must yield a [google.protobuf.Type][]
+       *   value in binary format, or produce an error.
+       * * Applications are allowed to cache lookup results based on the
+       *   URL, or have them precompiled into a binary to avoid any
+       *   lookup. Therefore, binary compatibility needs to be preserved
+       *   on changes to types. (Use versioned type names to manage
+       *   breaking changes.)
+       *
+       * Note: this functionality is not currently available in the official
+       * protobuf release, and it is not used for type URLs beginning with
+       * type.googleapis.com.
+       *
+       * Schemes other than `http`, `https` (or the empty scheme) might be
+       * used with implementation specific semantics.
+       */
+      "data.typeUrl"?: string;
+      /**
+       * Must be a valid serialized protocol buffer of the above specified type.
+       * @format byte
+       */
+      "data.value"?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3CloudEvent;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name CoverPhotoCreatedEventDataT
+   * @request POST:/CloudEventServiceTemp/CoverPhotoCreatedEventData
+   */
+  export namespace CoverPhotoCreatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify */
+      userId?: string;
+      /** The cover photo data */
+      cover?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3CoverPhotoCreatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name CoverPhotoDeletedEventDataT
+   * @request POST:/CloudEventServiceTemp/CoverPhotoDeletedEventData
+   */
+  export namespace CoverPhotoDeletedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify */
+      userId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3CoverPhotoDeletedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name CoverPhotoUpdatedDataT
+   * @request POST:/CloudEventServiceTemp/CoverPhotoUpdatedData
+   */
+  export namespace CoverPhotoUpdatedDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify */
+      userId?: string;
+      /** The cover photo data */
+      cover?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3CoverPhotoUpdatedData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name DmChannelCreatedEventDataT
+   * @request POST:/CloudEventServiceTemp/DMChannelCreatedEventData
+   */
+  export namespace DmChannelCreatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      "channel.workspaceId"?: string;
+      /** The channel identify */
+      "channel.channelId"?: string;
+      /** The channel's creator is identified by the user. */
+      "channel.userId"?: string;
+      /** The name of channel */
+      "channel.name"?: string;
+      /** The avatar of channel */
+      "channel.avatar"?: string;
+      /** The channel is not yet private. */
+      "channel.isPrivate"?: boolean;
+      /**
+       * The type of channel
+       *
+       *  - CHANNEL_TYPE_ENUM_DM: DM: Direct message 1-1
+       *  - CHANNEL_TYPE_ENUM_CHANNEL: CHANNEL: A group can send message to multiple user 1-n
+       *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
+       * @default "CHANNEL_TYPE_ENUM_DM"
+       */
+      "channel.type"?:
+        | "CHANNEL_TYPE_ENUM_DM"
+        | "CHANNEL_TYPE_ENUM_CHANNEL"
+        | "CHANNEL_TYPE_ENUM_BROADCAST";
+      /** Invitation link after create channel */
+      "channel.invitationLink"?: string;
+      /** Is limited saving enabled? */
+      "channel.privacySettings.restrictSavingContent.enable"?: boolean;
+      "channel.premiumSettings.boosted.enable"?: boolean;
+      /** The original avatar */
+      "channel.originalAvatar"?: string;
+      /**
+       * Only return when get get channel
+       * @format int64
+       */
+      "channel.totalMembers"?: number;
+      /**
+       * Status of channel has type DM
+       *
+       *  - DIRECT_MESSAGE_STATUS_ENUM_PENDING: PENDING: The recipient has not replied or accept the message request
+       *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
+       * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+       */
+      "channel.dmStatus"?:
+        | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+        | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+      /** The workspace identify */
+      "channel.pinnedMessage.workspaceId"?: string;
+      /** The channel identify */
+      "channel.pinnedMessage.channelId"?: string;
+      /** The message identify */
+      "channel.pinnedMessage.messageId"?: string;
+      /** UserId send message */
+      "channel.pinnedMessage.userId"?: string;
+      /** Content of message */
+      "channel.pinnedMessage.content"?: string;
+      /** Is a random value created by the client, which is used as a similar attribute to the local ID */
+      "channel.pinnedMessage.ref"?: string;
+      /**
+       * Message type and message status
+       *
+       *  - MESSAGE_TYPE_ENUM_DEFAULT: Default is message of user
+       *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
+       * @default "MESSAGE_TYPE_ENUM_DEFAULT"
+       */
+      "channel.pinnedMessage.messageType"?:
+        | "MESSAGE_TYPE_ENUM_DEFAULT"
+        | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+      /**
+       * Status of message
+       *
+       *  - MESSAGE_STATUS_ENUM_PENDING: Waiting for process from server
+       *  - MESSAGE_STATUS_ENUM_SUCCESS: Send message success
+       *  - MESSAGE_STATUS_ENUM_FAILURE: Send message failed
+       * @default "MESSAGE_STATUS_ENUM_PENDING"
+       */
+      "channel.pinnedMessage.messageStatus"?:
+        | "MESSAGE_STATUS_ENUM_PENDING"
+        | "MESSAGE_STATUS_ENUM_SUCCESS"
+        | "MESSAGE_STATUS_ENUM_FAILURE";
+      /** The message identify */
+      "channel.pinnedMessage.originalMessage.messageId"?: string;
+      /** The message content */
+      "channel.pinnedMessage.originalMessage.content"?: string;
+      /**
+       * Attachment type
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.link.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** url */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.link.url"?: string;
+      /** short url */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.link.shortUrl"?: string;
+      /** collection_id of sticker file */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.collectionId"?: string;
+      /** sticker_id of sticker */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** url of sticker if attachment type is sticker */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerUrl"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentId"?: string;
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.fileRef"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.messageId"?: string;
+      /**
+       * Message type
+       *
+       *  - MESSAGE_TYPE_ENUM_DEFAULT: Default is message of user
+       *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
+       * @default "MESSAGE_TYPE_ENUM_DEFAULT"
+       */
+      "channel.pinnedMessage.originalMessage.messageType"?:
+        | "MESSAGE_TYPE_ENUM_DEFAULT"
+        | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+      /** The location language of content */
+      "channel.pinnedMessage.originalMessage.contentLocale"?: string;
+      /** The list arguments to replace in content message */
+      "channel.pinnedMessage.originalMessage.contentArguments"?: string[];
+      /** The user identify */
+      "channel.pinnedMessage.originalMessage.userId"?: string;
+      /** Time edit message */
+      "channel.pinnedMessage.originalMessage.editTime"?: string;
+      /** The create time */
+      "channel.pinnedMessage.originalMessage.createTime"?: string;
+      /** The update time */
+      "channel.pinnedMessage.originalMessage.updateTime"?: string;
+      /**
+       * Statistical react of message
+       *
+       * This is a request variable of the map type. The query format is "map_name[key]=value", e.g. If the map name is Age, the key type is string, and the value type is integer, the query parameter is expressed as Age["bob"]=18
+       */
+      "channel.pinnedMessage.reactions"?: any;
+      /** List username mentions */
+      "channel.pinnedMessage.mentions"?: string[];
+      /**
+       * Attachment type
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** State is thread of message, default = false */
+      "channel.pinnedMessage.isThread"?: boolean;
+      /**
+       * Number of times reported, default = 0
+       * @format int64
+       */
+      "channel.pinnedMessage.reportCount"?: number;
+      /** Flag report, default = false */
+      "channel.pinnedMessage.isReported"?: boolean;
+      /**
+       * Number of files, using for upload album
+       * @format int64
+       */
+      "channel.pinnedMessage.attachmentCount"?: number;
+      /** The location language of content */
+      "channel.pinnedMessage.contentLocale"?: string;
+      /** The list arguments to replace in content message */
+      "channel.pinnedMessage.contentArguments"?: string[];
+      /** Is pinned */
+      "channel.pinnedMessage.isPinned"?: boolean;
+      /** Pin time */
+      "channel.pinnedMessage.pinTime"?: string;
+      /** Time edit message */
+      "channel.pinnedMessage.editTime"?: string;
+      /** The first time message created */
+      "channel.pinnedMessage.createTime"?: string;
+      /** The time message updated */
+      "channel.pinnedMessage.updateTime"?: string;
+      /** The list participant id */
+      "channel.participantIds"?: string[];
+      /** Time recipient reject message request */
+      "channel.rejectTime"?: string;
+      /** Time recipient accept message request */
+      "channel.acceptTime"?: string;
+      /** The first time channel created */
+      "channel.createTime"?: string;
+      /** The time channel updated */
+      "channel.updateTime"?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3DMChannelCreatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name DmChannelUpdatedEventDataT
+   * @request POST:/CloudEventServiceTemp/DMChannelUpdatedEventData
+   */
+  export namespace DmChannelUpdatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      "channel.workspaceId"?: string;
+      /** The channel identify */
+      "channel.channelId"?: string;
+      /** The channel's creator is identified by the user. */
+      "channel.userId"?: string;
+      /** The name of channel */
+      "channel.name"?: string;
+      /** The avatar of channel */
+      "channel.avatar"?: string;
+      /** The channel is not yet private. */
+      "channel.isPrivate"?: boolean;
+      /**
+       * The type of channel
+       *
+       *  - CHANNEL_TYPE_ENUM_DM: DM: Direct message 1-1
+       *  - CHANNEL_TYPE_ENUM_CHANNEL: CHANNEL: A group can send message to multiple user 1-n
+       *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
+       * @default "CHANNEL_TYPE_ENUM_DM"
+       */
+      "channel.type"?:
+        | "CHANNEL_TYPE_ENUM_DM"
+        | "CHANNEL_TYPE_ENUM_CHANNEL"
+        | "CHANNEL_TYPE_ENUM_BROADCAST";
+      /** Invitation link after create channel */
+      "channel.invitationLink"?: string;
+      /** Is limited saving enabled? */
+      "channel.privacySettings.restrictSavingContent.enable"?: boolean;
+      "channel.premiumSettings.boosted.enable"?: boolean;
+      /** The original avatar */
+      "channel.originalAvatar"?: string;
+      /**
+       * Only return when get get channel
+       * @format int64
+       */
+      "channel.totalMembers"?: number;
+      /**
+       * Status of channel has type DM
+       *
+       *  - DIRECT_MESSAGE_STATUS_ENUM_PENDING: PENDING: The recipient has not replied or accept the message request
+       *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
+       * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+       */
+      "channel.dmStatus"?:
+        | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+        | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+      /** The workspace identify */
+      "channel.pinnedMessage.workspaceId"?: string;
+      /** The channel identify */
+      "channel.pinnedMessage.channelId"?: string;
+      /** The message identify */
+      "channel.pinnedMessage.messageId"?: string;
+      /** UserId send message */
+      "channel.pinnedMessage.userId"?: string;
+      /** Content of message */
+      "channel.pinnedMessage.content"?: string;
+      /** Is a random value created by the client, which is used as a similar attribute to the local ID */
+      "channel.pinnedMessage.ref"?: string;
+      /**
+       * Message type and message status
+       *
+       *  - MESSAGE_TYPE_ENUM_DEFAULT: Default is message of user
+       *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
+       * @default "MESSAGE_TYPE_ENUM_DEFAULT"
+       */
+      "channel.pinnedMessage.messageType"?:
+        | "MESSAGE_TYPE_ENUM_DEFAULT"
+        | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+      /**
+       * Status of message
+       *
+       *  - MESSAGE_STATUS_ENUM_PENDING: Waiting for process from server
+       *  - MESSAGE_STATUS_ENUM_SUCCESS: Send message success
+       *  - MESSAGE_STATUS_ENUM_FAILURE: Send message failed
+       * @default "MESSAGE_STATUS_ENUM_PENDING"
+       */
+      "channel.pinnedMessage.messageStatus"?:
+        | "MESSAGE_STATUS_ENUM_PENDING"
+        | "MESSAGE_STATUS_ENUM_SUCCESS"
+        | "MESSAGE_STATUS_ENUM_FAILURE";
+      /** The message identify */
+      "channel.pinnedMessage.originalMessage.messageId"?: string;
+      /** The message content */
+      "channel.pinnedMessage.originalMessage.content"?: string;
+      /**
+       * Attachment type
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.link.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** url */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.link.url"?: string;
+      /** short url */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.link.shortUrl"?: string;
+      /** collection_id of sticker file */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.collectionId"?: string;
+      /** sticker_id of sticker */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** url of sticker if attachment type is sticker */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerUrl"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentId"?: string;
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.fileRef"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.messageId"?: string;
+      /**
+       * Message type
+       *
+       *  - MESSAGE_TYPE_ENUM_DEFAULT: Default is message of user
+       *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
+       * @default "MESSAGE_TYPE_ENUM_DEFAULT"
+       */
+      "channel.pinnedMessage.originalMessage.messageType"?:
+        | "MESSAGE_TYPE_ENUM_DEFAULT"
+        | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+      /** The location language of content */
+      "channel.pinnedMessage.originalMessage.contentLocale"?: string;
+      /** The list arguments to replace in content message */
+      "channel.pinnedMessage.originalMessage.contentArguments"?: string[];
+      /** The user identify */
+      "channel.pinnedMessage.originalMessage.userId"?: string;
+      /** Time edit message */
+      "channel.pinnedMessage.originalMessage.editTime"?: string;
+      /** The create time */
+      "channel.pinnedMessage.originalMessage.createTime"?: string;
+      /** The update time */
+      "channel.pinnedMessage.originalMessage.updateTime"?: string;
+      /**
+       * Statistical react of message
+       *
+       * This is a request variable of the map type. The query format is "map_name[key]=value", e.g. If the map name is Age, the key type is string, and the value type is integer, the query parameter is expressed as Age["bob"]=18
+       */
+      "channel.pinnedMessage.reactions"?: any;
+      /** List username mentions */
+      "channel.pinnedMessage.mentions"?: string[];
+      /**
+       * Attachment type
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** State is thread of message, default = false */
+      "channel.pinnedMessage.isThread"?: boolean;
+      /**
+       * Number of times reported, default = 0
+       * @format int64
+       */
+      "channel.pinnedMessage.reportCount"?: number;
+      /** Flag report, default = false */
+      "channel.pinnedMessage.isReported"?: boolean;
+      /**
+       * Number of files, using for upload album
+       * @format int64
+       */
+      "channel.pinnedMessage.attachmentCount"?: number;
+      /** The location language of content */
+      "channel.pinnedMessage.contentLocale"?: string;
+      /** The list arguments to replace in content message */
+      "channel.pinnedMessage.contentArguments"?: string[];
+      /** Is pinned */
+      "channel.pinnedMessage.isPinned"?: boolean;
+      /** Pin time */
+      "channel.pinnedMessage.pinTime"?: string;
+      /** Time edit message */
+      "channel.pinnedMessage.editTime"?: string;
+      /** The first time message created */
+      "channel.pinnedMessage.createTime"?: string;
+      /** The time message updated */
+      "channel.pinnedMessage.updateTime"?: string;
+      /** The list participant id */
+      "channel.participantIds"?: string[];
+      /** Time recipient reject message request */
+      "channel.rejectTime"?: string;
+      /** Time recipient accept message request */
+      "channel.acceptTime"?: string;
+      /** The first time channel created */
+      "channel.createTime"?: string;
+      /** The time channel updated */
+      "channel.updateTime"?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3DMChannelUpdatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name DecoratedAvatarRemovedEventDataT
+   * @request POST:/CloudEventServiceTemp/DecoratedAvatarRemovedEventData
+   */
+  export namespace DecoratedAvatarRemovedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify whom remove decorated avatar */
+      actorId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3DecoratedAvatarRemovedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name DecoratedAvatarUploadedEventDataT
+   * @request POST:/CloudEventServiceTemp/DecoratedAvatarUploadedEventData
+   */
+  export namespace DecoratedAvatarUploadedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify whom upload decorated avatar */
+      actorId?: string;
+      /** The avatar frame identify */
+      avatarFrameId?: string;
+      /** The avatar decorated URL */
+      decoratedAvatar?: string;
+      /** The original decorated avatar URL */
+      originalDecoratedAvatar?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3DecoratedAvatarUploadedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name DeleteUserVisitedProfileEventDataT
+   * @request POST:/CloudEventServiceTemp/DeleteUserVisitedProfileEventData
+   */
+  export namespace DeleteUserVisitedProfileEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** User identify whom delete visited profile */
+      actorId?: string;
+      /** User identify whom visited profile */
+      userId?: string;
+      /** The created visited profile time */
+      createTime?: string;
+      /** The update visited profile time */
+      updateTime?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3DeleteUserVisitedProfileEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name DeviceLinkedEventDataT
+   * @request POST:/CloudEventServiceTemp/DeviceLinkedEventData
+   */
+  export namespace DeviceLinkedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      userId?: string;
+      /** The device identify */
+      deviceId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3DeviceLinkedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name DeviceUnlinkedEventDataT
+   * @request POST:/CloudEventServiceTemp/DeviceUnlinkedEventData
+   */
+  export namespace DeviceUnlinkedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      userId?: string;
+      /** The device identify */
+      deviceId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3DeviceUnlinkedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name FileUploadedEventDataT
+   * @request POST:/CloudEventServiceTemp/FileUploadedEventData
+   */
+  export namespace FileUploadedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify whom upload file */
+      actorId?: string;
+      /** The workspace identify */
+      workspaceId?: string;
+      /** The channel identify */
+      channelId?: string;
+      /** The message identify */
+      messageId?: string;
+      /**
+       * The attachment file status
+       *
+       *  - ATTACHMENT_FILE_STATUS_ENUM_UNSPECIFIED: Unspecified, default value
+       *  - ATTACHMENT_FILE_STATUS_ENUM_UPLOADING: File Uploading to server
+       *  - ATTACHMENT_FILE_STATUS_ENUM_SUCCESS: File uploaded success
+       *  - ATTACHMENT_FILE_STATUS_ENUM_FAILURE: File uploaded failed
+       * @default "ATTACHMENT_FILE_STATUS_ENUM_UNSPECIFIED"
+       */
+      attachmentFileStatus?:
+        | "ATTACHMENT_FILE_STATUS_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_FILE_STATUS_ENUM_UPLOADING"
+        | "ATTACHMENT_FILE_STATUS_ENUM_SUCCESS"
+        | "ATTACHMENT_FILE_STATUS_ENUM_FAILURE";
+      /** The file ref */
+      fileRef?: string;
+      /** The file name */
+      fileName?: string;
+      /**
+       * The file size
+       * @format int64
+       */
+      fileSize?: number;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3FileUploadedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name FriendRemovedEventDataT
+   * @request POST:/CloudEventServiceTemp/FriendRemovedEventData
+   */
+  export namespace FriendRemovedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify whom send request */
+      actorId?: string;
+      /** The user identify whom receive request */
+      targetUserId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3FriendRemovedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name GatewayConnectedEventDataT
+   * @request POST:/CloudEventServiceTemp/GatewayConnectedEventData
+   */
+  export namespace GatewayConnectedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify connect to gateway */
+      userId?: string;
+      /** The device identify */
+      deviceId?: string;
+      /** The message's data */
+      message?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3GatewayConnectedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name IncomingFriendRequestAcceptedEventDataT
+   * @request POST:/CloudEventServiceTemp/IncomingFriendRequestAcceptedEventData
+   */
+  export namespace IncomingFriendRequestAcceptedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify whom send request */
+      "friendRequest.requestedFromUserId"?: string;
+      /** The user identify whom receive request */
+      "friendRequest.requestedToUserId"?: string;
+      /**
+       * The status of friend
+       *
+       *  - FRIEND_STATUS_ENUM_UNSPECIFIED: UNSPECIFIED: default value
+       *  - FRIEND_STATUS_ENUM_NOT_FRIEND: NOT_FRIEND: Two user are not friends.
+       *  - FRIEND_STATUS_ENUM_REQUEST_SENT: SENT: At least one of two users has sent a friend request to the other user.
+       *  - FRIEND_STATUS_ENUM_REQUEST_RECEIVED: RECEIVED: At least one of two users has received a friend request sent by the other user.
+       *  - FRIEND_STATUS_ENUM_REQUEST_DELETED: DELETED: At user received delete a friend request
+       *  - FRIEND_STATUS_ENUM_FRIEND: FRIEND: Two user are friends.
+       * @default "FRIEND_STATUS_ENUM_UNSPECIFIED"
+       */
+      "friendRequest.status"?:
+        | "FRIEND_STATUS_ENUM_UNSPECIFIED"
+        | "FRIEND_STATUS_ENUM_NOT_FRIEND"
+        | "FRIEND_STATUS_ENUM_REQUEST_SENT"
+        | "FRIEND_STATUS_ENUM_REQUEST_RECEIVED"
+        | "FRIEND_STATUS_ENUM_REQUEST_DELETED"
+        | "FRIEND_STATUS_ENUM_FRIEND";
+      /** The friend identify */
+      "friendRequest.friendId"?: string;
+      /** The list participant id */
+      "friendRequest.participantIds"?: string[];
+      /** The time has been read by the receiver. */
+      "friendRequest.readTime"?: string;
+      /** The time to accept friend */
+      "friendRequest.acceptTime"?: string;
+      /** The first time friend created */
+      "friendRequest.createTime"?: string;
+      /** The time of friend updated */
+      "friendRequest.updateTime"?: string;
+      /** The timestamp when the friend request was deleted */
+      "friendRequest.deleteTime"?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3IncomingFriendRequestAcceptedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name IncomingFriendRequestCanceledEventDataT
+   * @request POST:/CloudEventServiceTemp/IncomingFriendRequestCanceledEventData
+   */
+  export namespace IncomingFriendRequestCanceledEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify whom send request */
+      "friendRequest.requestedFromUserId"?: string;
+      /** The user identify whom receive request */
+      "friendRequest.requestedToUserId"?: string;
+      /**
+       * The status of friend
+       *
+       *  - FRIEND_STATUS_ENUM_UNSPECIFIED: UNSPECIFIED: default value
+       *  - FRIEND_STATUS_ENUM_NOT_FRIEND: NOT_FRIEND: Two user are not friends.
+       *  - FRIEND_STATUS_ENUM_REQUEST_SENT: SENT: At least one of two users has sent a friend request to the other user.
+       *  - FRIEND_STATUS_ENUM_REQUEST_RECEIVED: RECEIVED: At least one of two users has received a friend request sent by the other user.
+       *  - FRIEND_STATUS_ENUM_REQUEST_DELETED: DELETED: At user received delete a friend request
+       *  - FRIEND_STATUS_ENUM_FRIEND: FRIEND: Two user are friends.
+       * @default "FRIEND_STATUS_ENUM_UNSPECIFIED"
+       */
+      "friendRequest.status"?:
+        | "FRIEND_STATUS_ENUM_UNSPECIFIED"
+        | "FRIEND_STATUS_ENUM_NOT_FRIEND"
+        | "FRIEND_STATUS_ENUM_REQUEST_SENT"
+        | "FRIEND_STATUS_ENUM_REQUEST_RECEIVED"
+        | "FRIEND_STATUS_ENUM_REQUEST_DELETED"
+        | "FRIEND_STATUS_ENUM_FRIEND";
+      /** The friend identify */
+      "friendRequest.friendId"?: string;
+      /** The list participant id */
+      "friendRequest.participantIds"?: string[];
+      /** The time has been read by the receiver. */
+      "friendRequest.readTime"?: string;
+      /** The time to accept friend */
+      "friendRequest.acceptTime"?: string;
+      /** The first time friend created */
+      "friendRequest.createTime"?: string;
+      /** The time of friend updated */
+      "friendRequest.updateTime"?: string;
+      /** The timestamp when the friend request was deleted */
+      "friendRequest.deleteTime"?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3IncomingFriendRequestCanceledEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name IncomingFriendRequestCreatedEventDataT
+   * @request POST:/CloudEventServiceTemp/IncomingFriendRequestCreatedEventData
+   */
+  export namespace IncomingFriendRequestCreatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify whom send request */
+      "friendRequest.requestedFromUserId"?: string;
+      /** The user identify whom receive request */
+      "friendRequest.requestedToUserId"?: string;
+      /**
+       * The status of friend
+       *
+       *  - FRIEND_STATUS_ENUM_UNSPECIFIED: UNSPECIFIED: default value
+       *  - FRIEND_STATUS_ENUM_NOT_FRIEND: NOT_FRIEND: Two user are not friends.
+       *  - FRIEND_STATUS_ENUM_REQUEST_SENT: SENT: At least one of two users has sent a friend request to the other user.
+       *  - FRIEND_STATUS_ENUM_REQUEST_RECEIVED: RECEIVED: At least one of two users has received a friend request sent by the other user.
+       *  - FRIEND_STATUS_ENUM_REQUEST_DELETED: DELETED: At user received delete a friend request
+       *  - FRIEND_STATUS_ENUM_FRIEND: FRIEND: Two user are friends.
+       * @default "FRIEND_STATUS_ENUM_UNSPECIFIED"
+       */
+      "friendRequest.status"?:
+        | "FRIEND_STATUS_ENUM_UNSPECIFIED"
+        | "FRIEND_STATUS_ENUM_NOT_FRIEND"
+        | "FRIEND_STATUS_ENUM_REQUEST_SENT"
+        | "FRIEND_STATUS_ENUM_REQUEST_RECEIVED"
+        | "FRIEND_STATUS_ENUM_REQUEST_DELETED"
+        | "FRIEND_STATUS_ENUM_FRIEND";
+      /** The friend identify */
+      "friendRequest.friendId"?: string;
+      /** The list participant id */
+      "friendRequest.participantIds"?: string[];
+      /** The time has been read by the receiver. */
+      "friendRequest.readTime"?: string;
+      /** The time to accept friend */
+      "friendRequest.acceptTime"?: string;
+      /** The first time friend created */
+      "friendRequest.createTime"?: string;
+      /** The time of friend updated */
+      "friendRequest.updateTime"?: string;
+      /** The timestamp when the friend request was deleted */
+      "friendRequest.deleteTime"?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3IncomingFriendRequestCreatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name IncomingFriendRequestDeletedEventDataT
+   * @request POST:/CloudEventServiceTemp/IncomingFriendRequestDeletedEventData
+   */
+  export namespace IncomingFriendRequestDeletedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify whom send request */
+      "friendRequest.requestedFromUserId"?: string;
+      /** The user identify whom receive request */
+      "friendRequest.requestedToUserId"?: string;
+      /**
+       * The status of friend
+       *
+       *  - FRIEND_STATUS_ENUM_UNSPECIFIED: UNSPECIFIED: default value
+       *  - FRIEND_STATUS_ENUM_NOT_FRIEND: NOT_FRIEND: Two user are not friends.
+       *  - FRIEND_STATUS_ENUM_REQUEST_SENT: SENT: At least one of two users has sent a friend request to the other user.
+       *  - FRIEND_STATUS_ENUM_REQUEST_RECEIVED: RECEIVED: At least one of two users has received a friend request sent by the other user.
+       *  - FRIEND_STATUS_ENUM_REQUEST_DELETED: DELETED: At user received delete a friend request
+       *  - FRIEND_STATUS_ENUM_FRIEND: FRIEND: Two user are friends.
+       * @default "FRIEND_STATUS_ENUM_UNSPECIFIED"
+       */
+      "friendRequest.status"?:
+        | "FRIEND_STATUS_ENUM_UNSPECIFIED"
+        | "FRIEND_STATUS_ENUM_NOT_FRIEND"
+        | "FRIEND_STATUS_ENUM_REQUEST_SENT"
+        | "FRIEND_STATUS_ENUM_REQUEST_RECEIVED"
+        | "FRIEND_STATUS_ENUM_REQUEST_DELETED"
+        | "FRIEND_STATUS_ENUM_FRIEND";
+      /** The friend identify */
+      "friendRequest.friendId"?: string;
+      /** The list participant id */
+      "friendRequest.participantIds"?: string[];
+      /** The time has been read by the receiver. */
+      "friendRequest.readTime"?: string;
+      /** The time to accept friend */
+      "friendRequest.acceptTime"?: string;
+      /** The first time friend created */
+      "friendRequest.createTime"?: string;
+      /** The time of friend updated */
+      "friendRequest.updateTime"?: string;
+      /** The timestamp when the friend request was deleted */
+      "friendRequest.deleteTime"?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3IncomingFriendRequestDeletedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name IncomingMessageRequestAcceptedEventDataT
+   * @request POST:/CloudEventServiceTemp/IncomingMessageRequestAcceptedEventData
+   */
+  export namespace IncomingMessageRequestAcceptedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      "channel.workspaceId"?: string;
+      /** The channel identify */
+      "channel.channelId"?: string;
+      /** The channel's creator is identified by the user. */
+      "channel.userId"?: string;
+      /** The name of channel */
+      "channel.name"?: string;
+      /** The avatar of channel */
+      "channel.avatar"?: string;
+      /** The channel is not yet private. */
+      "channel.isPrivate"?: boolean;
+      /**
+       * The type of channel
+       *
+       *  - CHANNEL_TYPE_ENUM_DM: DM: Direct message 1-1
+       *  - CHANNEL_TYPE_ENUM_CHANNEL: CHANNEL: A group can send message to multiple user 1-n
+       *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
+       * @default "CHANNEL_TYPE_ENUM_DM"
+       */
+      "channel.type"?:
+        | "CHANNEL_TYPE_ENUM_DM"
+        | "CHANNEL_TYPE_ENUM_CHANNEL"
+        | "CHANNEL_TYPE_ENUM_BROADCAST";
+      /** Invitation link after create channel */
+      "channel.invitationLink"?: string;
+      /** Is limited saving enabled? */
+      "channel.privacySettings.restrictSavingContent.enable"?: boolean;
+      "channel.premiumSettings.boosted.enable"?: boolean;
+      /** The original avatar */
+      "channel.originalAvatar"?: string;
+      /**
+       * Only return when get get channel
+       * @format int64
+       */
+      "channel.totalMembers"?: number;
+      /**
+       * Status of channel has type DM
+       *
+       *  - DIRECT_MESSAGE_STATUS_ENUM_PENDING: PENDING: The recipient has not replied or accept the message request
+       *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
+       * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+       */
+      "channel.dmStatus"?:
+        | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+        | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+      /** The workspace identify */
+      "channel.pinnedMessage.workspaceId"?: string;
+      /** The channel identify */
+      "channel.pinnedMessage.channelId"?: string;
+      /** The message identify */
+      "channel.pinnedMessage.messageId"?: string;
+      /** UserId send message */
+      "channel.pinnedMessage.userId"?: string;
+      /** Content of message */
+      "channel.pinnedMessage.content"?: string;
+      /** Is a random value created by the client, which is used as a similar attribute to the local ID */
+      "channel.pinnedMessage.ref"?: string;
+      /**
+       * Message type and message status
+       *
+       *  - MESSAGE_TYPE_ENUM_DEFAULT: Default is message of user
+       *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
+       * @default "MESSAGE_TYPE_ENUM_DEFAULT"
+       */
+      "channel.pinnedMessage.messageType"?:
+        | "MESSAGE_TYPE_ENUM_DEFAULT"
+        | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+      /**
+       * Status of message
+       *
+       *  - MESSAGE_STATUS_ENUM_PENDING: Waiting for process from server
+       *  - MESSAGE_STATUS_ENUM_SUCCESS: Send message success
+       *  - MESSAGE_STATUS_ENUM_FAILURE: Send message failed
+       * @default "MESSAGE_STATUS_ENUM_PENDING"
+       */
+      "channel.pinnedMessage.messageStatus"?:
+        | "MESSAGE_STATUS_ENUM_PENDING"
+        | "MESSAGE_STATUS_ENUM_SUCCESS"
+        | "MESSAGE_STATUS_ENUM_FAILURE";
+      /** The message identify */
+      "channel.pinnedMessage.originalMessage.messageId"?: string;
+      /** The message content */
+      "channel.pinnedMessage.originalMessage.content"?: string;
+      /**
+       * Attachment type
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.link.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** url */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.link.url"?: string;
+      /** short url */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.link.shortUrl"?: string;
+      /** collection_id of sticker file */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.collectionId"?: string;
+      /** sticker_id of sticker */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** url of sticker if attachment type is sticker */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerUrl"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentId"?: string;
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.fileRef"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.messageId"?: string;
+      /**
+       * Message type
+       *
+       *  - MESSAGE_TYPE_ENUM_DEFAULT: Default is message of user
+       *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
+       * @default "MESSAGE_TYPE_ENUM_DEFAULT"
+       */
+      "channel.pinnedMessage.originalMessage.messageType"?:
+        | "MESSAGE_TYPE_ENUM_DEFAULT"
+        | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+      /** The location language of content */
+      "channel.pinnedMessage.originalMessage.contentLocale"?: string;
+      /** The list arguments to replace in content message */
+      "channel.pinnedMessage.originalMessage.contentArguments"?: string[];
+      /** The user identify */
+      "channel.pinnedMessage.originalMessage.userId"?: string;
+      /** Time edit message */
+      "channel.pinnedMessage.originalMessage.editTime"?: string;
+      /** The create time */
+      "channel.pinnedMessage.originalMessage.createTime"?: string;
+      /** The update time */
+      "channel.pinnedMessage.originalMessage.updateTime"?: string;
+      /**
+       * Statistical react of message
+       *
+       * This is a request variable of the map type. The query format is "map_name[key]=value", e.g. If the map name is Age, the key type is string, and the value type is integer, the query parameter is expressed as Age["bob"]=18
+       */
+      "channel.pinnedMessage.reactions"?: any;
+      /** List username mentions */
+      "channel.pinnedMessage.mentions"?: string[];
+      /**
+       * Attachment type
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** State is thread of message, default = false */
+      "channel.pinnedMessage.isThread"?: boolean;
+      /**
+       * Number of times reported, default = 0
+       * @format int64
+       */
+      "channel.pinnedMessage.reportCount"?: number;
+      /** Flag report, default = false */
+      "channel.pinnedMessage.isReported"?: boolean;
+      /**
+       * Number of files, using for upload album
+       * @format int64
+       */
+      "channel.pinnedMessage.attachmentCount"?: number;
+      /** The location language of content */
+      "channel.pinnedMessage.contentLocale"?: string;
+      /** The list arguments to replace in content message */
+      "channel.pinnedMessage.contentArguments"?: string[];
+      /** Is pinned */
+      "channel.pinnedMessage.isPinned"?: boolean;
+      /** Pin time */
+      "channel.pinnedMessage.pinTime"?: string;
+      /** Time edit message */
+      "channel.pinnedMessage.editTime"?: string;
+      /** The first time message created */
+      "channel.pinnedMessage.createTime"?: string;
+      /** The time message updated */
+      "channel.pinnedMessage.updateTime"?: string;
+      /** The list participant id */
+      "channel.participantIds"?: string[];
+      /** Time recipient reject message request */
+      "channel.rejectTime"?: string;
+      /** Time recipient accept message request */
+      "channel.acceptTime"?: string;
+      /** The first time channel created */
+      "channel.createTime"?: string;
+      /** The time channel updated */
+      "channel.updateTime"?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3IncomingMessageRequestAcceptedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name IncomingMessageRequestCreatedEventDataT
+   * @request POST:/CloudEventServiceTemp/IncomingMessageRequestCreatedEventData
+   */
+  export namespace IncomingMessageRequestCreatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      "channel.workspaceId"?: string;
+      /** The channel identify */
+      "channel.channelId"?: string;
+      /** The channel's creator is identified by the user. */
+      "channel.userId"?: string;
+      /** The name of channel */
+      "channel.name"?: string;
+      /** The avatar of channel */
+      "channel.avatar"?: string;
+      /** The channel is not yet private. */
+      "channel.isPrivate"?: boolean;
+      /**
+       * The type of channel
+       *
+       *  - CHANNEL_TYPE_ENUM_DM: DM: Direct message 1-1
+       *  - CHANNEL_TYPE_ENUM_CHANNEL: CHANNEL: A group can send message to multiple user 1-n
+       *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
+       * @default "CHANNEL_TYPE_ENUM_DM"
+       */
+      "channel.type"?:
+        | "CHANNEL_TYPE_ENUM_DM"
+        | "CHANNEL_TYPE_ENUM_CHANNEL"
+        | "CHANNEL_TYPE_ENUM_BROADCAST";
+      /** Invitation link after create channel */
+      "channel.invitationLink"?: string;
+      /** Is limited saving enabled? */
+      "channel.privacySettings.restrictSavingContent.enable"?: boolean;
+      "channel.premiumSettings.boosted.enable"?: boolean;
+      /** The original avatar */
+      "channel.originalAvatar"?: string;
+      /**
+       * Only return when get get channel
+       * @format int64
+       */
+      "channel.totalMembers"?: number;
+      /**
+       * Status of channel has type DM
+       *
+       *  - DIRECT_MESSAGE_STATUS_ENUM_PENDING: PENDING: The recipient has not replied or accept the message request
+       *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
+       * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+       */
+      "channel.dmStatus"?:
+        | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+        | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+      /** The workspace identify */
+      "channel.pinnedMessage.workspaceId"?: string;
+      /** The channel identify */
+      "channel.pinnedMessage.channelId"?: string;
+      /** The message identify */
+      "channel.pinnedMessage.messageId"?: string;
+      /** UserId send message */
+      "channel.pinnedMessage.userId"?: string;
+      /** Content of message */
+      "channel.pinnedMessage.content"?: string;
+      /** Is a random value created by the client, which is used as a similar attribute to the local ID */
+      "channel.pinnedMessage.ref"?: string;
+      /**
+       * Message type and message status
+       *
+       *  - MESSAGE_TYPE_ENUM_DEFAULT: Default is message of user
+       *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
+       * @default "MESSAGE_TYPE_ENUM_DEFAULT"
+       */
+      "channel.pinnedMessage.messageType"?:
+        | "MESSAGE_TYPE_ENUM_DEFAULT"
+        | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+      /**
+       * Status of message
+       *
+       *  - MESSAGE_STATUS_ENUM_PENDING: Waiting for process from server
+       *  - MESSAGE_STATUS_ENUM_SUCCESS: Send message success
+       *  - MESSAGE_STATUS_ENUM_FAILURE: Send message failed
+       * @default "MESSAGE_STATUS_ENUM_PENDING"
+       */
+      "channel.pinnedMessage.messageStatus"?:
+        | "MESSAGE_STATUS_ENUM_PENDING"
+        | "MESSAGE_STATUS_ENUM_SUCCESS"
+        | "MESSAGE_STATUS_ENUM_FAILURE";
+      /** The message identify */
+      "channel.pinnedMessage.originalMessage.messageId"?: string;
+      /** The message content */
+      "channel.pinnedMessage.originalMessage.content"?: string;
+      /**
+       * Attachment type
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.link.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** url */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.link.url"?: string;
+      /** short url */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.link.shortUrl"?: string;
+      /** collection_id of sticker file */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.collectionId"?: string;
+      /** sticker_id of sticker */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** url of sticker if attachment type is sticker */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerUrl"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentId"?: string;
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.fileRef"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.messageId"?: string;
+      /**
+       * Message type
+       *
+       *  - MESSAGE_TYPE_ENUM_DEFAULT: Default is message of user
+       *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
+       * @default "MESSAGE_TYPE_ENUM_DEFAULT"
+       */
+      "channel.pinnedMessage.originalMessage.messageType"?:
+        | "MESSAGE_TYPE_ENUM_DEFAULT"
+        | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+      /** The location language of content */
+      "channel.pinnedMessage.originalMessage.contentLocale"?: string;
+      /** The list arguments to replace in content message */
+      "channel.pinnedMessage.originalMessage.contentArguments"?: string[];
+      /** The user identify */
+      "channel.pinnedMessage.originalMessage.userId"?: string;
+      /** Time edit message */
+      "channel.pinnedMessage.originalMessage.editTime"?: string;
+      /** The create time */
+      "channel.pinnedMessage.originalMessage.createTime"?: string;
+      /** The update time */
+      "channel.pinnedMessage.originalMessage.updateTime"?: string;
+      /**
+       * Statistical react of message
+       *
+       * This is a request variable of the map type. The query format is "map_name[key]=value", e.g. If the map name is Age, the key type is string, and the value type is integer, the query parameter is expressed as Age["bob"]=18
+       */
+      "channel.pinnedMessage.reactions"?: any;
+      /** List username mentions */
+      "channel.pinnedMessage.mentions"?: string[];
+      /**
+       * Attachment type
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** State is thread of message, default = false */
+      "channel.pinnedMessage.isThread"?: boolean;
+      /**
+       * Number of times reported, default = 0
+       * @format int64
+       */
+      "channel.pinnedMessage.reportCount"?: number;
+      /** Flag report, default = false */
+      "channel.pinnedMessage.isReported"?: boolean;
+      /**
+       * Number of files, using for upload album
+       * @format int64
+       */
+      "channel.pinnedMessage.attachmentCount"?: number;
+      /** The location language of content */
+      "channel.pinnedMessage.contentLocale"?: string;
+      /** The list arguments to replace in content message */
+      "channel.pinnedMessage.contentArguments"?: string[];
+      /** Is pinned */
+      "channel.pinnedMessage.isPinned"?: boolean;
+      /** Pin time */
+      "channel.pinnedMessage.pinTime"?: string;
+      /** Time edit message */
+      "channel.pinnedMessage.editTime"?: string;
+      /** The first time message created */
+      "channel.pinnedMessage.createTime"?: string;
+      /** The time message updated */
+      "channel.pinnedMessage.updateTime"?: string;
+      /** The list participant id */
+      "channel.participantIds"?: string[];
+      /** Time recipient reject message request */
+      "channel.rejectTime"?: string;
+      /** Time recipient accept message request */
+      "channel.acceptTime"?: string;
+      /** The first time channel created */
+      "channel.createTime"?: string;
+      /** The time channel updated */
+      "channel.updateTime"?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3IncomingMessageRequestCreatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name MarkAllChannelsAsReadEventDataT
+   * @request POST:/CloudEventServiceTemp/MarkAllChannelsAsReadEventData
+   */
+  export namespace MarkAllChannelsAsReadEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify */
+      userId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3MarkAllChannelsAsReadEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name MemberBannedEventDataT
+   * @request POST:/CloudEventServiceTemp/MemberBannedEventData
+   */
+  export namespace MemberBannedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      workspaceId?: string;
+      /** The channel identify */
+      channelId?: string;
+      /** The user identify whom send request */
+      actorId?: string;
+      /** The user identify whom be banned */
+      bannedUserId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3MemberBannedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name MemberJoinedEventDataT
+   * @request POST:/CloudEventServiceTemp/MemberJoinedEventData
+   */
+  export namespace MemberJoinedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      workspaceId?: string;
+      /** The channel identify */
+      channelId?: string;
+      /** The user identify whom joined channel */
+      joinedUserId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3MemberJoinedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name MemberLeftEventDataT
+   * @request POST:/CloudEventServiceTemp/MemberLeftEventData
+   */
+  export namespace MemberLeftEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      workspaceId?: string;
+      /** The channel identify */
+      channelId?: string;
+      /** The user identify whom left channel */
+      userId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3MemberLeftEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name MemberNicknameUpdatedEventDataT
+   * @request POST:/CloudEventServiceTemp/MemberNicknameUpdatedEventData
+   */
+  export namespace MemberNicknameUpdatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      workspaceId?: string;
+      /** The channel identify */
+      channelId?: string;
+      /** The user identify whom update nickname */
+      actorId?: string;
+      /** The user identify whom be updated nickname */
+      targetUserId?: string;
+      /** The new nickname of member */
+      nickname?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3MemberNicknameUpdatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name MemberRemovedEventDataT
+   * @request POST:/CloudEventServiceTemp/MemberRemovedEventData
+   */
+  export namespace MemberRemovedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      workspaceId?: string;
+      /** The channel identify */
+      channelId?: string;
+      /** The user identify whom remove member */
+      actorId?: string;
+      /** The user identify whom be removed from channel */
+      targetUserId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3MemberRemovedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name MemberRoleRevokedEventDataT
+   * @request POST:/CloudEventServiceTemp/MemberRoleRevokedEventData
+   */
+  export namespace MemberRoleRevokedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      workspaceId?: string;
+      /** The channel identify */
+      channelId?: string;
+      /** The user identify whom revoke role */
+      actorId?: string;
+      /** The user identify whom be revoked role */
+      targetUserId?: string;
+      /** The role to revoke */
+      role?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3MemberRoleRevokedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name MemberRoleUpdatedEventDataT
+   * @request POST:/CloudEventServiceTemp/MemberRoleUpdatedEventData
+   */
+  export namespace MemberRoleUpdatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      workspaceId?: string;
+      /** The channel identify */
+      channelId?: string;
+      /** The user identify whom update role */
+      actorId?: string;
+      /** The user identify whom be updated role */
+      targetUserId?: string;
+      /** The role to update */
+      role?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3MemberRoleUpdatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name MemberUnbannedEventDataT
+   * @request POST:/CloudEventServiceTemp/MemberUnbannedEventData
+   */
+  export namespace MemberUnbannedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      workspaceId?: string;
+      /** The channel identify */
+      channelId?: string;
+      /** The user identify whom unban member */
+      actorId?: string;
+      /** The user identify whom be unbanned from channel */
+      unbannedUserId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3MemberUnbannedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name MessageCreatedEventDataT
+   * @request POST:/CloudEventServiceTemp/MessageCreatedEventData
+   */
+  export namespace MessageCreatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      "message.workspaceId"?: string;
+      /** The channel identify */
+      "message.channelId"?: string;
+      /** The message identify */
+      "message.messageId"?: string;
+      /** UserId send message */
+      "message.userId"?: string;
+      /** Content of message */
+      "message.content"?: string;
+      /** Is a random value created by the client, which is used as a similar attribute to the local ID */
+      "message.ref"?: string;
+      /**
+       * Message type and message status
+       *
+       *  - MESSAGE_TYPE_ENUM_DEFAULT: Default is message of user
+       *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
+       * @default "MESSAGE_TYPE_ENUM_DEFAULT"
+       */
+      "message.messageType"?:
+        | "MESSAGE_TYPE_ENUM_DEFAULT"
+        | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+      /**
+       * Status of message
+       *
+       *  - MESSAGE_STATUS_ENUM_PENDING: Waiting for process from server
+       *  - MESSAGE_STATUS_ENUM_SUCCESS: Send message success
+       *  - MESSAGE_STATUS_ENUM_FAILURE: Send message failed
+       * @default "MESSAGE_STATUS_ENUM_PENDING"
+       */
+      "message.messageStatus"?:
+        | "MESSAGE_STATUS_ENUM_PENDING"
+        | "MESSAGE_STATUS_ENUM_SUCCESS"
+        | "MESSAGE_STATUS_ENUM_FAILURE";
+      /** The message identify */
+      "message.originalMessage.messageId"?: string;
+      /** The message content */
+      "message.originalMessage.content"?: string;
+      /**
+       * Attachment type
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.link.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** url */
+      "message.originalMessage.mediaAttachments.link.url"?: string;
+      /** short url */
+      "message.originalMessage.mediaAttachments.link.shortUrl"?: string;
+      /** collection_id of sticker file */
+      "message.originalMessage.mediaAttachments.sticker.collectionId"?: string;
+      /** sticker_id of sticker */
+      "message.originalMessage.mediaAttachments.sticker.stickerId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.sticker.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** url of sticker if attachment type is sticker */
+      "message.originalMessage.mediaAttachments.sticker.stickerUrl"?: string;
+      /** attachment id */
+      "message.originalMessage.mediaAttachments.sticker.attachmentId"?: string;
+      /** file ref */
+      "message.originalMessage.mediaAttachments.sticker.fileRef"?: string;
+      /** file_id to handle file operations */
+      "message.originalMessage.mediaAttachments.photo.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.photo.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "message.originalMessage.mediaAttachments.photo.fileUrl"?: string;
+      /** The name of file. */
+      "message.originalMessage.mediaAttachments.photo.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.photo.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "message.originalMessage.mediaAttachments.photo.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "message.originalMessage.mediaAttachments.photo.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.photo.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "message.originalMessage.mediaAttachments.photo.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "message.originalMessage.mediaAttachments.photo.audioMetadata.samples"?: number[];
+      /** file ref */
+      "message.originalMessage.mediaAttachments.photo.fileRef"?: string;
+      /** attachment id */
+      "message.originalMessage.mediaAttachments.photo.attachmentId"?: string;
+      /** channel id */
+      "message.originalMessage.mediaAttachments.photo.channelId"?: string;
+      /** user id */
+      "message.originalMessage.mediaAttachments.photo.userId"?: string;
+      /** message id */
+      "message.originalMessage.mediaAttachments.photo.messageId"?: string;
+      /** file_id to handle file operations */
+      "message.originalMessage.mediaAttachments.audio.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.audio.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "message.originalMessage.mediaAttachments.audio.fileUrl"?: string;
+      /** The name of file. */
+      "message.originalMessage.mediaAttachments.audio.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.audio.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "message.originalMessage.mediaAttachments.audio.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "message.originalMessage.mediaAttachments.audio.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.audio.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "message.originalMessage.mediaAttachments.audio.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "message.originalMessage.mediaAttachments.audio.audioMetadata.samples"?: number[];
+      /** file ref */
+      "message.originalMessage.mediaAttachments.audio.fileRef"?: string;
+      /** attachment id */
+      "message.originalMessage.mediaAttachments.audio.attachmentId"?: string;
+      /** channel id */
+      "message.originalMessage.mediaAttachments.audio.channelId"?: string;
+      /** user id */
+      "message.originalMessage.mediaAttachments.audio.userId"?: string;
+      /** message id */
+      "message.originalMessage.mediaAttachments.audio.messageId"?: string;
+      /** file_id to handle file operations */
+      "message.originalMessage.mediaAttachments.video.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.video.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "message.originalMessage.mediaAttachments.video.fileUrl"?: string;
+      /** The name of file. */
+      "message.originalMessage.mediaAttachments.video.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.video.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "message.originalMessage.mediaAttachments.video.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "message.originalMessage.mediaAttachments.video.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.video.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "message.originalMessage.mediaAttachments.video.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "message.originalMessage.mediaAttachments.video.audioMetadata.samples"?: number[];
+      /** file ref */
+      "message.originalMessage.mediaAttachments.video.fileRef"?: string;
+      /** attachment id */
+      "message.originalMessage.mediaAttachments.video.attachmentId"?: string;
+      /** channel id */
+      "message.originalMessage.mediaAttachments.video.channelId"?: string;
+      /** user id */
+      "message.originalMessage.mediaAttachments.video.userId"?: string;
+      /** message id */
+      "message.originalMessage.mediaAttachments.video.messageId"?: string;
+      /** file_id to handle file operations */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.voiceMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileUrl"?: string;
+      /** The name of file. */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "message.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "message.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileRef"?: string;
+      /** attachment id */
+      "message.originalMessage.mediaAttachments.voiceMessage.attachmentId"?: string;
+      /** channel id */
+      "message.originalMessage.mediaAttachments.voiceMessage.channelId"?: string;
+      /** user id */
+      "message.originalMessage.mediaAttachments.voiceMessage.userId"?: string;
+      /** message id */
+      "message.originalMessage.mediaAttachments.voiceMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "message.originalMessage.mediaAttachments.videoMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.videoMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "message.originalMessage.mediaAttachments.videoMessage.fileUrl"?: string;
+      /** The name of file. */
+      "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "message.originalMessage.mediaAttachments.videoMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "message.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "message.originalMessage.mediaAttachments.videoMessage.fileRef"?: string;
+      /** attachment id */
+      "message.originalMessage.mediaAttachments.videoMessage.attachmentId"?: string;
+      /** channel id */
+      "message.originalMessage.mediaAttachments.videoMessage.channelId"?: string;
+      /** user id */
+      "message.originalMessage.mediaAttachments.videoMessage.userId"?: string;
+      /** message id */
+      "message.originalMessage.mediaAttachments.videoMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.mediaMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileUrl"?: string;
+      /** The name of file. */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "message.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "message.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileRef"?: string;
+      /** attachment id */
+      "message.originalMessage.mediaAttachments.mediaMessage.attachmentId"?: string;
+      /** channel id */
+      "message.originalMessage.mediaAttachments.mediaMessage.channelId"?: string;
+      /** user id */
+      "message.originalMessage.mediaAttachments.mediaMessage.userId"?: string;
+      /** message id */
+      "message.originalMessage.mediaAttachments.mediaMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "message.originalMessage.mediaAttachments.file.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.file.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "message.originalMessage.mediaAttachments.file.fileUrl"?: string;
+      /** The name of file. */
+      "message.originalMessage.mediaAttachments.file.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.file.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "message.originalMessage.mediaAttachments.file.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "message.originalMessage.mediaAttachments.file.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.file.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "message.originalMessage.mediaAttachments.file.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "message.originalMessage.mediaAttachments.file.audioMetadata.samples"?: number[];
+      /** file ref */
+      "message.originalMessage.mediaAttachments.file.fileRef"?: string;
+      /** attachment id */
+      "message.originalMessage.mediaAttachments.file.attachmentId"?: string;
+      /** channel id */
+      "message.originalMessage.mediaAttachments.file.channelId"?: string;
+      /** user id */
+      "message.originalMessage.mediaAttachments.file.userId"?: string;
+      /** message id */
+      "message.originalMessage.mediaAttachments.file.messageId"?: string;
+      /**
+       * Message type
+       *
+       *  - MESSAGE_TYPE_ENUM_DEFAULT: Default is message of user
+       *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
+       * @default "MESSAGE_TYPE_ENUM_DEFAULT"
+       */
+      "message.originalMessage.messageType"?:
+        | "MESSAGE_TYPE_ENUM_DEFAULT"
+        | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+      /** The location language of content */
+      "message.originalMessage.contentLocale"?: string;
+      /** The list arguments to replace in content message */
+      "message.originalMessage.contentArguments"?: string[];
+      /** The user identify */
+      "message.originalMessage.userId"?: string;
+      /** Time edit message */
+      "message.originalMessage.editTime"?: string;
+      /** The create time */
+      "message.originalMessage.createTime"?: string;
+      /** The update time */
+      "message.originalMessage.updateTime"?: string;
+      /**
+       * Statistical react of message
+       *
+       * This is a request variable of the map type. The query format is "map_name[key]=value", e.g. If the map name is Age, the key type is string, and the value type is integer, the query parameter is expressed as Age["bob"]=18
+       */
+      "message.reactions"?: any;
+      /** List username mentions */
+      "message.mentions"?: string[];
+      /**
+       * Attachment type
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** State is thread of message, default = false */
+      "message.isThread"?: boolean;
+      /**
+       * Number of times reported, default = 0
+       * @format int64
+       */
+      "message.reportCount"?: number;
+      /** Flag report, default = false */
+      "message.isReported"?: boolean;
+      /**
+       * Number of files, using for upload album
+       * @format int64
+       */
+      "message.attachmentCount"?: number;
+      /** The location language of content */
+      "message.contentLocale"?: string;
+      /** The list arguments to replace in content message */
+      "message.contentArguments"?: string[];
+      /** Is pinned */
+      "message.isPinned"?: boolean;
+      /** Pin time */
+      "message.pinTime"?: string;
+      /** Time edit message */
+      "message.editTime"?: string;
+      /** The first time message created */
+      "message.createTime"?: string;
+      /** The time message updated */
+      "message.updateTime"?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3MessageCreatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name MessagePinnedEventDataT
+   * @request POST:/CloudEventServiceTemp/MessagePinnedEventData
+   */
+  export namespace MessagePinnedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      workspaceId?: string;
+      /** The channel identify */
+      channelId?: string;
+      /** The user identify whom pine message */
+      actorId?: string;
+      /** The workspace identify */
+      "channel.workspaceId"?: string;
+      /** The channel identify */
+      "channel.channelId"?: string;
+      /** The channel's creator is identified by the user. */
+      "channel.userId"?: string;
+      /** The name of channel */
+      "channel.name"?: string;
+      /** The avatar of channel */
+      "channel.avatar"?: string;
+      /** The channel is not yet private. */
+      "channel.isPrivate"?: boolean;
+      /**
+       * The type of channel
+       *
+       *  - CHANNEL_TYPE_ENUM_DM: DM: Direct message 1-1
+       *  - CHANNEL_TYPE_ENUM_CHANNEL: CHANNEL: A group can send message to multiple user 1-n
+       *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
+       * @default "CHANNEL_TYPE_ENUM_DM"
+       */
+      "channel.type"?:
+        | "CHANNEL_TYPE_ENUM_DM"
+        | "CHANNEL_TYPE_ENUM_CHANNEL"
+        | "CHANNEL_TYPE_ENUM_BROADCAST";
+      /** Invitation link after create channel */
+      "channel.invitationLink"?: string;
+      /** Is limited saving enabled? */
+      "channel.privacySettings.restrictSavingContent.enable"?: boolean;
+      "channel.premiumSettings.boosted.enable"?: boolean;
+      /** The original avatar */
+      "channel.originalAvatar"?: string;
+      /**
+       * Only return when get get channel
+       * @format int64
+       */
+      "channel.totalMembers"?: number;
+      /**
+       * Status of channel has type DM
+       *
+       *  - DIRECT_MESSAGE_STATUS_ENUM_PENDING: PENDING: The recipient has not replied or accept the message request
+       *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
+       * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+       */
+      "channel.dmStatus"?:
+        | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+        | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+      /** The workspace identify */
+      "channel.pinnedMessage.workspaceId"?: string;
+      /** The channel identify */
+      "channel.pinnedMessage.channelId"?: string;
+      /** The message identify */
+      "channel.pinnedMessage.messageId"?: string;
+      /** UserId send message */
+      "channel.pinnedMessage.userId"?: string;
+      /** Content of message */
+      "channel.pinnedMessage.content"?: string;
+      /** Is a random value created by the client, which is used as a similar attribute to the local ID */
+      "channel.pinnedMessage.ref"?: string;
+      /**
+       * Message type and message status
+       *
+       *  - MESSAGE_TYPE_ENUM_DEFAULT: Default is message of user
+       *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
+       * @default "MESSAGE_TYPE_ENUM_DEFAULT"
+       */
+      "channel.pinnedMessage.messageType"?:
+        | "MESSAGE_TYPE_ENUM_DEFAULT"
+        | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+      /**
+       * Status of message
+       *
+       *  - MESSAGE_STATUS_ENUM_PENDING: Waiting for process from server
+       *  - MESSAGE_STATUS_ENUM_SUCCESS: Send message success
+       *  - MESSAGE_STATUS_ENUM_FAILURE: Send message failed
+       * @default "MESSAGE_STATUS_ENUM_PENDING"
+       */
+      "channel.pinnedMessage.messageStatus"?:
+        | "MESSAGE_STATUS_ENUM_PENDING"
+        | "MESSAGE_STATUS_ENUM_SUCCESS"
+        | "MESSAGE_STATUS_ENUM_FAILURE";
+      /** The message identify */
+      "channel.pinnedMessage.originalMessage.messageId"?: string;
+      /** The message content */
+      "channel.pinnedMessage.originalMessage.content"?: string;
+      /**
+       * Attachment type
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.link.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** url */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.link.url"?: string;
+      /** short url */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.link.shortUrl"?: string;
+      /** collection_id of sticker file */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.collectionId"?: string;
+      /** sticker_id of sticker */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** url of sticker if attachment type is sticker */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerUrl"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentId"?: string;
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.fileRef"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.messageId"?: string;
+      /**
+       * Message type
+       *
+       *  - MESSAGE_TYPE_ENUM_DEFAULT: Default is message of user
+       *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
+       * @default "MESSAGE_TYPE_ENUM_DEFAULT"
+       */
+      "channel.pinnedMessage.originalMessage.messageType"?:
+        | "MESSAGE_TYPE_ENUM_DEFAULT"
+        | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+      /** The location language of content */
+      "channel.pinnedMessage.originalMessage.contentLocale"?: string;
+      /** The list arguments to replace in content message */
+      "channel.pinnedMessage.originalMessage.contentArguments"?: string[];
+      /** The user identify */
+      "channel.pinnedMessage.originalMessage.userId"?: string;
+      /** Time edit message */
+      "channel.pinnedMessage.originalMessage.editTime"?: string;
+      /** The create time */
+      "channel.pinnedMessage.originalMessage.createTime"?: string;
+      /** The update time */
+      "channel.pinnedMessage.originalMessage.updateTime"?: string;
+      /**
+       * Statistical react of message
+       *
+       * This is a request variable of the map type. The query format is "map_name[key]=value", e.g. If the map name is Age, the key type is string, and the value type is integer, the query parameter is expressed as Age["bob"]=18
+       */
+      "channel.pinnedMessage.reactions"?: any;
+      /** List username mentions */
+      "channel.pinnedMessage.mentions"?: string[];
+      /**
+       * Attachment type
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** State is thread of message, default = false */
+      "channel.pinnedMessage.isThread"?: boolean;
+      /**
+       * Number of times reported, default = 0
+       * @format int64
+       */
+      "channel.pinnedMessage.reportCount"?: number;
+      /** Flag report, default = false */
+      "channel.pinnedMessage.isReported"?: boolean;
+      /**
+       * Number of files, using for upload album
+       * @format int64
+       */
+      "channel.pinnedMessage.attachmentCount"?: number;
+      /** The location language of content */
+      "channel.pinnedMessage.contentLocale"?: string;
+      /** The list arguments to replace in content message */
+      "channel.pinnedMessage.contentArguments"?: string[];
+      /** Is pinned */
+      "channel.pinnedMessage.isPinned"?: boolean;
+      /** Pin time */
+      "channel.pinnedMessage.pinTime"?: string;
+      /** Time edit message */
+      "channel.pinnedMessage.editTime"?: string;
+      /** The first time message created */
+      "channel.pinnedMessage.createTime"?: string;
+      /** The time message updated */
+      "channel.pinnedMessage.updateTime"?: string;
+      /** The list participant id */
+      "channel.participantIds"?: string[];
+      /** Time recipient reject message request */
+      "channel.rejectTime"?: string;
+      /** Time recipient accept message request */
+      "channel.acceptTime"?: string;
+      /** The first time channel created */
+      "channel.createTime"?: string;
+      /** The time channel updated */
+      "channel.updateTime"?: string;
+      /** The workspace identify */
+      "message.workspaceId"?: string;
+      /** The channel identify */
+      "message.channelId"?: string;
+      /** The message identify */
+      "message.messageId"?: string;
+      /** UserId send message */
+      "message.userId"?: string;
+      /** Content of message */
+      "message.content"?: string;
+      /** Is a random value created by the client, which is used as a similar attribute to the local ID */
+      "message.ref"?: string;
+      /**
+       * Message type and message status
+       *
+       *  - MESSAGE_TYPE_ENUM_DEFAULT: Default is message of user
+       *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
+       * @default "MESSAGE_TYPE_ENUM_DEFAULT"
+       */
+      "message.messageType"?:
+        | "MESSAGE_TYPE_ENUM_DEFAULT"
+        | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+      /**
+       * Status of message
+       *
+       *  - MESSAGE_STATUS_ENUM_PENDING: Waiting for process from server
+       *  - MESSAGE_STATUS_ENUM_SUCCESS: Send message success
+       *  - MESSAGE_STATUS_ENUM_FAILURE: Send message failed
+       * @default "MESSAGE_STATUS_ENUM_PENDING"
+       */
+      "message.messageStatus"?:
+        | "MESSAGE_STATUS_ENUM_PENDING"
+        | "MESSAGE_STATUS_ENUM_SUCCESS"
+        | "MESSAGE_STATUS_ENUM_FAILURE";
+      /** The message identify */
+      "message.originalMessage.messageId"?: string;
+      /** The message content */
+      "message.originalMessage.content"?: string;
+      /**
+       * Attachment type
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.link.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** url */
+      "message.originalMessage.mediaAttachments.link.url"?: string;
+      /** short url */
+      "message.originalMessage.mediaAttachments.link.shortUrl"?: string;
+      /** collection_id of sticker file */
+      "message.originalMessage.mediaAttachments.sticker.collectionId"?: string;
+      /** sticker_id of sticker */
+      "message.originalMessage.mediaAttachments.sticker.stickerId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.sticker.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** url of sticker if attachment type is sticker */
+      "message.originalMessage.mediaAttachments.sticker.stickerUrl"?: string;
+      /** attachment id */
+      "message.originalMessage.mediaAttachments.sticker.attachmentId"?: string;
+      /** file ref */
+      "message.originalMessage.mediaAttachments.sticker.fileRef"?: string;
+      /** file_id to handle file operations */
+      "message.originalMessage.mediaAttachments.photo.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.photo.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "message.originalMessage.mediaAttachments.photo.fileUrl"?: string;
+      /** The name of file. */
+      "message.originalMessage.mediaAttachments.photo.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.photo.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "message.originalMessage.mediaAttachments.photo.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "message.originalMessage.mediaAttachments.photo.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.photo.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "message.originalMessage.mediaAttachments.photo.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "message.originalMessage.mediaAttachments.photo.audioMetadata.samples"?: number[];
+      /** file ref */
+      "message.originalMessage.mediaAttachments.photo.fileRef"?: string;
+      /** attachment id */
+      "message.originalMessage.mediaAttachments.photo.attachmentId"?: string;
+      /** channel id */
+      "message.originalMessage.mediaAttachments.photo.channelId"?: string;
+      /** user id */
+      "message.originalMessage.mediaAttachments.photo.userId"?: string;
+      /** message id */
+      "message.originalMessage.mediaAttachments.photo.messageId"?: string;
+      /** file_id to handle file operations */
+      "message.originalMessage.mediaAttachments.audio.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.audio.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "message.originalMessage.mediaAttachments.audio.fileUrl"?: string;
+      /** The name of file. */
+      "message.originalMessage.mediaAttachments.audio.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.audio.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "message.originalMessage.mediaAttachments.audio.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "message.originalMessage.mediaAttachments.audio.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.audio.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "message.originalMessage.mediaAttachments.audio.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "message.originalMessage.mediaAttachments.audio.audioMetadata.samples"?: number[];
+      /** file ref */
+      "message.originalMessage.mediaAttachments.audio.fileRef"?: string;
+      /** attachment id */
+      "message.originalMessage.mediaAttachments.audio.attachmentId"?: string;
+      /** channel id */
+      "message.originalMessage.mediaAttachments.audio.channelId"?: string;
+      /** user id */
+      "message.originalMessage.mediaAttachments.audio.userId"?: string;
+      /** message id */
+      "message.originalMessage.mediaAttachments.audio.messageId"?: string;
+      /** file_id to handle file operations */
+      "message.originalMessage.mediaAttachments.video.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.video.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "message.originalMessage.mediaAttachments.video.fileUrl"?: string;
+      /** The name of file. */
+      "message.originalMessage.mediaAttachments.video.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.video.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "message.originalMessage.mediaAttachments.video.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "message.originalMessage.mediaAttachments.video.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.video.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "message.originalMessage.mediaAttachments.video.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "message.originalMessage.mediaAttachments.video.audioMetadata.samples"?: number[];
+      /** file ref */
+      "message.originalMessage.mediaAttachments.video.fileRef"?: string;
+      /** attachment id */
+      "message.originalMessage.mediaAttachments.video.attachmentId"?: string;
+      /** channel id */
+      "message.originalMessage.mediaAttachments.video.channelId"?: string;
+      /** user id */
+      "message.originalMessage.mediaAttachments.video.userId"?: string;
+      /** message id */
+      "message.originalMessage.mediaAttachments.video.messageId"?: string;
+      /** file_id to handle file operations */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.voiceMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileUrl"?: string;
+      /** The name of file. */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "message.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "message.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileRef"?: string;
+      /** attachment id */
+      "message.originalMessage.mediaAttachments.voiceMessage.attachmentId"?: string;
+      /** channel id */
+      "message.originalMessage.mediaAttachments.voiceMessage.channelId"?: string;
+      /** user id */
+      "message.originalMessage.mediaAttachments.voiceMessage.userId"?: string;
+      /** message id */
+      "message.originalMessage.mediaAttachments.voiceMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "message.originalMessage.mediaAttachments.videoMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.videoMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "message.originalMessage.mediaAttachments.videoMessage.fileUrl"?: string;
+      /** The name of file. */
+      "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "message.originalMessage.mediaAttachments.videoMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "message.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "message.originalMessage.mediaAttachments.videoMessage.fileRef"?: string;
+      /** attachment id */
+      "message.originalMessage.mediaAttachments.videoMessage.attachmentId"?: string;
+      /** channel id */
+      "message.originalMessage.mediaAttachments.videoMessage.channelId"?: string;
+      /** user id */
+      "message.originalMessage.mediaAttachments.videoMessage.userId"?: string;
+      /** message id */
+      "message.originalMessage.mediaAttachments.videoMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.mediaMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileUrl"?: string;
+      /** The name of file. */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "message.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "message.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileRef"?: string;
+      /** attachment id */
+      "message.originalMessage.mediaAttachments.mediaMessage.attachmentId"?: string;
+      /** channel id */
+      "message.originalMessage.mediaAttachments.mediaMessage.channelId"?: string;
+      /** user id */
+      "message.originalMessage.mediaAttachments.mediaMessage.userId"?: string;
+      /** message id */
+      "message.originalMessage.mediaAttachments.mediaMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "message.originalMessage.mediaAttachments.file.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.file.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "message.originalMessage.mediaAttachments.file.fileUrl"?: string;
+      /** The name of file. */
+      "message.originalMessage.mediaAttachments.file.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.file.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "message.originalMessage.mediaAttachments.file.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "message.originalMessage.mediaAttachments.file.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.file.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "message.originalMessage.mediaAttachments.file.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "message.originalMessage.mediaAttachments.file.audioMetadata.samples"?: number[];
+      /** file ref */
+      "message.originalMessage.mediaAttachments.file.fileRef"?: string;
+      /** attachment id */
+      "message.originalMessage.mediaAttachments.file.attachmentId"?: string;
+      /** channel id */
+      "message.originalMessage.mediaAttachments.file.channelId"?: string;
+      /** user id */
+      "message.originalMessage.mediaAttachments.file.userId"?: string;
+      /** message id */
+      "message.originalMessage.mediaAttachments.file.messageId"?: string;
+      /**
+       * Message type
+       *
+       *  - MESSAGE_TYPE_ENUM_DEFAULT: Default is message of user
+       *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
+       * @default "MESSAGE_TYPE_ENUM_DEFAULT"
+       */
+      "message.originalMessage.messageType"?:
+        | "MESSAGE_TYPE_ENUM_DEFAULT"
+        | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+      /** The location language of content */
+      "message.originalMessage.contentLocale"?: string;
+      /** The list arguments to replace in content message */
+      "message.originalMessage.contentArguments"?: string[];
+      /** The user identify */
+      "message.originalMessage.userId"?: string;
+      /** Time edit message */
+      "message.originalMessage.editTime"?: string;
+      /** The create time */
+      "message.originalMessage.createTime"?: string;
+      /** The update time */
+      "message.originalMessage.updateTime"?: string;
+      /**
+       * Statistical react of message
+       *
+       * This is a request variable of the map type. The query format is "map_name[key]=value", e.g. If the map name is Age, the key type is string, and the value type is integer, the query parameter is expressed as Age["bob"]=18
+       */
+      "message.reactions"?: any;
+      /** List username mentions */
+      "message.mentions"?: string[];
+      /**
+       * Attachment type
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** State is thread of message, default = false */
+      "message.isThread"?: boolean;
+      /**
+       * Number of times reported, default = 0
+       * @format int64
+       */
+      "message.reportCount"?: number;
+      /** Flag report, default = false */
+      "message.isReported"?: boolean;
+      /**
+       * Number of files, using for upload album
+       * @format int64
+       */
+      "message.attachmentCount"?: number;
+      /** The location language of content */
+      "message.contentLocale"?: string;
+      /** The list arguments to replace in content message */
+      "message.contentArguments"?: string[];
+      /** Is pinned */
+      "message.isPinned"?: boolean;
+      /** Pin time */
+      "message.pinTime"?: string;
+      /** Time edit message */
+      "message.editTime"?: string;
+      /** The first time message created */
+      "message.createTime"?: string;
+      /** The time message updated */
+      "message.updateTime"?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3MessagePinnedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name MessageReactionUpdatedEventDataT
+   * @request POST:/CloudEventServiceTemp/MessageReactionUpdatedEventData
+   */
+  export namespace MessageReactionUpdatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      workspaceId?: string;
+      /** The channel identify */
+      channelId?: string;
+      /** The message identify */
+      messageId?: string;
+      /** The workspace identify */
+      "destination.workspaceId"?: string;
+      /** The channel identify */
+      "destination.channelId"?: string;
+      /**
+       * The channel type
+       *
+       *  - CHANNEL_TYPE_ENUM_DM: DM: Direct message 1-1
+       *  - CHANNEL_TYPE_ENUM_CHANNEL: CHANNEL: A group can send message to multiple user 1-n
+       *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
+       * @default "CHANNEL_TYPE_ENUM_DM"
+       */
+      "destination.channelType"?:
+        | "CHANNEL_TYPE_ENUM_DM"
+        | "CHANNEL_TYPE_ENUM_CHANNEL"
+        | "CHANNEL_TYPE_ENUM_BROADCAST";
+      /** The user identify whom receive message */
+      "destination.recipientId"?: string;
+      /** The dm channel identify */
+      "destination.dmId"?: string;
+      /**
+       * The dm message status
+       *
+       *  - DIRECT_MESSAGE_STATUS_ENUM_PENDING: PENDING: The recipient has not replied or accept the message request
+       *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
+       * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+       */
+      "destination.dmStatus"?:
+        | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+        | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+      /**
+       * Statistical react of message
+       *
+       * This is a request variable of the map type. The query format is "map_name[key]=value", e.g. If the map name is Age, the key type is string, and the value type is integer, the query parameter is expressed as Age["bob"]=18
+       */
+      jsonReactions?: any;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3MessageReactionUpdatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name MessageRequestRejectedEventDataT
+   * @request POST:/CloudEventServiceTemp/MessageRequestRejectedEventData
+   */
+  export namespace MessageRequestRejectedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      workspaceId?: string;
+      /** The channel identify */
+      channelId?: string;
+      /** The user identify whom send request */
+      actorId?: string;
+      /** The user identify whom receive request */
+      targetUserId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3MessageRequestRejectedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name MessageUnpinnedEventDataT
+   * @request POST:/CloudEventServiceTemp/MessageUnpinnedEventData
+   */
+  export namespace MessageUnpinnedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      workspaceId?: string;
+      /** The channel identify */
+      channelId?: string;
+      /** The user identify */
+      actorId?: string;
+      /** The workspace identify */
+      "channel.workspaceId"?: string;
+      /** The channel identify */
+      "channel.channelId"?: string;
+      /** The channel's creator is identified by the user. */
+      "channel.userId"?: string;
+      /** The name of channel */
+      "channel.name"?: string;
+      /** The avatar of channel */
+      "channel.avatar"?: string;
+      /** The channel is not yet private. */
+      "channel.isPrivate"?: boolean;
+      /**
+       * The type of channel
+       *
+       *  - CHANNEL_TYPE_ENUM_DM: DM: Direct message 1-1
+       *  - CHANNEL_TYPE_ENUM_CHANNEL: CHANNEL: A group can send message to multiple user 1-n
+       *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
+       * @default "CHANNEL_TYPE_ENUM_DM"
+       */
+      "channel.type"?:
+        | "CHANNEL_TYPE_ENUM_DM"
+        | "CHANNEL_TYPE_ENUM_CHANNEL"
+        | "CHANNEL_TYPE_ENUM_BROADCAST";
+      /** Invitation link after create channel */
+      "channel.invitationLink"?: string;
+      /** Is limited saving enabled? */
+      "channel.privacySettings.restrictSavingContent.enable"?: boolean;
+      "channel.premiumSettings.boosted.enable"?: boolean;
+      /** The original avatar */
+      "channel.originalAvatar"?: string;
+      /**
+       * Only return when get get channel
+       * @format int64
+       */
+      "channel.totalMembers"?: number;
+      /**
+       * Status of channel has type DM
+       *
+       *  - DIRECT_MESSAGE_STATUS_ENUM_PENDING: PENDING: The recipient has not replied or accept the message request
+       *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
+       * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+       */
+      "channel.dmStatus"?:
+        | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+        | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+      /** The workspace identify */
+      "channel.pinnedMessage.workspaceId"?: string;
+      /** The channel identify */
+      "channel.pinnedMessage.channelId"?: string;
+      /** The message identify */
+      "channel.pinnedMessage.messageId"?: string;
+      /** UserId send message */
+      "channel.pinnedMessage.userId"?: string;
+      /** Content of message */
+      "channel.pinnedMessage.content"?: string;
+      /** Is a random value created by the client, which is used as a similar attribute to the local ID */
+      "channel.pinnedMessage.ref"?: string;
+      /**
+       * Message type and message status
+       *
+       *  - MESSAGE_TYPE_ENUM_DEFAULT: Default is message of user
+       *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
+       * @default "MESSAGE_TYPE_ENUM_DEFAULT"
+       */
+      "channel.pinnedMessage.messageType"?:
+        | "MESSAGE_TYPE_ENUM_DEFAULT"
+        | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+      /**
+       * Status of message
+       *
+       *  - MESSAGE_STATUS_ENUM_PENDING: Waiting for process from server
+       *  - MESSAGE_STATUS_ENUM_SUCCESS: Send message success
+       *  - MESSAGE_STATUS_ENUM_FAILURE: Send message failed
+       * @default "MESSAGE_STATUS_ENUM_PENDING"
+       */
+      "channel.pinnedMessage.messageStatus"?:
+        | "MESSAGE_STATUS_ENUM_PENDING"
+        | "MESSAGE_STATUS_ENUM_SUCCESS"
+        | "MESSAGE_STATUS_ENUM_FAILURE";
+      /** The message identify */
+      "channel.pinnedMessage.originalMessage.messageId"?: string;
+      /** The message content */
+      "channel.pinnedMessage.originalMessage.content"?: string;
+      /**
+       * Attachment type
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.link.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** url */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.link.url"?: string;
+      /** short url */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.link.shortUrl"?: string;
+      /** collection_id of sticker file */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.collectionId"?: string;
+      /** sticker_id of sticker */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** url of sticker if attachment type is sticker */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerUrl"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentId"?: string;
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.fileRef"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.messageId"?: string;
+      /**
+       * Message type
+       *
+       *  - MESSAGE_TYPE_ENUM_DEFAULT: Default is message of user
+       *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
+       * @default "MESSAGE_TYPE_ENUM_DEFAULT"
+       */
+      "channel.pinnedMessage.originalMessage.messageType"?:
+        | "MESSAGE_TYPE_ENUM_DEFAULT"
+        | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+      /** The location language of content */
+      "channel.pinnedMessage.originalMessage.contentLocale"?: string;
+      /** The list arguments to replace in content message */
+      "channel.pinnedMessage.originalMessage.contentArguments"?: string[];
+      /** The user identify */
+      "channel.pinnedMessage.originalMessage.userId"?: string;
+      /** Time edit message */
+      "channel.pinnedMessage.originalMessage.editTime"?: string;
+      /** The create time */
+      "channel.pinnedMessage.originalMessage.createTime"?: string;
+      /** The update time */
+      "channel.pinnedMessage.originalMessage.updateTime"?: string;
+      /**
+       * Statistical react of message
+       *
+       * This is a request variable of the map type. The query format is "map_name[key]=value", e.g. If the map name is Age, the key type is string, and the value type is integer, the query parameter is expressed as Age["bob"]=18
+       */
+      "channel.pinnedMessage.reactions"?: any;
+      /** List username mentions */
+      "channel.pinnedMessage.mentions"?: string[];
+      /**
+       * Attachment type
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** State is thread of message, default = false */
+      "channel.pinnedMessage.isThread"?: boolean;
+      /**
+       * Number of times reported, default = 0
+       * @format int64
+       */
+      "channel.pinnedMessage.reportCount"?: number;
+      /** Flag report, default = false */
+      "channel.pinnedMessage.isReported"?: boolean;
+      /**
+       * Number of files, using for upload album
+       * @format int64
+       */
+      "channel.pinnedMessage.attachmentCount"?: number;
+      /** The location language of content */
+      "channel.pinnedMessage.contentLocale"?: string;
+      /** The list arguments to replace in content message */
+      "channel.pinnedMessage.contentArguments"?: string[];
+      /** Is pinned */
+      "channel.pinnedMessage.isPinned"?: boolean;
+      /** Pin time */
+      "channel.pinnedMessage.pinTime"?: string;
+      /** Time edit message */
+      "channel.pinnedMessage.editTime"?: string;
+      /** The first time message created */
+      "channel.pinnedMessage.createTime"?: string;
+      /** The time message updated */
+      "channel.pinnedMessage.updateTime"?: string;
+      /** The list participant id */
+      "channel.participantIds"?: string[];
+      /** Time recipient reject message request */
+      "channel.rejectTime"?: string;
+      /** Time recipient accept message request */
+      "channel.acceptTime"?: string;
+      /** The first time channel created */
+      "channel.createTime"?: string;
+      /** The time channel updated */
+      "channel.updateTime"?: string;
+      /** The workspace identify */
+      "message.workspaceId"?: string;
+      /** The channel identify */
+      "message.channelId"?: string;
+      /** The message identify */
+      "message.messageId"?: string;
+      /** UserId send message */
+      "message.userId"?: string;
+      /** Content of message */
+      "message.content"?: string;
+      /** Is a random value created by the client, which is used as a similar attribute to the local ID */
+      "message.ref"?: string;
+      /**
+       * Message type and message status
+       *
+       *  - MESSAGE_TYPE_ENUM_DEFAULT: Default is message of user
+       *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
+       * @default "MESSAGE_TYPE_ENUM_DEFAULT"
+       */
+      "message.messageType"?:
+        | "MESSAGE_TYPE_ENUM_DEFAULT"
+        | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+      /**
+       * Status of message
+       *
+       *  - MESSAGE_STATUS_ENUM_PENDING: Waiting for process from server
+       *  - MESSAGE_STATUS_ENUM_SUCCESS: Send message success
+       *  - MESSAGE_STATUS_ENUM_FAILURE: Send message failed
+       * @default "MESSAGE_STATUS_ENUM_PENDING"
+       */
+      "message.messageStatus"?:
+        | "MESSAGE_STATUS_ENUM_PENDING"
+        | "MESSAGE_STATUS_ENUM_SUCCESS"
+        | "MESSAGE_STATUS_ENUM_FAILURE";
+      /** The message identify */
+      "message.originalMessage.messageId"?: string;
+      /** The message content */
+      "message.originalMessage.content"?: string;
+      /**
+       * Attachment type
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.link.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** url */
+      "message.originalMessage.mediaAttachments.link.url"?: string;
+      /** short url */
+      "message.originalMessage.mediaAttachments.link.shortUrl"?: string;
+      /** collection_id of sticker file */
+      "message.originalMessage.mediaAttachments.sticker.collectionId"?: string;
+      /** sticker_id of sticker */
+      "message.originalMessage.mediaAttachments.sticker.stickerId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.sticker.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** url of sticker if attachment type is sticker */
+      "message.originalMessage.mediaAttachments.sticker.stickerUrl"?: string;
+      /** attachment id */
+      "message.originalMessage.mediaAttachments.sticker.attachmentId"?: string;
+      /** file ref */
+      "message.originalMessage.mediaAttachments.sticker.fileRef"?: string;
+      /** file_id to handle file operations */
+      "message.originalMessage.mediaAttachments.photo.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.photo.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "message.originalMessage.mediaAttachments.photo.fileUrl"?: string;
+      /** The name of file. */
+      "message.originalMessage.mediaAttachments.photo.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.photo.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "message.originalMessage.mediaAttachments.photo.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "message.originalMessage.mediaAttachments.photo.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.photo.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "message.originalMessage.mediaAttachments.photo.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "message.originalMessage.mediaAttachments.photo.audioMetadata.samples"?: number[];
+      /** file ref */
+      "message.originalMessage.mediaAttachments.photo.fileRef"?: string;
+      /** attachment id */
+      "message.originalMessage.mediaAttachments.photo.attachmentId"?: string;
+      /** channel id */
+      "message.originalMessage.mediaAttachments.photo.channelId"?: string;
+      /** user id */
+      "message.originalMessage.mediaAttachments.photo.userId"?: string;
+      /** message id */
+      "message.originalMessage.mediaAttachments.photo.messageId"?: string;
+      /** file_id to handle file operations */
+      "message.originalMessage.mediaAttachments.audio.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.audio.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "message.originalMessage.mediaAttachments.audio.fileUrl"?: string;
+      /** The name of file. */
+      "message.originalMessage.mediaAttachments.audio.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.audio.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "message.originalMessage.mediaAttachments.audio.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "message.originalMessage.mediaAttachments.audio.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.audio.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "message.originalMessage.mediaAttachments.audio.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "message.originalMessage.mediaAttachments.audio.audioMetadata.samples"?: number[];
+      /** file ref */
+      "message.originalMessage.mediaAttachments.audio.fileRef"?: string;
+      /** attachment id */
+      "message.originalMessage.mediaAttachments.audio.attachmentId"?: string;
+      /** channel id */
+      "message.originalMessage.mediaAttachments.audio.channelId"?: string;
+      /** user id */
+      "message.originalMessage.mediaAttachments.audio.userId"?: string;
+      /** message id */
+      "message.originalMessage.mediaAttachments.audio.messageId"?: string;
+      /** file_id to handle file operations */
+      "message.originalMessage.mediaAttachments.video.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.video.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "message.originalMessage.mediaAttachments.video.fileUrl"?: string;
+      /** The name of file. */
+      "message.originalMessage.mediaAttachments.video.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.video.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "message.originalMessage.mediaAttachments.video.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "message.originalMessage.mediaAttachments.video.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.video.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "message.originalMessage.mediaAttachments.video.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "message.originalMessage.mediaAttachments.video.audioMetadata.samples"?: number[];
+      /** file ref */
+      "message.originalMessage.mediaAttachments.video.fileRef"?: string;
+      /** attachment id */
+      "message.originalMessage.mediaAttachments.video.attachmentId"?: string;
+      /** channel id */
+      "message.originalMessage.mediaAttachments.video.channelId"?: string;
+      /** user id */
+      "message.originalMessage.mediaAttachments.video.userId"?: string;
+      /** message id */
+      "message.originalMessage.mediaAttachments.video.messageId"?: string;
+      /** file_id to handle file operations */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.voiceMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileUrl"?: string;
+      /** The name of file. */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "message.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "message.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileRef"?: string;
+      /** attachment id */
+      "message.originalMessage.mediaAttachments.voiceMessage.attachmentId"?: string;
+      /** channel id */
+      "message.originalMessage.mediaAttachments.voiceMessage.channelId"?: string;
+      /** user id */
+      "message.originalMessage.mediaAttachments.voiceMessage.userId"?: string;
+      /** message id */
+      "message.originalMessage.mediaAttachments.voiceMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "message.originalMessage.mediaAttachments.videoMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.videoMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "message.originalMessage.mediaAttachments.videoMessage.fileUrl"?: string;
+      /** The name of file. */
+      "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "message.originalMessage.mediaAttachments.videoMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "message.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "message.originalMessage.mediaAttachments.videoMessage.fileRef"?: string;
+      /** attachment id */
+      "message.originalMessage.mediaAttachments.videoMessage.attachmentId"?: string;
+      /** channel id */
+      "message.originalMessage.mediaAttachments.videoMessage.channelId"?: string;
+      /** user id */
+      "message.originalMessage.mediaAttachments.videoMessage.userId"?: string;
+      /** message id */
+      "message.originalMessage.mediaAttachments.videoMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.mediaMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileUrl"?: string;
+      /** The name of file. */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "message.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "message.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileRef"?: string;
+      /** attachment id */
+      "message.originalMessage.mediaAttachments.mediaMessage.attachmentId"?: string;
+      /** channel id */
+      "message.originalMessage.mediaAttachments.mediaMessage.channelId"?: string;
+      /** user id */
+      "message.originalMessage.mediaAttachments.mediaMessage.userId"?: string;
+      /** message id */
+      "message.originalMessage.mediaAttachments.mediaMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "message.originalMessage.mediaAttachments.file.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.file.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "message.originalMessage.mediaAttachments.file.fileUrl"?: string;
+      /** The name of file. */
+      "message.originalMessage.mediaAttachments.file.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.file.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "message.originalMessage.mediaAttachments.file.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "message.originalMessage.mediaAttachments.file.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.file.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "message.originalMessage.mediaAttachments.file.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "message.originalMessage.mediaAttachments.file.audioMetadata.samples"?: number[];
+      /** file ref */
+      "message.originalMessage.mediaAttachments.file.fileRef"?: string;
+      /** attachment id */
+      "message.originalMessage.mediaAttachments.file.attachmentId"?: string;
+      /** channel id */
+      "message.originalMessage.mediaAttachments.file.channelId"?: string;
+      /** user id */
+      "message.originalMessage.mediaAttachments.file.userId"?: string;
+      /** message id */
+      "message.originalMessage.mediaAttachments.file.messageId"?: string;
+      /**
+       * Message type
+       *
+       *  - MESSAGE_TYPE_ENUM_DEFAULT: Default is message of user
+       *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
+       * @default "MESSAGE_TYPE_ENUM_DEFAULT"
+       */
+      "message.originalMessage.messageType"?:
+        | "MESSAGE_TYPE_ENUM_DEFAULT"
+        | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+      /** The location language of content */
+      "message.originalMessage.contentLocale"?: string;
+      /** The list arguments to replace in content message */
+      "message.originalMessage.contentArguments"?: string[];
+      /** The user identify */
+      "message.originalMessage.userId"?: string;
+      /** Time edit message */
+      "message.originalMessage.editTime"?: string;
+      /** The create time */
+      "message.originalMessage.createTime"?: string;
+      /** The update time */
+      "message.originalMessage.updateTime"?: string;
+      /**
+       * Statistical react of message
+       *
+       * This is a request variable of the map type. The query format is "map_name[key]=value", e.g. If the map name is Age, the key type is string, and the value type is integer, the query parameter is expressed as Age["bob"]=18
+       */
+      "message.reactions"?: any;
+      /** List username mentions */
+      "message.mentions"?: string[];
+      /**
+       * Attachment type
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** State is thread of message, default = false */
+      "message.isThread"?: boolean;
+      /**
+       * Number of times reported, default = 0
+       * @format int64
+       */
+      "message.reportCount"?: number;
+      /** Flag report, default = false */
+      "message.isReported"?: boolean;
+      /**
+       * Number of files, using for upload album
+       * @format int64
+       */
+      "message.attachmentCount"?: number;
+      /** The location language of content */
+      "message.contentLocale"?: string;
+      /** The list arguments to replace in content message */
+      "message.contentArguments"?: string[];
+      /** Is pinned */
+      "message.isPinned"?: boolean;
+      /** Pin time */
+      "message.pinTime"?: string;
+      /** Time edit message */
+      "message.editTime"?: string;
+      /** The first time message created */
+      "message.createTime"?: string;
+      /** The time message updated */
+      "message.updateTime"?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3MessageUnpinnedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name MessageUpdatedEventDataT
+   * @request POST:/CloudEventServiceTemp/MessageUpdatedEventData
+   */
+  export namespace MessageUpdatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      "message.workspaceId"?: string;
+      /** The channel identify */
+      "message.channelId"?: string;
+      /** The message identify */
+      "message.messageId"?: string;
+      /** UserId send message */
+      "message.userId"?: string;
+      /** Content of message */
+      "message.content"?: string;
+      /** Is a random value created by the client, which is used as a similar attribute to the local ID */
+      "message.ref"?: string;
+      /**
+       * Message type and message status
+       *
+       *  - MESSAGE_TYPE_ENUM_DEFAULT: Default is message of user
+       *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
+       * @default "MESSAGE_TYPE_ENUM_DEFAULT"
+       */
+      "message.messageType"?:
+        | "MESSAGE_TYPE_ENUM_DEFAULT"
+        | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+      /**
+       * Status of message
+       *
+       *  - MESSAGE_STATUS_ENUM_PENDING: Waiting for process from server
+       *  - MESSAGE_STATUS_ENUM_SUCCESS: Send message success
+       *  - MESSAGE_STATUS_ENUM_FAILURE: Send message failed
+       * @default "MESSAGE_STATUS_ENUM_PENDING"
+       */
+      "message.messageStatus"?:
+        | "MESSAGE_STATUS_ENUM_PENDING"
+        | "MESSAGE_STATUS_ENUM_SUCCESS"
+        | "MESSAGE_STATUS_ENUM_FAILURE";
+      /** The message identify */
+      "message.originalMessage.messageId"?: string;
+      /** The message content */
+      "message.originalMessage.content"?: string;
+      /**
+       * Attachment type
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.link.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** url */
+      "message.originalMessage.mediaAttachments.link.url"?: string;
+      /** short url */
+      "message.originalMessage.mediaAttachments.link.shortUrl"?: string;
+      /** collection_id of sticker file */
+      "message.originalMessage.mediaAttachments.sticker.collectionId"?: string;
+      /** sticker_id of sticker */
+      "message.originalMessage.mediaAttachments.sticker.stickerId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.sticker.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** url of sticker if attachment type is sticker */
+      "message.originalMessage.mediaAttachments.sticker.stickerUrl"?: string;
+      /** attachment id */
+      "message.originalMessage.mediaAttachments.sticker.attachmentId"?: string;
+      /** file ref */
+      "message.originalMessage.mediaAttachments.sticker.fileRef"?: string;
+      /** file_id to handle file operations */
+      "message.originalMessage.mediaAttachments.photo.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.photo.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "message.originalMessage.mediaAttachments.photo.fileUrl"?: string;
+      /** The name of file. */
+      "message.originalMessage.mediaAttachments.photo.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.photo.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "message.originalMessage.mediaAttachments.photo.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "message.originalMessage.mediaAttachments.photo.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.photo.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "message.originalMessage.mediaAttachments.photo.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "message.originalMessage.mediaAttachments.photo.audioMetadata.samples"?: number[];
+      /** file ref */
+      "message.originalMessage.mediaAttachments.photo.fileRef"?: string;
+      /** attachment id */
+      "message.originalMessage.mediaAttachments.photo.attachmentId"?: string;
+      /** channel id */
+      "message.originalMessage.mediaAttachments.photo.channelId"?: string;
+      /** user id */
+      "message.originalMessage.mediaAttachments.photo.userId"?: string;
+      /** message id */
+      "message.originalMessage.mediaAttachments.photo.messageId"?: string;
+      /** file_id to handle file operations */
+      "message.originalMessage.mediaAttachments.audio.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.audio.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "message.originalMessage.mediaAttachments.audio.fileUrl"?: string;
+      /** The name of file. */
+      "message.originalMessage.mediaAttachments.audio.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.audio.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "message.originalMessage.mediaAttachments.audio.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "message.originalMessage.mediaAttachments.audio.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.audio.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "message.originalMessage.mediaAttachments.audio.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "message.originalMessage.mediaAttachments.audio.audioMetadata.samples"?: number[];
+      /** file ref */
+      "message.originalMessage.mediaAttachments.audio.fileRef"?: string;
+      /** attachment id */
+      "message.originalMessage.mediaAttachments.audio.attachmentId"?: string;
+      /** channel id */
+      "message.originalMessage.mediaAttachments.audio.channelId"?: string;
+      /** user id */
+      "message.originalMessage.mediaAttachments.audio.userId"?: string;
+      /** message id */
+      "message.originalMessage.mediaAttachments.audio.messageId"?: string;
+      /** file_id to handle file operations */
+      "message.originalMessage.mediaAttachments.video.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.video.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "message.originalMessage.mediaAttachments.video.fileUrl"?: string;
+      /** The name of file. */
+      "message.originalMessage.mediaAttachments.video.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.video.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "message.originalMessage.mediaAttachments.video.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "message.originalMessage.mediaAttachments.video.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.video.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "message.originalMessage.mediaAttachments.video.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "message.originalMessage.mediaAttachments.video.audioMetadata.samples"?: number[];
+      /** file ref */
+      "message.originalMessage.mediaAttachments.video.fileRef"?: string;
+      /** attachment id */
+      "message.originalMessage.mediaAttachments.video.attachmentId"?: string;
+      /** channel id */
+      "message.originalMessage.mediaAttachments.video.channelId"?: string;
+      /** user id */
+      "message.originalMessage.mediaAttachments.video.userId"?: string;
+      /** message id */
+      "message.originalMessage.mediaAttachments.video.messageId"?: string;
+      /** file_id to handle file operations */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.voiceMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileUrl"?: string;
+      /** The name of file. */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "message.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "message.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "message.originalMessage.mediaAttachments.voiceMessage.fileRef"?: string;
+      /** attachment id */
+      "message.originalMessage.mediaAttachments.voiceMessage.attachmentId"?: string;
+      /** channel id */
+      "message.originalMessage.mediaAttachments.voiceMessage.channelId"?: string;
+      /** user id */
+      "message.originalMessage.mediaAttachments.voiceMessage.userId"?: string;
+      /** message id */
+      "message.originalMessage.mediaAttachments.voiceMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "message.originalMessage.mediaAttachments.videoMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.videoMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "message.originalMessage.mediaAttachments.videoMessage.fileUrl"?: string;
+      /** The name of file. */
+      "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "message.originalMessage.mediaAttachments.videoMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "message.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "message.originalMessage.mediaAttachments.videoMessage.fileRef"?: string;
+      /** attachment id */
+      "message.originalMessage.mediaAttachments.videoMessage.attachmentId"?: string;
+      /** channel id */
+      "message.originalMessage.mediaAttachments.videoMessage.channelId"?: string;
+      /** user id */
+      "message.originalMessage.mediaAttachments.videoMessage.userId"?: string;
+      /** message id */
+      "message.originalMessage.mediaAttachments.videoMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.mediaMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileUrl"?: string;
+      /** The name of file. */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "message.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "message.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "message.originalMessage.mediaAttachments.mediaMessage.fileRef"?: string;
+      /** attachment id */
+      "message.originalMessage.mediaAttachments.mediaMessage.attachmentId"?: string;
+      /** channel id */
+      "message.originalMessage.mediaAttachments.mediaMessage.channelId"?: string;
+      /** user id */
+      "message.originalMessage.mediaAttachments.mediaMessage.userId"?: string;
+      /** message id */
+      "message.originalMessage.mediaAttachments.mediaMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "message.originalMessage.mediaAttachments.file.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.originalMessage.mediaAttachments.file.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "message.originalMessage.mediaAttachments.file.fileUrl"?: string;
+      /** The name of file. */
+      "message.originalMessage.mediaAttachments.file.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.file.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "message.originalMessage.mediaAttachments.file.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "message.originalMessage.mediaAttachments.file.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "message.originalMessage.mediaAttachments.file.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "message.originalMessage.mediaAttachments.file.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "message.originalMessage.mediaAttachments.file.audioMetadata.samples"?: number[];
+      /** file ref */
+      "message.originalMessage.mediaAttachments.file.fileRef"?: string;
+      /** attachment id */
+      "message.originalMessage.mediaAttachments.file.attachmentId"?: string;
+      /** channel id */
+      "message.originalMessage.mediaAttachments.file.channelId"?: string;
+      /** user id */
+      "message.originalMessage.mediaAttachments.file.userId"?: string;
+      /** message id */
+      "message.originalMessage.mediaAttachments.file.messageId"?: string;
+      /**
+       * Message type
+       *
+       *  - MESSAGE_TYPE_ENUM_DEFAULT: Default is message of user
+       *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
+       * @default "MESSAGE_TYPE_ENUM_DEFAULT"
+       */
+      "message.originalMessage.messageType"?:
+        | "MESSAGE_TYPE_ENUM_DEFAULT"
+        | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+      /** The location language of content */
+      "message.originalMessage.contentLocale"?: string;
+      /** The list arguments to replace in content message */
+      "message.originalMessage.contentArguments"?: string[];
+      /** The user identify */
+      "message.originalMessage.userId"?: string;
+      /** Time edit message */
+      "message.originalMessage.editTime"?: string;
+      /** The create time */
+      "message.originalMessage.createTime"?: string;
+      /** The update time */
+      "message.originalMessage.updateTime"?: string;
+      /**
+       * Statistical react of message
+       *
+       * This is a request variable of the map type. The query format is "map_name[key]=value", e.g. If the map name is Age, the key type is string, and the value type is integer, the query parameter is expressed as Age["bob"]=18
+       */
+      "message.reactions"?: any;
+      /** List username mentions */
+      "message.mentions"?: string[];
+      /**
+       * Attachment type
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "message.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** State is thread of message, default = false */
+      "message.isThread"?: boolean;
+      /**
+       * Number of times reported, default = 0
+       * @format int64
+       */
+      "message.reportCount"?: number;
+      /** Flag report, default = false */
+      "message.isReported"?: boolean;
+      /**
+       * Number of files, using for upload album
+       * @format int64
+       */
+      "message.attachmentCount"?: number;
+      /** The location language of content */
+      "message.contentLocale"?: string;
+      /** The list arguments to replace in content message */
+      "message.contentArguments"?: string[];
+      /** Is pinned */
+      "message.isPinned"?: boolean;
+      /** Pin time */
+      "message.pinTime"?: string;
+      /** Time edit message */
+      "message.editTime"?: string;
+      /** The first time message created */
+      "message.createTime"?: string;
+      /** The time message updated */
+      "message.updateTime"?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3MessageUpdatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name MessagesDeletedEventDataT
+   * @request POST:/CloudEventServiceTemp/MessagesDeletedEventData
+   */
+  export namespace MessagesDeletedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      workspaceId?: string;
+      /** The channel identify */
+      channelId?: string;
+      /** The user identify whom delete message */
+      actorId?: string;
+      /** The list message identify to delete */
+      messageIds?: string[];
+      /** The workspace identify */
+      "destination.workspaceId"?: string;
+      /** The channel identify */
+      "destination.channelId"?: string;
+      /**
+       * The channel type
+       *
+       *  - CHANNEL_TYPE_ENUM_DM: DM: Direct message 1-1
+       *  - CHANNEL_TYPE_ENUM_CHANNEL: CHANNEL: A group can send message to multiple user 1-n
+       *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
+       * @default "CHANNEL_TYPE_ENUM_DM"
+       */
+      "destination.channelType"?:
+        | "CHANNEL_TYPE_ENUM_DM"
+        | "CHANNEL_TYPE_ENUM_CHANNEL"
+        | "CHANNEL_TYPE_ENUM_BROADCAST";
+      /** The user identify whom receive message */
+      "destination.recipientId"?: string;
+      /** The dm channel identify */
+      "destination.dmId"?: string;
+      /**
+       * The dm message status
+       *
+       *  - DIRECT_MESSAGE_STATUS_ENUM_PENDING: PENDING: The recipient has not replied or accept the message request
+       *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
+       * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+       */
+      "destination.dmStatus"?:
+        | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+        | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3MessagesDeletedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name OutgoingFriendRequestAcceptedEventDataT
+   * @request POST:/CloudEventServiceTemp/OutgoingFriendRequestAcceptedEventData
+   */
+  export namespace OutgoingFriendRequestAcceptedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify whom send request */
+      "friendRequest.requestedFromUserId"?: string;
+      /** The user identify whom receive request */
+      "friendRequest.requestedToUserId"?: string;
+      /**
+       * The status of friend
+       *
+       *  - FRIEND_STATUS_ENUM_UNSPECIFIED: UNSPECIFIED: default value
+       *  - FRIEND_STATUS_ENUM_NOT_FRIEND: NOT_FRIEND: Two user are not friends.
+       *  - FRIEND_STATUS_ENUM_REQUEST_SENT: SENT: At least one of two users has sent a friend request to the other user.
+       *  - FRIEND_STATUS_ENUM_REQUEST_RECEIVED: RECEIVED: At least one of two users has received a friend request sent by the other user.
+       *  - FRIEND_STATUS_ENUM_REQUEST_DELETED: DELETED: At user received delete a friend request
+       *  - FRIEND_STATUS_ENUM_FRIEND: FRIEND: Two user are friends.
+       * @default "FRIEND_STATUS_ENUM_UNSPECIFIED"
+       */
+      "friendRequest.status"?:
+        | "FRIEND_STATUS_ENUM_UNSPECIFIED"
+        | "FRIEND_STATUS_ENUM_NOT_FRIEND"
+        | "FRIEND_STATUS_ENUM_REQUEST_SENT"
+        | "FRIEND_STATUS_ENUM_REQUEST_RECEIVED"
+        | "FRIEND_STATUS_ENUM_REQUEST_DELETED"
+        | "FRIEND_STATUS_ENUM_FRIEND";
+      /** The friend identify */
+      "friendRequest.friendId"?: string;
+      /** The list participant id */
+      "friendRequest.participantIds"?: string[];
+      /** The time has been read by the receiver. */
+      "friendRequest.readTime"?: string;
+      /** The time to accept friend */
+      "friendRequest.acceptTime"?: string;
+      /** The first time friend created */
+      "friendRequest.createTime"?: string;
+      /** The time of friend updated */
+      "friendRequest.updateTime"?: string;
+      /** The timestamp when the friend request was deleted */
+      "friendRequest.deleteTime"?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3OutgoingFriendRequestAcceptedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name OutgoingFriendRequestCanceledEventDataT
+   * @request POST:/CloudEventServiceTemp/OutgoingFriendRequestCanceledEventData
+   */
+  export namespace OutgoingFriendRequestCanceledEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify whom send request */
+      "friendRequest.requestedFromUserId"?: string;
+      /** The user identify whom receive request */
+      "friendRequest.requestedToUserId"?: string;
+      /**
+       * The status of friend
+       *
+       *  - FRIEND_STATUS_ENUM_UNSPECIFIED: UNSPECIFIED: default value
+       *  - FRIEND_STATUS_ENUM_NOT_FRIEND: NOT_FRIEND: Two user are not friends.
+       *  - FRIEND_STATUS_ENUM_REQUEST_SENT: SENT: At least one of two users has sent a friend request to the other user.
+       *  - FRIEND_STATUS_ENUM_REQUEST_RECEIVED: RECEIVED: At least one of two users has received a friend request sent by the other user.
+       *  - FRIEND_STATUS_ENUM_REQUEST_DELETED: DELETED: At user received delete a friend request
+       *  - FRIEND_STATUS_ENUM_FRIEND: FRIEND: Two user are friends.
+       * @default "FRIEND_STATUS_ENUM_UNSPECIFIED"
+       */
+      "friendRequest.status"?:
+        | "FRIEND_STATUS_ENUM_UNSPECIFIED"
+        | "FRIEND_STATUS_ENUM_NOT_FRIEND"
+        | "FRIEND_STATUS_ENUM_REQUEST_SENT"
+        | "FRIEND_STATUS_ENUM_REQUEST_RECEIVED"
+        | "FRIEND_STATUS_ENUM_REQUEST_DELETED"
+        | "FRIEND_STATUS_ENUM_FRIEND";
+      /** The friend identify */
+      "friendRequest.friendId"?: string;
+      /** The list participant id */
+      "friendRequest.participantIds"?: string[];
+      /** The time has been read by the receiver. */
+      "friendRequest.readTime"?: string;
+      /** The time to accept friend */
+      "friendRequest.acceptTime"?: string;
+      /** The first time friend created */
+      "friendRequest.createTime"?: string;
+      /** The time of friend updated */
+      "friendRequest.updateTime"?: string;
+      /** The timestamp when the friend request was deleted */
+      "friendRequest.deleteTime"?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3OutgoingFriendRequestCanceledEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name OutgoingFriendRequestCreatedEventDataT
+   * @request POST:/CloudEventServiceTemp/OutgoingFriendRequestCreatedEventData
+   */
+  export namespace OutgoingFriendRequestCreatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify whom send request */
+      "friendRequest.requestedFromUserId"?: string;
+      /** The user identify whom receive request */
+      "friendRequest.requestedToUserId"?: string;
+      /**
+       * The status of friend
+       *
+       *  - FRIEND_STATUS_ENUM_UNSPECIFIED: UNSPECIFIED: default value
+       *  - FRIEND_STATUS_ENUM_NOT_FRIEND: NOT_FRIEND: Two user are not friends.
+       *  - FRIEND_STATUS_ENUM_REQUEST_SENT: SENT: At least one of two users has sent a friend request to the other user.
+       *  - FRIEND_STATUS_ENUM_REQUEST_RECEIVED: RECEIVED: At least one of two users has received a friend request sent by the other user.
+       *  - FRIEND_STATUS_ENUM_REQUEST_DELETED: DELETED: At user received delete a friend request
+       *  - FRIEND_STATUS_ENUM_FRIEND: FRIEND: Two user are friends.
+       * @default "FRIEND_STATUS_ENUM_UNSPECIFIED"
+       */
+      "friendRequest.status"?:
+        | "FRIEND_STATUS_ENUM_UNSPECIFIED"
+        | "FRIEND_STATUS_ENUM_NOT_FRIEND"
+        | "FRIEND_STATUS_ENUM_REQUEST_SENT"
+        | "FRIEND_STATUS_ENUM_REQUEST_RECEIVED"
+        | "FRIEND_STATUS_ENUM_REQUEST_DELETED"
+        | "FRIEND_STATUS_ENUM_FRIEND";
+      /** The friend identify */
+      "friendRequest.friendId"?: string;
+      /** The list participant id */
+      "friendRequest.participantIds"?: string[];
+      /** The time has been read by the receiver. */
+      "friendRequest.readTime"?: string;
+      /** The time to accept friend */
+      "friendRequest.acceptTime"?: string;
+      /** The first time friend created */
+      "friendRequest.createTime"?: string;
+      /** The time of friend updated */
+      "friendRequest.updateTime"?: string;
+      /** The timestamp when the friend request was deleted */
+      "friendRequest.deleteTime"?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3OutgoingFriendRequestCreatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name OutgoingFriendRequestDeletedEventDataT
+   * @request POST:/CloudEventServiceTemp/OutgoingFriendRequestDeletedEventData
+   */
+  export namespace OutgoingFriendRequestDeletedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify whom send request */
+      "friendRequest.requestedFromUserId"?: string;
+      /** The user identify whom receive request */
+      "friendRequest.requestedToUserId"?: string;
+      /**
+       * The status of friend
+       *
+       *  - FRIEND_STATUS_ENUM_UNSPECIFIED: UNSPECIFIED: default value
+       *  - FRIEND_STATUS_ENUM_NOT_FRIEND: NOT_FRIEND: Two user are not friends.
+       *  - FRIEND_STATUS_ENUM_REQUEST_SENT: SENT: At least one of two users has sent a friend request to the other user.
+       *  - FRIEND_STATUS_ENUM_REQUEST_RECEIVED: RECEIVED: At least one of two users has received a friend request sent by the other user.
+       *  - FRIEND_STATUS_ENUM_REQUEST_DELETED: DELETED: At user received delete a friend request
+       *  - FRIEND_STATUS_ENUM_FRIEND: FRIEND: Two user are friends.
+       * @default "FRIEND_STATUS_ENUM_UNSPECIFIED"
+       */
+      "friendRequest.status"?:
+        | "FRIEND_STATUS_ENUM_UNSPECIFIED"
+        | "FRIEND_STATUS_ENUM_NOT_FRIEND"
+        | "FRIEND_STATUS_ENUM_REQUEST_SENT"
+        | "FRIEND_STATUS_ENUM_REQUEST_RECEIVED"
+        | "FRIEND_STATUS_ENUM_REQUEST_DELETED"
+        | "FRIEND_STATUS_ENUM_FRIEND";
+      /** The friend identify */
+      "friendRequest.friendId"?: string;
+      /** The list participant id */
+      "friendRequest.participantIds"?: string[];
+      /** The time has been read by the receiver. */
+      "friendRequest.readTime"?: string;
+      /** The time to accept friend */
+      "friendRequest.acceptTime"?: string;
+      /** The first time friend created */
+      "friendRequest.createTime"?: string;
+      /** The time of friend updated */
+      "friendRequest.updateTime"?: string;
+      /** The timestamp when the friend request was deleted */
+      "friendRequest.deleteTime"?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3OutgoingFriendRequestDeletedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name OutgoingMessageRequestAcceptedEventDataT
+   * @request POST:/CloudEventServiceTemp/OutgoingMessageRequestAcceptedEventData
+   */
+  export namespace OutgoingMessageRequestAcceptedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      "channel.workspaceId"?: string;
+      /** The channel identify */
+      "channel.channelId"?: string;
+      /** The channel's creator is identified by the user. */
+      "channel.userId"?: string;
+      /** The name of channel */
+      "channel.name"?: string;
+      /** The avatar of channel */
+      "channel.avatar"?: string;
+      /** The channel is not yet private. */
+      "channel.isPrivate"?: boolean;
+      /**
+       * The type of channel
+       *
+       *  - CHANNEL_TYPE_ENUM_DM: DM: Direct message 1-1
+       *  - CHANNEL_TYPE_ENUM_CHANNEL: CHANNEL: A group can send message to multiple user 1-n
+       *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
+       * @default "CHANNEL_TYPE_ENUM_DM"
+       */
+      "channel.type"?:
+        | "CHANNEL_TYPE_ENUM_DM"
+        | "CHANNEL_TYPE_ENUM_CHANNEL"
+        | "CHANNEL_TYPE_ENUM_BROADCAST";
+      /** Invitation link after create channel */
+      "channel.invitationLink"?: string;
+      /** Is limited saving enabled? */
+      "channel.privacySettings.restrictSavingContent.enable"?: boolean;
+      "channel.premiumSettings.boosted.enable"?: boolean;
+      /** The original avatar */
+      "channel.originalAvatar"?: string;
+      /**
+       * Only return when get get channel
+       * @format int64
+       */
+      "channel.totalMembers"?: number;
+      /**
+       * Status of channel has type DM
+       *
+       *  - DIRECT_MESSAGE_STATUS_ENUM_PENDING: PENDING: The recipient has not replied or accept the message request
+       *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
+       * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+       */
+      "channel.dmStatus"?:
+        | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+        | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+      /** The workspace identify */
+      "channel.pinnedMessage.workspaceId"?: string;
+      /** The channel identify */
+      "channel.pinnedMessage.channelId"?: string;
+      /** The message identify */
+      "channel.pinnedMessage.messageId"?: string;
+      /** UserId send message */
+      "channel.pinnedMessage.userId"?: string;
+      /** Content of message */
+      "channel.pinnedMessage.content"?: string;
+      /** Is a random value created by the client, which is used as a similar attribute to the local ID */
+      "channel.pinnedMessage.ref"?: string;
+      /**
+       * Message type and message status
+       *
+       *  - MESSAGE_TYPE_ENUM_DEFAULT: Default is message of user
+       *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
+       * @default "MESSAGE_TYPE_ENUM_DEFAULT"
+       */
+      "channel.pinnedMessage.messageType"?:
+        | "MESSAGE_TYPE_ENUM_DEFAULT"
+        | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+      /**
+       * Status of message
+       *
+       *  - MESSAGE_STATUS_ENUM_PENDING: Waiting for process from server
+       *  - MESSAGE_STATUS_ENUM_SUCCESS: Send message success
+       *  - MESSAGE_STATUS_ENUM_FAILURE: Send message failed
+       * @default "MESSAGE_STATUS_ENUM_PENDING"
+       */
+      "channel.pinnedMessage.messageStatus"?:
+        | "MESSAGE_STATUS_ENUM_PENDING"
+        | "MESSAGE_STATUS_ENUM_SUCCESS"
+        | "MESSAGE_STATUS_ENUM_FAILURE";
+      /** The message identify */
+      "channel.pinnedMessage.originalMessage.messageId"?: string;
+      /** The message content */
+      "channel.pinnedMessage.originalMessage.content"?: string;
+      /**
+       * Attachment type
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.link.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** url */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.link.url"?: string;
+      /** short url */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.link.shortUrl"?: string;
+      /** collection_id of sticker file */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.collectionId"?: string;
+      /** sticker_id of sticker */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** url of sticker if attachment type is sticker */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerUrl"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentId"?: string;
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.fileRef"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.messageId"?: string;
+      /**
+       * Message type
+       *
+       *  - MESSAGE_TYPE_ENUM_DEFAULT: Default is message of user
+       *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
+       * @default "MESSAGE_TYPE_ENUM_DEFAULT"
+       */
+      "channel.pinnedMessage.originalMessage.messageType"?:
+        | "MESSAGE_TYPE_ENUM_DEFAULT"
+        | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+      /** The location language of content */
+      "channel.pinnedMessage.originalMessage.contentLocale"?: string;
+      /** The list arguments to replace in content message */
+      "channel.pinnedMessage.originalMessage.contentArguments"?: string[];
+      /** The user identify */
+      "channel.pinnedMessage.originalMessage.userId"?: string;
+      /** Time edit message */
+      "channel.pinnedMessage.originalMessage.editTime"?: string;
+      /** The create time */
+      "channel.pinnedMessage.originalMessage.createTime"?: string;
+      /** The update time */
+      "channel.pinnedMessage.originalMessage.updateTime"?: string;
+      /**
+       * Statistical react of message
+       *
+       * This is a request variable of the map type. The query format is "map_name[key]=value", e.g. If the map name is Age, the key type is string, and the value type is integer, the query parameter is expressed as Age["bob"]=18
+       */
+      "channel.pinnedMessage.reactions"?: any;
+      /** List username mentions */
+      "channel.pinnedMessage.mentions"?: string[];
+      /**
+       * Attachment type
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** State is thread of message, default = false */
+      "channel.pinnedMessage.isThread"?: boolean;
+      /**
+       * Number of times reported, default = 0
+       * @format int64
+       */
+      "channel.pinnedMessage.reportCount"?: number;
+      /** Flag report, default = false */
+      "channel.pinnedMessage.isReported"?: boolean;
+      /**
+       * Number of files, using for upload album
+       * @format int64
+       */
+      "channel.pinnedMessage.attachmentCount"?: number;
+      /** The location language of content */
+      "channel.pinnedMessage.contentLocale"?: string;
+      /** The list arguments to replace in content message */
+      "channel.pinnedMessage.contentArguments"?: string[];
+      /** Is pinned */
+      "channel.pinnedMessage.isPinned"?: boolean;
+      /** Pin time */
+      "channel.pinnedMessage.pinTime"?: string;
+      /** Time edit message */
+      "channel.pinnedMessage.editTime"?: string;
+      /** The first time message created */
+      "channel.pinnedMessage.createTime"?: string;
+      /** The time message updated */
+      "channel.pinnedMessage.updateTime"?: string;
+      /** The list participant id */
+      "channel.participantIds"?: string[];
+      /** Time recipient reject message request */
+      "channel.rejectTime"?: string;
+      /** Time recipient accept message request */
+      "channel.acceptTime"?: string;
+      /** The first time channel created */
+      "channel.createTime"?: string;
+      /** The time channel updated */
+      "channel.updateTime"?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3OutgoingMessageRequestAcceptedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name OutgoingMessageRequestCreatedEventDataT
+   * @request POST:/CloudEventServiceTemp/OutgoingMessageRequestCreatedEventData
+   */
+  export namespace OutgoingMessageRequestCreatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      "channel.workspaceId"?: string;
+      /** The channel identify */
+      "channel.channelId"?: string;
+      /** The channel's creator is identified by the user. */
+      "channel.userId"?: string;
+      /** The name of channel */
+      "channel.name"?: string;
+      /** The avatar of channel */
+      "channel.avatar"?: string;
+      /** The channel is not yet private. */
+      "channel.isPrivate"?: boolean;
+      /**
+       * The type of channel
+       *
+       *  - CHANNEL_TYPE_ENUM_DM: DM: Direct message 1-1
+       *  - CHANNEL_TYPE_ENUM_CHANNEL: CHANNEL: A group can send message to multiple user 1-n
+       *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
+       * @default "CHANNEL_TYPE_ENUM_DM"
+       */
+      "channel.type"?:
+        | "CHANNEL_TYPE_ENUM_DM"
+        | "CHANNEL_TYPE_ENUM_CHANNEL"
+        | "CHANNEL_TYPE_ENUM_BROADCAST";
+      /** Invitation link after create channel */
+      "channel.invitationLink"?: string;
+      /** Is limited saving enabled? */
+      "channel.privacySettings.restrictSavingContent.enable"?: boolean;
+      "channel.premiumSettings.boosted.enable"?: boolean;
+      /** The original avatar */
+      "channel.originalAvatar"?: string;
+      /**
+       * Only return when get get channel
+       * @format int64
+       */
+      "channel.totalMembers"?: number;
+      /**
+       * Status of channel has type DM
+       *
+       *  - DIRECT_MESSAGE_STATUS_ENUM_PENDING: PENDING: The recipient has not replied or accept the message request
+       *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
+       * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+       */
+      "channel.dmStatus"?:
+        | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+        | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+      /** The workspace identify */
+      "channel.pinnedMessage.workspaceId"?: string;
+      /** The channel identify */
+      "channel.pinnedMessage.channelId"?: string;
+      /** The message identify */
+      "channel.pinnedMessage.messageId"?: string;
+      /** UserId send message */
+      "channel.pinnedMessage.userId"?: string;
+      /** Content of message */
+      "channel.pinnedMessage.content"?: string;
+      /** Is a random value created by the client, which is used as a similar attribute to the local ID */
+      "channel.pinnedMessage.ref"?: string;
+      /**
+       * Message type and message status
+       *
+       *  - MESSAGE_TYPE_ENUM_DEFAULT: Default is message of user
+       *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
+       * @default "MESSAGE_TYPE_ENUM_DEFAULT"
+       */
+      "channel.pinnedMessage.messageType"?:
+        | "MESSAGE_TYPE_ENUM_DEFAULT"
+        | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+      /**
+       * Status of message
+       *
+       *  - MESSAGE_STATUS_ENUM_PENDING: Waiting for process from server
+       *  - MESSAGE_STATUS_ENUM_SUCCESS: Send message success
+       *  - MESSAGE_STATUS_ENUM_FAILURE: Send message failed
+       * @default "MESSAGE_STATUS_ENUM_PENDING"
+       */
+      "channel.pinnedMessage.messageStatus"?:
+        | "MESSAGE_STATUS_ENUM_PENDING"
+        | "MESSAGE_STATUS_ENUM_SUCCESS"
+        | "MESSAGE_STATUS_ENUM_FAILURE";
+      /** The message identify */
+      "channel.pinnedMessage.originalMessage.messageId"?: string;
+      /** The message content */
+      "channel.pinnedMessage.originalMessage.content"?: string;
+      /**
+       * Attachment type
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.link.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** url */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.link.url"?: string;
+      /** short url */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.link.shortUrl"?: string;
+      /** collection_id of sticker file */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.collectionId"?: string;
+      /** sticker_id of sticker */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** url of sticker if attachment type is sticker */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerUrl"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentId"?: string;
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.fileRef"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.photo.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.audio.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.video.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.messageId"?: string;
+      /** file_id to handle file operations */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileId"?: string;
+      /**
+       * types
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** Readable file object */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileUrl"?: string;
+      /** The name of file. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filename"?: string;
+      /**
+       * The size of the file in bytes.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filesize"?: number;
+      /** The file extension. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.extension"?: string;
+      /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.mimetype"?: string;
+      /**
+       * The height of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height"?: number;
+      /**
+       * The width of file.
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width"?: number;
+      /**
+       * duration of video or record file, unit second
+       * @format int64
+       */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.duration"?: number;
+      /** Readable thumbnail, OPTIONAL */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.thumbnailUrl"?: string;
+      /** audio samples rate */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.audioMetadata.samples"?: number[];
+      /** file ref */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileRef"?: string;
+      /** attachment id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentId"?: string;
+      /** channel id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.channelId"?: string;
+      /** user id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.userId"?: string;
+      /** message id */
+      "channel.pinnedMessage.originalMessage.mediaAttachments.file.messageId"?: string;
+      /**
+       * Message type
+       *
+       *  - MESSAGE_TYPE_ENUM_DEFAULT: Default is message of user
+       *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
+       * @default "MESSAGE_TYPE_ENUM_DEFAULT"
+       */
+      "channel.pinnedMessage.originalMessage.messageType"?:
+        | "MESSAGE_TYPE_ENUM_DEFAULT"
+        | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+      /** The location language of content */
+      "channel.pinnedMessage.originalMessage.contentLocale"?: string;
+      /** The list arguments to replace in content message */
+      "channel.pinnedMessage.originalMessage.contentArguments"?: string[];
+      /** The user identify */
+      "channel.pinnedMessage.originalMessage.userId"?: string;
+      /** Time edit message */
+      "channel.pinnedMessage.originalMessage.editTime"?: string;
+      /** The create time */
+      "channel.pinnedMessage.originalMessage.createTime"?: string;
+      /** The update time */
+      "channel.pinnedMessage.originalMessage.updateTime"?: string;
+      /**
+       * Statistical react of message
+       *
+       * This is a request variable of the map type. The query format is "map_name[key]=value", e.g. If the map name is Age, the key type is string, and the value type is integer, the query parameter is expressed as Age["bob"]=18
+       */
+      "channel.pinnedMessage.reactions"?: any;
+      /** List username mentions */
+      "channel.pinnedMessage.mentions"?: string[];
+      /**
+       * Attachment type
+       *
+       *  - ATTACHMENT_TYPE_ENUM_UNSPECIFIED: Unspecified
+       *  - ATTACHMENT_TYPE_ENUM_PHOTO: Photo
+       *  - ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE: Voice message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE: video message
+       *  - ATTACHMENT_TYPE_ENUM_AUDIO: Audio message
+       *  - ATTACHMENT_TYPE_ENUM_VIDEO: Video message
+       *  - ATTACHMENT_TYPE_ENUM_LINKS: The link message
+       *  - ATTACHMENT_TYPE_ENUM_STICKER: The sticker message
+       *  - ATTACHMENT_TYPE_ENUM_MEDIA: Include PHOTO and VIDEO
+       *  - ATTACHMENT_TYPE_ENUM_MENTION: Include mention
+       *  - ATTACHMENT_TYPE_ENUM_LOCATION: Include location
+       *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
+       * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+       */
+      "channel.pinnedMessage.attachmentType"?:
+        | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
+        | "ATTACHMENT_TYPE_ENUM_PHOTO"
+        | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
+        | "ATTACHMENT_TYPE_ENUM_AUDIO"
+        | "ATTACHMENT_TYPE_ENUM_VIDEO"
+        | "ATTACHMENT_TYPE_ENUM_LINKS"
+        | "ATTACHMENT_TYPE_ENUM_STICKER"
+        | "ATTACHMENT_TYPE_ENUM_MEDIA"
+        | "ATTACHMENT_TYPE_ENUM_MENTION"
+        | "ATTACHMENT_TYPE_ENUM_LOCATION"
+        | "ATTACHMENT_TYPE_ENUM_FILE";
+      /** State is thread of message, default = false */
+      "channel.pinnedMessage.isThread"?: boolean;
+      /**
+       * Number of times reported, default = 0
+       * @format int64
+       */
+      "channel.pinnedMessage.reportCount"?: number;
+      /** Flag report, default = false */
+      "channel.pinnedMessage.isReported"?: boolean;
+      /**
+       * Number of files, using for upload album
+       * @format int64
+       */
+      "channel.pinnedMessage.attachmentCount"?: number;
+      /** The location language of content */
+      "channel.pinnedMessage.contentLocale"?: string;
+      /** The list arguments to replace in content message */
+      "channel.pinnedMessage.contentArguments"?: string[];
+      /** Is pinned */
+      "channel.pinnedMessage.isPinned"?: boolean;
+      /** Pin time */
+      "channel.pinnedMessage.pinTime"?: string;
+      /** Time edit message */
+      "channel.pinnedMessage.editTime"?: string;
+      /** The first time message created */
+      "channel.pinnedMessage.createTime"?: string;
+      /** The time message updated */
+      "channel.pinnedMessage.updateTime"?: string;
+      /** The list participant id */
+      "channel.participantIds"?: string[];
+      /** Time recipient reject message request */
+      "channel.rejectTime"?: string;
+      /** Time recipient accept message request */
+      "channel.acceptTime"?: string;
+      /** The first time channel created */
+      "channel.createTime"?: string;
+      /** The time channel updated */
+      "channel.updateTime"?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3OutgoingMessageRequestCreatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name PresenceUpdatedEventDataT
+   * @request POST:/CloudEventServiceTemp/PresenceUpdatedEventData
+   */
+  export namespace PresenceUpdatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify */
+      userId?: string;
+      /** The device identify */
+      deviceId?: string;
+      /** The device is online */
+      isOnline?: boolean;
+      /** The channel identify unread */
+      "badgeValueArgument.unreadChannelIds"?: string[];
+      /** The user identify of friend request */
+      "badgeValueArgument.unreadFriendRequestIds"?: string[];
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3PresenceUpdatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name RevokeChannelsNotificationPushedEventDataT
+   * @request POST:/CloudEventServiceTemp/RevokeChannelsNotificationPushedEventData
+   */
+  export namespace RevokeChannelsNotificationPushedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The list channel identify revoke notification */
+      channelsIds?: string[];
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3RevokeChannelsNotificationPushedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name RevokeMessagesNotificationPushedEventDataT
+   * @request POST:/CloudEventServiceTemp/RevokeMessagesNotificationPushedEventData
+   */
+  export namespace RevokeMessagesNotificationPushedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The list message identify to revoke notification */
+      messageIds?: string[];
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3RevokeMessagesNotificationPushedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name RingbackToneCreatedEventDataT
+   * @request POST:/CloudEventServiceTemp/RingbackToneCreatedEventData
+   */
+  export namespace RingbackToneCreatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The ringback tone identify */
+      ringbackToneId?: string;
+      /** The name of ringback tone */
+      name?: string;
+      /** Is default ringback tone */
+      isDefault?: boolean;
+      /** Is active ringback tone */
+      isActive?: boolean;
+      /** Create time */
+      createTime?: string;
+      /** Update time */
+      updateTime?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3RingbackToneCreatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name RingbackToneDeletedEventDataT
+   * @request POST:/CloudEventServiceTemp/RingbackToneDeletedEventData
+   */
+  export namespace RingbackToneDeletedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The ringback tone identify */
+      ringbackToneId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3RingbackToneDeletedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name RingbackToneRenamedEventDataT
+   * @request POST:/CloudEventServiceTemp/RingbackToneRenamedEventData
+   */
+  export namespace RingbackToneRenamedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The ringback tone identify */
+      ringbackToneId?: string;
+      /** The name of ringback tone */
+      name?: string;
+      /** The update time */
+      updateTime?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3RingbackToneRenamedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name RingbackToneSelectedEventDataT
+   * @request POST:/CloudEventServiceTemp/RingbackToneSelectedEventData
+   */
+  export namespace RingbackToneSelectedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The ringback tone identify */
+      ringbackToneId?: string;
+      /** The update time */
+      updateTime?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3RingbackToneSelectedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name UserAvatarDeletedEventDataT
+   * @request POST:/CloudEventServiceTemp/UserAvatarDeletedEventData
+   */
+  export namespace UserAvatarDeletedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** User identify avatar deleted */
+      actorId?: string;
+      /**
+       * The type of avatar
+       *
+       *  - USER_AVATAR_TYPE_ENUM_UNSPECIFIED: User avatar type is unspecified
+       *  - USER_AVATAR_TYPE_ENUM_PHOTO: User avatar type is photo
+       *  - USER_AVATAR_TYPE_ENUM_VIDEO: User avatar type is video
+       * @default "USER_AVATAR_TYPE_ENUM_UNSPECIFIED"
+       */
+      avatarType?:
+        | "USER_AVATAR_TYPE_ENUM_UNSPECIFIED"
+        | "USER_AVATAR_TYPE_ENUM_PHOTO"
+        | "USER_AVATAR_TYPE_ENUM_VIDEO";
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UserAvatarDeletedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name UserAvatarUpdatedEventDataT
+   * @request POST:/CloudEventServiceTemp/UserAvatarUpdatedEventData
+   */
+  export namespace UserAvatarUpdatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify whom update avatar */
+      actorId?: string;
+      /** The new avatar */
+      avatar?: string;
+      /** The video avatar path */
+      videoAvatar?: string;
+      /**
+       * The type of avatar
+       *
+       *  - USER_AVATAR_TYPE_ENUM_UNSPECIFIED: User avatar type is unspecified
+       *  - USER_AVATAR_TYPE_ENUM_PHOTO: User avatar type is photo
+       *  - USER_AVATAR_TYPE_ENUM_VIDEO: User avatar type is video
+       * @default "USER_AVATAR_TYPE_ENUM_UNSPECIFIED"
+       */
+      avatarType?:
+        | "USER_AVATAR_TYPE_ENUM_UNSPECIFIED"
+        | "USER_AVATAR_TYPE_ENUM_PHOTO"
+        | "USER_AVATAR_TYPE_ENUM_VIDEO";
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UserAvatarUpdatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name UserBadgeCountUpdatedEventDataT
+   * @request POST:/CloudEventServiceTemp/UserBadgeCountUpdatedEventData
+   */
+  export namespace UserBadgeCountUpdatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify */
+      userId?: string;
+      /**
+       * The badge count
+       * @format int64
+       */
+      badgeCount?: number;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UserBadgeCountUpdatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name UserBlockedEventDataT
+   * @request POST:/CloudEventServiceTemp/UserBlockedEventData
+   */
+  export namespace UserBlockedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify whom block */
+      actorId?: string;
+      /** The user identify whom be blocked */
+      targetUserId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UserBlockedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name UserCreatedEventDataT
+   * @request POST:/CloudEventServiceTemp/UserCreatedEventData
+   */
+  export namespace UserCreatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify of user */
+      userId?: string;
+      /** The username of user */
+      username?: string;
+      /** The country code */
+      "geolocation.countryCode"?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UserCreatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name UserCreationFailedDataT
+   * @request POST:/CloudEventServiceTemp/UserCreationFailedData
+   */
+  export namespace UserCreationFailedDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify of user */
+      userId?: string;
+      /** The username of user */
+      username?: string;
+      /** The country code */
+      "geolocation.countryCode"?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UserCreationFailedData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name UserDeletedEventDataT
+   * @request POST:/CloudEventServiceTemp/UserDeletedEventData
+   */
+  export namespace UserDeletedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify */
+      userId?: string;
+      /** The user name */
+      username?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UserDeletedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name UserDisplayNameUpdatedEventDataT
+   * @request POST:/CloudEventServiceTemp/UserDisplayNameUpdatedEventData
+   */
+  export namespace UserDisplayNameUpdatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify whom delete message */
+      actorId?: string;
+      /** The new display name of user */
+      displayName?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UserDisplayNameUpdatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name UserEmailUpdatedEventDataT
+   * @request POST:/CloudEventServiceTemp/UserEmailUpdatedEventData
+   */
+  export namespace UserEmailUpdatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify whom update email */
+      actorId?: string;
+      /** The email of user */
+      email?: string;
+      /** The email hashed */
+      emailHash?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UserEmailUpdatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name UserGlobalMediaPermissionSettingUpdatedEventDataT
+   * @request POST:/CloudEventServiceTemp/UserGlobalMediaPermissionSettingUpdatedEventData
+   */
+  export namespace UserGlobalMediaPermissionSettingUpdatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify whom update */
+      actorId?: string;
+      /**
+       * The media permission setting
+       *
+       *  - MEDIA_PERMISSION_SETTING_ENUM_ALWAYS_ASK: ALWAYS_ASK (DEFAULT): ask everytime user received new media message
+       *  - MEDIA_PERMISSION_SETTING_ENUM_ALLOW: ALLOW: accept incoming media messages from every body
+       *  - MEDIA_PERMISSION_SETTING_ENUM_NOT_ALLOW: NOT_ALLOW: au-to denied incoming media messages
+       * @default "MEDIA_PERMISSION_SETTING_ENUM_ALWAYS_ASK"
+       */
+      globalMediaPermissionSetting?:
+        | "MEDIA_PERMISSION_SETTING_ENUM_ALWAYS_ASK"
+        | "MEDIA_PERMISSION_SETTING_ENUM_ALLOW"
+        | "MEDIA_PERMISSION_SETTING_ENUM_NOT_ALLOW";
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody =
+      V3UserGlobalMediaPermissionSettingUpdatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name UserGlobalNotificationStatusUpdatedEventDataT
+   * @request POST:/CloudEventServiceTemp/UserGlobalNotificationStatusUpdatedEventData
+   */
+  export namespace UserGlobalNotificationStatusUpdatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify */
+      userId?: string;
+      /** Is the global notification */
+      globalNotificationStatus?: boolean;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UserGlobalNotificationStatusUpdatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name UserMessageReactionUpdatedEventDataT
+   * @request POST:/CloudEventServiceTemp/UserMessageReactionUpdatedEventData
+   */
+  export namespace UserMessageReactionUpdatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      workspaceId?: string;
+      /** The channel identify */
+      channelId?: string;
+      /** The user identify whom react message */
+      actorId?: string;
+      /** The message identify */
+      messageId?: string;
+      /** The emoji data */
+      emoji?: string;
+      /** True if react, false if revoke */
+      isReacted?: boolean;
+      /** The workspace identify */
+      "destination.workspaceId"?: string;
+      /** The channel identify */
+      "destination.channelId"?: string;
+      /**
+       * The channel type
+       *
+       *  - CHANNEL_TYPE_ENUM_DM: DM: Direct message 1-1
+       *  - CHANNEL_TYPE_ENUM_CHANNEL: CHANNEL: A group can send message to multiple user 1-n
+       *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
+       * @default "CHANNEL_TYPE_ENUM_DM"
+       */
+      "destination.channelType"?:
+        | "CHANNEL_TYPE_ENUM_DM"
+        | "CHANNEL_TYPE_ENUM_CHANNEL"
+        | "CHANNEL_TYPE_ENUM_BROADCAST";
+      /** The user identify whom receive message */
+      "destination.recipientId"?: string;
+      /** The dm channel identify */
+      "destination.dmId"?: string;
+      /**
+       * The dm message status
+       *
+       *  - DIRECT_MESSAGE_STATUS_ENUM_PENDING: PENDING: The recipient has not replied or accept the message request
+       *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
+       * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+       */
+      "destination.dmStatus"?:
+        | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+        | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+      /**
+       * Statistical react of message
+       *
+       * This is a request variable of the map type. The query format is "map_name[key]=value", e.g. If the map name is Age, the key type is string, and the value type is integer, the query parameter is expressed as Age["bob"]=18
+       */
+      reactions?: any;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UserMessageReactionUpdatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name UserMessagesDeletedEventDataT
+   * @request POST:/CloudEventServiceTemp/UserMessagesDeletedEventData
+   */
+  export namespace UserMessagesDeletedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      workspaceId?: string;
+      /** The channel identify */
+      channelId?: string;
+      /** The user identify whom delete message */
+      actorId?: string;
+      /** The list message identify deleted */
+      messageIds?: string[];
+      /** The workspace identify */
+      "destination.workspaceId"?: string;
+      /** The channel identify */
+      "destination.channelId"?: string;
+      /**
+       * The channel type
+       *
+       *  - CHANNEL_TYPE_ENUM_DM: DM: Direct message 1-1
+       *  - CHANNEL_TYPE_ENUM_CHANNEL: CHANNEL: A group can send message to multiple user 1-n
+       *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
+       * @default "CHANNEL_TYPE_ENUM_DM"
+       */
+      "destination.channelType"?:
+        | "CHANNEL_TYPE_ENUM_DM"
+        | "CHANNEL_TYPE_ENUM_CHANNEL"
+        | "CHANNEL_TYPE_ENUM_BROADCAST";
+      /** The user identify whom receive message */
+      "destination.recipientId"?: string;
+      /** The dm channel identify */
+      "destination.dmId"?: string;
+      /**
+       * The dm message status
+       *
+       *  - DIRECT_MESSAGE_STATUS_ENUM_PENDING: PENDING: The recipient has not replied or accept the message request
+       *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
+       * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+       */
+      "destination.dmStatus"?:
+        | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+        | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UserMessagesDeletedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name UserPhoneUpdatedEventDataT
+   * @request POST:/CloudEventServiceTemp/UserPhoneUpdatedEventData
+   */
+  export namespace UserPhoneUpdatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify whom update phone number */
+      actorId?: string;
+      /** The phone number of user */
+      phone?: string;
+      /** The phone number hashed */
+      phoneHash?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UserPhoneUpdatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name UserScopeForCallUpdatedEventDataT
+   * @request POST:/CloudEventServiceTemp/UserScopeForCallUpdatedEventData
+   */
+  export namespace UserScopeForCallUpdatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      actorId?: string;
+      /** @default "UNSPECIFIED" */
+      userScope?: "UNSPECIFIED" | "EVERYBODY" | "ONLY_FRIENDS" | "NO_BODY";
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UserScopeForCallUpdatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name UserScopeForMessageUpdatedEventDataT
+   * @request POST:/CloudEventServiceTemp/UserScopeForMessageUpdatedEventData
+   */
+  export namespace UserScopeForMessageUpdatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      actorId?: string;
+      /** @default "UNSPECIFIED" */
+      userScope?: "UNSPECIFIED" | "EVERYBODY" | "ONLY_FRIENDS" | "NO_BODY";
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UserScopeForMessageUpdatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name UserStatusCreatedEventDataT
+   * @request POST:/CloudEventServiceTemp/UserStatusCreatedEventData
+   */
+  export namespace UserStatusCreatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify */
+      userId?: string;
+      /** The content of user status */
+      "statusData.content"?: string;
+      /** The emoji status */
+      "statusData.status"?: string;
+      /**
+       * The expires time after create
+       *
+       *  - USER_STATUS_EXPIRES_AFTER_TIME_ENUM_UNSPECIFIED: The user status expires time after unspecified
+       *  - USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_1_HOUR: The user status expires time after 1 hour
+       *  - USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_4_HOUR: The user status expires time after 4 hour
+       *  - USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_8_HOUR: The user status expires time after 8 hour
+       *  - USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_24_HOUR: The user status expires time after 24 hour
+       *  - USER_STATUS_EXPIRES_AFTER_TIME_ENUM_NEVER: The user status never expires
+       * @default "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_UNSPECIFIED"
+       */
+      "statusData.expireAfterTime"?:
+        | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_UNSPECIFIED"
+        | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_1_HOUR"
+        | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_4_HOUR"
+        | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_8_HOUR"
+        | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_24_HOUR"
+        | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_NEVER";
+      /** The create time */
+      "statusData.createTime"?: string;
+      /** The update time */
+      "statusData.updateTime"?: string;
+      /** The end time (create time + expires time) */
+      "statusData.endTime"?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UserStatusCreatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name UserStatusDeletedEventDataT
+   * @request POST:/CloudEventServiceTemp/UserStatusDeletedEventData
+   */
+  export namespace UserStatusDeletedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify */
+      userId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UserStatusDeletedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name UserStatusUpdatedEventDataT
+   * @request POST:/CloudEventServiceTemp/UserStatusUpdatedEventData
+   */
+  export namespace UserStatusUpdatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify */
+      userId?: string;
+      /** The content of user status */
+      "statusData.content"?: string;
+      /** The emoji status */
+      "statusData.status"?: string;
+      /**
+       * The expires time after create
+       *
+       *  - USER_STATUS_EXPIRES_AFTER_TIME_ENUM_UNSPECIFIED: The user status expires time after unspecified
+       *  - USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_1_HOUR: The user status expires time after 1 hour
+       *  - USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_4_HOUR: The user status expires time after 4 hour
+       *  - USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_8_HOUR: The user status expires time after 8 hour
+       *  - USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_24_HOUR: The user status expires time after 24 hour
+       *  - USER_STATUS_EXPIRES_AFTER_TIME_ENUM_NEVER: The user status never expires
+       * @default "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_UNSPECIFIED"
+       */
+      "statusData.expireAfterTime"?:
+        | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_UNSPECIFIED"
+        | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_1_HOUR"
+        | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_4_HOUR"
+        | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_8_HOUR"
+        | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_24_HOUR"
+        | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_NEVER";
+      /** The create time */
+      "statusData.createTime"?: string;
+      /** The update time */
+      "statusData.updateTime"?: string;
+      /** The end time (create time + expires time) */
+      "statusData.endTime"?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UserStatusUpdatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name UserUnblockedEventDataT
+   * @request POST:/CloudEventServiceTemp/UserUnblockedEventData
+   */
+  export namespace UserUnblockedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify whom unblock */
+      actorId?: string;
+      /** The user identify whom be unblocked */
+      targetUserId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UserUnblockedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name UserUnreadMessagesUpdatedEventDataT
+   * @request POST:/CloudEventServiceTemp/UserUnreadMessagesUpdatedEventData
+   */
+  export namespace UserUnreadMessagesUpdatedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The workspace identify */
+      workspaceId?: string;
+      /** The channel identify */
+      channelId?: string;
+      /** The user identify */
+      userId?: string;
+      /**
+       * The unread count
+       * @format int64
+       */
+      unreadCount?: number;
+      /** The last seen message identify */
+      lastSeenMessageId?: string;
+      /** The workspace identify */
+      "destination.workspaceId"?: string;
+      /** The channel identify */
+      "destination.channelId"?: string;
+      /**
+       * The channel type
+       *
+       *  - CHANNEL_TYPE_ENUM_DM: DM: Direct message 1-1
+       *  - CHANNEL_TYPE_ENUM_CHANNEL: CHANNEL: A group can send message to multiple user 1-n
+       *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
+       * @default "CHANNEL_TYPE_ENUM_DM"
+       */
+      "destination.channelType"?:
+        | "CHANNEL_TYPE_ENUM_DM"
+        | "CHANNEL_TYPE_ENUM_CHANNEL"
+        | "CHANNEL_TYPE_ENUM_BROADCAST";
+      /** The user identify whom receive message */
+      "destination.recipientId"?: string;
+      /** The dm channel identify */
+      "destination.dmId"?: string;
+      /**
+       * The dm message status
+       *
+       *  - DIRECT_MESSAGE_STATUS_ENUM_PENDING: PENDING: The recipient has not replied or accept the message request
+       *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
+       * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+       */
+      "destination.dmStatus"?:
+        | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
+        | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UserUnreadMessagesUpdatedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name UserVideoAvatarDeletedEventDataT
+   * @request POST:/CloudEventServiceTemp/UserVideoAvatarDeletedEventData
+   */
+  export namespace UserVideoAvatarDeletedEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The user identify whom delete video avatar */
+      actorId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UserVideoAvatarDeletedEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name UserVisitedProfileEventDataT
+   * @request POST:/CloudEventServiceTemp/UserVisitedProfileEventData
+   */
+  export namespace UserVisitedProfileEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** User identify */
+      userId?: string;
+      /** The user identify */
+      "userData.userId"?: string;
+      /** The username of user */
+      "userData.username"?: string;
+      /** The user identify whom send request */
+      "userData.friendData.requestedFromUserId"?: string;
+      /** The user identify whom receive request */
+      "userData.friendData.requestedToUserId"?: string;
+      /**
+       * The status of friend
+       *
+       *  - FRIEND_STATUS_ENUM_UNSPECIFIED: UNSPECIFIED: default value
+       *  - FRIEND_STATUS_ENUM_NOT_FRIEND: NOT_FRIEND: Two user are not friends.
+       *  - FRIEND_STATUS_ENUM_REQUEST_SENT: SENT: At least one of two users has sent a friend request to the other user.
+       *  - FRIEND_STATUS_ENUM_REQUEST_RECEIVED: RECEIVED: At least one of two users has received a friend request sent by the other user.
+       *  - FRIEND_STATUS_ENUM_REQUEST_DELETED: DELETED: At user received delete a friend request
+       *  - FRIEND_STATUS_ENUM_FRIEND: FRIEND: Two user are friends.
+       * @default "FRIEND_STATUS_ENUM_UNSPECIFIED"
+       */
+      "userData.friendData.status"?:
+        | "FRIEND_STATUS_ENUM_UNSPECIFIED"
+        | "FRIEND_STATUS_ENUM_NOT_FRIEND"
+        | "FRIEND_STATUS_ENUM_REQUEST_SENT"
+        | "FRIEND_STATUS_ENUM_REQUEST_RECEIVED"
+        | "FRIEND_STATUS_ENUM_REQUEST_DELETED"
+        | "FRIEND_STATUS_ENUM_FRIEND";
+      /** The friend identify */
+      "userData.friendData.friendId"?: string;
+      /** The list participant id */
+      "userData.friendData.participantIds"?: string[];
+      /** The time has been read by the receiver. */
+      "userData.friendData.readTime"?: string;
+      /** The time to accept friend */
+      "userData.friendData.acceptTime"?: string;
+      /** The first time friend created */
+      "userData.friendData.createTime"?: string;
+      /** The time of friend updated */
+      "userData.friendData.updateTime"?: string;
+      /** The timestamp when the friend request was deleted */
+      "userData.friendData.deleteTime"?: string;
+      /**
+       * The media sharing permission setting of user
+       *
+       *  - MEDIA_PERMISSION_SETTING_ENUM_ALWAYS_ASK: ALWAYS_ASK (DEFAULT): ask everytime user received new media message
+       *  - MEDIA_PERMISSION_SETTING_ENUM_ALLOW: ALLOW: accept incoming media messages from every body
+       *  - MEDIA_PERMISSION_SETTING_ENUM_NOT_ALLOW: NOT_ALLOW: au-to denied incoming media messages
+       * @default "MEDIA_PERMISSION_SETTING_ENUM_ALWAYS_ASK"
+       */
+      "userData.mediaPermissionSetting"?:
+        | "MEDIA_PERMISSION_SETTING_ENUM_ALWAYS_ASK"
+        | "MEDIA_PERMISSION_SETTING_ENUM_ALLOW"
+        | "MEDIA_PERMISSION_SETTING_ENUM_NOT_ALLOW";
+      /** The create time of user */
+      "userData.createTime"?: string;
+      /** The update time of user */
+      "userData.updateTime"?: string;
+      /** The thumbnail avatar of user */
+      "userData.profile.avatar"?: string;
+      /** The user display name */
+      "userData.profile.displayName"?: string;
+      /** The cover page of user */
+      "userData.profile.cover"?: string;
+      /** The avatar of user */
+      "userData.profile.originalAvatar"?: string;
+      /**
+       * The avatar type
+       *
+       *  - USER_AVATAR_TYPE_ENUM_UNSPECIFIED: User avatar type is unspecified
+       *  - USER_AVATAR_TYPE_ENUM_PHOTO: User avatar type is photo
+       *  - USER_AVATAR_TYPE_ENUM_VIDEO: User avatar type is video
+       * @default "USER_AVATAR_TYPE_ENUM_UNSPECIFIED"
+       */
+      "userData.profile.avatarType"?:
+        | "USER_AVATAR_TYPE_ENUM_UNSPECIFIED"
+        | "USER_AVATAR_TYPE_ENUM_PHOTO"
+        | "USER_AVATAR_TYPE_ENUM_VIDEO";
+      /** The video avatar URL */
+      "userData.profile.videoAvatar"?: string;
+      /**
+       * The user badge type
+       * @default "USER_BADGE_TYPE_DEFAULT"
+       */
+      "userData.profile.userBadgeType"?:
+        | "USER_BADGE_TYPE_DEFAULT"
+        | "USER_BADGE_TYPE_BLUE"
+        | "USER_BADGE_TYPE_GRAY"
+        | "USER_BADGE_TYPE_YELLOW";
+      /** The decorated avatar */
+      "userData.profile.decoratedAvatar"?: string;
+      /** The original decorated avatar */
+      "userData.profile.originalDecoratedAvatar"?: string;
+      /**
+       * The type of user
+       *
+       *  - USER_TYPE_ENUM_DEFAULT: Default user
+       *  - USER_TYPE_ENUM_BOT: User is bot
+       *  - USER_TYPE_ENUM_GHOST: User deleted
+       * @default "USER_TYPE_ENUM_DEFAULT"
+       */
+      "userData.userType"?:
+        | "USER_TYPE_ENUM_DEFAULT"
+        | "USER_TYPE_ENUM_BOT"
+        | "USER_TYPE_ENUM_GHOST";
+      /** The last time updated */
+      "userData.presenceData.lastUpdateTime"?: string;
+      /**
+       * now - last_update_time, always greater than or equal zero, unit: seconds
+       * @format int64
+       */
+      "userData.presenceData.lastUpdateInSeconds"?: number;
+      /**
+       * The presence state's data
+       *
+       *  - PRESENCE_STATUS_UNSPECIFIED: The presence is unspecified
+       *  - PRESENCE_STATUS_ONLINE: The presence is online
+       *  - PRESENCE_STATUS_IDLE: The presence is  idle
+       *  - PRESENCE_STATUS_DO_NOT_DISTURB: The presence is not disturb
+       *  - PRESENCE_STATUS_OFFLINE: The presence is offline
+       *  - PRESENCE_STATUS_OTHER: The presence is other
+       * @default "PRESENCE_STATUS_UNSPECIFIED"
+       */
+      "userData.presenceData.presenceState"?:
+        | "PRESENCE_STATUS_UNSPECIFIED"
+        | "PRESENCE_STATUS_ONLINE"
+        | "PRESENCE_STATUS_IDLE"
+        | "PRESENCE_STATUS_DO_NOT_DISTURB"
+        | "PRESENCE_STATUS_OFFLINE"
+        | "PRESENCE_STATUS_OTHER";
+      /** The custom status */
+      "userData.presenceData.customStatus"?: string;
+      /** The content of user status */
+      "userData.statusData.content"?: string;
+      /** The emoji status */
+      "userData.statusData.status"?: string;
+      /**
+       * The expires time after create
+       *
+       *  - USER_STATUS_EXPIRES_AFTER_TIME_ENUM_UNSPECIFIED: The user status expires time after unspecified
+       *  - USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_1_HOUR: The user status expires time after 1 hour
+       *  - USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_4_HOUR: The user status expires time after 4 hour
+       *  - USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_8_HOUR: The user status expires time after 8 hour
+       *  - USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_24_HOUR: The user status expires time after 24 hour
+       *  - USER_STATUS_EXPIRES_AFTER_TIME_ENUM_NEVER: The user status never expires
+       * @default "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_UNSPECIFIED"
+       */
+      "userData.statusData.expireAfterTime"?:
+        | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_UNSPECIFIED"
+        | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_1_HOUR"
+        | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_4_HOUR"
+        | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_8_HOUR"
+        | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_24_HOUR"
+        | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_NEVER";
+      /** The create time */
+      "userData.statusData.createTime"?: string;
+      /** The update time */
+      "userData.statusData.updateTime"?: string;
+      /** The end time (create time + expires time) */
+      "userData.statusData.endTime"?: string;
+      /** Is blocked */
+      "userData.blocked"?: boolean;
+      /** The created visited profile time */
+      createTime?: string;
+      /** The update visited profile time */
+      updateTime?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UserVisitedProfileEventData;
+  }
+
+  /**
+   * No description
+   * @tags CloudEventServiceTemp
+   * @name WebsocketResumeEventDataT
+   * @request POST:/CloudEventServiceTemp/WebsocketResumeEventData
+   */
+  export namespace WebsocketResumeEventDataT {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** The token's data */
+      token?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3WebsocketResumeEventData;
+  }
+}
+
 export type QueryParamsType = Record<string | number, any>;
 export type ResponseFormat = keyof Omit<Body, "body" | "bodyUsed">;
 

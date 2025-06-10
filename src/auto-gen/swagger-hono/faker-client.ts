@@ -182,6 +182,135 @@ export interface DeleteMockedUsersParams {
   prefix?: string;
 }
 
+export namespace InternalFaker {
+  /**
+   * No description
+   * @tags InternalFakerService
+   * @name DeleteMockedChannels
+   * @summary Method to support deleting multiple channels based on a prefix.
+   * @request DELETE:/InternalFaker/DeleteMockedChannels
+   */
+  export namespace DeleteMockedChannels {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      workspaceId?: string;
+      prefix?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3DeleteMockedChannelsResponse;
+  }
+
+  /**
+ * No description
+ * @tags InternalFakerService
+ * @name DeleteMockedUsers
+ * @summary Method to support deleting multiple user accounts based on a prefix, facilitating data cleanup during testing.
+The method is not supported in the production environment.
+ * @request DELETE:/InternalFaker/DeleteMockedUsers
+*/
+  export namespace DeleteMockedUsers {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      prefix?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3DeleteMockedUsersResponse;
+  }
+
+  /**
+   * No description
+   * @tags InternalFakerService
+   * @name GetTokens
+   * @request POST:/InternalFaker/GetTokens
+   */
+  export namespace GetTokens {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3GetTokensRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3GetTokensResponse;
+  }
+
+  /**
+ * No description
+ * @tags InternalFakerService
+ * @name MockChannels
+ * @summary Method to support creating multiple channels for testing purposes,
+as well as adding members and creating sample messages
+ * @request POST:/InternalFaker/MockChannels
+*/
+  export namespace MockChannels {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3MockChannelsRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3MockChannelsResponse;
+  }
+
+  /**
+   * No description
+   * @tags InternalFakerService
+   * @name MockFriends
+   * @summary Method supports creating multiple friends.
+   * @request POST:/InternalFaker/MockFriends
+   */
+  export namespace MockFriends {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3MockFriendsRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3MockFriendsResponse;
+  }
+
+  /**
+   * No description
+   * @tags InternalFakerService
+   * @name MockMessages
+   * @summary Method supports creating multiple messages including message, image, link...
+   * @request POST:/InternalFaker/MockMessages
+   */
+  export namespace MockMessages {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3MockMessagesRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3MockMessagesResponse;
+  }
+
+  /**
+ * No description
+ * @tags InternalFakerService
+ * @name MockUsers
+ * @summary Method to support creating multiple user accounts for testing purposes,
+Accounts created using this method cannot be logged in.
+The method is not supported in the production environment.
+ * @request POST:/InternalFaker/MockUsers
+*/
+  export namespace MockUsers {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3MockUsersRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3MockUsersResponse;
+  }
+
+  /**
+   * No description
+   * @tags InternalFakerService
+   * @name SetBadge
+   * @request POST:/InternalFaker/SetBadge
+   */
+  export namespace SetBadge {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3SetBadgeRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3SetBadgeResponse;
+  }
+}
+
 export type QueryParamsType = Record<string | number, any>;
 export type ResponseFormat = keyof Omit<Body, "body" | "bodyUsed">;
 

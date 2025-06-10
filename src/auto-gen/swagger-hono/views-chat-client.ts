@@ -1897,6 +1897,737 @@ export interface GetRingbackToneParams {
   ringbackToneId?: string;
 }
 
+export namespace MemberView {
+  /**
+   * No description
+   * @name GetMember
+   * @request GET:/MemberView/GetMember
+   */
+  export namespace GetMember {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * The workspace identify
+       * @minLength 1
+       */
+      workspaceId?: "0";
+      /**
+       * @format isULID
+       * @minLength 1
+       */
+      channelId?: string;
+      /**
+       * The user identify
+       * @format isULID
+       * @minLength 1
+       */
+      userId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3GetMemberResponse;
+  }
+
+  /**
+   * No description
+   * @name ListMembers
+   * @request GET:/MemberView/ListMembers
+   */
+  export namespace ListMembers {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** It is the limit of the number of records returned in one request */
+      limit?: number;
+      /**
+       * The last channelId of this page will be the next_page_token of the next page
+       * @format isULID
+       */
+      nextPageToken?: string;
+      /**
+       * The first channelId of this page will be the prev_page_token of the previous page
+       * @format isULID
+       */
+      prevPageToken?: string;
+      /**
+       * The workspace identify
+       * @minLength 1
+       */
+      workspaceId?: "0";
+      /**
+       * The channel identify
+       * @format isULID
+       * @minLength 1
+       */
+      channelId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ListMembersResponse;
+  }
+
+  /**
+   * No description
+   * @name ListBannedUsers
+   * @request GET:/MemberView/ListBannedUsers
+   */
+  export namespace ListBannedUsers {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** It is the limit of the number of records returned in one request */
+      limit?: number;
+      /**
+       * The last channelId of this page will be the next_page_token of the next page
+       * @format isULID
+       */
+      nextPageToken?: string;
+      /**
+       * The first channelId of this page will be the prev_page_token of the previous page
+       * @format isULID
+       */
+      prevPageToken?: string;
+      /**
+       * The workspace identify
+       * @minLength 1
+       */
+      workspaceId?: "0";
+      /**
+       * The channel identify
+       * @format isULID
+       * @minLength 1
+       */
+      channelId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ListBannedUsersResponse;
+  }
+}
+
+export namespace InvitationView {
+  /**
+   * No description
+   * @name GetInvitation
+   * @request GET:/InvitationView/GetInvitation
+   */
+  export namespace GetInvitation {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * Link to the channel acceptance invitation
+       * @minLength 1
+       */
+      code?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3GetInvitationResponse;
+  }
+
+  /**
+   * No description
+   * @name ListInvitation
+   * @request GET:/InvitationView/ListInvitation
+   */
+  export namespace ListInvitation {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** It is the limit of the number of records returned in one request */
+      limit?: number;
+      /**
+       * The last channelId of this page will be the next_page_token of the next page
+       * @format isULID
+       */
+      nextPageToken?: string;
+      /**
+       * The first channelId of this page will be the prev_page_token of the previous page
+       * @format isULID
+       */
+      prevPageToken?: string;
+      /**
+       * The workspace identify
+       * @minLength 1
+       */
+      workspaceId?: "0";
+      /**
+       * The channel identify
+       * @format isULID
+       * @minLength 1
+       */
+      channelId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ListInvitationResponse;
+  }
+
+  /**
+   * No description
+   * @name ListInvitableUsers
+   * @request GET:/InvitationView/ListInvitableUsers
+   */
+  export namespace ListInvitableUsers {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ListInvitableUsersResponse;
+  }
+}
+
+export namespace UserView {
+  /**
+   * No description
+   * @name GetUser
+   * @request GET:/UserView/GetUser
+   */
+  export namespace GetUser {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * The user identify
+       * @format isULID
+       * @minLength 1
+       */
+      userId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3GetUserByUserIdResponse;
+  }
+
+  /**
+   * No description
+   * @name GetUserByUsername
+   * @request GET:/UserView/GetUserByUsername
+   */
+  export namespace GetUserByUsername {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * The user identify
+       * @minLength 1
+       */
+      username?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3GetUserByUsernameResponse;
+  }
+
+  /**
+   * No description
+   * @name GetMe
+   * @request GET:/UserView/GetMe
+   */
+  export namespace GetMe {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3GetMeResponse;
+  }
+
+  /**
+   * No description
+   * @name ListUserVisitedProfile
+   * @request GET:/UserView/ListUserVisitedProfile
+   */
+  export namespace ListUserVisitedProfile {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** It is the limit of the number of records returned in one request */
+      limit?: number;
+      /**
+       * The last channelId of this page will be the next_page_token of the next page
+       * @format isULID
+       */
+      nextPageToken?: string;
+      /**
+       * The first channelId of this page will be the prev_page_token of the previous page
+       * @format isULID
+       */
+      prevPageToken?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ListUserVisitedProfileResponse;
+  }
+
+  /**
+   * No description
+   * @name ListUserStatus
+   * @request GET:/UserView/ListUserStatus
+   */
+  export namespace ListUserStatus {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** It is the limit of the number of records returned in one request */
+      limit?: number;
+      /**
+       * The last channelId of this page will be the next_page_token of the next page
+       * @format isULID
+       */
+      nextPageToken?: string;
+      /**
+       * The first channelId of this page will be the prev_page_token of the previous page
+       * @format isULID
+       */
+      prevPageToken?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ListUserStatusResponse;
+  }
+
+  /**
+   * No description
+   * @name GetPrivateData
+   * @request GET:/UserView/GetPrivateData
+   */
+  export namespace GetPrivateData {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3GetPrivateDataResponse;
+  }
+
+  /**
+   * No description
+   * @name ListPrivateData
+   * @request GET:/UserView/ListPrivateData
+   */
+  export namespace ListPrivateData {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** It is the limit of the number of records returned in one request */
+      limit?: number;
+      /**
+       * The last channelId of this page will be the next_page_token of the next page
+       * @format isULID
+       */
+      nextPageToken?: string;
+      /**
+       * The first channelId of this page will be the prev_page_token of the previous page
+       * @format isULID
+       */
+      prevPageToken?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ListPrivateDataResponse;
+  }
+
+  /**
+   * No description
+   * @name ListBlockedUsers
+   * @request GET:/UserView/ListBlockedUsers
+   */
+  export namespace ListBlockedUsers {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** It is the limit of the number of records returned in one request */
+      limit?: number;
+      /**
+       * The last channelId of this page will be the next_page_token of the next page
+       * @format isULID
+       */
+      nextPageToken?: string;
+      /**
+       * The first channelId of this page will be the prev_page_token of the previous page
+       * @format isULID
+       */
+      prevPageToken?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ListBlockedUsersResponse;
+  }
+
+  /**
+   * No description
+   * @name SyncUsers
+   * @request GET:/UserView/SyncUsers
+   */
+  export namespace SyncUsers {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * List userIds need sync data
+       * @uniqueItems true
+       */
+      userIds?: string[];
+      /**
+       * Datetime ISO String
+       * @format isDateTime
+       * @minLength 1
+       */
+      updateTimeAfter?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3SyncUsersResponse;
+  }
+}
+
+export namespace ChannelView {
+  /**
+   * No description
+   * @name GetChannel
+   * @request GET:/ChannelView/GetChannel
+   */
+  export namespace GetChannel {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * The workspace identify
+       * @minLength 1
+       */
+      workspaceId?: string;
+      /**
+       * The channel idenitfy
+       * @format isULID
+       * @minLength 1
+       */
+      channelId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3GetChannelResponse;
+  }
+
+  /**
+   * No description
+   * @name GetDmChannel
+   * @request GET:/ChannelView/GetDMChannel
+   */
+  export namespace GetDmChannel {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * The workspace identify
+       * @format isULID
+       * @minLength 1
+       */
+      userId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3GetDMChannelResponse;
+  }
+
+  /**
+   * No description
+   * @name ListChannels
+   * @request GET:/ChannelView/ListChannels
+   */
+  export namespace ListChannels {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** It is the limit of the number of records returned in one request */
+      limit?: number;
+      /**
+       * The last channelId of this page will be the next_page_token of the next page
+       * @format isULID
+       */
+      nextPageToken?: string;
+      /**
+       * The first channelId of this page will be the prev_page_token of the previous page
+       * @format isULID
+       */
+      prevPageToken?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ListChannelsResponse;
+  }
+
+  /**
+   * No description
+   * @name ListAllChannels
+   * @request GET:/ChannelView/ListAllChannels
+   */
+  export namespace ListAllChannels {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** It is the limit of the number of records returned in one request */
+      limit?: number;
+      /**
+       * The last channelId of this page will be the next_page_token of the next page
+       * @format isULID
+       */
+      nextPageToken?: string;
+      /**
+       * The first channelId of this page will be the prev_page_token of the previous page
+       * @format isULID
+       */
+      prevPageToken?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ListAllChannelsResponse;
+  }
+
+  /**
+   * No description
+   * @name ListDmChannels
+   * @request GET:/ChannelView/ListDMChannels
+   */
+  export namespace ListDmChannels {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** It is the limit of the number of records returned in one request */
+      limit?: number;
+      /**
+       * The last channelId of this page will be the next_page_token of the next page
+       * @format isULID
+       */
+      nextPageToken?: string;
+      /**
+       * The first channelId of this page will be the prev_page_token of the previous page
+       * @format isULID
+       */
+      prevPageToken?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ListDMChannelsResponse;
+  }
+
+  /**
+   * No description
+   * @name ListInComingMessageRequests
+   * @request GET:/ChannelView/ListInComingMessageRequests
+   */
+  export namespace ListInComingMessageRequests {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** It is the limit of the number of records returned in one request */
+      limit?: number;
+      /**
+       * The last channelId of this page will be the next_page_token of the next page
+       * @format isULID
+       */
+      nextPageToken?: string;
+      /**
+       * The first channelId of this page will be the prev_page_token of the previous page
+       * @format isULID
+       */
+      prevPageToken?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ListInComingMessageRequestsResponse;
+  }
+
+  /**
+   * No description
+   * @name ListOutGoingMessageRequests
+   * @request GET:/ChannelView/ListOutGoingMessageRequests
+   */
+  export namespace ListOutGoingMessageRequests {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** It is the limit of the number of records returned in one request */
+      limit?: number;
+      /**
+       * The last channelId of this page will be the next_page_token of the next page
+       * @format isULID
+       */
+      nextPageToken?: string;
+      /**
+       * The first channelId of this page will be the prev_page_token of the previous page
+       * @format isULID
+       */
+      prevPageToken?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ListOutGoingMessageRequestsResponse;
+  }
+}
+
+export namespace AvatarFrame {
+  /**
+   * No description
+   * @name GetAvatarFrame
+   * @request GET:/AvatarFrame/GetAvatarFrame
+   */
+  export namespace GetAvatarFrame {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * The avatar frame identify
+       * @minLength 1
+       */
+      avatarFrameId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3GetAvatarFrameResponse;
+  }
+
+  /**
+   * No description
+   * @name ListAvatarFrameCollection
+   * @request GET:/AvatarFrame/ListAvatarFrameCollection
+   */
+  export namespace ListAvatarFrameCollection {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** It is the limit of the number of records returned in one request */
+      limit?: number;
+      /**
+       * The last channelId of this page will be the next_page_token of the next page
+       * @format isULID
+       */
+      nextPageToken?: string;
+      /**
+       * The first channelId of this page will be the prev_page_token of the previous page
+       * @format isULID
+       */
+      prevPageToken?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ListAvatarFrameCollectionResponse;
+  }
+}
+
+export namespace FriendView {
+  /**
+   * No description
+   * @name GetFriend
+   * @request GET:/FriendView/GetFriend
+   */
+  export namespace GetFriend {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * The user identify
+       * @format isULID
+       * @minLength 1
+       */
+      userId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3GetFriendResponse;
+  }
+
+  /**
+   * No description
+   * @name ListFriends
+   * @request GET:/FriendView/ListFriends
+   */
+  export namespace ListFriends {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** It is the limit of the number of records returned in one request */
+      limit?: number;
+      /**
+       * The last channelId of this page will be the next_page_token of the next page
+       * @format isULID
+       */
+      nextPageToken?: string;
+      /**
+       * The first channelId of this page will be the prev_page_token of the previous page
+       * @format isULID
+       */
+      prevPageToken?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ListFriendsResponse;
+  }
+
+  /**
+   * No description
+   * @name ListInComingFriendRequests
+   * @request GET:/FriendView/ListInComingFriendRequests
+   */
+  export namespace ListInComingFriendRequests {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** It is the limit of the number of records returned in one request */
+      limit?: number;
+      /**
+       * The last channelId of this page will be the next_page_token of the next page
+       * @format isULID
+       */
+      nextPageToken?: string;
+      /**
+       * The first channelId of this page will be the prev_page_token of the previous page
+       * @format isULID
+       */
+      prevPageToken?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ListInComingFriendRequestsResponse;
+  }
+
+  /**
+   * No description
+   * @name ListOutGoingFriendRequests
+   * @request GET:/FriendView/ListOutGoingFriendRequests
+   */
+  export namespace ListOutGoingFriendRequests {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** It is the limit of the number of records returned in one request */
+      limit?: number;
+      /**
+       * The last channelId of this page will be the next_page_token of the next page
+       * @format isULID
+       */
+      nextPageToken?: string;
+      /**
+       * The first channelId of this page will be the prev_page_token of the previous page
+       * @format isULID
+       */
+      prevPageToken?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ListOutGoingFriendRequestsResponse;
+  }
+}
+
+export namespace RingbackTone {
+  /**
+   * No description
+   * @name GetRingbackTone
+   * @request GET:/RingbackTone/GetRingbackTone
+   */
+  export namespace GetRingbackTone {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * The ringback tone identify
+       * @minLength 1
+       */
+      ringbackToneId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3GetDataUserRingbackToneResponse;
+  }
+
+  /**
+   * No description
+   * @name ListRingbackTones
+   * @request GET:/RingbackTone/ListRingbackTones
+   */
+  export namespace ListRingbackTones {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ListRingbackTonesResponse;
+  }
+}
+
 export type QueryParamsType = Record<string | number, any>;
 export type ResponseFormat = keyof Omit<Body, "body" | "bodyUsed">;
 

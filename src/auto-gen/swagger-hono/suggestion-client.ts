@@ -172,6 +172,52 @@ export interface ListSuggestedFriendsByTypeParams {
   sort?: V3SortTypeEnum;
 }
 
+export namespace Suggestion {
+  /**
+   * No description
+   * @name ListSuggestedFriends
+   * @request GET:/Suggestion/ListSuggestedFriends
+   */
+  export namespace ListSuggestedFriends {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** It is the limit of the number of records returned in one request */
+      limit?: string;
+      /** The last audit log identify of this page will be the next_page_token of the next page */
+      nextPageToken?: string;
+      /** The first audit log identify of this page will be the prev_page_token of the next page */
+      prevPageToken?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ListSuggestedFriendsResponse;
+  }
+
+  /**
+   * No description
+   * @name ListSuggestedFriendsByType
+   * @request GET:/Suggestion/ListSuggestedFriendsByType
+   */
+  export namespace ListSuggestedFriendsByType {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** It is the limit of the number of records returned in one request */
+      limit?: string;
+      /** The last audit log identify of this page will be the next_page_token of the next page */
+      nextPageToken?: string;
+      /** The first audit log identify of this page will be the prev_page_token of the next page */
+      prevPageToken?: string;
+      /** The type of list suggestion request */
+      suggestionType?: V3SuggestionTypeEnum;
+      /** The type of sort */
+      sort?: V3SortTypeEnum;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ListSuggestedFriendsByTypeResponse;
+  }
+}
+
 export type QueryParamsType = Record<string | number, any>;
 export type ResponseFormat = keyof Omit<Body, "body" | "bodyUsed">;
 

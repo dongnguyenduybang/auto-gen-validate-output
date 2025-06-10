@@ -143,6 +143,47 @@ export interface V3SearchUsersResponse {
   error?: V3Error;
 }
 
+export namespace Search {
+  /**
+   * No description
+   * @name SearchSearchUsers
+   * @request POST:/Search/SearchUsers
+   */
+  export namespace SearchSearchUsers {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3SearchUsersRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3SearchUsersResponse;
+  }
+
+  /**
+   * No description
+   * @name SearchSearchChannels
+   * @request POST:/Search/SearchChannels
+   */
+  export namespace SearchSearchChannels {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3SearchChannelsRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3SearchChannelsResponse;
+  }
+
+  /**
+   * No description
+   * @name SearchSearchEverything
+   * @request POST:/Search/SearchEverything
+   */
+  export namespace SearchSearchEverything {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3SearchUsersRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3SearchUsersResponse;
+  }
+}
+
 export type QueryParamsType = Record<string | number, any>;
 export type ResponseFormat = keyof Omit<Body, "body" | "bodyUsed">;
 

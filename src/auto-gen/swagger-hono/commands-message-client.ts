@@ -1718,6 +1718,591 @@ export interface DeleteMessagesOnlyMeParams {
   messageIds?: string[];
 }
 
+export namespace Message {
+  /**
+   * No description
+   * @name SendDmMessage
+   * @request POST:/Message/SendDMMessage
+   */
+  export namespace SendDmMessage {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3SendDMMessageRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3SendDMMessageResponse;
+  }
+
+  /**
+   * No description
+   * @name AddDmMessageReaction
+   * @request POST:/Message/AddDMMessageReaction
+   */
+  export namespace AddDmMessageReaction {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3AddDMMessageReactionRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3AddDMMessageReactionResponse;
+  }
+
+  /**
+   * No description
+   * @name DeleteAllDmMessagesForEveryone
+   * @request DELETE:/Message/DeleteAllDMMessagesForEveryone
+   */
+  export namespace DeleteAllDmMessagesForEveryone {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * The user identify whom receive message
+       * @format isULID
+       * @minLength 1
+       */
+      userId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3DeleteAllDMMessagesForEveryoneResponse;
+  }
+
+  /**
+   * No description
+   * @name DeleteAllDmMessagesOnlyMe
+   * @request DELETE:/Message/DeleteAllDMMessagesOnlyMe
+   */
+  export namespace DeleteAllDmMessagesOnlyMe {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * The user identify whom receive message
+       * @format isULID
+       * @minLength 1
+       */
+      userId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3DeleteAllDMMessagesOnlyMeResponse;
+  }
+
+  /**
+   * No description
+   * @name ClearDmMessageForEveryone
+   * @request DELETE:/Message/ClearDMMessageForEveryone
+   */
+  export namespace ClearDmMessageForEveryone {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * The user identify whom receive message
+       * @format isULID
+       * @minLength 1
+       */
+      userId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ClearDMMessagesForEveryoneResponse;
+  }
+
+  /**
+   * No description
+   * @name ClearDmMessageOnlyMe
+   * @request DELETE:/Message/ClearDMMessageOnlyMe
+   */
+  export namespace ClearDmMessageOnlyMe {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * The user identify whom receive message
+       * @format isULID
+       * @minLength 1
+       */
+      userId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ClearDMMessagesOnlyMeResponse;
+  }
+
+  /**
+   * No description
+   * @name DeleteDmMessagesForEveryone
+   * @request DELETE:/Message/DeleteDMMessagesForEveryone
+   */
+  export namespace DeleteDmMessagesForEveryone {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * The user identify whom receive message
+       * @format isULID
+       * @minLength 1
+       */
+      userId?: string;
+      /**
+       * The list message identify to delete
+       * @minItems 1
+       * @uniqueItems true
+       */
+      messageIds?: string[];
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3DeleteDMMessagesForEveryoneResponse;
+  }
+
+  /**
+   * No description
+   * @name DeleteDmMessagesOnlyMe
+   * @request DELETE:/Message/DeleteDMMessagesOnlyMe
+   */
+  export namespace DeleteDmMessagesOnlyMe {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * The user identify whom receive message
+       * @format isULID
+       * @minLength 1
+       */
+      userId?: string;
+      /**
+       * The list messages identify to delete
+       * @minItems 1
+       * @uniqueItems true
+       */
+      messageIds?: string[];
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3DeleteDMMessagesOnlyMeResponse;
+  }
+
+  /**
+   * No description
+   * @name ForwardMessagesToDmChannel
+   * @request POST:/Message/ForwardMessagesToDMChannel
+   */
+  export namespace ForwardMessagesToDmChannel {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3ForwardMessagesToDMChannelRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ForwardMessagesToDMChannelResponse;
+  }
+
+  /**
+   * No description
+   * @name MarkDmAsRead
+   * @request POST:/Message/MarkDMAsRead
+   */
+  export namespace MarkDmAsRead {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3MarkDMAsReadRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3MarkDMAsReadResponse;
+  }
+
+  /**
+   * No description
+   * @name PinUnpinDmMessage
+   * @request POST:/Message/PinUnpinDMMessage
+   */
+  export namespace PinUnpinDmMessage {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3PinUnpinDMMessageRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3PinUnpinDMMessageResponse;
+  }
+
+  /**
+   * No description
+   * @name QuoteDmMessage
+   * @request POST:/Message/QuoteDMMessage
+   */
+  export namespace QuoteDmMessage {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3QuoteDMMessageRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3QuoteDMMessageResponse;
+  }
+
+  /**
+   * No description
+   * @name ReportDmMessage
+   * @request POST:/Message/ReportDMMessage
+   */
+  export namespace ReportDmMessage {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3ReportDMMessageRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ReportDMMessageResponse;
+  }
+
+  /**
+   * No description
+   * @name RevokeDmMessageReaction
+   * @request PUT:/Message/RevokeDMMessageReaction
+   */
+  export namespace RevokeDmMessageReaction {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3RevokeDMMessageReactionRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3RevokeDMMessageReactionResponse;
+  }
+
+  /**
+   * No description
+   * @name SendDmLocation
+   * @request POST:/Message/SendDMLocation
+   */
+  export namespace SendDmLocation {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3SendDMLocationRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3SendDMLocationResponse;
+  }
+
+  /**
+   * No description
+   * @name SendDmMessageMedia
+   * @request POST:/Message/SendDmMessageMedia
+   */
+  export namespace SendDmMessageMedia {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3SendDmMessageMediaRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3SendDmMessageMediaResponse;
+  }
+
+  /**
+   * No description
+   * @name SendDmMessageSticker
+   * @request POST:/Message/SendDMMessageSticker
+   */
+  export namespace SendDmMessageSticker {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3SendDMMessageStickerRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3SendDMMessageStickerResponse;
+  }
+
+  /**
+   * No description
+   * @name SendPokeMessage
+   * @request POST:/Message/SendPokeMessage
+   */
+  export namespace SendPokeMessage {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3SendPokeMessageRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3SendPokeMessageResponse;
+  }
+
+  /**
+   * No description
+   * @name UpdateDmMediaAttachments
+   * @request PUT:/Message/UpdateDmMediaAttachments
+   */
+  export namespace UpdateDmMediaAttachments {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3UpdateDmMediaAttachmentsRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UpdateDmMediaAttachmentsResponse;
+  }
+
+  /**
+   * No description
+   * @name UpdateDmMessage
+   * @request PUT:/Message/UpdateDMMessage
+   */
+  export namespace UpdateDmMessage {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3UpdateDMMessageRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UpdateDMMessageResponse;
+  }
+
+  /**
+   * No description
+   * @name SendMessage
+   * @request POST:/Message/SendMessage
+   */
+  export namespace SendMessage {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3SendMessageRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3SendMessageResponse;
+  }
+
+  /**
+   * No description
+   * @name MarkAllChannelsAsRead
+   * @request POST:/Message/MarkAllChannelsAsRead
+   */
+  export namespace MarkAllChannelsAsRead {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3MarkAllChannelsAsReadRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3MarkAllChannelsAsReadResponse;
+  }
+
+  /**
+   * No description
+   * @name MarkAsRead
+   * @request POST:/Message/MarkAsRead
+   */
+  export namespace MarkAsRead {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3MarkAsReadRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3MarkAsReadResponse;
+  }
+
+  /**
+   * No description
+   * @name AddMessageReaction
+   * @request POST:/Message/AddMessageReaction
+   */
+  export namespace AddMessageReaction {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3AddMessageReactionRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3AddMessageReactionResponse;
+  }
+
+  /**
+   * No description
+   * @name RevokeMessageReaction
+   * @request PUT:/Message/RevokeMessageReaction
+   */
+  export namespace RevokeMessageReaction {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3RevokeMessageReactionRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3RevokeMessageReactionResponse;
+  }
+
+  /**
+   * No description
+   * @name DeleteAllMessagesOnlyMe
+   * @request DELETE:/Message/DeleteAllMessagesOnlyMe
+   */
+  export namespace DeleteAllMessagesOnlyMe {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * The workspace identify
+       * @minLength 1
+       */
+      workspaceId?: string;
+      /**
+       * The channel identify
+       * @format isULID
+       * @minLength 1
+       */
+      channelId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3DeleteAllMessagesOnlyMeResponse;
+  }
+
+  /**
+   * No description
+   * @name DeleteMessagesForEveryone
+   * @request DELETE:/Message/DeleteMessagesForEveryone
+   */
+  export namespace DeleteMessagesForEveryone {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * The workspace identify
+       * @minLength 1
+       */
+      workspaceId?: string;
+      /**
+       * The channel identify
+       * @format isULID
+       * @minLength 1
+       */
+      channelId?: string;
+      /**
+       * The list message identify to delete
+       * @minItems 1
+       * @uniqueItems true
+       */
+      messageIds?: string[];
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3DeleteMessagesForEveryoneResponse;
+  }
+
+  /**
+   * No description
+   * @name DeleteMessagesOnlyMe
+   * @request DELETE:/Message/DeleteMessagesOnlyMe
+   */
+  export namespace DeleteMessagesOnlyMe {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * The workspace identify
+       * @minLength 1
+       */
+      workspaceId?: string;
+      /**
+       * The channel identify
+       * @format isULID
+       * @minLength 1
+       */
+      channelId?: string;
+      /**
+       * The list message identify to delete
+       * @minItems 1
+       * @uniqueItems true
+       */
+      messageIds?: string[];
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3DeleteMessagesOnlyMeResponse;
+  }
+
+  /**
+   * No description
+   * @name ForwardMessagesToChannel
+   * @request POST:/Message/ForwardMessagesToChannel
+   */
+  export namespace ForwardMessagesToChannel {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3ForwardMessagesToChannelRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ForwardMessagesToChannelResponse;
+  }
+
+  /**
+   * No description
+   * @name PinUnpinMessage
+   * @request POST:/Message/PinUnpinMessage
+   */
+  export namespace PinUnpinMessage {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3PinUnpinMessageRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3PinUnpinMessageResponse;
+  }
+
+  /**
+   * No description
+   * @name QuoteMessage
+   * @request POST:/Message/QuoteMessage
+   */
+  export namespace QuoteMessage {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3QuoteMessageRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3QuoteMessageResponse;
+  }
+
+  /**
+   * No description
+   * @name ReportMessage
+   * @request POST:/Message/ReportMessage
+   */
+  export namespace ReportMessage {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3ReportMessageRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ReportMessageResponse;
+  }
+
+  /**
+   * No description
+   * @name SendLocation
+   * @request POST:/Message/SendLocation
+   */
+  export namespace SendLocation {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3SendLocationRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3SendLocationResponse;
+  }
+
+  /**
+   * No description
+   * @name SendMessageMedia
+   * @request POST:/Message/SendMessageMedia
+   */
+  export namespace SendMessageMedia {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3SendMessageMediaRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3SendMessageMediaResponse;
+  }
+
+  /**
+   * No description
+   * @name SendMessageSticker
+   * @request POST:/Message/SendMessageSticker
+   */
+  export namespace SendMessageSticker {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3SendMessageStickerRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3SendMessageStickerResponse;
+  }
+
+  /**
+   * No description
+   * @name UpdateMediaAttachments
+   * @request PUT:/Message/UpdateMediaAttachments
+   */
+  export namespace UpdateMediaAttachments {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3UpdateMediaAttachmentsRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UpdateMediaAttachmentsResponse;
+  }
+
+  /**
+   * No description
+   * @name UpdateMessage
+   * @request PUT:/Message/UpdateMessage
+   */
+  export namespace UpdateMessage {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3UpdateMessageRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UpdateMessageResponse;
+  }
+}
+
 export type QueryParamsType = Record<string | number, any>;
 export type ResponseFormat = keyof Omit<Body, "body" | "bodyUsed">;
 

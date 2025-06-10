@@ -731,6 +731,488 @@ export interface DeleteUserVisitedProfileParams {
   userId?: string;
 }
 
+export namespace RingbackTone {
+  /**
+   * No description
+   * @name RingbackToneCreate
+   * @request POST:/RingbackTone/RingbackToneCreate
+   */
+  export namespace RingbackToneCreate {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3RingbackToneCreateRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3RingbackToneCreateResponse;
+  }
+
+  /**
+   * No description
+   * @name RingbackToneRename
+   * @request PUT:/RingbackTone/RingbackToneRename
+   */
+  export namespace RingbackToneRename {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3RingbackToneRenameRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3RingbackToneRenameResponse;
+  }
+
+  /**
+   * No description
+   * @name SetRingbackTone
+   * @request PUT:/RingbackTone/SetRingbackTone
+   */
+  export namespace SetRingbackTone {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3SetRingbackToneRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3SetRingbackToneResponse;
+  }
+
+  /**
+   * No description
+   * @name RingbackToneDelete
+   * @request DELETE:/RingbackTone/RingbackToneDelete
+   */
+  export namespace RingbackToneDelete {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * The ringback tone identify
+       * @format isULID
+       * @minLength 1
+       */
+      ringbackToneId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3RingbackToneDeleteResponse;
+  }
+}
+
+export namespace AvatarFrame {
+  /**
+   * No description
+   * @name CreateAvatarFrame
+   * @request POST:/AvatarFrame/CreateAvatarFrame
+   */
+  export namespace CreateAvatarFrame {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3CreateUserAvatarFrameRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3CreateUserAvatarFrameResponse;
+  }
+
+  /**
+   * No description
+   * @name DeleteAvatarFrame
+   * @request DELETE:/AvatarFrame/DeleteAvatarFrame
+   */
+  export namespace DeleteAvatarFrame {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * Avatar frame identify
+       * @format isULID
+       * @minLength 1
+       */
+      avatarFrameId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3DeleteUserAvatarFrameResponse;
+  }
+
+  /**
+   * No description
+   * @name UploadDecoratedAvatar
+   * @request POST:/AvatarFrame/UploadDecoratedAvatar
+   */
+  export namespace UploadDecoratedAvatar {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3UploadDecoratedAvatarRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UploadDecoratedAvatarResponse;
+  }
+
+  /**
+   * No description
+   * @name RemoveDecoratedAvatar
+   * @request DELETE:/AvatarFrame/RemoveDecoratedAvatar
+   */
+  export namespace RemoveDecoratedAvatar {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3RemoveDecoratedAvatarResponse;
+  }
+}
+
+export namespace UserConnect {
+  /**
+   * No description
+   * @name GenerateUserConnectLink
+   * @request POST:/UserConnect/GenerateUserConnectLink
+   */
+  export namespace GenerateUserConnectLink {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * The generate user connect link
+       * @format isULID
+       * @minLength 1
+       */
+      userId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3GenerateUserConnectLinkResponse;
+  }
+
+  /**
+   * No description
+   * @name DecodeUserConnectLink
+   * @request POST:/UserConnect/DecodeUserConnectLink
+   */
+  export namespace DecodeUserConnectLink {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3DecodeUserConnectLinkRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3DecodeUserConnectLinkResponse;
+  }
+}
+
+export namespace UserReport {
+  /**
+   * No description
+   * @name ReportUser
+   * @request POST:/UserReport/ReportUser
+   */
+  export namespace ReportUser {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3ReportUserRequestRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ReportUserRequestResponse;
+  }
+}
+
+export namespace UserProfile {
+  /**
+   * No description
+   * @name AddCoverPhoto
+   * @request POST:/UserProfile/AddCoverPhoto
+   */
+  export namespace AddCoverPhoto {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3AddCoverPhotoRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3AddCoverPhotoResponse;
+  }
+
+  /**
+   * No description
+   * @name UpdateCoverPhoto
+   * @request PUT:/UserProfile/UpdateCoverPhoto
+   */
+  export namespace UpdateCoverPhoto {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3UpdateCoverPhotoRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UpdateCoverPhotoResponse;
+  }
+
+  /**
+   * No description
+   * @name DeleteCoverPhoto
+   * @request DELETE:/UserProfile/DeleteCoverPhoto
+   */
+  export namespace DeleteCoverPhoto {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3DeleteCoverPhotoResponse;
+  }
+
+  /**
+   * No description
+   * @name AddUserStatus
+   * @request POST:/UserProfile/AddUserStatus
+   */
+  export namespace AddUserStatus {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3AddUserStatusRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3AddUserStatusResponse;
+  }
+
+  /**
+   * No description
+   * @name UpdateUserStatus
+   * @request PUT:/UserProfile/UpdateUserStatus
+   */
+  export namespace UpdateUserStatus {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3UpdateUserStatusRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UpdateUserStatusResponse;
+  }
+
+  /**
+   * No description
+   * @name DeleteUserStatus
+   * @request DELETE:/UserProfile/DeleteUserStatus
+   */
+  export namespace DeleteUserStatus {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3DeleteUserStatusResponse;
+  }
+
+  /**
+   * No description
+   * @name UpdateUserDisplayName
+   * @request PUT:/UserProfile/UpdateUserDisplayName
+   */
+  export namespace UpdateUserDisplayName {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3UpdateUserDisplayNameRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UpdateUserDisplayNameResponse;
+  }
+
+  /**
+   * No description
+   * @name UpdateUserAvatar
+   * @request PUT:/UserProfile/UpdateUserAvatar
+   */
+  export namespace UpdateUserAvatar {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3UpdateUserAvatarRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UpdateUserAvatarResponse;
+  }
+
+  /**
+   * No description
+   * @name UpdateUserVideoAvatar
+   * @request PUT:/UserProfile/UpdateUserVideoAvatar
+   */
+  export namespace UpdateUserVideoAvatar {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3UpdateUserVideoAvatarRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UpdateUserVideoAvatarResponse;
+  }
+
+  /**
+   * No description
+   * @name UpdateUserEmail
+   * @request PUT:/UserProfile/UpdateUserEmail
+   */
+  export namespace UpdateUserEmail {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3UpdateUserEmailRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UpdateUserEmailResponse;
+  }
+
+  /**
+   * No description
+   * @name UpdateUserPhone
+   * @request PUT:/UserProfile/UpdateUserPhone
+   */
+  export namespace UpdateUserPhone {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3UpdateUserPhoneRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UpdateUserPhoneResponse;
+  }
+
+  /**
+   * No description
+   * @name VisitedProfile
+   * @request POST:/UserProfile/VisitedProfile
+   */
+  export namespace VisitedProfile {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3VisitedProfileRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3VisitedProfileResponse;
+  }
+
+  /**
+   * No description
+   * @name ClearUserVisitedProfileNotifications
+   * @request DELETE:/UserProfile/ClearUserVisitedProfileNotifications
+   */
+  export namespace ClearUserVisitedProfileNotifications {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3ClearUserVisitedProfileNotificationsResponse;
+  }
+
+  /**
+   * No description
+   * @name DeleteUserVisitedProfile
+   * @request DELETE:/UserProfile/DeleteUserVisitedProfile
+   */
+  export namespace DeleteUserVisitedProfile {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /**
+       * The user identify
+       * @format isULID
+       * @minLength 1
+       */
+      userId?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3DeleteUserVisitedProfileResponse;
+  }
+
+  /**
+   * No description
+   * @name DeleteUserAvatar
+   * @request DELETE:/UserProfile/DeleteUserAvatar
+   */
+  export namespace DeleteUserAvatar {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3DeleteUserAvatarResponse;
+  }
+
+  /**
+   * No description
+   * @name DeleteUserVideoAvatar
+   * @request DELETE:/UserProfile/DeleteUserVideoAvatar
+   */
+  export namespace DeleteUserVideoAvatar {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3DeleteUserVideoAvatarResponse;
+  }
+}
+
+export namespace UserSetting {
+  /**
+   * No description
+   * @name BlockUser
+   * @request POST:/UserSetting/BlockUser
+   */
+  export namespace BlockUser {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3BlockUserRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3BlockUserResponse;
+  }
+
+  /**
+   * No description
+   * @name UnblockUser
+   * @request POST:/UserSetting/UnblockUser
+   */
+  export namespace UnblockUser {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3UnblockUserRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UnblockUserResponse;
+  }
+
+  /**
+   * No description
+   * @name UpdateMediaPermissionSetting
+   * @request PUT:/UserSetting/UpdateMediaPermissionSetting
+   */
+  export namespace UpdateMediaPermissionSetting {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3UpdateMediaPermissionSettingRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UpdateMediaPermissionSettingResponse;
+  }
+
+  /**
+   * No description
+   * @name UpdateRecoveryCodeSetting
+   * @request PUT:/UserSetting/UpdateRecoveryCodeSetting
+   */
+  export namespace UpdateRecoveryCodeSetting {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3UpdateRecoveryCodeSettingRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UpdateRecoveryCodeSettingResponse;
+  }
+
+  /**
+   * No description
+   * @name UpdateUserScopeForCall
+   * @request PUT:/UserSetting/UpdateUserScopeForCall
+   */
+  export namespace UpdateUserScopeForCall {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3UpdateUserScopeForCallRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UpdateUserScopeForCallResponse;
+  }
+
+  /**
+   * No description
+   * @name UpdateUserScopeForMessage
+   * @request PUT:/UserSetting/UpdateUserScopeForMessage
+   */
+  export namespace UpdateUserScopeForMessage {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3UpdateUserScopeForMessageRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UpdateUserScopeForMessageResponse;
+  }
+
+  /**
+   * No description
+   * @name UpdateSmartOtpSetting
+   * @request PUT:/UserSetting/UpdateSmartOtpSetting
+   */
+  export namespace UpdateSmartOtpSetting {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = V3UpdateSmartOtpSettingRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3UpdateSmartOtpSettingResponse;
+  }
+}
+
 export type QueryParamsType = Record<string | number, any>;
 export type ResponseFormat = keyof Omit<Body, "body" | "bodyUsed">;
 

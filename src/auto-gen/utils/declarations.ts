@@ -145,7 +145,7 @@ export interface TestResult {
   passed201?: number;
 }
 
-export type ActionHandler = (dtoName: string) => Promise<void> | void;
+export type ActionHandler = (dtoName: string, options?: string) => any | Promise<void> | void;
 export type ApiRegistry = Record<string, ApiConfig>;
 export type FieldValueObject = Record<string, any>;
 

@@ -1,0 +1,22 @@
+// swagger/templates/custom/schemas.ejs
+{
+<% Object.entries(data.models).forEach(([modelName, model]) => { %>
+  "<%= modelName %>": {
+    "type": "<%= model.type %>",
+    <% if (model.required && model.required.length) { %>
+    "required": <%= JSON.stringify(model.required) %>,
+    <% } %>
+    "properties": {
+      <% Object.entries(model.properties).forEach(([propName, prop]) => { %>
+      "<%= propName %>": {
+        "type": "<%= prop.type %>"
+        <% if (prop.format) { %>, "format": "<%= prop.format %>"<% } %>
+        <% if (prop.nullable) { %>, "nullable": true<% } %>
+        <% if (prop.description) { %>, "description": "<%= prop.description %>"<% } %>
+        <% if (prop.minLength) { %>, "minLength": <%= prop.minLength %><% } %>
+      }<%= propName !== Object.keys(model.properties).pop() ? ',' : '' %>
+      <% }) %>
+    }
+  }<%= modelName !== Object.keys(data.models).pop() ? ',' : '' %>
+<% }) %>
+}

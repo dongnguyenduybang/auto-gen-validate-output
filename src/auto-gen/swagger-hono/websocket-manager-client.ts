@@ -50,6 +50,24 @@ export interface OpenConnectionParams {
   intent?: string;
 }
 
+export namespace WebsocketManager {
+  /**
+   * No description
+   * @name OpenConnection
+   * @request GET:/WebsocketManager/OpenConnection
+   */
+  export namespace OpenConnection {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      callId?: string;
+      intent?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = V3OpenConnectionResponse;
+  }
+}
+
 export type QueryParamsType = Record<string | number, any>;
 export type ResponseFormat = keyof Omit<Body, "body" | "bodyUsed">;
 

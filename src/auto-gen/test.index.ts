@@ -10,6 +10,7 @@ import { ActionHandler } from './utils/declarations';
 import { generateAllReports } from './utils/combine-report';
 import { findTestPath } from './utils/helper';
 import { genClientSwagger } from './swagger/gen-client-swagger';
+import { generateRequest } from './utils/swagger-help';
 
 const args = process.argv.slice(2);
 if (args.length < 2) {
@@ -20,22 +21,56 @@ if (args.length < 2) {
 }
 
 const [action, type, ...restArgs] = args;
-let subType, dtoName;
+let subType, dtoName, optionsString;
 
 if (type === 'report') {
   [subType, dtoName] = restArgs;
+} else if (type === 'interface') {
+  [subType, dtoName, , optionsString] = restArgs; // Lấy options từ restArgs
 } else if (type !== 'reports') {
   dtoName = restArgs[0];
 } else {
   dtoName = restArgs[0];
 }
-const validTypes = ['request', 'response', 'saga', 'report', 'reports', 'swagger'];
+const validTypes = ['request', 'response', 'saga', 'report', 'reports', 'swagger', 'interface'];
 
 if (!validTypes.includes(type)) {
   console.error(`Invalid type. Valid types: ${validTypes.join(', ')}`);
   process.exit(1);
 }
+function parseOptions(optionString: string | undefined): Record<string, string[]> {
+  const result: Record<string, string[]> = {};
+  if (!optionString) {
+    console.log('No options provided'); // Debug
+    return result;
+  }
 
+  // Loại bỏ --options và chuẩn hóa chuỗi
+  const cleanOption = optionString.replace('--options', '').trim();
+  console.log('cleanOption:', cleanOption); // Debug
+
+  // Tách các hook bằng dấu ;
+  const pairs = cleanOption.split(';').filter(pair => pair.trim());
+  console.log('pairs:', pairs); // Debug
+
+  for (const pair of pairs) {
+    const [key, value] = pair.split(':').map(s => s.trim());
+    if (key && value) {
+      // Tách actions bằng dấu phẩy hoặc khoảng trắng
+      const actions = value
+        .split(/[,|\s]+/)
+        .map(v => v.trim())
+        .filter(v => v);
+      console.log(`key: ${key}, actions:`, actions); // Debug
+      result[key] = actions;
+    } else {
+      console.warn(`Invalid pair: ${pair}`); // Debug
+    }
+  }
+
+  console.log('parseOptions result:', result); // Debug
+  return result;
+}
 const actionHandlers: Record<string, Record<string, ActionHandler[]>> = {
   gen: {
     request: [
@@ -45,7 +80,8 @@ const actionHandlers: Record<string, Record<string, ActionHandler[]>> = {
     response: [(dto) => Promise.resolve(genTestResponse(dto))],
     saga: [(dto) => Promise.resolve(genTestSaga(dto))],
     reports: [(dto) => generateAllReports(dto)],
-    swagger: [() => genClientSwagger()]
+    swagger: [() => genClientSwagger()],
+    interface: [(dto, options) => Promise.resolve(generateRequest(dto, options ? parseOptions(options) : {}))],
   },
   test: {
     request: [runTests('test-requests')],
@@ -170,8 +206,7 @@ function clearReports(reportType: string): ActionHandler {
 
 async function main() {
   console.log(
-    `Processing "${type}${subType ? ` ${subType}` : ''}"${
-      dtoName ? ` for: ${dtoName}` : ''
+    `Processing "${type}${subType ? ` ${subType}` : ''}"${dtoName ? ` for: ${dtoName}` : ''
     }`,
   );
 
@@ -198,7 +233,11 @@ async function main() {
         await handleBulkAction(dtoName, handlers);
       } else {
         for (const handler of handlers) {
-          await handler(dtoName);
+          if (type === 'interface') {
+            await handler(dtoName, optionsString)
+          } else {
+            await handler(dtoName)
+          }
         }
       }
     }
