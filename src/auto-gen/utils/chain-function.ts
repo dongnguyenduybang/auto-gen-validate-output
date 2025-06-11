@@ -85,12 +85,11 @@ export const chain = {
             actual.body.resolveHeader,
             'getMessage',
           );
-          console.log(responseApiSystem);
+
           const dataApiSystem = await removeExpectedFields(
             responseApiSystem.data,
             resolvedExpected.data,
           );
-          console.log(JSON.stringify(result.nonMatchingActual, null, 2));
           const resultApiSystem = deepEqual(
             result.nonMatchingActual,
             dataApiSystem,

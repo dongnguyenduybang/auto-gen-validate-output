@@ -1,0 +1,6 @@
+=== WS Test Report ===
+Class: update-channel-name
+URL: N/A
+Path: UpdateChannelNameWS
+
+=== Test Steps ===
