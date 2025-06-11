@@ -64,7 +64,7 @@ export const AcceptInvitationWS = new WSBuilder()
     },
     {
       type: chain.expect.exact(API_EVENT.halome.v3.chat.MESSAGE_CREATED),
-      source: chain.expect.exact('ssssssssssss'),
+      source: chain.expect.exact(API_EVENT.halome.cloudevent.system),
       specversion: chain.expect.exact('1.0'),
       version: chain.expect.exact('2.0'),
       data: chain.expect.builder(
@@ -107,11 +107,11 @@ export const AcceptInvitationWS = new WSBuilder()
         deviceId: VAR.deviceId1,
       }),
       specversion: chain.expect.exact('1.0'),
-      version: chain.expect.exact('1.0'),
+      version: chain.expect.exact('2.0'),
       data: chain.expect.exact({
         workspaceId: VAR.workspaceId,
         channelId: VAR.channelId,
-        joinedUserId: VAR.userId,
+        joinedUserId: VAR.userId1,
       }),
     },
     {
