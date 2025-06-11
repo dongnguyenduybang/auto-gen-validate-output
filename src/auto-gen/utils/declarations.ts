@@ -31,6 +31,15 @@ export interface Expect {
   includes?: ExpectData[];
 }
 
+export interface EventWithData {
+  source: string;
+  specversion: string;
+  version: string;
+  type: string;
+  data: any;
+  // Các thuộc tính khác nếu cần
+}
+
 export interface ExpectResult {
   type: string;
   message: string;
@@ -67,15 +76,15 @@ export interface EventValidation {
   eventIndex: number;
   eventType: string;
   isPassed: boolean;
-  error?: string;// true nếu cả SOURCE, TYPE và DATA đều pass
+  error?: string; // true nếu cả SOURCE, TYPE và DATA đều pass
   specversionResult?: {
     isEqual: boolean;
     differences?: string[];
-  }
+  };
   versionResult?: {
     isEqual: boolean;
     differences?: string[];
-  }
+  };
   sourceResult?: {
     isEqual: boolean;
     differences?: string[];
@@ -97,8 +106,10 @@ export interface StepValidationResult {
   eventList: string[];
   passedEvents: number;
   failedEvents: number;
-  orderIsValid: boolean, // New field to track order validation
-  duplicateEvents: string[],
+  missingEvents?: string[];
+  extraEvents?: string[];
+  orderIsValid: boolean; // New field to track order validation
+  duplicateEvents: string[];
   eventResults: EventValidation[];
 }
 
@@ -118,6 +129,23 @@ export interface SagaWSTestSuite {
   steps: TestCase[];
 }
 
+export interface EventCollection {
+  body?: {
+    resolveHeader: object;
+    resolveBody: object;
+  };
+  apiData?: {
+    data: object;
+  };
+  action: string;
+  id: string;
+  time: string;
+  source: string;
+  specversion: string;
+  version: string;
+  type: string;
+  data: Record<string, any>;
+}
 export interface Resume<T = any> {
   title: string;
   author: string;
@@ -279,4 +307,13 @@ export type ErrorItem = {
 export interface PayloadGen {
   body: Object;
   expects: string[];
+}
+
+export interface BuilderMatcherResult {
+  isEqual: boolean;
+  allDifferences: string[];
+}
+
+export interface DataContainer {
+  data: unknown;
 }

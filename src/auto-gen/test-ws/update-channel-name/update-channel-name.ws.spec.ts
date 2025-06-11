@@ -90,7 +90,6 @@ describe('Test sagas for update-channel-name', () => {
   }, 30000);
 
   afterAll(async () => {
-
     const folderPath = path.join(__dirname, '../reports/update-channel-name');
     if (!fs.existsSync(folderPath)) {
       fs.mkdirSync(folderPath, { recursive: true });

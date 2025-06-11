@@ -3,143 +3,143 @@ import { ACTION, HEADER_LIST, VAR } from '../../enums';
 import { API_EVENT, SYSTEM_MESSAGE } from '../../utils/ws-config';
 import { chain } from '../../utils/chain-function';
 import {
-    ChannelDataBuilder,
-    MessageDataBuilder,
+  ChannelDataBuilder,
+  MessageDataBuilder,
 } from '../../utils/template-event';
 
 export const UpdateChannelNameWS = new WSBuilder()
-    .addBeforeAll(
-        'Actor open connection ws',
-        VAR.actor,
-        ACTION.OPEN_CONNECTION_WS,
-        { headers: HEADER_LIST.create({ token: VAR.token }) },
-    )
-    .addBeforeAll('Actor connect ws', VAR.actor, ACTION.CONNECT_WS, {
-        body: { url: VAR.url },
-    })
-    .addBeforeAll(
-        'Recipient open connection ws',
-        VAR.recipient,
-        ACTION.OPEN_CONNECTION_WS,
-        { headers: HEADER_LIST.create({ token: VAR.token1 }) },
-    )
-    .addBeforeAll('Recipient connect ws', VAR.recipient, ACTION.CONNECT_WS, {
-        body: { url: VAR.url1 },
-    })
-    //  steps
-    .startStep('should return owner update channel name ws')
-    .addStepAction('create channel', VAR.actor, ACTION.CREATE_CHANNEL, {
-        headers: HEADER_LIST.create({ token: VAR.token }),
-        body: { name: 'channel1', workspaceId: VAR.workspaceId },
-    })
-    .addStepEvents('event create channel', VAR.actor, ACTION.CREATE_CHANNEL, [
-        {
-            type: chain.expect.exact(API_EVENT.halome.v3.chat.CHANNEL_CREATED),
-            source: chain.expect.exact({
-                userId: VAR.userId1,
-                deviceId: VAR.deviceId,
-            }),
-            specversion: chain.expect.exact('1.0'),
-            version: chain.expect.exact('2.0'),
-            data: chain.expect.builder(
-                new ChannelDataBuilder()
-                    .setChannel({
-                        channelId: VAR.channelId,
-                        userId: VAR.userId,
-                        name: 'channel1',
-                        totalMembers: 1,
-                    })
-                    .addUser({
-                        userId: VAR.userId,
-                    })
-                    .addMember({
-                        userId: VAR.userId,
-                        role: 'owner',
-                    })
-                    .addMessage({
-                        userId: VAR.userId,
-                        content: SYSTEM_MESSAGE.CREATE_CHANNEL,
-                    }),
-            ),
-        },
-        {
-            type: chain.expect.exact(API_EVENT.halome.v3.chat.MESSAGE_CREATED),
-            source: chain.expect.exact('ssssssssssss'),
-            specversion: chain.expect.exact('1.0'),
-            version: chain.expect.exact('2.0'),
-            data: chain.expect.builder(
-                new MessageDataBuilder()
-                    .setMessage({
-                        userId: VAR.userId,
-                        content: SYSTEM_MESSAGE.CREATE_CHANNEL,
-                    })
-                    .addChannel({
-                        channelId: VAR.channelId,
-                        userId: VAR.userId,
-                        name: 'channel1',
-                        totalMembers: 1,
-                    })
-                    .addMember({
-                        userId: VAR.userId,
-                        role: 'owner',
-                    })
-                    .addMetadata({
-                        lastMessageId: VAR.lastMessageId,
-                        channelId: VAR.channelId,
-                    }),
-            ),
-        },
-    ])
-    .addStepAction(
-        'owner update channel name',
-        VAR.actor,
-        ACTION.UPDATE_CHANNEL_NAME,
-        {
-            headers: HEADER_LIST.create({ token: VAR.token }),
-            body: {
-                name: 'channel update name',
-                workspaceId: VAR.workspaceId,
-                channelId: VAR.channelId,
-            },
-            expect: {
-                ok: true,
-            },
-        },
-    )
-    // .addStepEvents(
-    //     'event update channel name',
-    //     VAR.actor,
-    //     ACTION.UPDATE_CHANNEL_NAME,
-    //     [
-    //         {
-    //             type: chain.expect.exact(
-    //                 API_EVENT.halome.v3.chat.CHANNEL_UPDATED_EVENT,
-    //             ),
-    //             source: chain.expect.exact({
-    //                 userId: VAR.userId,
-    //                 deviceId: VAR.deviceId,
-    //             }),
-    //             data: chain.expect.builder(
-    //                 new ChannelDataBuilder()
-    //                     .setChannel({
-    //                         name: 'channel update name',
-    //                     }),
-    //             ),
-    //         },
-    //         {
-    //             type: chain.expect.exact(API_EVENT.halome.v3.chat.MESSAGE_CREATED),
-    //             source: chain.expect.exact(API_EVENT.halome.cloudevent.system),
-    //             data: chain.expect.builder(
-    //                 new MessageDataBuilder()
-    //                     .setMessage({
-    //                         content: SYSTEM_MESSAGE.UPDATE_CHANNEL_NAME,
-    //                     })
-    //                     .addMetadata({
-    //                         channelId: VAR.channelId,
-    //                     }),
+  .addBeforeAll(
+    'Actor open connection ws',
+    VAR.actor,
+    ACTION.OPEN_CONNECTION_WS,
+    { headers: HEADER_LIST.create({ token: VAR.token }) },
+  )
+  .addBeforeAll('Actor connect ws', VAR.actor, ACTION.CONNECT_WS, {
+    body: { url: VAR.url },
+  })
+  .addBeforeAll(
+    'Recipient open connection ws',
+    VAR.recipient,
+    ACTION.OPEN_CONNECTION_WS,
+    { headers: HEADER_LIST.create({ token: VAR.token1 }) },
+  )
+  .addBeforeAll('Recipient connect ws', VAR.recipient, ACTION.CONNECT_WS, {
+    body: { url: VAR.url1 },
+  })
+  //  steps
+  .startStep('should return owner update channel name ws')
+  .addStepAction('create channel', VAR.actor, ACTION.CREATE_CHANNEL, {
+    headers: HEADER_LIST.create({ token: VAR.token }),
+    body: { name: 'channel1', workspaceId: VAR.workspaceId },
+  })
+  .addStepEvents('event create channel', VAR.actor, ACTION.CREATE_CHANNEL, [
+    {
+      type: chain.expect.exact(API_EVENT.halome.v3.chat.CHANNEL_CREATED),
+      source: chain.expect.exact({
+        userId: VAR.userId1,
+        deviceId: VAR.deviceId,
+      }),
+      specversion: chain.expect.exact('1.0'),
+      version: chain.expect.exact('2.0'),
+      data: chain.expect.builder(
+        new ChannelDataBuilder()
+          .setChannel({
+            channelId: VAR.channelId,
+            userId: VAR.userId,
+            name: 'channel1',
+            totalMembers: 1,
+          })
+          .addUser({
+            userId: VAR.userId,
+          })
+          .addMember({
+            userId: VAR.userId,
+            role: 'owner',
+          })
+          .addMessage({
+            userId: VAR.userId,
+            content: SYSTEM_MESSAGE.CREATE_CHANNEL,
+          }),
+      ),
+    },
+    {
+      type: chain.expect.exact(API_EVENT.halome.v3.chat.MESSAGE_CREATED),
+      source: chain.expect.exact('ssssssssssss'),
+      specversion: chain.expect.exact('1.0'),
+      version: chain.expect.exact('2.0'),
+      data: chain.expect.builder(
+        new MessageDataBuilder()
+          .setMessage({
+            userId: VAR.userId,
+            content: SYSTEM_MESSAGE.CREATE_CHANNEL,
+          })
+          .addChannel({
+            channelId: VAR.channelId,
+            userId: VAR.userId,
+            name: 'channel1',
+            totalMembers: 1,
+          })
+          .addMember({
+            userId: VAR.userId,
+            role: 'owner',
+          })
+          .addMetadata({
+            lastMessageId: VAR.lastMessageId,
+            channelId: VAR.channelId,
+          }),
+      ),
+    },
+  ])
+  .addStepAction(
+    'owner update channel name',
+    VAR.actor,
+    ACTION.UPDATE_CHANNEL_NAME,
+    {
+      headers: HEADER_LIST.create({ token: VAR.token }),
+      body: {
+        name: 'channel update name',
+        workspaceId: VAR.workspaceId,
+        channelId: VAR.channelId,
+      },
+      expect: {
+        ok: true,
+      },
+    },
+  )
+  // .addStepEvents(
+  //     'event update channel name',
+  //     VAR.actor,
+  //     ACTION.UPDATE_CHANNEL_NAME,
+  //     [
+  //         {
+  //             type: chain.expect.exact(
+  //                 API_EVENT.halome.v3.chat.CHANNEL_UPDATED_EVENT,
+  //             ),
+  //             source: chain.expect.exact({
+  //                 userId: VAR.userId,
+  //                 deviceId: VAR.deviceId,
+  //             }),
+  //             data: chain.expect.builder(
+  //                 new ChannelDataBuilder()
+  //                     .setChannel({
+  //                         name: 'channel update name',
+  //                     }),
+  //             ),
+  //         },
+  //         {
+  //             type: chain.expect.exact(API_EVENT.halome.v3.chat.MESSAGE_CREATED),
+  //             source: chain.expect.exact(API_EVENT.halome.cloudevent.system),
+  //             data: chain.expect.builder(
+  //                 new MessageDataBuilder()
+  //                     .setMessage({
+  //                         content: SYSTEM_MESSAGE.UPDATE_CHANNEL_NAME,
+  //                     })
+  //                     .addMetadata({
+  //                         channelId: VAR.channelId,
+  //                     }),
 
-    //             ),
-    //         },
-    //     ],
-    // )
-    .execute();
+  //             ),
+  //         },
+  //     ],
+  // )
+  .execute();

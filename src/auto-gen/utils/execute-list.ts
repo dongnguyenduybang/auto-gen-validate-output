@@ -250,12 +250,12 @@ export async function executeStepWS(
     (event) => !existingEventIds.includes(event.id),
   );
 
-  const transFormData = transformApiData(responseStep.data)
+  const transFormData = transformApiData(responseStep.data);
 
   const bodyApi = {
     resolveHeader,
-    resolveBody
-  }
+    resolveBody,
+  };
 
   const eventFilter = events.map((e) => ({
     body: bodyApi,
@@ -370,10 +370,8 @@ export async function executeEvents(
   collectors: Record<string, WebSocketEventCollector>,
 ): Promise<StepValidationResult[]> {
   const stepResults: StepValidationResult[] = [];
-
   for (const step of steps) {
-    const { author, action, eventList } = step;
-    console.log(JSON.stringify(step, null, 2))
+    const { title, author, action, eventList } = step;
     const stepResult: StepValidationResult = {
       author: author,
       stepAction: action,
@@ -381,85 +379,92 @@ export async function executeEvents(
       eventList: getExpectedEventTypes(action).types,
       passedEvents: 0,
       failedEvents: 0,
-      orderIsValid: true, 
+      missingEvents: [],
+      extraEvents: [],
+      orderIsValid: true,
       duplicateEvents: [],
-      eventResults: []
+      eventResults: [],
     };
 
-const allEvents = eventContext.getValue();
-    console.log(`All events: ${JSON.stringify(allEvents, null, 2)}`);
-    const actorEvents = allEvents
-      .find((e) => e.author === "Actor")
-      ?.events.filter((e) => e.action === action) || [];
-    const recipientEvents = allEvents
-      .find((e) => e.author === "Recipient")
-      ?.events.filter((e) => e.action === action) || [];
-
+    const allEvent = eventContext.getValue();
+    const actorEvents =
+      allEvent
+        .find((e) => e.author === 'Actor')
+        ?.events.filter((e) => e.action === action) || [];
+    const recipientEvents =
+      allEvent
+        .find((e) => e.author === 'Recipient')
+        ?.events.filter((e) => e.action === action) || [];
 
     // Chọn mảng sự kiện dựa trên author của step
-    const collectedEvents = author === "Actor" ? actorEvents : recipientEvents;
-
+    const collectedEvents = author === 'Actor' ? actorEvents : recipientEvents;
     // validate đúp event
-    const eventTypeCounts = new Map<string, number>();
-    const duplicates: string[] = [];
-    for (const event of collectedEvents) {
-      const eventType = event.type || 'unknown';
-      eventTypeCounts.set(eventType, (eventTypeCounts.get(eventType) || 0) + 1);
-      if (eventTypeCounts.get(eventType)! > 1) {
-        duplicates.push(eventType);
-      }
-    }
-
-    stepResult.duplicateEvents = duplicates;
+    const resultDuplicate = checkDuplicateEvent(collectedEvents);
+    stepResult.duplicateEvents = resultDuplicate;
 
     // validate thứ tự event
-    const expectedEventTypes = getExpectedEventTypes(action).types;
-    let orderIsValid = true;
-    for (let i = 0; i < expectedEventTypes.length && i < collectedEvents.length; i++) {
-      const expectedEventType = expectedEventTypes[i];
-      const actualEvent = collectedEvents[i];
-      if (actualEvent && actualEvent.type !== expectedEventType) {
-        orderIsValid = false;
-        break;
-      }
-    }
-    stepResult.orderIsValid = orderIsValid;
+    const resultOrderEvent = checkOrderEvent(collectedEvents, action);
+    stepResult.orderIsValid = resultOrderEvent;
 
-    // Chỉ validate những event được định nghĩa trong eventList
+    // validate dư event
+    const extraEvents = collectedEvents.filter((actual) => {
+      if (!actual.type) return false;
+      const validEventTypes = getExpectedEventTypes(action).types;
+      return !validEventTypes.includes(actual.type);
+    });
+    if (extraEvents.length > 0) {
+      stepResult.extraEvents.push(...extraEvents.map((e) => e.type));
+    }
+    // Chỉ validate những event được định nghĩa trong eventList => sẽ thay bằng swagger
     for (let i = 0; i < eventList.length; i++) {
       const expectedEvent = eventList[i];
       const expectedEventType = expectedEvent.type?.expectedValue;
-      const actualEvent = collectedEvents.find((e) => e.type === expectedEventType);
-      const eventType = expectedEvent.type?.expectedValue || `Unknown event at index ${i}`;
+      const actualEvent = collectedEvents.find(
+        (e) => e.type === expectedEventType,
+      );
+      const eventType =
+        expectedEvent.type?.expectedValue || `Unknown event at index ${i}`;
+      const eventResult: EventValidation = {
+        eventIndex: i,
+        eventType,
+        isPassed: true,
+      };
+
+      // validate thiếu event
+      if (!actualEvent) {
+        stepResult.missingEvents.push(eventType);
+        continue;
+      }
+
       const validationTasks = [
         { key: 'specversion', field: 'SPECVERSION' },
         { key: 'version', field: 'VERSION' },
         { key: 'source', field: 'SOURCE' },
         { key: 'type', field: 'TYPE' },
-        { key: 'data', field: 'DATA' }
+        { key: 'data', field: 'DATA' },
       ];
-
-      const eventResult: EventValidation = {
-        eventIndex: i,
-        eventType,
-        isPassed: true
-      };
 
       for (const { key, field } of validationTasks) {
         if (expectedEvent[key]) {
           const result = await debugCompare(
             expectedEvent[key],
-            key === 'source' ? parseSource(actualEvent[key]) : key === 'data' ? actualEvent : actualEvent[key],
+            key === 'source'
+              ? parseSource(actualEvent[key])
+              : key === 'data'
+                ? actualEvent
+                : actualEvent[key],
             field as any,
             context,
             i,
-            step.title
-          )
+            step.title,
+          );
           eventResult[`${key.toLowerCase()}Result`] = result;
           eventResult.isPassed = eventResult.isPassed && result.isEqual;
         }
       }
-      eventResult.isPassed ? stepResult.passedEvents++ : stepResult.failedEvents++;
+      eventResult.isPassed
+        ? stepResult.passedEvents++
+        : stepResult.failedEvents++;
       stepResult.eventResults.push(eventResult);
     }
 
@@ -473,6 +478,7 @@ function parseSource(source: string) {
   if (source === API_EVENT.halome.cloudevent.system) {
     return source;
   }
+
   const queryString = source.split('?')[1];
   const params = new URLSearchParams(queryString);
   return {
@@ -487,21 +493,20 @@ async function debugCompare(
   fieldName: 'SOURCE' | 'TYPE' | 'DATA' | 'SPECVERSION' | 'VERSION',
   context: TestContext,
   eventIndex?: number,
-  eventLabel?: string
+  eventLabel?: string,
 ): Promise<MatcherResult> {
-
   try {
     const result = await matcher(actualValue, context);
     const response = {
       isEqual: result.isEqual,
-      allDifferences: result.allDifferences
+      allDifferences: result.allDifferences,
     };
     return response;
   } catch (e) {
     const errorMessage = e instanceof Error ? e.message : String(e);
     return {
       isEqual: false,
-      allDifferences: [errorMessage]
+      allDifferences: [errorMessage],
     };
   }
 }
@@ -592,13 +597,13 @@ async function debugCompare(
 //     return results;
 // }
 
-export function executeAfterAll(step, context: TestContext) { }
+export function executeAfterAll(step, context: TestContext) {}
 
 export function executeBeforeEach(step, context: TestContext) {
   console.log(step);
 }
 
-export function executeAfterEach(step, context: TestContext) { }
+export function executeAfterEach(step, context: TestContext) {}
 
 function getExpectedEventTypes(action: string): {
   types: string[];
@@ -877,4 +882,37 @@ export async function executeResume(
 
   console.log(resumeReport);
   return resumeReport;
+}
+
+function checkDuplicateEvent(collectedEvents): string[] {
+  const eventIdCounts = new Map<string, number>();
+  const duplicates: string[] = [];
+
+  for (const event of collectedEvents) {
+    const eventId = event.id || 'unknown';
+    eventIdCounts.set(eventId, (eventIdCounts.get(eventId) || 0) + 1);
+    if (eventIdCounts.get(eventId)! > 1) {
+      duplicates.push(eventId);
+    }
+  }
+
+  return duplicates;
+}
+
+function checkOrderEvent(collectedEvents, action: string): boolean {
+  const expectedEventTypes = getExpectedEventTypes(action).types;
+  let orderIsValid = true;
+  for (
+    let i = 0;
+    i < expectedEventTypes.length && i < collectedEvents.length;
+    i++
+  ) {
+    const expectedEventType = expectedEventTypes[i];
+    const actualEvent = collectedEvents[i];
+    if (actualEvent && actualEvent.type !== expectedEventType) {
+      orderIsValid = false;
+      break;
+    }
+  }
+  return orderIsValid;
 }

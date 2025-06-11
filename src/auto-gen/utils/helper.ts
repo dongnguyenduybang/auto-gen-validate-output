@@ -515,13 +515,13 @@ export async function checkResponse(
   }
 }
 
-export async function callAPIForSystem(body, header, action){
+export async function callAPIForSystem(body, header, action) {
   const actionInfo = ACTION_CONFIG[action as keyof typeof ACTION_CONFIG];
   const resolveBody = {
     workspaceId: '0',
     channelId: body.channelId,
-    messageId: body.msgId
-  }
+    messageId: body.msgId,
+  };
   const apiFunction = getApiFunctions(action, null, null);
 
   const response = await apiFunction({
@@ -531,8 +531,7 @@ export async function callAPIForSystem(body, header, action){
     body: resolveBody,
   });
 
-  
-  return transformApiData(response.data)
+  return transformApiData(response.data);
 }
 
 export function transformApiData(apiData) {
@@ -543,9 +542,9 @@ export function transformApiData(apiData) {
 
   const result = {
     data: {
-      ...apiData.data,  // Copy tất cả các trường từ apiData.data
-      includes: apiData.includes ? {...apiData.includes} : {}  // Thêm includes vào trong data
-    }
+      ...apiData.data, // Copy tất cả các trường từ apiData.data
+      includes: apiData.includes ? { ...apiData.includes } : {}, // Thêm includes vào trong data
+    },
   };
 
   return result;

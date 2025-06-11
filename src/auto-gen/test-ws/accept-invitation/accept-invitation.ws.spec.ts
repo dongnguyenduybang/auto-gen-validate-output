@@ -53,7 +53,7 @@ describe('Test sagas for update-channel-name', () => {
     } else {
       contextData = context;
     }
-  }, 10000);
+  }, 15000);
 
   it('should return owner update channel name ws', async () => {
     currentTestCaseTitle = 'should return owner update channel name ws';
@@ -76,8 +76,7 @@ describe('Test sagas for update-channel-name', () => {
     });
 
     const eventsStep =
-      AcceptInvitationWS.options?.find((option) => option.events)?.events ||
-      [];
+      AcceptInvitationWS.options?.find((option) => option.events)?.events || [];
 
     const resultsEvent = await executeWS(
       eventsStep,
@@ -90,7 +89,6 @@ describe('Test sagas for update-channel-name', () => {
   }, 30000);
 
   afterAll(async () => {
-
     const folderPath = path.join(__dirname, '../reports/update-channel-name');
     if (!fs.existsSync(folderPath)) {
       fs.mkdirSync(folderPath, { recursive: true });

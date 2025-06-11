@@ -57,7 +57,7 @@ export async function executeWS(
           resumeContext,
           collectors,
         );
-       console.log(JSON.stringify(resultEvent,null,2))
+        console.log(JSON.stringify(resultEvent, null, 2));
         break;
       default:
         const resultStepWS = await executeStepWS(

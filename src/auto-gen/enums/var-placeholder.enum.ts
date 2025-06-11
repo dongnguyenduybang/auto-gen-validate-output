@@ -34,4 +34,5 @@ export enum VAR {
   actor = 'Actor',
   recipient = 'Recipient',
   deviceId = '{{deviceId}}',
+  deviceId1 = '{{deviceId1}}',
 }

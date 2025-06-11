@@ -86,7 +86,13 @@ export class WSBuilder {
     title: string,
     author: string,
     action: string,
-    eventList: { type: any; source: any;specversion?: any,version?: any, data: Object }[],
+    eventList: {
+      type: any;
+      source: any;
+      specversion?: any;
+      version?: any;
+      data: Object;
+    }[],
   ) {
     this.currentEvent.events.push({
       title,
