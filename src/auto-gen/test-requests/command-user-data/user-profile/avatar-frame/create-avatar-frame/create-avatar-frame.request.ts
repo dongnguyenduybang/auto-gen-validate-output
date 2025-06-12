@@ -5,7 +5,7 @@ import {
 } from '../../../../../enums/index';
 import { RequestTestSuite } from '../../../../../utils/declarations';
 
-export const CreateAvatarFrame: RequestTestSuite = {
+export const CreateAvatarFrameRequest: RequestTestSuite = {
     action: ACTION.AVATAR_FRAME_PATH,
     headers: HEADER_LIST.create({ token: VAR.token }),
     body: {

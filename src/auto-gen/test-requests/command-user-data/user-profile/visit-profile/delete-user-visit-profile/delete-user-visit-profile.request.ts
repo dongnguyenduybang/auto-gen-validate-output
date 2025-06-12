@@ -5,7 +5,7 @@ import {
 } from '../../../../../enums/index';
 import { RequestTestSuite } from '../../../../../utils/declarations';
 
-export const DeleteUserVisitProfile: RequestTestSuite = {
+export const DeleteUserVisitProfileRequest: RequestTestSuite = {
     action: ACTION.DELETE_USER_VISIT_PROFILE,
     headers: HEADER_LIST.create({ token: VAR.token }),
     body: {

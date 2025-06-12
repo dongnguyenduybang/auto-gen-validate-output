@@ -1,0 +1,199 @@
+{
+  "path": "/Channel/UpdateDMMediaPermissionSetting",
+  "className": "update-dm-media-permission",
+  "allSteps": [],
+  "failedTests": [
+    {
+      "testcase": 5,
+      "code": 404,
+      "errorDetails": "Unexpected status code"
+    },
+    {
+      "testcase": 7,
+      "code": 400,
+      "body": {
+        "userId": "01JXH61KP1V1H40GBP16W47MCG"
+      },
+      "missing": [],
+      "extra": [
+        "mediaPermissionSetting invalid enum value. Expected 0 | 1 | 2, received 'undefined'"
+      ]
+    },
+    {
+      "testcase": 8,
+      "code": 400,
+      "body": {
+        "userId": "01JXH61KP1V1H40GBP16W47MCG",
+        "mediaPermissionSetting": ""
+      },
+      "missing": [],
+      "extra": [
+        "mediaPermissionSetting should not be empty"
+      ]
+    }
+  ],
+  "codedTest": [
+    {
+      "testcase": 1,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "mediaPermissionSetting": 1
+      }
+    },
+    {
+      "testcase": 2,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "mediaPermissionSetting": "invalid_enum_value"
+      }
+    },
+    {
+      "testcase": 3,
+      "code": 403,
+      "body": {
+        "userId": 123
+      }
+    },
+    {
+      "testcase": 4,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "mediaPermissionSetting": ""
+      }
+    },
+    {
+      "testcase": 6,
+      "code": 400,
+      "body": {
+        "userId": "01JXH61KP1V1H40GBP16W47MCG",
+        "mediaPermissionSetting": "invalid_enum_value"
+      }
+    },
+    {
+      "testcase": 9,
+      "code": 403,
+      "body": {
+        "mediaPermissionSetting": 1
+      }
+    },
+    {
+      "testcase": 10,
+      "code": 403,
+      "body": {
+        "mediaPermissionSetting": "invalid_enum_value"
+      }
+    },
+    {
+      "testcase": 11,
+      "code": 403,
+      "body": {}
+    },
+    {
+      "testcase": 12,
+      "code": 403,
+      "body": {
+        "mediaPermissionSetting": ""
+      }
+    },
+    {
+      "testcase": 13,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "mediaPermissionSetting": 1
+      }
+    },
+    {
+      "testcase": 14,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "mediaPermissionSetting": "invalid_enum_value"
+      }
+    },
+    {
+      "testcase": 15,
+      "code": 403,
+      "body": {
+        "userId": ""
+      }
+    },
+    {
+      "testcase": 16,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "mediaPermissionSetting": ""
+      }
+    },
+    {
+      "testcase": 17,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "mediaPermissionSetting": 1
+      }
+    },
+    {
+      "testcase": 18,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "mediaPermissionSetting": "invalid_enum_value"
+      }
+    },
+    {
+      "testcase": 19,
+      "code": 403,
+      "body": {
+        "userId": null
+      }
+    },
+    {
+      "testcase": 20,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "mediaPermissionSetting": ""
+      }
+    },
+    {
+      "testcase": 21,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "mediaPermissionSetting": 1
+      }
+    },
+    {
+      "testcase": 22,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "mediaPermissionSetting": "invalid_enum_value"
+      }
+    },
+    {
+      "testcase": 23,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value"
+      }
+    },
+    {
+      "testcase": 24,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "mediaPermissionSetting": ""
+      }
+    }
+  ],
+  "passedTests": 21,
+  "totalTests": 24,
+  "logicTests": [],
+  "failedStep": []
+}

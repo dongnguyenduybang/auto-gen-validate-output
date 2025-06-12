@@ -5,7 +5,7 @@ import {
 } from '../../../../../enums/index';
 import { RequestTestSuite } from '../../../../../utils/declarations';
 
-export const UpdateCoverPhoto: RequestTestSuite = {
+export const UpdateCoverPhotoRequest: RequestTestSuite = {
     action: ACTION.UPDATE_COVER_PHOTO,
     headers: HEADER_LIST.create({ token: VAR.token }),
     body: {

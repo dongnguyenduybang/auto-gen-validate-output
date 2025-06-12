@@ -8,7 +8,7 @@ import {
   IsNotNull,
 } from '../../../../decorator/index';
 
-export class SendInvitationDTO {
+export class AcceptInvitationDTO {
   @IsString()
   @IsNotNull()
   @IsNotEmpty()
@@ -16,10 +16,4 @@ export class SendInvitationDTO {
   @isValidURL()
   invitationLink: string = '';
 
-  @IsArray()
-  @IsNotEmpty()
-  @IsDefined()
-  @MinArray(1)
-  @IsNotNull()
-  userIds: string[] = [];
 }

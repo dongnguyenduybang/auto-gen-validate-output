@@ -104,8 +104,8 @@ async function generateSpecContent(
         });
 
         ${testCases
-          .map(
-            (testCase, index) => `
+      .map(
+        (testCase, index) => `
             it('Test case #${startIndex + index + 1} should return errors ${formatExpectErrors(testCase.expects)} when body ${JSON.stringify(testCase.body)}', async () => {
               testNumber = ${startIndex + index + 1};
               totalTests++;
@@ -143,6 +143,54 @@ async function generateSpecContent(
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -193,8 +241,8 @@ async function generateSpecContent(
                 });
               }
             });`,
-          )
-          .join('\n')}
+      )
+      .join('\n')}
       afterEach(async () => {
           testCaseNumber++;
           const afterEachSteps = ${classNameCapitalized}Request.options

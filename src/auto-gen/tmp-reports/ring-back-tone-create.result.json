@@ -1,0 +1,338 @@
+{
+  "path": "/RingbackTone/RingbackToneCreate",
+  "className": "ring-back-tone-create",
+  "allSteps": [],
+  "failedTests": [
+    {
+      "testcase": 3,
+      "code": 400,
+      "body": {
+        "name": 123
+      },
+      "missing": [],
+      "extra": [
+        "ringbackTonePath invalid url"
+      ]
+    },
+    {
+      "testcase": 4,
+      "code": 400,
+      "body": {
+        "name": 123,
+        "ringbackTonePath": ""
+      },
+      "missing": [
+        "ringbackTonePath string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "ringbackTonePath should not be empty"
+      ]
+    },
+    {
+      "testcase": 8,
+      "code": 400,
+      "body": {
+        "name": "nhac cho"
+      },
+      "missing": [],
+      "extra": [
+        "ringbackTonePath invalid url"
+      ]
+    },
+    {
+      "testcase": 9,
+      "code": 400,
+      "body": {
+        "name": "nhac cho",
+        "ringbackTonePath": ""
+      },
+      "missing": [
+        "ringbackTonePath string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "ringbackTonePath should not be empty"
+      ]
+    },
+    {
+      "testcase": 11,
+      "code": 201,
+      "body": {
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ringbackTonePath": "https://fs.ugc.ziicdn.net/01JEZJ0GPMSHH2RVX9QTSJJNRX/heic_300kB.heic"
+      },
+      "missing": [],
+      "extra": [
+        "name string must contain at most 50 character(s)"
+      ]
+    },
+    {
+      "testcase": 12,
+      "code": 400,
+      "body": {
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ringbackTonePath": 123
+      },
+      "missing": [],
+      "extra": [
+        "name string must contain at most 50 character(s)"
+      ]
+    },
+    {
+      "testcase": 13,
+      "code": 400,
+      "body": {
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "missing": [],
+      "extra": [
+        "name string must contain at most 50 character(s)",
+        "ringbackTonePath invalid url"
+      ]
+    },
+    {
+      "testcase": 14,
+      "code": 400,
+      "body": {
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ringbackTonePath": ""
+      },
+      "missing": [
+        "ringbackTonePath string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "name string must contain at most 50 character(s)",
+        "ringbackTonePath should not be empty"
+      ]
+    },
+    {
+      "testcase": 15,
+      "code": 400,
+      "body": {
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ringbackTonePath": null
+      },
+      "missing": [],
+      "extra": [
+        "name string must contain at most 50 character(s)"
+      ]
+    },
+    {
+      "testcase": 18,
+      "code": 400,
+      "body": {},
+      "missing": [],
+      "extra": [
+        "ringbackTonePath invalid url"
+      ]
+    },
+    {
+      "testcase": 19,
+      "code": 400,
+      "body": {
+        "ringbackTonePath": ""
+      },
+      "missing": [
+        "ringbackTonePath string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "ringbackTonePath should not be empty"
+      ]
+    },
+    {
+      "testcase": 21,
+      "code": 400,
+      "body": {
+        "name": "",
+        "ringbackTonePath": "https://fs.ugc.ziicdn.net/01JEZJ0GPMSHH2RVX9QTSJJNRX/heic_300kB.heic"
+      },
+      "missing": [
+        "name string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "name should not be empty"
+      ]
+    },
+    {
+      "testcase": 22,
+      "code": 400,
+      "body": {
+        "name": "",
+        "ringbackTonePath": 123
+      },
+      "missing": [
+        "name string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "name should not be empty"
+      ]
+    },
+    {
+      "testcase": 23,
+      "code": 400,
+      "body": {
+        "name": ""
+      },
+      "missing": [
+        "name string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "name should not be empty",
+        "ringbackTonePath invalid url"
+      ]
+    },
+    {
+      "testcase": 24,
+      "code": 400,
+      "body": {
+        "name": "",
+        "ringbackTonePath": ""
+      },
+      "missing": [
+        "name string must contain at least 1 character(s)",
+        "ringbackTonePath string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "name should not be empty",
+        "ringbackTonePath should not be empty"
+      ]
+    },
+    {
+      "testcase": 25,
+      "code": 400,
+      "body": {
+        "name": "",
+        "ringbackTonePath": null
+      },
+      "missing": [
+        "name string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "name should not be empty"
+      ]
+    },
+    {
+      "testcase": 28,
+      "code": 400,
+      "body": {
+        "name": null
+      },
+      "missing": [],
+      "extra": [
+        "ringbackTonePath invalid url"
+      ]
+    },
+    {
+      "testcase": 29,
+      "code": 400,
+      "body": {
+        "name": null,
+        "ringbackTonePath": ""
+      },
+      "missing": [
+        "ringbackTonePath string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "ringbackTonePath should not be empty"
+      ]
+    }
+  ],
+  "codedTest": [
+    {
+      "testcase": 1,
+      "code": 400,
+      "body": {
+        "name": 123,
+        "ringbackTonePath": "https://fs.ugc.ziicdn.net/01JEZJ0GPMSHH2RVX9QTSJJNRX/heic_300kB.heic"
+      }
+    },
+    {
+      "testcase": 2,
+      "code": 400,
+      "body": {
+        "name": 123,
+        "ringbackTonePath": 123
+      }
+    },
+    {
+      "testcase": 5,
+      "code": 400,
+      "body": {
+        "name": 123,
+        "ringbackTonePath": null
+      }
+    },
+    {
+      "testcase": 6,
+      "code": 201,
+      "body": {
+        "name": "nhac cho",
+        "ringbackTonePath": "https://fs.ugc.ziicdn.net/01JEZJ0GPMSHH2RVX9QTSJJNRX/heic_300kB.heic"
+      }
+    },
+    {
+      "testcase": 7,
+      "code": 400,
+      "body": {
+        "name": "nhac cho",
+        "ringbackTonePath": 123
+      }
+    },
+    {
+      "testcase": 10,
+      "code": 400,
+      "body": {
+        "name": "nhac cho",
+        "ringbackTonePath": null
+      }
+    },
+    {
+      "testcase": 16,
+      "code": 400,
+      "body": {
+        "ringbackTonePath": "https://fs.ugc.ziicdn.net/01JEZJ0GPMSHH2RVX9QTSJJNRX/heic_300kB.heic"
+      }
+    },
+    {
+      "testcase": 17,
+      "code": 400,
+      "body": {
+        "ringbackTonePath": 123
+      }
+    },
+    {
+      "testcase": 20,
+      "code": 400,
+      "body": {
+        "ringbackTonePath": null
+      }
+    },
+    {
+      "testcase": 26,
+      "code": 400,
+      "body": {
+        "name": null,
+        "ringbackTonePath": "https://fs.ugc.ziicdn.net/01JEZJ0GPMSHH2RVX9QTSJJNRX/heic_300kB.heic"
+      }
+    },
+    {
+      "testcase": 27,
+      "code": 400,
+      "body": {
+        "name": null,
+        "ringbackTonePath": 123
+      }
+    },
+    {
+      "testcase": 30,
+      "code": 400,
+      "body": {
+        "name": null,
+        "ringbackTonePath": null
+      }
+    }
+  ],
+  "passedTests": 12,
+  "totalTests": 30,
+  "logicTests": [],
+  "failedStep": []
+}

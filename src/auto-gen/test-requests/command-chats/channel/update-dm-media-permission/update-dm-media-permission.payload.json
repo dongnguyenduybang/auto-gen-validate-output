@@ -1,0 +1,207 @@
+[
+    {
+        "body": {
+            "userId": 123,
+            "mediaPermissionSetting": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "mediaPermissionSetting": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "mediaPermissionSetting": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "mediaPermissionSetting": 1
+        },
+        "expects": []
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "mediaPermissionSetting": "invalid_enum_value"
+        },
+        "expects": [
+            "mediaPermissionSetting invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value'"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}"
+        },
+        "expects": [
+            "mediaPermissionSetting required",
+            "mediaPermissionSetting invalid enum value. Expected 0 | 1 | 2, received 'undefined'"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "mediaPermissionSetting": ""
+        },
+        "expects": [
+            "mediaPermissionSetting should not be empty",
+            "mediaPermissionSetting invalid enum value. Expected 0 | 1 | 2, received ''"
+        ]
+    },
+    {
+        "body": {
+            "mediaPermissionSetting": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "mediaPermissionSetting": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {},
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "mediaPermissionSetting": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "mediaPermissionSetting": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "mediaPermissionSetting": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "mediaPermissionSetting": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "mediaPermissionSetting": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "mediaPermissionSetting": "invalid_enum_value"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "mediaPermissionSetting": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "mediaPermissionSetting": 1
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "mediaPermissionSetting": "invalid_enum_value"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "mediaPermissionSetting": ""
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    }
+]

@@ -1017,6 +1017,7 @@ function checkTypeArray(
       const typeItem = typeof item;
       if (typeof item === 'string') {
         const itemDecorator = decorators['itemDecorators'];
+        if (!itemDecorator) return;
         itemDecorator.forEach(
           (dec: { name: string; params?: any; message?: string }) => {
             const { name, params, message } = dec;

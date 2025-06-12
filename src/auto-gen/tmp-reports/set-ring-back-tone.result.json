@@ -1,0 +1,50 @@
+{
+  "path": "/RingbackTone/SetRingbackTone",
+  "className": "set-ring-back-tone",
+  "allSteps": [
+    {
+      "type": null,
+      "status": true,
+      "stepName": "ringBackToneCreate",
+      "caseTitle": "Case 0",
+      "phase": "beforeAll"
+    }
+  ],
+  "failedTests": [
+    {
+      "testcase": 1,
+      "code": 404,
+      "errorDetails": "Unexpected status code"
+    },
+    {
+      "testcase": 2,
+      "code": 404,
+      "errorDetails": "Unexpected status code"
+    },
+    {
+      "testcase": 3,
+      "code": 404,
+      "errorDetails": "Unexpected status code"
+    },
+    {
+      "testcase": 4,
+      "code": 404,
+      "errorDetails": "Unexpected status code"
+    },
+    {
+      "testcase": 5,
+      "code": 404,
+      "errorDetails": "Unexpected status code"
+    },
+    {
+      "testcase": 6,
+      "code": 404,
+      "errorDetails": "Unexpected status code"
+    }
+  ],
+  "codedTest": [],
+  "passedTests": 0,
+  "totalTests": 6,
+  "logicTests": [],
+  "failedStep": []
+}

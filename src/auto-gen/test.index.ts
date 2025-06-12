@@ -8,7 +8,7 @@ import { genTestResponse } from './utils/gen-test-response';
 import { genTestSaga } from './utils/gen-test-saga';
 import { ActionHandler } from './utils/declarations';
 import { generateAllReports } from './utils/combine-report';
-import { findTestPath } from './utils/helper';
+import { clearFiles, clearReports, findAllDtoDirectories, findTestPath } from './utils/helper';
 import { genClientSwagger } from './swagger/gen-client-swagger';
 
 const args = process.argv.slice(2);
@@ -39,8 +39,28 @@ if (!validTypes.includes(type)) {
 const actionHandlers: Record<string, Record<string, ActionHandler[]>> = {
   gen: {
     request: [
-      (dto) => Promise.resolve(genBodyRequest(dto)),
-      (dto) => Promise.resolve(genTestRequest(dto)),
+      (dto) => {
+        console.log(`[GEN BODY] Starting for: ${dto}`);
+        try {
+          const result = genBodyRequest(dto);
+          console.log(`[GEN BODY] Completed for: ${dto}`);
+          return Promise.resolve(result);
+        } catch (e) {
+          console.error(`[GEN BODY] Error for ${dto}:`, e);
+          throw e;
+        }
+      },
+      (dto) => {
+        console.log(`[GEN TEST] Starting for: ${dto}`);
+        try {
+          const result = genTestRequest(dto);
+          console.log(`[GEN TEST] Completed for: ${dto}`);
+          return Promise.resolve(result);
+        } catch (e) {
+          console.error(`[GEN TEST] Error for ${dto}:`, e);
+          throw e;
+        }
+      },
     ],
     response: [(dto) => Promise.resolve(genTestResponse(dto))],
     saga: [(dto) => Promise.resolve(genTestSaga(dto))],
@@ -65,37 +85,6 @@ const actionHandlers: Record<string, Record<string, ActionHandler[]>> = {
   },
 };
 
-async function handleBulkAction(basePath: string, handlers: ActionHandler[]) {
-  const fullPath = path.join(__dirname, basePath);
-  console.log(`Processing bulk action in directory: ${fullPath}`);
-
-  // Lấy danh sách thư mục con, loại bỏ thư mục reports
-  const directories = getSubDirectories(fullPath).filter(
-    (dir) => !dir.includes('reports'),
-  );
-
-  console.log(`Found ${directories.length} DTO directories:`, directories);
-
-  for (const dir of directories) {
-    for (const handler of handlers) {
-      try {
-        await handler(dir);
-      } catch (error) {
-        console.error(`Handler failed: ${error.message}`);
-      }
-    }
-  }
-}
-
-function getSubDirectories(dirPath: string): string[] {
-  return fs
-    .readdirSync(dirPath, { withFileTypes: true })
-    .filter(
-      (dirent) =>
-        dirent.isDirectory() && !dirent.name.toLowerCase().includes('report'), // Loại bỏ thư mục report
-    )
-    .map((dirent) => dirent.name);
-}
 
 function runTests(testType: string): ActionHandler {
   return async (dtoName) => {
@@ -120,60 +109,9 @@ function runTests(testType: string): ActionHandler {
   };
 }
 
-function clearFiles(testType: string): ActionHandler {
-  return async (dtoName) => {
-    const basePath = path.join(__dirname, testType);
-    if (!fs.existsSync(basePath)) {
-      console.error(`${testType} directory not found: ${basePath}`);
-      return;
-    }
-
-    function clearDirectory(dir: string) {
-      const entries = fs.readdirSync(dir, { withFileTypes: true });
-
-      for (const entry of entries) {
-        const fullPath = path.join(dir, entry.name);
-
-        if (entry.isDirectory()) {
-          clearDirectory(fullPath);
-        } else if (
-          entry.name.toLowerCase().includes(dtoName.toLowerCase()) &&
-          entry.name.endsWith('.spec.ts')
-        ) {
-          fs.unlinkSync(fullPath);
-          console.log(`Deleted: ${fullPath}`);
-        }
-      }
-    }
-
-    clearDirectory(basePath);
-  };
-}
-
-function clearReports(reportType: string): ActionHandler {
-  return async (dtoName) => {
-    const targetDir = path.join(__dirname, reportType, dtoName);
-    if (!fs.existsSync(targetDir)) {
-      console.error(`Report directory not found: ${targetDir}`);
-      return;
-    }
-
-    fs.readdirSync(targetDir)
-      .filter((file) => file.endsWith('.txt'))
-      .forEach((file) => {
-        const filePath = path.join(targetDir, file);
-        fs.unlinkSync(filePath);
-        console.log(`Deleted: ${filePath}`);
-      });
-  };
-}
 
 async function main() {
-  console.log(
-    `Processing "${type}${subType ? ` ${subType}` : ''}"${
-      dtoName ? ` for: ${dtoName}` : ''
-    }`,
-  );
+  console.log(`Processing "${type}${subType ? ` ${subType}` : ''}${dtoName ? ` for: ${dtoName}` : ''}`);
 
   try {
     const handlers = actionHandlers[action]?.[type];
@@ -184,19 +122,20 @@ async function main() {
         await handler(dtoName);
       }
     } else {
-      const isBulkAction =
-        dtoName &&
-        (dtoName.includes('-requests') ||
-          dtoName.includes('-responses') ||
-          dtoName.includes('-sagas'));
+      const parentDirPath = path.join(__dirname, 'test-requests', dtoName);
+      const isParentDir = fs.existsSync(parentDirPath) && fs.statSync(parentDirPath).isDirectory();
 
-      // if (!dtoName) {
-      //   throw new Error('Missing dtoName parameter');
-      // }
-
-      if (isBulkAction) {
-        await handleBulkAction(dtoName, handlers);
+      if (isParentDir) {
+        const allDtoDirs = findAllDtoDirectories(dtoName);
+        console.log(`Found DTO directories:`, allDtoDirs);
+        for (const dtoDir of allDtoDirs) {
+          for (const handler of handlers) {
+            console.log(`Executing handler for: ${dtoDir}`);
+            await handler(dtoDir);
+          }
+        }
       } else {
+       
         for (const handler of handlers) {
           await handler(dtoName);
         }
@@ -207,4 +146,5 @@ async function main() {
     process.exit(1);
   }
 }
+
 main();

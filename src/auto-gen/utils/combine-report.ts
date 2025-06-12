@@ -74,6 +74,7 @@ function generateSummary(
     statusCodes: {
       200: filterByCode(codedTests, 200).length + passed200,
       201: passed201,
+      400: filterByCode(failedTests, 400).length, 
       403: filterByCode(codedTests, 403).length,
       500: filterByCode(failedTests, 500).length,
     },

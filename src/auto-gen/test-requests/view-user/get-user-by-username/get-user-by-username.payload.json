@@ -1,0 +1,39 @@
+[
+    {
+        "body": {
+            "username": 123
+        },
+        "expects": [
+            "username expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "username": "{{username1}}"
+        },
+        "expects": []
+    },
+    {
+        "body": {
+            "username": ""
+        },
+        "expects": [
+            "username should not be empty",
+            "username string must contain at least 1 character(s)"
+        ]
+    },
+    {
+        "body": {},
+        "expects": [
+            "username required"
+        ]
+    },
+    {
+        "body": {
+            "username": null
+        },
+        "expects": [
+            "username expected string, received null"
+        ]
+    }
+]

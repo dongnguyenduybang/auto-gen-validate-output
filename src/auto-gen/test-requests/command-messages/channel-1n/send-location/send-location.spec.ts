@@ -109,6 +109,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -191,6 +239,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -285,6 +381,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -367,6 +511,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -461,6 +653,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -543,6 +783,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -637,6 +925,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -719,6 +1055,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -813,6 +1197,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -895,6 +1327,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -989,6 +1469,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -1071,6 +1599,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -1165,6 +1741,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -1247,6 +1871,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -1341,6 +2013,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -1423,6 +2143,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -1517,6 +2285,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -1599,6 +2415,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -1693,6 +2557,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -1775,6 +2687,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -1869,6 +2829,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -1951,6 +2959,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -2045,6 +3101,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -2127,6 +3231,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -2221,6 +3373,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -2303,6 +3503,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -2397,6 +3645,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -2479,6 +3775,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -2573,6 +3917,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -2655,6 +4047,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -2749,6 +4189,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -2831,6 +4319,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -2925,6 +4461,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -3007,6 +4591,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -3101,6 +4733,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -3183,6 +4863,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -3277,6 +5005,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -3359,6 +5135,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -3453,6 +5277,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -3535,6 +5407,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -3629,6 +5549,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -3711,6 +5679,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -3805,6 +5821,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -3887,6 +5951,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -3981,6 +6093,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -4063,6 +6223,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -4157,6 +6365,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -4239,6 +6495,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -4333,6 +6637,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -4415,6 +6767,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -4509,6 +6909,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -4591,6 +7039,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -4685,6 +7181,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -4767,6 +7311,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -4861,6 +7453,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -4943,6 +7583,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -5037,6 +7725,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -5119,6 +7855,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -5213,6 +7997,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -5295,6 +8127,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -5389,6 +8269,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -5471,6 +8399,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -5565,6 +8541,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -5647,6 +8671,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -5741,6 +8813,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -5823,6 +8943,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -5917,6 +9085,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -5999,6 +9215,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -6093,6 +9357,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -6175,6 +9487,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -6269,6 +9629,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -6351,6 +9759,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -6445,6 +9901,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -6527,6 +10031,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -6621,6 +10173,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -6703,6 +10303,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -6797,6 +10445,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -6879,6 +10575,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -6973,6 +10717,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -7055,6 +10847,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -7149,6 +10989,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -7231,6 +11119,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -7325,6 +11261,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -7407,6 +11391,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -7501,6 +11533,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -7583,6 +11663,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -7677,6 +11805,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -7759,6 +11935,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -7853,6 +12077,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -7935,6 +12207,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -8029,6 +12349,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -8111,6 +12479,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -8205,6 +12621,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -8287,6 +12751,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -8381,6 +12893,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -8463,6 +13023,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -8557,6 +13165,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -8639,6 +13295,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -8733,6 +13437,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -8815,6 +13567,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -8909,6 +13709,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -8991,6 +13839,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -9085,6 +13981,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -9167,6 +14111,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -9261,6 +14253,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -9343,6 +14383,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -9437,6 +14525,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -9519,6 +14655,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -9613,6 +14797,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -9695,6 +14927,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -9789,6 +15069,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -9871,6 +15199,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -9965,6 +15341,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -10047,6 +15471,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -10141,6 +15613,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -10223,6 +15743,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -10317,6 +15885,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -10399,6 +16015,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -10493,6 +16157,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -10575,6 +16287,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -10669,6 +16429,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -10751,6 +16559,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -10845,6 +16701,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -10927,6 +16831,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -11021,6 +16973,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -11103,6 +17103,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -11197,6 +17245,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -11279,6 +17375,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -11373,6 +17517,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -11455,6 +17647,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -11549,6 +17789,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -11631,6 +17919,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -11725,6 +18061,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -11807,6 +18191,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -11901,6 +18333,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -11983,6 +18463,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -12077,6 +18605,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -12159,6 +18735,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -12253,6 +18877,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -12335,6 +19007,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -12429,6 +19149,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -12511,6 +19279,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -12605,6 +19421,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -12687,6 +19551,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -12781,6 +19693,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -12863,6 +19823,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -12957,6 +19965,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -13039,6 +20095,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -13133,6 +20237,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -13215,6 +20367,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -13309,6 +20509,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -13391,6 +20639,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -13485,6 +20781,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -13567,6 +20911,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -13661,6 +21053,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -13743,6 +21183,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -13837,6 +21325,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -13919,6 +21455,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -14013,6 +21597,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -14095,6 +21727,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -14189,6 +21869,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -14271,6 +21999,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -14365,6 +22141,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -14447,6 +22271,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -14541,6 +22413,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -14623,6 +22543,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -14717,6 +22685,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -14799,6 +22815,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -14893,6 +22957,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -14975,6 +23087,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -15069,6 +23229,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -15151,6 +23359,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -15245,6 +23501,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -15327,6 +23631,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -15421,6 +23773,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -15503,6 +23903,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -15597,6 +24045,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -15679,6 +24175,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -15773,6 +24317,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -15855,6 +24447,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -15949,6 +24589,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -16031,6 +24719,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -16125,6 +24861,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -16207,6 +24991,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -16301,6 +25133,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -16383,6 +25263,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -16477,6 +25405,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -16559,6 +25535,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -16653,6 +25677,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -16735,6 +25807,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -16829,6 +25949,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -16911,6 +26079,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -17005,6 +26221,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -17087,6 +26351,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -17181,6 +26493,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -17263,6 +26623,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -17357,6 +26765,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -17439,6 +26895,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -17533,6 +27037,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -17615,6 +27167,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -17709,6 +27309,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -17791,6 +27439,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -17885,6 +27581,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -17967,6 +27711,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -18061,6 +27853,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -18143,6 +27983,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -18237,6 +28125,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -18319,6 +28255,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -18413,6 +28397,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -18495,6 +28527,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -18589,6 +28669,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -18671,6 +28799,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -18765,6 +28941,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -18847,6 +29071,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -18941,6 +29213,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -19023,6 +29343,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -19117,6 +29485,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -19199,6 +29615,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -19293,6 +29757,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -19375,6 +29887,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -19469,6 +30029,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -19551,6 +30159,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -19645,6 +30301,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -19727,6 +30431,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -19821,6 +30573,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -19903,6 +30703,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -19997,6 +30845,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -20079,6 +30975,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -20173,6 +31117,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -20255,6 +31247,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -20349,6 +31389,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -20431,6 +31519,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -20525,6 +31661,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -20607,6 +31791,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -20701,6 +31933,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -20783,6 +32063,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -20877,6 +32205,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -20959,6 +32335,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -21053,6 +32477,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -21135,6 +32607,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -21229,6 +32749,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -21311,6 +32879,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -21405,6 +33021,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -21487,6 +33151,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -21581,6 +33293,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -21663,6 +33423,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -21757,6 +33565,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -21839,6 +33695,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -21933,6 +33837,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -22015,6 +33967,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -22109,6 +34109,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -22191,6 +34239,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -22285,6 +34381,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -22367,6 +34511,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -22461,6 +34653,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -22543,6 +34783,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -22637,6 +34925,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -22719,6 +35055,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -22813,6 +35197,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -22895,6 +35327,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -22989,6 +35469,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -23071,6 +35599,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -23165,6 +35741,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -23247,6 +35871,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -23341,6 +36013,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -23423,6 +36143,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -23517,6 +36285,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -23599,6 +36415,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -23693,6 +36557,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -23775,6 +36687,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -23869,6 +36829,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -23951,6 +36959,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -24045,6 +37101,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -24127,6 +37231,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -24221,6 +37373,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -24303,6 +37503,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -24397,6 +37645,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -24479,6 +37775,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -24573,6 +37917,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -24655,6 +38047,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -24749,6 +38189,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -24831,6 +38319,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -24925,6 +38461,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -25007,6 +38591,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -25101,6 +38733,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -25183,6 +38863,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -25277,6 +39005,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -25359,6 +39135,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -25453,6 +39277,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -25535,6 +39407,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -25629,6 +39549,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -25711,6 +39679,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -25805,6 +39821,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -25887,6 +39951,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -25981,6 +40093,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -26063,6 +40223,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -26157,6 +40365,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -26239,6 +40495,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -26333,6 +40637,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -26415,6 +40767,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -26509,6 +40909,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -26591,6 +41039,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -26685,6 +41181,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -26767,6 +41311,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -26861,6 +41453,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -26943,6 +41583,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -27037,6 +41725,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -27119,6 +41855,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -27213,6 +41997,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -27295,6 +42127,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -27389,6 +42269,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -27471,6 +42399,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -27565,6 +42541,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -27647,6 +42671,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -27741,6 +42813,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -27823,6 +42943,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -27917,6 +43085,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -27999,6 +43215,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -28093,6 +43357,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -28175,6 +43487,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -28269,6 +43629,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -28351,6 +43759,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -28445,6 +43901,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -28527,6 +44031,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -28621,6 +44173,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -28703,6 +44303,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -28797,6 +44445,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -28879,6 +44575,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -28973,6 +44717,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -29055,6 +44847,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -29149,6 +44989,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -29231,6 +45119,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -29325,6 +45261,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -29407,6 +45391,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -29501,6 +45533,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -29583,6 +45663,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -29677,6 +45805,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -29759,6 +45935,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -29853,6 +46077,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -29935,6 +46207,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -30029,6 +46349,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -30111,6 +46479,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -30205,6 +46621,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -30287,6 +46751,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -30381,6 +46893,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -30463,6 +47023,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -30557,6 +47165,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -30639,6 +47295,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -30733,6 +47437,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -30815,6 +47567,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -30909,6 +47709,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -30991,6 +47839,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -31085,6 +47981,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -31167,6 +48111,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -31261,6 +48253,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -31343,6 +48383,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -31437,6 +48525,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -31519,6 +48655,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -31613,6 +48797,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -31695,6 +48927,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -31789,6 +49069,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -31871,6 +49199,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -31965,6 +49341,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -32047,6 +49471,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -32141,6 +49613,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -32223,6 +49743,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -32317,6 +49885,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -32399,6 +50015,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -32493,6 +50157,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -32575,6 +50287,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -32669,6 +50429,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -32751,6 +50559,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -32845,6 +50701,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -32927,6 +50831,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -33021,6 +50973,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -33103,6 +51103,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -33197,6 +51245,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -33279,6 +51375,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -33373,6 +51517,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -33455,6 +51647,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -33549,6 +51789,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -33631,6 +51919,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -33725,6 +52061,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -33807,6 +52191,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -33901,6 +52333,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -33983,6 +52463,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -34077,6 +52605,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -34159,6 +52735,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -34253,6 +52877,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -34335,6 +53007,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -34429,6 +53149,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -34511,6 +53279,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -34605,6 +53421,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -34687,6 +53551,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -34781,6 +53693,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -34863,6 +53823,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -34957,6 +53965,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -35039,6 +54095,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -35133,6 +54237,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -35215,6 +54367,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -35309,6 +54509,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -35391,6 +54639,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -35485,6 +54781,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -35567,6 +54911,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -35661,6 +55053,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -35743,6 +55183,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -35837,6 +55325,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -35919,6 +55455,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -36013,6 +55597,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -36095,6 +55727,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -36189,6 +55869,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -36271,6 +55999,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []
@@ -36365,6 +56141,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -36453,6 +56277,54 @@
                       });
                     }
                     break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
                   case 403:
                     expectDetails = Array.isArray(data) ? data : [data];
                     softExpectDetails = [...expectDetails].sort();
@@ -36535,6 +56407,54 @@
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
                         body: resolvedData,
                         missing: missing || [],
                         extra: extra || []

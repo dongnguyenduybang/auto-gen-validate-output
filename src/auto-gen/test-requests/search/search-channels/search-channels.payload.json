@@ -1,0 +1,38 @@
+[
+    {
+        "body": {
+            "keyword": 123
+        },
+        "expects": [
+            "keyword expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "keyword": "channelname1"
+        },
+        "expects": []
+    },
+    {
+        "body": {},
+        "expects": [
+            "keyword required"
+        ]
+    },
+    {
+        "body": {
+            "keyword": ""
+        },
+        "expects": [
+            "keyword should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "keyword": null
+        },
+        "expects": [
+            "keyword expected string, received null"
+        ]
+    }
+]

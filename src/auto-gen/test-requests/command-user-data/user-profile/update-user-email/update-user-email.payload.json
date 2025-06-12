@@ -1,0 +1,38 @@
+[
+    {
+        "body": {
+            "email": 123
+        },
+        "expects": [
+            "email expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "email": "ziichat@halome.com"
+        },
+        "expects": []
+    },
+    {
+        "body": {},
+        "expects": [
+            "email required"
+        ]
+    },
+    {
+        "body": {
+            "email": ""
+        },
+        "expects": [
+            "email should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "email": null
+        },
+        "expects": [
+            "email expected string, received null"
+        ]
+    }
+]

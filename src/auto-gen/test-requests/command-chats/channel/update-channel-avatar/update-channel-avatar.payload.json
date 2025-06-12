@@ -22,16 +22,6 @@
     {
         "body": {
             "workspaceId": 123,
-            "channelId": "{{channelId}}",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": 123,
             "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
         },
         "expects": [
@@ -42,6 +32,16 @@
         "body": {
             "workspaceId": 123,
             "channelId": "",
+            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "channelId": null,
             "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
         },
         "expects": [
@@ -63,16 +63,6 @@
             "workspaceId": 123,
             "channelId": "{{channelId}}",
             "avatarPath": 123
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": 123,
-            "channelId": "{{channelId}}",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
         },
         "expects": [
             "Could not resolve permission type"
@@ -118,14 +108,6 @@
     {
         "body": {
             "workspaceId": "0",
-            "channelId": "{{channelId}}",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": []
-    },
-    {
-        "body": {
-            "workspaceId": "0",
             "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
         },
         "expects": [
@@ -136,6 +118,16 @@
         "body": {
             "workspaceId": "0",
             "channelId": "",
+            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": null,
             "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
         },
         "expects": [
@@ -161,14 +153,6 @@
         "expects": [
             "avatarPath expected string, received number"
         ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "{{channelId}}",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": []
     },
     {
         "body": {
@@ -211,15 +195,6 @@
     },
     {
         "body": {
-            "channelId": "{{channelId}}",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
             "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
         },
         "expects": [
@@ -229,6 +204,15 @@
     {
         "body": {
             "channelId": "",
+            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": null,
             "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
         },
         "expects": [
@@ -248,15 +232,6 @@
         "body": {
             "channelId": "{{channelId}}",
             "avatarPath": 123
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "channelId": "{{channelId}}",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
         },
         "expects": [
             "Could not resolve permission type"
@@ -302,16 +277,6 @@
     {
         "body": {
             "workspaceId": "",
-            "channelId": "{{channelId}}",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
             "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
         },
         "expects": [
@@ -322,6 +287,16 @@
         "body": {
             "workspaceId": "",
             "channelId": "",
+            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": null,
             "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
         },
         "expects": [
@@ -351,16 +326,6 @@
     {
         "body": {
             "workspaceId": "",
-            "channelId": "{{channelId}}",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
             "channelId": "{{channelId}}"
         },
         "expects": [
@@ -370,6 +335,94 @@
     {
         "body": {
             "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "avatarPath": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "channelId": "{{channelId}}",
+            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "channelId": 123,
+            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "channelId": "",
+            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "channelId": null,
+            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "channelId": "invalid_value",
+            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "channelId": "{{channelId}}",
+            "avatarPath": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "channelId": "{{channelId}}"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
             "channelId": "{{channelId}}",
             "avatarPath": ""
         },
@@ -395,16 +448,6 @@
         },
         "expects": [
             "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "channelId": "{{channelId}}",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Invalid channel"
         ]
     },
     {
@@ -429,6 +472,16 @@
     {
         "body": {
             "workspaceId": "invalid_value",
+            "channelId": null,
+            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "invalid_value",
             "channelId": "invalid_value",
             "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
         },
@@ -441,16 +494,6 @@
             "workspaceId": "invalid_value",
             "channelId": "{{channelId}}",
             "avatarPath": 123
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "channelId": "{{channelId}}",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
         },
         "expects": [
             "Invalid channel"
@@ -479,76 +522,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": 123,
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": 123,
-            "channelId": 123,
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": 123,
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "channelId": 123,
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "channelId": 123,
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "channelId": 123,
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": 123,
             "avatarPath": 123
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": 123,
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
         },
         "expects": [
             "Could not resolve permission type"
@@ -576,163 +550,7 @@
     {
         "body": {
             "workspaceId": "0",
-            "channelId": "{{channelId}}",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": []
-    },
-    {
-        "body": {
-            "workspaceId": 123,
-            "channelId": "{{channelId}}",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "{{channelId}}",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": []
-    },
-    {
-        "body": {
-            "channelId": "{{channelId}}",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "channelId": "{{channelId}}",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "channelId": "{{channelId}}",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "{{channelId}}",
             "avatarPath": 123
-        },
-        "expects": [
-            "avatarPath expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "{{channelId}}",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": []
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "{{channelId}}"
-        },
-        "expects": [
-            "avatarPath required",
-            "avatarPath invalid url"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "{{channelId}}",
-            "avatarPath": ""
-        },
-        "expects": [
-            "avatarPath should not be empty",
-            "avatarPath invalid url"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Unsupported permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": 123,
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Unsupported permission type"
-        ]
-    },
-    {
-        "body": {
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Unsupported permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "avatarPath": 123
-        },
-        "expects": [
-            "Unsupported permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
         },
         "expects": [
             "Unsupported permission type"
@@ -759,76 +577,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": "",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": 123,
-            "channelId": "",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "channelId": "",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "channelId": "",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "channelId": "",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "",
             "avatarPath": 123
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
         },
         "expects": [
             "Could not resolve permission type"
@@ -856,18 +605,8 @@
     {
         "body": {
             "workspaceId": "0",
-            "channelId": "invalid_value",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": 123,
-            "channelId": "invalid_value",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+            "channelId": null,
+            "avatarPath": 123
         },
         "expects": [
             "Could not resolve permission type"
@@ -876,17 +615,7 @@
     {
         "body": {
             "workspaceId": "0",
-            "channelId": "invalid_value",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "channelId": "invalid_value",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+            "channelId": null
         },
         "expects": [
             "Could not resolve permission type"
@@ -894,22 +623,12 @@
     },
     {
         "body": {
-            "workspaceId": "",
-            "channelId": "invalid_value",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+            "workspaceId": "0",
+            "channelId": null,
+            "avatarPath": ""
         },
         "expects": [
             "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "channelId": "invalid_value",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Invalid channel"
         ]
     },
     {
@@ -917,16 +636,6 @@
             "workspaceId": "0",
             "channelId": "invalid_value",
             "avatarPath": 123
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "invalid_value",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
         },
         "expects": [
             "Invalid channel"
@@ -950,434 +659,5 @@
         "expects": [
             "Invalid channel"
         ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "{{channelId}}",
-            "avatarPath": 123
-        },
-        "expects": [
-            "avatarPath expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": 123,
-            "channelId": "{{channelId}}",
-            "avatarPath": 123
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "{{channelId}}",
-            "avatarPath": 123
-        },
-        "expects": [
-            "avatarPath expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "channelId": "{{channelId}}",
-            "avatarPath": 123
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "channelId": "{{channelId}}",
-            "avatarPath": 123
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "channelId": "{{channelId}}",
-            "avatarPath": 123
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": 123,
-            "avatarPath": 123
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "{{channelId}}",
-            "avatarPath": 123
-        },
-        "expects": [
-            "avatarPath expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "avatarPath": 123
-        },
-        "expects": [
-            "Unsupported permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "",
-            "avatarPath": 123
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "invalid_value",
-            "avatarPath": 123
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "{{channelId}}",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": []
-    },
-    {
-        "body": {
-            "workspaceId": 123,
-            "channelId": "{{channelId}}",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "{{channelId}}",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": []
-    },
-    {
-        "body": {
-            "channelId": "{{channelId}}",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "channelId": "{{channelId}}",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "channelId": "{{channelId}}",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": 123,
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "{{channelId}}",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": []
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Unsupported permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "invalid_value",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "{{channelId}}"
-        },
-        "expects": [
-            "avatarPath required",
-            "avatarPath invalid url"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": 123,
-            "channelId": "{{channelId}}"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "{{channelId}}"
-        },
-        "expects": [
-            "avatarPath required",
-            "avatarPath invalid url"
-        ]
-    },
-    {
-        "body": {
-            "channelId": "{{channelId}}"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "channelId": "{{channelId}}"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "channelId": "{{channelId}}"
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": 123
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "{{channelId}}"
-        },
-        "expects": [
-            "avatarPath required",
-            "avatarPath invalid url"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0"
-        },
-        "expects": [
-            "Unsupported permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": ""
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "invalid_value"
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "{{channelId}}",
-            "avatarPath": ""
-        },
-        "expects": [
-            "avatarPath should not be empty",
-            "avatarPath invalid url"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": 123,
-            "channelId": "{{channelId}}",
-            "avatarPath": ""
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "{{channelId}}",
-            "avatarPath": ""
-        },
-        "expects": [
-            "avatarPath should not be empty",
-            "avatarPath invalid url"
-        ]
-    },
-    {
-        "body": {
-            "channelId": "{{channelId}}",
-            "avatarPath": ""
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "channelId": "{{channelId}}",
-            "avatarPath": ""
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "channelId": "{{channelId}}",
-            "avatarPath": ""
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": 123,
-            "avatarPath": ""
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "{{channelId}}",
-            "avatarPath": ""
-        },
-        "expects": [
-            "avatarPath should not be empty",
-            "avatarPath invalid url"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "avatarPath": ""
-        },
-        "expects": [
-            "Unsupported permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "",
-            "avatarPath": ""
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "invalid_value",
-            "avatarPath": ""
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "{{channelId}}",
-            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
-        },
-        "expects": []
     }
 ]

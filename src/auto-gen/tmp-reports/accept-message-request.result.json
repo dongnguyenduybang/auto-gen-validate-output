@@ -1,0 +1,61 @@
+{
+  "path": "/Channel/AcceptMessageRequest",
+  "className": "accept-message-request",
+  "allSteps": [
+    {
+      "type": "response",
+      "status": false,
+      "stepName": "sendDmMessage",
+      "error": "[\n  \"data.message.userId: userId must === 01JXH5SFNXXWMX2DMHE4XCVPJS (actual: 01JXH5SFS99SPWKKA4ZACV9BRB, expected: 01JXH5SFNXXWMX2DMHE4XCVPJS)\"\n]",
+      "caseTitle": "Case 0",
+      "phase": "beforeAll"
+    }
+  ],
+  "failedTests": [],
+  "codedTest": [
+    {
+      "testcase": 1,
+      "code": 403,
+      "body": {
+        "userId": 123
+      }
+    },
+    {
+      "testcase": 2,
+      "code": 201,
+      "body": {
+        "userId": "01JXH5SFS99SPWKKA4ZACV9BRB"
+      }
+    },
+    {
+      "testcase": 3,
+      "code": 403,
+      "body": {}
+    },
+    {
+      "testcase": 4,
+      "code": 403,
+      "body": {
+        "userId": ""
+      }
+    },
+    {
+      "testcase": 5,
+      "code": 403,
+      "body": {
+        "userId": null
+      }
+    },
+    {
+      "testcase": 6,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value"
+      }
+    }
+  ],
+  "passedTests": 6,
+  "totalTests": 6,
+  "logicTests": [],
+  "failedStep": []
+}

@@ -2,6 +2,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 import 'reflect-metadata';
 import {
+  ActionHandler,
   IContext,
   responseClassMap,
   StepResult,
@@ -602,3 +603,120 @@ export const getFilesSwagger = (dirPath: string): string[] => {
 
   return jsonFiles;
 };
+
+export function clearFiles(testType: string): ActionHandler {
+  return async (dtoName) => {
+    const basePath = path.join(__dirname, testType);
+    if (!fs.existsSync(basePath)) {
+      console.error(`${testType} directory not found: ${basePath}`);
+      return;
+    }
+
+    function clearDirectory(dir: string) {
+      const entries = fs.readdirSync(dir, { withFileTypes: true });
+
+      for (const entry of entries) {
+        const fullPath = path.join(dir, entry.name);
+
+        if (entry.isDirectory()) {
+          clearDirectory(fullPath);
+        } else if (
+          entry.name.toLowerCase().includes(dtoName.toLowerCase()) &&
+          entry.name.endsWith('.spec.ts')
+        ) {
+          fs.unlinkSync(fullPath);
+          console.log(`Deleted: ${fullPath}`);
+        }
+      }
+    }
+
+    clearDirectory(basePath);
+  };
+}
+
+export function clearReports(reportType: string): ActionHandler {
+  return async (dtoName) => {
+    const targetDir = path.join(__dirname, reportType, dtoName);
+    if (!fs.existsSync(targetDir)) {
+      console.error(`Report directory not found: ${targetDir}`);
+      return;
+    }
+
+    fs.readdirSync(targetDir)
+      .filter((file) => file.endsWith('.txt'))
+      .forEach((file) => {
+        const filePath = path.join(targetDir, file);
+        fs.unlinkSync(filePath);
+        console.log(`Deleted: ${filePath}`);
+      });
+  };
+}
+
+export function findAllDtoDirectories(parentDir: string): string[] {
+  console.log(parentDir)
+  const fullPath = path.join(__dirname,'..', 'test-requests', parentDir);
+  const result: string[] = [];
+
+  function scanDirectory(currentPath: string, relativePath: string = '') {
+    const entries = fs.readdirSync(currentPath, { withFileTypes: true });
+
+    const hasDtoFile = entries.some(
+      entry => entry.isFile() && 
+      (entry.name.endsWith('.dto.ts') || entry.name.endsWith('.request.ts'))
+    );
+
+    if (hasDtoFile) {
+      const dtoName = entries.find(
+        e => e.isFile() && (e.name.endsWith('.dto.ts') || e.name.endsWith('.request.ts'))
+      )?.name.replace(/\.(dto|request)\.ts$/, '');
+      
+      if (dtoName) {
+        result.push(dtoName);
+      }
+    }
+
+    for (const entry of entries) {
+      if (entry.isDirectory()) {
+        scanDirectory(
+          path.join(currentPath, entry.name),
+          path.join(relativePath, entry.name)
+        );
+      }
+    }
+  }
+
+  scanDirectory(fullPath);
+  return result;
+}
+
+
+export async function handleBulkAction(basePath: string, handlers: ActionHandler[]) {
+  const fullPath = path.join(__dirname, basePath);
+  console.log(`Processing bulk action in directory: ${fullPath}`);
+
+  const directories = getSubDirectories(fullPath).filter(
+    (dir) => !dir.includes('reports'),
+  );
+
+  console.log(`Found ${directories.length} DTO directories:`, directories);
+
+  for (const dir of directories) {
+    for (const handler of handlers) {
+      try {
+        await handler(dir);
+      } catch (error) {
+        console.error(`Handler failed: ${error.message}`);
+      }
+    }
+  }
+}
+
+export function getSubDirectories(dirPath: string): string[] {
+  return fs
+    .readdirSync(dirPath, { withFileTypes: true })
+    .filter(
+      (dirent) =>
+        dirent.isDirectory() && !dirent.name.toLowerCase().includes('report'), // Loại bỏ thư mục report
+    )
+    .map((dirent) => dirent.name);
+}

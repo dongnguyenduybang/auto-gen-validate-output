@@ -5,10 +5,12 @@ import {
   IsArray,
   MinArray,
   isValidURL,
+  IsNotNull,
 } from '../../../../decorator/index';
 
 export class SendInvitationDTO {
   @IsString()
+  @IsNotNull()
   @IsNotEmpty()
   @IsDefined()
   @isValidURL()
@@ -18,5 +20,6 @@ export class SendInvitationDTO {
   @IsNotEmpty()
   @IsDefined()
   @MinArray(1)
+  @IsNotNull()
   userIds: string[] = [];
 }

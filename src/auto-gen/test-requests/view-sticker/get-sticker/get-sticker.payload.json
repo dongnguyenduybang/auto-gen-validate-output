@@ -1,0 +1,60 @@
+[
+    {
+        "body": {
+            "stickerId": 123
+        },
+        "expects": [
+            "stickerId expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91"
+        },
+        "expects": [
+            "stickerId invalid ulid"
+        ]
+    },
+    {
+        "body": {},
+        "expects": [
+            "stickerId required"
+        ]
+    },
+    {
+        "body": {
+            "stickerId": ""
+        },
+        "expects": [
+            "stickerId should not be empty",
+            "stickerId invalid ulid",
+            "Message: This sticker has not been exists."
+        ]
+    },
+    {
+        "body": {
+            "stickerId": null
+        },
+        "expects": [
+            "stickerId expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "stickerId": "invalid_ULID"
+        },
+        "expects": [
+            "stickerId invalid ulid",
+            "Message: This sticker has not been exists."
+        ]
+    },
+    {
+        "body": {
+            "stickerId": "invalid_value"
+        },
+        "expects": [
+            "stickerId invalid ulid",
+            "Message: This sticker has not been exists."
+        ]
+    }
+]

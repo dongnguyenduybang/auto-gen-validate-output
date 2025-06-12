@@ -1,0 +1,56 @@
+[
+    {
+        "body": {
+            "limit": "invalid_number"
+        },
+        "expects": [
+            "limit must be a number conforming to the specified constraints"
+        ]
+    },
+    {
+        "body": {
+            "limit": 0
+        },
+        "expects": [
+            "limit must be at least 1"
+        ]
+    },
+    {
+        "body": {
+            "limit": 501
+        },
+        "expects": [
+            "limit must be at most 500"
+        ]
+    },
+    {
+        "body": {},
+        "expects": [
+            "limit required",
+            "limit must be a number conforming to the specified constraints"
+        ]
+    },
+    {
+        "body": {
+            "limit": ""
+        },
+        "expects": [
+            "limit should not be empty",
+            "limit must be a number conforming to the specified constraints"
+        ]
+    },
+    {
+        "body": {
+            "limit": null
+        },
+        "expects": [
+            "limit must be a number conforming to the specified constraints"
+        ]
+    },
+    {
+        "body": {
+            "limit": 10
+        },
+        "expects": []
+    }
+]
