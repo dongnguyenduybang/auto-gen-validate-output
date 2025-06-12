@@ -126,44 +126,4 @@ export const AcceptInvitationWS = new WSBuilder()
       ),
     },
   ])
-  // .addStepEvents(
-  //     'event join channel',
-  //     VAR.recipient,
-  //     ACTION.ACCEPT_INVITATION,
-  //     [
-  //         {
-  //             type: chain.expect.exact(
-  //                 API_EVENT.halome.v3.chat.MEMBER_JOINED,
-  //             ),
-  //             source: chain.expect.exact({
-  //                 userId: VAR.userId,
-  //                 deviceId: VAR.deviceId,
-  //             }),
-  //             specversion: chain.expect.exact('1.0'),
-  //             version: chain.expect.exact('2.0'),
-  //             data: chain.expect.exact({
-  //                 workspaceId: VAR.workspaceId,
-  //                 channelId: VAR.channelId,
-  //                 joinedUserId: VAR.userId1
-  //             })
-  //         },
-  //         {
-  //             type: chain.expect.exact(API_EVENT.halome.v3.chat.MESSAGE_CREATED),
-  //             source: chain.expect.exact(API_EVENT.halome.cloudevent.system),
-  //             specversion: chain.expect.exact('1.0'),
-  //             version: chain.expect.exact('2.0'),
-  //             data: chain.expect.builder(
-  //                 new MessageDataBuilder()
-  //                     .setMessage({
-  //                         content: SYSTEM_MESSAGE.JOINED_THIS_CHANNEL,
-  //                     })
-  //                     .addMetadata({
-  //                         channelId: VAR.channelId,
-  //                     }),
-
-  //             ),
-  //         },
-
-  //     ]
-  // )
   .execute();

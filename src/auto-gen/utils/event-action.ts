@@ -40,4 +40,11 @@ export const EVENTS_BY_ACTION: Record<
     ],
     minCount: 2,
   },
+  [ACTION.SEND_DM_MESSAGE]: {
+    types: [
+      'com.halome.chat.v3.message.created',
+      'com.halome.chat.v3.unread_messages.updated',
+    ],
+    minCount: 2,
+  }
 };

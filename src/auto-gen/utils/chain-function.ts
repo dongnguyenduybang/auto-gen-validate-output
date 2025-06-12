@@ -69,21 +69,33 @@ export const chain = {
             results.allDifferences.push(...resultNonMatch.differences);
           }
         } else {
-          // expected event system
+          let body, action
           const getLastMsgId =
             actual.data.includes.channelMetadata[0].lastMessageId;
           const getLastChannelId =
             actual.data.includes.channelMetadata[0].channelId;
-          const body = {
-            msgId: getLastMsgId,
-            channelId: getLastChannelId,
-          };
-          // if(actual.action === '')
+          const getLastUserId = actual.data.includes.channelMetadata[0].dmId
+          if (actual.action.find("Dm")) {
+            body = {
+              userId: getLastUserId,
+              messageId: getLastMsgId
+            };
+            action = 'getDmMessage'
+          } else {
+            body = {
+              msgId: getLastMsgId,
+              channelId: getLastChannelId,
+            };
+            action = 'getMessage'
+          }
+          // expected event system
+
+          console.log(body)
 
           const responseApiSystem = await callAPIForSystem(
             body,
             actual.body.resolveHeader,
-            'getMessage',
+            action,
           );
 
           const dataApiSystem = await removeExpectedFields(
