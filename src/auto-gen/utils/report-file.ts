@@ -131,8 +131,8 @@ const requestReportTemplate = (
         ` 🟣 ${index + 1}. Case #${test.testcase}`,
         `     ├─ Status: ${test.code || 'N/A'}`,
         `     ├─ Body: ${JSON.stringify(test.body) || 'None'}`,
-        `     ├─ Actual (Missing): ${test.missing?.join(', ') || 'None'}`,
-        `     ├─ Expected (Extra): ${test.extra?.join(', ') || 'None'}`,
+        `     ├─ Actual: ${test.missing?.join(', ') || 'None'}`,
+        `     ├─ Expected: ${test.extra?.join(', ') || 'None'}`,
         `     └─ Details: ${test.errorDetails || 'No details'}`,
       ].join('\n'),
     ),
@@ -178,13 +178,13 @@ const responseReportTemplate = (
         `   ├─ Error: ${test.error || 'No details'}`,
         ...(test.expected
           ? [
-              `   ├─ Expected: ${JSON.stringify(test.expected, null, 2).split('\n').join('\n      ')}`,
-            ]
+            `   ├─ Expected: ${JSON.stringify(test.expected, null, 2).split('\n').join('\n      ')}`,
+          ]
           : []),
         ...(test.actual
           ? [
-              `   └─ Actual: ${JSON.stringify(test.actual, null, 2).split('\n').join('\n      ')}`,
-            ]
+            `   └─ Actual: ${JSON.stringify(test.actual, null, 2).split('\n').join('\n      ')}`,
+          ]
           : []),
       ].join('\n'),
     ),
@@ -245,51 +245,51 @@ const sagaReportTemplate = (
     '',
     ...(beforeAllFailures.length > 0
       ? [
-          '=== BeforeAll Failures ===',
-          ...beforeAllFailures.map((step, i) => formatStep(step, i)),
-        ]
+        '=== BeforeAll Failures ===',
+        ...beforeAllFailures.map((step, i) => formatStep(step, i)),
+      ]
       : []),
     '',
     ...(Object.keys(beforeEachGroups).length > 0
       ? [
-          '=== BeforeEach Failures ===',
-          ...Object.entries(beforeEachGroups).flatMap(
-            ([caseTitle, failures]) => [
-              `📄 Case: ${caseTitle}`,
-              ...(failures as any[]).map((step, i) => formatStep(step, i)),
-              '',
-            ],
-          ),
-        ]
+        '=== BeforeEach Failures ===',
+        ...Object.entries(beforeEachGroups).flatMap(
+          ([caseTitle, failures]) => [
+            `📄 Case: ${caseTitle}`,
+            ...(failures as any[]).map((step, i) => formatStep(step, i)),
+            '',
+          ],
+        ),
+      ]
       : []),
     '',
     '=== Test Case ===',
     ...(Object.keys(testCaseGroups).length > 0
       ? Object.entries(testCaseGroups).flatMap(([caseTitle, failures]) => [
-          `📄 Case: ${caseTitle}`,
-          ...(failures as any[]).map((step, i) => formatStep(step, i)),
-          '',
-        ])
+        `📄 Case: ${caseTitle}`,
+        ...(failures as any[]).map((step, i) => formatStep(step, i)),
+        '',
+      ])
       : ['✅ All test cases passed']),
     '',
     ...(Object.keys(afterEachGroups).length > 0
       ? [
-          '=== AfterEach Failures ===',
-          ...Object.entries(afterEachGroups).flatMap(
-            ([caseTitle, failures]) => [
-              `📄 Case: ${caseTitle}`,
-              ...(failures as any[]).map((step, i) => formatStep(step, i)),
-              '',
-            ],
-          ),
-        ]
+        '=== AfterEach Failures ===',
+        ...Object.entries(afterEachGroups).flatMap(
+          ([caseTitle, failures]) => [
+            `📄 Case: ${caseTitle}`,
+            ...(failures as any[]).map((step, i) => formatStep(step, i)),
+            '',
+          ],
+        ),
+      ]
       : []),
     '',
     ...(afterAllFailures.length > 0
       ? [
-          '=== AfterAll Failures ===',
-          ...afterAllFailures.map((step, i) => formatStep(step, i)),
-        ]
+        '=== AfterAll Failures ===',
+        ...afterAllFailures.map((step, i) => formatStep(step, i)),
+      ]
       : []),
     '',
     '=== End of Report ===',

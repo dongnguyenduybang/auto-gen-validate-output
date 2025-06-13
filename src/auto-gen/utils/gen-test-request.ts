@@ -139,13 +139,12 @@ async function generateSpecContent(
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -163,13 +162,12 @@ async function generateSpecContent(
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -187,13 +185,12 @@ async function generateSpecContent(
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -209,13 +206,12 @@ async function generateSpecContent(
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
