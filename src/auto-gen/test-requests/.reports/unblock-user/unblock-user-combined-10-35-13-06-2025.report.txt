@@ -1,0 +1,69 @@
+=== Request Test Report for unblock-user ===
+• Host: N/A
+• Endpoint: /UserSetting/UnblockUser
+• Date: 13/06/2025, 10:35:52
+
+=== Execution Steps ===
+
+=== Test Summary ===
+✅ Passed: 0
+❌ Failed: 6
+📊 Total: 6
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 0
+ 🟢 201: 0
+ 🟠 400: 0
+ 🟠 403: 0
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Unique Errors ===
+ 🟣 1. Could not resolve permission type (Occurred: 4 times)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #1
+     ├─ Status: 400
+     ├─ Body: {"targetUserId":123}
+     ├─ Actual (Missing): targetUserId expected string, received number
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 2. Case #2
+     ├─ Status: 400
+     ├─ Body: {"targetUserId":"01JXKNNH7QQ3FTGREM25DT3ZWF"}
+     ├─ Actual (Missing): Invalid target user
+     ├─ Expected (Extra): None
+     └─ Details: No details
+
+ 🟣 3. Case #3
+     ├─ Status: 400
+     ├─ Body: {}
+     ├─ Actual (Missing): targetUserId required
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 4. Case #4
+     ├─ Status: 400
+     ├─ Body: {"targetUserId":""}
+     ├─ Actual (Missing): targetUserId invalid ulid, targetUserId string must contain at least 1 character(s)
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 5. Case #5
+     ├─ Status: 400
+     ├─ Body: {"targetUserId":null}
+     ├─ Actual (Missing): targetUserId expected string, received null
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 6. Case #6
+     ├─ Status: 400
+     ├─ Body: {"targetUserId":"invalid_value"}
+     ├─ Actual (Missing): targetUserId invalid ulid
+     ├─ Expected (Extra): None
+     └─ Details: No details
+
+=== End of Report ===

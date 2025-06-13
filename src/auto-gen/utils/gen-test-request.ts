@@ -173,7 +173,7 @@ async function generateSpecContent(
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -293,7 +293,6 @@ async function generateSpecContent(
             codedTest: [...codedTest],
             passedTests: passedTests,
             totalTests: totalTests,
-            logicTests: [...logicTests],
             failedStep: [...failedStep]
           };
           const reportDir = path.join(__dirname, '../../../../tmp-reports');

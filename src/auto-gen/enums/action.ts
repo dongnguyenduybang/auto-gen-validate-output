@@ -156,8 +156,8 @@ export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
     method: METHOD.POST,
   },
   [ACTION.DELETE_CHANNEL_AVATAR]: {
-    path: APIPath.RingBackTone.SetRingBackTone,
-    method: METHOD.POST,
+    path: APIPath.Channel.DeleteChannelAvatar,
+    method: METHOD.DELETE,
   },
   [ACTION.ACCEPT_MESSAGE_REQUEST]: {
     path: APIPath.Channel.AcceptMessageRequest,
@@ -452,7 +452,7 @@ export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
     method: METHOD.POST,
   },
   [ACTION.DISMISS_AS_ADMIN]: {
-    path: APIPath.Member.AssignAsAdmin,
+    path: APIPath.Member.DismissAsAdmin,
     method: METHOD.POST,
   },
   [ACTION.BAN_FROM_CHANNEL]: {

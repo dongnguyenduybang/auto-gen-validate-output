@@ -1,0 +1,42 @@
+=== Request Test Report for send-invitation ===
+• Host: N/A
+• Endpoint: /Invitation/SendInvitation
+• Date: 13/06/2025, 10:35:52
+
+=== Execution Steps ===
+
+=== Test Summary ===
+✅ Passed: 3
+❌ Failed: 2
+📊 Total: 5
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 0
+ 🟢 201: 1
+ 🟠 400: 2
+ 🟠 403: 0
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Unique Errors ===
+ 🟣 1. invitationLink invalid url (Occurred: 1 time)
+ 🟣 2. invitationLink should not be empty (Occurred: 1 time)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #3
+     ├─ Status: 400
+     ├─ Body: {"userIds":["01JXKM94TG7B904FT5PKWR4JC3"]}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): invitationLink invalid url
+     └─ Details: No details
+
+ 🟣 2. Case #4
+     ├─ Status: 400
+     ├─ Body: {"invitationLink":"","userIds":["01JXKM94TG7B904FT5PKWR4JC3"]}
+     ├─ Actual (Missing): invitationLink string must contain at least 1 character(s)
+     ├─ Expected (Extra): invitationLink should not be empty
+     └─ Details: No details
+
+=== End of Report ===

@@ -26,10 +26,6 @@ function extractCodedTests(result: TestResult): TestResult[] {
   return result.codedTest;
 }
 
-function extractLogicTests(result: TestResult): TestResult[] {
-  return result.logicTests;
-}
-
 function extractFailedSteps(result: TestResult): TestResult[] {
   return result.failedStep;
 }
@@ -67,14 +63,12 @@ function parseTestResults(reportDir: string, files: string[]): TestResult[] {
 function generateSummary(
   codedTests: any[],
   failedTests: any[],
-  passed200: number,
-  passed201: number,
 ) {
   return {
     statusCodes: {
-      200: filterByCode(codedTests, 200).length + passed200,
-      201: passed201,
-      400: filterByCode(failedTests, 400).length, 
+      200: filterByCode(codedTests, 200).length,
+      201: filterByCode(codedTests, 201).length,
+      400: filterByCode(codedTests, 400).length, 
       403: filterByCode(codedTests, 403).length,
       500: filterByCode(failedTests, 500).length,
     },
@@ -112,20 +106,15 @@ async function combineReports(className: string) {
 
   const combinedFailedTests = results.map(extractFailedTests).flat();
   const combinedCodedTest = results.map(extractCodedTests).flat();
-  const combinedLogicTests = results.map(extractLogicTests).flat();
   const combinedFailedStep = results.map(extractFailedSteps).flat();
   const pathRequest = results.map(extractPaths).flat();
 
   const totalPassedTests = sumByField(results, 'passedTests');
   const totalTests = sumByField(results, 'totalTests');
-  const totalPassed200 = sumByField(results, 'passed200');
-  const totalPassed201 = sumByField(results, 'passed201');
 
   const summary = generateSummary(
     combinedCodedTest,
     combinedFailedTests,
-    totalPassed200,
-    totalPassed201,
   );
 
   const reportContent = combinedReportTemplate(
@@ -136,7 +125,6 @@ async function combineReports(className: string) {
     totalPassedTests,
     combinedFailedTests,
     totalTests,
-    combinedLogicTests,
     summary,
     'request',
   );
@@ -154,7 +142,7 @@ async function combineReports(className: string) {
   try {
     fs.writeFileSync(reportPath, reportContent, 'utf-8');
     console.log(`📄 Combined report generated: ${reportPath}`);
-    cleanupTempFiles(reportDir, reportFiles);
+    // cleanupTempFiles(reportDir, reportFiles);
   } catch (error) {
     console.error(`Error writing combined report to ${reportPath}:`, error);
   }
@@ -162,43 +150,59 @@ async function combineReports(className: string) {
 
 export async function generateAllReports(dtoName?: string): Promise<void> {
   const reportDir = path.join(__dirname, '../tmp-reports');
-
+  
+  // Nếu có truyền dtoName => chỉ gen report cho DTO đó
   if (dtoName) {
+    console.log(`Generating report for single DTO: ${dtoName}`);
     await combineReports(dtoName);
-  } else {
-    if (!fs.existsSync(reportDir)) {
-      console.error(`directory ${reportDir} does not exist`);
-      return;
-    }
+    return;
+  }
 
-    const reportFiles = fs.readdirSync(reportDir).filter(isJsonResultFile);
-    if (reportFiles.length === 0) {
-      console.error(`no result files found in ${reportDir}`);
-      return;
-    }
+  // Nếu không có tham số => gen tất cả reports trong tmp-reports
+  console.log(`Generating ALL reports from: ${reportDir}`);
 
-    const dtoMap: Record<string, string[]> = {};
-    for (let i = 0; i < reportFiles.length; i++) {
-      const file = reportFiles[i];
-      const match = file.endsWith('result.json');
-      if (match) {
-        const name = match[1];
-        if (!dtoMap[name]) {
-          dtoMap[name] = [];
-        }
-        dtoMap[name].push(file);
-      }
-    }
+  if (!fs.existsSync(reportDir)) {
+    console.error(`❌ Directory ${reportDir} does not exist!`);
+    return;
+  }
 
-    const dtoNames = Object.keys(dtoMap);
-    for (let j = 0; j < dtoNames.length; j++) {
-      const name = dtoNames[j];
-      console.log(`generating report for DTO: ${name}`);
-      try {
-        await combineReports(name);
-      } catch (error) {
-        console.error(`error generating report for ${name}:`, error);
-      }
+  // Lấy tất cả file JSON trong thư mục
+  const allFiles = fs.readdirSync(reportDir);
+  const jsonFiles = allFiles.filter(file => file.endsWith('.json'));
+
+  if (jsonFiles.length === 0) {
+    console.error(`❌ No JSON files found in ${reportDir}!`);
+    return;
+  }
+
+  console.log(`📁 Found ${jsonFiles.length} JSON files to process:`);
+  jsonFiles.forEach(file => console.log(`- ${file}`));
+
+  // Tạo Map để nhóm các file theo DTO (nếu cần)
+  const dtoMap: Record<string, string[]> = {};
+
+  for (const file of jsonFiles) {
+    // Giả sử tên file có dạng: "dtoName-report.json" hoặc "dtoName.json"
+const dtoName = file.split('.')[0]; // Lấy phần trước dấu '.' đầu tiên
+    
+    if (!dtoMap[dtoName]) {
+      dtoMap[dtoName] = [];
+    }
+    dtoMap[dtoName].push(file);
+  }
+
+  // Gen report cho từng DTO
+  for (const [dtoName, files] of Object.entries(dtoMap)) {
+    console.log(`\n🚀 Generating report for DTO: ${dtoName}`);
+    console.log(`📄 Files: ${files.join(', ')}`);
+    
+    try {
+      await combineReports(dtoName);
+      console.log(`✅ Successfully generated report for ${dtoName}`);
+    } catch (error) {
+      console.error(`❌ Failed to generate report for ${dtoName}:`, error);
     }
   }
+
+  console.log('\n🎉 All reports generated successfully!');
 }

@@ -139,10 +139,7 @@ export interface TestResult {
   codedTest: any[];
   passedTests: number;
   totalTests: number;
-  logicTests: any[];
   failedStep: any[];
-  passed200?: number;
-  passed201?: number;
 }
 
 export type ActionHandler = (dtoName: string) => Promise<void> | void;

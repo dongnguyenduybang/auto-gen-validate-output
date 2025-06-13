@@ -12,9 +12,9 @@ export const CancelFriendRequestRequest: RequestTestSuite = {
       beforeAll: [
         {
           action: ACTION.ADD_FRIEND,
-          headers: HEADER_LIST.create({ token: VAR.token1 }),
+          headers: HEADER_LIST.create({ token: VAR.token }),
           body: {
-            userId: VAR.userId
+            userId: VAR.userId1
           },
         }
       ],

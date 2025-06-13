@@ -13,7 +13,15 @@ export const DeleteUserVisitProfileRequest: RequestTestSuite = {
     },
     options: [
         {
-            beforeAll: [],
+            beforeAll: [
+                {
+                    action: ACTION.VISIT_PROFILE,
+                    headers: HEADER_LIST.create({ token: VAR.token1 }),
+                    body: {
+                        userId: VAR.userId
+                    },
+                }
+            ],
             beforeEach: [],
             afterEach: [],
             afterAll: [],

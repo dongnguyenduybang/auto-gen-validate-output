@@ -133,7 +133,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -269,7 +269,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -405,7 +405,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -541,7 +541,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -677,7 +677,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -813,7 +813,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -949,7 +949,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -1085,7 +1085,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -1221,7 +1221,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -1290,8 +1290,144 @@
               }
             });
 
-            it('Test case #10 should return errors [] when body {"workspaceId":"0","channelId":"{{channelId}}","code":"{{code}}"}', async () => {
+            it('Test case #10 should return errors ["Could not resolve permission type"] when body {"workspaceId":123,"channelId":"{{channelId}}","code":null}', async () => {
               testNumber = 10;
+              totalTests++;
+              const payloadObj = {"workspaceId":123,"channelId":"{{channelId}}","code":null};
+              resolvedData = resolveVariables(payloadObj, globalContext);
+              
+              try {
+                const response = await resolveCallAPI(
+                  "revokeInvitation",
+                  {"x-session-token":"{{token}}"},
+                  {"workspaceId":123,"channelId":"{{channelId}}","code":null},
+                  contextData
+                );
+                const data = response.data;
+                const expectJson = ["Could not resolve permission type"].sort();
+
+                let expectDetails;
+                let softExpectDetails;
+                switch (response.status) {
+                  case 200:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                  case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                  case 403:
+                    expectDetails = Array.isArray(data) ? data : [data];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                  case 500:
+                    failedTests.push({
+                      testcase: testNumber,
+                      code: 500,
+                      errorDetails: expectJson,
+                    });
+                    break;
+                  default:
+                    failedTests.push({
+                      testcase: testNumber,
+                      code: response.status,
+                      errorDetails: 'Unexpected status code'
+                    });
+                }
+              } catch (error) {
+                console.error('Error in test case #' + testNumber, error);
+                failedTests.push({
+                  testcase: testNumber,
+                  error: error.message
+                });
+              }
+            });
+
+            it('Test case #11 should return errors [] when body {"workspaceId":"0","channelId":"{{channelId}}","code":"{{code}}"}', async () => {
+              testNumber = 11;
               totalTests++;
               const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","code":"{{code}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -1357,7 +1493,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -1426,8 +1562,8 @@
               }
             });
 
-            it('Test case #11 should return errors ["Could not resolve permission type"] when body {"workspaceId":"0","channelId":123,"code":"{{code}}"}', async () => {
-              testNumber = 11;
+            it('Test case #12 should return errors ["Could not resolve permission type"] when body {"workspaceId":"0","channelId":123,"code":"{{code}}"}', async () => {
+              testNumber = 12;
               totalTests++;
               const payloadObj = {"workspaceId":"0","channelId":123,"code":"{{code}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -1493,7 +1629,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -1562,8 +1698,8 @@
               }
             });
 
-            it('Test case #12 should return errors ["Unsupported permission type"] when body {"workspaceId":"0","code":"{{code}}"}', async () => {
-              testNumber = 12;
+            it('Test case #13 should return errors ["Unsupported permission type"] when body {"workspaceId":"0","code":"{{code}}"}', async () => {
+              testNumber = 13;
               totalTests++;
               const payloadObj = {"workspaceId":"0","code":"{{code}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -1629,7 +1765,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -1698,8 +1834,8 @@
               }
             });
 
-            it('Test case #13 should return errors ["Could not resolve permission type"] when body {"workspaceId":"0","channelId":"","code":"{{code}}"}', async () => {
-              testNumber = 13;
+            it('Test case #14 should return errors ["Could not resolve permission type"] when body {"workspaceId":"0","channelId":"","code":"{{code}}"}', async () => {
+              testNumber = 14;
               totalTests++;
               const payloadObj = {"workspaceId":"0","channelId":"","code":"{{code}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -1765,7 +1901,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -1834,8 +1970,8 @@
               }
             });
 
-            it('Test case #14 should return errors ["Could not resolve permission type"] when body {"workspaceId":"0","channelId":null,"code":"{{code}}"}', async () => {
-              testNumber = 14;
+            it('Test case #15 should return errors ["Could not resolve permission type"] when body {"workspaceId":"0","channelId":null,"code":"{{code}}"}', async () => {
+              testNumber = 15;
               totalTests++;
               const payloadObj = {"workspaceId":"0","channelId":null,"code":"{{code}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -1901,7 +2037,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -1970,8 +2106,8 @@
               }
             });
 
-            it('Test case #15 should return errors ["Invalid channel"] when body {"workspaceId":"0","channelId":"invalid_value","code":"{{code}}"}', async () => {
-              testNumber = 15;
+            it('Test case #16 should return errors ["Invalid channel"] when body {"workspaceId":"0","channelId":"invalid_value","code":"{{code}}"}', async () => {
+              testNumber = 16;
               totalTests++;
               const payloadObj = {"workspaceId":"0","channelId":"invalid_value","code":"{{code}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -2037,7 +2173,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -2106,8 +2242,8 @@
               }
             });
 
-            it('Test case #16 should return errors ["code expected string,received number"] when body {"workspaceId":"0","channelId":"{{channelId}}","code":123}', async () => {
-              testNumber = 16;
+            it('Test case #17 should return errors ["code expected string,received number"] when body {"workspaceId":"0","channelId":"{{channelId}}","code":123}', async () => {
+              testNumber = 17;
               totalTests++;
               const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","code":123};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -2173,7 +2309,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -2242,8 +2378,8 @@
               }
             });
 
-            it('Test case #17 should return errors ["code required"] when body {"workspaceId":"0","channelId":"{{channelId}}"}', async () => {
-              testNumber = 17;
+            it('Test case #18 should return errors ["code required"] when body {"workspaceId":"0","channelId":"{{channelId}}"}', async () => {
+              testNumber = 18;
               totalTests++;
               const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -2309,7 +2445,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -2378,8 +2514,8 @@
               }
             });
 
-            it('Test case #18 should return errors ["code should not be empty"] when body {"workspaceId":"0","channelId":"{{channelId}}","code":""}', async () => {
-              testNumber = 18;
+            it('Test case #19 should return errors ["code should not be empty"] when body {"workspaceId":"0","channelId":"{{channelId}}","code":""}', async () => {
+              testNumber = 19;
               totalTests++;
               const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","code":""};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -2445,7 +2581,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -2514,8 +2650,144 @@
               }
             });
 
-            it('Test case #19 should return errors ["Could not resolve permission type"] when body {"channelId":"{{channelId}}","code":"{{code}}"}', async () => {
-              testNumber = 19;
+            it('Test case #20 should return errors ["code expected string,received null"] when body {"workspaceId":"0","channelId":"{{channelId}}","code":null}', async () => {
+              testNumber = 20;
+              totalTests++;
+              const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","code":null};
+              resolvedData = resolveVariables(payloadObj, globalContext);
+              
+              try {
+                const response = await resolveCallAPI(
+                  "revokeInvitation",
+                  {"x-session-token":"{{token}}"},
+                  {"workspaceId":"0","channelId":"{{channelId}}","code":null},
+                  contextData
+                );
+                const data = response.data;
+                const expectJson = ["code expected string, received null"].sort();
+
+                let expectDetails;
+                let softExpectDetails;
+                switch (response.status) {
+                  case 200:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                  case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                  case 403:
+                    expectDetails = Array.isArray(data) ? data : [data];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                  case 500:
+                    failedTests.push({
+                      testcase: testNumber,
+                      code: 500,
+                      errorDetails: expectJson,
+                    });
+                    break;
+                  default:
+                    failedTests.push({
+                      testcase: testNumber,
+                      code: response.status,
+                      errorDetails: 'Unexpected status code'
+                    });
+                }
+              } catch (error) {
+                console.error('Error in test case #' + testNumber, error);
+                failedTests.push({
+                  testcase: testNumber,
+                  error: error.message
+                });
+              }
+            });
+
+            it('Test case #21 should return errors ["Could not resolve permission type"] when body {"channelId":"{{channelId}}","code":"{{code}}"}', async () => {
+              testNumber = 21;
               totalTests++;
               const payloadObj = {"channelId":"{{channelId}}","code":"{{code}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -2581,7 +2853,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -2650,8 +2922,8 @@
               }
             });
 
-            it('Test case #20 should return errors ["Could not resolve permission type"] when body {"channelId":123,"code":"{{code}}"}', async () => {
-              testNumber = 20;
+            it('Test case #22 should return errors ["Could not resolve permission type"] when body {"channelId":123,"code":"{{code}}"}', async () => {
+              testNumber = 22;
               totalTests++;
               const payloadObj = {"channelId":123,"code":"{{code}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -2717,7 +2989,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -2786,8 +3058,8 @@
               }
             });
 
-            it('Test case #21 should return errors ["Could not resolve permission type"] when body {"code":"{{code}}"}', async () => {
-              testNumber = 21;
+            it('Test case #23 should return errors ["Could not resolve permission type"] when body {"code":"{{code}}"}', async () => {
+              testNumber = 23;
               totalTests++;
               const payloadObj = {"code":"{{code}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -2853,7 +3125,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -2922,8 +3194,8 @@
               }
             });
 
-            it('Test case #22 should return errors ["Could not resolve permission type"] when body {"channelId":"","code":"{{code}}"}', async () => {
-              testNumber = 22;
+            it('Test case #24 should return errors ["Could not resolve permission type"] when body {"channelId":"","code":"{{code}}"}', async () => {
+              testNumber = 24;
               totalTests++;
               const payloadObj = {"channelId":"","code":"{{code}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -2989,7 +3261,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -3058,8 +3330,8 @@
               }
             });
 
-            it('Test case #23 should return errors ["Could not resolve permission type"] when body {"channelId":null,"code":"{{code}}"}', async () => {
-              testNumber = 23;
+            it('Test case #25 should return errors ["Could not resolve permission type"] when body {"channelId":null,"code":"{{code}}"}', async () => {
+              testNumber = 25;
               totalTests++;
               const payloadObj = {"channelId":null,"code":"{{code}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -3125,7 +3397,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -3194,8 +3466,8 @@
               }
             });
 
-            it('Test case #24 should return errors ["Could not resolve permission type"] when body {"channelId":"invalid_value","code":"{{code}}"}', async () => {
-              testNumber = 24;
+            it('Test case #26 should return errors ["Could not resolve permission type"] when body {"channelId":"invalid_value","code":"{{code}}"}', async () => {
+              testNumber = 26;
               totalTests++;
               const payloadObj = {"channelId":"invalid_value","code":"{{code}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -3261,7 +3533,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -3330,8 +3602,8 @@
               }
             });
 
-            it('Test case #25 should return errors ["Could not resolve permission type"] when body {"channelId":"{{channelId}}","code":123}', async () => {
-              testNumber = 25;
+            it('Test case #27 should return errors ["Could not resolve permission type"] when body {"channelId":"{{channelId}}","code":123}', async () => {
+              testNumber = 27;
               totalTests++;
               const payloadObj = {"channelId":"{{channelId}}","code":123};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -3397,7 +3669,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -3466,8 +3738,8 @@
               }
             });
 
-            it('Test case #26 should return errors ["Could not resolve permission type"] when body {"channelId":"{{channelId}}"}', async () => {
-              testNumber = 26;
+            it('Test case #28 should return errors ["Could not resolve permission type"] when body {"channelId":"{{channelId}}"}', async () => {
+              testNumber = 28;
               totalTests++;
               const payloadObj = {"channelId":"{{channelId}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -3533,7 +3805,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -3602,8 +3874,8 @@
               }
             });
 
-            it('Test case #27 should return errors ["Could not resolve permission type"] when body {"channelId":"{{channelId}}","code":""}', async () => {
-              testNumber = 27;
+            it('Test case #29 should return errors ["Could not resolve permission type"] when body {"channelId":"{{channelId}}","code":""}', async () => {
+              testNumber = 29;
               totalTests++;
               const payloadObj = {"channelId":"{{channelId}}","code":""};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -3669,7 +3941,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -3738,8 +4010,144 @@
               }
             });
 
-            it('Test case #28 should return errors ["Could not resolve permission type"] when body {"workspaceId":"","channelId":"{{channelId}}","code":"{{code}}"}', async () => {
-              testNumber = 28;
+            it('Test case #30 should return errors ["Could not resolve permission type"] when body {"channelId":"{{channelId}}","code":null}', async () => {
+              testNumber = 30;
+              totalTests++;
+              const payloadObj = {"channelId":"{{channelId}}","code":null};
+              resolvedData = resolveVariables(payloadObj, globalContext);
+              
+              try {
+                const response = await resolveCallAPI(
+                  "revokeInvitation",
+                  {"x-session-token":"{{token}}"},
+                  {"channelId":"{{channelId}}","code":null},
+                  contextData
+                );
+                const data = response.data;
+                const expectJson = ["Could not resolve permission type"].sort();
+
+                let expectDetails;
+                let softExpectDetails;
+                switch (response.status) {
+                  case 200:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                  case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                  case 403:
+                    expectDetails = Array.isArray(data) ? data : [data];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                  case 500:
+                    failedTests.push({
+                      testcase: testNumber,
+                      code: 500,
+                      errorDetails: expectJson,
+                    });
+                    break;
+                  default:
+                    failedTests.push({
+                      testcase: testNumber,
+                      code: response.status,
+                      errorDetails: 'Unexpected status code'
+                    });
+                }
+              } catch (error) {
+                console.error('Error in test case #' + testNumber, error);
+                failedTests.push({
+                  testcase: testNumber,
+                  error: error.message
+                });
+              }
+            });
+
+            it('Test case #31 should return errors ["Could not resolve permission type"] when body {"workspaceId":"","channelId":"{{channelId}}","code":"{{code}}"}', async () => {
+              testNumber = 31;
               totalTests++;
               const payloadObj = {"workspaceId":"","channelId":"{{channelId}}","code":"{{code}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -3805,7 +4213,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -3874,8 +4282,8 @@
               }
             });
 
-            it('Test case #29 should return errors ["Could not resolve permission type"] when body {"workspaceId":"","channelId":123,"code":"{{code}}"}', async () => {
-              testNumber = 29;
+            it('Test case #32 should return errors ["Could not resolve permission type"] when body {"workspaceId":"","channelId":123,"code":"{{code}}"}', async () => {
+              testNumber = 32;
               totalTests++;
               const payloadObj = {"workspaceId":"","channelId":123,"code":"{{code}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -3941,7 +4349,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -4010,8 +4418,8 @@
               }
             });
 
-            it('Test case #30 should return errors ["Could not resolve permission type"] when body {"workspaceId":"","code":"{{code}}"}', async () => {
-              testNumber = 30;
+            it('Test case #33 should return errors ["Could not resolve permission type"] when body {"workspaceId":"","code":"{{code}}"}', async () => {
+              testNumber = 33;
               totalTests++;
               const payloadObj = {"workspaceId":"","code":"{{code}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -4077,7 +4485,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -4146,8 +4554,8 @@
               }
             });
 
-            it('Test case #31 should return errors ["Could not resolve permission type"] when body {"workspaceId":"","channelId":"","code":"{{code}}"}', async () => {
-              testNumber = 31;
+            it('Test case #34 should return errors ["Could not resolve permission type"] when body {"workspaceId":"","channelId":"","code":"{{code}}"}', async () => {
+              testNumber = 34;
               totalTests++;
               const payloadObj = {"workspaceId":"","channelId":"","code":"{{code}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -4213,7 +4621,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -4282,8 +4690,8 @@
               }
             });
 
-            it('Test case #32 should return errors ["Could not resolve permission type"] when body {"workspaceId":"","channelId":null,"code":"{{code}}"}', async () => {
-              testNumber = 32;
+            it('Test case #35 should return errors ["Could not resolve permission type"] when body {"workspaceId":"","channelId":null,"code":"{{code}}"}', async () => {
+              testNumber = 35;
               totalTests++;
               const payloadObj = {"workspaceId":"","channelId":null,"code":"{{code}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -4349,7 +4757,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -4418,8 +4826,8 @@
               }
             });
 
-            it('Test case #33 should return errors ["Could not resolve permission type"] when body {"workspaceId":"","channelId":"invalid_value","code":"{{code}}"}', async () => {
-              testNumber = 33;
+            it('Test case #36 should return errors ["Could not resolve permission type"] when body {"workspaceId":"","channelId":"invalid_value","code":"{{code}}"}', async () => {
+              testNumber = 36;
               totalTests++;
               const payloadObj = {"workspaceId":"","channelId":"invalid_value","code":"{{code}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -4485,7 +4893,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -4554,8 +4962,8 @@
               }
             });
 
-            it('Test case #34 should return errors ["Could not resolve permission type"] when body {"workspaceId":"","channelId":"{{channelId}}","code":123}', async () => {
-              testNumber = 34;
+            it('Test case #37 should return errors ["Could not resolve permission type"] when body {"workspaceId":"","channelId":"{{channelId}}","code":123}', async () => {
+              testNumber = 37;
               totalTests++;
               const payloadObj = {"workspaceId":"","channelId":"{{channelId}}","code":123};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -4621,7 +5029,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -4690,8 +5098,8 @@
               }
             });
 
-            it('Test case #35 should return errors ["Could not resolve permission type"] when body {"workspaceId":"","channelId":"{{channelId}}"}', async () => {
-              testNumber = 35;
+            it('Test case #38 should return errors ["Could not resolve permission type"] when body {"workspaceId":"","channelId":"{{channelId}}"}', async () => {
+              testNumber = 38;
               totalTests++;
               const payloadObj = {"workspaceId":"","channelId":"{{channelId}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -4757,7 +5165,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -4826,8 +5234,8 @@
               }
             });
 
-            it('Test case #36 should return errors ["Could not resolve permission type"] when body {"workspaceId":"","channelId":"{{channelId}}","code":""}', async () => {
-              testNumber = 36;
+            it('Test case #39 should return errors ["Could not resolve permission type"] when body {"workspaceId":"","channelId":"{{channelId}}","code":""}', async () => {
+              testNumber = 39;
               totalTests++;
               const payloadObj = {"workspaceId":"","channelId":"{{channelId}}","code":""};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -4893,7 +5301,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -4962,8 +5370,144 @@
               }
             });
 
-            it('Test case #37 should return errors ["Could not resolve permission type"] when body {"workspaceId":null,"channelId":"{{channelId}}","code":"{{code}}"}', async () => {
-              testNumber = 37;
+            it('Test case #40 should return errors ["Could not resolve permission type"] when body {"workspaceId":"","channelId":"{{channelId}}","code":null}', async () => {
+              testNumber = 40;
+              totalTests++;
+              const payloadObj = {"workspaceId":"","channelId":"{{channelId}}","code":null};
+              resolvedData = resolveVariables(payloadObj, globalContext);
+              
+              try {
+                const response = await resolveCallAPI(
+                  "revokeInvitation",
+                  {"x-session-token":"{{token}}"},
+                  {"workspaceId":"","channelId":"{{channelId}}","code":null},
+                  contextData
+                );
+                const data = response.data;
+                const expectJson = ["Could not resolve permission type"].sort();
+
+                let expectDetails;
+                let softExpectDetails;
+                switch (response.status) {
+                  case 200:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                  case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                  case 403:
+                    expectDetails = Array.isArray(data) ? data : [data];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                  case 500:
+                    failedTests.push({
+                      testcase: testNumber,
+                      code: 500,
+                      errorDetails: expectJson,
+                    });
+                    break;
+                  default:
+                    failedTests.push({
+                      testcase: testNumber,
+                      code: response.status,
+                      errorDetails: 'Unexpected status code'
+                    });
+                }
+              } catch (error) {
+                console.error('Error in test case #' + testNumber, error);
+                failedTests.push({
+                  testcase: testNumber,
+                  error: error.message
+                });
+              }
+            });
+
+            it('Test case #41 should return errors ["Could not resolve permission type"] when body {"workspaceId":null,"channelId":"{{channelId}}","code":"{{code}}"}', async () => {
+              testNumber = 41;
               totalTests++;
               const payloadObj = {"workspaceId":null,"channelId":"{{channelId}}","code":"{{code}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -5029,7 +5573,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -5098,8 +5642,8 @@
               }
             });
 
-            it('Test case #38 should return errors ["Could not resolve permission type"] when body {"workspaceId":null,"channelId":123,"code":"{{code}}"}', async () => {
-              testNumber = 38;
+            it('Test case #42 should return errors ["Could not resolve permission type"] when body {"workspaceId":null,"channelId":123,"code":"{{code}}"}', async () => {
+              testNumber = 42;
               totalTests++;
               const payloadObj = {"workspaceId":null,"channelId":123,"code":"{{code}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -5165,7 +5709,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -5234,8 +5778,8 @@
               }
             });
 
-            it('Test case #39 should return errors ["Could not resolve permission type"] when body {"workspaceId":null,"code":"{{code}}"}', async () => {
-              testNumber = 39;
+            it('Test case #43 should return errors ["Could not resolve permission type"] when body {"workspaceId":null,"code":"{{code}}"}', async () => {
+              testNumber = 43;
               totalTests++;
               const payloadObj = {"workspaceId":null,"code":"{{code}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -5301,7 +5845,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -5370,8 +5914,8 @@
               }
             });
 
-            it('Test case #40 should return errors ["Could not resolve permission type"] when body {"workspaceId":null,"channelId":"","code":"{{code}}"}', async () => {
-              testNumber = 40;
+            it('Test case #44 should return errors ["Could not resolve permission type"] when body {"workspaceId":null,"channelId":"","code":"{{code}}"}', async () => {
+              testNumber = 44;
               totalTests++;
               const payloadObj = {"workspaceId":null,"channelId":"","code":"{{code}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -5437,7 +5981,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -5506,8 +6050,8 @@
               }
             });
 
-            it('Test case #41 should return errors ["Could not resolve permission type"] when body {"workspaceId":null,"channelId":null,"code":"{{code}}"}', async () => {
-              testNumber = 41;
+            it('Test case #45 should return errors ["Could not resolve permission type"] when body {"workspaceId":null,"channelId":null,"code":"{{code}}"}', async () => {
+              testNumber = 45;
               totalTests++;
               const payloadObj = {"workspaceId":null,"channelId":null,"code":"{{code}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -5573,7 +6117,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -5642,8 +6186,8 @@
               }
             });
 
-            it('Test case #42 should return errors ["Could not resolve permission type"] when body {"workspaceId":null,"channelId":"invalid_value","code":"{{code}}"}', async () => {
-              testNumber = 42;
+            it('Test case #46 should return errors ["Could not resolve permission type"] when body {"workspaceId":null,"channelId":"invalid_value","code":"{{code}}"}', async () => {
+              testNumber = 46;
               totalTests++;
               const payloadObj = {"workspaceId":null,"channelId":"invalid_value","code":"{{code}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -5709,7 +6253,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -5778,8 +6322,8 @@
               }
             });
 
-            it('Test case #43 should return errors ["Could not resolve permission type"] when body {"workspaceId":null,"channelId":"{{channelId}}","code":123}', async () => {
-              testNumber = 43;
+            it('Test case #47 should return errors ["Could not resolve permission type"] when body {"workspaceId":null,"channelId":"{{channelId}}","code":123}', async () => {
+              testNumber = 47;
               totalTests++;
               const payloadObj = {"workspaceId":null,"channelId":"{{channelId}}","code":123};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -5845,7 +6389,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -5914,8 +6458,8 @@
               }
             });
 
-            it('Test case #44 should return errors ["Could not resolve permission type"] when body {"workspaceId":null,"channelId":"{{channelId}}"}', async () => {
-              testNumber = 44;
+            it('Test case #48 should return errors ["Could not resolve permission type"] when body {"workspaceId":null,"channelId":"{{channelId}}"}', async () => {
+              testNumber = 48;
               totalTests++;
               const payloadObj = {"workspaceId":null,"channelId":"{{channelId}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -5981,7 +6525,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -6050,8 +6594,8 @@
               }
             });
 
-            it('Test case #45 should return errors ["Could not resolve permission type"] when body {"workspaceId":null,"channelId":"{{channelId}}","code":""}', async () => {
-              testNumber = 45;
+            it('Test case #49 should return errors ["Could not resolve permission type"] when body {"workspaceId":null,"channelId":"{{channelId}}","code":""}', async () => {
+              testNumber = 49;
               totalTests++;
               const payloadObj = {"workspaceId":null,"channelId":"{{channelId}}","code":""};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -6117,7 +6661,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -6186,8 +6730,144 @@
               }
             });
 
-            it('Test case #46 should return errors ["Invalid channel"] when body {"workspaceId":"invalid_value","channelId":"{{channelId}}","code":"{{code}}"}', async () => {
-              testNumber = 46;
+            it('Test case #50 should return errors ["Could not resolve permission type"] when body {"workspaceId":null,"channelId":"{{channelId}}","code":null}', async () => {
+              testNumber = 50;
+              totalTests++;
+              const payloadObj = {"workspaceId":null,"channelId":"{{channelId}}","code":null};
+              resolvedData = resolveVariables(payloadObj, globalContext);
+              
+              try {
+                const response = await resolveCallAPI(
+                  "revokeInvitation",
+                  {"x-session-token":"{{token}}"},
+                  {"workspaceId":null,"channelId":"{{channelId}}","code":null},
+                  contextData
+                );
+                const data = response.data;
+                const expectJson = ["Could not resolve permission type"].sort();
+
+                let expectDetails;
+                let softExpectDetails;
+                switch (response.status) {
+                  case 200:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                  case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                  case 403:
+                    expectDetails = Array.isArray(data) ? data : [data];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                  case 500:
+                    failedTests.push({
+                      testcase: testNumber,
+                      code: 500,
+                      errorDetails: expectJson,
+                    });
+                    break;
+                  default:
+                    failedTests.push({
+                      testcase: testNumber,
+                      code: response.status,
+                      errorDetails: 'Unexpected status code'
+                    });
+                }
+              } catch (error) {
+                console.error('Error in test case #' + testNumber, error);
+                failedTests.push({
+                  testcase: testNumber,
+                  error: error.message
+                });
+              }
+            });
+
+            it('Test case #51 should return errors ["Invalid channel"] when body {"workspaceId":"invalid_value","channelId":"{{channelId}}","code":"{{code}}"}', async () => {
+              testNumber = 51;
               totalTests++;
               const payloadObj = {"workspaceId":"invalid_value","channelId":"{{channelId}}","code":"{{code}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -6253,7 +6933,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -6322,8 +7002,8 @@
               }
             });
 
-            it('Test case #47 should return errors ["Could not resolve permission type"] when body {"workspaceId":"invalid_value","channelId":123,"code":"{{code}}"}', async () => {
-              testNumber = 47;
+            it('Test case #52 should return errors ["Could not resolve permission type"] when body {"workspaceId":"invalid_value","channelId":123,"code":"{{code}}"}', async () => {
+              testNumber = 52;
               totalTests++;
               const payloadObj = {"workspaceId":"invalid_value","channelId":123,"code":"{{code}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -6389,7 +7069,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -6458,8 +7138,8 @@
               }
             });
 
-            it('Test case #48 should return errors ["Unsupported permission type"] when body {"workspaceId":"invalid_value","code":"{{code}}"}', async () => {
-              testNumber = 48;
+            it('Test case #53 should return errors ["Unsupported permission type"] when body {"workspaceId":"invalid_value","code":"{{code}}"}', async () => {
+              testNumber = 53;
               totalTests++;
               const payloadObj = {"workspaceId":"invalid_value","code":"{{code}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -6525,7 +7205,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -6594,8 +7274,8 @@
               }
             });
 
-            it('Test case #49 should return errors ["Could not resolve permission type"] when body {"workspaceId":"invalid_value","channelId":"","code":"{{code}}"}', async () => {
-              testNumber = 49;
+            it('Test case #54 should return errors ["Could not resolve permission type"] when body {"workspaceId":"invalid_value","channelId":"","code":"{{code}}"}', async () => {
+              testNumber = 54;
               totalTests++;
               const payloadObj = {"workspaceId":"invalid_value","channelId":"","code":"{{code}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -6661,7 +7341,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -6730,8 +7410,8 @@
               }
             });
 
-            it('Test case #50 should return errors ["Could not resolve permission type"] when body {"workspaceId":"invalid_value","channelId":null,"code":"{{code}}"}', async () => {
-              testNumber = 50;
+            it('Test case #55 should return errors ["Could not resolve permission type"] when body {"workspaceId":"invalid_value","channelId":null,"code":"{{code}}"}', async () => {
+              testNumber = 55;
               totalTests++;
               const payloadObj = {"workspaceId":"invalid_value","channelId":null,"code":"{{code}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -6797,7 +7477,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -6866,8 +7546,8 @@
               }
             });
 
-            it('Test case #51 should return errors ["Invalid channel"] when body {"workspaceId":"invalid_value","channelId":"invalid_value","code":"{{code}}"}', async () => {
-              testNumber = 51;
+            it('Test case #56 should return errors ["Invalid channel"] when body {"workspaceId":"invalid_value","channelId":"invalid_value","code":"{{code}}"}', async () => {
+              testNumber = 56;
               totalTests++;
               const payloadObj = {"workspaceId":"invalid_value","channelId":"invalid_value","code":"{{code}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -6933,7 +7613,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -7002,8 +7682,8 @@
               }
             });
 
-            it('Test case #52 should return errors ["Invalid channel"] when body {"workspaceId":"invalid_value","channelId":"{{channelId}}","code":123}', async () => {
-              testNumber = 52;
+            it('Test case #57 should return errors ["Invalid channel"] when body {"workspaceId":"invalid_value","channelId":"{{channelId}}","code":123}', async () => {
+              testNumber = 57;
               totalTests++;
               const payloadObj = {"workspaceId":"invalid_value","channelId":"{{channelId}}","code":123};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -7069,7 +7749,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -7138,8 +7818,8 @@
               }
             });
 
-            it('Test case #53 should return errors ["Invalid channel"] when body {"workspaceId":"invalid_value","channelId":"{{channelId}}"}', async () => {
-              testNumber = 53;
+            it('Test case #58 should return errors ["Invalid channel"] when body {"workspaceId":"invalid_value","channelId":"{{channelId}}"}', async () => {
+              testNumber = 58;
               totalTests++;
               const payloadObj = {"workspaceId":"invalid_value","channelId":"{{channelId}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -7205,7 +7885,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -7274,8 +7954,8 @@
               }
             });
 
-            it('Test case #54 should return errors ["Invalid channel"] when body {"workspaceId":"invalid_value","channelId":"{{channelId}}","code":""}', async () => {
-              testNumber = 54;
+            it('Test case #59 should return errors ["Invalid channel"] when body {"workspaceId":"invalid_value","channelId":"{{channelId}}","code":""}', async () => {
+              testNumber = 59;
               totalTests++;
               const payloadObj = {"workspaceId":"invalid_value","channelId":"{{channelId}}","code":""};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -7341,7 +8021,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -7410,8 +8090,144 @@
               }
             });
 
-            it('Test case #55 should return errors ["Could not resolve permission type"] when body {"workspaceId":"0","channelId":123,"code":123}', async () => {
-              testNumber = 55;
+            it('Test case #60 should return errors ["Invalid channel"] when body {"workspaceId":"invalid_value","channelId":"{{channelId}}","code":null}', async () => {
+              testNumber = 60;
+              totalTests++;
+              const payloadObj = {"workspaceId":"invalid_value","channelId":"{{channelId}}","code":null};
+              resolvedData = resolveVariables(payloadObj, globalContext);
+              
+              try {
+                const response = await resolveCallAPI(
+                  "revokeInvitation",
+                  {"x-session-token":"{{token}}"},
+                  {"workspaceId":"invalid_value","channelId":"{{channelId}}","code":null},
+                  contextData
+                );
+                const data = response.data;
+                const expectJson = ["Invalid channel"].sort();
+
+                let expectDetails;
+                let softExpectDetails;
+                switch (response.status) {
+                  case 200:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                  case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                  case 403:
+                    expectDetails = Array.isArray(data) ? data : [data];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                  case 500:
+                    failedTests.push({
+                      testcase: testNumber,
+                      code: 500,
+                      errorDetails: expectJson,
+                    });
+                    break;
+                  default:
+                    failedTests.push({
+                      testcase: testNumber,
+                      code: response.status,
+                      errorDetails: 'Unexpected status code'
+                    });
+                }
+              } catch (error) {
+                console.error('Error in test case #' + testNumber, error);
+                failedTests.push({
+                  testcase: testNumber,
+                  error: error.message
+                });
+              }
+            });
+
+            it('Test case #61 should return errors ["Could not resolve permission type"] when body {"workspaceId":"0","channelId":123,"code":123}', async () => {
+              testNumber = 61;
               totalTests++;
               const payloadObj = {"workspaceId":"0","channelId":123,"code":123};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -7477,7 +8293,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -7546,8 +8362,8 @@
               }
             });
 
-            it('Test case #56 should return errors ["Could not resolve permission type"] when body {"workspaceId":"0","channelId":123}', async () => {
-              testNumber = 56;
+            it('Test case #62 should return errors ["Could not resolve permission type"] when body {"workspaceId":"0","channelId":123}', async () => {
+              testNumber = 62;
               totalTests++;
               const payloadObj = {"workspaceId":"0","channelId":123};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -7613,7 +8429,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -7682,8 +8498,8 @@
               }
             });
 
-            it('Test case #57 should return errors ["Could not resolve permission type"] when body {"workspaceId":"0","channelId":123,"code":""}', async () => {
-              testNumber = 57;
+            it('Test case #63 should return errors ["Could not resolve permission type"] when body {"workspaceId":"0","channelId":123,"code":""}', async () => {
+              testNumber = 63;
               totalTests++;
               const payloadObj = {"workspaceId":"0","channelId":123,"code":""};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -7749,7 +8565,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -7818,8 +8634,144 @@
               }
             });
 
-            it('Test case #58 should return errors ["Unsupported permission type"] when body {"workspaceId":"0","code":123}', async () => {
-              testNumber = 58;
+            it('Test case #64 should return errors ["Could not resolve permission type"] when body {"workspaceId":"0","channelId":123,"code":null}', async () => {
+              testNumber = 64;
+              totalTests++;
+              const payloadObj = {"workspaceId":"0","channelId":123,"code":null};
+              resolvedData = resolveVariables(payloadObj, globalContext);
+              
+              try {
+                const response = await resolveCallAPI(
+                  "revokeInvitation",
+                  {"x-session-token":"{{token}}"},
+                  {"workspaceId":"0","channelId":123,"code":null},
+                  contextData
+                );
+                const data = response.data;
+                const expectJson = ["Could not resolve permission type"].sort();
+
+                let expectDetails;
+                let softExpectDetails;
+                switch (response.status) {
+                  case 200:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                  case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                  case 403:
+                    expectDetails = Array.isArray(data) ? data : [data];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                  case 500:
+                    failedTests.push({
+                      testcase: testNumber,
+                      code: 500,
+                      errorDetails: expectJson,
+                    });
+                    break;
+                  default:
+                    failedTests.push({
+                      testcase: testNumber,
+                      code: response.status,
+                      errorDetails: 'Unexpected status code'
+                    });
+                }
+              } catch (error) {
+                console.error('Error in test case #' + testNumber, error);
+                failedTests.push({
+                  testcase: testNumber,
+                  error: error.message
+                });
+              }
+            });
+
+            it('Test case #65 should return errors ["Unsupported permission type"] when body {"workspaceId":"0","code":123}', async () => {
+              testNumber = 65;
               totalTests++;
               const payloadObj = {"workspaceId":"0","code":123};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -7885,7 +8837,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -7954,8 +8906,8 @@
               }
             });
 
-            it('Test case #59 should return errors ["Unsupported permission type"] when body {"workspaceId":"0"}', async () => {
-              testNumber = 59;
+            it('Test case #66 should return errors ["Unsupported permission type"] when body {"workspaceId":"0"}', async () => {
+              testNumber = 66;
               totalTests++;
               const payloadObj = {"workspaceId":"0"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -8021,7 +8973,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -8090,8 +9042,8 @@
               }
             });
 
-            it('Test case #60 should return errors ["Unsupported permission type"] when body {"workspaceId":"0","code":""}', async () => {
-              testNumber = 60;
+            it('Test case #67 should return errors ["Unsupported permission type"] when body {"workspaceId":"0","code":""}', async () => {
+              testNumber = 67;
               totalTests++;
               const payloadObj = {"workspaceId":"0","code":""};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -8157,7 +9109,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -8226,8 +9178,144 @@
               }
             });
 
-            it('Test case #61 should return errors ["Could not resolve permission type"] when body {"workspaceId":"0","channelId":"","code":123}', async () => {
-              testNumber = 61;
+            it('Test case #68 should return errors ["Unsupported permission type"] when body {"workspaceId":"0","code":null}', async () => {
+              testNumber = 68;
+              totalTests++;
+              const payloadObj = {"workspaceId":"0","code":null};
+              resolvedData = resolveVariables(payloadObj, globalContext);
+              
+              try {
+                const response = await resolveCallAPI(
+                  "revokeInvitation",
+                  {"x-session-token":"{{token}}"},
+                  {"workspaceId":"0","code":null},
+                  contextData
+                );
+                const data = response.data;
+                const expectJson = ["Unsupported permission type"].sort();
+
+                let expectDetails;
+                let softExpectDetails;
+                switch (response.status) {
+                  case 200:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                  case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                  case 403:
+                    expectDetails = Array.isArray(data) ? data : [data];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                  case 500:
+                    failedTests.push({
+                      testcase: testNumber,
+                      code: 500,
+                      errorDetails: expectJson,
+                    });
+                    break;
+                  default:
+                    failedTests.push({
+                      testcase: testNumber,
+                      code: response.status,
+                      errorDetails: 'Unexpected status code'
+                    });
+                }
+              } catch (error) {
+                console.error('Error in test case #' + testNumber, error);
+                failedTests.push({
+                  testcase: testNumber,
+                  error: error.message
+                });
+              }
+            });
+
+            it('Test case #69 should return errors ["Could not resolve permission type"] when body {"workspaceId":"0","channelId":"","code":123}', async () => {
+              testNumber = 69;
               totalTests++;
               const payloadObj = {"workspaceId":"0","channelId":"","code":123};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -8293,7 +9381,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -8362,8 +9450,8 @@
               }
             });
 
-            it('Test case #62 should return errors ["Could not resolve permission type"] when body {"workspaceId":"0","channelId":""}', async () => {
-              testNumber = 62;
+            it('Test case #70 should return errors ["Could not resolve permission type"] when body {"workspaceId":"0","channelId":""}', async () => {
+              testNumber = 70;
               totalTests++;
               const payloadObj = {"workspaceId":"0","channelId":""};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -8429,7 +9517,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -8498,8 +9586,8 @@
               }
             });
 
-            it('Test case #63 should return errors ["Could not resolve permission type"] when body {"workspaceId":"0","channelId":"","code":""}', async () => {
-              testNumber = 63;
+            it('Test case #71 should return errors ["Could not resolve permission type"] when body {"workspaceId":"0","channelId":"","code":""}', async () => {
+              testNumber = 71;
               totalTests++;
               const payloadObj = {"workspaceId":"0","channelId":"","code":""};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -8565,7 +9653,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -8634,8 +9722,144 @@
               }
             });
 
-            it('Test case #64 should return errors ["Could not resolve permission type"] when body {"workspaceId":"0","channelId":null,"code":123}', async () => {
-              testNumber = 64;
+            it('Test case #72 should return errors ["Could not resolve permission type"] when body {"workspaceId":"0","channelId":"","code":null}', async () => {
+              testNumber = 72;
+              totalTests++;
+              const payloadObj = {"workspaceId":"0","channelId":"","code":null};
+              resolvedData = resolveVariables(payloadObj, globalContext);
+              
+              try {
+                const response = await resolveCallAPI(
+                  "revokeInvitation",
+                  {"x-session-token":"{{token}}"},
+                  {"workspaceId":"0","channelId":"","code":null},
+                  contextData
+                );
+                const data = response.data;
+                const expectJson = ["Could not resolve permission type"].sort();
+
+                let expectDetails;
+                let softExpectDetails;
+                switch (response.status) {
+                  case 200:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                  case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                  case 403:
+                    expectDetails = Array.isArray(data) ? data : [data];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                  case 500:
+                    failedTests.push({
+                      testcase: testNumber,
+                      code: 500,
+                      errorDetails: expectJson,
+                    });
+                    break;
+                  default:
+                    failedTests.push({
+                      testcase: testNumber,
+                      code: response.status,
+                      errorDetails: 'Unexpected status code'
+                    });
+                }
+              } catch (error) {
+                console.error('Error in test case #' + testNumber, error);
+                failedTests.push({
+                  testcase: testNumber,
+                  error: error.message
+                });
+              }
+            });
+
+            it('Test case #73 should return errors ["Could not resolve permission type"] when body {"workspaceId":"0","channelId":null,"code":123}', async () => {
+              testNumber = 73;
               totalTests++;
               const payloadObj = {"workspaceId":"0","channelId":null,"code":123};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -8701,7 +9925,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -8770,8 +9994,8 @@
               }
             });
 
-            it('Test case #65 should return errors ["Could not resolve permission type"] when body {"workspaceId":"0","channelId":null}', async () => {
-              testNumber = 65;
+            it('Test case #74 should return errors ["Could not resolve permission type"] when body {"workspaceId":"0","channelId":null}', async () => {
+              testNumber = 74;
               totalTests++;
               const payloadObj = {"workspaceId":"0","channelId":null};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -8837,7 +10061,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -8906,8 +10130,8 @@
               }
             });
 
-            it('Test case #66 should return errors ["Could not resolve permission type"] when body {"workspaceId":"0","channelId":null,"code":""}', async () => {
-              testNumber = 66;
+            it('Test case #75 should return errors ["Could not resolve permission type"] when body {"workspaceId":"0","channelId":null,"code":""}', async () => {
+              testNumber = 75;
               totalTests++;
               const payloadObj = {"workspaceId":"0","channelId":null,"code":""};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -8973,7 +10197,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -9042,8 +10266,144 @@
               }
             });
 
-            it('Test case #67 should return errors ["Invalid channel"] when body {"workspaceId":"0","channelId":"invalid_value","code":123}', async () => {
-              testNumber = 67;
+            it('Test case #76 should return errors ["Could not resolve permission type"] when body {"workspaceId":"0","channelId":null,"code":null}', async () => {
+              testNumber = 76;
+              totalTests++;
+              const payloadObj = {"workspaceId":"0","channelId":null,"code":null};
+              resolvedData = resolveVariables(payloadObj, globalContext);
+              
+              try {
+                const response = await resolveCallAPI(
+                  "revokeInvitation",
+                  {"x-session-token":"{{token}}"},
+                  {"workspaceId":"0","channelId":null,"code":null},
+                  contextData
+                );
+                const data = response.data;
+                const expectJson = ["Could not resolve permission type"].sort();
+
+                let expectDetails;
+                let softExpectDetails;
+                switch (response.status) {
+                  case 200:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                  case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                  case 403:
+                    expectDetails = Array.isArray(data) ? data : [data];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                  case 500:
+                    failedTests.push({
+                      testcase: testNumber,
+                      code: 500,
+                      errorDetails: expectJson,
+                    });
+                    break;
+                  default:
+                    failedTests.push({
+                      testcase: testNumber,
+                      code: response.status,
+                      errorDetails: 'Unexpected status code'
+                    });
+                }
+              } catch (error) {
+                console.error('Error in test case #' + testNumber, error);
+                failedTests.push({
+                  testcase: testNumber,
+                  error: error.message
+                });
+              }
+            });
+
+            it('Test case #77 should return errors ["Invalid channel"] when body {"workspaceId":"0","channelId":"invalid_value","code":123}', async () => {
+              testNumber = 77;
               totalTests++;
               const payloadObj = {"workspaceId":"0","channelId":"invalid_value","code":123};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -9109,7 +10469,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -9178,8 +10538,8 @@
               }
             });
 
-            it('Test case #68 should return errors ["Invalid channel"] when body {"workspaceId":"0","channelId":"invalid_value"}', async () => {
-              testNumber = 68;
+            it('Test case #78 should return errors ["Invalid channel"] when body {"workspaceId":"0","channelId":"invalid_value"}', async () => {
+              testNumber = 78;
               totalTests++;
               const payloadObj = {"workspaceId":"0","channelId":"invalid_value"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -9245,7 +10605,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -9314,8 +10674,8 @@
               }
             });
 
-            it('Test case #69 should return errors ["Invalid channel"] when body {"workspaceId":"0","channelId":"invalid_value","code":""}', async () => {
-              testNumber = 69;
+            it('Test case #79 should return errors ["Invalid channel"] when body {"workspaceId":"0","channelId":"invalid_value","code":""}', async () => {
+              testNumber = 79;
               totalTests++;
               const payloadObj = {"workspaceId":"0","channelId":"invalid_value","code":""};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -9381,7 +10741,143 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                  case 403:
+                    expectDetails = Array.isArray(data) ? data : [data];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                  case 500:
+                    failedTests.push({
+                      testcase: testNumber,
+                      code: 500,
+                      errorDetails: expectJson,
+                    });
+                    break;
+                  default:
+                    failedTests.push({
+                      testcase: testNumber,
+                      code: response.status,
+                      errorDetails: 'Unexpected status code'
+                    });
+                }
+              } catch (error) {
+                console.error('Error in test case #' + testNumber, error);
+                failedTests.push({
+                  testcase: testNumber,
+                  error: error.message
+                });
+              }
+            });
+
+            it('Test case #80 should return errors ["Invalid channel"] when body {"workspaceId":"0","channelId":"invalid_value","code":null}', async () => {
+              testNumber = 80;
+              totalTests++;
+              const payloadObj = {"workspaceId":"0","channelId":"invalid_value","code":null};
+              resolvedData = resolveVariables(payloadObj, globalContext);
+              
+              try {
+                const response = await resolveCallAPI(
+                  "revokeInvitation",
+                  {"x-session-token":"{{token}}"},
+                  {"workspaceId":"0","channelId":"invalid_value","code":null},
+                  contextData
+                );
+                const data = response.data;
+                const expectJson = ["Invalid channel"].sort();
+
+                let expectDetails;
+                let softExpectDetails;
+                switch (response.status) {
+                  case 200:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: missing || [],
+                        extra: extra || []
+                      });
+                    }
+                    break;
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -9499,7 +10995,6 @@
             codedTest: [...codedTest],
             passedTests: passedTests,
             totalTests: totalTests,
-            logicTests: [...logicTests],
             failedStep: [...failedStep]
           };
           const reportDir = path.join(__dirname, '../../../../tmp-reports');

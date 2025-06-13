@@ -7,7 +7,7 @@ export const DismissAsAdminRequest = {
     workspaceId: VAR.workspaceId,
     userId: VAR.userId1,
   },
-  headers: HEADER_LIST.create({ token: VAR.token1 }),
+  headers: HEADER_LIST.create({ token: VAR.token }),
   options: [
     {
       beforeAll: [

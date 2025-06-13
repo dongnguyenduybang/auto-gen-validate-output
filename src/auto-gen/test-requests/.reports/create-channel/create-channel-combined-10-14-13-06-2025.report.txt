@@ -1,0 +1,269 @@
+=== Request Test Report for create-channel ===
+• Host: N/A
+• Endpoint: /Channel/CreateChannel
+• Date: 13/06/2025, 10:14:20
+
+=== Execution Steps ===
+
+=== Test Summary ===
+✅ Passed: 50
+❌ Failed: 34
+📊 Total: 84
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 0
+ 🟢 201: 1
+ 🟠 400: 9
+ 🟠 403: 40
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Unique Errors ===
+ 🟣 1. name should not be empty (Occurred: 5 times)
+ 🟣 2. avatar expected string, received number (Occurred: 8 times)
+ 🟣 3. avatar should not be empty (Occurred: 8 times)
+ 🟣 4. channelType should not be empty (Occurred: 8 times)
+ 🟣 5. Invalid channel (Occurred: 10 times)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #16
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","name":"","avatar":"https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024","channelType":1}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): name should not be empty
+     └─ Details: No details
+
+ 🟣 2. Case #17
+     ├─ Status: 201
+     ├─ Body: {"workspaceId":"0","name":"channel1","avatar":123,"channelType":1}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): avatar expected string, received number
+     └─ Details: No details
+
+ 🟣 3. Case #18
+     ├─ Status: 201
+     ├─ Body: {"workspaceId":"0","name":"channel1","avatar":"","channelType":1}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): avatar should not be empty
+     └─ Details: No details
+
+ 🟣 4. Case #20
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","name":"channel1","avatar":"https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024","channelType":""}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): channelType should not be empty
+     └─ Details: No details
+
+ 🟣 5. Case #51
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"invalid_value","name":"channel1","avatar":"https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024","channelType":1}
+     ├─ Actual (Missing): Invalid workspaceId
+     ├─ Expected (Extra): Invalid channel
+     └─ Details: No details
+
+ 🟣 6. Case #52
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"invalid_value","name":123,"avatar":"https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024","channelType":1}
+     ├─ Actual (Missing): Invalid workspaceId
+     ├─ Expected (Extra): Invalid channel
+     └─ Details: No details
+
+ 🟣 7. Case #53
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"invalid_value","name":"aa","avatar":"https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024","channelType":1}
+     ├─ Actual (Missing): Invalid workspaceId
+     ├─ Expected (Extra): Invalid channel
+     └─ Details: No details
+
+ 🟣 8. Case #54
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"invalid_value","name":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","avatar":"https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024","channelType":1}
+     ├─ Actual (Missing): Invalid workspaceId
+     ├─ Expected (Extra): Invalid channel
+     └─ Details: No details
+
+ 🟣 9. Case #55
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"invalid_value","avatar":"https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024","channelType":1}
+     ├─ Actual (Missing): Invalid workspaceId
+     ├─ Expected (Extra): Invalid channel
+     └─ Details: No details
+
+ 🟣 10. Case #56
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"invalid_value","name":"","avatar":"https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024","channelType":1}
+     ├─ Actual (Missing): Invalid workspaceId
+     ├─ Expected (Extra): Invalid channel
+     └─ Details: No details
+
+ 🟣 11. Case #57
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"invalid_value","name":"channel1","avatar":123,"channelType":1}
+     ├─ Actual (Missing): Invalid workspaceId
+     ├─ Expected (Extra): Invalid channel
+     └─ Details: No details
+
+ 🟣 12. Case #58
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"invalid_value","name":"channel1","avatar":"","channelType":1}
+     ├─ Actual (Missing): Invalid workspaceId
+     ├─ Expected (Extra): Invalid channel
+     └─ Details: No details
+
+ 🟣 13. Case #59
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"invalid_value","name":"channel1","avatar":"https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024","channelType":"invalid_enum_value"}
+     ├─ Actual (Missing): Invalid workspaceId
+     ├─ Expected (Extra): Invalid channel
+     └─ Details: No details
+
+ 🟣 14. Case #60
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"invalid_value","name":"channel1","avatar":"https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024","channelType":""}
+     ├─ Actual (Missing): Invalid workspaceId
+     ├─ Expected (Extra): Invalid channel
+     └─ Details: No details
+
+ 🟣 15. Case #61
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","name":123,"avatar":123,"channelType":1}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): avatar expected string, received number
+     └─ Details: No details
+
+ 🟣 16. Case #62
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","name":123,"avatar":"","channelType":1}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): avatar should not be empty
+     └─ Details: No details
+
+ 🟣 17. Case #64
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","name":123,"avatar":"https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024","channelType":""}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): channelType should not be empty
+     └─ Details: No details
+
+ 🟣 18. Case #65
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","name":"aa","avatar":123,"channelType":1}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): avatar expected string, received number
+     └─ Details: No details
+
+ 🟣 19. Case #66
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","name":"aa","avatar":"","channelType":1}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): avatar should not be empty
+     └─ Details: No details
+
+ 🟣 20. Case #68
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","name":"aa","avatar":"https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024","channelType":""}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): channelType should not be empty
+     └─ Details: No details
+
+ 🟣 21. Case #69
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","name":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","avatar":123,"channelType":1}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): avatar expected string, received number
+     └─ Details: No details
+
+ 🟣 22. Case #70
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","name":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","avatar":"","channelType":1}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): avatar should not be empty
+     └─ Details: No details
+
+ 🟣 23. Case #72
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","name":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","avatar":"https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024","channelType":""}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): channelType should not be empty
+     └─ Details: No details
+
+ 🟣 24. Case #73
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","avatar":123,"channelType":1}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): avatar expected string, received number
+     └─ Details: No details
+
+ 🟣 25. Case #74
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","avatar":"","channelType":1}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): avatar should not be empty
+     └─ Details: No details
+
+ 🟣 26. Case #76
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","avatar":"https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024","channelType":""}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): channelType should not be empty
+     └─ Details: No details
+
+ 🟣 27. Case #77
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","name":"","avatar":123,"channelType":1}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): avatar expected string, received number, name should not be empty
+     └─ Details: No details
+
+ 🟣 28. Case #78
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","name":"","avatar":"","channelType":1}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): avatar should not be empty, name should not be empty
+     └─ Details: No details
+
+ 🟣 29. Case #79
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","name":"","avatar":"https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024","channelType":"invalid_enum_value"}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): name should not be empty
+     └─ Details: No details
+
+ 🟣 30. Case #80
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","name":"","avatar":"https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024","channelType":""}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): channelType should not be empty, name should not be empty
+     └─ Details: No details
+
+ 🟣 31. Case #81
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","name":"channel1","avatar":123,"channelType":"invalid_enum_value"}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): avatar expected string, received number
+     └─ Details: No details
+
+ 🟣 32. Case #82
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","name":"channel1","avatar":123,"channelType":""}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): avatar expected string, received number, channelType should not be empty
+     └─ Details: No details
+
+ 🟣 33. Case #83
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","name":"channel1","avatar":"","channelType":"invalid_enum_value"}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): avatar should not be empty
+     └─ Details: No details
+
+ 🟣 34. Case #84
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","name":"channel1","avatar":"","channelType":""}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): avatar should not be empty, channelType should not be empty
+     └─ Details: No details
+
+=== End of Report ===

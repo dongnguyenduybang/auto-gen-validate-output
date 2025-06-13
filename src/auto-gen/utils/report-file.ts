@@ -9,7 +9,6 @@ export const combinedReportTemplate = (
   passedTests?: number,
   failedTests?: any[],
   totalTests?: number,
-  logicTests?: any[],
   summary?: any,
   type?: string,
 ) => {
@@ -20,7 +19,6 @@ export const combinedReportTemplate = (
   passedTests = passedTests || 0;
   failedTests = failedTests || [];
   totalTests = totalTests || 0;
-  logicTests = logicTests || [];
   summary = summary || { statusCodes: {} };
   type = type;
 
@@ -34,7 +32,6 @@ export const combinedReportTemplate = (
         passedTests,
         failedTests,
         totalTests,
-        logicTests,
         summary,
       );
 
@@ -72,7 +69,6 @@ const requestReportTemplate = (
   passedTests,
   failedTests,
   totalTests,
-  logicTests,
   summary,
 ) => {
   const uniqueErrors = new Map();

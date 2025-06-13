@@ -74,7 +74,12 @@ const ringbackToneCreateConfig: ExtractConfig = {
     fields: ['ringbackToneId']
   }
 }
-const createInvitationConfig: ExtractConfig = {};
+const createInvitationConfig: ExtractConfig = {
+  data: {
+    path: ['data'],
+    fields: ['code']
+  }
+};
 
 // Ánh xạ action tới cấu hình
 export const configMap: Record<string, ExtractConfig> = {

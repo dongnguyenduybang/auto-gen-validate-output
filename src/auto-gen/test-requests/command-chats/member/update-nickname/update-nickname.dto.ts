@@ -29,7 +29,7 @@ export class UpdateNicknameDTO {
   userId: string = '';
 
   @IsString()
-  @IsDefined()
+  @IsDefined({ message: 'Unable update with the same name' })
   @MinLength(1)
   @MaxLength(50)
   nickname: string = '';

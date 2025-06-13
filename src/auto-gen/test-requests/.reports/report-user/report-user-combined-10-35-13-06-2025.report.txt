@@ -1,0 +1,585 @@
+=== Request Test Report for report-user ===
+• Host: N/A
+• Endpoint: /UserReport/ReportUser
+• Date: 13/06/2025, 10:35:52
+
+=== Execution Steps ===
+
+=== Test Summary ===
+✅ Passed: 31
+❌ Failed: 79
+📊 Total: 110
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 0
+ 🟢 201: 6
+ 🟠 400: 25
+ 🟠 403: 0
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Unique Errors ===
+ 🟣 1. Could not resolve permission type (Occurred: 39 times)
+ 🟣 2. reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined' (Occurred: 8 times)
+ 🟣 3. reportCategory should not be empty (Occurred: 8 times)
+ 🟣 4. reportReason should not be empty (Occurred: 8 times)
+ 🟣 5. Unauthorized request (Occurred: 13 times)
+ 🟣 6. pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined' (Occurred: 1 time)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #1
+     ├─ Status: 400
+     ├─ Body: {"userId":123,"reportCategory":0,"reportReason":"report user","pretendingTo":0}
+     ├─ Actual (Missing): userId expected string, received number
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 2. Case #2
+     ├─ Status: 400
+     ├─ Body: {"userId":123,"reportCategory":"invalid_enum_value","reportReason":"report user","pretendingTo":0}
+     ├─ Actual (Missing): reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', userId expected string, received number
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 3. Case #3
+     ├─ Status: 400
+     ├─ Body: {"userId":123,"reportCategory":20,"reportReason":"report user","pretendingTo":0}
+     ├─ Actual (Missing): userId expected string, received number
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 4. Case #4
+     ├─ Status: 400
+     ├─ Body: {"userId":123,"reportCategory":3,"reportReason":"report user","pretendingTo":0}
+     ├─ Actual (Missing): userId expected string, received number
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 5. Case #5
+     ├─ Status: 400
+     ├─ Body: {"userId":123,"reportReason":"report user","pretendingTo":0}
+     ├─ Actual (Missing): reportCategory required, userId expected string, received number
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 6. Case #6
+     ├─ Status: 400
+     ├─ Body: {"userId":123,"reportCategory":"","reportReason":"report user","pretendingTo":0}
+     ├─ Actual (Missing): reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received '', userId expected string, received number
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 7. Case #7
+     ├─ Status: 400
+     ├─ Body: {"userId":123,"reportCategory":0,"reportReason":123,"pretendingTo":0}
+     ├─ Actual (Missing): reportReason expected string, received number, userId expected string, received number
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 8. Case #8
+     ├─ Status: 400
+     ├─ Body: {"userId":123,"reportCategory":0,"reportReason":"","pretendingTo":0}
+     ├─ Actual (Missing): reportReason string must contain at least 1 character(s), userId expected string, received number
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 9. Case #9
+     ├─ Status: 400
+     ├─ Body: {"userId":123,"reportCategory":0,"reportReason":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","pretendingTo":0}
+     ├─ Actual (Missing): reportReason string must contain at most 255 character(s), userId expected string, received number
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 10. Case #10
+     ├─ Status: 400
+     ├─ Body: {"userId":123,"reportCategory":0,"reportReason":"🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀","pretendingTo":0}
+     ├─ Actual (Missing): reportReason string must contain at most 255 character(s), userId expected string, received number
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 11. Case #11
+     ├─ Status: 400
+     ├─ Body: {"userId":123,"reportCategory":0,"pretendingTo":0}
+     ├─ Actual (Missing): userId expected string, received number
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 12. Case #12
+     ├─ Status: 400
+     ├─ Body: {"userId":123,"reportCategory":0,"reportReason":"report user","pretendingTo":"invalid_enum_value"}
+     ├─ Actual (Missing): pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value', userId expected string, received number
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 13. Case #13
+     ├─ Status: 400
+     ├─ Body: {"userId":123,"reportCategory":0,"reportReason":"report user"}
+     ├─ Actual (Missing): userId expected string, received number
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 14. Case #17
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JXKNMA0ZV5G8SB2K0KJR8E8J","reportCategory":3,"reportReason":"report user","pretendingTo":0}
+     ├─ Actual (Missing): pretendingTo required
+     ├─ Expected (Extra): None
+     └─ Details: No details
+
+ 🟣 15. Case #18
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JXKNMA0ZV5G8SB2K0KJR8E8J","reportReason":"report user","pretendingTo":0}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'
+     └─ Details: No details
+
+ 🟣 16. Case #19
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JXKNMA0ZV5G8SB2K0KJR8E8J","reportCategory":"","reportReason":"report user","pretendingTo":0}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): reportCategory should not be empty
+     └─ Details: No details
+
+ 🟣 17. Case #21
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JXKNMA0ZV5G8SB2K0KJR8E8J","reportCategory":0,"reportReason":"","pretendingTo":0}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): reportReason should not be empty
+     └─ Details: No details
+
+ 🟣 18. Case #27
+     ├─ Status: 400
+     ├─ Body: {"reportCategory":0,"reportReason":"report user","pretendingTo":0}
+     ├─ Actual (Missing): userId required
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 19. Case #28
+     ├─ Status: 400
+     ├─ Body: {"reportCategory":"invalid_enum_value","reportReason":"report user","pretendingTo":0}
+     ├─ Actual (Missing): reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', userId required
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 20. Case #29
+     ├─ Status: 400
+     ├─ Body: {"reportCategory":20,"reportReason":"report user","pretendingTo":0}
+     ├─ Actual (Missing): userId required
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 21. Case #30
+     ├─ Status: 400
+     ├─ Body: {"reportCategory":3,"reportReason":"report user","pretendingTo":0}
+     ├─ Actual (Missing): userId required
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 22. Case #31
+     ├─ Status: 400
+     ├─ Body: {"reportReason":"report user","pretendingTo":0}
+     ├─ Actual (Missing): reportCategory required, userId required
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 23. Case #32
+     ├─ Status: 400
+     ├─ Body: {"reportCategory":"","reportReason":"report user","pretendingTo":0}
+     ├─ Actual (Missing): reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received '', userId required
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 24. Case #33
+     ├─ Status: 400
+     ├─ Body: {"reportCategory":0,"reportReason":123,"pretendingTo":0}
+     ├─ Actual (Missing): reportReason expected string, received number, userId required
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 25. Case #34
+     ├─ Status: 400
+     ├─ Body: {"reportCategory":0,"reportReason":"","pretendingTo":0}
+     ├─ Actual (Missing): reportReason string must contain at least 1 character(s), userId required
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 26. Case #35
+     ├─ Status: 400
+     ├─ Body: {"reportCategory":0,"reportReason":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","pretendingTo":0}
+     ├─ Actual (Missing): reportReason string must contain at most 255 character(s), userId required
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 27. Case #36
+     ├─ Status: 400
+     ├─ Body: {"reportCategory":0,"reportReason":"🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀","pretendingTo":0}
+     ├─ Actual (Missing): reportReason string must contain at most 255 character(s), userId required
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 28. Case #37
+     ├─ Status: 400
+     ├─ Body: {"reportCategory":0,"pretendingTo":0}
+     ├─ Actual (Missing): userId required
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 29. Case #38
+     ├─ Status: 400
+     ├─ Body: {"reportCategory":0,"reportReason":"report user","pretendingTo":"invalid_enum_value"}
+     ├─ Actual (Missing): pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value', userId required
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 30. Case #39
+     ├─ Status: 400
+     ├─ Body: {"reportCategory":0,"reportReason":"report user"}
+     ├─ Actual (Missing): userId required
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 31. Case #40
+     ├─ Status: 400
+     ├─ Body: {"userId":"","reportCategory":0,"reportReason":"report user","pretendingTo":0}
+     ├─ Actual (Missing): userId invalid ulid, userId string must contain at least 1 character(s)
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 32. Case #41
+     ├─ Status: 400
+     ├─ Body: {"userId":"","reportCategory":"invalid_enum_value","reportReason":"report user","pretendingTo":0}
+     ├─ Actual (Missing): reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', userId invalid ulid, userId string must contain at least 1 character(s)
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 33. Case #42
+     ├─ Status: 400
+     ├─ Body: {"userId":"","reportCategory":20,"reportReason":"report user","pretendingTo":0}
+     ├─ Actual (Missing): userId invalid ulid, userId string must contain at least 1 character(s)
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 34. Case #43
+     ├─ Status: 400
+     ├─ Body: {"userId":"","reportCategory":3,"reportReason":"report user","pretendingTo":0}
+     ├─ Actual (Missing): pretendingTo required, userId invalid ulid, userId string must contain at least 1 character(s)
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 35. Case #44
+     ├─ Status: 400
+     ├─ Body: {"userId":"","reportReason":"report user","pretendingTo":0}
+     ├─ Actual (Missing): reportCategory required, userId invalid ulid, userId string must contain at least 1 character(s)
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 36. Case #45
+     ├─ Status: 400
+     ├─ Body: {"userId":"","reportCategory":"","reportReason":"report user","pretendingTo":0}
+     ├─ Actual (Missing): reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received '', userId invalid ulid, userId string must contain at least 1 character(s)
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 37. Case #46
+     ├─ Status: 400
+     ├─ Body: {"userId":"","reportCategory":0,"reportReason":123,"pretendingTo":0}
+     ├─ Actual (Missing): reportReason expected string, received number, userId invalid ulid, userId string must contain at least 1 character(s)
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 38. Case #47
+     ├─ Status: 400
+     ├─ Body: {"userId":"","reportCategory":0,"reportReason":"","pretendingTo":0}
+     ├─ Actual (Missing): reportReason string must contain at least 1 character(s), userId invalid ulid, userId string must contain at least 1 character(s)
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 39. Case #48
+     ├─ Status: 400
+     ├─ Body: {"userId":"","reportCategory":0,"reportReason":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","pretendingTo":0}
+     ├─ Actual (Missing): reportReason string must contain at most 255 character(s), userId invalid ulid, userId string must contain at least 1 character(s)
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 40. Case #49
+     ├─ Status: 400
+     ├─ Body: {"userId":"","reportCategory":0,"reportReason":"🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀","pretendingTo":0}
+     ├─ Actual (Missing): reportReason string must contain at most 255 character(s), userId invalid ulid, userId string must contain at least 1 character(s)
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 41. Case #50
+     ├─ Status: 400
+     ├─ Body: {"userId":"","reportCategory":0,"pretendingTo":0}
+     ├─ Actual (Missing): userId invalid ulid, userId string must contain at least 1 character(s)
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 42. Case #51
+     ├─ Status: 400
+     ├─ Body: {"userId":"","reportCategory":0,"reportReason":"report user","pretendingTo":"invalid_enum_value"}
+     ├─ Actual (Missing): pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value', userId invalid ulid, userId string must contain at least 1 character(s)
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 43. Case #52
+     ├─ Status: 400
+     ├─ Body: {"userId":"","reportCategory":0,"reportReason":"report user"}
+     ├─ Actual (Missing): userId invalid ulid, userId string must contain at least 1 character(s)
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 44. Case #53
+     ├─ Status: 400
+     ├─ Body: {"userId":"invalid_value","reportCategory":0,"reportReason":"report user","pretendingTo":0}
+     ├─ Actual (Missing): userId invalid ulid
+     ├─ Expected (Extra): Unauthorized request
+     └─ Details: No details
+
+ 🟣 45. Case #54
+     ├─ Status: 400
+     ├─ Body: {"userId":"invalid_value","reportCategory":"invalid_enum_value","reportReason":"report user","pretendingTo":0}
+     ├─ Actual (Missing): reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', userId invalid ulid
+     ├─ Expected (Extra): Unauthorized request
+     └─ Details: No details
+
+ 🟣 46. Case #55
+     ├─ Status: 400
+     ├─ Body: {"userId":"invalid_value","reportCategory":20,"reportReason":"report user","pretendingTo":0}
+     ├─ Actual (Missing): userId invalid ulid
+     ├─ Expected (Extra): Unauthorized request
+     └─ Details: No details
+
+ 🟣 47. Case #56
+     ├─ Status: 400
+     ├─ Body: {"userId":"invalid_value","reportCategory":3,"reportReason":"report user","pretendingTo":0}
+     ├─ Actual (Missing): pretendingTo required, userId invalid ulid
+     ├─ Expected (Extra): Unauthorized request
+     └─ Details: No details
+
+ 🟣 48. Case #57
+     ├─ Status: 400
+     ├─ Body: {"userId":"invalid_value","reportReason":"report user","pretendingTo":0}
+     ├─ Actual (Missing): reportCategory required, userId invalid ulid
+     ├─ Expected (Extra): Unauthorized request
+     └─ Details: No details
+
+ 🟣 49. Case #58
+     ├─ Status: 400
+     ├─ Body: {"userId":"invalid_value","reportCategory":"","reportReason":"report user","pretendingTo":0}
+     ├─ Actual (Missing): reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received '', userId invalid ulid
+     ├─ Expected (Extra): Unauthorized request
+     └─ Details: No details
+
+ 🟣 50. Case #59
+     ├─ Status: 400
+     ├─ Body: {"userId":"invalid_value","reportCategory":0,"reportReason":123,"pretendingTo":0}
+     ├─ Actual (Missing): reportReason expected string, received number, userId invalid ulid
+     ├─ Expected (Extra): Unauthorized request
+     └─ Details: No details
+
+ 🟣 51. Case #60
+     ├─ Status: 400
+     ├─ Body: {"userId":"invalid_value","reportCategory":0,"reportReason":"","pretendingTo":0}
+     ├─ Actual (Missing): reportReason string must contain at least 1 character(s), userId invalid ulid
+     ├─ Expected (Extra): Unauthorized request
+     └─ Details: No details
+
+ 🟣 52. Case #61
+     ├─ Status: 400
+     ├─ Body: {"userId":"invalid_value","reportCategory":0,"reportReason":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","pretendingTo":0}
+     ├─ Actual (Missing): reportReason string must contain at most 255 character(s), userId invalid ulid
+     ├─ Expected (Extra): Unauthorized request
+     └─ Details: No details
+
+ 🟣 53. Case #62
+     ├─ Status: 400
+     ├─ Body: {"userId":"invalid_value","reportCategory":0,"reportReason":"🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀","pretendingTo":0}
+     ├─ Actual (Missing): reportReason string must contain at most 255 character(s), userId invalid ulid
+     ├─ Expected (Extra): Unauthorized request
+     └─ Details: No details
+
+ 🟣 54. Case #63
+     ├─ Status: 400
+     ├─ Body: {"userId":"invalid_value","reportCategory":0,"pretendingTo":0}
+     ├─ Actual (Missing): userId invalid ulid
+     ├─ Expected (Extra): Unauthorized request
+     └─ Details: No details
+
+ 🟣 55. Case #64
+     ├─ Status: 400
+     ├─ Body: {"userId":"invalid_value","reportCategory":0,"reportReason":"report user","pretendingTo":"invalid_enum_value"}
+     ├─ Actual (Missing): pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value', userId invalid ulid
+     ├─ Expected (Extra): Unauthorized request
+     └─ Details: No details
+
+ 🟣 56. Case #65
+     ├─ Status: 400
+     ├─ Body: {"userId":"invalid_value","reportCategory":0,"reportReason":"report user"}
+     ├─ Actual (Missing): userId invalid ulid
+     ├─ Expected (Extra): Unauthorized request
+     └─ Details: No details
+
+ 🟣 57. Case #67
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JXKNMA0ZV5G8SB2K0KJR8E8J","reportCategory":"invalid_enum_value","reportReason":"","pretendingTo":0}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): reportReason should not be empty
+     └─ Details: No details
+
+ 🟣 58. Case #74
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JXKNMA0ZV5G8SB2K0KJR8E8J","reportCategory":20,"reportReason":"","pretendingTo":0}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): reportReason should not be empty
+     └─ Details: No details
+
+ 🟣 59. Case #81
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JXKNMA0ZV5G8SB2K0KJR8E8J","reportCategory":3,"reportReason":"","pretendingTo":0}
+     ├─ Actual (Missing): pretendingTo required
+     ├─ Expected (Extra): reportReason should not be empty
+     └─ Details: No details
+
+ 🟣 60. Case #82
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JXKNMA0ZV5G8SB2K0KJR8E8J","reportCategory":3,"reportReason":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","pretendingTo":0}
+     ├─ Actual (Missing): pretendingTo required
+     ├─ Expected (Extra): None
+     └─ Details: No details
+
+ 🟣 61. Case #83
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JXKNMA0ZV5G8SB2K0KJR8E8J","reportCategory":3,"reportReason":"🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀","pretendingTo":0}
+     ├─ Actual (Missing): pretendingTo required
+     ├─ Expected (Extra): None
+     └─ Details: No details
+
+ 🟣 62. Case #84
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JXKNMA0ZV5G8SB2K0KJR8E8J","reportCategory":3,"pretendingTo":0}
+     ├─ Actual (Missing): pretendingTo required
+     ├─ Expected (Extra): None
+     └─ Details: No details
+
+ 🟣 63. Case #86
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JXKNMA0ZV5G8SB2K0KJR8E8J","reportCategory":3,"reportReason":"report user"}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined'
+     └─ Details: No details
+
+ 🟣 64. Case #87
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JXKNMA0ZV5G8SB2K0KJR8E8J","reportReason":123,"pretendingTo":0}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'
+     └─ Details: No details
+
+ 🟣 65. Case #88
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JXKNMA0ZV5G8SB2K0KJR8E8J","reportReason":"","pretendingTo":0}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined', reportReason should not be empty
+     └─ Details: No details
+
+ 🟣 66. Case #89
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JXKNMA0ZV5G8SB2K0KJR8E8J","reportReason":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","pretendingTo":0}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'
+     └─ Details: No details
+
+ 🟣 67. Case #90
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JXKNMA0ZV5G8SB2K0KJR8E8J","reportReason":"🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀","pretendingTo":0}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'
+     └─ Details: No details
+
+ 🟣 68. Case #91
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JXKNMA0ZV5G8SB2K0KJR8E8J","pretendingTo":0}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'
+     └─ Details: No details
+
+ 🟣 69. Case #92
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JXKNMA0ZV5G8SB2K0KJR8E8J","reportReason":"report user","pretendingTo":"invalid_enum_value"}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'
+     └─ Details: No details
+
+ 🟣 70. Case #93
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JXKNMA0ZV5G8SB2K0KJR8E8J","reportReason":"report user"}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'
+     └─ Details: No details
+
+ 🟣 71. Case #94
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JXKNMA0ZV5G8SB2K0KJR8E8J","reportCategory":"","reportReason":123,"pretendingTo":0}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): reportCategory should not be empty
+     └─ Details: No details
+
+ 🟣 72. Case #95
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JXKNMA0ZV5G8SB2K0KJR8E8J","reportCategory":"","reportReason":"","pretendingTo":0}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): reportCategory should not be empty, reportReason should not be empty
+     └─ Details: No details
+
+ 🟣 73. Case #96
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JXKNMA0ZV5G8SB2K0KJR8E8J","reportCategory":"","reportReason":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","pretendingTo":0}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): reportCategory should not be empty
+     └─ Details: No details
+
+ 🟣 74. Case #97
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JXKNMA0ZV5G8SB2K0KJR8E8J","reportCategory":"","reportReason":"🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀","pretendingTo":0}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): reportCategory should not be empty
+     └─ Details: No details
+
+ 🟣 75. Case #98
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JXKNMA0ZV5G8SB2K0KJR8E8J","reportCategory":"","pretendingTo":0}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): reportCategory should not be empty
+     └─ Details: No details
+
+ 🟣 76. Case #99
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JXKNMA0ZV5G8SB2K0KJR8E8J","reportCategory":"","reportReason":"report user","pretendingTo":"invalid_enum_value"}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): reportCategory should not be empty
+     └─ Details: No details
+
+ 🟣 77. Case #100
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JXKNMA0ZV5G8SB2K0KJR8E8J","reportCategory":"","reportReason":"report user"}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): reportCategory should not be empty
+     └─ Details: No details
+
+ 🟣 78. Case #103
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JXKNMA0ZV5G8SB2K0KJR8E8J","reportCategory":0,"reportReason":"","pretendingTo":"invalid_enum_value"}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): reportReason should not be empty
+     └─ Details: No details
+
+ 🟣 79. Case #104
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JXKNMA0ZV5G8SB2K0KJR8E8J","reportCategory":0,"reportReason":""}
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): reportReason should not be empty
+     └─ Details: No details
+
+=== End of Report ===

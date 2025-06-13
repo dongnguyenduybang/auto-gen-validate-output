@@ -1,0 +1,184 @@
+=== Request Test Report for revoke-invitation ===
+• Host: N/A
+• Endpoint: /Invitation/RevokeInvitation
+• Date: 13/06/2025, 11:49:21
+
+=== Execution Steps ===
+
+=== Test Summary ===
+✅ Passed: 58
+❌ Failed: 22
+📊 Total: 80
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 1
+ 🟢 201: 0
+ 🟠 400: 1
+ 🟠 403: 56
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Unique Errors ===
+ 🟣 1. Could not resolve permission type (Occurred: 13 times)
+ 🟣 2. Unsupported permission type (Occurred: 6 times)
+ 🟣 3. code should not be empty (Occurred: 1 time)
+ 🟣 4. code expected string, received null (Occurred: 1 time)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #1
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JXKSX8GQ8HEN807AKRTMP46Z","code":"rpiN94OjsSJMg0q"}
+     ├─ Actual (Missing): Invalid channel
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 2. Case #2
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":123,"code":"rpiN94OjsSJMg0q"}
+     ├─ Actual (Missing): Invalid channel
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 3. Case #6
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"invalid_value","code":"rpiN94OjsSJMg0q"}
+     ├─ Actual (Missing): Invalid channel
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 4. Case #7
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JXKSX8GQ8HEN807AKRTMP46Z","code":123}
+     ├─ Actual (Missing): Invalid channel
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 5. Case #8
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JXKSX8GQ8HEN807AKRTMP46Z"}
+     ├─ Actual (Missing): Invalid channel
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 6. Case #9
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JXKSX8GQ8HEN807AKRTMP46Z","code":""}
+     ├─ Actual (Missing): Invalid channel
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 7. Case #10
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JXKSX8GQ8HEN807AKRTMP46Z","code":null}
+     ├─ Actual (Missing): Invalid channel
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 8. Case #12
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"code":"rpiN94OjsSJMg0q"}
+     ├─ Actual (Missing): Invalid channel
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 9. Case #13
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","code":"rpiN94OjsSJMg0q"}
+     ├─ Actual (Missing): Could not resolve permission type
+     ├─ Expected (Extra): Unsupported permission type
+     └─ Details: No details
+
+ 🟣 10. Case #17
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual (Missing): None
+     ├─ Expected (Extra): None
+     └─ Details: Unexpected status code
+
+ 🟣 11. Case #19
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKSX8GQ8HEN807AKRTMP46Z","code":""}
+     ├─ Actual (Missing): code string must contain at least 1 character(s)
+     ├─ Expected (Extra): code should not be empty
+     └─ Details: No details
+
+ 🟣 12. Case #20
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKSX8GQ8HEN807AKRTMP46Z","code":null}
+     ├─ Actual (Missing): code required
+     ├─ Expected (Extra): code expected string, received null
+     └─ Details: No details
+
+ 🟣 13. Case #52
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"invalid_value","channelId":123,"code":"rpiN94OjsSJMg0q"}
+     ├─ Actual (Missing): Invalid channel
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 14. Case #53
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"invalid_value","code":"rpiN94OjsSJMg0q"}
+     ├─ Actual (Missing): Could not resolve permission type
+     ├─ Expected (Extra): Unsupported permission type
+     └─ Details: No details
+
+ 🟣 15. Case #61
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"code":123}
+     ├─ Actual (Missing): Invalid channel
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 16. Case #62
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123}
+     ├─ Actual (Missing): Invalid channel
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 17. Case #63
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"code":""}
+     ├─ Actual (Missing): Invalid channel
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 18. Case #64
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"code":null}
+     ├─ Actual (Missing): Invalid channel
+     ├─ Expected (Extra): Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 19. Case #65
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","code":123}
+     ├─ Actual (Missing): Could not resolve permission type
+     ├─ Expected (Extra): Unsupported permission type
+     └─ Details: No details
+
+ 🟣 20. Case #66
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0"}
+     ├─ Actual (Missing): Could not resolve permission type
+     ├─ Expected (Extra): Unsupported permission type
+     └─ Details: No details
+
+ 🟣 21. Case #67
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","code":""}
+     ├─ Actual (Missing): Could not resolve permission type
+     ├─ Expected (Extra): Unsupported permission type
+     └─ Details: No details
+
+ 🟣 22. Case #68
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","code":null}
+     ├─ Actual (Missing): Could not resolve permission type
+     ├─ Expected (Extra): Unsupported permission type
+     └─ Details: No details
+
+=== End of Report ===

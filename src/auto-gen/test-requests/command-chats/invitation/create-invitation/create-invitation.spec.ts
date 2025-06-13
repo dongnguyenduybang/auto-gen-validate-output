@@ -74,7 +74,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":123,"channelId":"{{channelId}}","expiresIn":1000,"maxUses":0},
                   contextData
@@ -133,7 +133,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -210,7 +210,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":123,"channelId":123,"expiresIn":1000,"maxUses":0},
                   contextData
@@ -269,7 +269,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -346,7 +346,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":123,"expiresIn":1000,"maxUses":0},
                   contextData
@@ -405,7 +405,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -482,7 +482,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":123,"channelId":"","expiresIn":1000,"maxUses":0},
                   contextData
@@ -541,7 +541,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -618,7 +618,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":123,"channelId":null,"expiresIn":1000,"maxUses":0},
                   contextData
@@ -677,7 +677,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -754,7 +754,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":123,"channelId":"invalid_value","expiresIn":1000,"maxUses":0},
                   contextData
@@ -813,7 +813,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -890,7 +890,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":123,"channelId":"{{channelId}}","expiresIn":"invalid_number","maxUses":0},
                   contextData
@@ -949,7 +949,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -1026,7 +1026,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":123,"channelId":"{{channelId}}","expiresIn":0,"maxUses":0},
                   contextData
@@ -1085,7 +1085,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -1162,7 +1162,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":123,"channelId":"{{channelId}}","maxUses":0},
                   contextData
@@ -1221,7 +1221,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -1298,7 +1298,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":123,"channelId":"{{channelId}}","expiresIn":"","maxUses":0},
                   contextData
@@ -1357,7 +1357,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -1434,7 +1434,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":123,"channelId":"{{channelId}}","expiresIn":1000,"maxUses":"invalid_number"},
                   contextData
@@ -1493,7 +1493,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -1570,7 +1570,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":123,"channelId":"{{channelId}}","expiresIn":1000},
                   contextData
@@ -1629,7 +1629,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -1706,7 +1706,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":123,"channelId":"{{channelId}}","expiresIn":1000,"maxUses":""},
                   contextData
@@ -1765,7 +1765,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -1842,7 +1842,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"{{channelId}}","expiresIn":1000,"maxUses":0},
                   contextData
@@ -1901,7 +1901,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -1978,7 +1978,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":123,"expiresIn":1000,"maxUses":0},
                   contextData
@@ -2037,7 +2037,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -2114,7 +2114,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","expiresIn":1000,"maxUses":0},
                   contextData
@@ -2173,7 +2173,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -2250,7 +2250,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"","expiresIn":1000,"maxUses":0},
                   contextData
@@ -2309,7 +2309,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -2386,7 +2386,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":null,"expiresIn":1000,"maxUses":0},
                   contextData
@@ -2445,7 +2445,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -2522,7 +2522,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"invalid_value","expiresIn":1000,"maxUses":0},
                   contextData
@@ -2581,7 +2581,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -2658,7 +2658,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"{{channelId}}","expiresIn":"invalid_number","maxUses":0},
                   contextData
@@ -2717,7 +2717,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -2794,7 +2794,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"{{channelId}}","expiresIn":0,"maxUses":0},
                   contextData
@@ -2853,7 +2853,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -2930,7 +2930,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"{{channelId}}","maxUses":0},
                   contextData
@@ -2989,7 +2989,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -3066,7 +3066,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"{{channelId}}","expiresIn":"","maxUses":0},
                   contextData
@@ -3125,7 +3125,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -3202,7 +3202,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"{{channelId}}","expiresIn":1000,"maxUses":"invalid_number"},
                   contextData
@@ -3261,7 +3261,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -3338,7 +3338,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"{{channelId}}","expiresIn":1000},
                   contextData
@@ -3397,7 +3397,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -3474,7 +3474,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"{{channelId}}","expiresIn":1000,"maxUses":""},
                   contextData
@@ -3533,7 +3533,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -3610,7 +3610,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"channelId":"{{channelId}}","expiresIn":1000,"maxUses":0},
                   contextData
@@ -3669,7 +3669,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -3746,7 +3746,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"channelId":123,"expiresIn":1000,"maxUses":0},
                   contextData
@@ -3805,7 +3805,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -3882,7 +3882,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"expiresIn":1000,"maxUses":0},
                   contextData
@@ -3941,7 +3941,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -4018,7 +4018,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"channelId":"","expiresIn":1000,"maxUses":0},
                   contextData
@@ -4077,7 +4077,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -4154,7 +4154,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"channelId":null,"expiresIn":1000,"maxUses":0},
                   contextData
@@ -4213,7 +4213,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -4290,7 +4290,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"channelId":"invalid_value","expiresIn":1000,"maxUses":0},
                   contextData
@@ -4349,7 +4349,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -4426,7 +4426,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"channelId":"{{channelId}}","expiresIn":"invalid_number","maxUses":0},
                   contextData
@@ -4485,7 +4485,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -4562,7 +4562,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"channelId":"{{channelId}}","expiresIn":0,"maxUses":0},
                   contextData
@@ -4621,7 +4621,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -4698,7 +4698,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"channelId":"{{channelId}}","maxUses":0},
                   contextData
@@ -4757,7 +4757,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -4834,7 +4834,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"channelId":"{{channelId}}","expiresIn":"","maxUses":0},
                   contextData
@@ -4893,7 +4893,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -4970,7 +4970,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"channelId":"{{channelId}}","expiresIn":1000,"maxUses":"invalid_number"},
                   contextData
@@ -5029,7 +5029,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -5106,7 +5106,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"channelId":"{{channelId}}","expiresIn":1000},
                   contextData
@@ -5165,7 +5165,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -5242,7 +5242,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"channelId":"{{channelId}}","expiresIn":1000,"maxUses":""},
                   contextData
@@ -5301,7 +5301,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -5378,7 +5378,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"","channelId":"{{channelId}}","expiresIn":1000,"maxUses":0},
                   contextData
@@ -5437,7 +5437,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -5514,7 +5514,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"","channelId":123,"expiresIn":1000,"maxUses":0},
                   contextData
@@ -5573,7 +5573,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -5650,7 +5650,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"","expiresIn":1000,"maxUses":0},
                   contextData
@@ -5709,7 +5709,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -5786,7 +5786,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"","channelId":"","expiresIn":1000,"maxUses":0},
                   contextData
@@ -5845,7 +5845,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -5922,7 +5922,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"","channelId":null,"expiresIn":1000,"maxUses":0},
                   contextData
@@ -5981,7 +5981,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -6058,7 +6058,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"","channelId":"invalid_value","expiresIn":1000,"maxUses":0},
                   contextData
@@ -6117,7 +6117,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -6194,7 +6194,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"","channelId":"{{channelId}}","expiresIn":"invalid_number","maxUses":0},
                   contextData
@@ -6253,7 +6253,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -6330,7 +6330,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"","channelId":"{{channelId}}","expiresIn":0,"maxUses":0},
                   contextData
@@ -6389,7 +6389,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -6466,7 +6466,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"","channelId":"{{channelId}}","maxUses":0},
                   contextData
@@ -6525,7 +6525,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -6602,7 +6602,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"","channelId":"{{channelId}}","expiresIn":"","maxUses":0},
                   contextData
@@ -6661,7 +6661,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -6738,7 +6738,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"","channelId":"{{channelId}}","expiresIn":1000,"maxUses":"invalid_number"},
                   contextData
@@ -6797,7 +6797,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -6874,7 +6874,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"","channelId":"{{channelId}}","expiresIn":1000},
                   contextData
@@ -6933,7 +6933,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -7010,7 +7010,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"","channelId":"{{channelId}}","expiresIn":1000,"maxUses":""},
                   contextData
@@ -7069,7 +7069,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -7146,7 +7146,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":null,"channelId":"{{channelId}}","expiresIn":1000,"maxUses":0},
                   contextData
@@ -7205,7 +7205,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -7282,7 +7282,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":null,"channelId":123,"expiresIn":1000,"maxUses":0},
                   contextData
@@ -7341,7 +7341,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -7418,7 +7418,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":null,"expiresIn":1000,"maxUses":0},
                   contextData
@@ -7477,7 +7477,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -7554,7 +7554,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":null,"channelId":"","expiresIn":1000,"maxUses":0},
                   contextData
@@ -7613,7 +7613,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -7690,7 +7690,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":null,"channelId":null,"expiresIn":1000,"maxUses":0},
                   contextData
@@ -7749,7 +7749,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -7826,7 +7826,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":null,"channelId":"invalid_value","expiresIn":1000,"maxUses":0},
                   contextData
@@ -7885,7 +7885,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -7962,7 +7962,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":null,"channelId":"{{channelId}}","expiresIn":"invalid_number","maxUses":0},
                   contextData
@@ -8021,7 +8021,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -8098,7 +8098,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":null,"channelId":"{{channelId}}","expiresIn":0,"maxUses":0},
                   contextData
@@ -8157,7 +8157,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -8234,7 +8234,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":null,"channelId":"{{channelId}}","maxUses":0},
                   contextData
@@ -8293,7 +8293,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -8370,7 +8370,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":null,"channelId":"{{channelId}}","expiresIn":"","maxUses":0},
                   contextData
@@ -8429,7 +8429,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -8506,7 +8506,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":null,"channelId":"{{channelId}}","expiresIn":1000,"maxUses":"invalid_number"},
                   contextData
@@ -8565,7 +8565,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -8642,7 +8642,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":null,"channelId":"{{channelId}}","expiresIn":1000},
                   contextData
@@ -8701,7 +8701,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -8778,7 +8778,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":null,"channelId":"{{channelId}}","expiresIn":1000,"maxUses":""},
                   contextData
@@ -8837,7 +8837,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -8914,7 +8914,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"invalid_value","channelId":"{{channelId}}","expiresIn":1000,"maxUses":0},
                   contextData
@@ -8973,7 +8973,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -9050,7 +9050,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"invalid_value","channelId":123,"expiresIn":1000,"maxUses":0},
                   contextData
@@ -9109,7 +9109,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -9186,7 +9186,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"invalid_value","expiresIn":1000,"maxUses":0},
                   contextData
@@ -9245,7 +9245,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -9322,7 +9322,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"invalid_value","channelId":"","expiresIn":1000,"maxUses":0},
                   contextData
@@ -9381,7 +9381,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -9458,7 +9458,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"invalid_value","channelId":null,"expiresIn":1000,"maxUses":0},
                   contextData
@@ -9517,7 +9517,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -9594,7 +9594,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"invalid_value","channelId":"invalid_value","expiresIn":1000,"maxUses":0},
                   contextData
@@ -9653,7 +9653,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -9730,7 +9730,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"invalid_value","channelId":"{{channelId}}","expiresIn":"invalid_number","maxUses":0},
                   contextData
@@ -9789,7 +9789,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -9866,7 +9866,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"invalid_value","channelId":"{{channelId}}","expiresIn":0,"maxUses":0},
                   contextData
@@ -9925,7 +9925,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -10002,7 +10002,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"invalid_value","channelId":"{{channelId}}","maxUses":0},
                   contextData
@@ -10061,7 +10061,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -10138,7 +10138,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"invalid_value","channelId":"{{channelId}}","expiresIn":"","maxUses":0},
                   contextData
@@ -10197,7 +10197,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -10274,7 +10274,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"invalid_value","channelId":"{{channelId}}","expiresIn":1000,"maxUses":"invalid_number"},
                   contextData
@@ -10333,7 +10333,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -10410,7 +10410,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"invalid_value","channelId":"{{channelId}}","expiresIn":1000},
                   contextData
@@ -10469,7 +10469,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -10546,7 +10546,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"invalid_value","channelId":"{{channelId}}","expiresIn":1000,"maxUses":""},
                   contextData
@@ -10605,7 +10605,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -10682,7 +10682,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":123,"expiresIn":"invalid_number","maxUses":0},
                   contextData
@@ -10741,7 +10741,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -10818,7 +10818,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":123,"expiresIn":0,"maxUses":0},
                   contextData
@@ -10877,7 +10877,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -10954,7 +10954,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":123,"maxUses":0},
                   contextData
@@ -11013,7 +11013,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -11090,7 +11090,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":123,"expiresIn":"","maxUses":0},
                   contextData
@@ -11149,7 +11149,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -11226,7 +11226,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":123,"expiresIn":1000,"maxUses":"invalid_number"},
                   contextData
@@ -11285,7 +11285,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -11362,7 +11362,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":123,"expiresIn":1000},
                   contextData
@@ -11421,7 +11421,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -11498,7 +11498,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":123,"expiresIn":1000,"maxUses":""},
                   contextData
@@ -11557,7 +11557,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -11634,7 +11634,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","expiresIn":"invalid_number","maxUses":0},
                   contextData
@@ -11693,7 +11693,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -11770,7 +11770,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","expiresIn":0,"maxUses":0},
                   contextData
@@ -11829,7 +11829,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -11906,7 +11906,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","maxUses":0},
                   contextData
@@ -11965,7 +11965,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -12042,7 +12042,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","expiresIn":"","maxUses":0},
                   contextData
@@ -12101,7 +12101,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -12178,7 +12178,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","expiresIn":1000,"maxUses":"invalid_number"},
                   contextData
@@ -12237,7 +12237,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -12314,7 +12314,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","expiresIn":1000},
                   contextData
@@ -12373,7 +12373,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -12450,7 +12450,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","expiresIn":1000,"maxUses":""},
                   contextData
@@ -12509,7 +12509,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -12586,7 +12586,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"","expiresIn":"invalid_number","maxUses":0},
                   contextData
@@ -12645,7 +12645,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -12722,7 +12722,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"","expiresIn":0,"maxUses":0},
                   contextData
@@ -12781,7 +12781,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -12858,7 +12858,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"","maxUses":0},
                   contextData
@@ -12917,7 +12917,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -12994,7 +12994,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"","expiresIn":"","maxUses":0},
                   contextData
@@ -13053,7 +13053,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -13130,7 +13130,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"","expiresIn":1000,"maxUses":"invalid_number"},
                   contextData
@@ -13189,7 +13189,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -13266,7 +13266,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"","expiresIn":1000},
                   contextData
@@ -13325,7 +13325,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -13402,7 +13402,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"","expiresIn":1000,"maxUses":""},
                   contextData
@@ -13461,7 +13461,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -13538,7 +13538,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":null,"expiresIn":"invalid_number","maxUses":0},
                   contextData
@@ -13597,7 +13597,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -13674,7 +13674,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":null,"expiresIn":0,"maxUses":0},
                   contextData
@@ -13733,7 +13733,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -13810,7 +13810,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":null,"maxUses":0},
                   contextData
@@ -13869,7 +13869,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -13946,7 +13946,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":null,"expiresIn":"","maxUses":0},
                   contextData
@@ -14005,7 +14005,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -14082,7 +14082,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":null,"expiresIn":1000,"maxUses":"invalid_number"},
                   contextData
@@ -14141,7 +14141,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -14218,7 +14218,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":null,"expiresIn":1000},
                   contextData
@@ -14277,7 +14277,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -14354,7 +14354,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":null,"expiresIn":1000,"maxUses":""},
                   contextData
@@ -14413,7 +14413,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -14490,7 +14490,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"invalid_value","expiresIn":"invalid_number","maxUses":0},
                   contextData
@@ -14549,7 +14549,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -14626,7 +14626,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"invalid_value","expiresIn":0,"maxUses":0},
                   contextData
@@ -14685,7 +14685,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -14762,7 +14762,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"invalid_value","maxUses":0},
                   contextData
@@ -14821,7 +14821,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -14898,7 +14898,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"invalid_value","expiresIn":"","maxUses":0},
                   contextData
@@ -14957,7 +14957,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -15034,7 +15034,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"invalid_value","expiresIn":1000,"maxUses":"invalid_number"},
                   contextData
@@ -15093,7 +15093,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -15170,7 +15170,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"invalid_value","expiresIn":1000},
                   contextData
@@ -15229,7 +15229,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -15306,7 +15306,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"invalid_value","expiresIn":1000,"maxUses":""},
                   contextData
@@ -15365,7 +15365,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -15442,7 +15442,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"{{channelId}}","expiresIn":"invalid_number","maxUses":"invalid_number"},
                   contextData
@@ -15501,7 +15501,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -15578,7 +15578,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"{{channelId}}","expiresIn":"invalid_number"},
                   contextData
@@ -15637,7 +15637,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -15714,7 +15714,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"{{channelId}}","expiresIn":"invalid_number","maxUses":""},
                   contextData
@@ -15773,7 +15773,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -15850,7 +15850,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"{{channelId}}","expiresIn":0,"maxUses":"invalid_number"},
                   contextData
@@ -15909,7 +15909,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -15986,7 +15986,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"{{channelId}}","expiresIn":0},
                   contextData
@@ -16045,7 +16045,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -16122,7 +16122,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"{{channelId}}","expiresIn":0,"maxUses":""},
                   contextData
@@ -16181,7 +16181,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -16258,7 +16258,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"{{channelId}}","maxUses":"invalid_number"},
                   contextData
@@ -16317,7 +16317,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -16394,7 +16394,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"{{channelId}}"},
                   contextData
@@ -16453,7 +16453,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -16530,7 +16530,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"{{channelId}}","maxUses":""},
                   contextData
@@ -16589,7 +16589,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -16666,7 +16666,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"{{channelId}}","expiresIn":"","maxUses":"invalid_number"},
                   contextData
@@ -16725,7 +16725,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -16802,7 +16802,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"{{channelId}}","expiresIn":""},
                   contextData
@@ -16861,7 +16861,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -16938,7 +16938,7 @@
               
               try {
                 const response = await resolveCallAPI(
-                  "createChannel",
+                  "createInvitation",
                   {"x-session-token":"{{token}}"},
                   {"workspaceId":"0","channelId":"{{channelId}}","expiresIn":"","maxUses":""},
                   contextData
@@ -16997,7 +16997,7 @@
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -17107,7 +17107,7 @@
           
           // Lưu kết quả vào biến toàn cục
           const testResult: TestResult = {
-            path: '/Channel/CreateChannel',
+            path: '/Invitation/CreateInvitation',
             className: 'create-invitation',
             allSteps: allSteps,
             chunkNumber: undefined,
@@ -17115,7 +17115,6 @@
             codedTest: [...codedTest],
             passedTests: passedTests,
             totalTests: totalTests,
-            logicTests: [...logicTests],
             failedStep: [...failedStep]
           };
           const reportDir = path.join(__dirname, '../../../../tmp-reports');

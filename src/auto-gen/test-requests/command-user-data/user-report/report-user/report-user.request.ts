@@ -12,8 +12,7 @@ export const ReportUserRequest: RequestTestSuite = {
   headers: HEADER_LIST.create({ token: VAR.token }),
   body: {
     userId: VAR.userId1,
-    reportCategory: ReportCategory.REPORT_CATEGORY_UNSPECIFIED,
-    pretendingTo: PretendingTo.PRETENDING_TO_UNSPECIFIED,
+    reportCategory: ReportCategory.REPORT_CATEGORY_HARASSMENT,
     reportReason: 'report user',
   },
   options: [

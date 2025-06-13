@@ -25,5 +25,6 @@ export class RevokeInvitationDTO {
   @IsString()
   @IsDefined()
   @IsNotEmpty()
+  @IsNotNull()
   code: string = '';
 }
