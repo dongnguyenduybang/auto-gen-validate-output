@@ -1,0 +1,254 @@
+=== Request Test Report for unpin-message ===
+• Host: N/A
+• Endpoint: /Message/PinUnpinMessage
+• Date: 13/06/2025, 14:02:01
+
+=== Execution Steps ===
+
+=== Test Summary ===
+✅ Passed: 124
+❌ Failed: 31
+📊 Total: 155
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 0
+ 🟢 201: 1
+ 🟠 400: 9
+ 🟠 403: 114
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Unique Errors ===
+ 🟣 1. Unsupported permission type (Occurred: 11 times)
+ 🟣 2. messageId invalid ulid (Occurred: 8 times)
+ 🟣 3. messageId should not be empty (Occurred: 5 times)
+ 🟣 4. status expected boolean, received undefined (Occurred: 6 times)
+ 🟣 5. status required (Occurred: 6 times)
+ 🟣 6. status expected boolean, received string (Occurred: 7 times)
+ 🟣 7. status should not be empty (Occurred: 6 times)
+ 🟣 8. status expected boolean, received null (Occurred: 6 times)
+ 🟣 9. messageId expected string, received number (Occurred: 3 times)
+ 🟣 10. messageId required (Occurred: 3 times)
+ 🟣 11. messageId expected string, received null (Occurred: 3 times)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #18
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"01JXKZYM5E8E3NXJMMKDFASVX2","status":false}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 2. Case #24
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZYKJHN4NV52CX5YA8AR1T","messageId":"","status":false}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 3. Case #28
+     ├─ Status: 201
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZYKJHN4NV52CX5YA8AR1T","messageId":"01JXKZYM5E8E3NXJMMKDFASVX2"}
+     ├─ Actual: None
+     ├─ Expected: status expected boolean, received undefined, status required
+     └─ Details: No details
+
+ 🟣 4. Case #29
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZYKJHN4NV52CX5YA8AR1T","messageId":"01JXKZYM5E8E3NXJMMKDFASVX2","status":""}
+     ├─ Actual: status expected boolean, received string
+     ├─ Expected: status expected boolean, received string, status should not be empty
+     └─ Details: No details
+
+ 🟣 5. Case #30
+     ├─ Status: 201
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZYKJHN4NV52CX5YA8AR1T","messageId":"01JXKZYM5E8E3NXJMMKDFASVX2","status":null}
+     ├─ Actual: None
+     ├─ Expected: status expected boolean, received null
+     └─ Details: No details
+
+ 🟣 6. Case #78
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"invalid_value","messageId":"01JXKZYM5E8E3NXJMMKDFASVX2","status":false}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 7. Case #100
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":123,"status":false}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 8. Case #101
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","status":false}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 9. Case #102
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"","status":false}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 10. Case #103
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":null,"status":false}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 11. Case #104
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"invalid_ULID","status":false}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 12. Case #105
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"01JXKZYM5E8E3NXJMMKDFASVX2","status":"invalid_boolean"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 13. Case #106
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"01JXKZYM5E8E3NXJMMKDFASVX2"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 14. Case #107
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"01JXKZYM5E8E3NXJMMKDFASVX2","status":""}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 15. Case #108
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"01JXKZYM5E8E3NXJMMKDFASVX2","status":null}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 16. Case #137
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZYKJHN4NV52CX5YA8AR1T","messageId":123}
+     ├─ Actual: messageId expected string, received number
+     ├─ Expected: messageId expected string, received number, status expected boolean, received undefined, status required
+     └─ Details: No details
+
+ 🟣 17. Case #138
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZYKJHN4NV52CX5YA8AR1T","messageId":123,"status":""}
+     ├─ Actual: messageId expected string, received number, status expected boolean, received string
+     ├─ Expected: messageId expected string, received number, status expected boolean, received string, status should not be empty
+     └─ Details: No details
+
+ 🟣 18. Case #139
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZYKJHN4NV52CX5YA8AR1T","messageId":123,"status":null}
+     ├─ Actual: messageId expected string, received number
+     ├─ Expected: messageId expected string, received number, status expected boolean, received null
+     └─ Details: No details
+
+ 🟣 19. Case #141
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZYKJHN4NV52CX5YA8AR1T"}
+     ├─ Actual: messageId required
+     ├─ Expected: messageId required, status expected boolean, received undefined, status required
+     └─ Details: No details
+
+ 🟣 20. Case #142
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZYKJHN4NV52CX5YA8AR1T","status":""}
+     ├─ Actual: messageId required, status expected boolean, received string
+     ├─ Expected: messageId required, status expected boolean, received string, status should not be empty
+     └─ Details: No details
+
+ 🟣 21. Case #143
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZYKJHN4NV52CX5YA8AR1T","status":null}
+     ├─ Actual: messageId required
+     ├─ Expected: messageId required, status expected boolean, received null
+     └─ Details: No details
+
+ 🟣 22. Case #144
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZYKJHN4NV52CX5YA8AR1T","messageId":"","status":"invalid_boolean"}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s), status expected boolean, received string
+     ├─ Expected: messageId invalid ulid, messageId should not be empty, status expected boolean, received string
+     └─ Details: No details
+
+ 🟣 23. Case #145
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZYKJHN4NV52CX5YA8AR1T","messageId":""}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: messageId invalid ulid, messageId should not be empty, status expected boolean, received undefined, status required
+     └─ Details: No details
+
+ 🟣 24. Case #146
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZYKJHN4NV52CX5YA8AR1T","messageId":"","status":""}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s), status expected boolean, received string
+     ├─ Expected: messageId invalid ulid, messageId should not be empty, status expected boolean, received string, status should not be empty
+     └─ Details: No details
+
+ 🟣 25. Case #147
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZYKJHN4NV52CX5YA8AR1T","messageId":"","status":null}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: messageId invalid ulid, messageId should not be empty, status expected boolean, received null
+     └─ Details: No details
+
+ 🟣 26. Case #149
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZYKJHN4NV52CX5YA8AR1T","messageId":null}
+     ├─ Actual: messageId expected string, received null
+     ├─ Expected: messageId expected string, received null, status expected boolean, received undefined, status required
+     └─ Details: No details
+
+ 🟣 27. Case #150
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZYKJHN4NV52CX5YA8AR1T","messageId":null,"status":""}
+     ├─ Actual: messageId expected string, received null, status expected boolean, received string
+     ├─ Expected: messageId expected string, received null, status expected boolean, received string, status should not be empty
+     └─ Details: No details
+
+ 🟣 28. Case #151
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZYKJHN4NV52CX5YA8AR1T","messageId":null,"status":null}
+     ├─ Actual: messageId expected string, received null
+     ├─ Expected: messageId expected string, received null, status expected boolean, received null
+     └─ Details: No details
+
+ 🟣 29. Case #153
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZYKJHN4NV52CX5YA8AR1T","messageId":"invalid_ULID"}
+     ├─ Actual: messageId invalid ulid
+     ├─ Expected: messageId invalid ulid, status expected boolean, received undefined, status required
+     └─ Details: No details
+
+ 🟣 30. Case #154
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZYKJHN4NV52CX5YA8AR1T","messageId":"invalid_ULID","status":""}
+     ├─ Actual: messageId invalid ulid, status expected boolean, received string
+     ├─ Expected: messageId invalid ulid, status expected boolean, received string, status should not be empty
+     └─ Details: No details
+
+ 🟣 31. Case #155
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZYKJHN4NV52CX5YA8AR1T","messageId":"invalid_ULID","status":null}
+     ├─ Actual: messageId invalid ulid
+     ├─ Expected: messageId invalid ulid, status expected boolean, received null
+     └─ Details: No details
+
+=== End of Report ===

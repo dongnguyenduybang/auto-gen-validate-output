@@ -7,7 +7,7 @@ export const DeleteMessagesOnlyMeRequest: RequestTestSuite = {
   body: {
     workspaceId: VAR.workspaceId,
     channelID: VAR.channelId,
-    messageId: VAR.messageId,
+    messageIds: [VAR.messageId],
   },
   options: [
     {

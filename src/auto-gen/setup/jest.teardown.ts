@@ -20,19 +20,19 @@ export default async function () {
       },
     ];
 
-    // const results = await executeSteps(steps, globalThis.globalContext);
+    const results = await executeSteps(steps, globalThis.globalContext);
 
-    // results.forEach((result) => {
-    //   if (!result.status) {
-    //     console.error(`Error: ${result.error}`);
-    //   } else {
-    //     console.log(`Step ${result.stepName} executed successfully`);
+    results.forEach((result) => {
+      if (!result.status) {
+        console.error(`Error: ${result.error}`);
+      } else {
+        console.log(`Step ${result.stepName} executed successfully`);
 
-    //     delete globalThis.globalContext;
-    //     delete globalThis.globalVar;
-    //     delete globalThis.urls;
-    //   }
-    // });
+        delete globalThis.globalContext;
+        delete globalThis.globalVar;
+        delete globalThis.urls;
+      }
+    });
 
     console.log('Global teardown completed successfully');
   } catch (error) {

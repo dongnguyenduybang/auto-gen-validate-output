@@ -27,7 +27,7 @@ function extractCodedTests(result: TestResult): TestResult[] {
 }
 
 function extractFailedSteps(result: TestResult): TestResult[] {
-  return result.failedStep;
+  return result.allSteps;
 }
 
 function extractPaths(result: TestResult): string {
@@ -116,7 +116,7 @@ async function combineReports(className: string) {
     combinedCodedTest,
     combinedFailedTests,
   );
-
+console.log(combinedFailedStep)
   const reportContent = combinedReportTemplate(
     className,
     globalThis.urls,

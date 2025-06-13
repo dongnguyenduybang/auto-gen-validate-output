@@ -1,0 +1,184 @@
+=== Request Test Report for add-message-reaction ===
+• Host: N/A
+• Endpoint: /Message/AddMessageReaction
+• Date: 13/06/2025, 14:02:01
+
+=== Execution Steps ===
+
+=== Test Summary ===
+✅ Passed: 134
+❌ Failed: 21
+📊 Total: 155
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 0
+ 🟢 201: 1
+ 🟠 400: 19
+ 🟠 403: 114
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Unique Errors ===
+ 🟣 1. Unsupported permission type (Occurred: 11 times)
+ 🟣 2. messageId invalid ulid (Occurred: 6 times)
+ 🟣 3. messageId should not be empty (Occurred: 5 times)
+ 🟣 4. emoji invalid emoji (Occurred: 6 times)
+ 🟣 5. emoji only accepts 1 emoji (Occurred: 7 times)
+ 🟣 6. emoji should not be empty (Occurred: 6 times)
+ 🟣 7. messageId expected string, received number (Occurred: 1 time)
+ 🟣 8. messageId required (Occurred: 1 time)
+ 🟣 9. emoji expected string, received number (Occurred: 1 time)
+ 🟣 10. emoji expected string, received null (Occurred: 1 time)
+ 🟣 11. messageId expected string, received null (Occurred: 1 time)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #18
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"01JXKZ0AB8TPQRJYJ8DV6Q36WV","emoji":"🚀"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 2. Case #24
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZ09HRTG38YNZ1TCB1BFH6","messageId":"","emoji":"🚀"}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 3. Case #29
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZ09HRTG38YNZ1TCB1BFH6","messageId":"01JXKZ0AB8TPQRJYJ8DV6Q36WV","emoji":""}
+     ├─ Actual: emoji invalid emoji, emoji only accepts 1 emoji
+     ├─ Expected: emoji invalid emoji, emoji only accepts 1 emoji, emoji should not be empty
+     └─ Details: No details
+
+ 🟣 4. Case #78
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"invalid_value","messageId":"01JXKZ0AB8TPQRJYJ8DV6Q36WV","emoji":"🚀"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 5. Case #100
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":123,"emoji":"🚀"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 6. Case #101
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","emoji":"🚀"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 7. Case #102
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"","emoji":"🚀"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 8. Case #103
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":null,"emoji":"🚀"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 9. Case #104
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"invalid_ULID","emoji":"🚀"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 10. Case #105
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"01JXKZ0AB8TPQRJYJ8DV6Q36WV","emoji":123}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 11. Case #106
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"01JXKZ0AB8TPQRJYJ8DV6Q36WV","emoji":"🚀🚀"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 12. Case #107
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"01JXKZ0AB8TPQRJYJ8DV6Q36WV","emoji":""}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 13. Case #108
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"01JXKZ0AB8TPQRJYJ8DV6Q36WV","emoji":null}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 14. Case #138
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZ09HRTG38YNZ1TCB1BFH6","messageId":123,"emoji":""}
+     ├─ Actual: emoji invalid emoji, emoji only accepts 1 emoji, messageId expected string, received number
+     ├─ Expected: emoji invalid emoji, emoji only accepts 1 emoji, emoji should not be empty, messageId expected string, received number
+     └─ Details: No details
+
+ 🟣 15. Case #142
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZ09HRTG38YNZ1TCB1BFH6","emoji":""}
+     ├─ Actual: emoji invalid emoji, emoji only accepts 1 emoji, messageId required
+     ├─ Expected: emoji invalid emoji, emoji only accepts 1 emoji, emoji should not be empty, messageId required
+     └─ Details: No details
+
+ 🟣 16. Case #144
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZ09HRTG38YNZ1TCB1BFH6","messageId":"","emoji":123}
+     ├─ Actual: emoji expected string, received number, messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: emoji expected string, received number, messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 17. Case #145
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZ09HRTG38YNZ1TCB1BFH6","messageId":"","emoji":"🚀🚀"}
+     ├─ Actual: emoji only accepts 1 emoji, messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: emoji only accepts 1 emoji, messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 18. Case #146
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZ09HRTG38YNZ1TCB1BFH6","messageId":"","emoji":""}
+     ├─ Actual: emoji invalid emoji, emoji only accepts 1 emoji, messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: emoji invalid emoji, emoji only accepts 1 emoji, emoji should not be empty, messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 19. Case #147
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZ09HRTG38YNZ1TCB1BFH6","messageId":"","emoji":null}
+     ├─ Actual: emoji expected string, received null, messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: emoji expected string, received null, messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 20. Case #150
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZ09HRTG38YNZ1TCB1BFH6","messageId":null,"emoji":""}
+     ├─ Actual: emoji invalid emoji, emoji only accepts 1 emoji, messageId expected string, received null
+     ├─ Expected: emoji invalid emoji, emoji only accepts 1 emoji, emoji should not be empty, messageId expected string, received null
+     └─ Details: No details
+
+ 🟣 21. Case #154
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZ09HRTG38YNZ1TCB1BFH6","messageId":"invalid_ULID","emoji":""}
+     ├─ Actual: emoji invalid emoji, emoji only accepts 1 emoji, messageId invalid ulid
+     ├─ Expected: emoji invalid emoji, emoji only accepts 1 emoji, emoji should not be empty, messageId invalid ulid
+     └─ Details: No details
+
+=== End of Report ===

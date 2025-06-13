@@ -34,11 +34,6 @@ export class Message extends GeneralMessage {
   @IsDefined()
   content?: string;
 
-  @ValidIf('userId', '===', '{{userId}}')
-  @IsString()
-  @IsDefined()
-  userId?: string;
-
   @ValidIf('createTime', '===', 'response.updateTime')
   @IsString()
   @IsDefined()

@@ -1,0 +1,58 @@
+=== Request Test Report for forward-dm-message-channel ===
+• Host: N/A
+• Endpoint: /Message/ForwardMessagesToDMChannel
+• Date: 13/06/2025, 14:02:01
+
+=== Execution Steps ===
+
+=== Test Summary ===
+✅ Passed: 56
+❌ Failed: 4
+📊 Total: 60
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 0
+ 🟢 201: 1
+ 🟠 400: 5
+ 🟠 403: 50
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Unique Errors ===
+ 🟣 1. originalMessageIds has element 0 expected object, received number (Occurred: 1 time)
+ 🟣 2. originalMessageIds has element 0 expected object, received null (Occurred: 1 time)
+ 🟣 3. originalMessageIds expected array, received undefined (Occurred: 1 time)
+ 🟣 4. originalMessageIds required (Occurred: 1 time)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #14
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JXM0M5KF951A6J05QV5XAJXP","originalMessageIds":[123]}
+     ├─ Actual: originalMessageIds has element 0 expected string, received number
+     ├─ Expected: originalMessageIds has element 0 expected object, received number
+     └─ Details: No details
+
+ 🟣 2. Case #16
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 3. Case #18
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JXM0M5KF951A6J05QV5XAJXP","originalMessageIds":[null]}
+     ├─ Actual: originalMessageIds has element 0 expected string, received null
+     ├─ Expected: originalMessageIds has element 0 expected object, received null
+     └─ Details: No details
+
+ 🟣 4. Case #20
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JXM0M5KF951A6J05QV5XAJXP"}
+     ├─ Actual: originalMessageIds required
+     ├─ Expected: originalMessageIds expected array, received undefined, originalMessageIds required
+     └─ Details: No details
+
+=== End of Report ===

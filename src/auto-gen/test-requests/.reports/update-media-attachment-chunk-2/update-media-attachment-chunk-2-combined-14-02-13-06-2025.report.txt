@@ -1,0 +1,2875 @@
+=== Request Test Report for update-media-attachment-chunk-2 ===
+• Host: N/A
+• Endpoint: /Message/UpdateMediaAttachments
+• Date: 13/06/2025, 14:02:01
+
+=== Execution Steps ===
+
+=== Test Summary ===
+✅ Passed: 0
+❌ Failed: 407
+📊 Total: 407
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 0
+ 🟢 201: 0
+ 🟠 400: 0
+ 🟠 403: 0
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Unique Errors ===
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #501
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 2. Case #502
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 3. Case #503
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 4. Case #504
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 5. Case #505
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 6. Case #506
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 7. Case #507
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 8. Case #508
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 9. Case #509
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 10. Case #510
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 11. Case #511
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 12. Case #512
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 13. Case #513
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 14. Case #514
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 15. Case #515
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 16. Case #516
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 17. Case #517
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 18. Case #518
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 19. Case #519
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 20. Case #520
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 21. Case #521
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 22. Case #522
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 23. Case #523
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 24. Case #524
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 25. Case #525
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 26. Case #526
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 27. Case #527
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 28. Case #528
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 29. Case #529
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 30. Case #530
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 31. Case #531
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 32. Case #532
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 33. Case #533
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 34. Case #534
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 35. Case #535
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 36. Case #536
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 37. Case #537
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 38. Case #538
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 39. Case #539
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 40. Case #540
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 41. Case #541
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 42. Case #542
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 43. Case #543
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 44. Case #544
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 45. Case #545
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 46. Case #546
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 47. Case #547
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 48. Case #548
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 49. Case #549
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 50. Case #550
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 51. Case #551
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 52. Case #552
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 53. Case #553
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 54. Case #554
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 55. Case #555
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 56. Case #556
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 57. Case #557
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 58. Case #558
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 59. Case #559
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 60. Case #560
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 61. Case #561
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 62. Case #562
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 63. Case #563
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 64. Case #564
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 65. Case #565
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 66. Case #566
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 67. Case #567
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 68. Case #568
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 69. Case #569
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 70. Case #570
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 71. Case #571
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 72. Case #572
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 73. Case #573
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 74. Case #574
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 75. Case #575
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 76. Case #576
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 77. Case #577
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 78. Case #578
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 79. Case #579
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 80. Case #580
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 81. Case #581
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 82. Case #582
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 83. Case #583
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 84. Case #584
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 85. Case #585
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 86. Case #586
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 87. Case #587
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 88. Case #588
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 89. Case #589
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 90. Case #590
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 91. Case #591
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 92. Case #592
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 93. Case #593
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 94. Case #594
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 95. Case #595
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 96. Case #596
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 97. Case #597
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 98. Case #598
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 99. Case #599
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 100. Case #600
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 101. Case #601
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 102. Case #602
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 103. Case #603
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 104. Case #604
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 105. Case #605
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 106. Case #606
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 107. Case #607
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 108. Case #608
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 109. Case #609
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 110. Case #610
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 111. Case #611
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 112. Case #612
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 113. Case #613
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 114. Case #614
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 115. Case #615
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 116. Case #616
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 117. Case #617
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 118. Case #618
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 119. Case #619
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 120. Case #620
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 121. Case #621
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 122. Case #622
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 123. Case #623
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 124. Case #624
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 125. Case #625
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 126. Case #626
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 127. Case #627
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 128. Case #628
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 129. Case #629
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 130. Case #630
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 131. Case #631
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 132. Case #632
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 133. Case #633
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 134. Case #634
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 135. Case #635
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 136. Case #636
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 137. Case #637
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 138. Case #638
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 139. Case #639
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 140. Case #640
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 141. Case #641
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 142. Case #642
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 143. Case #643
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 144. Case #644
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 145. Case #645
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 146. Case #646
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 147. Case #647
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 148. Case #648
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 149. Case #649
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 150. Case #650
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 151. Case #651
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 152. Case #652
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 153. Case #653
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 154. Case #654
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 155. Case #655
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 156. Case #656
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 157. Case #657
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 158. Case #658
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 159. Case #659
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 160. Case #660
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 161. Case #661
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 162. Case #662
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 163. Case #663
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 164. Case #664
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 165. Case #665
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 166. Case #666
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 167. Case #667
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 168. Case #668
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 169. Case #669
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 170. Case #670
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 171. Case #671
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 172. Case #672
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 173. Case #673
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 174. Case #674
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 175. Case #675
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 176. Case #676
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 177. Case #677
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 178. Case #678
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 179. Case #679
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 180. Case #680
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 181. Case #681
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 182. Case #682
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 183. Case #683
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 184. Case #684
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 185. Case #685
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 186. Case #686
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 187. Case #687
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 188. Case #688
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 189. Case #689
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 190. Case #690
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 191. Case #691
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 192. Case #692
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 193. Case #693
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 194. Case #694
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 195. Case #695
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 196. Case #696
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 197. Case #697
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 198. Case #698
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 199. Case #699
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 200. Case #700
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 201. Case #701
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 202. Case #702
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 203. Case #703
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 204. Case #704
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 205. Case #705
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 206. Case #706
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 207. Case #707
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 208. Case #708
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 209. Case #709
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 210. Case #710
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 211. Case #711
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 212. Case #712
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 213. Case #713
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 214. Case #714
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 215. Case #715
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 216. Case #716
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 217. Case #717
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 218. Case #718
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 219. Case #719
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 220. Case #720
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 221. Case #721
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 222. Case #722
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 223. Case #723
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 224. Case #724
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 225. Case #725
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 226. Case #726
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 227. Case #727
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 228. Case #728
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 229. Case #729
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 230. Case #730
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 231. Case #731
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 232. Case #732
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 233. Case #733
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 234. Case #734
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 235. Case #735
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 236. Case #736
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 237. Case #737
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 238. Case #738
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 239. Case #739
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 240. Case #740
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 241. Case #741
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 242. Case #742
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 243. Case #743
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 244. Case #744
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 245. Case #745
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 246. Case #746
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 247. Case #747
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 248. Case #748
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 249. Case #749
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 250. Case #750
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 251. Case #751
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 252. Case #752
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 253. Case #753
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 254. Case #754
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 255. Case #755
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 256. Case #756
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 257. Case #757
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 258. Case #758
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 259. Case #759
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 260. Case #760
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 261. Case #761
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 262. Case #762
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 263. Case #763
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 264. Case #764
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 265. Case #765
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 266. Case #766
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 267. Case #767
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 268. Case #768
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 269. Case #769
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 270. Case #770
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 271. Case #771
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 272. Case #772
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 273. Case #773
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 274. Case #774
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 275. Case #775
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 276. Case #776
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 277. Case #777
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 278. Case #778
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 279. Case #779
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 280. Case #780
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 281. Case #781
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 282. Case #782
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 283. Case #783
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 284. Case #784
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 285. Case #785
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 286. Case #786
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 287. Case #787
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 288. Case #788
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 289. Case #789
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 290. Case #790
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 291. Case #791
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 292. Case #792
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 293. Case #793
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 294. Case #794
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 295. Case #795
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 296. Case #796
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 297. Case #797
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 298. Case #798
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 299. Case #799
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 300. Case #800
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 301. Case #801
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 302. Case #802
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 303. Case #803
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 304. Case #804
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 305. Case #805
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 306. Case #806
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 307. Case #807
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 308. Case #808
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 309. Case #809
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 310. Case #810
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 311. Case #811
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 312. Case #812
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 313. Case #813
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 314. Case #814
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 315. Case #815
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 316. Case #816
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 317. Case #817
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 318. Case #818
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 319. Case #819
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 320. Case #820
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 321. Case #821
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 322. Case #822
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 323. Case #823
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 324. Case #824
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 325. Case #825
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 326. Case #826
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 327. Case #827
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 328. Case #828
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 329. Case #829
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 330. Case #830
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 331. Case #831
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 332. Case #832
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 333. Case #833
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 334. Case #834
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 335. Case #835
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 336. Case #836
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 337. Case #837
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 338. Case #838
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 339. Case #839
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 340. Case #840
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 341. Case #841
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 342. Case #842
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 343. Case #843
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 344. Case #844
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 345. Case #845
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 346. Case #846
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 347. Case #847
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 348. Case #848
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 349. Case #849
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 350. Case #850
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 351. Case #851
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 352. Case #852
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 353. Case #853
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 354. Case #854
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 355. Case #855
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 356. Case #856
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 357. Case #857
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 358. Case #858
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 359. Case #859
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 360. Case #860
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 361. Case #861
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 362. Case #862
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 363. Case #863
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 364. Case #864
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 365. Case #865
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 366. Case #866
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 367. Case #867
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 368. Case #868
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 369. Case #869
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 370. Case #870
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 371. Case #871
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 372. Case #872
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 373. Case #873
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 374. Case #874
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 375. Case #875
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 376. Case #876
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 377. Case #877
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 378. Case #878
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 379. Case #879
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 380. Case #880
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 381. Case #881
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 382. Case #882
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 383. Case #883
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 384. Case #884
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 385. Case #885
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 386. Case #886
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 387. Case #887
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 388. Case #888
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 389. Case #889
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 390. Case #890
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 391. Case #891
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 392. Case #892
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 393. Case #893
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 394. Case #894
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 395. Case #895
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 396. Case #896
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 397. Case #897
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 398. Case #898
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 399. Case #899
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 400. Case #900
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 401. Case #901
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 402. Case #902
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 403. Case #903
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 404. Case #904
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 405. Case #905
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 406. Case #906
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+ 🟣 407. Case #907
+     ├─ Status: 404
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: Unexpected status code
+
+=== End of Report ===

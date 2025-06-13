@@ -39,9 +39,9 @@ export const APIPath = {
     UpdateMediaAttachments: '/Message/UpdateMediaAttachments',
     SendMessageMedia: '/Message/SendMessageMedia',
     DeleteDmMessagesOnlyMe: '/Message/DeleteDMMessagesOnlyMe',
-    DeleteDmMessagesForEveryone: '/Message/DeleteDMMessageForEveryone',
+    DeleteDmMessagesForEveryone: '/Message/DeleteDMMessagesForEveryone',
     DeleteMessagesOnlyMe: '/Message/DeleteMessagesOnlyMe',
-    DeleteMessagesForEveryone: '/Message/DeleteMessageForEveryone',
+    DeleteMessagesForEveryone: '/Message/DeleteMessagesForEveryone',
   },
   ViewChannel: {
     GetChannel: '/ChannelView/GetChannel',

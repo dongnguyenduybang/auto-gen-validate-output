@@ -6,7 +6,7 @@ export const DeleteDmMessagesOnlyMeRequest: RequestTestSuite = {
   headers: HEADER_LIST.create({ token: VAR.token }),
   body: {
     userId: VAR.userId1,
-    messageId: VAR.messageId,
+    messageIds: [VAR.messageId],
   },
   options: [
     {

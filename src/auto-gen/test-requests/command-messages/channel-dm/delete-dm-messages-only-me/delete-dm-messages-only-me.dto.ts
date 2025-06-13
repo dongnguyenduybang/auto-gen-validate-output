@@ -6,6 +6,7 @@ import {
   IsString,
   IsULID,
   IsNotNull,
+  IsArray,
 } from '../../../../decorator/index';
 
 export class DeleteDmMessagesOnlyMeDTO {
@@ -16,11 +17,17 @@ export class DeleteDmMessagesOnlyMeDTO {
   @IsInvalid({ message: ErrorMessage.UNAUTHORIZED_REQUEST })
   userId: string = '';
 
-  @IsString()
-  @IsULID()
+  @IsArray({
+    decorators: [
+      { name: 'IsString' },
+      { name: 'IsNotNull' },
+      { name: 'IsULID', message: 'Messages not exist' },
+    ],
+  })
   @IsNotEmpty()
   @IsNotNull()
   @IsDefined()
-  messageId: string = '';
+  messageIds: string[] = [];
+
 
 }

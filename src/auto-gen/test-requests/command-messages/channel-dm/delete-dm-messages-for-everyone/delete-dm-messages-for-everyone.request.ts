@@ -6,7 +6,7 @@ export const DeleteDmMessagesForEveryoneRequest: RequestTestSuite = {
   headers: HEADER_LIST.create({ token: VAR.token }),
   body: {
     userId: VAR.userId1,
-    messageId: VAR.messageId,
+    messageIds: [VAR.messageId],
   },
   options: [
     {
@@ -18,7 +18,7 @@ export const DeleteDmMessagesForEveryoneRequest: RequestTestSuite = {
             content: 'duybang12345',
             ref: 'abc',
           },
-          headers: HEADER_LIST.create({ token: VAR.token1}),
+          headers: HEADER_LIST.create({ token: VAR.token1 }),
         },
       ],
       beforeEach: [],

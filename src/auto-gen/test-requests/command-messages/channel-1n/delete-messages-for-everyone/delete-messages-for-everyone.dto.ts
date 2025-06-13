@@ -6,6 +6,7 @@ import {
   IsString,
   IsULID,
   IsNotNull,
+  IsArray,
 } from '../../../../decorator/index';
 
 export class DeleteMessagesForEveryoneDTO {
@@ -23,11 +24,16 @@ export class DeleteMessagesForEveryoneDTO {
   @IsString({ message: ErrorMessage.COULD_NOT_PERMISSION })
   channelId: string = '';
 
-  @IsString()
-  @IsULID()
+  @IsArray({
+    decorators: [
+      { name: 'IsString' },
+      { name: 'IsNotNull' },
+      { name: 'IsULID', message: 'Messages not exist' },
+    ],
+  })
   @IsNotEmpty()
   @IsNotNull()
   @IsDefined()
-  messageId: string = '';
+  messageIds: string[] = [];
 
 }

@@ -1015,97 +1015,88 @@ function checkTypeArray(
 
     value.forEach((item: unknown, index: number) => {
       const typeItem = typeof item;
-      if (typeof item === 'string') {
-        const itemDecorator = decorators['itemDecorators'];
-        if (!itemDecorator) return;
-        itemDecorator.forEach(
-          (dec: { name: string; params?: any; message?: string }) => {
-            const { name, params, message } = dec;
-            //check type
-            if (name === 'IsObject' && typeof item !== 'object') {
-              addErrorIfNotExist(
-                errors,
-                null,
-                `${field} has element ${index} ${ErrorMessage.INVALID_TYPE_OBJ} ${typeof item}`,
-              );
-            }
-            //check min item
-            if (item === '' && name === 'MinArrayItem') {
-              addErrorIfNotExist(
-                errors,
-                null,
-                `${field} has element ${index} ${ErrorMessage.MIN_LENGTH} ${params} character(s)`,
-              );
-            }
-            if (
-              item === '' &&
-              name === 'MinArrayItem' &&
-              decorators['IsULID']
-            ) {
-              addErrorIfNotExist(
-                errors,
-                null,
-                `${field} has element ${index} ${ErrorMessage.MIN_LENGTH} ${params} character(s)`,
-              );
-              addErrorIfNotExist(
-                errors,
-                null,
-                `${field} has element ${index} ${ErrorMessage.INVALID_ULID}`,
-              );
-            }
-
-            //check ulid
-            if (
-              name === 'IsULID' &&
-              !checkRegexULID(item) &&
-              !item.startsWith('{{')
-            ) {
-              addErrorIfNotExist(
-                errors,
-                null,
-                `${field} has element ${index} ${ErrorMessage.INVALID_ULID}`,
-              );
-            }
-            if (
-              name === 'IsULID' &&
-              checkRegexULID(item) &&
-              !item.startsWith('{{')
-            ) {
-              addErrorIfNotExist(errors, message, `${field} ${message}`);
-            }
-
-            //check unique item
-            if (name === 'IsUnique') {
-              const uniqueItems = new Set(value);
-              if (uniqueItems.size !== value.length) {
-                addErrorIfNotExist(
-                  errors,
-                  null,
-                  `${field} ${ErrorMessage.UNIQUE_ARRAY_ITEM}`,
-                );
-              }
-            }
-          },
-        );
-      } else {
-        if (item === null) {
-          addErrorIfNotExist(
-            errors,
-            null,
-            `${field} has element ${index} ${ErrorMessage.INVALID_TYPE_OBJ} null`,
-          );
-        } else {
-          if (typeof item !== 'object') {
+      const itemDecorator = decorators['itemDecorators'];
+      if (!itemDecorator) return;
+      itemDecorator.forEach(
+        (dec: { name: string; params?: any; message?: string }) => {
+          const { name, params, message } = dec;
+          //check type
+          if (name === 'IsObject' && typeof item !== 'object') {
             addErrorIfNotExist(
               errors,
               null,
               `${field} has element ${index} ${ErrorMessage.INVALID_TYPE_OBJ} ${typeof item}`,
             );
-          } else {
-            return;
           }
-        }
-      }
+          //check min item
+          if (item === '' && name === 'MinArrayItem') {
+            addErrorIfNotExist(
+              errors,
+              null,
+              `${field} has element ${index} ${ErrorMessage.MIN_LENGTH} ${params} character(s)`,
+            );
+          }
+          if (
+            item === '' &&
+            name === 'MinArrayItem' &&
+            decorators['IsULID']
+          ) {
+            addErrorIfNotExist(
+              errors,
+              null,
+              `${field} has element ${index} ${ErrorMessage.MIN_LENGTH} ${params} character(s)`,
+            );
+            addErrorIfNotExist(
+              errors,
+              null,
+              `${field} has element ${index} ${ErrorMessage.INVALID_ULID}`,
+            );
+          }
+
+          if (typeof item === 'string') {
+            //check ulid
+            if (name === 'IsULID' && !item.startsWith('{{')) {
+              if (!checkRegexULID(item)) {
+                addErrorIfNotExist(
+                  errors,
+                  null,
+                  `${field} has element ${index} ${ErrorMessage.INVALID_ULID}`,
+                );
+              } else {
+                addErrorIfNotExist(errors, message, `${field} ${message}`);
+              }
+            }
+          }else {
+           if(name === 'IsULID') {
+             addErrorIfNotExist(
+                  errors,
+                  null,
+                  `${field} has element ${index} ${ErrorMessage.INVALID_ULID}`,
+                );
+           }else {
+             addErrorIfNotExist(
+                  errors,
+                  null,
+                  `${field} has element ${index} ${ErrorMessage.INVALID_TYPE_STRING} ${typeof item}`,
+                );
+           }
+          }
+
+
+          //check unique item
+          if (name === 'IsUnique') {
+            const uniqueItems = new Set(value);
+            if (uniqueItems.size !== value.length) {
+              addErrorIfNotExist(
+                errors,
+                null,
+                `${field} ${ErrorMessage.UNIQUE_ARRAY_ITEM}`,
+              );
+            }
+          }
+        },
+      );
+
     });
   }
 

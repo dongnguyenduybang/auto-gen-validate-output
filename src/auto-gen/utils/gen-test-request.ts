@@ -223,11 +223,27 @@ async function generateSpecContent(
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);

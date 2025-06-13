@@ -1,0 +1,710 @@
+=== Request Test Report for report-message ===
+• Host: N/A
+• Endpoint: /Message/ReportMessage
+• Date: 13/06/2025, 14:02:01
+
+=== Execution Steps ===
+
+=== Test Summary ===
+✅ Passed: 188
+❌ Failed: 95
+📊 Total: 283
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 0
+ 🟢 201: 0
+ 🟠 400: 20
+ 🟠 403: 168
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Unique Errors ===
+ 🟣 1. Unsupported permission type (Occurred: 17 times)
+ 🟣 2. messageId invalid ulid (Occurred: 17 times)
+ 🟣 3. messageId should not be empty (Occurred: 11 times)
+ 🟣 4. reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value' (Occurred: 12 times)
+ 🟣 5. reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined' (Occurred: 12 times)
+ 🟣 6. reportCategory required (Occurred: 12 times)
+ 🟣 7. reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received '' (Occurred: 12 times)
+ 🟣 8. reportCategory should not be empty (Occurred: 12 times)
+ 🟣 9. reportReason expected string, received number (Occurred: 8 times)
+ 🟣 10. reportReason should not be empty (Occurred: 12 times)
+ 🟣 11. reportReason string must contain at least 1 character(s) (Occurred: 12 times)
+ 🟣 12. reportReason string must contain at most 255 character(s) (Occurred: 8 times)
+ 🟣 13. pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value' (Occurred: 14 times)
+ 🟣 14. pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined' (Occurred: 10 times)
+ 🟣 15. pretendingTo required (Occurred: 10 times)
+ 🟣 16. messageId expected string, received number (Occurred: 6 times)
+ 🟣 17. messageId required (Occurred: 6 times)
+ 🟣 18. messageId expected string, received null (Occurred: 6 times)
+ 🟣 19. reportReason required (Occurred: 1 time)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #22
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":3,"reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid
+     ├─ Expected: None
+     └─ Details: No details
+
+ 🟣 2. Case #24
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"{{messageId1}}","reportCategory":3,"reportReason":"report message","pretendingTo":2}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 3. Case #30
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"","reportCategory":3,"reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 4. Case #33
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":"invalid_enum_value","reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 5. Case #34
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":20,"reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid
+     ├─ Expected: None
+     └─ Details: No details
+
+ 🟣 6. Case #35
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, reportCategory required
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined', reportCategory required
+     └─ Details: No details
+
+ 🟣 7. Case #36
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":"","reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received '', reportCategory should not be empty
+     └─ Details: No details
+
+ 🟣 8. Case #37
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":3,"reportReason":123,"pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, reportReason expected string, received number
+     ├─ Expected: reportReason expected string, received number
+     └─ Details: No details
+
+ 🟣 9. Case #38
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":3,"reportReason":"","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, reportReason string must contain at least 1 character(s)
+     ├─ Expected: reportReason should not be empty, reportReason string must contain at least 1 character(s)
+     └─ Details: No details
+
+ 🟣 10. Case #39
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":3,"reportReason":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, reportReason string must contain at most 255 character(s)
+     ├─ Expected: reportReason string must contain at most 255 character(s)
+     └─ Details: No details
+
+ 🟣 11. Case #40
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":3,"pretendingTo":2}
+     ├─ Actual: messageId invalid ulid
+     ├─ Expected: None
+     └─ Details: No details
+
+ 🟣 12. Case #41
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":3,"reportReason":"report message","pretendingTo":"invalid_enum_value"}
+     ├─ Actual: messageId invalid ulid, pretendingTo expected 0 | 1 | 2 | 3, received nan
+     ├─ Expected: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 13. Case #42
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":3,"reportReason":"report message"}
+     ├─ Actual: messageId invalid ulid, pretendingTo required
+     ├─ Expected: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined', pretendingTo required
+     └─ Details: No details
+
+ 🟣 14. Case #108
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"invalid_value","messageId":"{{messageId1}}","reportCategory":3,"reportReason":"report message","pretendingTo":2}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 15. Case #142
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":123,"reportCategory":3,"reportReason":"report message","pretendingTo":2}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 16. Case #143
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","reportCategory":3,"reportReason":"report message","pretendingTo":2}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 17. Case #144
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"","reportCategory":3,"reportReason":"report message","pretendingTo":2}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 18. Case #145
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":null,"reportCategory":3,"reportReason":"report message","pretendingTo":2}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 19. Case #146
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"invalid_ULID","reportCategory":3,"reportReason":"report message","pretendingTo":2}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 20. Case #147
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"{{messageId1}}","reportCategory":"invalid_enum_value","reportReason":"report message","pretendingTo":2}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 21. Case #148
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"{{messageId1}}","reportCategory":20,"reportReason":"report message","pretendingTo":2}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 22. Case #149
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"{{messageId1}}","reportReason":"report message","pretendingTo":2}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 23. Case #150
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"{{messageId1}}","reportCategory":"","reportReason":"report message","pretendingTo":2}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 24. Case #151
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"{{messageId1}}","reportCategory":3,"reportReason":123,"pretendingTo":2}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 25. Case #152
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"{{messageId1}}","reportCategory":3,"reportReason":"","pretendingTo":2}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 26. Case #153
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"{{messageId1}}","reportCategory":3,"reportReason":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","pretendingTo":2}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 27. Case #154
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"{{messageId1}}","reportCategory":3,"pretendingTo":2}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 28. Case #155
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"{{messageId1}}","reportCategory":3,"reportReason":"report message","pretendingTo":"invalid_enum_value"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 29. Case #156
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"{{messageId1}}","reportCategory":3,"reportReason":"report message"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 30. Case #202
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":123,"reportCategory":"invalid_enum_value","reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId expected string, received number, reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan
+     ├─ Expected: messageId expected string, received number, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 31. Case #204
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":123,"reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId expected string, received number, reportCategory required
+     ├─ Expected: messageId expected string, received number, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined', reportCategory required
+     └─ Details: No details
+
+ 🟣 32. Case #205
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":123,"reportCategory":"","reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId expected string, received number
+     ├─ Expected: messageId expected string, received number, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received '', reportCategory should not be empty
+     └─ Details: No details
+
+ 🟣 33. Case #207
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":123,"reportCategory":3,"reportReason":"","pretendingTo":2}
+     ├─ Actual: messageId expected string, received number, reportReason string must contain at least 1 character(s)
+     ├─ Expected: messageId expected string, received number, reportReason should not be empty, reportReason string must contain at least 1 character(s)
+     └─ Details: No details
+
+ 🟣 34. Case #210
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":123,"reportCategory":3,"reportReason":"report message","pretendingTo":"invalid_enum_value"}
+     ├─ Actual: messageId expected string, received number, pretendingTo expected 0 | 1 | 2 | 3, received nan
+     ├─ Expected: messageId expected string, received number, pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 35. Case #211
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":123,"reportCategory":3,"reportReason":"report message"}
+     ├─ Actual: messageId expected string, received number
+     ├─ Expected: messageId expected string, received number, pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined', pretendingTo required
+     └─ Details: No details
+
+ 🟣 36. Case #212
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","reportCategory":"invalid_enum_value","reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId required, reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan
+     ├─ Expected: messageId required, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 37. Case #214
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId required, reportCategory required
+     ├─ Expected: messageId required, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined', reportCategory required
+     └─ Details: No details
+
+ 🟣 38. Case #215
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","reportCategory":"","reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId required
+     ├─ Expected: messageId required, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received '', reportCategory should not be empty
+     └─ Details: No details
+
+ 🟣 39. Case #217
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","reportCategory":3,"reportReason":"","pretendingTo":2}
+     ├─ Actual: messageId required, reportReason string must contain at least 1 character(s)
+     ├─ Expected: messageId required, reportReason should not be empty, reportReason string must contain at least 1 character(s)
+     └─ Details: No details
+
+ 🟣 40. Case #220
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","reportCategory":3,"reportReason":"report message","pretendingTo":"invalid_enum_value"}
+     ├─ Actual: messageId required, pretendingTo expected 0 | 1 | 2 | 3, received nan
+     ├─ Expected: messageId required, pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 41. Case #221
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","reportCategory":3,"reportReason":"report message"}
+     ├─ Actual: messageId required
+     ├─ Expected: messageId required, pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined', pretendingTo required
+     └─ Details: No details
+
+ 🟣 42. Case #222
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"","reportCategory":"invalid_enum_value","reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s), reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan
+     ├─ Expected: messageId invalid ulid, messageId should not be empty, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 43. Case #223
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"","reportCategory":20,"reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 44. Case #224
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"","reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s), reportCategory required
+     ├─ Expected: messageId invalid ulid, messageId should not be empty, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined', reportCategory required
+     └─ Details: No details
+
+ 🟣 45. Case #225
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"","reportCategory":"","reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: messageId invalid ulid, messageId should not be empty, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received '', reportCategory should not be empty
+     └─ Details: No details
+
+ 🟣 46. Case #226
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"","reportCategory":3,"reportReason":123,"pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s), reportReason expected string, received number
+     ├─ Expected: messageId invalid ulid, messageId should not be empty, reportReason expected string, received number
+     └─ Details: No details
+
+ 🟣 47. Case #227
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"","reportCategory":3,"reportReason":"","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s), reportReason string must contain at least 1 character(s)
+     ├─ Expected: messageId invalid ulid, messageId should not be empty, reportReason should not be empty, reportReason string must contain at least 1 character(s)
+     └─ Details: No details
+
+ 🟣 48. Case #228
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"","reportCategory":3,"reportReason":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s), reportReason string must contain at most 255 character(s)
+     ├─ Expected: messageId invalid ulid, messageId should not be empty, reportReason string must contain at most 255 character(s)
+     └─ Details: No details
+
+ 🟣 49. Case #229
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"","reportCategory":3,"pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 50. Case #230
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"","reportCategory":3,"reportReason":"report message","pretendingTo":"invalid_enum_value"}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s), pretendingTo expected 0 | 1 | 2 | 3, received nan
+     ├─ Expected: messageId invalid ulid, messageId should not be empty, pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 51. Case #231
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"","reportCategory":3,"reportReason":"report message"}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s), pretendingTo required
+     ├─ Expected: messageId invalid ulid, messageId should not be empty, pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined', pretendingTo required
+     └─ Details: No details
+
+ 🟣 52. Case #232
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":null,"reportCategory":"invalid_enum_value","reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId expected string, received null, reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan
+     ├─ Expected: messageId expected string, received null, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 53. Case #234
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":null,"reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId expected string, received null, reportCategory required
+     ├─ Expected: messageId expected string, received null, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined', reportCategory required
+     └─ Details: No details
+
+ 🟣 54. Case #235
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":null,"reportCategory":"","reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId expected string, received null
+     ├─ Expected: messageId expected string, received null, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received '', reportCategory should not be empty
+     └─ Details: No details
+
+ 🟣 55. Case #237
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":null,"reportCategory":3,"reportReason":"","pretendingTo":2}
+     ├─ Actual: messageId expected string, received null, reportReason string must contain at least 1 character(s)
+     ├─ Expected: messageId expected string, received null, reportReason should not be empty, reportReason string must contain at least 1 character(s)
+     └─ Details: No details
+
+ 🟣 56. Case #240
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":null,"reportCategory":3,"reportReason":"report message","pretendingTo":"invalid_enum_value"}
+     ├─ Actual: messageId expected string, received null, pretendingTo expected 0 | 1 | 2 | 3, received nan
+     ├─ Expected: messageId expected string, received null, pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 57. Case #241
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":null,"reportCategory":3,"reportReason":"report message"}
+     ├─ Actual: messageId expected string, received null
+     ├─ Expected: messageId expected string, received null, pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined', pretendingTo required
+     └─ Details: No details
+
+ 🟣 58. Case #242
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"invalid_ULID","reportCategory":"invalid_enum_value","reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan
+     ├─ Expected: messageId invalid ulid, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 59. Case #244
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"invalid_ULID","reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, reportCategory required
+     ├─ Expected: messageId invalid ulid, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined', reportCategory required
+     └─ Details: No details
+
+ 🟣 60. Case #245
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"invalid_ULID","reportCategory":"","reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid
+     ├─ Expected: messageId invalid ulid, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received '', reportCategory should not be empty
+     └─ Details: No details
+
+ 🟣 61. Case #247
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"invalid_ULID","reportCategory":3,"reportReason":"","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, reportReason string must contain at least 1 character(s)
+     ├─ Expected: messageId invalid ulid, reportReason should not be empty, reportReason string must contain at least 1 character(s)
+     └─ Details: No details
+
+ 🟣 62. Case #250
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"invalid_ULID","reportCategory":3,"reportReason":"report message","pretendingTo":"invalid_enum_value"}
+     ├─ Actual: messageId invalid ulid, pretendingTo expected 0 | 1 | 2 | 3, received nan
+     ├─ Expected: messageId invalid ulid, pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 63. Case #251
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"invalid_ULID","reportCategory":3,"reportReason":"report message"}
+     ├─ Actual: messageId invalid ulid, pretendingTo required
+     ├─ Expected: messageId invalid ulid, pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined', pretendingTo required
+     └─ Details: No details
+
+ 🟣 64. Case #252
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":"invalid_enum_value","reportReason":123,"pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan, reportReason expected string, received number
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', reportReason expected string, received number
+     └─ Details: No details
+
+ 🟣 65. Case #253
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":"invalid_enum_value","reportReason":"","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan, reportReason string must contain at least 1 character(s)
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', reportReason should not be empty, reportReason string must contain at least 1 character(s)
+     └─ Details: No details
+
+ 🟣 66. Case #254
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":"invalid_enum_value","reportReason":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan, reportReason string must contain at most 255 character(s)
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', reportReason string must contain at most 255 character(s)
+     └─ Details: No details
+
+ 🟣 67. Case #255
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":"invalid_enum_value","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 68. Case #256
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":"invalid_enum_value","reportReason":"report message","pretendingTo":"invalid_enum_value"}
+     ├─ Actual: messageId invalid ulid, pretendingTo expected 0 | 1 | 2 | 3, received nan, reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan
+     ├─ Expected: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 69. Case #257
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":"invalid_enum_value","reportReason":"report message"}
+     ├─ Actual: messageId invalid ulid, reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 70. Case #258
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":20,"reportReason":123,"pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, reportReason expected string, received number
+     ├─ Expected: reportReason expected string, received number
+     └─ Details: No details
+
+ 🟣 71. Case #259
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":20,"reportReason":"","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, reportReason required, reportReason string must contain at least 1 character(s)
+     ├─ Expected: reportReason should not be empty, reportReason string must contain at least 1 character(s)
+     └─ Details: No details
+
+ 🟣 72. Case #260
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":20,"reportReason":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, reportReason string must contain at most 255 character(s)
+     ├─ Expected: reportReason string must contain at most 255 character(s)
+     └─ Details: No details
+
+ 🟣 73. Case #261
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":20,"pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, reportReason required
+     ├─ Expected: reportReason required
+     └─ Details: No details
+
+ 🟣 74. Case #262
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":20,"reportReason":"report message","pretendingTo":"invalid_enum_value"}
+     ├─ Actual: messageId invalid ulid, pretendingTo expected 0 | 1 | 2 | 3, received nan
+     ├─ Expected: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 75. Case #263
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":20,"reportReason":"report message"}
+     ├─ Actual: messageId invalid ulid
+     ├─ Expected: None
+     └─ Details: No details
+
+ 🟣 76. Case #264
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportReason":123,"pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, reportCategory required, reportReason expected string, received number
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined', reportCategory required, reportReason expected string, received number
+     └─ Details: No details
+
+ 🟣 77. Case #265
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportReason":"","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, reportCategory required, reportReason string must contain at least 1 character(s)
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined', reportCategory required, reportReason should not be empty, reportReason string must contain at least 1 character(s)
+     └─ Details: No details
+
+ 🟣 78. Case #266
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportReason":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, reportCategory required, reportReason string must contain at most 255 character(s)
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined', reportCategory required, reportReason string must contain at most 255 character(s)
+     └─ Details: No details
+
+ 🟣 79. Case #267
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, reportCategory required
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined', reportCategory required
+     └─ Details: No details
+
+ 🟣 80. Case #268
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportReason":"report message","pretendingTo":"invalid_enum_value"}
+     ├─ Actual: messageId invalid ulid, pretendingTo expected 0 | 1 | 2 | 3, received nan, reportCategory required
+     ├─ Expected: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined', reportCategory required
+     └─ Details: No details
+
+ 🟣 81. Case #269
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportReason":"report message"}
+     ├─ Actual: messageId invalid ulid, reportCategory required
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined', reportCategory required
+     └─ Details: No details
+
+ 🟣 82. Case #270
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":"","reportReason":123,"pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, reportReason expected string, received number
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received '', reportCategory should not be empty, reportReason expected string, received number
+     └─ Details: No details
+
+ 🟣 83. Case #271
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":"","reportReason":"","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, reportReason string must contain at least 1 character(s)
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received '', reportCategory should not be empty, reportReason should not be empty, reportReason string must contain at least 1 character(s)
+     └─ Details: No details
+
+ 🟣 84. Case #272
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":"","reportReason":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, reportReason string must contain at most 255 character(s)
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received '', reportCategory should not be empty, reportReason string must contain at most 255 character(s)
+     └─ Details: No details
+
+ 🟣 85. Case #273
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":"","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received '', reportCategory should not be empty
+     └─ Details: No details
+
+ 🟣 86. Case #274
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":"","reportReason":"report message","pretendingTo":"invalid_enum_value"}
+     ├─ Actual: messageId invalid ulid, pretendingTo expected 0 | 1 | 2 | 3, received nan
+     ├─ Expected: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received '', reportCategory should not be empty
+     └─ Details: No details
+
+ 🟣 87. Case #275
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":"","reportReason":"report message"}
+     ├─ Actual: messageId invalid ulid
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received '', reportCategory should not be empty
+     └─ Details: No details
+
+ 🟣 88. Case #276
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":3,"reportReason":123,"pretendingTo":"invalid_enum_value"}
+     ├─ Actual: messageId invalid ulid, pretendingTo expected 0 | 1 | 2 | 3, received nan, reportReason expected string, received number
+     ├─ Expected: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportReason expected string, received number
+     └─ Details: No details
+
+ 🟣 89. Case #277
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":3,"reportReason":123}
+     ├─ Actual: messageId invalid ulid, reportReason expected string, received number
+     ├─ Expected: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined', pretendingTo required, reportReason expected string, received number
+     └─ Details: No details
+
+ 🟣 90. Case #278
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":3,"reportReason":"","pretendingTo":"invalid_enum_value"}
+     ├─ Actual: messageId invalid ulid, pretendingTo expected 0 | 1 | 2 | 3, received nan, reportReason string must contain at least 1 character(s)
+     ├─ Expected: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportReason should not be empty, reportReason string must contain at least 1 character(s)
+     └─ Details: No details
+
+ 🟣 91. Case #279
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":3,"reportReason":""}
+     ├─ Actual: messageId invalid ulid, pretendingTo required, reportReason string must contain at least 1 character(s)
+     ├─ Expected: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined', pretendingTo required, reportReason should not be empty, reportReason string must contain at least 1 character(s)
+     └─ Details: No details
+
+ 🟣 92. Case #280
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":3,"reportReason":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","pretendingTo":"invalid_enum_value"}
+     ├─ Actual: messageId invalid ulid, pretendingTo expected 0 | 1 | 2 | 3, received nan, reportReason string must contain at most 255 character(s)
+     ├─ Expected: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportReason string must contain at most 255 character(s)
+     └─ Details: No details
+
+ 🟣 93. Case #281
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":3,"reportReason":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}
+     ├─ Actual: messageId invalid ulid, pretendingTo required, reportReason string must contain at most 255 character(s)
+     ├─ Expected: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined', pretendingTo required, reportReason string must contain at most 255 character(s)
+     └─ Details: No details
+
+ 🟣 94. Case #282
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":3,"pretendingTo":"invalid_enum_value"}
+     ├─ Actual: messageId invalid ulid, pretendingTo expected 0 | 1 | 2 | 3, received nan
+     ├─ Expected: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 95. Case #283
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXKZP427ET3FT75AMFH1W1N4","messageId":"{{messageId1}}","reportCategory":3}
+     ├─ Actual: messageId invalid ulid, pretendingTo required
+     ├─ Expected: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined', pretendingTo required
+     └─ Details: No details
+
+=== End of Report ===

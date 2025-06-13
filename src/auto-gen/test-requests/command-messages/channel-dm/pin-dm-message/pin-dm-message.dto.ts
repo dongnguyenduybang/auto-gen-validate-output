@@ -10,7 +10,7 @@ import {
   IsBoolean,
 } from '../../../../decorator/index';
 
-export class PinUnpinDmMessageDTO {
+export class PinDmMessageDTO {
   @IsString({ message: ErrorMessage.COULD_NOT_PERMISSION })
   @IsNotNull({ message: ErrorMessage.COULD_NOT_PERMISSION })
   @IsDefined({ message: ErrorMessage.COULD_NOT_PERMISSION })

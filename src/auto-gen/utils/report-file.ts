@@ -98,11 +98,14 @@ const requestReportTemplate = (
     '',
     '=== Execution Steps ===',
     ...failedStep.map((step, index) => {
-      const errorDetails = step.error
-        ? `\n     └─ ${step.error.split('\n').join('\n       ')}`
+      const parsedError = step.error ? JSON.parse(step.error) : [];
+      const errorDetails = parsedError.length
+        ? `\n     └─ ${parsedError.join('\n       ')}`
         : '';
-      return `  ${index + 1}. [${step.status ? '✅ PASSED' : '❌ FAILED'}] ${step.stepName}${errorDetails}`;
+      const typeLine = step.type ? `\n     type: ${step.type}` : '';
+      return `  ${index + 1}. [${step.status ? '✅ PASSED' : '❌ FAILED'}] ${step.stepName}${typeLine}${errorDetails}`;
     }),
+
     '',
     '=== Test Summary ===',
     `✅ Passed: ${passedTests}`,
