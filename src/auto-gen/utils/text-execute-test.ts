@@ -16,6 +16,7 @@ export async function executeSteps(
     try {
       const result = await executeSingleStep(step, context);
       results.push(result);
+      context.debug()
       if (!result.status) break;
     } catch (error) {
       console.error(`Error executing step ${index}:`, error);

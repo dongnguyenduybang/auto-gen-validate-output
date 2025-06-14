@@ -1,0 +1,65 @@
+=== Request Test Report for get-friend ===
+• Host: N/A
+• Endpoint: /FriendView/GetFriend
+• Date: 13/06/2025, 16:55:47
+
+=== Execution Steps ===
+  1. [✅ PASSED] addFriend
+  2. [✅ PASSED] acceptFriendRequest
+
+=== Test Summary ===
+✅ Passed: 1
+❌ Failed: 5
+📊 Total: 6
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 1
+ 🟢 201: 0
+ 🟠 400: 0
+ 🟠 403: 0
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Unique Errors ===
+ 🟣 1. Could not resolve permission type (Occurred: 4 times)
+ 🟣 2. Unauthorized request (Occurred: 1 time)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #1
+     ├─ Status: 400
+     ├─ Body: {"userId":123}
+     ├─ Actual: userId invalid ulid
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 2. Case #3
+     ├─ Status: 400
+     ├─ Body: {}
+     ├─ Actual: userId required
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 3. Case #4
+     ├─ Status: 400
+     ├─ Body: {"userId":""}
+     ├─ Actual: userId invalid ulid, userId string must contain at least 1 character(s)
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 4. Case #5
+     ├─ Status: 400
+     ├─ Body: {"userId":null}
+     ├─ Actual: userId required
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 5. Case #6
+     ├─ Status: 400
+     ├─ Body: {"userId":"invalid_value"}
+     ├─ Actual: userId invalid ulid
+     ├─ Expected: Unauthorized request
+     └─ Details: No details
+
+=== End of Report ===

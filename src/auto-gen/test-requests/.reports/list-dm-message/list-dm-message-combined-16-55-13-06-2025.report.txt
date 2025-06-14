@@ -1,0 +1,410 @@
+=== Request Test Report for list-dm-message ===
+• Host: N/A
+• Endpoint: /MessageView/ListDMMessages, /MessageView/ListDMMessages
+• Date: 13/06/2025, 16:55:47
+
+=== Execution Steps ===
+  1. [✅ PASSED] sendDmMessage
+  2. [✅ PASSED] addDmMessageReaction
+  3. [✅ PASSED] sendDmMessage
+
+=== Test Summary ===
+✅ Passed: 70
+❌ Failed: 52
+📊 Total: 122
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 2
+ 🟢 201: 0
+ 🟠 400: 0
+ 🟠 403: 68
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Unique Errors ===
+ 🟣 1. Could not resolve permission type (Occurred: 17 times)
+ 🟣 2. messageId expected string, received number (Occurred: 6 times)
+ 🟣 3. messageId invalid ulid (Occurred: 12 times)
+ 🟣 4. messageId should not be empty (Occurred: 6 times)
+ 🟣 5. messageId string must contain at least 1 character(s) (Occurred: 6 times)
+ 🟣 6. messageId required (Occurred: 6 times)
+ 🟣 7. emoji expected string, received number (Occurred: 5 times)
+ 🟣 8. emoji only accepts 1 emoji (Occurred: 10 times)
+ 🟣 9. emoji invalid emoji (Occurred: 5 times)
+ 🟣 10. emoji should not be empty (Occurred: 5 times)
+ 🟣 11. emoji required (Occurred: 5 times)
+ 🟣 12. emoji expected string, received null (Occurred: 5 times)
+ 🟣 13. limit must be a number conforming to the specified constraints (Occurred: 4 times)
+ 🟣 14. limit must be at least 1 (Occurred: 1 time)
+ 🟣 15. limit must be at most 500 (Occurred: 1 time)
+ 🟣 16. limit required (Occurred: 1 time)
+ 🟣 17. limit should not be empty (Occurred: 1 time)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #1
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"messageId":"01JXMB275F0J73MV28R3YZWX3G","emoji":"🚀"}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 2. Case #2
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"messageId":123,"emoji":"🚀"}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 3. Case #3
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"messageId":"","emoji":"🚀"}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 4. Case #4
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"emoji":"🚀"}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 5. Case #5
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"messageId":"invalid_ULID","emoji":"🚀"}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 6. Case #6
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"messageId":"01JXMB275F0J73MV28R3YZWX3G","emoji":123}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 7. Case #7
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"messageId":"01JXMB275F0J73MV28R3YZWX3G","emoji":"🚀🚀"}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 8. Case #8
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"messageId":"01JXMB275F0J73MV28R3YZWX3G","emoji":""}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 9. Case #9
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"messageId":"01JXMB275F0J73MV28R3YZWX3G"}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 10. Case #10
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"messageId":"01JXMB275F0J73MV28R3YZWX3G","emoji":null}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 11. Case #12
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JXMB25XG3EBXZK19NTJB267E","messageId":123,"emoji":"🚀"}
+     ├─ Actual: None
+     ├─ Expected: messageId expected string, received number
+     └─ Details: No details
+
+ 🟣 12. Case #13
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JXMB25XG3EBXZK19NTJB267E","messageId":"","emoji":"🚀"}
+     ├─ Actual: None
+     ├─ Expected: messageId invalid ulid, messageId should not be empty, messageId string must contain at least 1 character(s)
+     └─ Details: No details
+
+ 🟣 13. Case #14
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JXMB25XG3EBXZK19NTJB267E","emoji":"🚀"}
+     ├─ Actual: None
+     ├─ Expected: messageId required
+     └─ Details: No details
+
+ 🟣 14. Case #15
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JXMB25XG3EBXZK19NTJB267E","messageId":"invalid_ULID","emoji":"🚀"}
+     ├─ Actual: None
+     ├─ Expected: messageId invalid ulid
+     └─ Details: No details
+
+ 🟣 15. Case #16
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JXMB25XG3EBXZK19NTJB267E","messageId":"01JXMB275F0J73MV28R3YZWX3G","emoji":123}
+     ├─ Actual: None
+     ├─ Expected: emoji expected string, received number
+     └─ Details: No details
+
+ 🟣 16. Case #17
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JXMB25XG3EBXZK19NTJB267E","messageId":"01JXMB275F0J73MV28R3YZWX3G","emoji":"🚀🚀"}
+     ├─ Actual: None
+     ├─ Expected: emoji only accepts 1 emoji
+     └─ Details: No details
+
+ 🟣 17. Case #18
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JXMB25XG3EBXZK19NTJB267E","messageId":"01JXMB275F0J73MV28R3YZWX3G","emoji":""}
+     ├─ Actual: None
+     ├─ Expected: emoji invalid emoji, emoji only accepts 1 emoji, emoji should not be empty
+     └─ Details: No details
+
+ 🟣 18. Case #19
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JXMB25XG3EBXZK19NTJB267E","messageId":"01JXMB275F0J73MV28R3YZWX3G"}
+     ├─ Actual: None
+     ├─ Expected: emoji required
+     └─ Details: No details
+
+ 🟣 19. Case #20
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JXMB25XG3EBXZK19NTJB267E","messageId":"01JXMB275F0J73MV28R3YZWX3G","emoji":null}
+     ├─ Actual: None
+     ├─ Expected: emoji expected string, received null
+     └─ Details: No details
+
+ 🟣 20. Case #61
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JXMB25XG3EBXZK19NTJB267E","messageId":123,"emoji":123}
+     ├─ Actual: None
+     ├─ Expected: emoji expected string, received number, messageId expected string, received number
+     └─ Details: No details
+
+ 🟣 21. Case #62
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JXMB25XG3EBXZK19NTJB267E","messageId":123,"emoji":"🚀🚀"}
+     ├─ Actual: None
+     ├─ Expected: emoji only accepts 1 emoji, messageId expected string, received number
+     └─ Details: No details
+
+ 🟣 22. Case #63
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JXMB25XG3EBXZK19NTJB267E","messageId":123,"emoji":""}
+     ├─ Actual: None
+     ├─ Expected: emoji invalid emoji, emoji only accepts 1 emoji, emoji should not be empty, messageId expected string, received number
+     └─ Details: No details
+
+ 🟣 23. Case #64
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JXMB25XG3EBXZK19NTJB267E","messageId":123}
+     ├─ Actual: None
+     ├─ Expected: emoji required, messageId expected string, received number
+     └─ Details: No details
+
+ 🟣 24. Case #65
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JXMB25XG3EBXZK19NTJB267E","messageId":123,"emoji":null}
+     ├─ Actual: None
+     ├─ Expected: emoji expected string, received null, messageId expected string, received number
+     └─ Details: No details
+
+ 🟣 25. Case #66
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JXMB25XG3EBXZK19NTJB267E","messageId":"","emoji":123}
+     ├─ Actual: None
+     ├─ Expected: emoji expected string, received number, messageId invalid ulid, messageId should not be empty, messageId string must contain at least 1 character(s)
+     └─ Details: No details
+
+ 🟣 26. Case #67
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JXMB25XG3EBXZK19NTJB267E","messageId":"","emoji":"🚀🚀"}
+     ├─ Actual: None
+     ├─ Expected: emoji only accepts 1 emoji, messageId invalid ulid, messageId should not be empty, messageId string must contain at least 1 character(s)
+     └─ Details: No details
+
+ 🟣 27. Case #68
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JXMB25XG3EBXZK19NTJB267E","messageId":"","emoji":""}
+     ├─ Actual: None
+     ├─ Expected: emoji invalid emoji, emoji only accepts 1 emoji, emoji should not be empty, messageId invalid ulid, messageId should not be empty, messageId string must contain at least 1 character(s)
+     └─ Details: No details
+
+ 🟣 28. Case #69
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JXMB25XG3EBXZK19NTJB267E","messageId":""}
+     ├─ Actual: None
+     ├─ Expected: emoji required, messageId invalid ulid, messageId should not be empty, messageId string must contain at least 1 character(s)
+     └─ Details: No details
+
+ 🟣 29. Case #70
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JXMB25XG3EBXZK19NTJB267E","messageId":"","emoji":null}
+     ├─ Actual: None
+     ├─ Expected: emoji expected string, received null, messageId invalid ulid, messageId should not be empty, messageId string must contain at least 1 character(s)
+     └─ Details: No details
+
+ 🟣 30. Case #71
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JXMB25XG3EBXZK19NTJB267E","emoji":123}
+     ├─ Actual: None
+     ├─ Expected: emoji expected string, received number, messageId required
+     └─ Details: No details
+
+ 🟣 31. Case #72
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JXMB25XG3EBXZK19NTJB267E","emoji":"🚀🚀"}
+     ├─ Actual: None
+     ├─ Expected: emoji only accepts 1 emoji, messageId required
+     └─ Details: No details
+
+ 🟣 32. Case #73
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JXMB25XG3EBXZK19NTJB267E","emoji":""}
+     ├─ Actual: None
+     ├─ Expected: emoji invalid emoji, emoji only accepts 1 emoji, emoji should not be empty, messageId required
+     └─ Details: No details
+
+ 🟣 33. Case #74
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JXMB25XG3EBXZK19NTJB267E"}
+     ├─ Actual: None
+     ├─ Expected: emoji required, messageId required
+     └─ Details: No details
+
+ 🟣 34. Case #75
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JXMB25XG3EBXZK19NTJB267E","emoji":null}
+     ├─ Actual: None
+     ├─ Expected: emoji expected string, received null, messageId required
+     └─ Details: No details
+
+ 🟣 35. Case #76
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JXMB25XG3EBXZK19NTJB267E","messageId":"invalid_ULID","emoji":123}
+     ├─ Actual: None
+     ├─ Expected: emoji expected string, received number, messageId invalid ulid
+     └─ Details: No details
+
+ 🟣 36. Case #77
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JXMB25XG3EBXZK19NTJB267E","messageId":"invalid_ULID","emoji":"🚀🚀"}
+     ├─ Actual: None
+     ├─ Expected: emoji only accepts 1 emoji, messageId invalid ulid
+     └─ Details: No details
+
+ 🟣 37. Case #78
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JXMB25XG3EBXZK19NTJB267E","messageId":"invalid_ULID","emoji":""}
+     ├─ Actual: None
+     ├─ Expected: emoji invalid emoji, emoji only accepts 1 emoji, emoji should not be empty, messageId invalid ulid
+     └─ Details: No details
+
+ 🟣 38. Case #79
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JXMB25XG3EBXZK19NTJB267E","messageId":"invalid_ULID"}
+     ├─ Actual: None
+     ├─ Expected: emoji required, messageId invalid ulid
+     └─ Details: No details
+
+ 🟣 39. Case #80
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JXMB25XG3EBXZK19NTJB267E","messageId":"invalid_ULID","emoji":null}
+     ├─ Actual: None
+     ├─ Expected: emoji expected string, received null, messageId invalid ulid
+     └─ Details: No details
+
+ 🟣 40. Case #1
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"limit":10}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 41. Case #2
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"limit":"invalid_number"}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 42. Case #3
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"limit":0}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 43. Case #4
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"limit":501}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 44. Case #5
+     ├─ Status: 403
+     ├─ Body: {"userId":123}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 45. Case #6
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"limit":""}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 46. Case #7
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"limit":null}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 47. Case #9
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JXMB256GACFDXR7J2T0N2G43","limit":"invalid_number"}
+     ├─ Actual: limit expected number, received nan
+     ├─ Expected: limit must be a number conforming to the specified constraints
+     └─ Details: No details
+
+ 🟣 48. Case #10
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JXMB256GACFDXR7J2T0N2G43","limit":0}
+     ├─ Actual: limit range from 1 to 500
+     ├─ Expected: limit must be at least 1
+     └─ Details: No details
+
+ 🟣 49. Case #11
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JXMB256GACFDXR7J2T0N2G43","limit":501}
+     ├─ Actual: limit range from 1 to 500
+     ├─ Expected: limit must be at most 500
+     └─ Details: No details
+
+ 🟣 50. Case #12
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JXMB256GACFDXR7J2T0N2G43"}
+     ├─ Actual: None
+     ├─ Expected: limit must be a number conforming to the specified constraints, limit required
+     └─ Details: No details
+
+ 🟣 51. Case #13
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JXMB256GACFDXR7J2T0N2G43","limit":""}
+     ├─ Actual: limit range from 1 to 500
+     ├─ Expected: limit must be a number conforming to the specified constraints, limit should not be empty
+     └─ Details: No details
+
+ 🟣 52. Case #14
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JXMB256GACFDXR7J2T0N2G43","limit":null}
+     ├─ Actual: None
+     ├─ Expected: limit must be a number conforming to the specified constraints
+     └─ Details: No details
+
+=== End of Report ===

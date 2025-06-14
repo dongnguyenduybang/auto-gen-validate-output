@@ -1,8 +1,7 @@
 [
     {
         "body": {
-            "workspaceId": 123,
-            "channelId": "{{channelId}}",
+            "userId": 123,
             "messageId": "{{messageId}}"
         },
         "expects": [
@@ -11,57 +10,7 @@
     },
     {
         "body": {
-            "workspaceId": 123,
-            "channelId": 123,
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": 123,
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": 123,
-            "channelId": "",
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": 123,
-            "channelId": null,
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": 123,
-            "channelId": "invalid_value",
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": 123,
-            "channelId": "{{channelId}}",
+            "userId": 123,
             "messageId": 123
         },
         "expects": [
@@ -70,8 +19,7 @@
     },
     {
         "body": {
-            "workspaceId": 123,
-            "channelId": "{{channelId}}"
+            "userId": 123
         },
         "expects": [
             "Could not resolve permission type"
@@ -79,8 +27,7 @@
     },
     {
         "body": {
-            "workspaceId": 123,
-            "channelId": "{{channelId}}",
+            "userId": 123,
             "messageId": ""
         },
         "expects": [
@@ -89,8 +36,7 @@
     },
     {
         "body": {
-            "workspaceId": 123,
-            "channelId": "{{channelId}}",
+            "userId": 123,
             "messageId": null
         },
         "expects": [
@@ -99,8 +45,7 @@
     },
     {
         "body": {
-            "workspaceId": 123,
-            "channelId": "{{channelId}}",
+            "userId": 123,
             "messageId": "invalid_ULID"
         },
         "expects": [
@@ -109,65 +54,14 @@
     },
     {
         "body": {
-            "workspaceId": "0",
-            "channelId": "{{channelId}}",
+            "userId": "{{userId1}}",
             "messageId": "{{messageId}}"
         },
         "expects": []
     },
     {
         "body": {
-            "workspaceId": "0",
-            "channelId": 123,
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "Unsupported permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "",
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": null,
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "invalid_value",
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "{{channelId}}",
+            "userId": "{{userId1}}",
             "messageId": 123
         },
         "expects": [
@@ -176,8 +70,7 @@
     },
     {
         "body": {
-            "workspaceId": "0",
-            "channelId": "{{channelId}}"
+            "userId": "{{userId1}}"
         },
         "expects": [
             "messageId required"
@@ -185,8 +78,7 @@
     },
     {
         "body": {
-            "workspaceId": "0",
-            "channelId": "{{channelId}}",
+            "userId": "{{userId1}}",
             "messageId": ""
         },
         "expects": [
@@ -196,8 +88,7 @@
     },
     {
         "body": {
-            "workspaceId": "0",
-            "channelId": "{{channelId}}",
+            "userId": "{{userId1}}",
             "messageId": null
         },
         "expects": [
@@ -206,8 +97,7 @@
     },
     {
         "body": {
-            "workspaceId": "0",
-            "channelId": "{{channelId}}",
+            "userId": "{{userId1}}",
             "messageId": "invalid_ULID"
         },
         "expects": [
@@ -216,7 +106,6 @@
     },
     {
         "body": {
-            "channelId": "{{channelId}}",
             "messageId": "{{messageId}}"
         },
         "expects": [
@@ -225,51 +114,6 @@
     },
     {
         "body": {
-            "channelId": 123,
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "channelId": "",
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "channelId": null,
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "channelId": "invalid_value",
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "channelId": "{{channelId}}",
             "messageId": 123
         },
         "expects": [
@@ -277,16 +121,13 @@
         ]
     },
     {
-        "body": {
-            "channelId": "{{channelId}}"
-        },
+        "body": {},
         "expects": [
             "Could not resolve permission type"
         ]
     },
     {
         "body": {
-            "channelId": "{{channelId}}",
             "messageId": ""
         },
         "expects": [
@@ -295,7 +136,6 @@
     },
     {
         "body": {
-            "channelId": "{{channelId}}",
             "messageId": null
         },
         "expects": [
@@ -304,7 +144,6 @@
     },
     {
         "body": {
-            "channelId": "{{channelId}}",
             "messageId": "invalid_ULID"
         },
         "expects": [
@@ -313,8 +152,7 @@
     },
     {
         "body": {
-            "workspaceId": "",
-            "channelId": "{{channelId}}",
+            "userId": "",
             "messageId": "{{messageId}}"
         },
         "expects": [
@@ -323,57 +161,7 @@
     },
     {
         "body": {
-            "workspaceId": "",
-            "channelId": 123,
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "channelId": "",
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "channelId": null,
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "channelId": "invalid_value",
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "channelId": "{{channelId}}",
+            "userId": "",
             "messageId": 123
         },
         "expects": [
@@ -382,8 +170,7 @@
     },
     {
         "body": {
-            "workspaceId": "",
-            "channelId": "{{channelId}}"
+            "userId": ""
         },
         "expects": [
             "Could not resolve permission type"
@@ -391,8 +178,7 @@
     },
     {
         "body": {
-            "workspaceId": "",
-            "channelId": "{{channelId}}",
+            "userId": "",
             "messageId": ""
         },
         "expects": [
@@ -401,8 +187,7 @@
     },
     {
         "body": {
-            "workspaceId": "",
-            "channelId": "{{channelId}}",
+            "userId": "",
             "messageId": null
         },
         "expects": [
@@ -411,8 +196,7 @@
     },
     {
         "body": {
-            "workspaceId": "",
-            "channelId": "{{channelId}}",
+            "userId": "",
             "messageId": "invalid_ULID"
         },
         "expects": [
@@ -421,8 +205,7 @@
     },
     {
         "body": {
-            "workspaceId": null,
-            "channelId": "{{channelId}}",
+            "userId": null,
             "messageId": "{{messageId}}"
         },
         "expects": [
@@ -431,57 +214,7 @@
     },
     {
         "body": {
-            "workspaceId": null,
-            "channelId": 123,
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": null,
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": null,
-            "channelId": "",
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": null,
-            "channelId": null,
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": null,
-            "channelId": "invalid_value",
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": null,
-            "channelId": "{{channelId}}",
+            "userId": null,
             "messageId": 123
         },
         "expects": [
@@ -490,8 +223,7 @@
     },
     {
         "body": {
-            "workspaceId": null,
-            "channelId": "{{channelId}}"
+            "userId": null
         },
         "expects": [
             "Could not resolve permission type"
@@ -499,8 +231,7 @@
     },
     {
         "body": {
-            "workspaceId": null,
-            "channelId": "{{channelId}}",
+            "userId": null,
             "messageId": ""
         },
         "expects": [
@@ -509,8 +240,7 @@
     },
     {
         "body": {
-            "workspaceId": null,
-            "channelId": "{{channelId}}",
+            "userId": null,
             "messageId": null
         },
         "expects": [
@@ -519,8 +249,7 @@
     },
     {
         "body": {
-            "workspaceId": null,
-            "channelId": "{{channelId}}",
+            "userId": null,
             "messageId": "invalid_ULID"
         },
         "expects": [
@@ -529,350 +258,55 @@
     },
     {
         "body": {
-            "workspaceId": "invalid_value",
-            "channelId": "{{channelId}}",
+            "userId": "invalid_value",
             "messageId": "{{messageId}}"
         },
         "expects": [
-            "Invalid channel"
+            "Unauthorized request"
         ]
     },
     {
         "body": {
-            "workspaceId": "invalid_value",
-            "channelId": 123,
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "Unsupported permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "channelId": "",
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "channelId": null,
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "channelId": "invalid_value",
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "channelId": "{{channelId}}",
+            "userId": "invalid_value",
             "messageId": 123
         },
         "expects": [
-            "Invalid channel"
+            "Unauthorized request"
         ]
     },
     {
         "body": {
-            "workspaceId": "invalid_value",
-            "channelId": "{{channelId}}"
+            "userId": "invalid_value"
         },
         "expects": [
-            "Invalid channel"
+            "Unauthorized request"
         ]
     },
     {
         "body": {
-            "workspaceId": "invalid_value",
-            "channelId": "{{channelId}}",
+            "userId": "invalid_value",
             "messageId": ""
         },
         "expects": [
-            "Invalid channel"
+            "Unauthorized request"
         ]
     },
     {
         "body": {
-            "workspaceId": "invalid_value",
-            "channelId": "{{channelId}}",
+            "userId": "invalid_value",
             "messageId": null
         },
         "expects": [
-            "Invalid channel"
+            "Unauthorized request"
         ]
     },
     {
         "body": {
-            "workspaceId": "invalid_value",
-            "channelId": "{{channelId}}",
+            "userId": "invalid_value",
             "messageId": "invalid_ULID"
         },
         "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": 123,
-            "messageId": 123
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": 123
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": 123,
-            "messageId": ""
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": 123,
-            "messageId": null
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": 123,
-            "messageId": "invalid_ULID"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "messageId": 123
-        },
-        "expects": [
-            "Unsupported permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0"
-        },
-        "expects": [
-            "Unsupported permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "messageId": ""
-        },
-        "expects": [
-            "Unsupported permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "messageId": null
-        },
-        "expects": [
-            "Unsupported permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "messageId": "invalid_ULID"
-        },
-        "expects": [
-            "Unsupported permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "",
-            "messageId": 123
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": ""
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "",
-            "messageId": ""
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "",
-            "messageId": null
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "",
-            "messageId": "invalid_ULID"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": null,
-            "messageId": 123
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": null
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": null,
-            "messageId": ""
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": null,
-            "messageId": null
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": null,
-            "messageId": "invalid_ULID"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "invalid_value",
-            "messageId": 123
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "invalid_value"
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "invalid_value",
-            "messageId": ""
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "invalid_value",
-            "messageId": null
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "invalid_value",
-            "messageId": "invalid_ULID"
-        },
-        "expects": [
-            "Invalid channel"
+            "Unauthorized request"
         ]
     }
 ]

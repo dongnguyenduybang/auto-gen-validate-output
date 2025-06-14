@@ -11,11 +11,13 @@ export const GetInvitationRequest: RequestTestSuite = {
         {
             beforeAll: [
                 {
-                    action: ACTION.SEND_INVITATION,
+                    action: ACTION.CREATE_INVITATION,
                     headers: HEADER_LIST.create({ token: VAR.token }),
                     body: {
-                        invitationLink: VAR.invitationLink,
-                        userIds: [VAR.userId1],
+                        workspaceId: VAR.workspaceId,
+                        channelId: VAR.channelId,
+                        expiresIn: 1000,
+                        maxUsers: 1,
                     },
                 }
             ],

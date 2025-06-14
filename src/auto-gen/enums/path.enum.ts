@@ -138,7 +138,7 @@ export const APIPath = {
   ViewMember: {
     ListMembers: '/MemberView/ListMembers',
     GetMember: '/MemberView/GetMember',
-    ListBannedUser: 'Member/ListBannedUsers'
+    ListBannedUser: '/MemberView/ListBannedUsers'
   },
   UserReport: {
     ReportUser: '/UserReport/ReportUser',

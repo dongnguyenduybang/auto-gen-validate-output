@@ -9,14 +9,20 @@
     },
     {
         "body": {
-            "userId": ""
+            "userId": "{{userId1}}"
         },
+        "expects": []
+    },
+    {
+        "body": {},
         "expects": [
             "Could not resolve permission type"
         ]
     },
     {
-        "body": {},
+        "body": {
+            "userId": ""
+        },
         "expects": [
             "Could not resolve permission type"
         ]

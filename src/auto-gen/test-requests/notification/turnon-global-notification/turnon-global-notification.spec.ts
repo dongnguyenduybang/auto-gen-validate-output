@@ -116,7 +116,6 @@
             codedTest: [...codedTest],
             passedTests: passedTests,
             totalTests: totalTests,
-            logicTests: [...logicTests],
             failedStep: [...failedStep]
           };
           const reportDir = path.join(__dirname, '../../../../tmp-reports');

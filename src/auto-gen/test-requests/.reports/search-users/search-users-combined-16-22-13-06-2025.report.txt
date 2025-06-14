@@ -1,0 +1,239 @@
+=== Request Test Report for search-users ===
+• Host: N/A
+• Endpoint: /Search/SearchMembers
+• Date: 13/06/2025, 16:22:20
+
+=== Execution Steps ===
+  1. [✅ PASSED] addFriend
+  2. [✅ PASSED] acceptFriendRequest
+
+=== Test Summary ===
+✅ Passed: 1
+❌ Failed: 29
+📊 Total: 30
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 0
+ 🟢 201: 0
+ 🟠 400: 0
+ 🟠 403: 0
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Unique Errors ===
+ 🟣 1. keyword expected string, received number (Occurred: 6 times)
+ 🟣 2. limit must be a number conforming to the specified constraints (Occurred: 15 times)
+ 🟣 3. limit must be at least 1 (Occurred: 5 times)
+ 🟣 4. limit must be at most 500 (Occurred: 5 times)
+ 🟣 5. limit should not be empty (Occurred: 5 times)
+ 🟣 6. keyword required (Occurred: 6 times)
+ 🟣 7. keyword should not be empty (Occurred: 6 times)
+ 🟣 8. keyword expected string, received null (Occurred: 6 times)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #1
+     ├─ Status: 404
+     ├─ Body: {"keyword":123,"limit":10}
+     ├─ Actual: None
+     ├─ Expected: keyword expected string, received number
+     └─ Details: No details
+
+ 🟣 2. Case #2
+     ├─ Status: 404
+     ├─ Body: {"keyword":123,"limit":"invalid_number"}
+     ├─ Actual: None
+     ├─ Expected: keyword expected string, received number, limit must be a number conforming to the specified constraints
+     └─ Details: No details
+
+ 🟣 3. Case #3
+     ├─ Status: 404
+     ├─ Body: {"keyword":123,"limit":0}
+     ├─ Actual: None
+     ├─ Expected: keyword expected string, received number, limit must be at least 1
+     └─ Details: No details
+
+ 🟣 4. Case #4
+     ├─ Status: 404
+     ├─ Body: {"keyword":123,"limit":501}
+     ├─ Actual: None
+     ├─ Expected: keyword expected string, received number, limit must be at most 500
+     └─ Details: No details
+
+ 🟣 5. Case #5
+     ├─ Status: 404
+     ├─ Body: {"keyword":123,"limit":""}
+     ├─ Actual: None
+     ├─ Expected: keyword expected string, received number, limit must be a number conforming to the specified constraints, limit should not be empty
+     └─ Details: No details
+
+ 🟣 6. Case #6
+     ├─ Status: 404
+     ├─ Body: {"keyword":123,"limit":null}
+     ├─ Actual: None
+     ├─ Expected: keyword expected string, received number, limit must be a number conforming to the specified constraints
+     └─ Details: No details
+
+ 🟣 7. Case #8
+     ├─ Status: 404
+     ├─ Body: {"keyword":"testabc123","limit":"invalid_number"}
+     ├─ Actual: None
+     ├─ Expected: limit must be a number conforming to the specified constraints
+     └─ Details: No details
+
+ 🟣 8. Case #9
+     ├─ Status: 404
+     ├─ Body: {"keyword":"testabc123","limit":0}
+     ├─ Actual: None
+     ├─ Expected: limit must be at least 1
+     └─ Details: No details
+
+ 🟣 9. Case #10
+     ├─ Status: 404
+     ├─ Body: {"keyword":"testabc123","limit":501}
+     ├─ Actual: None
+     ├─ Expected: limit must be at most 500
+     └─ Details: No details
+
+ 🟣 10. Case #11
+     ├─ Status: 404
+     ├─ Body: {"keyword":"testabc123","limit":""}
+     ├─ Actual: None
+     ├─ Expected: limit must be a number conforming to the specified constraints, limit should not be empty
+     └─ Details: No details
+
+ 🟣 11. Case #12
+     ├─ Status: 404
+     ├─ Body: {"keyword":"testabc123","limit":null}
+     ├─ Actual: None
+     ├─ Expected: limit must be a number conforming to the specified constraints
+     └─ Details: No details
+
+ 🟣 12. Case #13
+     ├─ Status: 404
+     ├─ Body: {"limit":10}
+     ├─ Actual: None
+     ├─ Expected: keyword required
+     └─ Details: No details
+
+ 🟣 13. Case #14
+     ├─ Status: 404
+     ├─ Body: {"limit":"invalid_number"}
+     ├─ Actual: None
+     ├─ Expected: keyword required, limit must be a number conforming to the specified constraints
+     └─ Details: No details
+
+ 🟣 14. Case #15
+     ├─ Status: 404
+     ├─ Body: {"limit":0}
+     ├─ Actual: None
+     ├─ Expected: keyword required, limit must be at least 1
+     └─ Details: No details
+
+ 🟣 15. Case #16
+     ├─ Status: 404
+     ├─ Body: {"limit":501}
+     ├─ Actual: None
+     ├─ Expected: keyword required, limit must be at most 500
+     └─ Details: No details
+
+ 🟣 16. Case #17
+     ├─ Status: 404
+     ├─ Body: {"limit":""}
+     ├─ Actual: None
+     ├─ Expected: keyword required, limit must be a number conforming to the specified constraints, limit should not be empty
+     └─ Details: No details
+
+ 🟣 17. Case #18
+     ├─ Status: 404
+     ├─ Body: {"limit":null}
+     ├─ Actual: None
+     ├─ Expected: keyword required, limit must be a number conforming to the specified constraints
+     └─ Details: No details
+
+ 🟣 18. Case #19
+     ├─ Status: 404
+     ├─ Body: {"keyword":"","limit":10}
+     ├─ Actual: None
+     ├─ Expected: keyword should not be empty
+     └─ Details: No details
+
+ 🟣 19. Case #20
+     ├─ Status: 404
+     ├─ Body: {"keyword":"","limit":"invalid_number"}
+     ├─ Actual: None
+     ├─ Expected: keyword should not be empty, limit must be a number conforming to the specified constraints
+     └─ Details: No details
+
+ 🟣 20. Case #21
+     ├─ Status: 404
+     ├─ Body: {"keyword":"","limit":0}
+     ├─ Actual: None
+     ├─ Expected: keyword should not be empty, limit must be at least 1
+     └─ Details: No details
+
+ 🟣 21. Case #22
+     ├─ Status: 404
+     ├─ Body: {"keyword":"","limit":501}
+     ├─ Actual: None
+     ├─ Expected: keyword should not be empty, limit must be at most 500
+     └─ Details: No details
+
+ 🟣 22. Case #23
+     ├─ Status: 404
+     ├─ Body: {"keyword":"","limit":""}
+     ├─ Actual: None
+     ├─ Expected: keyword should not be empty, limit must be a number conforming to the specified constraints, limit should not be empty
+     └─ Details: No details
+
+ 🟣 23. Case #24
+     ├─ Status: 404
+     ├─ Body: {"keyword":"","limit":null}
+     ├─ Actual: None
+     ├─ Expected: keyword should not be empty, limit must be a number conforming to the specified constraints
+     └─ Details: No details
+
+ 🟣 24. Case #25
+     ├─ Status: 404
+     ├─ Body: {"keyword":null,"limit":10}
+     ├─ Actual: None
+     ├─ Expected: keyword expected string, received null
+     └─ Details: No details
+
+ 🟣 25. Case #26
+     ├─ Status: 404
+     ├─ Body: {"keyword":null,"limit":"invalid_number"}
+     ├─ Actual: None
+     ├─ Expected: keyword expected string, received null, limit must be a number conforming to the specified constraints
+     └─ Details: No details
+
+ 🟣 26. Case #27
+     ├─ Status: 404
+     ├─ Body: {"keyword":null,"limit":0}
+     ├─ Actual: None
+     ├─ Expected: keyword expected string, received null, limit must be at least 1
+     └─ Details: No details
+
+ 🟣 27. Case #28
+     ├─ Status: 404
+     ├─ Body: {"keyword":null,"limit":501}
+     ├─ Actual: None
+     ├─ Expected: keyword expected string, received null, limit must be at most 500
+     └─ Details: No details
+
+ 🟣 28. Case #29
+     ├─ Status: 404
+     ├─ Body: {"keyword":null,"limit":""}
+     ├─ Actual: None
+     ├─ Expected: keyword expected string, received null, limit must be a number conforming to the specified constraints, limit should not be empty
+     └─ Details: No details
+
+ 🟣 29. Case #30
+     ├─ Status: 404
+     ├─ Body: {"keyword":null,"limit":null}
+     ├─ Actual: None
+     ├─ Expected: keyword expected string, received null, limit must be a number conforming to the specified constraints
+     └─ Details: No details
+
+=== End of Report ===

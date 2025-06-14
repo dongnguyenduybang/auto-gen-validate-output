@@ -18,10 +18,10 @@ const createChannelConfig: ExtractConfig = {
       'totalMembers',
     ],
   },
-  users: {
-    path: ['includes', 'users'],
-    fields: ['username'],
-  },
+  // users: {
+  //   path: ['includes', 'users'],
+  //   fields: ['username'],
+  // },
 };
 
 const getChannelConfig: ExtractConfig = {};
@@ -80,7 +80,12 @@ const createInvitationConfig: ExtractConfig = {
     fields: ['code']
   }
 };
-
+const sendInvitationConfig: ExtractConfig = {
+  data: {
+    path: ['data'],
+    fields: ['code']
+  }
+}
 // Ánh xạ action tới cấu hình
 export const configMap: Record<string, ExtractConfig> = {
   mockUser: mockUserConfig,
@@ -94,4 +99,5 @@ export const configMap: Record<string, ExtractConfig> = {
   ejectMessage: ejectMessageConfig,
   createInvitation: createInvitationConfig,
   ringbackToneCreate: ringbackToneCreateConfig,
+  sendInvitation: sendInvitationConfig,
 };

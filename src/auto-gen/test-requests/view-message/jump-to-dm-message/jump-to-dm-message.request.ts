@@ -4,7 +4,7 @@ import { VAR, ACTION, HEADER_LIST } from '../../../enums/index';
 export const JumpToDmMessageRequest: RequestTestSuite = {
     action: ACTION.JUMP_TO_DM_MESSAGE,
     body: {
-        userId: VAR.userId,
+        userId: VAR.userId1,
         messageId: VAR.messageId,
         limit: 10
     },

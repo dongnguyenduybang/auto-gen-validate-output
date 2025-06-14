@@ -1,0 +1,59 @@
+=== Request Test Report for get-invitation ===
+• Host: N/A
+• Endpoint: /InvitationView/GetInvitation
+• Date: 13/06/2025, 16:55:47
+
+=== Execution Steps ===
+  1. [✅ PASSED] sendInvitation
+
+=== Test Summary ===
+✅ Passed: 1
+❌ Failed: 4
+📊 Total: 5
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 0
+ 🟢 201: 0
+ 🟠 400: 1
+ 🟠 403: 0
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Unique Errors ===
+ 🟣 1. code expected string, received number (Occurred: 1 time)
+ 🟣 2. code should not be empty (Occurred: 1 time)
+ 🟣 3. code string must contain at least 1 character(s) (Occurred: 1 time)
+ 🟣 4. code expected string, received null (Occurred: 1 time)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #1
+     ├─ Status: 404
+     ├─ Body: {"code":123}
+     ├─ Actual: Failed to get invitation
+     ├─ Expected: code expected string, received number
+     └─ Details: No details
+
+ 🟣 2. Case #2
+     ├─ Status: 404
+     ├─ Body: {"code":"{{code}}"}
+     ├─ Actual: Failed to get invitation
+     ├─ Expected: None
+     └─ Details: No details
+
+ 🟣 3. Case #3
+     ├─ Status: 400
+     ├─ Body: {"code":""}
+     ├─ Actual: code string must contain at least 1 character(s)
+     ├─ Expected: code should not be empty, code string must contain at least 1 character(s)
+     └─ Details: No details
+
+ 🟣 4. Case #5
+     ├─ Status: 400
+     ├─ Body: {"code":null}
+     ├─ Actual: code required
+     ├─ Expected: code expected string, received null
+     └─ Details: No details
+
+=== End of Report ===

@@ -1,0 +1,35 @@
+=== Request Test Report for get-dm-channel ===
+• Host: N/A
+• Endpoint: /ChannelView/GetDMChannel
+• Date: 13/06/2025, 17:17:07
+
+=== Execution Steps ===
+  1. [✅ PASSED] sendDmMessage
+
+=== Test Summary ===
+✅ Passed: 5
+❌ Failed: 1
+📊 Total: 6
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 1
+ 🟢 201: 0
+ 🟠 400: 0
+ 🟠 403: 4
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Unique Errors ===
+ 🟣 1. Could not resolve permission type (Occurred: 1 time)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #1
+     ├─ Status: 403
+     ├─ Body: {"userId":123}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+=== End of Report ===

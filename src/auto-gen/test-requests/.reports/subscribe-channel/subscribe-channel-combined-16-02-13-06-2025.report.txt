@@ -1,0 +1,274 @@
+=== Request Test Report for subscribe-channel ===
+• Host: N/A
+• Endpoint: /Search/SearchChannels
+• Date: 13/06/2025, 16:02:04
+
+=== Execution Steps ===
+
+=== Test Summary ===
+✅ Passed: 1
+❌ Failed: 35
+📊 Total: 36
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 1
+ 🟢 201: 0
+ 🟠 400: 0
+ 🟠 403: 0
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Unique Errors ===
+ 🟣 1. Could not resolve permission type (Occurred: 30 times)
+ 🟣 2. Unsupported permission type (Occurred: 2 times)
+ 🟣 3. Invalid channel (Occurred: 3 times)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #1
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":123,"channelId":"01JXM6XDK8EPPFRDJGFJZCFRVF"}
+     ├─ Actual: None
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 2. Case #2
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":123,"channelId":123}
+     ├─ Actual: None
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 3. Case #3
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":123}
+     ├─ Actual: None
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 4. Case #4
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":123,"channelId":""}
+     ├─ Actual: None
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 5. Case #5
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":123,"channelId":null}
+     ├─ Actual: None
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 6. Case #6
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":123,"channelId":"invalid_value"}
+     ├─ Actual: None
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 7. Case #8
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":"0","channelId":123}
+     ├─ Actual: None
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 8. Case #9
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":"0"}
+     ├─ Actual: None
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 9. Case #10
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":"0","channelId":""}
+     ├─ Actual: None
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 10. Case #11
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":"0","channelId":null}
+     ├─ Actual: None
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 11. Case #12
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":"0","channelId":"invalid_value"}
+     ├─ Actual: None
+     ├─ Expected: Invalid channel
+     └─ Details: No details
+
+ 🟣 12. Case #13
+     ├─ Status: 200
+     ├─ Body: {"channelId":"01JXM6XDK8EPPFRDJGFJZCFRVF"}
+     ├─ Actual: None
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 13. Case #14
+     ├─ Status: 200
+     ├─ Body: {"channelId":123}
+     ├─ Actual: None
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 14. Case #15
+     ├─ Status: 200
+     ├─ Body: {}
+     ├─ Actual: None
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 15. Case #16
+     ├─ Status: 200
+     ├─ Body: {"channelId":""}
+     ├─ Actual: None
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 16. Case #17
+     ├─ Status: 200
+     ├─ Body: {"channelId":null}
+     ├─ Actual: None
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 17. Case #18
+     ├─ Status: 200
+     ├─ Body: {"channelId":"invalid_value"}
+     ├─ Actual: None
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 18. Case #19
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":"","channelId":"01JXM6XDK8EPPFRDJGFJZCFRVF"}
+     ├─ Actual: None
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 19. Case #20
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":"","channelId":123}
+     ├─ Actual: None
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 20. Case #21
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":""}
+     ├─ Actual: None
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 21. Case #22
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":"","channelId":""}
+     ├─ Actual: None
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 22. Case #23
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":"","channelId":null}
+     ├─ Actual: None
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 23. Case #24
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":"","channelId":"invalid_value"}
+     ├─ Actual: None
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 24. Case #25
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":null,"channelId":"01JXM6XDK8EPPFRDJGFJZCFRVF"}
+     ├─ Actual: None
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 25. Case #26
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":null,"channelId":123}
+     ├─ Actual: None
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 26. Case #27
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":null}
+     ├─ Actual: None
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 27. Case #28
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":null,"channelId":""}
+     ├─ Actual: None
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 28. Case #29
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":null,"channelId":null}
+     ├─ Actual: None
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 29. Case #30
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":null,"channelId":"invalid_value"}
+     ├─ Actual: None
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 30. Case #31
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":"invalid_value","channelId":"01JXM6XDK8EPPFRDJGFJZCFRVF"}
+     ├─ Actual: None
+     ├─ Expected: Invalid channel
+     └─ Details: No details
+
+ 🟣 31. Case #32
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":"invalid_value","channelId":123}
+     ├─ Actual: None
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 32. Case #33
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":"invalid_value"}
+     ├─ Actual: None
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 33. Case #34
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":"invalid_value","channelId":""}
+     ├─ Actual: None
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 34. Case #35
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":"invalid_value","channelId":null}
+     ├─ Actual: None
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 35. Case #36
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":"invalid_value","channelId":"invalid_value"}
+     ├─ Actual: None
+     ├─ Expected: Invalid channel
+     └─ Details: No details
+
+=== End of Report ===

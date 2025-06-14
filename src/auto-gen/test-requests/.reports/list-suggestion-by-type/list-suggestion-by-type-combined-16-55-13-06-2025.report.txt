@@ -1,0 +1,246 @@
+=== Request Test Report for list-suggestion-by-type ===
+• Host: N/A
+• Endpoint: /Suggestion/ListSuggestedFriendsByType
+• Date: 13/06/2025, 16:55:47
+
+=== Execution Steps ===
+
+=== Test Summary ===
+✅ Passed: 0
+❌ Failed: 30
+📊 Total: 30
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 0
+ 🟢 201: 0
+ 🟠 400: 0
+ 🟠 403: 0
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Unique Errors ===
+ 🟣 1. suggestionType invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value' (Occurred: 6 times)
+ 🟣 2. limit must be a number conforming to the specified constraints (Occurred: 15 times)
+ 🟣 3. limit must be at least 1 (Occurred: 5 times)
+ 🟣 4. limit must be at most 500 (Occurred: 5 times)
+ 🟣 5. limit should not be empty (Occurred: 5 times)
+ 🟣 6. suggestionType invalid enum value. Expected 0 | 1 | 2, received 'undefined' (Occurred: 6 times)
+ 🟣 7. suggestionType required (Occurred: 6 times)
+ 🟣 8. suggestionType invalid enum value. Expected 0 | 1 | 2, received '' (Occurred: 6 times)
+ 🟣 9. suggestionType should not be empty (Occurred: 6 times)
+ 🟣 10. suggestionType invalid enum value. Expected 0 | 1 | 2, received 'null' (Occurred: 6 times)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #1
+     ├─ Status: 400
+     ├─ Body: {"suggestionType":"invalid_enum_value","limit":10}
+     ├─ Actual: suggestionType expected 1 | 2, received nan
+     ├─ Expected: suggestionType invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 2. Case #2
+     ├─ Status: 400
+     ├─ Body: {"suggestionType":"invalid_enum_value","limit":"invalid_number"}
+     ├─ Actual: limit expected number, received nan, suggestionType expected 1 | 2, received nan
+     ├─ Expected: limit must be a number conforming to the specified constraints, suggestionType invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 3. Case #3
+     ├─ Status: 400
+     ├─ Body: {"suggestionType":"invalid_enum_value","limit":0}
+     ├─ Actual: limit number must be greater than or equal to 1, suggestionType expected 1 | 2, received nan
+     ├─ Expected: limit must be at least 1, suggestionType invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 4. Case #4
+     ├─ Status: 400
+     ├─ Body: {"suggestionType":"invalid_enum_value","limit":501}
+     ├─ Actual: limit number must be less than or equal to 500, suggestionType expected 1 | 2, received nan
+     ├─ Expected: limit must be at most 500, suggestionType invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 5. Case #5
+     ├─ Status: 400
+     ├─ Body: {"suggestionType":"invalid_enum_value","limit":""}
+     ├─ Actual: limit number must be greater than or equal to 1, suggestionType expected 1 | 2, received nan
+     ├─ Expected: limit must be a number conforming to the specified constraints, limit should not be empty, suggestionType invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 6. Case #6
+     ├─ Status: 400
+     ├─ Body: {"suggestionType":"invalid_enum_value","limit":null}
+     ├─ Actual: suggestionType expected 1 | 2, received nan
+     ├─ Expected: limit must be a number conforming to the specified constraints, suggestionType invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 7. Case #7
+     ├─ Status: 400
+     ├─ Body: {"suggestionType":1,"limit":10}
+     ├─ Actual: sort is required when suggestionType is CHANNEL
+     ├─ Expected: None
+     └─ Details: No details
+
+ 🟣 8. Case #8
+     ├─ Status: 400
+     ├─ Body: {"suggestionType":1,"limit":"invalid_number"}
+     ├─ Actual: limit expected number, received nan
+     ├─ Expected: limit must be a number conforming to the specified constraints
+     └─ Details: No details
+
+ 🟣 9. Case #9
+     ├─ Status: 400
+     ├─ Body: {"suggestionType":1,"limit":0}
+     ├─ Actual: limit number must be greater than or equal to 1, sort is required when suggestionType is CHANNEL
+     ├─ Expected: limit must be at least 1
+     └─ Details: No details
+
+ 🟣 10. Case #10
+     ├─ Status: 400
+     ├─ Body: {"suggestionType":1,"limit":501}
+     ├─ Actual: limit number must be less than or equal to 500, sort is required when suggestionType is CHANNEL
+     ├─ Expected: limit must be at most 500
+     └─ Details: No details
+
+ 🟣 11. Case #11
+     ├─ Status: 400
+     ├─ Body: {"suggestionType":1,"limit":""}
+     ├─ Actual: limit number must be greater than or equal to 1, sort is required when suggestionType is CHANNEL
+     ├─ Expected: limit must be a number conforming to the specified constraints, limit should not be empty
+     └─ Details: No details
+
+ 🟣 12. Case #12
+     ├─ Status: 400
+     ├─ Body: {"suggestionType":1,"limit":null}
+     ├─ Actual: sort is required when suggestionType is CHANNEL
+     ├─ Expected: limit must be a number conforming to the specified constraints
+     └─ Details: No details
+
+ 🟣 13. Case #13
+     ├─ Status: 400
+     ├─ Body: {"limit":10}
+     ├─ Actual: suggestionType required
+     ├─ Expected: suggestionType invalid enum value. Expected 0 | 1 | 2, received 'undefined', suggestionType required
+     └─ Details: No details
+
+ 🟣 14. Case #14
+     ├─ Status: 400
+     ├─ Body: {"limit":"invalid_number"}
+     ├─ Actual: limit expected number, received nan, suggestionType required
+     ├─ Expected: limit must be a number conforming to the specified constraints, suggestionType invalid enum value. Expected 0 | 1 | 2, received 'undefined', suggestionType required
+     └─ Details: No details
+
+ 🟣 15. Case #15
+     ├─ Status: 400
+     ├─ Body: {"limit":0}
+     ├─ Actual: limit number must be greater than or equal to 1, suggestionType required
+     ├─ Expected: limit must be at least 1, suggestionType invalid enum value. Expected 0 | 1 | 2, received 'undefined', suggestionType required
+     └─ Details: No details
+
+ 🟣 16. Case #16
+     ├─ Status: 400
+     ├─ Body: {"limit":501}
+     ├─ Actual: limit number must be less than or equal to 500, suggestionType required
+     ├─ Expected: limit must be at most 500, suggestionType invalid enum value. Expected 0 | 1 | 2, received 'undefined', suggestionType required
+     └─ Details: No details
+
+ 🟣 17. Case #17
+     ├─ Status: 400
+     ├─ Body: {"limit":""}
+     ├─ Actual: limit number must be greater than or equal to 1, suggestionType required
+     ├─ Expected: limit must be a number conforming to the specified constraints, limit should not be empty, suggestionType invalid enum value. Expected 0 | 1 | 2, received 'undefined', suggestionType required
+     └─ Details: No details
+
+ 🟣 18. Case #18
+     ├─ Status: 400
+     ├─ Body: {"limit":null}
+     ├─ Actual: suggestionType required
+     ├─ Expected: limit must be a number conforming to the specified constraints, suggestionType invalid enum value. Expected 0 | 1 | 2, received 'undefined', suggestionType required
+     └─ Details: No details
+
+ 🟣 19. Case #19
+     ├─ Status: 400
+     ├─ Body: {"suggestionType":"","limit":10}
+     ├─ Actual: suggestionType invalid enum value. Expected 1 | 2, received '0'
+     ├─ Expected: suggestionType invalid enum value. Expected 0 | 1 | 2, received '', suggestionType should not be empty
+     └─ Details: No details
+
+ 🟣 20. Case #20
+     ├─ Status: 400
+     ├─ Body: {"suggestionType":"","limit":"invalid_number"}
+     ├─ Actual: limit expected number, received nan, suggestionType invalid enum value. Expected 1 | 2, received '0'
+     ├─ Expected: limit must be a number conforming to the specified constraints, suggestionType invalid enum value. Expected 0 | 1 | 2, received '', suggestionType should not be empty
+     └─ Details: No details
+
+ 🟣 21. Case #21
+     ├─ Status: 400
+     ├─ Body: {"suggestionType":"","limit":0}
+     ├─ Actual: limit number must be greater than or equal to 1, suggestionType invalid enum value. Expected 1 | 2, received '0'
+     ├─ Expected: limit must be at least 1, suggestionType invalid enum value. Expected 0 | 1 | 2, received '', suggestionType should not be empty
+     └─ Details: No details
+
+ 🟣 22. Case #22
+     ├─ Status: 400
+     ├─ Body: {"suggestionType":"","limit":501}
+     ├─ Actual: limit number must be less than or equal to 500, suggestionType invalid enum value. Expected 1 | 2, received '0'
+     ├─ Expected: limit must be at most 500, suggestionType invalid enum value. Expected 0 | 1 | 2, received '', suggestionType should not be empty
+     └─ Details: No details
+
+ 🟣 23. Case #23
+     ├─ Status: 400
+     ├─ Body: {"suggestionType":"","limit":""}
+     ├─ Actual: limit number must be greater than or equal to 1, suggestionType invalid enum value. Expected 1 | 2, received '0'
+     ├─ Expected: limit must be a number conforming to the specified constraints, limit should not be empty, suggestionType invalid enum value. Expected 0 | 1 | 2, received '', suggestionType should not be empty
+     └─ Details: No details
+
+ 🟣 24. Case #24
+     ├─ Status: 400
+     ├─ Body: {"suggestionType":"","limit":null}
+     ├─ Actual: suggestionType invalid enum value. Expected 1 | 2, received '0'
+     ├─ Expected: limit must be a number conforming to the specified constraints, suggestionType invalid enum value. Expected 0 | 1 | 2, received '', suggestionType should not be empty
+     └─ Details: No details
+
+ 🟣 25. Case #25
+     ├─ Status: 400
+     ├─ Body: {"suggestionType":null,"limit":10}
+     ├─ Actual: suggestionType required
+     ├─ Expected: suggestionType invalid enum value. Expected 0 | 1 | 2, received 'null'
+     └─ Details: No details
+
+ 🟣 26. Case #26
+     ├─ Status: 400
+     ├─ Body: {"suggestionType":null,"limit":"invalid_number"}
+     ├─ Actual: limit expected number, received nan, suggestionType required
+     ├─ Expected: limit must be a number conforming to the specified constraints, suggestionType invalid enum value. Expected 0 | 1 | 2, received 'null'
+     └─ Details: No details
+
+ 🟣 27. Case #27
+     ├─ Status: 400
+     ├─ Body: {"suggestionType":null,"limit":0}
+     ├─ Actual: limit number must be greater than or equal to 1, suggestionType required
+     ├─ Expected: limit must be at least 1, suggestionType invalid enum value. Expected 0 | 1 | 2, received 'null'
+     └─ Details: No details
+
+ 🟣 28. Case #28
+     ├─ Status: 400
+     ├─ Body: {"suggestionType":null,"limit":501}
+     ├─ Actual: limit number must be less than or equal to 500, suggestionType required
+     ├─ Expected: limit must be at most 500, suggestionType invalid enum value. Expected 0 | 1 | 2, received 'null'
+     └─ Details: No details
+
+ 🟣 29. Case #29
+     ├─ Status: 400
+     ├─ Body: {"suggestionType":null,"limit":""}
+     ├─ Actual: limit number must be greater than or equal to 1, suggestionType required
+     ├─ Expected: limit must be a number conforming to the specified constraints, limit should not be empty, suggestionType invalid enum value. Expected 0 | 1 | 2, received 'null'
+     └─ Details: No details
+
+ 🟣 30. Case #30
+     ├─ Status: 400
+     ├─ Body: {"suggestionType":null,"limit":null}
+     ├─ Actual: suggestionType required
+     ├─ Expected: limit must be a number conforming to the specified constraints, suggestionType invalid enum value. Expected 0 | 1 | 2, received 'null'
+     └─ Details: No details
+
+=== End of Report ===

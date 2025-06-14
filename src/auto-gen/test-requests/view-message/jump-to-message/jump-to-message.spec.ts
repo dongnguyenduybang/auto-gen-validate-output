@@ -99,13 +99,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -123,17 +122,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -147,13 +145,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -169,13 +166,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -187,11 +183,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -235,13 +247,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -259,17 +270,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -283,13 +293,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -305,13 +314,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -323,11 +331,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -371,13 +395,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -395,17 +418,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -419,13 +441,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -441,13 +462,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -459,11 +479,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -507,13 +543,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -531,17 +566,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -555,13 +589,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -577,13 +610,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -595,11 +627,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -643,13 +691,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -667,17 +714,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -691,13 +737,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -713,13 +758,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -731,11 +775,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -779,13 +839,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -803,17 +862,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -827,13 +885,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -849,13 +906,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -867,11 +923,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -915,13 +987,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -939,17 +1010,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -963,13 +1033,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -985,13 +1054,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -1003,11 +1071,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -1051,13 +1135,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -1075,17 +1158,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -1099,13 +1181,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -1121,13 +1202,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -1139,11 +1219,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -1187,13 +1283,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -1211,17 +1306,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -1235,13 +1329,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -1257,13 +1350,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -1275,11 +1367,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -1323,13 +1431,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -1347,17 +1454,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -1371,13 +1477,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -1393,13 +1498,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -1411,11 +1515,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -1459,13 +1579,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -1483,17 +1602,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -1507,13 +1625,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -1529,13 +1646,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -1547,11 +1663,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -1595,13 +1727,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -1619,17 +1750,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -1643,13 +1773,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -1665,13 +1794,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -1683,11 +1811,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -1731,13 +1875,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -1755,17 +1898,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -1779,13 +1921,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -1801,13 +1942,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -1819,11 +1959,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -1867,13 +2023,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -1891,17 +2046,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -1915,13 +2069,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -1937,13 +2090,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -1955,11 +2107,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -2003,13 +2171,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -2027,17 +2194,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -2051,13 +2217,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -2073,13 +2238,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -2091,11 +2255,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -2139,13 +2319,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -2163,17 +2342,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -2187,13 +2365,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -2209,13 +2386,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -2227,11 +2403,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -2275,13 +2467,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -2299,17 +2490,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -2323,13 +2513,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -2345,13 +2534,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -2363,11 +2551,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -2411,13 +2615,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -2435,17 +2638,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -2459,13 +2661,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -2481,13 +2682,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -2499,11 +2699,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -2547,13 +2763,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -2571,17 +2786,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -2595,13 +2809,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -2617,13 +2830,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -2635,11 +2847,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -2683,13 +2911,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -2707,17 +2934,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -2731,13 +2957,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -2753,13 +2978,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -2771,11 +2995,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -2819,13 +3059,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -2843,17 +3082,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -2867,13 +3105,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -2889,13 +3126,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -2907,11 +3143,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -2955,13 +3207,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -2979,17 +3230,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -3003,13 +3253,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -3025,13 +3274,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -3043,11 +3291,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -3091,13 +3355,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -3115,17 +3378,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -3139,13 +3401,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -3161,13 +3422,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -3179,11 +3439,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -3227,13 +3503,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -3251,17 +3526,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -3275,13 +3549,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -3297,13 +3570,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -3315,11 +3587,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -3363,13 +3651,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -3387,17 +3674,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -3411,13 +3697,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -3433,13 +3718,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -3451,11 +3735,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -3499,13 +3799,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -3523,17 +3822,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -3547,13 +3845,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -3569,13 +3866,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -3587,11 +3883,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -3635,13 +3947,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -3659,17 +3970,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -3683,13 +3993,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -3705,13 +4014,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -3723,11 +4031,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -3771,13 +4095,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -3795,17 +4118,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -3819,13 +4141,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -3841,13 +4162,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -3859,11 +4179,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -3907,13 +4243,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -3931,17 +4266,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -3955,13 +4289,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -3977,13 +4310,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -3995,11 +4327,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -4043,13 +4391,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -4067,17 +4414,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -4091,13 +4437,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -4113,13 +4458,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -4131,11 +4475,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -4179,13 +4539,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -4203,17 +4562,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -4227,13 +4585,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -4249,13 +4606,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -4267,11 +4623,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -4315,13 +4687,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -4339,17 +4710,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -4363,13 +4733,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -4385,13 +4754,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -4403,11 +4771,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -4451,13 +4835,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -4475,17 +4858,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -4499,13 +4881,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -4521,13 +4902,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -4539,11 +4919,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -4587,13 +4983,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -4611,17 +5006,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -4635,13 +5029,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -4657,13 +5050,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -4675,11 +5067,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -4723,13 +5131,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -4747,17 +5154,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -4771,13 +5177,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -4793,13 +5198,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -4811,11 +5215,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -4859,13 +5279,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -4883,17 +5302,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -4907,13 +5325,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -4929,13 +5346,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -4947,11 +5363,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -4995,13 +5427,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -5019,17 +5450,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -5043,13 +5473,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -5065,13 +5494,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -5083,11 +5511,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -5131,13 +5575,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -5155,17 +5598,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -5179,13 +5621,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -5201,13 +5642,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -5219,11 +5659,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -5267,13 +5723,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -5291,17 +5746,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -5315,13 +5769,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -5337,13 +5790,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -5355,11 +5807,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -5403,13 +5871,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -5427,17 +5894,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -5451,13 +5917,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -5473,13 +5938,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -5491,11 +5955,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -5539,13 +6019,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -5563,17 +6042,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -5587,13 +6065,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -5609,13 +6086,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -5627,11 +6103,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -5675,13 +6167,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -5699,17 +6190,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -5723,13 +6213,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -5745,13 +6234,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -5763,11 +6251,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -5811,13 +6315,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -5835,17 +6338,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -5859,13 +6361,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -5881,13 +6382,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -5899,11 +6399,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -5947,13 +6463,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -5971,17 +6486,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -5995,13 +6509,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -6017,13 +6530,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -6035,11 +6547,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -6083,13 +6611,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -6107,17 +6634,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -6131,13 +6657,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -6153,13 +6678,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -6171,11 +6695,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -6219,13 +6759,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -6243,17 +6782,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -6267,13 +6805,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -6289,13 +6826,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -6307,11 +6843,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -6355,13 +6907,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -6379,17 +6930,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -6403,13 +6953,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -6425,13 +6974,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -6443,11 +6991,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -6491,13 +7055,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -6515,17 +7078,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -6539,13 +7101,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -6561,13 +7122,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -6579,11 +7139,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -6627,13 +7203,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -6651,17 +7226,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -6675,13 +7249,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -6697,13 +7270,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -6715,11 +7287,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -6763,13 +7351,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -6787,17 +7374,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -6811,13 +7397,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -6833,13 +7418,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -6851,11 +7435,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -6899,13 +7499,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -6923,17 +7522,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -6947,13 +7545,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -6969,13 +7566,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -6987,11 +7583,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -7035,13 +7647,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -7059,17 +7670,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -7083,13 +7693,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -7105,13 +7714,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -7123,11 +7731,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -7171,13 +7795,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -7195,17 +7818,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -7219,13 +7841,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -7241,13 +7862,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -7259,11 +7879,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -7307,13 +7943,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -7331,17 +7966,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -7355,13 +7989,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -7377,13 +8010,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -7395,11 +8027,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -7443,13 +8091,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -7467,17 +8114,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -7491,13 +8137,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -7513,13 +8158,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -7531,11 +8175,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -7579,13 +8239,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -7603,17 +8262,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -7627,13 +8285,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -7649,13 +8306,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -7667,11 +8323,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -7715,13 +8387,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -7739,17 +8410,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -7763,13 +8433,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -7785,13 +8454,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -7803,11 +8471,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -7851,13 +8535,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -7875,17 +8558,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -7899,13 +8581,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -7921,13 +8602,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -7939,11 +8619,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -7987,13 +8683,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -8011,17 +8706,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -8035,13 +8729,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -8057,13 +8750,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -8075,11 +8767,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -8123,13 +8831,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -8147,17 +8854,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -8171,13 +8877,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -8193,13 +8898,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -8211,11 +8915,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -8259,13 +8979,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -8283,17 +9002,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -8307,13 +9025,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -8329,13 +9046,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -8347,11 +9063,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -8395,13 +9127,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -8419,17 +9150,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -8443,13 +9173,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -8465,13 +9194,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -8483,11 +9211,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -8531,13 +9275,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -8555,17 +9298,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -8579,13 +9321,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -8601,13 +9342,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -8619,11 +9359,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -8667,13 +9423,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -8691,17 +9446,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -8715,13 +9469,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -8737,13 +9490,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -8755,11 +9507,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -8803,13 +9571,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -8827,17 +9594,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -8851,13 +9617,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -8873,13 +9638,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -8891,11 +9655,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -8939,13 +9719,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -8963,17 +9742,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -8987,13 +9765,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -9009,13 +9786,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -9027,11 +9803,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -9075,13 +9867,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -9099,17 +9890,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -9123,13 +9913,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -9145,13 +9934,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -9163,11 +9951,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -9211,13 +10015,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -9235,17 +10038,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -9259,13 +10061,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -9281,13 +10082,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -9299,11 +10099,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -9347,13 +10163,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -9371,17 +10186,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -9395,13 +10209,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -9417,13 +10230,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -9435,11 +10247,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -9483,13 +10311,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -9507,17 +10334,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -9531,13 +10357,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -9553,13 +10378,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -9571,11 +10395,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -9619,13 +10459,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -9643,17 +10482,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -9667,13 +10505,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -9689,13 +10526,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -9707,11 +10543,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -9755,13 +10607,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -9779,17 +10630,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -9803,13 +10653,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -9825,13 +10674,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -9843,11 +10691,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -9891,13 +10755,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -9915,17 +10778,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -9939,13 +10801,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -9961,13 +10822,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -9979,11 +10839,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -10027,13 +10903,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -10051,17 +10926,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -10075,13 +10949,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -10097,13 +10970,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -10115,11 +10987,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -10163,13 +11051,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -10187,17 +11074,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -10211,13 +11097,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -10233,13 +11118,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -10251,11 +11135,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -10299,13 +11199,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -10323,17 +11222,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -10347,13 +11245,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -10369,13 +11266,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -10387,11 +11283,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -10435,13 +11347,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -10459,17 +11370,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -10483,13 +11393,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -10505,13 +11414,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -10523,11 +11431,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -10571,13 +11495,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -10595,17 +11518,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -10619,13 +11541,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -10641,13 +11562,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -10659,11 +11579,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -10707,13 +11643,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -10731,17 +11666,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -10755,13 +11689,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -10777,13 +11710,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -10795,11 +11727,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -10843,13 +11791,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -10867,17 +11814,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -10891,13 +11837,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -10913,13 +11858,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -10931,11 +11875,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -10979,13 +11939,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -11003,17 +11962,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -11027,13 +11985,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -11049,13 +12006,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -11067,11 +12023,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -11115,13 +12087,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -11139,17 +12110,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -11163,13 +12133,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -11185,13 +12154,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -11203,11 +12171,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -11251,13 +12235,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -11275,17 +12258,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -11299,13 +12281,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -11321,13 +12302,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -11339,11 +12319,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -11387,13 +12383,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -11411,17 +12406,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -11435,13 +12429,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -11457,13 +12450,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -11475,11 +12467,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -11523,13 +12531,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -11547,17 +12554,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -11571,13 +12577,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -11593,13 +12598,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -11611,11 +12615,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -11659,13 +12679,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -11683,17 +12702,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -11707,13 +12725,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -11729,13 +12746,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -11747,11 +12763,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -11795,13 +12827,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -11819,17 +12850,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -11843,13 +12873,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -11865,13 +12894,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -11883,11 +12911,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -11931,13 +12975,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -11955,17 +12998,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -11979,13 +13021,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -12001,13 +13042,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -12019,11 +13059,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -12067,13 +13123,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -12091,17 +13146,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -12115,13 +13169,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -12137,13 +13190,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -12155,11 +13207,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -12203,13 +13271,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -12227,17 +13294,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -12251,13 +13317,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -12273,13 +13338,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -12291,11 +13355,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -12339,13 +13419,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -12363,17 +13442,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -12387,13 +13465,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -12409,13 +13486,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -12427,11 +13503,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -12475,13 +13567,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -12499,17 +13590,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -12523,13 +13613,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -12545,13 +13634,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -12563,11 +13651,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -12611,13 +13715,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -12635,17 +13738,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -12659,13 +13761,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -12681,13 +13782,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -12699,11 +13799,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -12747,13 +13863,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -12771,17 +13886,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -12795,13 +13909,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -12817,13 +13930,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -12835,11 +13947,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -12883,13 +14011,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -12907,17 +14034,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -12931,13 +14057,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -12953,13 +14078,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -12971,11 +14095,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -13019,13 +14159,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -13043,17 +14182,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -13067,13 +14205,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -13089,13 +14226,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -13107,11 +14243,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -13155,13 +14307,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -13179,17 +14330,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -13203,13 +14353,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -13225,13 +14374,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -13243,11 +14391,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -13291,13 +14455,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -13315,17 +14478,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -13339,13 +14501,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -13361,13 +14522,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -13379,11 +14539,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -13427,13 +14603,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -13451,17 +14626,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -13475,13 +14649,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -13497,13 +14670,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -13515,11 +14687,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -13563,13 +14751,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -13587,17 +14774,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -13611,13 +14797,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -13633,13 +14818,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -13651,11 +14835,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -13699,13 +14899,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -13723,17 +14922,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -13747,13 +14945,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -13769,13 +14966,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -13787,11 +14983,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -13835,13 +15047,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -13859,17 +15070,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -13883,13 +15093,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -13905,13 +15114,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -13923,11 +15131,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -13971,13 +15195,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -13995,17 +15218,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -14019,13 +15241,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -14041,13 +15262,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -14059,11 +15279,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -14107,13 +15343,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -14131,17 +15366,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -14155,13 +15389,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -14177,13 +15410,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -14195,11 +15427,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -14243,13 +15491,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -14267,17 +15514,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -14291,13 +15537,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -14313,13 +15558,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -14331,11 +15575,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -14379,13 +15639,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -14403,17 +15662,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -14427,13 +15685,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -14449,13 +15706,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -14467,11 +15723,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -14515,13 +15787,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -14539,17 +15810,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -14563,13 +15833,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -14585,13 +15854,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -14603,11 +15871,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -14651,13 +15935,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -14675,17 +15958,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -14699,13 +15981,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -14721,13 +16002,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -14739,11 +16019,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -14787,13 +16083,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -14811,17 +16106,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -14835,13 +16129,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -14857,13 +16150,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -14875,11 +16167,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -14923,13 +16231,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -14947,17 +16254,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -14971,13 +16277,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -14993,13 +16298,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -15011,11 +16315,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -15059,13 +16379,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -15083,17 +16402,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -15107,13 +16425,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -15129,13 +16446,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -15147,11 +16463,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -15195,13 +16527,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -15219,17 +16550,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -15243,13 +16573,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -15265,13 +16594,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -15283,11 +16611,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -15331,13 +16675,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -15355,17 +16698,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -15379,13 +16721,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -15401,13 +16742,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -15419,11 +16759,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -15467,13 +16823,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -15491,17 +16846,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -15515,13 +16869,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -15537,13 +16890,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -15555,11 +16907,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -15603,13 +16971,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -15627,17 +16994,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -15651,13 +17017,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -15673,13 +17038,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -15691,11 +17055,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -15739,13 +17119,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -15763,17 +17142,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -15787,13 +17165,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -15809,13 +17186,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -15827,11 +17203,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -15875,13 +17267,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -15899,17 +17290,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -15923,13 +17313,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -15945,13 +17334,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -15963,11 +17351,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -16011,13 +17415,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -16035,17 +17438,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -16059,13 +17461,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -16081,13 +17482,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -16099,11 +17499,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -16147,13 +17563,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -16171,17 +17586,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -16195,13 +17609,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -16217,13 +17630,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -16235,11 +17647,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -16283,13 +17711,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -16307,17 +17734,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -16331,13 +17757,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -16353,13 +17778,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -16371,11 +17795,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -16419,13 +17859,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -16443,17 +17882,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -16467,13 +17905,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -16489,13 +17926,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -16507,11 +17943,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -16555,13 +18007,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -16579,17 +18030,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -16603,13 +18053,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -16625,13 +18074,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -16643,11 +18091,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -16691,13 +18155,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -16715,17 +18178,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -16739,13 +18201,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -16761,13 +18222,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -16779,11 +18239,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -16827,13 +18303,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -16851,17 +18326,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -16875,13 +18349,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -16897,13 +18370,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -16915,11 +18387,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -16963,13 +18451,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -16987,17 +18474,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -17011,13 +18497,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -17033,13 +18518,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -17051,11 +18535,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -17099,13 +18599,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -17123,17 +18622,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -17147,13 +18645,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -17169,13 +18666,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -17187,11 +18683,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -17235,13 +18747,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -17259,17 +18770,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -17283,13 +18793,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -17305,13 +18814,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -17323,11 +18831,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -17371,13 +18895,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -17395,17 +18918,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -17419,13 +18941,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -17441,13 +18962,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -17459,11 +18979,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -17507,13 +19043,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -17531,17 +19066,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -17555,13 +19089,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -17577,13 +19110,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -17595,11 +19127,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -17643,13 +19191,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -17667,17 +19214,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -17691,13 +19237,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -17713,13 +19258,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -17731,11 +19275,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -17779,13 +19339,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -17803,17 +19362,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -17827,13 +19385,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -17849,13 +19406,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -17867,11 +19423,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -17915,13 +19487,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -17939,17 +19510,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -17963,13 +19533,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -17985,13 +19554,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -18003,11 +19571,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -18051,13 +19635,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -18075,17 +19658,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -18099,13 +19681,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -18121,13 +19702,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -18139,11 +19719,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -18187,13 +19783,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -18211,17 +19806,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -18235,13 +19829,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -18257,13 +19850,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -18275,11 +19867,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -18323,13 +19931,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -18347,17 +19954,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -18371,13 +19977,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -18393,13 +19998,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -18411,11 +20015,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -18459,13 +20079,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -18483,17 +20102,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -18507,13 +20125,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -18529,13 +20146,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -18547,11 +20163,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -18595,13 +20227,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -18619,17 +20250,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -18643,13 +20273,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -18665,13 +20294,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -18683,11 +20311,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -18731,13 +20375,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -18755,17 +20398,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -18779,13 +20421,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -18801,13 +20442,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -18819,11 +20459,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -18867,13 +20523,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -18891,17 +20546,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -18915,13 +20569,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -18937,13 +20590,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -18955,11 +20607,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -19003,13 +20671,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -19027,17 +20694,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -19051,13 +20717,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -19073,13 +20738,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -19091,11 +20755,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -19139,13 +20819,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -19163,17 +20842,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -19187,13 +20865,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -19209,13 +20886,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -19227,11 +20903,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -19275,13 +20967,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -19299,17 +20990,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -19323,13 +21013,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -19345,13 +21034,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -19363,11 +21051,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -19411,13 +21115,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -19435,17 +21138,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -19459,13 +21161,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -19481,13 +21182,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -19499,11 +21199,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -19547,13 +21263,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -19571,17 +21286,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -19595,13 +21309,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -19617,13 +21330,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -19635,11 +21347,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -19683,13 +21411,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -19707,17 +21434,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -19731,13 +21457,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -19753,13 +21478,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -19771,11 +21495,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -19819,13 +21559,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -19843,17 +21582,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -19867,13 +21605,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -19889,13 +21626,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -19907,11 +21643,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -19955,13 +21707,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -19979,17 +21730,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -20003,13 +21753,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -20025,13 +21774,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -20043,11 +21791,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -20091,13 +21855,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -20115,17 +21878,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -20139,13 +21901,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -20161,13 +21922,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -20179,11 +21939,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -20227,13 +22003,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -20251,17 +22026,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -20275,13 +22049,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -20297,13 +22070,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -20315,11 +22087,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -20363,13 +22151,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -20387,17 +22174,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -20411,13 +22197,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -20433,13 +22218,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -20451,11 +22235,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -20499,13 +22299,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -20523,17 +22322,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -20547,13 +22345,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -20569,13 +22366,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -20587,11 +22383,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -20635,13 +22447,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -20659,17 +22470,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -20683,13 +22493,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -20705,13 +22514,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -20723,11 +22531,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -20771,13 +22595,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -20795,17 +22618,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -20819,13 +22641,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -20841,13 +22662,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -20859,11 +22679,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -20907,13 +22743,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -20931,17 +22766,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -20955,13 +22789,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -20977,13 +22810,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -20995,11 +22827,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -21043,13 +22891,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -21067,17 +22914,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -21091,13 +22937,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -21113,13 +22958,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -21131,11 +22975,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -21179,13 +23039,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -21203,17 +23062,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -21227,13 +23085,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -21249,13 +23106,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -21267,11 +23123,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -21315,13 +23187,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -21339,17 +23210,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -21363,13 +23233,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -21385,13 +23254,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -21403,11 +23271,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -21451,13 +23335,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -21475,17 +23358,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -21499,13 +23381,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -21521,13 +23402,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -21539,11 +23419,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -21587,13 +23483,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -21611,17 +23506,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -21635,13 +23529,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -21657,13 +23550,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -21675,11 +23567,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -21723,13 +23631,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -21747,17 +23654,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -21771,13 +23677,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -21793,13 +23698,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -21811,11 +23715,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -21859,13 +23779,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -21883,17 +23802,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -21907,13 +23825,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -21929,13 +23846,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -21947,11 +23863,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -21995,13 +23927,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -22019,17 +23950,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -22043,13 +23973,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -22065,13 +23994,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -22083,11 +24011,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -22131,13 +24075,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -22155,17 +24098,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -22179,13 +24121,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -22201,13 +24142,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -22219,11 +24159,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -22267,13 +24223,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -22291,17 +24246,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -22315,13 +24269,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -22337,13 +24290,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -22355,11 +24307,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -22403,13 +24371,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -22427,17 +24394,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -22451,13 +24417,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -22473,13 +24438,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -22491,11 +24455,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -22539,13 +24519,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -22563,17 +24542,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -22587,13 +24565,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -22609,13 +24586,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -22627,11 +24603,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -22675,13 +24667,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -22699,17 +24690,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -22723,13 +24713,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -22745,13 +24734,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -22763,11 +24751,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -22811,13 +24815,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -22835,17 +24838,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -22859,13 +24861,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -22881,13 +24882,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -22899,11 +24899,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -22947,13 +24963,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -22971,17 +24986,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -22995,13 +25009,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -23017,13 +25030,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -23035,11 +25047,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -23083,13 +25111,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -23107,17 +25134,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -23131,13 +25157,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -23153,13 +25178,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -23171,11 +25195,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -23219,13 +25259,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -23243,17 +25282,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -23267,13 +25305,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -23289,13 +25326,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -23307,11 +25343,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -23355,13 +25407,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -23379,17 +25430,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -23403,13 +25453,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -23425,13 +25474,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -23443,11 +25491,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -23491,13 +25555,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -23515,17 +25578,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -23539,13 +25601,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -23561,13 +25622,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -23579,11 +25639,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -23627,13 +25703,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -23651,17 +25726,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -23675,13 +25749,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -23697,13 +25770,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -23715,11 +25787,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -23763,13 +25851,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -23787,17 +25874,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -23811,13 +25897,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -23833,13 +25918,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -23851,11 +25935,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -23899,13 +25999,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -23923,17 +26022,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -23947,13 +26045,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -23969,13 +26066,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -23987,11 +26083,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -24035,13 +26147,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -24059,17 +26170,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -24083,13 +26193,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -24105,13 +26214,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -24123,11 +26231,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -24171,13 +26295,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -24195,17 +26318,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -24219,13 +26341,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -24241,13 +26362,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -24259,11 +26379,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -24307,13 +26443,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -24331,17 +26466,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -24355,13 +26489,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -24377,13 +26510,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -24395,11 +26527,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -24443,13 +26591,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -24467,17 +26614,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -24491,13 +26637,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -24513,13 +26658,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -24531,11 +26675,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -24579,13 +26739,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -24603,17 +26762,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -24627,13 +26785,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -24649,13 +26806,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -24667,11 +26823,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -24715,13 +26887,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -24739,17 +26910,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -24763,13 +26933,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -24785,13 +26954,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -24803,11 +26971,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -24851,13 +27035,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -24875,17 +27058,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -24899,13 +27081,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -24921,13 +27102,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -24939,11 +27119,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -24987,13 +27183,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -25011,17 +27206,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -25035,13 +27229,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -25057,13 +27250,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -25075,11 +27267,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -25123,13 +27331,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -25147,17 +27354,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -25171,13 +27377,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -25193,13 +27398,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -25211,11 +27415,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -25259,13 +27479,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -25283,17 +27502,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -25307,13 +27525,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -25329,13 +27546,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -25347,11 +27563,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -25395,13 +27627,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 200,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -25419,17 +27650,16 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 201,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
-                    case 400:
+                  case 400:
                     expectDetails = Array.isArray(data?.error?.details)
                       ? data.error.details
                       : [];
@@ -25443,13 +27673,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 400,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -25465,13 +27694,12 @@
                         body: resolvedData,
                       });
                     } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
                       failedTests.push({
                         testcase: testNumber,
                         code: 403,
                         body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
                       });
                     }
                     break;
@@ -25483,11 +27711,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -25547,7 +27791,6 @@
             codedTest: [...codedTest],
             passedTests: passedTests,
             totalTests: totalTests,
-            logicTests: [...logicTests],
             failedStep: [...failedStep]
           };
           const reportDir = path.join(__dirname, '../../../../tmp-reports');

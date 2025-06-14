@@ -91,7 +91,12 @@ function runTests(testType: string): ActionHandler {
     console.log(`Running test for ${testType} "${dtoName}"...`);
     try {
       const basePath = path.resolve(__dirname, testType);
-      const testPaths = findTestPath(basePath, dtoName);
+      
+      // Thay đổi ở đây - chỉ tìm file test có tên khớp chính xác với dtoName
+      const testPaths = findTestPath(basePath, dtoName).filter(p => {
+        const filename = path.basename(p).replace('.spec.ts', '');
+        return filename.toLowerCase() === dtoName.toLowerCase();
+      });
 
       if (!testPaths || testPaths.length === 0) {
         console.error(`Test file not found for ${dtoName} in ${basePath}`);
@@ -108,7 +113,6 @@ function runTests(testType: string): ActionHandler {
     }
   };
 }
-
 
 async function main() {
   console.log(`Processing "${type}${subType ? ` ${subType}` : ''}${dtoName ? ` for: ${dtoName}` : ''}`);

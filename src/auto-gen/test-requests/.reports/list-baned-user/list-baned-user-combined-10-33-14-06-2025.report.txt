@@ -1,0 +1,252 @@
+=== Request Test Report for list-baned-user ===
+• Host: N/A
+• Endpoint: MemberView/ListBannedUsers
+• Date: 14/06/2025, 10:33:05
+
+=== Execution Steps ===
+  1. [✅ PASSED] acceptInvitation
+  2. [✅ PASSED] banFromChannel
+
+=== Test Summary ===
+✅ Passed: 71
+❌ Failed: 31
+📊 Total: 102
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 1
+ 🟢 201: 0
+ 🟠 400: 0
+ 🟠 403: 70
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Unique Errors ===
+ 🟣 1. Could not resolve permission type (Occurred: 17 times)
+ 🟣 2. Unsupported permission type (Occurred: 8 times)
+ 🟣 3. limit must be a number conforming to the specified constraints (Occurred: 4 times)
+ 🟣 4. limit must be at least 1 (Occurred: 1 time)
+ 🟣 5. limit must be at most 500 (Occurred: 1 time)
+ 🟣 6. limit required (Occurred: 1 time)
+ 🟣 7. limit should not be empty (Occurred: 1 time)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #1
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JXP7Y6DP848B5WW80ZP1VNZ7","limit":10}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 2. Case #2
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":123,"limit":10}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 3. Case #6
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"invalid_value","limit":10}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 4. Case #7
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JXP7Y6DP848B5WW80ZP1VNZ7","limit":"invalid_number"}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 5. Case #8
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JXP7Y6DP848B5WW80ZP1VNZ7","limit":0}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 6. Case #9
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JXP7Y6DP848B5WW80ZP1VNZ7","limit":501}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 7. Case #10
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JXP7Y6DP848B5WW80ZP1VNZ7"}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 8. Case #11
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JXP7Y6DP848B5WW80ZP1VNZ7","limit":""}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 9. Case #12
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JXP7Y6DP848B5WW80ZP1VNZ7","limit":null}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 10. Case #14
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"limit":10}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 11. Case #15
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","limit":10}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 12. Case #19
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXP7Y6DP848B5WW80ZP1VNZ7","limit":"invalid_number"}
+     ├─ Actual: limit expected number, received nan
+     ├─ Expected: limit must be a number conforming to the specified constraints
+     └─ Details: No details
+
+ 🟣 13. Case #20
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXP7Y6DP848B5WW80ZP1VNZ7","limit":0}
+     ├─ Actual: limit range from 1 to 500
+     ├─ Expected: limit must be at least 1
+     └─ Details: No details
+
+ 🟣 14. Case #21
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXP7Y6DP848B5WW80ZP1VNZ7","limit":501}
+     ├─ Actual: limit range from 1 to 500
+     ├─ Expected: limit must be at most 500
+     └─ Details: No details
+
+ 🟣 15. Case #22
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":"0","channelId":"01JXP7Y6DP848B5WW80ZP1VNZ7"}
+     ├─ Actual: None
+     ├─ Expected: limit must be a number conforming to the specified constraints, limit required
+     └─ Details: No details
+
+ 🟣 16. Case #23
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JXP7Y6DP848B5WW80ZP1VNZ7","limit":""}
+     ├─ Actual: limit range from 1 to 500
+     ├─ Expected: limit must be a number conforming to the specified constraints, limit should not be empty
+     └─ Details: No details
+
+ 🟣 17. Case #24
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":"0","channelId":"01JXP7Y6DP848B5WW80ZP1VNZ7","limit":null}
+     ├─ Actual: None
+     ├─ Expected: limit must be a number conforming to the specified constraints
+     └─ Details: No details
+
+ 🟣 18. Case #62
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"invalid_value","channelId":123,"limit":10}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 19. Case #63
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"invalid_value","limit":10}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 20. Case #73
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"limit":"invalid_number"}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 21. Case #74
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"limit":0}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 22. Case #75
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"limit":501}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 23. Case #76
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 24. Case #77
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"limit":""}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 25. Case #78
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"limit":null}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 26. Case #79
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","limit":"invalid_number"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 27. Case #80
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","limit":0}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 28. Case #81
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","limit":501}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 29. Case #82
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 30. Case #83
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","limit":""}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 31. Case #84
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","limit":null}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+=== End of Report ===

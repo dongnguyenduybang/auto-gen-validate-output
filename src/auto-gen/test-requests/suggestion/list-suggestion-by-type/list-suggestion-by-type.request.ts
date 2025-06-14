@@ -1,6 +1,6 @@
 import { RequestTestSuite } from '../../../utils/declarations';
 import { VAR, ACTION, HEADER_LIST } from '../../../enums/index';
-import { SuggestionTypeEnum } from 'src/auto-gen/enums/suggestion-type';
+import { SuggestionTypeEnum } from '../../../enums/suggestion-type';
 
 export const ListSuggestionByTypeRequest: RequestTestSuite = {
     action: ACTION.LIST_SUGGEST_FRIEND_BY_TYPE,

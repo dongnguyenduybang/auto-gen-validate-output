@@ -4,6 +4,7 @@ import {
     IsString,
     IsNotNull,
     MinLength,
+    IsInvalid,
 } from '../../../decorator';
 
 export class GetUserByUsernameDTO {
@@ -13,5 +14,6 @@ export class GetUserByUsernameDTO {
     @IsNotEmpty()
     @IsNotNull()
     @MinLength(1)
+    @IsInvalid({ message: 'User not exists' })
     username: string = '';
 }

@@ -510,35 +510,29 @@ export function countEmojis(str: unknown): number {
   return Array.from(str.matchAll(regex)).length;
 }
 
-export function findTestPath(
-  basePath: string,
-  dtoName: string,
-): string[] | null {
-  const absoluteBasePath = path.resolve(basePath);
-  const findSpecFiles = (dir: string): string[] => {
-    try {
-      const entries = fs.readdirSync(dir, { withFileTypes: true });
-      const files = entries
-        .filter(
-          (file) =>
-            !file.isDirectory() &&
-            file.name.toLowerCase().includes(dtoName.toLowerCase()) &&
-            file.name.endsWith('.spec.ts'),
-        )
-        .map((file) => path.join(dir, file.name));
-
-      const folders = entries.filter((entry) => entry.isDirectory());
-      for (const folder of folders) {
-        files.push(...findSpecFiles(path.join(dir, folder.name)));
+export function findTestPath(basePath: string, dtoName: string): string[] {
+  const testFiles: string[] = [];
+  
+  function scanDirectory(currentPath: string) {
+    const entries = fs.readdirSync(currentPath, { withFileTypes: true });
+    
+    for (const entry of entries) {
+      const fullPath = path.join(currentPath, entry.name);
+      
+      if (entry.isDirectory()) {
+        scanDirectory(fullPath);
+      } else if (
+        entry.isFile() && 
+        (entry.name.endsWith('.spec.ts') || entry.name.endsWith('.test.ts')) &&
+        entry.name.replace(/\.(spec|test)\.ts$/, '').toLowerCase() === dtoName.toLowerCase()
+      ) {
+        testFiles.push(fullPath);
       }
-      return files;
-    } catch (error) {
-      return [];
     }
-  };
-
-  const specFiles = findSpecFiles(absoluteBasePath);
-  return specFiles.length > 0 ? specFiles : null;
+  }
+  
+  scanDirectory(basePath);
+  return testFiles;
 }
 
 export function findAllFoldersWithDtoAndRequest(

@@ -35,5 +35,11 @@
         "expects": [
             "username expected string, received null"
         ]
+    },
+    {
+        "body": {
+            "username": "invalid_value"
+        },
+        "expects": []
     }
 ]

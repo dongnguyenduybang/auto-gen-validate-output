@@ -5,8 +5,7 @@ export const GetDmMessageRequest: RequestTestSuite = {
     action: ACTION.GET_DM_MESSAGE,
     body: {
         messageId: VAR.messageId,
-        workspaceId: VAR.workspaceId,
-        channelId: VAR.channelId
+        userId: VAR.userId1,
     },
     headers: HEADER_LIST.create({ token: VAR.token }),
     options: [

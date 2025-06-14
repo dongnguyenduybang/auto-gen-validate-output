@@ -1,0 +1,202 @@
+=== Request Test Report for subscribe-all ===
+• Host: N/A
+• Endpoint: /Notification/SubscribeAll
+• Date: 13/06/2025, 16:08:11
+
+=== Execution Steps ===
+
+=== Test Summary ===
+✅ Passed: 1
+❌ Failed: 24
+📊 Total: 25
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 0
+ 🟢 201: 0
+ 🟠 400: 0
+ 🟠 403: 0
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Unique Errors ===
+ 🟣 1. appId expected string, received number (Occurred: 5 times)
+ 🟣 2. deviceToken expected string, received number (Occurred: 5 times)
+ 🟣 3. deviceToken required (Occurred: 5 times)
+ 🟣 4. deviceToken should not be empty (Occurred: 5 times)
+ 🟣 5. deviceToken expected string, received null (Occurred: 5 times)
+ 🟣 6. appId required (Occurred: 5 times)
+ 🟣 7. appId should not be empty (Occurred: 5 times)
+ 🟣 8. appId expected string, received null (Occurred: 5 times)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #1
+     ├─ Status: 404
+     ├─ Body: {"appId":123,"deviceToken":"token"}
+     ├─ Actual: None
+     ├─ Expected: appId expected string, received number
+     └─ Details: No details
+
+ 🟣 2. Case #2
+     ├─ Status: 404
+     ├─ Body: {"appId":123,"deviceToken":123}
+     ├─ Actual: None
+     ├─ Expected: appId expected string, received number, deviceToken expected string, received number
+     └─ Details: No details
+
+ 🟣 3. Case #3
+     ├─ Status: 404
+     ├─ Body: {"appId":123}
+     ├─ Actual: None
+     ├─ Expected: appId expected string, received number, deviceToken required
+     └─ Details: No details
+
+ 🟣 4. Case #4
+     ├─ Status: 404
+     ├─ Body: {"appId":123,"deviceToken":""}
+     ├─ Actual: None
+     ├─ Expected: appId expected string, received number, deviceToken should not be empty
+     └─ Details: No details
+
+ 🟣 5. Case #5
+     ├─ Status: 404
+     ├─ Body: {"appId":123,"deviceToken":null}
+     ├─ Actual: None
+     ├─ Expected: appId expected string, received number, deviceToken expected string, received null
+     └─ Details: No details
+
+ 🟣 6. Case #7
+     ├─ Status: 404
+     ├─ Body: {"appId":"ios_02b9722363a884da1353f2708ea7df18","deviceToken":123}
+     ├─ Actual: None
+     ├─ Expected: deviceToken expected string, received number
+     └─ Details: No details
+
+ 🟣 7. Case #8
+     ├─ Status: 404
+     ├─ Body: {"appId":"ios_02b9722363a884da1353f2708ea7df18"}
+     ├─ Actual: None
+     ├─ Expected: deviceToken required
+     └─ Details: No details
+
+ 🟣 8. Case #9
+     ├─ Status: 404
+     ├─ Body: {"appId":"ios_02b9722363a884da1353f2708ea7df18","deviceToken":""}
+     ├─ Actual: None
+     ├─ Expected: deviceToken should not be empty
+     └─ Details: No details
+
+ 🟣 9. Case #10
+     ├─ Status: 404
+     ├─ Body: {"appId":"ios_02b9722363a884da1353f2708ea7df18","deviceToken":null}
+     ├─ Actual: None
+     ├─ Expected: deviceToken expected string, received null
+     └─ Details: No details
+
+ 🟣 10. Case #11
+     ├─ Status: 404
+     ├─ Body: {"deviceToken":"token"}
+     ├─ Actual: None
+     ├─ Expected: appId required
+     └─ Details: No details
+
+ 🟣 11. Case #12
+     ├─ Status: 404
+     ├─ Body: {"deviceToken":123}
+     ├─ Actual: None
+     ├─ Expected: appId required, deviceToken expected string, received number
+     └─ Details: No details
+
+ 🟣 12. Case #13
+     ├─ Status: 404
+     ├─ Body: {}
+     ├─ Actual: None
+     ├─ Expected: appId required, deviceToken required
+     └─ Details: No details
+
+ 🟣 13. Case #14
+     ├─ Status: 404
+     ├─ Body: {"deviceToken":""}
+     ├─ Actual: None
+     ├─ Expected: appId required, deviceToken should not be empty
+     └─ Details: No details
+
+ 🟣 14. Case #15
+     ├─ Status: 404
+     ├─ Body: {"deviceToken":null}
+     ├─ Actual: None
+     ├─ Expected: appId required, deviceToken expected string, received null
+     └─ Details: No details
+
+ 🟣 15. Case #16
+     ├─ Status: 404
+     ├─ Body: {"appId":"","deviceToken":"token"}
+     ├─ Actual: None
+     ├─ Expected: appId should not be empty
+     └─ Details: No details
+
+ 🟣 16. Case #17
+     ├─ Status: 404
+     ├─ Body: {"appId":"","deviceToken":123}
+     ├─ Actual: None
+     ├─ Expected: appId should not be empty, deviceToken expected string, received number
+     └─ Details: No details
+
+ 🟣 17. Case #18
+     ├─ Status: 404
+     ├─ Body: {"appId":""}
+     ├─ Actual: None
+     ├─ Expected: appId should not be empty, deviceToken required
+     └─ Details: No details
+
+ 🟣 18. Case #19
+     ├─ Status: 404
+     ├─ Body: {"appId":"","deviceToken":""}
+     ├─ Actual: None
+     ├─ Expected: appId should not be empty, deviceToken should not be empty
+     └─ Details: No details
+
+ 🟣 19. Case #20
+     ├─ Status: 404
+     ├─ Body: {"appId":"","deviceToken":null}
+     ├─ Actual: None
+     ├─ Expected: appId should not be empty, deviceToken expected string, received null
+     └─ Details: No details
+
+ 🟣 20. Case #21
+     ├─ Status: 404
+     ├─ Body: {"appId":null,"deviceToken":"token"}
+     ├─ Actual: None
+     ├─ Expected: appId expected string, received null
+     └─ Details: No details
+
+ 🟣 21. Case #22
+     ├─ Status: 404
+     ├─ Body: {"appId":null,"deviceToken":123}
+     ├─ Actual: None
+     ├─ Expected: appId expected string, received null, deviceToken expected string, received number
+     └─ Details: No details
+
+ 🟣 22. Case #23
+     ├─ Status: 404
+     ├─ Body: {"appId":null}
+     ├─ Actual: None
+     ├─ Expected: appId expected string, received null, deviceToken required
+     └─ Details: No details
+
+ 🟣 23. Case #24
+     ├─ Status: 404
+     ├─ Body: {"appId":null,"deviceToken":""}
+     ├─ Actual: None
+     ├─ Expected: appId expected string, received null, deviceToken should not be empty
+     └─ Details: No details
+
+ 🟣 24. Case #25
+     ├─ Status: 404
+     ├─ Body: {"appId":null,"deviceToken":null}
+     ├─ Actual: None
+     ├─ Expected: appId expected string, received null, deviceToken expected string, received null
+     └─ Details: No details
+
+=== End of Report ===

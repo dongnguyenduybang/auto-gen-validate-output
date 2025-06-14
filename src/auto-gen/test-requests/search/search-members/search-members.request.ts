@@ -22,9 +22,9 @@ export const SearchMembersRequest: RequestTestSuite = {
                 },
                 {
                     action: ACTION.ACCEPT_FRIEND_REQUEST,
-                    headers: HEADER_LIST.create({ token: VAR.token }),
+                    headers: HEADER_LIST.create({ token: VAR.token1 }),
                     body: {
-                        userId: VAR.userId1
+                        userId: VAR.userId
                     },
                 }
             ],

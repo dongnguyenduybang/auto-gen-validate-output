@@ -1,0 +1,73 @@
+=== Request Test Report for get-sticker ===
+• Host: N/A
+• Endpoint: /StickerView/GetSticker
+• Date: 14/06/2025, 11:03:14
+
+=== Execution Steps ===
+
+=== Test Summary ===
+✅ Passed: 1
+❌ Failed: 6
+📊 Total: 7
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 0
+ 🟢 201: 0
+ 🟠 400: 1
+ 🟠 403: 0
+ 🟠 404: 0
+ 🔴 500: 1
+
+=== Unique Errors ===
+ 🟣 1. stickerId expected string, received number (Occurred: 1 time)
+ 🟣 2. Message: This sticker has not been exists. (Occurred: 3 times)
+ 🟣 3. stickerId invalid ulid (Occurred: 3 times)
+ 🟣 4. stickerId should not be empty (Occurred: 1 time)
+ 🟣 5. stickerId expected string, received null (Occurred: 1 time)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #1
+     ├─ Status: 400
+     ├─ Body: {"stickerId":123}
+     ├─ Actual: stickerId invalid ulid
+     ├─ Expected: stickerId expected string, received number
+     └─ Details: No details
+
+ 🟣 2. Case #2
+     ├─ Status: 500
+     ├─ Body: None
+     ├─ Actual: None
+     ├─ Expected: None
+     └─ Details: stickerId invalid ulid
+
+ 🟣 3. Case #4
+     ├─ Status: 400
+     ├─ Body: {"stickerId":""}
+     ├─ Actual: stickerId invalid ulid, stickerId string must contain at least 1 character(s)
+     ├─ Expected: Message: This sticker has not been exists., stickerId invalid ulid, stickerId should not be empty
+     └─ Details: No details
+
+ 🟣 4. Case #5
+     ├─ Status: 400
+     ├─ Body: {"stickerId":null}
+     ├─ Actual: stickerId required
+     ├─ Expected: stickerId expected string, received null
+     └─ Details: No details
+
+ 🟣 5. Case #6
+     ├─ Status: 400
+     ├─ Body: {"stickerId":"invalid_ULID"}
+     ├─ Actual: stickerId invalid ulid
+     ├─ Expected: Message: This sticker has not been exists., stickerId invalid ulid
+     └─ Details: No details
+
+ 🟣 6. Case #7
+     ├─ Status: 400
+     ├─ Body: {"stickerId":"invalid_value"}
+     ├─ Actual: stickerId invalid ulid
+     ├─ Expected: Message: This sticker has not been exists., stickerId invalid ulid
+     └─ Details: No details
+
+=== End of Report ===
