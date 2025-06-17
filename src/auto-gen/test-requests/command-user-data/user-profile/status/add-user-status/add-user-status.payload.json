@@ -191,6 +191,115 @@
     },
     {
         "body": {
+            "content": "",
+            "status": "🚀",
+            "expireAfterTime": 1
+        },
+        "expects": [
+            "content should not be empty",
+            "content string must contain at least 1 character(s)"
+        ]
+    },
+    {
+        "body": {
+            "content": "",
+            "status": 123,
+            "expireAfterTime": 1
+        },
+        "expects": [
+            "content should not be empty",
+            "content string must contain at least 1 character(s)",
+            "status expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "content": "",
+            "status": "🚀🚀",
+            "expireAfterTime": 1
+        },
+        "expects": [
+            "content should not be empty",
+            "content string must contain at least 1 character(s)",
+            "status only accepts 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "content": "",
+            "status": "",
+            "expireAfterTime": 1
+        },
+        "expects": [
+            "content should not be empty",
+            "content string must contain at least 1 character(s)",
+            "status invalid emoji",
+            "status only accepts 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "content": "",
+            "status": null,
+            "expireAfterTime": 1
+        },
+        "expects": [
+            "content should not be empty",
+            "content string must contain at least 1 character(s)",
+            "status expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "content": "",
+            "status": "🚀",
+            "expireAfterTime": "invalid_enum_value"
+        },
+        "expects": [
+            "content should not be empty",
+            "content string must contain at least 1 character(s)",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'invalid_enum_value'"
+        ]
+    },
+    {
+        "body": {
+            "content": "",
+            "status": "🚀"
+        },
+        "expects": [
+            "content should not be empty",
+            "content string must contain at least 1 character(s)",
+            "expireAfterTime required",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'undefined'"
+        ]
+    },
+    {
+        "body": {
+            "content": "",
+            "status": "🚀",
+            "expireAfterTime": ""
+        },
+        "expects": [
+            "content should not be empty",
+            "content string must contain at least 1 character(s)",
+            "expireAfterTime should not be empty",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received ''"
+        ]
+    },
+    {
+        "body": {
+            "content": "",
+            "status": "🚀",
+            "expireAfterTime": null
+        },
+        "expects": [
+            "content should not be empty",
+            "content string must contain at least 1 character(s)",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'null'"
+        ]
+    },
+    {
+        "body": {
             "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             "status": "🚀",
             "expireAfterTime": 1
@@ -286,106 +395,6 @@
         },
         "expects": [
             "content string must contain at most 50 character(s)",
-            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'null'"
-        ]
-    },
-    {
-        "body": {
-            "content": "",
-            "status": "🚀",
-            "expireAfterTime": 1
-        },
-        "expects": [
-            "content should not be empty"
-        ]
-    },
-    {
-        "body": {
-            "content": "",
-            "status": 123,
-            "expireAfterTime": 1
-        },
-        "expects": [
-            "content should not be empty",
-            "status expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "content": "",
-            "status": "🚀🚀",
-            "expireAfterTime": 1
-        },
-        "expects": [
-            "content should not be empty",
-            "status only accepts 1 emoji"
-        ]
-    },
-    {
-        "body": {
-            "content": "",
-            "status": "",
-            "expireAfterTime": 1
-        },
-        "expects": [
-            "content should not be empty",
-            "status invalid emoji",
-            "status only accepts 1 emoji"
-        ]
-    },
-    {
-        "body": {
-            "content": "",
-            "status": null,
-            "expireAfterTime": 1
-        },
-        "expects": [
-            "content should not be empty",
-            "status expected string, received null"
-        ]
-    },
-    {
-        "body": {
-            "content": "",
-            "status": "🚀",
-            "expireAfterTime": "invalid_enum_value"
-        },
-        "expects": [
-            "content should not be empty",
-            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'invalid_enum_value'"
-        ]
-    },
-    {
-        "body": {
-            "content": "",
-            "status": "🚀"
-        },
-        "expects": [
-            "content should not be empty",
-            "expireAfterTime required",
-            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'undefined'"
-        ]
-    },
-    {
-        "body": {
-            "content": "",
-            "status": "🚀",
-            "expireAfterTime": ""
-        },
-        "expects": [
-            "content should not be empty",
-            "expireAfterTime should not be empty",
-            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received ''"
-        ]
-    },
-    {
-        "body": {
-            "content": "",
-            "status": "🚀",
-            "expireAfterTime": null
-        },
-        "expects": [
-            "content should not be empty",
             "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'null'"
         ]
     },

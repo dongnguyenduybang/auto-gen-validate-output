@@ -128,7 +128,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -256,7 +256,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -384,7 +384,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -512,7 +512,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -640,7 +640,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -768,7 +768,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -896,7 +896,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -1024,7 +1024,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -1152,7 +1152,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -1280,7 +1280,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -1408,7 +1408,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -1536,7 +1536,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -1664,7 +1664,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -1792,7 +1792,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -1920,7 +1920,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -2048,7 +2048,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -2176,7 +2176,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -2304,7 +2304,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -2432,7 +2432,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -2560,7 +2560,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -2688,7 +2688,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -2816,7 +2816,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -2944,7 +2944,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -3072,7 +3072,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -3200,7 +3200,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -3328,7 +3328,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -3456,7 +3456,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -3584,7 +3584,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -3712,7 +3712,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -3840,7 +3840,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -3968,7 +3968,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -4096,7 +4096,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -4224,7 +4224,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -4352,7 +4352,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -4480,7 +4480,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -4608,7 +4608,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -4736,7 +4736,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -4864,7 +4864,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -4992,7 +4992,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -5120,7 +5120,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -5248,7 +5248,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -5376,7 +5376,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -5504,7 +5504,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -5632,7 +5632,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -5760,7 +5760,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -5888,7 +5888,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -6016,7 +6016,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -6144,7 +6144,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -6272,7 +6272,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -6400,7 +6400,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -6528,7 +6528,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -6656,7 +6656,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -6784,7 +6784,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -6912,7 +6912,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -7040,7 +7040,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -7168,7 +7168,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -7296,7 +7296,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -7424,7 +7424,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -7552,7 +7552,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -7680,7 +7680,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -7808,7 +7808,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -7936,7 +7936,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -8064,7 +8064,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -8192,7 +8192,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -8320,7 +8320,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -8448,7 +8448,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -8576,7 +8576,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -8704,7 +8704,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -8832,7 +8832,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -8960,7 +8960,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -9088,7 +9088,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -9216,7 +9216,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -9344,7 +9344,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -9472,7 +9472,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -9600,7 +9600,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -9728,7 +9728,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -9856,7 +9856,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -9984,7 +9984,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -10112,7 +10112,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
@@ -10240,7 +10240,7 @@
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({

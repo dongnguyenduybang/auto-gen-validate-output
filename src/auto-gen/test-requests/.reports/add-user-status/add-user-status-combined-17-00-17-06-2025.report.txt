@@ -1,0 +1,312 @@
+=== Request Test Report for add-user-status ===
+• Host: N/A
+• Endpoint: /UserProfile/AddUserStatus
+• Date: 17/06/2025, 17:00:51
+
+=== Execution Steps ===
+
+=== Test Summary ===
+✅ Passed: 18
+❌ Failed: 15
+⚠️ Warnings: 28
+📊 Total: 61
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 0
+ 🟢 201: 1
+ 🟠 400: 17
+ 🟠 403: 0
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Warnings ===
+ 🟠 1. Case #5
+     ├─ Status: 400
+     ├─ Body: {"content":123,"status":null,"expireAfterTime":1}
+     ├─ Actual Errors: content expected string, received number
+     ├─ Expected Errors: content expected string, received number, status expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 2. Case #7
+     ├─ Status: 400
+     ├─ Body: {"content":123,"status":"🚀"}
+     ├─ Actual Errors: content expected string, received number, expireAfterTime required
+     ├─ Expected Errors: content expected string, received number, expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'undefined', expireAfterTime required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 3. Case #8
+     ├─ Status: 400
+     ├─ Body: {"content":123,"status":"🚀","expireAfterTime":""}
+     ├─ Actual Errors: content expected string, received number, expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received ''
+     ├─ Expected Errors: content expected string, received number, expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received '', expireAfterTime should not be empty
+     └─ Message: Actual errors includes of expected errors
+ 🟠 4. Case #16
+     ├─ Status: 400
+     ├─ Body: {"content":"Hi hi","status":"🚀"}
+     ├─ Actual Errors: expireAfterTime required
+     ├─ Expected Errors: expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'undefined', expireAfterTime required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 5. Case #17
+     ├─ Status: 400
+     ├─ Body: {"content":"Hi hi","status":"🚀","expireAfterTime":""}
+     ├─ Actual Errors: expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received ''
+     ├─ Expected Errors: expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received '', expireAfterTime should not be empty
+     └─ Message: Actual errors includes of expected errors
+ 🟠 6. Case #19
+     ├─ Status: 400
+     ├─ Body: {"content":"","status":"🚀","expireAfterTime":1}
+     ├─ Actual Errors: content string must contain at least 1 character(s)
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 7. Case #20
+     ├─ Status: 400
+     ├─ Body: {"content":"","status":123,"expireAfterTime":1}
+     ├─ Actual Errors: content string must contain at least 1 character(s), status expected string, received number
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s), status expected string, received number
+     └─ Message: Actual errors includes of expected errors
+ 🟠 8. Case #21
+     ├─ Status: 400
+     ├─ Body: {"content":"","status":"🚀🚀","expireAfterTime":1}
+     ├─ Actual Errors: content string must contain at least 1 character(s), status only accepts 1 emoji
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s), status only accepts 1 emoji
+     └─ Message: Actual errors includes of expected errors
+ 🟠 9. Case #24
+     ├─ Status: 400
+     ├─ Body: {"content":"","status":"🚀","expireAfterTime":"invalid_enum_value"}
+     ├─ Actual Errors: content string must contain at least 1 character(s), expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'invalid_enum_value'
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s), expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'invalid_enum_value'
+     └─ Message: Actual errors includes of expected errors
+ 🟠 10. Case #25
+     ├─ Status: 400
+     ├─ Body: {"content":"","status":"🚀"}
+     ├─ Actual Errors: content string must contain at least 1 character(s), expireAfterTime required
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s), expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'undefined', expireAfterTime required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 11. Case #26
+     ├─ Status: 400
+     ├─ Body: {"content":"","status":"🚀","expireAfterTime":""}
+     ├─ Actual Errors: content string must contain at least 1 character(s), expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received ''
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s), expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received '', expireAfterTime should not be empty
+     └─ Message: Actual errors includes of expected errors
+ 🟠 12. Case #32
+     ├─ Status: 400
+     ├─ Body: {"content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","status":null,"expireAfterTime":1}
+     ├─ Actual Errors: content string must contain at most 50 character(s)
+     ├─ Expected Errors: content string must contain at most 50 character(s), status expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 13. Case #34
+     ├─ Status: 400
+     ├─ Body: {"content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","status":"🚀"}
+     ├─ Actual Errors: content string must contain at most 50 character(s), expireAfterTime required
+     ├─ Expected Errors: content string must contain at most 50 character(s), expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'undefined', expireAfterTime required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 14. Case #35
+     ├─ Status: 400
+     ├─ Body: {"content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","status":"🚀","expireAfterTime":""}
+     ├─ Actual Errors: content string must contain at most 50 character(s), expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received ''
+     ├─ Expected Errors: content string must contain at most 50 character(s), expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received '', expireAfterTime should not be empty
+     └─ Message: Actual errors includes of expected errors
+ 🟠 15. Case #38
+     ├─ Status: 400
+     ├─ Body: {"content":null,"status":123,"expireAfterTime":1}
+     ├─ Actual Errors: status expected string, received number
+     ├─ Expected Errors: content expected string, received null, status expected string, received number
+     └─ Message: Actual errors includes of expected errors
+ 🟠 16. Case #39
+     ├─ Status: 400
+     ├─ Body: {"content":null,"status":"🚀🚀","expireAfterTime":1}
+     ├─ Actual Errors: status only accepts 1 emoji
+     ├─ Expected Errors: content expected string, received null, status only accepts 1 emoji
+     └─ Message: Actual errors includes of expected errors
+ 🟠 17. Case #42
+     ├─ Status: 400
+     ├─ Body: {"content":null,"status":"🚀","expireAfterTime":"invalid_enum_value"}
+     ├─ Actual Errors: expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'invalid_enum_value'
+     ├─ Expected Errors: content expected string, received null, expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'invalid_enum_value'
+     └─ Message: Actual errors includes of expected errors
+ 🟠 18. Case #43
+     ├─ Status: 400
+     ├─ Body: {"content":null,"status":"🚀"}
+     ├─ Actual Errors: expireAfterTime required
+     ├─ Expected Errors: content expected string, received null, expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'undefined', expireAfterTime required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 19. Case #44
+     ├─ Status: 400
+     ├─ Body: {"content":null,"status":"🚀","expireAfterTime":""}
+     ├─ Actual Errors: expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received ''
+     ├─ Expected Errors: content expected string, received null, expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received '', expireAfterTime should not be empty
+     └─ Message: Actual errors includes of expected errors
+ 🟠 20. Case #47
+     ├─ Status: 400
+     ├─ Body: {"content":"Hi hi","status":123}
+     ├─ Actual Errors: expireAfterTime required, status expected string, received number
+     ├─ Expected Errors: expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'undefined', expireAfterTime required, status expected string, received number
+     └─ Message: Actual errors includes of expected errors
+ 🟠 21. Case #48
+     ├─ Status: 400
+     ├─ Body: {"content":"Hi hi","status":123,"expireAfterTime":""}
+     ├─ Actual Errors: expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received '', status expected string, received number
+     ├─ Expected Errors: expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received '', expireAfterTime should not be empty, status expected string, received number
+     └─ Message: Actual errors includes of expected errors
+ 🟠 22. Case #51
+     ├─ Status: 400
+     ├─ Body: {"content":"Hi hi","status":"🚀🚀"}
+     ├─ Actual Errors: expireAfterTime required, status only accepts 1 emoji
+     ├─ Expected Errors: expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'undefined', expireAfterTime required, status only accepts 1 emoji
+     └─ Message: Actual errors includes of expected errors
+ 🟠 23. Case #52
+     ├─ Status: 400
+     ├─ Body: {"content":"Hi hi","status":"🚀🚀","expireAfterTime":""}
+     ├─ Actual Errors: expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received '', status only accepts 1 emoji
+     ├─ Expected Errors: expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received '', expireAfterTime should not be empty, status only accepts 1 emoji
+     └─ Message: Actual errors includes of expected errors
+ 🟠 24. Case #55
+     ├─ Status: 400
+     ├─ Body: {"content":"Hi hi","status":""}
+     ├─ Actual Errors: expireAfterTime required, status invalid emoji, status only accepts 1 emoji
+     ├─ Expected Errors: expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'undefined', expireAfterTime required, status invalid emoji, status only accepts 1 emoji
+     └─ Message: Actual errors includes of expected errors
+ 🟠 25. Case #56
+     ├─ Status: 400
+     ├─ Body: {"content":"Hi hi","status":"","expireAfterTime":""}
+     ├─ Actual Errors: expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received '', status invalid emoji, status only accepts 1 emoji
+     ├─ Expected Errors: expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received '', expireAfterTime should not be empty, status invalid emoji, status only accepts 1 emoji
+     └─ Message: Actual errors includes of expected errors
+ 🟠 26. Case #58
+     ├─ Status: 400
+     ├─ Body: {"content":"Hi hi","status":null,"expireAfterTime":"invalid_enum_value"}
+     ├─ Actual Errors: expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'invalid_enum_value'
+     ├─ Expected Errors: expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'invalid_enum_value', status expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 27. Case #59
+     ├─ Status: 400
+     ├─ Body: {"content":"Hi hi","status":null}
+     ├─ Actual Errors: expireAfterTime required
+     ├─ Expected Errors: expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'undefined', expireAfterTime required, status expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 28. Case #60
+     ├─ Status: 400
+     ├─ Body: {"content":"Hi hi","status":null,"expireAfterTime":""}
+     ├─ Actual Errors: expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received ''
+     ├─ Expected Errors: expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received '', expireAfterTime should not be empty, status expected string, received null
+     └─ Message: Actual errors includes of expected errors
+
+=== Unique Errors ===
+ 🟣 1. content expected string, received number (Occurred: 1 time)
+ 🟣 2. expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'null' (Occurred: 9 times)
+ 🟣 3. status expected string, received null (Occurred: 4 times)
+ 🟣 4. content should not be empty (Occurred: 3 times)
+ 🟣 5. content string must contain at least 1 character(s) (Occurred: 3 times)
+ 🟣 6. status invalid emoji (Occurred: 3 times)
+ 🟣 7. status only accepts 1 emoji (Occurred: 4 times)
+ 🟣 8. content string must contain at most 50 character(s) (Occurred: 1 time)
+ 🟣 9. content expected string, received null (Occurred: 4 times)
+ 🟣 10. status expected string, received number (Occurred: 1 time)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #9
+     ├─ Status: 400
+     ├─ Body: {"content":123,"status":"🚀","expireAfterTime":null}
+     ├─ Actual: content expected string, received number, expireAfterTime expected 0 | 1 | 2 | 3 | 4 | 99, received null
+     ├─ Expected: content expected string, received number, expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'null'
+     └─ Details: No details
+
+ 🟣 2. Case #14
+     ├─ Status: 400
+     ├─ Body: {"content":"Hi hi","status":null,"expireAfterTime":1}
+     ├─ Actual: User status are already exists
+     ├─ Expected: status expected string, received null
+     └─ Details: No details
+
+ 🟣 3. Case #18
+     ├─ Status: 400
+     ├─ Body: {"content":"Hi hi","status":"🚀","expireAfterTime":null}
+     ├─ Actual: expireAfterTime expected 0 | 1 | 2 | 3 | 4 | 99, received null
+     ├─ Expected: expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'null'
+     └─ Details: No details
+
+ 🟣 4. Case #22
+     ├─ Status: 400
+     ├─ Body: {"content":"","status":"","expireAfterTime":1}
+     ├─ Actual: content string must contain at least 1 character(s), must have required property 'content' or 'status', status invalid emoji, status only accepts 1 emoji
+     ├─ Expected: content should not be empty, content string must contain at least 1 character(s), status invalid emoji, status only accepts 1 emoji
+     └─ Details: No details
+
+ 🟣 5. Case #23
+     ├─ Status: 400
+     ├─ Body: {"content":"","status":null,"expireAfterTime":1}
+     ├─ Actual: content string must contain at least 1 character(s), must have required property 'content' or 'status'
+     ├─ Expected: content should not be empty, content string must contain at least 1 character(s), status expected string, received null
+     └─ Details: No details
+
+ 🟣 6. Case #27
+     ├─ Status: 400
+     ├─ Body: {"content":"","status":"🚀","expireAfterTime":null}
+     ├─ Actual: content string must contain at least 1 character(s), expireAfterTime expected 0 | 1 | 2 | 3 | 4 | 99, received null
+     ├─ Expected: content should not be empty, content string must contain at least 1 character(s), expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'null'
+     └─ Details: No details
+
+ 🟣 7. Case #36
+     ├─ Status: 400
+     ├─ Body: {"content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","status":"🚀","expireAfterTime":null}
+     ├─ Actual: content string must contain at most 50 character(s), expireAfterTime expected 0 | 1 | 2 | 3 | 4 | 99, received null
+     ├─ Expected: content string must contain at most 50 character(s), expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'null'
+     └─ Details: No details
+
+ 🟣 8. Case #37
+     ├─ Status: 400
+     ├─ Body: {"content":null,"status":"🚀","expireAfterTime":1}
+     ├─ Actual: User status are already exists
+     ├─ Expected: content expected string, received null
+     └─ Details: No details
+
+ 🟣 9. Case #40
+     ├─ Status: 400
+     ├─ Body: {"content":null,"status":"","expireAfterTime":1}
+     ├─ Actual: must have required property 'content' or 'status', status invalid emoji, status only accepts 1 emoji
+     ├─ Expected: content expected string, received null, status invalid emoji, status only accepts 1 emoji
+     └─ Details: No details
+
+ 🟣 10. Case #41
+     ├─ Status: 400
+     ├─ Body: {"content":null,"status":null,"expireAfterTime":1}
+     ├─ Actual: must have required property 'content' or 'status'
+     ├─ Expected: content expected string, received null, status expected string, received null
+     └─ Details: No details
+
+ 🟣 11. Case #45
+     ├─ Status: 400
+     ├─ Body: {"content":null,"status":"🚀","expireAfterTime":null}
+     ├─ Actual: expireAfterTime expected 0 | 1 | 2 | 3 | 4 | 99, received null
+     ├─ Expected: content expected string, received null, expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'null'
+     └─ Details: No details
+
+ 🟣 12. Case #49
+     ├─ Status: 400
+     ├─ Body: {"content":"Hi hi","status":123,"expireAfterTime":null}
+     ├─ Actual: expireAfterTime expected 0 | 1 | 2 | 3 | 4 | 99, received null, status expected string, received number
+     ├─ Expected: expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'null', status expected string, received number
+     └─ Details: No details
+
+ 🟣 13. Case #53
+     ├─ Status: 400
+     ├─ Body: {"content":"Hi hi","status":"🚀🚀","expireAfterTime":null}
+     ├─ Actual: expireAfterTime expected 0 | 1 | 2 | 3 | 4 | 99, received null, status only accepts 1 emoji
+     ├─ Expected: expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'null', status only accepts 1 emoji
+     └─ Details: No details
+
+ 🟣 14. Case #57
+     ├─ Status: 400
+     ├─ Body: {"content":"Hi hi","status":"","expireAfterTime":null}
+     ├─ Actual: expireAfterTime expected 0 | 1 | 2 | 3 | 4 | 99, received null, status invalid emoji, status only accepts 1 emoji
+     ├─ Expected: expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'null', status invalid emoji, status only accepts 1 emoji
+     └─ Details: No details
+
+ 🟣 15. Case #61
+     ├─ Status: 400
+     ├─ Body: {"content":"Hi hi","status":null,"expireAfterTime":null}
+     ├─ Actual: expireAfterTime expected 0 | 1 | 2 | 3 | 4 | 99, received null
+     ├─ Expected: expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'null', status expected string, received null
+     └─ Details: No details
+
+=== End of Report ===

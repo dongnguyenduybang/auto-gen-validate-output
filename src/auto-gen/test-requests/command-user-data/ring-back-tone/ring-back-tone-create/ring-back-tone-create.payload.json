@@ -95,6 +95,56 @@
     },
     {
         "body": {
+            "name": "aa",
+            "ringbackTonePath": "https://fs.ugc.ziicdn.net/01JEZJ0GPMSHH2RVX9QTSJJNRX/heic_300kB.heic"
+        },
+        "expects": [
+            "name string must contain at least 3 character(s)"
+        ]
+    },
+    {
+        "body": {
+            "name": "aa",
+            "ringbackTonePath": 123
+        },
+        "expects": [
+            "name string must contain at least 3 character(s)",
+            "ringbackTonePath expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "name": "aa"
+        },
+        "expects": [
+            "name string must contain at least 3 character(s)",
+            "ringbackTonePath required",
+            "ringbackTonePath invalid url"
+        ]
+    },
+    {
+        "body": {
+            "name": "aa",
+            "ringbackTonePath": ""
+        },
+        "expects": [
+            "name string must contain at least 3 character(s)",
+            "ringbackTonePath should not be empty",
+            "ringbackTonePath invalid url"
+        ]
+    },
+    {
+        "body": {
+            "name": "aa",
+            "ringbackTonePath": null
+        },
+        "expects": [
+            "name string must contain at least 3 character(s)",
+            "ringbackTonePath expected string, received null"
+        ]
+    },
+    {
+        "body": {
             "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             "ringbackTonePath": "https://fs.ugc.ziicdn.net/01JEZJ0GPMSHH2RVX9QTSJJNRX/heic_300kB.heic"
         },
@@ -193,7 +243,8 @@
             "ringbackTonePath": "https://fs.ugc.ziicdn.net/01JEZJ0GPMSHH2RVX9QTSJJNRX/heic_300kB.heic"
         },
         "expects": [
-            "name should not be empty"
+            "name should not be empty",
+            "name string must contain at least 3 character(s)"
         ]
     },
     {
@@ -203,6 +254,7 @@
         },
         "expects": [
             "name should not be empty",
+            "name string must contain at least 3 character(s)",
             "ringbackTonePath expected string, received number"
         ]
     },
@@ -212,6 +264,7 @@
         },
         "expects": [
             "name should not be empty",
+            "name string must contain at least 3 character(s)",
             "ringbackTonePath required",
             "ringbackTonePath invalid url"
         ]
@@ -223,6 +276,7 @@
         },
         "expects": [
             "name should not be empty",
+            "name string must contain at least 3 character(s)",
             "ringbackTonePath should not be empty",
             "ringbackTonePath invalid url"
         ]
@@ -234,6 +288,7 @@
         },
         "expects": [
             "name should not be empty",
+            "name string must contain at least 3 character(s)",
             "ringbackTonePath expected string, received null"
         ]
     },

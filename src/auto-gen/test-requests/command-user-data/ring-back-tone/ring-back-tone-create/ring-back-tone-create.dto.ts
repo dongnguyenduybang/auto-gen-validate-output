@@ -5,6 +5,7 @@ import {
     IsNotNull,
     isValidURL,
     MaxLength,
+    MinLength,
 } from '../../../../decorator/index';
 
 export class RingBackToneCreateDTO {
@@ -13,6 +14,7 @@ export class RingBackToneCreateDTO {
     @IsDefined()
     @IsNotEmpty()
     @IsNotNull()
+    @MinLength(3)
     @MaxLength(50)
     name: string = '';
 

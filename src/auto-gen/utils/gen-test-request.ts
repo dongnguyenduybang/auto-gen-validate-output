@@ -134,7 +134,7 @@ async function generateSpecContent(
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -168,15 +168,15 @@ async function generateSpecContent(
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
                 } else {
                     // Trường hợp có lỗi không khớp
                     failedTests.push({
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;

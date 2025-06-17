@@ -21,6 +21,7 @@
         let testCaseNumber = 0;
         let currentTestCaseTitle = ''
         let context, contextData;
+        let warnings: any[] = []
         
         beforeAll(async () => {
           testType = 'request';
@@ -67,684 +68,644 @@
 
         
             it('Test case #1 should return errors ["avatarFramePath expected string,received number"] when body {"avatarFramePath":123}', async () => {
-              testNumber = 1;
-              totalTests++;
-              const payloadObj = {"avatarFramePath":123};
-              resolvedData = resolveVariables(payloadObj, globalContext);
-              
-              try {
-                const response = await resolveCallAPI(
-                  "avatarFramePath",
-                  {"x-session-token":"{{token}}"},
-                  {"avatarFramePath":123},
-                  contextData
-                );
-                const data = response.data;
-                const expectJson = ["avatarFramePath expected string, received number"].sort();
+    testNumber = 1;
+    totalTests++;
+    const payloadObj = {"avatarFramePath":123};
+    resolvedData = resolveVariables(payloadObj, globalContext);
+    
+    try {
+        const response = await resolveCallAPI(
+            "avatarFramePath",
+            {"x-session-token":"{{token}}"},
+            {"avatarFramePath":123},
+            contextData
+        );
+        const data = response.data;
+        const expectJson = ["avatarFramePath expected string, received number"].sort();
 
-                let expectDetails;
-                let softExpectDetails;
-                switch (response.status) {
-                  case 200:
+        let expectDetails;
+        let softExpectDetails;
+        switch (response.status) {
+            case 200:
+            case 201:
+            case 400:
+            case 403:
                     expectDetails = Array.isArray(data?.error?.details)
-                      ? data.error.details
-                      : [];
-                    softExpectDetails = [...expectDetails].sort();
-                    try {
-                      expect(expectJson).toEqual(softExpectDetails);
-                      passedTests++;
-                      codedTest.push({
+                        ? data.error.details
+                        : data?.error?.details
+                            ? [data.error.details]
+                            : (data?.ok === true) // check có data (status 201)
+                                ? []
+                                : data !== undefined && data !== null
+                                    ? [data]
+                                    : [];
+                softExpectDetails = [...expectDetails].sort();
+                
+                // Kiểm tra nếu tất cả actual errors đều có trong expected errors
+                const allErrorsMatched = softExpectDetails.every(actualError => 
+                    expectJson.includes(actualError)
+                );
+                
+                // Kiểm tra nếu tất cả expected errors đều có trong actual errors
+                const exactMatch = allErrorsMatched && 
+                                 softExpectDetails.length === expectJson.length;
+                
+                if (exactMatch) {
+                    // Trường hợp khớp hoàn toàn
+                    passedTests++;
+                    codedTest.push({
                         testcase: testNumber,
-                        code: 200,
+                        code: response.status,
                         body: resolvedData,
-                      });
-                    } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
-                      failedTests.push({
-                        testcase: testNumber,
-                        code: 200,
-                        body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
-                      });
-                    }
-                    break;
-                    case 201:
-                    expectDetails = Array.isArray(data?.error?.details)
-                      ? data.error.details
-                      : [];
-                    softExpectDetails = [...expectDetails].sort();
-                    try {
-                      expect(expectJson).toEqual(softExpectDetails);
-                      passedTests++;
-                      codedTest.push({
-                        testcase: testNumber,
-                        code: 201,
-                        body: resolvedData,
-                      });
-                    } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
-                      failedTests.push({
-                        testcase: testNumber,
-                        code: 201,
-                        body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
-                      });
-                    }
-                    break;
-                  case 400:
-                    expectDetails = Array.isArray(data?.error?.details)
-                      ? data.error.details
-                      : [];
-                    softExpectDetails = [...expectDetails].sort();
-                    try {
-                      expect(expectJson).toEqual(softExpectDetails);
-                      passedTests++;
-                      codedTest.push({
-                        testcase: testNumber,
-                        code: 400,
-                        body: resolvedData,
-                      });
-                    } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
-                      failedTests.push({
-                        testcase: testNumber,
-                        code: 400,
-                        body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
-                      });
-                    }
-                    break;
-                  case 403:
-                    expectDetails = Array.isArray(data) ? data : [data];
-                    softExpectDetails = [...expectDetails].sort();
-                    try {
-                      expect(expectJson).toEqual(softExpectDetails);
-                      passedTests++;
-                      codedTest.push({
-                        testcase: testNumber,
-                        code: 403,
-                        body: resolvedData,
-                      });
-                    } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
-                      failedTests.push({
-                        testcase: testNumber,
-                        code: 403,
-                        body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
-                      });
-                    }
-                    break;
-                  case 500:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: 500,
-                      errorDetails: expectJson,
                     });
-                    break;
-                  default:
+                } else if (allErrorsMatched) {
+                    // Trường hợp actual errors là tập con của expected errors
+                    warnings.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        actualErrors: softExpectDetails,
+                        expectedErrors: expectJson,
+                        message: "Actual errors includes of expected errors"
+                    });
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
+                } else {
+                    // Trường hợp có lỗi không khớp
                     failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
+                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
                     });
                 }
-              } catch (error) {
-                console.error('Error in test case #' + testNumber, error);
+                break;
+            case 500:
                 failedTests.push({
-                  testcase: testNumber,
-                  error: error.message
+                    testcase: testNumber,
+                    code: 500,
+                    errorDetails: expectJson,
                 });
-              }
-            });
+                break;
+            default:
+                expectDetails = Array.isArray(data?.error?.details)
+                    ? data.error.details
+                    : [];
+                softExpectDetails = [...expectDetails].sort();
+                // Áp dụng logic tương tự cho các status code khác
+                const defaultAllMatched = softExpectDetails.every(actualError => 
+                    expectJson.includes(actualError)
+                );
+                const defaultExactMatch = defaultAllMatched && 
+                                        softExpectDetails.length === expectJson.length;
+                
+                if (defaultExactMatch) {
+                    passedTests++;
+                    codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                    });
+                } else if (defaultAllMatched) {
+                    warnings.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        actualErrors: softExpectDetails,
+                        expectedErrors: expectJson,
+                        message: "Actual errors are subset of expected errors"
+                    });
+                    passedTests++;
+                } else {
+                    failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
+                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                    });
+                }
+        }
+    } catch (error) {
+        console.error('Error in test case #' + testNumber, error);
+        failedTests.push({
+            testcase: testNumber,
+            error: error.message
+        });
+    }
+});
 
             it('Test case #2 should return errors [] when body {"avatarFramePath":"https://fs.ugc.ziicdn.net/01JEWASZD3TK58P25Y1QJSYRPC/heic_300kB.heic"}', async () => {
-              testNumber = 2;
-              totalTests++;
-              const payloadObj = {"avatarFramePath":"https://fs.ugc.ziicdn.net/01JEWASZD3TK58P25Y1QJSYRPC/heic_300kB.heic"};
-              resolvedData = resolveVariables(payloadObj, globalContext);
-              
-              try {
-                const response = await resolveCallAPI(
-                  "avatarFramePath",
-                  {"x-session-token":"{{token}}"},
-                  {"avatarFramePath":"https://fs.ugc.ziicdn.net/01JEWASZD3TK58P25Y1QJSYRPC/heic_300kB.heic"},
-                  contextData
-                );
-                const data = response.data;
-                const expectJson = [].sort();
+    testNumber = 2;
+    totalTests++;
+    const payloadObj = {"avatarFramePath":"https://fs.ugc.ziicdn.net/01JEWASZD3TK58P25Y1QJSYRPC/heic_300kB.heic"};
+    resolvedData = resolveVariables(payloadObj, globalContext);
+    
+    try {
+        const response = await resolveCallAPI(
+            "avatarFramePath",
+            {"x-session-token":"{{token}}"},
+            {"avatarFramePath":"https://fs.ugc.ziicdn.net/01JEWASZD3TK58P25Y1QJSYRPC/heic_300kB.heic"},
+            contextData
+        );
+        const data = response.data;
+        const expectJson = [].sort();
 
-                let expectDetails;
-                let softExpectDetails;
-                switch (response.status) {
-                  case 200:
+        let expectDetails;
+        let softExpectDetails;
+        switch (response.status) {
+            case 200:
+            case 201:
+            case 400:
+            case 403:
                     expectDetails = Array.isArray(data?.error?.details)
-                      ? data.error.details
-                      : [];
-                    softExpectDetails = [...expectDetails].sort();
-                    try {
-                      expect(expectJson).toEqual(softExpectDetails);
-                      passedTests++;
-                      codedTest.push({
+                        ? data.error.details
+                        : data?.error?.details
+                            ? [data.error.details]
+                            : (data?.ok === true) // check có data (status 201)
+                                ? []
+                                : data !== undefined && data !== null
+                                    ? [data]
+                                    : [];
+                softExpectDetails = [...expectDetails].sort();
+                
+                // Kiểm tra nếu tất cả actual errors đều có trong expected errors
+                const allErrorsMatched = softExpectDetails.every(actualError => 
+                    expectJson.includes(actualError)
+                );
+                
+                // Kiểm tra nếu tất cả expected errors đều có trong actual errors
+                const exactMatch = allErrorsMatched && 
+                                 softExpectDetails.length === expectJson.length;
+                
+                if (exactMatch) {
+                    // Trường hợp khớp hoàn toàn
+                    passedTests++;
+                    codedTest.push({
                         testcase: testNumber,
-                        code: 200,
+                        code: response.status,
                         body: resolvedData,
-                      });
-                    } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
-                      failedTests.push({
-                        testcase: testNumber,
-                        code: 200,
-                        body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
-                      });
-                    }
-                    break;
-                    case 201:
-                    expectDetails = Array.isArray(data?.error?.details)
-                      ? data.error.details
-                      : [];
-                    softExpectDetails = [...expectDetails].sort();
-                    try {
-                      expect(expectJson).toEqual(softExpectDetails);
-                      passedTests++;
-                      codedTest.push({
-                        testcase: testNumber,
-                        code: 201,
-                        body: resolvedData,
-                      });
-                    } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
-                      failedTests.push({
-                        testcase: testNumber,
-                        code: 201,
-                        body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
-                      });
-                    }
-                    break;
-                  case 400:
-                    expectDetails = Array.isArray(data?.error?.details)
-                      ? data.error.details
-                      : [];
-                    softExpectDetails = [...expectDetails].sort();
-                    try {
-                      expect(expectJson).toEqual(softExpectDetails);
-                      passedTests++;
-                      codedTest.push({
-                        testcase: testNumber,
-                        code: 400,
-                        body: resolvedData,
-                      });
-                    } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
-                      failedTests.push({
-                        testcase: testNumber,
-                        code: 400,
-                        body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
-                      });
-                    }
-                    break;
-                  case 403:
-                    expectDetails = Array.isArray(data) ? data : [data];
-                    softExpectDetails = [...expectDetails].sort();
-                    try {
-                      expect(expectJson).toEqual(softExpectDetails);
-                      passedTests++;
-                      codedTest.push({
-                        testcase: testNumber,
-                        code: 403,
-                        body: resolvedData,
-                      });
-                    } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
-                      failedTests.push({
-                        testcase: testNumber,
-                        code: 403,
-                        body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
-                      });
-                    }
-                    break;
-                  case 500:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: 500,
-                      errorDetails: expectJson,
                     });
-                    break;
-                  default:
+                } else if (allErrorsMatched) {
+                    // Trường hợp actual errors là tập con của expected errors
+                    warnings.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        actualErrors: softExpectDetails,
+                        expectedErrors: expectJson,
+                        message: "Actual errors includes of expected errors"
+                    });
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
+                } else {
+                    // Trường hợp có lỗi không khớp
                     failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
+                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
                     });
                 }
-              } catch (error) {
-                console.error('Error in test case #' + testNumber, error);
+                break;
+            case 500:
                 failedTests.push({
-                  testcase: testNumber,
-                  error: error.message
+                    testcase: testNumber,
+                    code: 500,
+                    errorDetails: expectJson,
                 });
-              }
-            });
+                break;
+            default:
+                expectDetails = Array.isArray(data?.error?.details)
+                    ? data.error.details
+                    : [];
+                softExpectDetails = [...expectDetails].sort();
+                // Áp dụng logic tương tự cho các status code khác
+                const defaultAllMatched = softExpectDetails.every(actualError => 
+                    expectJson.includes(actualError)
+                );
+                const defaultExactMatch = defaultAllMatched && 
+                                        softExpectDetails.length === expectJson.length;
+                
+                if (defaultExactMatch) {
+                    passedTests++;
+                    codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                    });
+                } else if (defaultAllMatched) {
+                    warnings.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        actualErrors: softExpectDetails,
+                        expectedErrors: expectJson,
+                        message: "Actual errors are subset of expected errors"
+                    });
+                    passedTests++;
+                } else {
+                    failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
+                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                    });
+                }
+        }
+    } catch (error) {
+        console.error('Error in test case #' + testNumber, error);
+        failedTests.push({
+            testcase: testNumber,
+            error: error.message
+        });
+    }
+});
 
             it('Test case #3 should return errors ["avatarFramePath required","avatarFramePath invalid url"] when body {}', async () => {
-              testNumber = 3;
-              totalTests++;
-              const payloadObj = {};
-              resolvedData = resolveVariables(payloadObj, globalContext);
-              
-              try {
-                const response = await resolveCallAPI(
-                  "avatarFramePath",
-                  {"x-session-token":"{{token}}"},
-                  {},
-                  contextData
-                );
-                const data = response.data;
-                const expectJson = ["avatarFramePath required","avatarFramePath invalid url"].sort();
+    testNumber = 3;
+    totalTests++;
+    const payloadObj = {};
+    resolvedData = resolveVariables(payloadObj, globalContext);
+    
+    try {
+        const response = await resolveCallAPI(
+            "avatarFramePath",
+            {"x-session-token":"{{token}}"},
+            {},
+            contextData
+        );
+        const data = response.data;
+        const expectJson = ["avatarFramePath required","avatarFramePath invalid url"].sort();
 
-                let expectDetails;
-                let softExpectDetails;
-                switch (response.status) {
-                  case 200:
+        let expectDetails;
+        let softExpectDetails;
+        switch (response.status) {
+            case 200:
+            case 201:
+            case 400:
+            case 403:
                     expectDetails = Array.isArray(data?.error?.details)
-                      ? data.error.details
-                      : [];
-                    softExpectDetails = [...expectDetails].sort();
-                    try {
-                      expect(expectJson).toEqual(softExpectDetails);
-                      passedTests++;
-                      codedTest.push({
+                        ? data.error.details
+                        : data?.error?.details
+                            ? [data.error.details]
+                            : (data?.ok === true) // check có data (status 201)
+                                ? []
+                                : data !== undefined && data !== null
+                                    ? [data]
+                                    : [];
+                softExpectDetails = [...expectDetails].sort();
+                
+                // Kiểm tra nếu tất cả actual errors đều có trong expected errors
+                const allErrorsMatched = softExpectDetails.every(actualError => 
+                    expectJson.includes(actualError)
+                );
+                
+                // Kiểm tra nếu tất cả expected errors đều có trong actual errors
+                const exactMatch = allErrorsMatched && 
+                                 softExpectDetails.length === expectJson.length;
+                
+                if (exactMatch) {
+                    // Trường hợp khớp hoàn toàn
+                    passedTests++;
+                    codedTest.push({
                         testcase: testNumber,
-                        code: 200,
+                        code: response.status,
                         body: resolvedData,
-                      });
-                    } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
-                      failedTests.push({
-                        testcase: testNumber,
-                        code: 200,
-                        body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
-                      });
-                    }
-                    break;
-                    case 201:
-                    expectDetails = Array.isArray(data?.error?.details)
-                      ? data.error.details
-                      : [];
-                    softExpectDetails = [...expectDetails].sort();
-                    try {
-                      expect(expectJson).toEqual(softExpectDetails);
-                      passedTests++;
-                      codedTest.push({
-                        testcase: testNumber,
-                        code: 201,
-                        body: resolvedData,
-                      });
-                    } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
-                      failedTests.push({
-                        testcase: testNumber,
-                        code: 201,
-                        body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
-                      });
-                    }
-                    break;
-                  case 400:
-                    expectDetails = Array.isArray(data?.error?.details)
-                      ? data.error.details
-                      : [];
-                    softExpectDetails = [...expectDetails].sort();
-                    try {
-                      expect(expectJson).toEqual(softExpectDetails);
-                      passedTests++;
-                      codedTest.push({
-                        testcase: testNumber,
-                        code: 400,
-                        body: resolvedData,
-                      });
-                    } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
-                      failedTests.push({
-                        testcase: testNumber,
-                        code: 400,
-                        body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
-                      });
-                    }
-                    break;
-                  case 403:
-                    expectDetails = Array.isArray(data) ? data : [data];
-                    softExpectDetails = [...expectDetails].sort();
-                    try {
-                      expect(expectJson).toEqual(softExpectDetails);
-                      passedTests++;
-                      codedTest.push({
-                        testcase: testNumber,
-                        code: 403,
-                        body: resolvedData,
-                      });
-                    } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
-                      failedTests.push({
-                        testcase: testNumber,
-                        code: 403,
-                        body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
-                      });
-                    }
-                    break;
-                  case 500:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: 500,
-                      errorDetails: expectJson,
                     });
-                    break;
-                  default:
+                } else if (allErrorsMatched) {
+                    // Trường hợp actual errors là tập con của expected errors
+                    warnings.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        actualErrors: softExpectDetails,
+                        expectedErrors: expectJson,
+                        message: "Actual errors includes of expected errors"
+                    });
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
+                } else {
+                    // Trường hợp có lỗi không khớp
                     failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
+                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
                     });
                 }
-              } catch (error) {
-                console.error('Error in test case #' + testNumber, error);
+                break;
+            case 500:
                 failedTests.push({
-                  testcase: testNumber,
-                  error: error.message
+                    testcase: testNumber,
+                    code: 500,
+                    errorDetails: expectJson,
                 });
-              }
-            });
+                break;
+            default:
+                expectDetails = Array.isArray(data?.error?.details)
+                    ? data.error.details
+                    : [];
+                softExpectDetails = [...expectDetails].sort();
+                // Áp dụng logic tương tự cho các status code khác
+                const defaultAllMatched = softExpectDetails.every(actualError => 
+                    expectJson.includes(actualError)
+                );
+                const defaultExactMatch = defaultAllMatched && 
+                                        softExpectDetails.length === expectJson.length;
+                
+                if (defaultExactMatch) {
+                    passedTests++;
+                    codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                    });
+                } else if (defaultAllMatched) {
+                    warnings.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        actualErrors: softExpectDetails,
+                        expectedErrors: expectJson,
+                        message: "Actual errors are subset of expected errors"
+                    });
+                    passedTests++;
+                } else {
+                    failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
+                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                    });
+                }
+        }
+    } catch (error) {
+        console.error('Error in test case #' + testNumber, error);
+        failedTests.push({
+            testcase: testNumber,
+            error: error.message
+        });
+    }
+});
 
             it('Test case #4 should return errors ["avatarFramePath should not be empty","avatarFramePath invalid url"] when body {"avatarFramePath":""}', async () => {
-              testNumber = 4;
-              totalTests++;
-              const payloadObj = {"avatarFramePath":""};
-              resolvedData = resolveVariables(payloadObj, globalContext);
-              
-              try {
-                const response = await resolveCallAPI(
-                  "avatarFramePath",
-                  {"x-session-token":"{{token}}"},
-                  {"avatarFramePath":""},
-                  contextData
-                );
-                const data = response.data;
-                const expectJson = ["avatarFramePath should not be empty","avatarFramePath invalid url"].sort();
+    testNumber = 4;
+    totalTests++;
+    const payloadObj = {"avatarFramePath":""};
+    resolvedData = resolveVariables(payloadObj, globalContext);
+    
+    try {
+        const response = await resolveCallAPI(
+            "avatarFramePath",
+            {"x-session-token":"{{token}}"},
+            {"avatarFramePath":""},
+            contextData
+        );
+        const data = response.data;
+        const expectJson = ["avatarFramePath should not be empty","avatarFramePath invalid url"].sort();
 
-                let expectDetails;
-                let softExpectDetails;
-                switch (response.status) {
-                  case 200:
+        let expectDetails;
+        let softExpectDetails;
+        switch (response.status) {
+            case 200:
+            case 201:
+            case 400:
+            case 403:
                     expectDetails = Array.isArray(data?.error?.details)
-                      ? data.error.details
-                      : [];
-                    softExpectDetails = [...expectDetails].sort();
-                    try {
-                      expect(expectJson).toEqual(softExpectDetails);
-                      passedTests++;
-                      codedTest.push({
+                        ? data.error.details
+                        : data?.error?.details
+                            ? [data.error.details]
+                            : (data?.ok === true) // check có data (status 201)
+                                ? []
+                                : data !== undefined && data !== null
+                                    ? [data]
+                                    : [];
+                softExpectDetails = [...expectDetails].sort();
+                
+                // Kiểm tra nếu tất cả actual errors đều có trong expected errors
+                const allErrorsMatched = softExpectDetails.every(actualError => 
+                    expectJson.includes(actualError)
+                );
+                
+                // Kiểm tra nếu tất cả expected errors đều có trong actual errors
+                const exactMatch = allErrorsMatched && 
+                                 softExpectDetails.length === expectJson.length;
+                
+                if (exactMatch) {
+                    // Trường hợp khớp hoàn toàn
+                    passedTests++;
+                    codedTest.push({
                         testcase: testNumber,
-                        code: 200,
+                        code: response.status,
                         body: resolvedData,
-                      });
-                    } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
-                      failedTests.push({
-                        testcase: testNumber,
-                        code: 200,
-                        body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
-                      });
-                    }
-                    break;
-                    case 201:
-                    expectDetails = Array.isArray(data?.error?.details)
-                      ? data.error.details
-                      : [];
-                    softExpectDetails = [...expectDetails].sort();
-                    try {
-                      expect(expectJson).toEqual(softExpectDetails);
-                      passedTests++;
-                      codedTest.push({
-                        testcase: testNumber,
-                        code: 201,
-                        body: resolvedData,
-                      });
-                    } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
-                      failedTests.push({
-                        testcase: testNumber,
-                        code: 201,
-                        body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
-                      });
-                    }
-                    break;
-                  case 400:
-                    expectDetails = Array.isArray(data?.error?.details)
-                      ? data.error.details
-                      : [];
-                    softExpectDetails = [...expectDetails].sort();
-                    try {
-                      expect(expectJson).toEqual(softExpectDetails);
-                      passedTests++;
-                      codedTest.push({
-                        testcase: testNumber,
-                        code: 400,
-                        body: resolvedData,
-                      });
-                    } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
-                      failedTests.push({
-                        testcase: testNumber,
-                        code: 400,
-                        body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
-                      });
-                    }
-                    break;
-                  case 403:
-                    expectDetails = Array.isArray(data) ? data : [data];
-                    softExpectDetails = [...expectDetails].sort();
-                    try {
-                      expect(expectJson).toEqual(softExpectDetails);
-                      passedTests++;
-                      codedTest.push({
-                        testcase: testNumber,
-                        code: 403,
-                        body: resolvedData,
-                      });
-                    } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
-                      failedTests.push({
-                        testcase: testNumber,
-                        code: 403,
-                        body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
-                      });
-                    }
-                    break;
-                  case 500:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: 500,
-                      errorDetails: expectJson,
                     });
-                    break;
-                  default:
+                } else if (allErrorsMatched) {
+                    // Trường hợp actual errors là tập con của expected errors
+                    warnings.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        actualErrors: softExpectDetails,
+                        expectedErrors: expectJson,
+                        message: "Actual errors includes of expected errors"
+                    });
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
+                } else {
+                    // Trường hợp có lỗi không khớp
                     failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
+                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
                     });
                 }
-              } catch (error) {
-                console.error('Error in test case #' + testNumber, error);
+                break;
+            case 500:
                 failedTests.push({
-                  testcase: testNumber,
-                  error: error.message
+                    testcase: testNumber,
+                    code: 500,
+                    errorDetails: expectJson,
                 });
-              }
-            });
+                break;
+            default:
+                expectDetails = Array.isArray(data?.error?.details)
+                    ? data.error.details
+                    : [];
+                softExpectDetails = [...expectDetails].sort();
+                // Áp dụng logic tương tự cho các status code khác
+                const defaultAllMatched = softExpectDetails.every(actualError => 
+                    expectJson.includes(actualError)
+                );
+                const defaultExactMatch = defaultAllMatched && 
+                                        softExpectDetails.length === expectJson.length;
+                
+                if (defaultExactMatch) {
+                    passedTests++;
+                    codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                    });
+                } else if (defaultAllMatched) {
+                    warnings.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        actualErrors: softExpectDetails,
+                        expectedErrors: expectJson,
+                        message: "Actual errors are subset of expected errors"
+                    });
+                    passedTests++;
+                } else {
+                    failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
+                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                    });
+                }
+        }
+    } catch (error) {
+        console.error('Error in test case #' + testNumber, error);
+        failedTests.push({
+            testcase: testNumber,
+            error: error.message
+        });
+    }
+});
 
             it('Test case #5 should return errors ["avatarFramePath expected string,received null"] when body {"avatarFramePath":null}', async () => {
-              testNumber = 5;
-              totalTests++;
-              const payloadObj = {"avatarFramePath":null};
-              resolvedData = resolveVariables(payloadObj, globalContext);
-              
-              try {
-                const response = await resolveCallAPI(
-                  "avatarFramePath",
-                  {"x-session-token":"{{token}}"},
-                  {"avatarFramePath":null},
-                  contextData
-                );
-                const data = response.data;
-                const expectJson = ["avatarFramePath expected string, received null"].sort();
+    testNumber = 5;
+    totalTests++;
+    const payloadObj = {"avatarFramePath":null};
+    resolvedData = resolveVariables(payloadObj, globalContext);
+    
+    try {
+        const response = await resolveCallAPI(
+            "avatarFramePath",
+            {"x-session-token":"{{token}}"},
+            {"avatarFramePath":null},
+            contextData
+        );
+        const data = response.data;
+        const expectJson = ["avatarFramePath expected string, received null"].sort();
 
-                let expectDetails;
-                let softExpectDetails;
-                switch (response.status) {
-                  case 200:
+        let expectDetails;
+        let softExpectDetails;
+        switch (response.status) {
+            case 200:
+            case 201:
+            case 400:
+            case 403:
                     expectDetails = Array.isArray(data?.error?.details)
-                      ? data.error.details
-                      : [];
-                    softExpectDetails = [...expectDetails].sort();
-                    try {
-                      expect(expectJson).toEqual(softExpectDetails);
-                      passedTests++;
-                      codedTest.push({
+                        ? data.error.details
+                        : data?.error?.details
+                            ? [data.error.details]
+                            : (data?.ok === true) // check có data (status 201)
+                                ? []
+                                : data !== undefined && data !== null
+                                    ? [data]
+                                    : [];
+                softExpectDetails = [...expectDetails].sort();
+                
+                // Kiểm tra nếu tất cả actual errors đều có trong expected errors
+                const allErrorsMatched = softExpectDetails.every(actualError => 
+                    expectJson.includes(actualError)
+                );
+                
+                // Kiểm tra nếu tất cả expected errors đều có trong actual errors
+                const exactMatch = allErrorsMatched && 
+                                 softExpectDetails.length === expectJson.length;
+                
+                if (exactMatch) {
+                    // Trường hợp khớp hoàn toàn
+                    passedTests++;
+                    codedTest.push({
                         testcase: testNumber,
-                        code: 200,
+                        code: response.status,
                         body: resolvedData,
-                      });
-                    } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
-                      failedTests.push({
-                        testcase: testNumber,
-                        code: 200,
-                        body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
-                      });
-                    }
-                    break;
-                    case 201:
-                    expectDetails = Array.isArray(data?.error?.details)
-                      ? data.error.details
-                      : [];
-                    softExpectDetails = [...expectDetails].sort();
-                    try {
-                      expect(expectJson).toEqual(softExpectDetails);
-                      passedTests++;
-                      codedTest.push({
-                        testcase: testNumber,
-                        code: 201,
-                        body: resolvedData,
-                      });
-                    } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
-                      failedTests.push({
-                        testcase: testNumber,
-                        code: 201,
-                        body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
-                      });
-                    }
-                    break;
-                  case 400:
-                    expectDetails = Array.isArray(data?.error?.details)
-                      ? data.error.details
-                      : [];
-                    softExpectDetails = [...expectDetails].sort();
-                    try {
-                      expect(expectJson).toEqual(softExpectDetails);
-                      passedTests++;
-                      codedTest.push({
-                        testcase: testNumber,
-                        code: 400,
-                        body: resolvedData,
-                      });
-                    } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
-                      failedTests.push({
-                        testcase: testNumber,
-                        code: 400,
-                        body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
-                      });
-                    }
-                    break;
-                  case 403:
-                    expectDetails = Array.isArray(data) ? data : [data];
-                    softExpectDetails = [...expectDetails].sort();
-                    try {
-                      expect(expectJson).toEqual(softExpectDetails);
-                      passedTests++;
-                      codedTest.push({
-                        testcase: testNumber,
-                        code: 403,
-                        body: resolvedData,
-                      });
-                    } catch (error) {
-                      const { missing, extra } = summaryFields(softExpectDetails, expectJson);
-                      failedTests.push({
-                        testcase: testNumber,
-                        code: 403,
-                        body: resolvedData,
-                        missing: missing || [],
-                        extra: extra || []
-                      });
-                    }
-                    break;
-                  case 500:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: 500,
-                      errorDetails: expectJson,
                     });
-                    break;
-                  default:
+                } else if (allErrorsMatched) {
+                    // Trường hợp actual errors là tập con của expected errors
+                    warnings.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        actualErrors: softExpectDetails,
+                        expectedErrors: expectJson,
+                        message: "Actual errors includes of expected errors"
+                    });
+                    // passedTests++; // Vẫn tính là pass nhưng có warning
+                } else {
+                    // Trường hợp có lỗi không khớp
                     failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
+                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
                     });
                 }
-              } catch (error) {
-                console.error('Error in test case #' + testNumber, error);
+                break;
+            case 500:
                 failedTests.push({
-                  testcase: testNumber,
-                  error: error.message
+                    testcase: testNumber,
+                    code: 500,
+                    errorDetails: expectJson,
                 });
-              }
-            });
+                break;
+            default:
+                expectDetails = Array.isArray(data?.error?.details)
+                    ? data.error.details
+                    : [];
+                softExpectDetails = [...expectDetails].sort();
+                // Áp dụng logic tương tự cho các status code khác
+                const defaultAllMatched = softExpectDetails.every(actualError => 
+                    expectJson.includes(actualError)
+                );
+                const defaultExactMatch = defaultAllMatched && 
+                                        softExpectDetails.length === expectJson.length;
+                
+                if (defaultExactMatch) {
+                    passedTests++;
+                    codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                    });
+                } else if (defaultAllMatched) {
+                    warnings.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        actualErrors: softExpectDetails,
+                        expectedErrors: expectJson,
+                        message: "Actual errors are subset of expected errors"
+                    });
+                    passedTests++;
+                } else {
+                    failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
+                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                    });
+                }
+        }
+    } catch (error) {
+        console.error('Error in test case #' + testNumber, error);
+        failedTests.push({
+            testcase: testNumber,
+            error: error.message
+        });
+    }
+});
       afterEach(async () => {
           testCaseNumber++;
           const afterEachSteps = CreateAvatarFrameRequest.options
@@ -793,6 +754,7 @@
             chunkNumber: undefined,
             failedTests: [...failedTests],
             codedTest: [...codedTest],
+            warnings: [...warnings],
             passedTests: passedTests,
             totalTests: totalTests,
             failedStep: [...failedStep]

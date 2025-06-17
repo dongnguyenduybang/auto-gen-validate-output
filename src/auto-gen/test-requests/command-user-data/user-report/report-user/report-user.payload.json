@@ -2,7 +2,7 @@
     {
         "body": {
             "userId": 123,
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "report user",
             "pretendingTo": 0
         },
@@ -67,7 +67,7 @@
     {
         "body": {
             "userId": 123,
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": 123,
             "pretendingTo": 0
         },
@@ -78,7 +78,7 @@
     {
         "body": {
             "userId": 123,
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "",
             "pretendingTo": 0
         },
@@ -89,7 +89,7 @@
     {
         "body": {
             "userId": 123,
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             "pretendingTo": 0
         },
@@ -100,7 +100,7 @@
     {
         "body": {
             "userId": 123,
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀",
             "pretendingTo": 0
         },
@@ -111,7 +111,7 @@
     {
         "body": {
             "userId": 123,
-            "reportCategory": 0,
+            "reportCategory": 1,
             "pretendingTo": 0
         },
         "expects": [
@@ -121,7 +121,7 @@
     {
         "body": {
             "userId": 123,
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "report user",
             "pretendingTo": "invalid_enum_value"
         },
@@ -132,7 +132,7 @@
     {
         "body": {
             "userId": 123,
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "report user"
         },
         "expects": [
@@ -142,7 +142,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "report user",
             "pretendingTo": 0
         },
@@ -203,7 +203,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": 123,
             "pretendingTo": 0
         },
@@ -214,7 +214,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "",
             "pretendingTo": 0
         },
@@ -226,7 +226,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             "pretendingTo": 0
         },
@@ -237,7 +237,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀",
             "pretendingTo": 0
         },
@@ -248,7 +248,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "pretendingTo": 0
         },
         "expects": []
@@ -256,7 +256,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "report user",
             "pretendingTo": "invalid_enum_value"
         },
@@ -267,14 +267,14 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "report user"
         },
         "expects": []
     },
     {
         "body": {
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "report user",
             "pretendingTo": 0
         },
@@ -333,7 +333,7 @@
     },
     {
         "body": {
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": 123,
             "pretendingTo": 0
         },
@@ -343,7 +343,7 @@
     },
     {
         "body": {
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "",
             "pretendingTo": 0
         },
@@ -353,7 +353,7 @@
     },
     {
         "body": {
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             "pretendingTo": 0
         },
@@ -363,7 +363,7 @@
     },
     {
         "body": {
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀",
             "pretendingTo": 0
         },
@@ -373,7 +373,7 @@
     },
     {
         "body": {
-            "reportCategory": 0,
+            "reportCategory": 1,
             "pretendingTo": 0
         },
         "expects": [
@@ -382,7 +382,7 @@
     },
     {
         "body": {
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "report user",
             "pretendingTo": "invalid_enum_value"
         },
@@ -392,7 +392,7 @@
     },
     {
         "body": {
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "report user"
         },
         "expects": [
@@ -402,7 +402,7 @@
     {
         "body": {
             "userId": "",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "report user",
             "pretendingTo": 0
         },
@@ -467,7 +467,7 @@
     {
         "body": {
             "userId": "",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": 123,
             "pretendingTo": 0
         },
@@ -478,7 +478,7 @@
     {
         "body": {
             "userId": "",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "",
             "pretendingTo": 0
         },
@@ -489,7 +489,7 @@
     {
         "body": {
             "userId": "",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             "pretendingTo": 0
         },
@@ -500,7 +500,7 @@
     {
         "body": {
             "userId": "",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀",
             "pretendingTo": 0
         },
@@ -511,7 +511,7 @@
     {
         "body": {
             "userId": "",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "pretendingTo": 0
         },
         "expects": [
@@ -521,7 +521,7 @@
     {
         "body": {
             "userId": "",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "report user",
             "pretendingTo": "invalid_enum_value"
         },
@@ -532,7 +532,7 @@
     {
         "body": {
             "userId": "",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "report user"
         },
         "expects": [
@@ -542,7 +542,7 @@
     {
         "body": {
             "userId": "invalid_value",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "report user",
             "pretendingTo": 0
         },
@@ -607,7 +607,7 @@
     {
         "body": {
             "userId": "invalid_value",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": 123,
             "pretendingTo": 0
         },
@@ -618,7 +618,7 @@
     {
         "body": {
             "userId": "invalid_value",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "",
             "pretendingTo": 0
         },
@@ -629,7 +629,7 @@
     {
         "body": {
             "userId": "invalid_value",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             "pretendingTo": 0
         },
@@ -640,7 +640,7 @@
     {
         "body": {
             "userId": "invalid_value",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀",
             "pretendingTo": 0
         },
@@ -651,7 +651,7 @@
     {
         "body": {
             "userId": "invalid_value",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "pretendingTo": 0
         },
         "expects": [
@@ -661,7 +661,7 @@
     {
         "body": {
             "userId": "invalid_value",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "report user",
             "pretendingTo": "invalid_enum_value"
         },
@@ -672,7 +672,7 @@
     {
         "body": {
             "userId": "invalid_value",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "report user"
         },
         "expects": [
@@ -1081,7 +1081,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": 123,
             "pretendingTo": "invalid_enum_value"
         },
@@ -1093,7 +1093,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": 123
         },
         "expects": [
@@ -1103,7 +1103,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "",
             "pretendingTo": "invalid_enum_value"
         },
@@ -1116,7 +1116,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": ""
         },
         "expects": [
@@ -1127,7 +1127,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             "pretendingTo": "invalid_enum_value"
         },
@@ -1139,7 +1139,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
         },
         "expects": [
@@ -1149,7 +1149,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀",
             "pretendingTo": "invalid_enum_value"
         },
@@ -1161,7 +1161,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀"
         },
         "expects": [
@@ -1171,7 +1171,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "pretendingTo": "invalid_enum_value"
         },
         "expects": [
@@ -1181,7 +1181,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "reportCategory": 0
+            "reportCategory": 1
         },
         "expects": []
     }

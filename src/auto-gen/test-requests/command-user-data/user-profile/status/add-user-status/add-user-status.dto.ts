@@ -7,6 +7,7 @@ import {
   MaxLength,
   IsEmoji,
   IsNotNull,
+  MinLength,
 } from '../../../../../decorator/index';
 import { ExpireAfterTimeEnum } from '../../../../../enums/index';
 
@@ -16,6 +17,7 @@ export class AddUserStatusDTO {
   @IsDefined()
   @IsNotEmpty()
   @IsNotNull()
+  @MinLength(1)
   @MaxLength(50)
   content: string = '';
 
