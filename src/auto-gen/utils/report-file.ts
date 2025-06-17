@@ -11,6 +11,7 @@ export const combinedReportTemplate = (
   totalTests?: number,
   summary?: any,
   type?: string,
+  warnings?: any[],
 ) => {
   className = className || 'Unknown Class';
   url = url || 'N/A';
@@ -33,6 +34,7 @@ export const combinedReportTemplate = (
         failedTests,
         totalTests,
         summary,
+        warnings,
       );
 
     case 'response':
@@ -70,6 +72,7 @@ const requestReportTemplate = (
   failedTests,
   totalTests,
   summary,
+  warnings,
 ) => {
   const uniqueErrors = new Map();
   if (failedTests) {
@@ -110,6 +113,7 @@ const requestReportTemplate = (
     '=== Test Summary ===',
     `✅ Passed: ${passedTests}`,
     `❌ Failed: ${failedTests.length}`,
+    `⚠️ Warnings: ${warnings.length}`,
     `📊 Total: ${totalTests}`,
     '',
     '=== System Metrics ===',
@@ -120,6 +124,19 @@ const requestReportTemplate = (
     ` 🟠 403: ${summary.statusCodes[403] || 0}`,
     ` 🟠 404: ${summary.statusCodes[404] || 0}`,
     ` 🔴 500: ${summary.statusCodes[500] || 0}`,
+    '',
+    '=== Warnings ===',
+    ...(warnings.length > 0 
+      ? warnings.map((warning, index) => [
+          ` 🟠 ${index + 1}. Case #${warning.testcase}`,
+          `     ├─ Status: ${warning.code || 'N/A'}`,
+          `     ├─ Body: ${JSON.stringify(warning.body) || 'None'}`,
+          `     ├─ Actual Errors: ${warning.actualErrors?.join(', ') || 'None'}`,
+          `     ├─ Expected Errors: ${warning.expectedErrors?.join(', ') || 'None'}`,
+          `     └─ Message: ${warning.message || 'No details'}`,
+        ].join('\n'))
+      : ['✅ No warnings']
+    ),
     '',
     '=== Unique Errors ===',
     ...Array.from(uniqueErrors.entries()).map(

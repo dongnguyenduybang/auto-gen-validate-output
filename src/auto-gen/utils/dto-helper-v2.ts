@@ -151,33 +151,6 @@ const decoratorItemValidations = {
   },
 };
 
-// export function getDecorators(
-//   target: Object,
-//   propertyKey: string,
-// ): Record<string, any> {
-//   const decorators: Record<string, any> = {};
-//   let metadataKeys = Reflect.getMetadataKeys(target, propertyKey);
-
-//   metadataKeys.forEach((key) => {
-//     decorators[key] = Reflect.getMetadata(key, target, propertyKey);
-//   });
-
-//   if (typeof target === 'function') {
-//     metadataKeys = Reflect.getMetadataKeys(target, propertyKey);
-
-//     metadataKeys.forEach((key) => {
-//       if (!decorators[key]) {
-//         decorators[key] = Reflect.getMetadata(key, target, propertyKey);
-//       }
-//     });
-//   }
-
-// const instance = new SendDmMessageMediaDTO();
-// const de = getDecorators(instance, 'mediaObjects');
-// console.log('Decorators for mediaObjects:', de);
-//   return decorators;
-// }
-
 export function getDecorators(
   target: Object,
   propertyKey: string,
@@ -1230,7 +1203,6 @@ export function mapError(
   return Array.from(new Set(errors));
 }
 
-// Helper function để lấy nested class từ decorators
 function getNestedClass(decorators: Record<string, any>): any {
   // Ưu tiên lấy nestedType từ decorator Type
   if (decorators['nestedType']) {

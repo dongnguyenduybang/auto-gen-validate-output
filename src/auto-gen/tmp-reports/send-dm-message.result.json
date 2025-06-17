@@ -2,183 +2,7 @@
   "path": "/Message/SendDMMessage",
   "className": "send-dm-message",
   "allSteps": [],
-  "failedTests": [
-    {
-      "testcase": 13,
-      "code": 400,
-      "body": {
-        "userId": "01JXYESK72KBGHJQHJFC62S474",
-        "content": "",
-        "ref": "ref"
-      },
-      "missing": [
-        "content string must contain at least 1 character(s)"
-      ],
-      "extra": [
-        "content should not be empty",
-        "content string must contain at least 1 character(s)"
-      ]
-    },
-    {
-      "testcase": 18,
-      "code": 400,
-      "body": {
-        "userId": "01JXYESK72KBGHJQHJFC62S474",
-        "content": "test response send dm message",
-        "ref": ""
-      },
-      "missing": [
-        "ref string must contain at least 1 character(s)"
-      ],
-      "extra": [
-        "ref should not be empty",
-        "ref string must contain at least 1 character(s)"
-      ]
-    },
-    {
-      "testcase": 62,
-      "code": 400,
-      "body": {
-        "userId": "01JXYESK72KBGHJQHJFC62S474",
-        "content": 123,
-        "ref": ""
-      },
-      "missing": [
-        "content expected string, received number",
-        "ref string must contain at least 1 character(s)"
-      ],
-      "extra": [
-        "content expected string, received number",
-        "ref should not be empty",
-        "ref string must contain at least 1 character(s)"
-      ]
-    },
-    {
-      "testcase": 65,
-      "code": 400,
-      "body": {
-        "userId": "01JXYESK72KBGHJQHJFC62S474",
-        "content": "",
-        "ref": 123
-      },
-      "missing": [
-        "content string must contain at least 1 character(s)",
-        "ref expected string, received number"
-      ],
-      "extra": [
-        "content should not be empty",
-        "content string must contain at least 1 character(s)",
-        "ref expected string, received number"
-      ]
-    },
-    {
-      "testcase": 66,
-      "code": 400,
-      "body": {
-        "userId": "01JXYESK72KBGHJQHJFC62S474",
-        "content": "",
-        "ref": ""
-      },
-      "missing": [
-        "content string must contain at least 1 character(s)",
-        "ref string must contain at least 1 character(s)"
-      ],
-      "extra": [
-        "content should not be empty",
-        "content string must contain at least 1 character(s)",
-        "ref should not be empty",
-        "ref string must contain at least 1 character(s)"
-      ]
-    },
-    {
-      "testcase": 67,
-      "code": 400,
-      "body": {
-        "userId": "01JXYESK72KBGHJQHJFC62S474",
-        "content": ""
-      },
-      "missing": [
-        "content string must contain at least 1 character(s)",
-        "ref required"
-      ],
-      "extra": [
-        "content should not be empty",
-        "content string must contain at least 1 character(s)",
-        "ref required"
-      ]
-    },
-    {
-      "testcase": 68,
-      "code": 400,
-      "body": {
-        "userId": "01JXYESK72KBGHJQHJFC62S474",
-        "content": "",
-        "ref": null
-      },
-      "missing": [
-        "content string must contain at least 1 character(s)",
-        "ref expected string, received null"
-      ],
-      "extra": [
-        "content should not be empty",
-        "content string must contain at least 1 character(s)",
-        "ref expected string, received null"
-      ]
-    },
-    {
-      "testcase": 70,
-      "code": 400,
-      "body": {
-        "userId": "01JXYESK72KBGHJQHJFC62S474",
-        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-        "ref": ""
-      },
-      "missing": [
-        "content string must contain at most 2000 character(s)",
-        "ref string must contain at least 1 character(s)"
-      ],
-      "extra": [
-        "content string must contain at most 2000 character(s)",
-        "ref should not be empty",
-        "ref string must contain at least 1 character(s)"
-      ]
-    },
-    {
-      "testcase": 74,
-      "code": 400,
-      "body": {
-        "userId": "01JXYESK72KBGHJQHJFC62S474",
-        "ref": ""
-      },
-      "missing": [
-        "content required",
-        "ref string must contain at least 1 character(s)"
-      ],
-      "extra": [
-        "content required",
-        "ref should not be empty",
-        "ref string must contain at least 1 character(s)"
-      ]
-    },
-    {
-      "testcase": 78,
-      "code": 400,
-      "body": {
-        "userId": "01JXYESK72KBGHJQHJFC62S474",
-        "content": null,
-        "ref": ""
-      },
-      "missing": [
-        "content expected string, received null",
-        "ref string must contain at least 1 character(s)"
-      ],
-      "extra": [
-        "content expected string, received null",
-        "ref should not be empty",
-        "ref string must contain at least 1 character(s)"
-      ]
-    }
-  ],
+  "failedTests": [],
   "codedTest": [
     {
       "testcase": 1,
@@ -272,7 +96,7 @@
       "testcase": 11,
       "code": 201,
       "body": {
-        "userId": "01JXYESK72KBGHJQHJFC62S474",
+        "userId": "01JXYK1YW8Z4RHTYJEK7WPDMQ3",
         "content": "test response send dm message",
         "ref": "ref"
       }
@@ -281,7 +105,7 @@
       "testcase": 12,
       "code": 400,
       "body": {
-        "userId": "01JXYESK72KBGHJQHJFC62S474",
+        "userId": "01JXYK1YW8Z4RHTYJEK7WPDMQ3",
         "content": 123,
         "ref": "ref"
       }
@@ -290,7 +114,7 @@
       "testcase": 14,
       "code": 400,
       "body": {
-        "userId": "01JXYESK72KBGHJQHJFC62S474",
+        "userId": "01JXYK1YW8Z4RHTYJEK7WPDMQ3",
         "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
         "ref": "ref"
       }
@@ -299,7 +123,7 @@
       "testcase": 15,
       "code": 400,
       "body": {
-        "userId": "01JXYESK72KBGHJQHJFC62S474",
+        "userId": "01JXYK1YW8Z4RHTYJEK7WPDMQ3",
         "ref": "ref"
       }
     },
@@ -307,7 +131,7 @@
       "testcase": 16,
       "code": 400,
       "body": {
-        "userId": "01JXYESK72KBGHJQHJFC62S474",
+        "userId": "01JXYK1YW8Z4RHTYJEK7WPDMQ3",
         "content": null,
         "ref": "ref"
       }
@@ -316,7 +140,7 @@
       "testcase": 17,
       "code": 400,
       "body": {
-        "userId": "01JXYESK72KBGHJQHJFC62S474",
+        "userId": "01JXYK1YW8Z4RHTYJEK7WPDMQ3",
         "content": "test response send dm message",
         "ref": 123
       }
@@ -325,7 +149,7 @@
       "testcase": 19,
       "code": 400,
       "body": {
-        "userId": "01JXYESK72KBGHJQHJFC62S474",
+        "userId": "01JXYK1YW8Z4RHTYJEK7WPDMQ3",
         "content": "test response send dm message"
       }
     },
@@ -333,7 +157,7 @@
       "testcase": 20,
       "code": 400,
       "body": {
-        "userId": "01JXYESK72KBGHJQHJFC62S474",
+        "userId": "01JXYK1YW8Z4RHTYJEK7WPDMQ3",
         "content": "test response send dm message",
         "ref": null
       }
@@ -684,7 +508,7 @@
       "testcase": 61,
       "code": 400,
       "body": {
-        "userId": "01JXYESK72KBGHJQHJFC62S474",
+        "userId": "01JXYK1YW8Z4RHTYJEK7WPDMQ3",
         "content": 123,
         "ref": 123
       }
@@ -693,7 +517,7 @@
       "testcase": 63,
       "code": 400,
       "body": {
-        "userId": "01JXYESK72KBGHJQHJFC62S474",
+        "userId": "01JXYK1YW8Z4RHTYJEK7WPDMQ3",
         "content": 123
       }
     },
@@ -701,7 +525,7 @@
       "testcase": 64,
       "code": 400,
       "body": {
-        "userId": "01JXYESK72KBGHJQHJFC62S474",
+        "userId": "01JXYK1YW8Z4RHTYJEK7WPDMQ3",
         "content": 123,
         "ref": null
       }
@@ -710,7 +534,7 @@
       "testcase": 69,
       "code": 400,
       "body": {
-        "userId": "01JXYESK72KBGHJQHJFC62S474",
+        "userId": "01JXYK1YW8Z4RHTYJEK7WPDMQ3",
         "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
         "ref": 123
       }
@@ -719,7 +543,7 @@
       "testcase": 71,
       "code": 400,
       "body": {
-        "userId": "01JXYESK72KBGHJQHJFC62S474",
+        "userId": "01JXYK1YW8Z4RHTYJEK7WPDMQ3",
         "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
       }
     },
@@ -727,7 +551,7 @@
       "testcase": 72,
       "code": 400,
       "body": {
-        "userId": "01JXYESK72KBGHJQHJFC62S474",
+        "userId": "01JXYK1YW8Z4RHTYJEK7WPDMQ3",
         "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
         "ref": null
       }
@@ -736,7 +560,7 @@
       "testcase": 73,
       "code": 400,
       "body": {
-        "userId": "01JXYESK72KBGHJQHJFC62S474",
+        "userId": "01JXYK1YW8Z4RHTYJEK7WPDMQ3",
         "ref": 123
       }
     },
@@ -744,14 +568,14 @@
       "testcase": 75,
       "code": 400,
       "body": {
-        "userId": "01JXYESK72KBGHJQHJFC62S474"
+        "userId": "01JXYK1YW8Z4RHTYJEK7WPDMQ3"
       }
     },
     {
       "testcase": 76,
       "code": 400,
       "body": {
-        "userId": "01JXYESK72KBGHJQHJFC62S474",
+        "userId": "01JXYK1YW8Z4RHTYJEK7WPDMQ3",
         "ref": null
       }
     },
@@ -759,7 +583,7 @@
       "testcase": 77,
       "code": 400,
       "body": {
-        "userId": "01JXYESK72KBGHJQHJFC62S474",
+        "userId": "01JXYK1YW8Z4RHTYJEK7WPDMQ3",
         "content": null,
         "ref": 123
       }
@@ -768,7 +592,7 @@
       "testcase": 79,
       "code": 400,
       "body": {
-        "userId": "01JXYESK72KBGHJQHJFC62S474",
+        "userId": "01JXYK1YW8Z4RHTYJEK7WPDMQ3",
         "content": null
       }
     },
@@ -776,13 +600,200 @@
       "testcase": 80,
       "code": 400,
       "body": {
-        "userId": "01JXYESK72KBGHJQHJFC62S474",
+        "userId": "01JXYK1YW8Z4RHTYJEK7WPDMQ3",
         "content": null,
         "ref": null
       }
     }
   ],
-  "passedTests": 70,
+  "warnings": [
+    {
+      "testcase": 13,
+      "code": 400,
+      "body": {
+        "userId": "01JXYK1YW8Z4RHTYJEK7WPDMQ3",
+        "content": "",
+        "ref": "ref"
+      },
+      "actualErrors": [
+        "content string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "content should not be empty",
+        "content string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 18,
+      "code": 400,
+      "body": {
+        "userId": "01JXYK1YW8Z4RHTYJEK7WPDMQ3",
+        "content": "test response send dm message",
+        "ref": ""
+      },
+      "actualErrors": [
+        "ref string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 62,
+      "code": 400,
+      "body": {
+        "userId": "01JXYK1YW8Z4RHTYJEK7WPDMQ3",
+        "content": 123,
+        "ref": ""
+      },
+      "actualErrors": [
+        "content expected string, received number",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "content expected string, received number",
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 65,
+      "code": 400,
+      "body": {
+        "userId": "01JXYK1YW8Z4RHTYJEK7WPDMQ3",
+        "content": "",
+        "ref": 123
+      },
+      "actualErrors": [
+        "content string must contain at least 1 character(s)",
+        "ref expected string, received number"
+      ],
+      "expectedErrors": [
+        "content should not be empty",
+        "content string must contain at least 1 character(s)",
+        "ref expected string, received number"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 66,
+      "code": 400,
+      "body": {
+        "userId": "01JXYK1YW8Z4RHTYJEK7WPDMQ3",
+        "content": "",
+        "ref": ""
+      },
+      "actualErrors": [
+        "content string must contain at least 1 character(s)",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "content should not be empty",
+        "content string must contain at least 1 character(s)",
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 67,
+      "code": 400,
+      "body": {
+        "userId": "01JXYK1YW8Z4RHTYJEK7WPDMQ3",
+        "content": ""
+      },
+      "actualErrors": [
+        "content string must contain at least 1 character(s)",
+        "ref required"
+      ],
+      "expectedErrors": [
+        "content should not be empty",
+        "content string must contain at least 1 character(s)",
+        "ref required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 68,
+      "code": 400,
+      "body": {
+        "userId": "01JXYK1YW8Z4RHTYJEK7WPDMQ3",
+        "content": "",
+        "ref": null
+      },
+      "actualErrors": [
+        "content string must contain at least 1 character(s)",
+        "ref expected string, received null"
+      ],
+      "expectedErrors": [
+        "content should not be empty",
+        "content string must contain at least 1 character(s)",
+        "ref expected string, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 70,
+      "code": 400,
+      "body": {
+        "userId": "01JXYK1YW8Z4RHTYJEK7WPDMQ3",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": ""
+      },
+      "actualErrors": [
+        "content string must contain at most 2000 character(s)",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "content string must contain at most 2000 character(s)",
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 74,
+      "code": 400,
+      "body": {
+        "userId": "01JXYK1YW8Z4RHTYJEK7WPDMQ3",
+        "ref": ""
+      },
+      "actualErrors": [
+        "content required",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "content required",
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 78,
+      "code": 400,
+      "body": {
+        "userId": "01JXYK1YW8Z4RHTYJEK7WPDMQ3",
+        "content": null,
+        "ref": ""
+      },
+      "actualErrors": [
+        "content expected string, received null",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "content expected string, received null",
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    }
+  ],
+  "passedTests": 80,
   "totalTests": 80,
   "failedStep": []
 }

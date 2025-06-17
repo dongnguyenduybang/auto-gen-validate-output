@@ -107,6 +107,7 @@ async function combineReports(className: string) {
   const combinedFailedTests = results.map(extractFailedTests).flat();
   const combinedCodedTest = results.map(extractCodedTests).flat();
   const combinedFailedStep = results.map(extractFailedSteps).flat();
+  const combinedWarnings = results.map(r => r.warnings).flat();
   const pathRequest = results.map(extractPaths).flat();
 
   const totalPassedTests = sumByField(results, 'passedTests');
@@ -116,7 +117,6 @@ async function combineReports(className: string) {
     combinedCodedTest,
     combinedFailedTests,
   );
-console.log(combinedFailedStep)
   const reportContent = combinedReportTemplate(
     className,
     globalThis.urls,
@@ -127,6 +127,7 @@ console.log(combinedFailedStep)
     totalTests,
     summary,
     'request',
+    combinedWarnings
   );
 
   const outputDir = path.join(
