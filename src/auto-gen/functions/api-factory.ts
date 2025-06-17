@@ -1,8 +1,8 @@
-import axios, { AxiosRequestConfig } from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { EventContext, TestContext } from '../utils/text-context';
 import { ApiConfig, ApiFunctionParams } from '../utils/declarations';
 import { resolveVariables } from '../utils/helper';
-
+const apiClient: AxiosInstance = axios.create();
 export function createApiFunction(
   config: ApiConfig,
   context: TestContext,
@@ -59,7 +59,7 @@ export function createApiFunction(
       } else if (['get', 'delete'].includes(finalMethod)) {
         axiosConfig.params = payload;
       }
-      const response = await axios(axiosConfig);
+     const response = await apiClient(axiosConfig);
 
       // if(eventContext){
       //   const events = EVENTS_BY_ACTION[action] || [];
@@ -77,4 +77,9 @@ export function createApiFunction(
       };
     }
   };
+}
+export function cleanupApi() {
+  // Đóng tất cả kết nối đang chờ
+  apiClient.defaults.httpAgent?.destroy();
+  apiClient.defaults.httpsAgent?.destroy();
 }

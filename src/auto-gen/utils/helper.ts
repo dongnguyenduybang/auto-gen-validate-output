@@ -2,8 +2,10 @@ import * as path from 'path';
 import * as fs from 'fs';
 import 'reflect-metadata';
 import {
+  EventConfig,
   IContext,
   responseClassMap,
+  ScenarioEventConfig,
   StepResult,
   ValidationError,
 } from './declarations';
@@ -14,6 +16,7 @@ import { getApiFunctions } from '../functions/api-registry';
 import { ClassConstructor, plainToClass } from 'class-transformer';
 import { validateResponses } from '../validates/validate-response';
 import { BaseResponse } from '../response';
+import { EVENTS_BY_ACTION } from './event-action';
 
 function getFileNameWithoutExtension(filePath: string): string {
   const fileName = path.basename(filePath);
@@ -516,21 +519,16 @@ export async function checkResponse(
 }
 
 export async function callAPIForSystem(body, header, action) {
-  const actionInfo = ACTION_CONFIG[action as keyof typeof ACTION_CONFIG];
-  const resolveBody = {
-    workspaceId: '0',
-    channelId: body.channelId,
-    messageId: body.msgId,
-  };
-  const apiFunction = getApiFunctions(action, null, null);
 
+  const actionInfo = ACTION_CONFIG[action as keyof typeof ACTION_CONFIG];
+
+  const apiFunction = getApiFunctions(action, null, null);
   const response = await apiFunction({
     method: actionInfo?.method,
     path: actionInfo?.path,
     headers: header,
-    body: resolveBody,
+    body: body,
   });
-
   return transformApiData(response.data);
 }
 
@@ -548,4 +546,52 @@ export function transformApiData(apiData) {
   };
 
   return result;
+}
+
+export function isScenarioConfig(config: any): config is ScenarioEventConfig {
+  return config && 
+         typeof config === 'object' && 
+         'scenarios' in config && 
+         typeof config.scenarios === 'object';
+}
+
+export function getDmStatus(events: any[]): number | undefined {
+  if (!events || events.length === 0) return undefined;
+  
+  // Thử lấy từ event data trước
+  const fromEventData = events[0]?.data?.channel?.dmStatus;
+  if (fromEventData !== undefined) return fromEventData;
+  
+  // Nếu không có thì thử lấy từ API data
+  return events[0]?.apiData?.data?.includes?.channels?.[0]?.dmStatus;
+}
+
+export function getEventLengths(action: string, isExiting: number): { actorLength: number; recipientLength: number } {
+  // Map isExiting to dmStatus
+  let dmStatus: 'NEW_CONTACT' | 'EXISTING_CONTACT' | 'DEFAULT';
+  if (isExiting === 0) {
+    dmStatus = 'NEW_CONTACT';
+  } else if (isExiting === 1) {
+    dmStatus = 'EXISTING_CONTACT';
+  } else {
+    dmStatus = 'DEFAULT';
+  }
+
+  // Get the scenarios for the given action
+  const actionConfig = EVENTS_BY_ACTION[action];
+  if (!actionConfig || !actionConfig.scenarios) {
+    return { actorLength: 0, recipientLength: 0 }; // Return 0 if action or scenarios not found
+  }
+
+  // Get the specific scenario based on dmStatus
+  const scenario = actionConfig.scenarios[dmStatus];
+  if (!scenario) {
+    return { actorLength: 0, recipientLength: 0 }; // Return 0 if scenario not found
+  }
+
+  // Return the lengths of actor and recipient arrays
+  return {
+    actorLength: scenario.actor.length,
+    recipientLength: scenario.recipient.length,
+  };
 }

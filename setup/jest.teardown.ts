@@ -2,6 +2,7 @@ import { readFileSync, unlinkSync } from 'fs';
 import { ACTION } from '../src/auto-gen/enums';
 import { getOrThrow, setupConfiguration } from '../src/auto-gen/utils/get-config';
 import { executeAllSteps } from '../src/auto-gen/utils/test-executor';
+import { cleanupApi } from '../src/auto-gen/functions/api-factory';
 
 setupConfiguration();
 
@@ -44,4 +45,7 @@ export default async function () {
   //   console.error('Global teardown failed:', error);
   //   throw error;
   // }
+      await cleanupApi();
+    // Thêm delay ngắn để đảm bảo kết nối đóng hoàn toàn
+    await new Promise(resolve => setTimeout(resolve, 100));
 }

@@ -139,7 +139,7 @@ export const API_EVENT = {
         OUTGOING_MESSAGE_REQUEST_ACCEPTED:
           'com.halome.chat.v3.outgoing_message_request.accepted',
         OUTGOING_MESSAGE_REQUEST_CREATED:
-          'com.halome.chat.v3.outgoing_message_request.updated',
+          'com.halome.chat.v3.outgoing_message_request.created',
         USER_MESSAGE_REACTION_UPDATED:
           'com.halome.chat.v3.message.user_reaction_updated',
         USER_MESSAGE_DELETED: 'com.halome.chat.v3.user_message.deleted',

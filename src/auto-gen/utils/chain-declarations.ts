@@ -45,14 +45,12 @@ export class WSBuilder {
     title: string,
     author: string,
     type: string,
-    index: number,
-    data: any,
+    data: string,
   ) {
     this.currentOption.resume.push({
       title,
       author,
       type,
-      index,
       data,
     });
     return this;
@@ -69,7 +67,7 @@ export class WSBuilder {
 
   addStepAction(
     title: string,
-    author: string,
+    author: string[],
     action: string,
     config: { headers?: any; body?: any; expect?: any },
   ) {
@@ -84,10 +82,11 @@ export class WSBuilder {
 
   addStepEvents(
     title: string,
-    author: string,
+    author: string[],
     action: string,
     eventList: {
       type: any;
+      author:string;
       source: any;
       specversion?: any;
       version?: any;

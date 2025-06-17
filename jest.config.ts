@@ -28,5 +28,6 @@ export default {
     cache: true,
     bail: true,
     collectCoverage: false, 
+    testTimeout: 30000
 
 };

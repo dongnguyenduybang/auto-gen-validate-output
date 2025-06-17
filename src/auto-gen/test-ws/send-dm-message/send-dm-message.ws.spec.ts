@@ -7,6 +7,8 @@ import { executeWS } from '../../utils/execute-ws';
 import { executeAllSteps } from '../../utils/test-executor';
 import { SendDmMessageWS } from './send-dm-message.ws';
 import { WebSocketEventCollector } from '../../utils/ws-event-collector';
+import axios from 'axios';
+import { cleanupApi } from '../../functions/api-factory';
 
 describe('Test sagas for send-dm-message', () => {
   let pathRequest: string;
@@ -50,7 +52,7 @@ describe('Test sagas for send-dm-message', () => {
     } else {
       contextData = context;
     }
-  });
+  }, 20000);
 
 
   it('should return send dm success ws', async () => {
@@ -83,6 +85,18 @@ describe('Test sagas for send-dm-message', () => {
       'events',
       globalCollectors,
     );
+
+    const resumeStep =
+      SendDmMessageWS.options?.find((option) => option.resume)?.resume || [];
+
+    const resultsEventResume = await executeWS(
+      resumeStep,
+      contextData,
+      eventContext,
+      resumeContext,
+      'resume',
+      globalCollectors,
+    );
   }, 30000);
 
 
@@ -110,5 +124,7 @@ describe('Test sagas for send-dm-message', () => {
     const reportPath = path.join(folderPath, reportFileName);
     fs.writeFileSync(reportPath, reportContent, 'utf-8');
     console.log(`📄 WS test report generated: ${reportPath}`);
-  });
+
+
+  }, 10000);
 });

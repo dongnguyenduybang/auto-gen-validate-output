@@ -26,10 +26,10 @@ export const SendDmMessageWS = new WSBuilder()
     .addBeforeAll('Recipient connect ws', VAR.recipient, ACTION.CONNECT_WS, {
         body: { url: VAR.url1 },
     })
-    //  steps
+    // Steps
     .startStep('should return send dm success ws')
-    .addStepAction('send dm message', VAR.actor, ACTION.SEND_DM_MESSAGE, {
-        headers: HEADER_LIST.create({ token: VAR.token1 }),
+    .addStepAction('send dm message', [VAR.actor, VAR.recipient], ACTION.SEND_DM_MESSAGE, {
+        headers: HEADER_LIST.create({ token: VAR.token }),
         body: {
             userId: VAR.userId1,
             content: "aaaaaaaaaaaa",
@@ -39,12 +39,29 @@ export const SendDmMessageWS = new WSBuilder()
             ok: true,
         },
     })
-    .addStepEvents('event send dm message', VAR.actor, ACTION.SEND_DM_MESSAGE, [
+    .addStepEvents('event send dm message', [VAR.actor, VAR.recipient], ACTION.SEND_DM_MESSAGE, [
+        {
+            type: chain.expect.exact(API_EVENT.halome.v3.chat.OUTGOING_MESSAGE_REQUEST_CREATED),
+            author: 'Actor',
+            source: chain.expect.exact({
+                userId: VAR.userId,
+                deviceId: VAR.deviceId,
+            }),
+            specversion: chain.expect.exact('1.0'),
+            version: chain.expect.exact('2.0'),
+            data: chain.expect.builder(
+                new ChannelDataBuilder()
+                    .setChannel({
+                        userId: VAR.userId
+                    })
+            )
+        },
         {
             type: chain.expect.exact(API_EVENT.halome.v3.chat.MESSAGE_CREATED),
+            author: 'Actor',
             source: chain.expect.exact({
-                userId: VAR.userId1,
-                deviceId: VAR.deviceId1,
+                userId: VAR.userId,
+                deviceId: VAR.deviceId,
             }),
             specversion: chain.expect.exact('1.0'),
             version: chain.expect.exact('2.0'),
@@ -57,15 +74,51 @@ export const SendDmMessageWS = new WSBuilder()
         },
         {
             type: chain.expect.exact(API_EVENT.halome.v3.chat.USER_UNREAD_MESSAGE_UPDATED),
+            author: 'Actor',
+            source: chain.expect.exact({
+                userId: VAR.userId,
+                deviceId: VAR.deviceId,
+            }),
+            specversion: chain.expect.exact('1.0'),
+            version: chain.expect.exact('2.0'),
+            data: chain.expect.exact({
+                workspaceId: VAR.workspaceId
+            })
+        },
+        {
+            type: chain.expect.exact(API_EVENT.halome.v3.chat.INCOMING_MESSAGE_REQUEST_CREATED),
+            author: 'Recipient',
             source: chain.expect.exact({
                 userId: VAR.userId1,
                 deviceId: VAR.deviceId1,
             }),
             specversion: chain.expect.exact('1.0'),
             version: chain.expect.exact('2.0'),
-            data: chain.expect.exact({
-                userId: VAR.userId1
-            })
+            data: chain.expect.builder(
+                new ChannelDataBuilder()
+                    .setChannel({
+                        userId: VAR.userId1
+                    })
+            )
         },
+        {
+            type: chain.expect.exact(API_EVENT.halome.v3.chat.MESSAGE_CREATED),
+            author: 'Recipient',
+            source: chain.expect.exact({
+                userId: VAR.userId1,
+                deviceId: VAR.deviceId1,
+            }),
+            specversion: chain.expect.exact('1.0'),
+            version: chain.expect.exact('2.0'),
+            data: chain.expect.builder(
+                new MessageDataBuilder()
+                    .setMessage({
+                        userId: VAR.userId1
+                    })
+            )
+        }
     ])
+
+    .addResume('resume send dm message', VAR.actor, API_EVENT.halome.v3.chat.MESSAGE_CREATED, VAR.id)
+
     .execute();

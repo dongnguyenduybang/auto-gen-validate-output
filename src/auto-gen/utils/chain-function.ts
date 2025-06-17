@@ -23,7 +23,7 @@ export const chain = {
           isEqual: true,
           allDifferences: [],
         };
-        const result = deepEqual(actualToCompare, resolvedExpected);
+        const result = deepEqual(actualToCompare, resolvedExpected, '', false);
         if (!result.isEqual && result.differences) {
           results.isEqual = false;
           results.allDifferences.push(...result.differences);
@@ -45,53 +45,96 @@ export const chain = {
           isEqual: true,
           allDifferences: [],
         };
-        const result = deepEqual(actual.data, resolvedExpected.data, '', true); // compare filter  expect
+
+        let body: any, action: string
+
+        const result = deepEqual(actual.data, resolvedExpected.data, '', false, true);// compare filter  expect
+        // console.log(JSON.stringify(resolvedExpected, null, 2))
+        // console.log(JSON.stringify(result.nonMatchingActual, null, 2))
         if (!result.isEqual && result.differences) {
           results.isEqual = false;
           results.allDifferences.push(...result.differences);
-        } // expected config
-
-        // expected các field còn lại
+        }
         if (
           result.nonMatchingActual &&
           actual.source !== API_EVENT.halome.cloudevent.system
         ) {
+
+          // !== system
+          let dataApiRemove;
           // data non matching compare with data from api step
-          const dataApi = actual.apiData; // data from api step
-          const dataApiRemove = removeExpectedFields(
-            dataApi.data,
-            resolvedExpected.data,
-          );
+          const isEventTypeMatch = [
+            API_EVENT.halome.v3.chat.OUTGOING_MESSAGE_REQUEST_CREATED,
+            API_EVENT.halome.v3.chat.INCOMING_MESSAGE_REQUEST_CREATED
+          ].includes(actual?.type);
+
+          if (isEventTypeMatch) {
+            const getLastUserId = actual.data.includes.channelMetadata[0].dmId;
+            const resultLastUserId = getLastUserId.split('_')[1];
+            body = {
+              userId: resultLastUserId
+            };
+            action = 'getDmChannel';
+            const responseApiSystem = await callAPIForSystem(
+              body,
+              actual.body.resolveHeader,
+              action,
+            );
+
+            dataApiRemove = await removeExpectedFields(
+              responseApiSystem.data,
+              resolvedExpected.data,
+            );
+          } else {
+            const dataApi = actual.apiData;
+            // console.log(JSON.stringify(dataApi, null,2))
+            dataApiRemove = removeExpectedFields(
+              dataApi.data,
+              resolvedExpected.data,
+            );
+          }
           const expectedNonMatch = result.nonMatchingActual;
+          // console.log(JSON.stringify(dataApiRemove, null, 2))
+          // console.log(JSON.stringify(expectedNonMatch, null, 2))
           const resultNonMatch = deepEqual(dataApiRemove, expectedNonMatch, '');
           if (!resultNonMatch.isEqual && resultNonMatch.differences) {
             results.isEqual = false;
             results.allDifferences.push(...resultNonMatch.differences);
           }
         } else {
-          let body, action
+          // system
           const getLastMsgId =
             actual.data.includes.channelMetadata[0].lastMessageId;
           const getLastChannelId =
             actual.data.includes.channelMetadata[0].channelId;
           const getLastUserId = actual.data.includes.channelMetadata[0].dmId
-          if (actual.action.find("Dm")) {
+
+          const isDmAction = typeof actual?.action === 'string' && actual.action.includes("Dm");
+          const isEventTypeMatch = [
+            API_EVENT.halome.v3.chat.OUTGOING_MESSAGE_REQUEST_CREATED,
+            API_EVENT.halome.v3.chat.INCOMING_MESSAGE_REQUEST_CREATED
+          ].includes(actual?.type);
+          if (isDmAction && isEventTypeMatch) {
+            body = {
+              userId: getLastUserId
+            };
+            action = 'getDmChannel';
+          } else if (isDmAction) {
             body = {
               userId: getLastUserId,
               messageId: getLastMsgId
             };
-            action = 'getDmMessage'
+            action = 'getDmMessage';
           } else {
             body = {
-              msgId: getLastMsgId,
-              channelId: getLastChannelId,
+              workspaceId: '0',
+              messageId: getLastMsgId,
+              channelId: getLastChannelId
             };
-            action = 'getMessage'
+            action = 'getMessage';
           }
+
           // expected event system
-
-          console.log(body)
-
           const responseApiSystem = await callAPIForSystem(
             body,
             actual.body.resolveHeader,
@@ -102,6 +145,7 @@ export const chain = {
             responseApiSystem.data,
             resolvedExpected.data,
           );
+      
           const resultApiSystem = deepEqual(
             result.nonMatchingActual,
             dataApiSystem,
@@ -112,6 +156,7 @@ export const chain = {
             results.allDifferences.push(...resultApiSystem.differences);
           }
         }
+
         return results;
       };
       return createMatcher(fn, { type: 'builder', builder, expected });
@@ -160,7 +205,7 @@ function createMatcher(
   return customMatcher;
 }
 
-function removeExpectedFields(originalData, expectedData) {
+function removeExpectedFields(originalData: any, expectedData: any): any {
   // Xử lý dữ liệu không phải object
   if (typeof originalData !== 'object' || originalData === null) {
     return originalData;
@@ -169,313 +214,242 @@ function removeExpectedFields(originalData, expectedData) {
   // Xử lý mảng
   if (Array.isArray(originalData)) {
     // Nếu expected là mảng rỗng → giữ nguyên originalData
-    if (Array.isArray(expectedData) && expectedData.length === 0) {
+    if (!Array.isArray(expectedData) || expectedData.length === 0) {
       return originalData;
     }
-    // Nếu expected có phần tử → dùng phần tử đầu tiên làm template
-    const expectedTemplate = Array.isArray(expectedData)
-      ? expectedData[0]
-      : expectedData;
-    return originalData.map((item) =>
-      removeExpectedFields(item, expectedTemplate),
-    );
+    // Dùng phần tử đầu tiên của expected làm template
+    const expectedTemplate = expectedData[0];
+    return originalData.map((item) => removeExpectedFields(item, expectedTemplate));
   }
 
-  // Xử lý object
-  const result = {};
+  // Xử lý object - CHỈ GIỮ LẠI CÁC FIELD KHÔNG CÓ TRONG CONFIG
+  const result: any = {};
+
   for (const key in originalData) {
-    // Giữ lại field nếu nó không có trong expectedData
+    // Nếu field không có trong expectedData hoặc expectedData là undefined
     if (!expectedData || !(key in expectedData)) {
+      // Giữ nguyên field này
       result[key] = originalData[key];
-    }
-    // Nếu field là object → đệ quy
-    else if (
-      typeof originalData[key] === 'object' &&
-      originalData[key] !== null
-    ) {
+    } else if (typeof originalData[key] === 'object' && originalData[key] !== null) {
+      // Nếu là object thì đệ quy
       result[key] = removeExpectedFields(originalData[key], expectedData[key]);
     }
+    // Bỏ qua các field có trong expectedData
   }
+
   return result;
 }
 
-function deepEqual(
+export function deepEqual(
   x: any, // actual
   y: any, // expected
   path = '',
   ignoreExtraFields = false,
+  ignoreLength = false
 ): {
   isEqual: boolean;
   differences?: string[];
   nonMatchingActual?: any;
   path: string;
 } {
-  // Trường hợp cùng reference hoặc primitive values bằng nhau
-  if (x === y) return { isEqual: true, path: path };
 
-  // Kiểm tra null/undefined và type
-  if (
-    x == null ||
-    y == null ||
-    typeof x !== 'object' ||
-    typeof y !== 'object'
-  ) {
+  if (x === y) return { isEqual: true, path };
+
+  if (x == null || y == null) {
     return {
       isEqual: false,
       differences: [
         `${path} => actual: ${JSON.stringify(x)} !== expected: ${JSON.stringify(y)}`,
       ],
-      nonMatchingActual: x,
-      path: path,
+      path,
     };
   }
 
-  // Xử lý đặc biệt cho mảng - so sánh theo nội dung thay vì theo index
-  if (Array.isArray(x) && Array.isArray(y)) {
-    return compareArraysByContent(x, y, path, ignoreExtraFields);
+  if (typeof x !== typeof y) {
+    return {
+      isEqual: false,
+      differences: [
+        `${path}: type mismatch (actual: ${typeof x}, expected: ${typeof y})`,
+      ],
+      path,
+    };
   }
 
-  const keysX = Object.keys(x); // Keys của actual
-  const keysY = Object.keys(y); // Keys của expected
-  const differences: string[] = [];
-  const nonMatchingActual: any = Array.isArray(x) ? [] : {};
+  // Kiểm tra mảng
+  if (Array.isArray(x) && Array.isArray(y)) {
+    return compareArraysByContent(x, y, path, ignoreExtraFields, ignoreLength);
+  }
 
-  // Duyệt keysX để kiểm tra tất cả field trong actual
-  for (const key of keysX) {
-    const currentPath = path ? `${path}.${key}` : key;
+  // Kiểm tra đối tượng
+  if (typeof x === 'object' && typeof y === 'object') {
+    const keysY = Object.keys(y);
+    const keysX = Object.keys(x);
+    const differences: string[] = [];
+    const nonMatchingActual: any = {};
 
-    if (!(key in y)) {
-      // Field chỉ có trong actual, lưu toàn bộ cụm
-      nonMatchingActual[key] = x[key];
-      if (!ignoreExtraFields) {
+    for (const key of keysY) {
+      const currentPath = path ? `${path}.${key}` : key;
+
+      if (!(key in x)) {
         differences.push(
-          `${currentPath}: missing in expected (actual has ${JSON.stringify(x[key])})`,
+          `${currentPath}: missing in actual (expected has ${JSON.stringify(y[key])})`,
         );
+        continue;
       }
-      continue;
+
+      const result = deepEqual(x[key], y[key], currentPath, ignoreExtraFields);
+      if (!result.isEqual && result.differences) {
+        differences.push(...result.differences);
+      }
+      if (result.nonMatchingActual !== undefined) {
+        nonMatchingActual[key] = result.nonMatchingActual;
+      }
     }
 
-    // Field có trong cả actual và expected, so sánh đệ quy
-    const result = deepEqual(x[key], y[key], currentPath, ignoreExtraFields);
-    if (!result.isEqual && result.differences) {
-      differences.push(...result.differences);
-    }
-    // Lưu nonMatchingActual từ kết quả đệ quy
-    if (ignoreExtraFields) {
+    if (!ignoreExtraFields) {
       for (const key of keysX) {
         if (!(key in y)) {
           nonMatchingActual[key] = x[key];
-        } else {
-          // Kiểm tra nếu có object con không được expect đầy đủ
-          const childResult = deepEqual(x[key], y[key], '', true);
-          if (childResult.nonMatchingActual !== undefined) {
-            nonMatchingActual[key] = childResult.nonMatchingActual;
-          }
         }
       }
     }
-  }
 
-  // Kiểm tra các field chỉ có trong expected
-  for (const key of keysY) {
-    const currentPath = path ? `${path}.${key}` : key;
-    if (!(key in x)) {
-      differences.push(
-        `${currentPath}: missing in actual (expected has ${JSON.stringify(y[key])})`,
-      );
-    }
+    return {
+      isEqual: differences.length === 0,
+      differences: differences.length > 0 ? differences : undefined,
+      nonMatchingActual: Object.keys(nonMatchingActual).length > 0 ? nonMatchingActual : undefined,
+      path,
+    };
   }
 
   return {
-    isEqual: differences.length === 0,
-    differences: differences.length > 0 ? differences : undefined,
-    nonMatchingActual:
-      Object.keys(nonMatchingActual).length > 0 ? nonMatchingActual : undefined,
-    path: path,
+    isEqual: false,
+    differences: [
+      `${path} => actual: ${JSON.stringify(x)} !== expected: ${JSON.stringify(y)}`,
+    ],
+    path,
   };
 }
 
 function compareArraysByContent(
-  actualArray: any[],
-  expectedArray: any[],
+  x: any[], // actual
+  y: any[], // expected
   path: string,
   ignoreExtraFields: boolean,
-): {
-  isEqual: boolean;
-  differences?: string[];
-  nonMatchingActual?: any;
-  path: string;
-} {
+  ignoreLength
+) {
   const differences: string[] = [];
   const nonMatchingActual: any[] = [];
 
-  // Nếu độ dài khác nhau và không ignore extra fields
-  if (actualArray.length !== expectedArray.length && !ignoreExtraFields) {
+  if (!x || !y) {
     differences.push(
-      `${path}.length => actual: ${actualArray.length} !== expected: ${expectedArray.length}`,
+      `${path}: invalid array (actual: ${JSON.stringify(x)}, expected: ${JSON.stringify(y)})`,
     );
-  }
-
-  // Kiểm tra xem mảng có chứa object với unique key không (như userId)
-  const hasUniqueKey =
-    actualArray.length > 0 &&
-    expectedArray.length > 0 &&
-    typeof actualArray[0] === 'object' &&
-    actualArray[0] !== null &&
-    ('userId' in actualArray[0] || 'id' in actualArray[0]);
-
-  if (hasUniqueKey) {
-    // Sử dụng unique key để so sánh
-    const uniqueKey = 'userId' in actualArray[0] ? 'userId' : 'id';
-    return compareArraysByUniqueKey(
-      actualArray,
-      expectedArray,
+    return {
+      isEqual: false,
+      differences,
+      nonMatchingActual: x,
       path,
-      uniqueKey,
-      ignoreExtraFields,
+    };
+  }
+
+
+  if (x.length !== y.length && !ignoreExtraFields && ignoreLength) {
+    differences.push(
+      `${path}: array length mismatch (actual: ${x.length}, expected: ${y.length})`,
     );
+    return {
+      isEqual: false,
+      differences,
+      nonMatchingActual: x,
+      path,
+    };
   }
 
-  // Fallback: so sánh theo nội dung tổng quát
-  const remainingExpected = [...expectedArray];
-  const unmatchedActual: any[] = [];
+  const keyField = detectKeyField(x, y);
+  if (keyField) {
 
-  for (let i = 0; i < actualArray.length; i++) {
-    const actualItem = actualArray[i];
-    let foundMatch = false;
+    const xMap = new Map(x.map((item) => [item[keyField], item]));
+   const yIndexMap = new Map(y.map((item, index) => [item[keyField], index]));
 
-    for (let j = 0; j < remainingExpected.length; j++) {
-      const expectedItem = remainingExpected[j];
-
-      const compareResult = deepEqual(
-        actualItem,
-        expectedItem,
-        `${path}[${i}]`,
-        ignoreExtraFields,
-      );
-
-      if (compareResult.isEqual) {
-        remainingExpected.splice(j, 1);
-        foundMatch = true;
-        break;
-      }
-    }
-
-    if (!foundMatch) {
-      unmatchedActual.push(actualItem);
-      if (!ignoreExtraFields) {
+    for (const [key, yItem] of y.map((item, index) => [item[keyField], item])) {
+      const xItem = xMap.get(key);
+      if (!xItem) {
         differences.push(
-          `${path}[${i}]: no matching item found in expected array`,
+          `${path}: missing ${keyField} ${key} in actual (expected has ${JSON.stringify(yItem)})`,
         );
+        continue;
+      }
+
+      const index = yIndexMap.get(key);
+      const currentPath = `${path}[${index}]`;
+      const result = deepEqual(xItem, yItem, currentPath,ignoreExtraFields, ignoreExtraFields);
+      if (!result.isEqual && result.differences) {
+        differences.push(...result.differences);
+      }
+      if (result.nonMatchingActual !== undefined) {
+        nonMatchingActual.push(result.nonMatchingActual);
       }
     }
-  }
 
-  // Kiểm tra items còn lại trong expected
-  if (!ignoreExtraFields) {
-    for (let i = 0; i < remainingExpected.length; i++) {
-      differences.push(
-        `${path}: missing item in actual array (expected has ${JSON.stringify(remainingExpected[i])})`,
-      );
+    if (!ignoreExtraFields) {
+      for (const [key] of xMap) {
+        if (!yIndexMap.has(key)) {
+          nonMatchingActual.push(xMap.get(key));
+        }
+      }
+    }
+  } else {
+
+    for (let i = 0; i < y.length; i++) {
+      const currentPath = path ? `${path}[${i}]` : `[${i}]`;
+
+      if (i >= x.length) {
+        differences.push(`${currentPath}: missing in actual (expected ${JSON.stringify(y[i])})`);
+        continue;
+      }
+
+      const result = deepEqual(x[i], y[i], currentPath, ignoreExtraFields);
+      if (!result.isEqual && result.differences) {
+        differences.push(...result.differences);
+      }
+      if (result.nonMatchingActual !== undefined) {
+        nonMatchingActual[i] = result.nonMatchingActual;
+      }
+    }
+
+    if (!ignoreExtraFields) {
+      for (let i = y.length; i < x.length; i++) {
+        nonMatchingActual[i] = x[i];
+      }
     }
   }
 
   return {
     isEqual: differences.length === 0,
     differences: differences.length > 0 ? differences : undefined,
-    nonMatchingActual: unmatchedActual.length > 0 ? unmatchedActual : undefined,
-    path: path,
+    nonMatchingActual: nonMatchingActual.length > 0 ? nonMatchingActual : undefined,
+    path,
   };
 }
 
-function compareArraysByUniqueKey(
-  actualArray: any[],
-  expectedArray: any[],
-  path: string,
-  uniqueKey: string, // ví dụ: 'userId', 'id'
-  ignoreExtraFields: boolean,
-): {
-  isEqual: boolean;
-  differences?: string[];
-  nonMatchingActual?: any;
-  path: string;
-} {
-  const differences: string[] = [];
-  const nonMatchingActual: any[] = [];
+function detectKeyField(x: any[], y: any[]): string | null {
+  if (x.length === 0 || y.length === 0) return null;
 
-  if (actualArray.length !== expectedArray.length) {
-    differences.push(
-      `${path}.length => actual: ${actualArray.length} !== expected: ${expectedArray.length}`,
-    );
-  }
+  const potentialKeys = ['userId', 'id', 'channelId', 'messageId'];
 
-  // Tạo map từ expected array theo unique key
-  const expectedMap = new Map();
-  expectedArray.forEach((item, index) => {
-    if (item && typeof item === 'object' && uniqueKey in item) {
-      expectedMap.set(item[uniqueKey], { item, originalIndex: index });
-    }
-  });
-
-  // So sánh từng item trong actual với expected
-  for (let i = 0; i < actualArray.length; i++) {
-    const actualItem = actualArray[i];
-
-    if (
-      !actualItem ||
-      typeof actualItem !== 'object' ||
-      !(uniqueKey in actualItem)
-    ) {
-      differences.push(`${path}[${i}]: missing ${uniqueKey} field`);
-      nonMatchingActual.push(actualItem);
-      continue;
-    }
-
-    const keyValue = actualItem[uniqueKey];
-    const expectedData = expectedMap.get(keyValue);
-
-    if (!expectedData) {
-      // Không tìm thấy item với key tương ứng
-      if (!ignoreExtraFields) {
-        differences.push(
-          `${path}[${i}]: no item with ${uniqueKey}="${keyValue}" found in expected array`,
-        );
+  for (const key of potentialKeys) {
+    const allHaveKey =
+      x.every((item) => item && typeof item === 'object' && key in item) &&
+      y.every((item) => item && typeof item === 'object' && key in item);
+    if (allHaveKey) {
+      const xKeys = new Set(x.map((item) => item[key]));
+      const yKeys = new Set(y.map((item) => item[key]));
+      if (xKeys.size === x.length && yKeys.size === y.length) {
+        return key;
       }
-      nonMatchingActual.push(actualItem);
-    } else {
-      // Tìm thấy item, so sánh deep
-      const compareResult = deepEqual(
-        actualItem,
-        expectedData.item,
-        `${path}[${i}]`,
-        ignoreExtraFields,
-      );
-
-      if (!compareResult.isEqual && compareResult.differences) {
-        differences.push(...compareResult.differences);
-      }
-
-      if (compareResult.nonMatchingActual) {
-        nonMatchingActual.push(compareResult.nonMatchingActual);
-      }
-
-      // Remove từ map để track missing items
-      expectedMap.delete(keyValue);
     }
   }
 
-  // Kiểm tra items còn lại trong expected mà không có trong actual
-  expectedMap.forEach((expectedData, keyValue) => {
-    differences.push(
-      `${path}: missing item with ${uniqueKey}="${keyValue}" in actual array`,
-    );
-  });
-
-  return {
-    isEqual: differences.length === 0,
-    differences: differences.length > 0 ? differences : undefined,
-    nonMatchingActual:
-      nonMatchingActual.length > 0 ? nonMatchingActual : undefined,
-    path: path,
-  };
+  return null;
 }

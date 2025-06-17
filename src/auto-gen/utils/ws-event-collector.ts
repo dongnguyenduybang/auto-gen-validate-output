@@ -178,10 +178,10 @@ export class WebSocketEventCollector {
     }
     try {
       this.ws.send(JSON.stringify(message));
-      console.log(
-        `Sent message from ${this.isActor ? 'Actor' : 'Recipient'}:`,
-        message,
-      );
+      // console.log(
+      //   `Sent message from ${this.isActor ? 'Actor' : 'Recipient'}:`,
+      //   message,
+      // );
     } catch (error) {
       console.error(
         `Failed to send message from ${this.isActor ? 'Actor' : 'Recipient'}:`,

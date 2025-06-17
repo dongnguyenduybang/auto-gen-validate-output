@@ -131,7 +131,7 @@ export class EventContext {
 export class ResumeContext {
   private entries: ResumeEntry[] = [];
 
-  public addResumeEvents(action: string, events: any[], title: string) {
+  public addResumeEvents(author: string, events: any[], title: string) {
     const resumeEvents: ResumeEvent[] = events.map((event) => ({
       title: title,
       type: event.type,
@@ -142,7 +142,7 @@ export class ResumeContext {
       },
     }));
 
-    const existingEntry = this.entries.find((entry) => entry.action === action);
+    const existingEntry = this.entries.find((entry) => entry.author === author);
 
     if (existingEntry) {
       const newResumeEvents = resumeEvents.filter(
@@ -154,7 +154,7 @@ export class ResumeContext {
       existingEntry.resume.push(...newResumeEvents);
     } else {
       this.entries.push({
-        action,
+        author,
         resume: resumeEvents,
       });
     }
@@ -165,54 +165,81 @@ export class ResumeContext {
   }
 
   // Lấy resume events cho một action cụ thể
-  public getResumeEvents(action: string): ResumeEvent[] {
-    const entry = this.entries.find((e) => e.action === action);
+  public getResumeEvents(author: string): ResumeEvent[] {
+    const entry = this.entries.find((e) => e.author === author);
     return entry ? entry.resume : [];
   }
 
   public getEventDataByActionAndTitle(
-    action: string,
+    author: string,
     title: string,
     data,
     type: string,
   ): { id: string; time: string } | null {
-    const entry = this.entries.find((e) => e.action === action);
+    const entry = this.entries.find((e) => e.author === author);
 
     if (!entry) {
       return null;
     }
     const event = entry.resume.find(
-      (e) => e.title === title && (!type || e.type === type),
+      (e) => e.type === type,
     );
     return event ? event.data : null;
   }
   public getEventToken(
-    action: string,
+    author: string,
     title: string,
     data: string,
     type: string,
   ) {
+    console.log('Inside getEventToken', { author, title, data, type });
     const dataEvent = this.getEventDataByActionAndTitle(
-      action,
+      author,
       title,
       data,
       type,
     );
+    console.log('dataEvent:', dataEvent);
     return dataEvent;
   }
 
-  public findResumePoint(action: string, eventId: string, data: string) {
-    const entry = this.entries.find((e) => e.action === action);
-    if (!entry) return null;
+  public findResumePoint(author: string, eventId: string, data: string, type?: string) {
+    // Find the entry matching the author
+    const entry = this.entries.find((e) => e.author === author);
+    if (!entry) {
+      console.warn(`No entry found for author: ${author}`);
+      return null;
+    }
 
-    const index = entry.resume.findIndex((r) => r.data[data] === eventId);
+    // Find all matching resume points (could be multiple if same eventId appears in different contexts)
+    const matchingResumes = entry.resume
+      .map((r, index) => ({ ...r, originalIndex: index }))
+      .filter(r => {
+        // Basic match on data field
+        const dataMatch = r.data[data] === eventId;
 
-    if (index === -1) return null;
+        // Optional type matching if provided
+        const typeMatch = type ? r.type === type : true;
+
+        return dataMatch && typeMatch;
+      });
+
+    if (matchingResumes.length === 0) {
+      console.warn(`No resume point found for author ${author} with ${data}=${eventId}` +
+        (type ? ` and type=${type}` : ''));
+      return null;
+    }
+
+    // If multiple matches, we could add logic to select the most relevant one
+    // For now, we'll take the first match (you might want to add prioritization logic)
+    const selectedResume = matchingResumes[0];
 
     return {
-      action,
-      events: entry.resume.slice(index),
-      startIndex: index,
+      author,
+      events: entry.resume.slice(selectedResume.originalIndex),
+      startIndex: selectedResume.originalIndex,
+      matchedResume: selectedResume, // Include the actual matched resume point
+      totalMatches: matchingResumes.length // Useful for debugging
     };
   }
 

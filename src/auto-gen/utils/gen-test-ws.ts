@@ -23,15 +23,28 @@ export function genTestWS(dtoName: string) {
           `
         it('${step.title}', async () => {
           currentTestCaseTitle = '${step.title}';
-          const results = await executeAllSteps(${classNameCapitalized}WS.options[0].steps[${index}].step, contextData, eventContext);
+          const results = await executeWS(${classNameCapitalized}WS.options[0].steps[${index}].step, contextData, eventContext, resumeContext, '', globalCollectors);
           results.forEach((result) => {
             allSteps.push({
-              ...result,
+              result,
               caseTitle: currentTestCaseTitle,
               phase: 'test',
             });
           });
-        });
+
+          const eventsStep = ${classNameCapitalized}WS.options
+          ?.find((option) => option.events)?. events
+
+              const resultsEvent = await executeWS(
+                eventsStep,
+                contextData,
+                eventContext,
+                resumeContext,
+                'events',
+                globalCollectors,
+              );
+
+        }, 3000);
       `,
       )
       .join('\n');
@@ -40,10 +53,11 @@ export function genTestWS(dtoName: string) {
     import path from 'path';
     import fs from 'fs';
     import { getTime } from '../../utils/helper';
-    import { TestContext, WSSContext, EventContext } from '../../utils/text-context';
+    import { TestContext, WSSContext, EventContext, ResumeContext } from '../../utils/text-context';
     import { executeWS } from '../../utils/execute-ws';
     import { executeAllSteps } from '../../utils/test-executor';
     import { ${classNameCapitalized}WS } from './${dtoName}.ws';
+    import { WebSocketEventCollector } from '../../utils/ws-event-collector';
 
     describe('Test sagas for ${dtoName}', () => {
       let pathRequest: string;
@@ -51,9 +65,12 @@ export function genTestWS(dtoName: string) {
       let context: TestContext;
       let globalWSSContext: WSSContext;
       let eventContext: EventContext;
-      let allSteps: any[] = [];
+      const allSteps: any[] = [];
       let contextData;
       let currentTestCaseTitle;
+      let resumeContext: ResumeContext;
+      const globalCollectors: Record<string, WebSocketEventCollector> = {};
+      
 
       beforeAll(async () => {
         pathRequest = '${classNameCapitalized}WS';
@@ -61,19 +78,28 @@ export function genTestWS(dtoName: string) {
         context = new TestContext();
         globalWSSContext = new WSSContext();
         eventContext = new EventContext();
+        resumeContext = new ResumeContext();
+        contextData = globalThis.globalContext;
 
-        const beforeEachSteps = ${classNameCapitalized}WS.options
+        const beforeAllSteps = ${classNameCapitalized}WS.options
           ?.find((option) => option.beforeEach)
           ?.beforeEach || [];
 
-        if (beforeEachSteps.length > 0) {
+        if (beforeAllSteps.length > 0) {
           contextData = context.clone();
-          const results = await executeWS(beforeEachSteps, contextData, eventContext);
+          const results = await executeWS(
+            beforeAllSteps,
+            contextData,
+            eventContext,
+            resumeContext,
+            'beforeAll',
+            globalCollectors,
+          );
           results.forEach((result) => {
             allSteps.push({
-              ...result,
+              result,
               caseTitle: 'Case',
-              phase: 'beforeEach',
+              phase: 'beforeAll',
             });
           });
         } else {

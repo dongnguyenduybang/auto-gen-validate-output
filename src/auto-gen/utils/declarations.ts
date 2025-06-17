@@ -75,42 +75,49 @@ export interface EventStep {
 export interface EventValidation {
   eventIndex: number;
   eventType: string;
+  eventAuthor: string;
   isPassed: boolean;
-  error?: string; // true nếu cả SOURCE, TYPE và DATA đều pass
+  error?: string;
   specversionResult?: {
     isEqual: boolean;
-    differences?: string[];
+    allDifferences?: string[];
   };
   versionResult?: {
     isEqual: boolean;
-    differences?: string[];
+    allDifferences?: string[];
   };
   sourceResult?: {
     isEqual: boolean;
-    differences?: string[];
+    allDifferences?: string[];
   };
   typeResult?: {
     isEqual: boolean;
-    differences?: string[];
+    allDifferences?: string[];
   };
   dataResult?: {
     isEqual: boolean;
-    differences?: string[];
+    allDifferences?: string[];
   };
 }
 
-export interface StepValidationResult {
-  author: string;
-  stepAction: string;
+interface AuthorResults {
   totalEvents: number;
-  eventList: string[];
+  eventExpected: number;
+  missingEventExpected: string[];
   passedEvents: number;
   failedEvents: number;
-  missingEvents?: string[];
-  extraEvents?: string[];
-  orderIsValid: boolean; // New field to track order validation
+  missingEvents: string[];
+  extraEvents: string[];
+  orderIsValid: boolean;
   duplicateEvents: string[];
-  eventResults: EventValidation[];
+  events: EventValidation[];
+}
+
+export interface StepValidationResult {
+  author: string[];
+  stepAction: string;
+  actorResults: AuthorResults;
+  recipientResults: AuthorResults;
 }
 
 interface EventMatcher {
@@ -247,7 +254,7 @@ export interface ResumeEvent {
 }
 
 export interface ResumeEntry {
-  action: string;
+  author: string;
   resume: ResumeEvent[];
 }
 
@@ -317,3 +324,43 @@ export interface BuilderMatcherResult {
 export interface DataContainer {
   data: unknown;
 }
+
+
+export type SimpleEventConfig = {
+  scenarios: {
+    DEFAULT: {
+      actor: string[];
+      recipient: string[];
+      minCount?: number;
+    }
+  }
+};
+
+export type ScenarioEventConfig = {
+  scenarios: {
+    NEW_CONTACT: {
+      actor: string[];
+      recipient: string[];
+      minCount?: number;
+    };
+    EXISTING_CONTACT: {
+      actor: string[];
+      recipient: string[];
+      minCount?: number;
+    };
+    DEFAULT: {
+      actor: string[];
+      recipient: string[];
+      minCount?: number;
+    };
+  };
+};
+
+export type EventConfig = SimpleEventConfig | ScenarioEventConfig;
+
+export type DeepEqualResult = {
+  isEqual: boolean;
+  differences?: string[];
+  nonMatchingActual?: any;
+  path: string;
+};
