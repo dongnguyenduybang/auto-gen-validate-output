@@ -27,6 +27,8 @@ export class SendDmMessageDTO {
 
   @IsString()
   @IsDefined()
+  @IsNotNull()
   @MinLength(1)
+  @IsNotEmpty()
   ref: string = '';
 }

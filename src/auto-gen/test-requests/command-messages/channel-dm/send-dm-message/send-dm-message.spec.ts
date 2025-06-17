@@ -183,11 +183,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -315,11 +331,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -447,11 +479,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -579,11 +627,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -711,11 +775,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -843,11 +923,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -975,11 +1071,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -1107,11 +1219,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -1239,11 +1367,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -1254,8 +1398,156 @@
               }
             });
 
-            it('Test case #10 should return errors [] when body {"userId":"{{userId1}}","content":"test response send dm message","ref":"ref"}', async () => {
+            it('Test case #10 should return errors ["Could not resolve permission type"] when body {"userId":123,"content":"test response send dm message","ref":null}', async () => {
               testNumber = 10;
+              totalTests++;
+              const payloadObj = {"userId":123,"content":"test response send dm message","ref":null};
+              resolvedData = resolveVariables(payloadObj, globalContext);
+              
+              try {
+                const response = await resolveCallAPI(
+                  "sendDmMessage",
+                  {"x-session-token":"{{token}}"},
+                  {"userId":123,"content":"test response send dm message","ref":null},
+                  contextData
+                );
+                const data = response.data;
+                const expectJson = ["Could not resolve permission type"].sort();
+
+                let expectDetails;
+                let softExpectDetails;
+                switch (response.status) {
+                  case 200:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                  case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                  case 403:
+                    expectDetails = Array.isArray(data) ? data : [data];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                  case 500:
+                    failedTests.push({
+                      testcase: testNumber,
+                      code: 500,
+                      errorDetails: expectJson,
+                    });
+                    break;
+                  default:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                }
+              } catch (error) {
+                console.error('Error in test case #' + testNumber, error);
+                failedTests.push({
+                  testcase: testNumber,
+                  error: error.message
+                });
+              }
+            });
+
+            it('Test case #11 should return errors [] when body {"userId":"{{userId1}}","content":"test response send dm message","ref":"ref"}', async () => {
+              testNumber = 11;
               totalTests++;
               const payloadObj = {"userId":"{{userId1}}","content":"test response send dm message","ref":"ref"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -1371,11 +1663,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -1386,8 +1694,8 @@
               }
             });
 
-            it('Test case #11 should return errors ["content expected string,received number"] when body {"userId":"{{userId1}}","content":123,"ref":"ref"}', async () => {
-              testNumber = 11;
+            it('Test case #12 should return errors ["content expected string,received number"] when body {"userId":"{{userId1}}","content":123,"ref":"ref"}', async () => {
+              testNumber = 12;
               totalTests++;
               const payloadObj = {"userId":"{{userId1}}","content":123,"ref":"ref"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -1503,11 +1811,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -1518,8 +1842,8 @@
               }
             });
 
-            it('Test case #12 should return errors ["content should not be empty","content string must contain at least 1 character(s)"] when body {"userId":"{{userId1}}","content":"","ref":"ref"}', async () => {
-              testNumber = 12;
+            it('Test case #13 should return errors ["content should not be empty","content string must contain at least 1 character(s)"] when body {"userId":"{{userId1}}","content":"","ref":"ref"}', async () => {
+              testNumber = 13;
               totalTests++;
               const payloadObj = {"userId":"{{userId1}}","content":"","ref":"ref"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -1635,11 +1959,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -1650,8 +1990,8 @@
               }
             });
 
-            it('Test case #13 should return errors ["content string must contain at most 2000 character(s)"] when body {"userId":"{{userId1}}","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":"ref"}', async () => {
-              testNumber = 13;
+            it('Test case #14 should return errors ["content string must contain at most 2000 character(s)"] when body {"userId":"{{userId1}}","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":"ref"}', async () => {
+              testNumber = 14;
               totalTests++;
               const payloadObj = {"userId":"{{userId1}}","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":"ref"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -1767,11 +2107,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -1782,8 +2138,8 @@
               }
             });
 
-            it('Test case #14 should return errors ["content required"] when body {"userId":"{{userId1}}","ref":"ref"}', async () => {
-              testNumber = 14;
+            it('Test case #15 should return errors ["content required"] when body {"userId":"{{userId1}}","ref":"ref"}', async () => {
+              testNumber = 15;
               totalTests++;
               const payloadObj = {"userId":"{{userId1}}","ref":"ref"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -1899,11 +2255,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -1914,8 +2286,8 @@
               }
             });
 
-            it('Test case #15 should return errors ["content expected string,received null"] when body {"userId":"{{userId1}}","content":null,"ref":"ref"}', async () => {
-              testNumber = 15;
+            it('Test case #16 should return errors ["content expected string,received null"] when body {"userId":"{{userId1}}","content":null,"ref":"ref"}', async () => {
+              testNumber = 16;
               totalTests++;
               const payloadObj = {"userId":"{{userId1}}","content":null,"ref":"ref"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -2031,11 +2403,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -2046,8 +2434,8 @@
               }
             });
 
-            it('Test case #16 should return errors ["ref expected string,received number"] when body {"userId":"{{userId1}}","content":"test response send dm message","ref":123}', async () => {
-              testNumber = 16;
+            it('Test case #17 should return errors ["ref expected string,received number"] when body {"userId":"{{userId1}}","content":"test response send dm message","ref":123}', async () => {
+              testNumber = 17;
               totalTests++;
               const payloadObj = {"userId":"{{userId1}}","content":"test response send dm message","ref":123};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -2163,11 +2551,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -2178,8 +2582,8 @@
               }
             });
 
-            it('Test case #17 should return errors ["ref string must contain at least 1 character(s)"] when body {"userId":"{{userId1}}","content":"test response send dm message","ref":""}', async () => {
-              testNumber = 17;
+            it('Test case #18 should return errors ["ref should not be empty","ref string must contain at least 1 character(s)"] when body {"userId":"{{userId1}}","content":"test response send dm message","ref":""}', async () => {
+              testNumber = 18;
               totalTests++;
               const payloadObj = {"userId":"{{userId1}}","content":"test response send dm message","ref":""};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -2192,7 +2596,7 @@
                   contextData
                 );
                 const data = response.data;
-                const expectJson = ["ref string must contain at least 1 character(s)"].sort();
+                const expectJson = ["ref should not be empty","ref string must contain at least 1 character(s)"].sort();
 
                 let expectDetails;
                 let softExpectDetails;
@@ -2295,11 +2699,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -2310,8 +2730,8 @@
               }
             });
 
-            it('Test case #18 should return errors ["ref required"] when body {"userId":"{{userId1}}","content":"test response send dm message"}', async () => {
-              testNumber = 18;
+            it('Test case #19 should return errors ["ref required"] when body {"userId":"{{userId1}}","content":"test response send dm message"}', async () => {
+              testNumber = 19;
               totalTests++;
               const payloadObj = {"userId":"{{userId1}}","content":"test response send dm message"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -2427,11 +2847,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -2442,8 +2878,156 @@
               }
             });
 
-            it('Test case #19 should return errors ["Could not resolve permission type"] when body {"content":"test response send dm message","ref":"ref"}', async () => {
-              testNumber = 19;
+            it('Test case #20 should return errors ["ref expected string,received null"] when body {"userId":"{{userId1}}","content":"test response send dm message","ref":null}', async () => {
+              testNumber = 20;
+              totalTests++;
+              const payloadObj = {"userId":"{{userId1}}","content":"test response send dm message","ref":null};
+              resolvedData = resolveVariables(payloadObj, globalContext);
+              
+              try {
+                const response = await resolveCallAPI(
+                  "sendDmMessage",
+                  {"x-session-token":"{{token}}"},
+                  {"userId":"{{userId1}}","content":"test response send dm message","ref":null},
+                  contextData
+                );
+                const data = response.data;
+                const expectJson = ["ref expected string, received null"].sort();
+
+                let expectDetails;
+                let softExpectDetails;
+                switch (response.status) {
+                  case 200:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                  case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                  case 403:
+                    expectDetails = Array.isArray(data) ? data : [data];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                  case 500:
+                    failedTests.push({
+                      testcase: testNumber,
+                      code: 500,
+                      errorDetails: expectJson,
+                    });
+                    break;
+                  default:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                }
+              } catch (error) {
+                console.error('Error in test case #' + testNumber, error);
+                failedTests.push({
+                  testcase: testNumber,
+                  error: error.message
+                });
+              }
+            });
+
+            it('Test case #21 should return errors ["Could not resolve permission type"] when body {"content":"test response send dm message","ref":"ref"}', async () => {
+              testNumber = 21;
               totalTests++;
               const payloadObj = {"content":"test response send dm message","ref":"ref"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -2559,11 +3143,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -2574,8 +3174,8 @@
               }
             });
 
-            it('Test case #20 should return errors ["Could not resolve permission type"] when body {"content":123,"ref":"ref"}', async () => {
-              testNumber = 20;
+            it('Test case #22 should return errors ["Could not resolve permission type"] when body {"content":123,"ref":"ref"}', async () => {
+              testNumber = 22;
               totalTests++;
               const payloadObj = {"content":123,"ref":"ref"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -2691,11 +3291,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -2706,8 +3322,8 @@
               }
             });
 
-            it('Test case #21 should return errors ["Could not resolve permission type"] when body {"content":"","ref":"ref"}', async () => {
-              testNumber = 21;
+            it('Test case #23 should return errors ["Could not resolve permission type"] when body {"content":"","ref":"ref"}', async () => {
+              testNumber = 23;
               totalTests++;
               const payloadObj = {"content":"","ref":"ref"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -2823,11 +3439,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -2838,8 +3470,8 @@
               }
             });
 
-            it('Test case #22 should return errors ["Could not resolve permission type"] when body {"content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":"ref"}', async () => {
-              testNumber = 22;
+            it('Test case #24 should return errors ["Could not resolve permission type"] when body {"content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":"ref"}', async () => {
+              testNumber = 24;
               totalTests++;
               const payloadObj = {"content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":"ref"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -2955,11 +3587,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -2970,8 +3618,8 @@
               }
             });
 
-            it('Test case #23 should return errors ["Could not resolve permission type"] when body {"ref":"ref"}', async () => {
-              testNumber = 23;
+            it('Test case #25 should return errors ["Could not resolve permission type"] when body {"ref":"ref"}', async () => {
+              testNumber = 25;
               totalTests++;
               const payloadObj = {"ref":"ref"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -3087,11 +3735,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -3102,8 +3766,8 @@
               }
             });
 
-            it('Test case #24 should return errors ["Could not resolve permission type"] when body {"content":null,"ref":"ref"}', async () => {
-              testNumber = 24;
+            it('Test case #26 should return errors ["Could not resolve permission type"] when body {"content":null,"ref":"ref"}', async () => {
+              testNumber = 26;
               totalTests++;
               const payloadObj = {"content":null,"ref":"ref"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -3219,11 +3883,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -3234,8 +3914,8 @@
               }
             });
 
-            it('Test case #25 should return errors ["Could not resolve permission type"] when body {"content":"test response send dm message","ref":123}', async () => {
-              testNumber = 25;
+            it('Test case #27 should return errors ["Could not resolve permission type"] when body {"content":"test response send dm message","ref":123}', async () => {
+              testNumber = 27;
               totalTests++;
               const payloadObj = {"content":"test response send dm message","ref":123};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -3351,11 +4031,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -3366,8 +4062,8 @@
               }
             });
 
-            it('Test case #26 should return errors ["Could not resolve permission type"] when body {"content":"test response send dm message","ref":""}', async () => {
-              testNumber = 26;
+            it('Test case #28 should return errors ["Could not resolve permission type"] when body {"content":"test response send dm message","ref":""}', async () => {
+              testNumber = 28;
               totalTests++;
               const payloadObj = {"content":"test response send dm message","ref":""};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -3483,11 +4179,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -3498,8 +4210,8 @@
               }
             });
 
-            it('Test case #27 should return errors ["Could not resolve permission type"] when body {"content":"test response send dm message"}', async () => {
-              testNumber = 27;
+            it('Test case #29 should return errors ["Could not resolve permission type"] when body {"content":"test response send dm message"}', async () => {
+              testNumber = 29;
               totalTests++;
               const payloadObj = {"content":"test response send dm message"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -3615,11 +4327,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -3630,8 +4358,156 @@
               }
             });
 
-            it('Test case #28 should return errors ["Could not resolve permission type"] when body {"userId":"","content":"test response send dm message","ref":"ref"}', async () => {
-              testNumber = 28;
+            it('Test case #30 should return errors ["Could not resolve permission type"] when body {"content":"test response send dm message","ref":null}', async () => {
+              testNumber = 30;
+              totalTests++;
+              const payloadObj = {"content":"test response send dm message","ref":null};
+              resolvedData = resolveVariables(payloadObj, globalContext);
+              
+              try {
+                const response = await resolveCallAPI(
+                  "sendDmMessage",
+                  {"x-session-token":"{{token}}"},
+                  {"content":"test response send dm message","ref":null},
+                  contextData
+                );
+                const data = response.data;
+                const expectJson = ["Could not resolve permission type"].sort();
+
+                let expectDetails;
+                let softExpectDetails;
+                switch (response.status) {
+                  case 200:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                  case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                  case 403:
+                    expectDetails = Array.isArray(data) ? data : [data];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                  case 500:
+                    failedTests.push({
+                      testcase: testNumber,
+                      code: 500,
+                      errorDetails: expectJson,
+                    });
+                    break;
+                  default:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                }
+              } catch (error) {
+                console.error('Error in test case #' + testNumber, error);
+                failedTests.push({
+                  testcase: testNumber,
+                  error: error.message
+                });
+              }
+            });
+
+            it('Test case #31 should return errors ["Could not resolve permission type"] when body {"userId":"","content":"test response send dm message","ref":"ref"}', async () => {
+              testNumber = 31;
               totalTests++;
               const payloadObj = {"userId":"","content":"test response send dm message","ref":"ref"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -3747,11 +4623,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -3762,8 +4654,8 @@
               }
             });
 
-            it('Test case #29 should return errors ["Could not resolve permission type"] when body {"userId":"","content":123,"ref":"ref"}', async () => {
-              testNumber = 29;
+            it('Test case #32 should return errors ["Could not resolve permission type"] when body {"userId":"","content":123,"ref":"ref"}', async () => {
+              testNumber = 32;
               totalTests++;
               const payloadObj = {"userId":"","content":123,"ref":"ref"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -3879,11 +4771,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -3894,8 +4802,8 @@
               }
             });
 
-            it('Test case #30 should return errors ["Could not resolve permission type"] when body {"userId":"","content":"","ref":"ref"}', async () => {
-              testNumber = 30;
+            it('Test case #33 should return errors ["Could not resolve permission type"] when body {"userId":"","content":"","ref":"ref"}', async () => {
+              testNumber = 33;
               totalTests++;
               const payloadObj = {"userId":"","content":"","ref":"ref"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -4011,11 +4919,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -4026,8 +4950,8 @@
               }
             });
 
-            it('Test case #31 should return errors ["Could not resolve permission type"] when body {"userId":"","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":"ref"}', async () => {
-              testNumber = 31;
+            it('Test case #34 should return errors ["Could not resolve permission type"] when body {"userId":"","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":"ref"}', async () => {
+              testNumber = 34;
               totalTests++;
               const payloadObj = {"userId":"","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":"ref"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -4143,11 +5067,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -4158,8 +5098,8 @@
               }
             });
 
-            it('Test case #32 should return errors ["Could not resolve permission type"] when body {"userId":"","ref":"ref"}', async () => {
-              testNumber = 32;
+            it('Test case #35 should return errors ["Could not resolve permission type"] when body {"userId":"","ref":"ref"}', async () => {
+              testNumber = 35;
               totalTests++;
               const payloadObj = {"userId":"","ref":"ref"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -4275,11 +5215,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -4290,8 +5246,8 @@
               }
             });
 
-            it('Test case #33 should return errors ["Could not resolve permission type"] when body {"userId":"","content":null,"ref":"ref"}', async () => {
-              testNumber = 33;
+            it('Test case #36 should return errors ["Could not resolve permission type"] when body {"userId":"","content":null,"ref":"ref"}', async () => {
+              testNumber = 36;
               totalTests++;
               const payloadObj = {"userId":"","content":null,"ref":"ref"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -4407,11 +5363,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -4422,8 +5394,8 @@
               }
             });
 
-            it('Test case #34 should return errors ["Could not resolve permission type"] when body {"userId":"","content":"test response send dm message","ref":123}', async () => {
-              testNumber = 34;
+            it('Test case #37 should return errors ["Could not resolve permission type"] when body {"userId":"","content":"test response send dm message","ref":123}', async () => {
+              testNumber = 37;
               totalTests++;
               const payloadObj = {"userId":"","content":"test response send dm message","ref":123};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -4539,11 +5511,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -4554,8 +5542,8 @@
               }
             });
 
-            it('Test case #35 should return errors ["Could not resolve permission type"] when body {"userId":"","content":"test response send dm message","ref":""}', async () => {
-              testNumber = 35;
+            it('Test case #38 should return errors ["Could not resolve permission type"] when body {"userId":"","content":"test response send dm message","ref":""}', async () => {
+              testNumber = 38;
               totalTests++;
               const payloadObj = {"userId":"","content":"test response send dm message","ref":""};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -4671,11 +5659,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -4686,8 +5690,8 @@
               }
             });
 
-            it('Test case #36 should return errors ["Could not resolve permission type"] when body {"userId":"","content":"test response send dm message"}', async () => {
-              testNumber = 36;
+            it('Test case #39 should return errors ["Could not resolve permission type"] when body {"userId":"","content":"test response send dm message"}', async () => {
+              testNumber = 39;
               totalTests++;
               const payloadObj = {"userId":"","content":"test response send dm message"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -4803,11 +5807,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -4818,8 +5838,156 @@
               }
             });
 
-            it('Test case #37 should return errors ["Could not resolve permission type"] when body {"userId":null,"content":"test response send dm message","ref":"ref"}', async () => {
-              testNumber = 37;
+            it('Test case #40 should return errors ["Could not resolve permission type"] when body {"userId":"","content":"test response send dm message","ref":null}', async () => {
+              testNumber = 40;
+              totalTests++;
+              const payloadObj = {"userId":"","content":"test response send dm message","ref":null};
+              resolvedData = resolveVariables(payloadObj, globalContext);
+              
+              try {
+                const response = await resolveCallAPI(
+                  "sendDmMessage",
+                  {"x-session-token":"{{token}}"},
+                  {"userId":"","content":"test response send dm message","ref":null},
+                  contextData
+                );
+                const data = response.data;
+                const expectJson = ["Could not resolve permission type"].sort();
+
+                let expectDetails;
+                let softExpectDetails;
+                switch (response.status) {
+                  case 200:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                  case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                  case 403:
+                    expectDetails = Array.isArray(data) ? data : [data];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                  case 500:
+                    failedTests.push({
+                      testcase: testNumber,
+                      code: 500,
+                      errorDetails: expectJson,
+                    });
+                    break;
+                  default:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                }
+              } catch (error) {
+                console.error('Error in test case #' + testNumber, error);
+                failedTests.push({
+                  testcase: testNumber,
+                  error: error.message
+                });
+              }
+            });
+
+            it('Test case #41 should return errors ["Could not resolve permission type"] when body {"userId":null,"content":"test response send dm message","ref":"ref"}', async () => {
+              testNumber = 41;
               totalTests++;
               const payloadObj = {"userId":null,"content":"test response send dm message","ref":"ref"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -4935,11 +6103,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -4950,8 +6134,8 @@
               }
             });
 
-            it('Test case #38 should return errors ["Could not resolve permission type"] when body {"userId":null,"content":123,"ref":"ref"}', async () => {
-              testNumber = 38;
+            it('Test case #42 should return errors ["Could not resolve permission type"] when body {"userId":null,"content":123,"ref":"ref"}', async () => {
+              testNumber = 42;
               totalTests++;
               const payloadObj = {"userId":null,"content":123,"ref":"ref"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -5067,11 +6251,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -5082,8 +6282,8 @@
               }
             });
 
-            it('Test case #39 should return errors ["Could not resolve permission type"] when body {"userId":null,"content":"","ref":"ref"}', async () => {
-              testNumber = 39;
+            it('Test case #43 should return errors ["Could not resolve permission type"] when body {"userId":null,"content":"","ref":"ref"}', async () => {
+              testNumber = 43;
               totalTests++;
               const payloadObj = {"userId":null,"content":"","ref":"ref"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -5199,11 +6399,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -5214,8 +6430,8 @@
               }
             });
 
-            it('Test case #40 should return errors ["Could not resolve permission type"] when body {"userId":null,"content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":"ref"}', async () => {
-              testNumber = 40;
+            it('Test case #44 should return errors ["Could not resolve permission type"] when body {"userId":null,"content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":"ref"}', async () => {
+              testNumber = 44;
               totalTests++;
               const payloadObj = {"userId":null,"content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":"ref"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -5331,11 +6547,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -5346,8 +6578,8 @@
               }
             });
 
-            it('Test case #41 should return errors ["Could not resolve permission type"] when body {"userId":null,"ref":"ref"}', async () => {
-              testNumber = 41;
+            it('Test case #45 should return errors ["Could not resolve permission type"] when body {"userId":null,"ref":"ref"}', async () => {
+              testNumber = 45;
               totalTests++;
               const payloadObj = {"userId":null,"ref":"ref"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -5463,11 +6695,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -5478,8 +6726,8 @@
               }
             });
 
-            it('Test case #42 should return errors ["Could not resolve permission type"] when body {"userId":null,"content":null,"ref":"ref"}', async () => {
-              testNumber = 42;
+            it('Test case #46 should return errors ["Could not resolve permission type"] when body {"userId":null,"content":null,"ref":"ref"}', async () => {
+              testNumber = 46;
               totalTests++;
               const payloadObj = {"userId":null,"content":null,"ref":"ref"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -5595,11 +6843,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -5610,8 +6874,8 @@
               }
             });
 
-            it('Test case #43 should return errors ["Could not resolve permission type"] when body {"userId":null,"content":"test response send dm message","ref":123}', async () => {
-              testNumber = 43;
+            it('Test case #47 should return errors ["Could not resolve permission type"] when body {"userId":null,"content":"test response send dm message","ref":123}', async () => {
+              testNumber = 47;
               totalTests++;
               const payloadObj = {"userId":null,"content":"test response send dm message","ref":123};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -5727,11 +6991,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -5742,8 +7022,8 @@
               }
             });
 
-            it('Test case #44 should return errors ["Could not resolve permission type"] when body {"userId":null,"content":"test response send dm message","ref":""}', async () => {
-              testNumber = 44;
+            it('Test case #48 should return errors ["Could not resolve permission type"] when body {"userId":null,"content":"test response send dm message","ref":""}', async () => {
+              testNumber = 48;
               totalTests++;
               const payloadObj = {"userId":null,"content":"test response send dm message","ref":""};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -5859,11 +7139,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -5874,8 +7170,8 @@
               }
             });
 
-            it('Test case #45 should return errors ["Could not resolve permission type"] when body {"userId":null,"content":"test response send dm message"}', async () => {
-              testNumber = 45;
+            it('Test case #49 should return errors ["Could not resolve permission type"] when body {"userId":null,"content":"test response send dm message"}', async () => {
+              testNumber = 49;
               totalTests++;
               const payloadObj = {"userId":null,"content":"test response send dm message"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -5991,11 +7287,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -6006,8 +7318,156 @@
               }
             });
 
-            it('Test case #46 should return errors ["Unauthorized request"] when body {"userId":"invalid_value","content":"test response send dm message","ref":"ref"}', async () => {
-              testNumber = 46;
+            it('Test case #50 should return errors ["Could not resolve permission type"] when body {"userId":null,"content":"test response send dm message","ref":null}', async () => {
+              testNumber = 50;
+              totalTests++;
+              const payloadObj = {"userId":null,"content":"test response send dm message","ref":null};
+              resolvedData = resolveVariables(payloadObj, globalContext);
+              
+              try {
+                const response = await resolveCallAPI(
+                  "sendDmMessage",
+                  {"x-session-token":"{{token}}"},
+                  {"userId":null,"content":"test response send dm message","ref":null},
+                  contextData
+                );
+                const data = response.data;
+                const expectJson = ["Could not resolve permission type"].sort();
+
+                let expectDetails;
+                let softExpectDetails;
+                switch (response.status) {
+                  case 200:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                  case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                  case 403:
+                    expectDetails = Array.isArray(data) ? data : [data];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                  case 500:
+                    failedTests.push({
+                      testcase: testNumber,
+                      code: 500,
+                      errorDetails: expectJson,
+                    });
+                    break;
+                  default:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                }
+              } catch (error) {
+                console.error('Error in test case #' + testNumber, error);
+                failedTests.push({
+                  testcase: testNumber,
+                  error: error.message
+                });
+              }
+            });
+
+            it('Test case #51 should return errors ["Unauthorized request"] when body {"userId":"invalid_value","content":"test response send dm message","ref":"ref"}', async () => {
+              testNumber = 51;
               totalTests++;
               const payloadObj = {"userId":"invalid_value","content":"test response send dm message","ref":"ref"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -6123,11 +7583,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -6138,8 +7614,8 @@
               }
             });
 
-            it('Test case #47 should return errors ["Unauthorized request"] when body {"userId":"invalid_value","content":123,"ref":"ref"}', async () => {
-              testNumber = 47;
+            it('Test case #52 should return errors ["Unauthorized request"] when body {"userId":"invalid_value","content":123,"ref":"ref"}', async () => {
+              testNumber = 52;
               totalTests++;
               const payloadObj = {"userId":"invalid_value","content":123,"ref":"ref"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -6255,11 +7731,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -6270,8 +7762,8 @@
               }
             });
 
-            it('Test case #48 should return errors ["Unauthorized request"] when body {"userId":"invalid_value","content":"","ref":"ref"}', async () => {
-              testNumber = 48;
+            it('Test case #53 should return errors ["Unauthorized request"] when body {"userId":"invalid_value","content":"","ref":"ref"}', async () => {
+              testNumber = 53;
               totalTests++;
               const payloadObj = {"userId":"invalid_value","content":"","ref":"ref"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -6387,11 +7879,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -6402,8 +7910,8 @@
               }
             });
 
-            it('Test case #49 should return errors ["Unauthorized request"] when body {"userId":"invalid_value","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":"ref"}', async () => {
-              testNumber = 49;
+            it('Test case #54 should return errors ["Unauthorized request"] when body {"userId":"invalid_value","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":"ref"}', async () => {
+              testNumber = 54;
               totalTests++;
               const payloadObj = {"userId":"invalid_value","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":"ref"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -6519,11 +8027,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -6534,8 +8058,8 @@
               }
             });
 
-            it('Test case #50 should return errors ["Unauthorized request"] when body {"userId":"invalid_value","ref":"ref"}', async () => {
-              testNumber = 50;
+            it('Test case #55 should return errors ["Unauthorized request"] when body {"userId":"invalid_value","ref":"ref"}', async () => {
+              testNumber = 55;
               totalTests++;
               const payloadObj = {"userId":"invalid_value","ref":"ref"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -6651,11 +8175,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -6666,8 +8206,8 @@
               }
             });
 
-            it('Test case #51 should return errors ["Unauthorized request"] when body {"userId":"invalid_value","content":null,"ref":"ref"}', async () => {
-              testNumber = 51;
+            it('Test case #56 should return errors ["Unauthorized request"] when body {"userId":"invalid_value","content":null,"ref":"ref"}', async () => {
+              testNumber = 56;
               totalTests++;
               const payloadObj = {"userId":"invalid_value","content":null,"ref":"ref"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -6783,11 +8323,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -6798,8 +8354,8 @@
               }
             });
 
-            it('Test case #52 should return errors ["Unauthorized request"] when body {"userId":"invalid_value","content":"test response send dm message","ref":123}', async () => {
-              testNumber = 52;
+            it('Test case #57 should return errors ["Unauthorized request"] when body {"userId":"invalid_value","content":"test response send dm message","ref":123}', async () => {
+              testNumber = 57;
               totalTests++;
               const payloadObj = {"userId":"invalid_value","content":"test response send dm message","ref":123};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -6915,11 +8471,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -6930,8 +8502,8 @@
               }
             });
 
-            it('Test case #53 should return errors ["Unauthorized request"] when body {"userId":"invalid_value","content":"test response send dm message","ref":""}', async () => {
-              testNumber = 53;
+            it('Test case #58 should return errors ["Unauthorized request"] when body {"userId":"invalid_value","content":"test response send dm message","ref":""}', async () => {
+              testNumber = 58;
               totalTests++;
               const payloadObj = {"userId":"invalid_value","content":"test response send dm message","ref":""};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -7047,11 +8619,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -7062,8 +8650,8 @@
               }
             });
 
-            it('Test case #54 should return errors ["Unauthorized request"] when body {"userId":"invalid_value","content":"test response send dm message"}', async () => {
-              testNumber = 54;
+            it('Test case #59 should return errors ["Unauthorized request"] when body {"userId":"invalid_value","content":"test response send dm message"}', async () => {
+              testNumber = 59;
               totalTests++;
               const payloadObj = {"userId":"invalid_value","content":"test response send dm message"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -7179,11 +8767,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -7194,8 +8798,156 @@
               }
             });
 
-            it('Test case #55 should return errors ["content expected string,received number","ref expected string,received number"] when body {"userId":"{{userId1}}","content":123,"ref":123}', async () => {
-              testNumber = 55;
+            it('Test case #60 should return errors ["Unauthorized request"] when body {"userId":"invalid_value","content":"test response send dm message","ref":null}', async () => {
+              testNumber = 60;
+              totalTests++;
+              const payloadObj = {"userId":"invalid_value","content":"test response send dm message","ref":null};
+              resolvedData = resolveVariables(payloadObj, globalContext);
+              
+              try {
+                const response = await resolveCallAPI(
+                  "sendDmMessage",
+                  {"x-session-token":"{{token}}"},
+                  {"userId":"invalid_value","content":"test response send dm message","ref":null},
+                  contextData
+                );
+                const data = response.data;
+                const expectJson = ["Unauthorized request"].sort();
+
+                let expectDetails;
+                let softExpectDetails;
+                switch (response.status) {
+                  case 200:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                  case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                  case 403:
+                    expectDetails = Array.isArray(data) ? data : [data];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                  case 500:
+                    failedTests.push({
+                      testcase: testNumber,
+                      code: 500,
+                      errorDetails: expectJson,
+                    });
+                    break;
+                  default:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                }
+              } catch (error) {
+                console.error('Error in test case #' + testNumber, error);
+                failedTests.push({
+                  testcase: testNumber,
+                  error: error.message
+                });
+              }
+            });
+
+            it('Test case #61 should return errors ["content expected string,received number","ref expected string,received number"] when body {"userId":"{{userId1}}","content":123,"ref":123}', async () => {
+              testNumber = 61;
               totalTests++;
               const payloadObj = {"userId":"{{userId1}}","content":123,"ref":123};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -7311,11 +9063,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -7326,8 +9094,8 @@
               }
             });
 
-            it('Test case #56 should return errors ["content expected string,received number","ref string must contain at least 1 character(s)"] when body {"userId":"{{userId1}}","content":123,"ref":""}', async () => {
-              testNumber = 56;
+            it('Test case #62 should return errors ["content expected string,received number","ref should not be empty","ref string must contain at least 1 character(s)"] when body {"userId":"{{userId1}}","content":123,"ref":""}', async () => {
+              testNumber = 62;
               totalTests++;
               const payloadObj = {"userId":"{{userId1}}","content":123,"ref":""};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -7340,7 +9108,7 @@
                   contextData
                 );
                 const data = response.data;
-                const expectJson = ["content expected string, received number","ref string must contain at least 1 character(s)"].sort();
+                const expectJson = ["content expected string, received number","ref should not be empty","ref string must contain at least 1 character(s)"].sort();
 
                 let expectDetails;
                 let softExpectDetails;
@@ -7443,11 +9211,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -7458,8 +9242,8 @@
               }
             });
 
-            it('Test case #57 should return errors ["content expected string,received number","ref required"] when body {"userId":"{{userId1}}","content":123}', async () => {
-              testNumber = 57;
+            it('Test case #63 should return errors ["content expected string,received number","ref required"] when body {"userId":"{{userId1}}","content":123}', async () => {
+              testNumber = 63;
               totalTests++;
               const payloadObj = {"userId":"{{userId1}}","content":123};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -7575,11 +9359,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -7590,8 +9390,156 @@
               }
             });
 
-            it('Test case #58 should return errors ["content should not be empty","content string must contain at least 1 character(s)","ref expected string,received number"] when body {"userId":"{{userId1}}","content":"","ref":123}', async () => {
-              testNumber = 58;
+            it('Test case #64 should return errors ["content expected string,received number","ref expected string,received null"] when body {"userId":"{{userId1}}","content":123,"ref":null}', async () => {
+              testNumber = 64;
+              totalTests++;
+              const payloadObj = {"userId":"{{userId1}}","content":123,"ref":null};
+              resolvedData = resolveVariables(payloadObj, globalContext);
+              
+              try {
+                const response = await resolveCallAPI(
+                  "sendDmMessage",
+                  {"x-session-token":"{{token}}"},
+                  {"userId":"{{userId1}}","content":123,"ref":null},
+                  contextData
+                );
+                const data = response.data;
+                const expectJson = ["content expected string, received number","ref expected string, received null"].sort();
+
+                let expectDetails;
+                let softExpectDetails;
+                switch (response.status) {
+                  case 200:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                  case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                  case 403:
+                    expectDetails = Array.isArray(data) ? data : [data];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                  case 500:
+                    failedTests.push({
+                      testcase: testNumber,
+                      code: 500,
+                      errorDetails: expectJson,
+                    });
+                    break;
+                  default:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                }
+              } catch (error) {
+                console.error('Error in test case #' + testNumber, error);
+                failedTests.push({
+                  testcase: testNumber,
+                  error: error.message
+                });
+              }
+            });
+
+            it('Test case #65 should return errors ["content should not be empty","content string must contain at least 1 character(s)","ref expected string,received number"] when body {"userId":"{{userId1}}","content":"","ref":123}', async () => {
+              testNumber = 65;
               totalTests++;
               const payloadObj = {"userId":"{{userId1}}","content":"","ref":123};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -7707,11 +9655,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -7722,8 +9686,8 @@
               }
             });
 
-            it('Test case #59 should return errors ["content should not be empty","content string must contain at least 1 character(s)","ref string must contain at least 1 character(s)"] when body {"userId":"{{userId1}}","content":"","ref":""}', async () => {
-              testNumber = 59;
+            it('Test case #66 should return errors ["content should not be empty","content string must contain at least 1 character(s)","ref should not be empty","ref string must contain at least 1 character(s)"] when body {"userId":"{{userId1}}","content":"","ref":""}', async () => {
+              testNumber = 66;
               totalTests++;
               const payloadObj = {"userId":"{{userId1}}","content":"","ref":""};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -7736,7 +9700,7 @@
                   contextData
                 );
                 const data = response.data;
-                const expectJson = ["content should not be empty","content string must contain at least 1 character(s)","ref string must contain at least 1 character(s)"].sort();
+                const expectJson = ["content should not be empty","content string must contain at least 1 character(s)","ref should not be empty","ref string must contain at least 1 character(s)"].sort();
 
                 let expectDetails;
                 let softExpectDetails;
@@ -7839,11 +9803,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -7854,8 +9834,8 @@
               }
             });
 
-            it('Test case #60 should return errors ["content should not be empty","content string must contain at least 1 character(s)","ref required"] when body {"userId":"{{userId1}}","content":""}', async () => {
-              testNumber = 60;
+            it('Test case #67 should return errors ["content should not be empty","content string must contain at least 1 character(s)","ref required"] when body {"userId":"{{userId1}}","content":""}', async () => {
+              testNumber = 67;
               totalTests++;
               const payloadObj = {"userId":"{{userId1}}","content":""};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -7971,11 +9951,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -7986,8 +9982,156 @@
               }
             });
 
-            it('Test case #61 should return errors ["content string must contain at most 2000 character(s)","ref expected string,received number"] when body {"userId":"{{userId1}}","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":123}', async () => {
-              testNumber = 61;
+            it('Test case #68 should return errors ["content should not be empty","content string must contain at least 1 character(s)","ref expected string,received null"] when body {"userId":"{{userId1}}","content":"","ref":null}', async () => {
+              testNumber = 68;
+              totalTests++;
+              const payloadObj = {"userId":"{{userId1}}","content":"","ref":null};
+              resolvedData = resolveVariables(payloadObj, globalContext);
+              
+              try {
+                const response = await resolveCallAPI(
+                  "sendDmMessage",
+                  {"x-session-token":"{{token}}"},
+                  {"userId":"{{userId1}}","content":"","ref":null},
+                  contextData
+                );
+                const data = response.data;
+                const expectJson = ["content should not be empty","content string must contain at least 1 character(s)","ref expected string, received null"].sort();
+
+                let expectDetails;
+                let softExpectDetails;
+                switch (response.status) {
+                  case 200:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                  case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                  case 403:
+                    expectDetails = Array.isArray(data) ? data : [data];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                  case 500:
+                    failedTests.push({
+                      testcase: testNumber,
+                      code: 500,
+                      errorDetails: expectJson,
+                    });
+                    break;
+                  default:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                }
+              } catch (error) {
+                console.error('Error in test case #' + testNumber, error);
+                failedTests.push({
+                  testcase: testNumber,
+                  error: error.message
+                });
+              }
+            });
+
+            it('Test case #69 should return errors ["content string must contain at most 2000 character(s)","ref expected string,received number"] when body {"userId":"{{userId1}}","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":123}', async () => {
+              testNumber = 69;
               totalTests++;
               const payloadObj = {"userId":"{{userId1}}","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":123};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -8103,11 +10247,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -8118,8 +10278,8 @@
               }
             });
 
-            it('Test case #62 should return errors ["content string must contain at most 2000 character(s)","ref string must contain at least 1 character(s)"] when body {"userId":"{{userId1}}","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":""}', async () => {
-              testNumber = 62;
+            it('Test case #70 should return errors ["content string must contain at most 2000 character(s)","ref should not be empty","ref string must contain at least 1 character(s)"] when body {"userId":"{{userId1}}","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":""}', async () => {
+              testNumber = 70;
               totalTests++;
               const payloadObj = {"userId":"{{userId1}}","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":""};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -8132,7 +10292,7 @@
                   contextData
                 );
                 const data = response.data;
-                const expectJson = ["content string must contain at most 2000 character(s)","ref string must contain at least 1 character(s)"].sort();
+                const expectJson = ["content string must contain at most 2000 character(s)","ref should not be empty","ref string must contain at least 1 character(s)"].sort();
 
                 let expectDetails;
                 let softExpectDetails;
@@ -8235,11 +10395,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -8250,8 +10426,8 @@
               }
             });
 
-            it('Test case #63 should return errors ["content string must contain at most 2000 character(s)","ref required"] when body {"userId":"{{userId1}}","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}', async () => {
-              testNumber = 63;
+            it('Test case #71 should return errors ["content string must contain at most 2000 character(s)","ref required"] when body {"userId":"{{userId1}}","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}', async () => {
+              testNumber = 71;
               totalTests++;
               const payloadObj = {"userId":"{{userId1}}","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -8367,11 +10543,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -8382,8 +10574,156 @@
               }
             });
 
-            it('Test case #64 should return errors ["content required","ref expected string,received number"] when body {"userId":"{{userId1}}","ref":123}', async () => {
-              testNumber = 64;
+            it('Test case #72 should return errors ["content string must contain at most 2000 character(s)","ref expected string,received null"] when body {"userId":"{{userId1}}","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":null}', async () => {
+              testNumber = 72;
+              totalTests++;
+              const payloadObj = {"userId":"{{userId1}}","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":null};
+              resolvedData = resolveVariables(payloadObj, globalContext);
+              
+              try {
+                const response = await resolveCallAPI(
+                  "sendDmMessage",
+                  {"x-session-token":"{{token}}"},
+                  {"userId":"{{userId1}}","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":null},
+                  contextData
+                );
+                const data = response.data;
+                const expectJson = ["content string must contain at most 2000 character(s)","ref expected string, received null"].sort();
+
+                let expectDetails;
+                let softExpectDetails;
+                switch (response.status) {
+                  case 200:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                  case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                  case 403:
+                    expectDetails = Array.isArray(data) ? data : [data];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                  case 500:
+                    failedTests.push({
+                      testcase: testNumber,
+                      code: 500,
+                      errorDetails: expectJson,
+                    });
+                    break;
+                  default:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                }
+              } catch (error) {
+                console.error('Error in test case #' + testNumber, error);
+                failedTests.push({
+                  testcase: testNumber,
+                  error: error.message
+                });
+              }
+            });
+
+            it('Test case #73 should return errors ["content required","ref expected string,received number"] when body {"userId":"{{userId1}}","ref":123}', async () => {
+              testNumber = 73;
               totalTests++;
               const payloadObj = {"userId":"{{userId1}}","ref":123};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -8499,11 +10839,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -8514,8 +10870,8 @@
               }
             });
 
-            it('Test case #65 should return errors ["content required","ref string must contain at least 1 character(s)"] when body {"userId":"{{userId1}}","ref":""}', async () => {
-              testNumber = 65;
+            it('Test case #74 should return errors ["content required","ref should not be empty","ref string must contain at least 1 character(s)"] when body {"userId":"{{userId1}}","ref":""}', async () => {
+              testNumber = 74;
               totalTests++;
               const payloadObj = {"userId":"{{userId1}}","ref":""};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -8528,7 +10884,7 @@
                   contextData
                 );
                 const data = response.data;
-                const expectJson = ["content required","ref string must contain at least 1 character(s)"].sort();
+                const expectJson = ["content required","ref should not be empty","ref string must contain at least 1 character(s)"].sort();
 
                 let expectDetails;
                 let softExpectDetails;
@@ -8631,11 +10987,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -8646,8 +11018,8 @@
               }
             });
 
-            it('Test case #66 should return errors ["content required","ref required"] when body {"userId":"{{userId1}}"}', async () => {
-              testNumber = 66;
+            it('Test case #75 should return errors ["content required","ref required"] when body {"userId":"{{userId1}}"}', async () => {
+              testNumber = 75;
               totalTests++;
               const payloadObj = {"userId":"{{userId1}}"};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -8763,11 +11135,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -8778,8 +11166,156 @@
               }
             });
 
-            it('Test case #67 should return errors ["content expected string,received null","ref expected string,received number"] when body {"userId":"{{userId1}}","content":null,"ref":123}', async () => {
-              testNumber = 67;
+            it('Test case #76 should return errors ["content required","ref expected string,received null"] when body {"userId":"{{userId1}}","ref":null}', async () => {
+              testNumber = 76;
+              totalTests++;
+              const payloadObj = {"userId":"{{userId1}}","ref":null};
+              resolvedData = resolveVariables(payloadObj, globalContext);
+              
+              try {
+                const response = await resolveCallAPI(
+                  "sendDmMessage",
+                  {"x-session-token":"{{token}}"},
+                  {"userId":"{{userId1}}","ref":null},
+                  contextData
+                );
+                const data = response.data;
+                const expectJson = ["content required","ref expected string, received null"].sort();
+
+                let expectDetails;
+                let softExpectDetails;
+                switch (response.status) {
+                  case 200:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                  case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                  case 403:
+                    expectDetails = Array.isArray(data) ? data : [data];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                  case 500:
+                    failedTests.push({
+                      testcase: testNumber,
+                      code: 500,
+                      errorDetails: expectJson,
+                    });
+                    break;
+                  default:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                }
+              } catch (error) {
+                console.error('Error in test case #' + testNumber, error);
+                failedTests.push({
+                  testcase: testNumber,
+                  error: error.message
+                });
+              }
+            });
+
+            it('Test case #77 should return errors ["content expected string,received null","ref expected string,received number"] when body {"userId":"{{userId1}}","content":null,"ref":123}', async () => {
+              testNumber = 77;
               totalTests++;
               const payloadObj = {"userId":"{{userId1}}","content":null,"ref":123};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -8895,11 +11431,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -8910,8 +11462,8 @@
               }
             });
 
-            it('Test case #68 should return errors ["content expected string,received null","ref string must contain at least 1 character(s)"] when body {"userId":"{{userId1}}","content":null,"ref":""}', async () => {
-              testNumber = 68;
+            it('Test case #78 should return errors ["content expected string,received null","ref should not be empty","ref string must contain at least 1 character(s)"] when body {"userId":"{{userId1}}","content":null,"ref":""}', async () => {
+              testNumber = 78;
               totalTests++;
               const payloadObj = {"userId":"{{userId1}}","content":null,"ref":""};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -8924,7 +11476,7 @@
                   contextData
                 );
                 const data = response.data;
-                const expectJson = ["content expected string, received null","ref string must contain at least 1 character(s)"].sort();
+                const expectJson = ["content expected string, received null","ref should not be empty","ref string must contain at least 1 character(s)"].sort();
 
                 let expectDetails;
                 let softExpectDetails;
@@ -9027,11 +11579,27 @@
                     });
                     break;
                   default:
-                    failedTests.push({
-                      testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
-                    });
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);
@@ -9042,8 +11610,8 @@
               }
             });
 
-            it('Test case #69 should return errors ["content expected string,received null","ref required"] when body {"userId":"{{userId1}}","content":null}', async () => {
-              testNumber = 69;
+            it('Test case #79 should return errors ["content expected string,received null","ref required"] when body {"userId":"{{userId1}}","content":null}', async () => {
+              testNumber = 79;
               totalTests++;
               const payloadObj = {"userId":"{{userId1}}","content":null};
               resolvedData = resolveVariables(payloadObj, globalContext);
@@ -9159,11 +11727,175 @@
                     });
                     break;
                   default:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                }
+              } catch (error) {
+                console.error('Error in test case #' + testNumber, error);
+                failedTests.push({
+                  testcase: testNumber,
+                  error: error.message
+                });
+              }
+            });
+
+            it('Test case #80 should return errors ["content expected string,received null","ref expected string,received null"] when body {"userId":"{{userId1}}","content":null,"ref":null}', async () => {
+              testNumber = 80;
+              totalTests++;
+              const payloadObj = {"userId":"{{userId1}}","content":null,"ref":null};
+              resolvedData = resolveVariables(payloadObj, globalContext);
+              
+              try {
+                const response = await resolveCallAPI(
+                  "sendDmMessage",
+                  {"x-session-token":"{{token}}"},
+                  {"userId":"{{userId1}}","content":null,"ref":null},
+                  contextData
+                );
+                const data = response.data;
+                const expectJson = ["content expected string, received null","ref expected string, received null"].sort();
+
+                let expectDetails;
+                let softExpectDetails;
+                switch (response.status) {
+                  case 200:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 200,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                    case 201:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 201,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                  case 400:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 400,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                  case 403:
+                    expectDetails = Array.isArray(data) ? data : [data];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: 403,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
+                    break;
+                  case 500:
                     failedTests.push({
                       testcase: testNumber,
-                      code: response.status,
-                      errorDetails: 'Unexpected status code'
+                      code: 500,
+                      errorDetails: expectJson,
                     });
+                    break;
+                  default:
+                    expectDetails = Array.isArray(data?.error?.details)
+                      ? data.error.details
+                      : [];
+                    softExpectDetails = [...expectDetails].sort();
+                    try {
+                      expect(expectJson).toEqual(softExpectDetails);
+                      passedTests++;
+                      codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                      });
+                    } catch (error) {
+                      failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails || [],
+                        extra: expectJson || []
+                      });
+                    }
                 }
               } catch (error) {
                 console.error('Error in test case #' + testNumber, error);

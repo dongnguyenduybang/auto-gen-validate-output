@@ -1,0 +1,68 @@
+{
+  "path": "/Invitation/AcceptInvitation",
+  "className": "accept-invitation",
+  "allSteps": [
+    {
+      "type": null,
+      "status": true,
+      "stepName": "sendInvitation",
+      "caseTitle": "Case 0",
+      "phase": "beforeAll"
+    }
+  ],
+  "failedTests": [
+    {
+      "testcase": 3,
+      "code": 400,
+      "body": {},
+      "missing": [
+        "invitationLink required"
+      ],
+      "extra": [
+        "invitationLink invalid url",
+        "invitationLink required"
+      ]
+    },
+    {
+      "testcase": 4,
+      "code": 400,
+      "body": {
+        "invitationLink": ""
+      },
+      "missing": [
+        "invitationLink invalid url",
+        "invitationLink string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "invitationLink invalid url",
+        "invitationLink should not be empty"
+      ]
+    }
+  ],
+  "codedTest": [
+    {
+      "testcase": 1,
+      "code": 400,
+      "body": {
+        "invitationLink": 123
+      }
+    },
+    {
+      "testcase": 2,
+      "code": 201,
+      "body": {
+        "invitationLink": "https://zii.chat/i/X13titK0tj9RJjS"
+      }
+    },
+    {
+      "testcase": 5,
+      "code": 400,
+      "body": {
+        "invitationLink": null
+      }
+    }
+  ],
+  "passedTests": 3,
+  "totalTests": 5,
+  "failedStep": []
+}
