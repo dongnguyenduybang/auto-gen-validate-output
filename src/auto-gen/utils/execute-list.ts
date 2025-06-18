@@ -600,6 +600,7 @@ export function executeAfterEach(step, context: TestContext) { }
 
 export function getExpectedEvents(action: string, scenarioType?: 'NEW_CONTACT' | 'EXISTING_CONTACT' | 'DEFAULT') {
   const config = EVENTS_BY_ACTION[action];
+  console.log(config, scenarioType)
   if (isScenarioConfig(config) && scenarioType !== 'DEFAULT') {
     return {
       actorEvents: config.scenarios[scenarioType].actor,
@@ -717,12 +718,14 @@ export async function executeResume(
       lastWord: step.author,
     },
     events: [],
+    reconnectionEvents: [],
     errors: [],
     duplicates: [],
     summary: {
       totalEventsProcessed: 0,
       resumePointsFound: 0,
       reconnectionEnded: false,
+      resumeRounds: 0,
     },
   };
 
@@ -750,13 +753,13 @@ export async function executeResume(
     return data1 === data2;
   };
 
-  // Get resume token
-  let tokenResume: string;
+  // Get initial resume token
+  let currentTokenResume: string;
   let resumePoint;
   const { title, author, type, index, data } = step;
 
   if (data !== 'time' && data !== 'id') {
-    tokenResume = data;
+    currentTokenResume = data;
   } else {
     const resumeDates = resumeContext.getEventToken(author, title, data, type);
     resumePoint = resumeContext.findResumePoint(author, resumeDates[data], data, type);
@@ -773,13 +776,19 @@ export async function executeResume(
     resumeReport.summary.resumePointsFound++;
   }
 
-  // Prepare events for processing
-  const eventsToProcess = [];
-  const processedEventIds = new Set();
-  let lastTotal = Infinity;
-  let isReconnectionEnded = false;
+  // Get collector
+  const collectorKey = `ws__${author}`;
+  const collector = collectors[collectorKey];
 
-  // Add resume point if exists
+  if (!collector) {
+    resumeReport.errors.push({
+      type: 'CollectorNotFound',
+      message: `No WebSocketEventCollector found for key: ${collectorKey}`,
+    });
+    return resumeReport;
+  }
+
+  // Process initial resume point
   if (resumePoint) {
     const resumePointData = resumePoint.events.filter((ev) => ev.type === type);
     if (resumePointData.length > 0) {
@@ -788,36 +797,26 @@ export async function executeResume(
         eventId: resumePointData[0].data['id'],
         data: resumePointData[0].data[data],
       });
-    }
 
-    // Sort and deduplicate events
-    resumePoint.events
-      .sort((a, b) => new Date(a.time || a.timestamp).getTime() - new Date(b.time || b.timestamp).getTime())
-      .forEach(event => {
-        if (!processedEventIds.has(event.id)) {
-          processedEventIds.add(event.id);
-          eventsToProcess.push(event);
-        }
-      });
+      // Set initial token from resume point
+      if (data === 'time' || data === 'id') {
+        currentTokenResume = resumePointData[0].data[data];
+      }
+    }
   }
 
-  // Process events
-  for (const eventData of eventsToProcess) {
-    resumeReport.summary.totalEventsProcessed++;
+  // Continuous resume loop
+  let isResumeComplete = false;
+  let lastTotal = Infinity;
+  let nextResumeEvent = null;
 
-    if (data === 'time' || data === 'id') {
-      if (!eventData || !eventData.data || !eventData.data[data]) {
-        resumeReport.errors.push({
-          type: 'InvalidEventData',
-          message: `No valid event data found for ${data}`,
-          event: eventData,
-        });
-        continue;
-      }
-      tokenResume = eventData.data[data];
-    }
+  // Thêm biến lưu trữ index hiện tại
+  let currentEventIndex = 0;
 
-    // Prepare and send message
+  while (!isResumeComplete) {
+    resumeReport.summary.resumeRounds++;
+
+    // Prepare and send resume message
     const message = {
       id: '',
       time: '',
@@ -825,30 +824,31 @@ export async function executeResume(
       source: '',
       specversion: '1.0',
       data: {
-        token: tokenResume,
+        token: currentTokenResume,
       },
     };
 
-    const collectorKey = `ws__${author}`;
-    const collector = collectors[collectorKey];
-
-    if (!collector) {
-      resumeReport.errors.push({
-        type: 'CollectorNotFound',
-        message: `No WebSocketEventCollector found for key: ${collectorKey}`,
-      });
-      resumeReport.summary.reconnectionEnded = isReconnectionEnded;
-      return resumeReport;
-    }
+    console.log(`\n=== RESUME ROUND ${resumeReport.summary.resumeRounds} ===`);
+    console.log(`Sending resume with token: ${currentTokenResume}`);
+    console.log(`Expected remaining events: ${lastTotal}`);
 
     collector.sendMessage(message);
     await new Promise((resolve) => setTimeout(resolve, 100));
 
     const events = await collector.collectEventsAfterAction();
+    console.log(`Received ${events.length} total events in this round`);
+
     const eventIds = new Set();
+    let foundReconnectionEnded = false;
+    let currentTotal = 0;
+    const regularEvents = [];
+    const reconnectionEvents = [];
 
     for (const event of events) {
+      console.log(`  - Event: ${event.type} | ID: ${event.id} | Time: ${event.time}`);
+
       if (eventIds.has(event.id)) {
+        console.log(`    ❌ DUPLICATE EVENT: ${event.id}`);
         resumeReport.duplicates.push({
           eventId: event.id,
           type: event.type,
@@ -857,53 +857,363 @@ export async function executeResume(
       }
 
       eventIds.add(event.id);
+      resumeReport.summary.totalEventsProcessed++;
 
       const matchedEvent = findEventById(eventContext, event.id);
       const eventEntry = {
         eventId: event.id,
         type: event.type,
+        time: event.time,
+        source: event.source,
+        specversion: event.specversion,
+        version: event.version,
         timestamp: event.time || new Date().toISOString(),
         data: event.data,
         matched: !!matchedEvent,
         dataConsistent: matchedEvent ? compareEventData(event, matchedEvent) : false,
+        resumeRound: resumeReport.summary.resumeRounds,
+        isReconnectedEvent:
+          event.type === API_EVENT.halome.v3.webSocket.RECONNECTION_STARTED ||
+          event.type === 'com.halome.websocket.v3.reconnection_ended',
       };
-      resumeReport.events.push(eventEntry);
 
-      // Check for reconnection ended
-      if (event.type === API_EVENT.halome.v3.webSocket.RECONNECTION_STARTED) {
-        const currentTotal = event.data?.total || 0;
 
-        if (currentTotal >= lastTotal) {
+      // Categorize events
+      if (event.type === 'com.halome.websocket.v3.reconnection_ended') {
+        reconnectionEvents.push(event);
+        foundReconnectionEnded = true;
+        currentTotal = event.data?.total || 0;
+        console.log(`    🔄 Reconnection event: total=${currentTotal}`);
+
+        // Kiểm tra giá trị total
+        if (currentTotal !== regularEvents.length) {
+          console.log(`    ❌ ERROR: reconnection_ended total mismatch. Expected ${regularEvents.length}, got ${currentTotal}`);
           resumeReport.errors.push({
-            type: 'total_reconnected',
-            message: `total not decreasing : ${currentTotal} >= ${lastTotal}`,
+            type: 'ReconnectionTotalMismatch',
+            message: `reconnection_ended total mismatch. Expected ${regularEvents.length}, got ${currentTotal}`,
             eventId: event.id,
+            resumeRound: resumeReport.summary.resumeRounds,
           });
+        } else {
+          console.log(`    ✅ reconnection_ended total is correct: ${currentTotal}`);
         }
-        lastTotal = currentTotal;
+
+        // Lưu vào reconnectionEvents
+        resumeReport.reconnectionEvents.push({
+          eventId: event.id,
+          type: event.type,
+          time: event.time,
+          total: currentTotal,
+          resumeRound: resumeReport.summary.resumeRounds,
+          isValid: currentTotal === regularEvents.length,
+        });
+
+        resumeReport.events.push(eventEntry);
 
         if (currentTotal === 0) {
-          isReconnectionEnded = true;
+          isResumeComplete = true;
           resumeReport.summary.reconnectionEnded = true;
+          console.log(`    ✅ Resume completed: reconnection_ended with total=0`);
           break;
         }
+      } else if (event.type !== API_EVENT.halome.v3.webSocket.RECONNECTION_STARTED) {
+        resumeReport.events.push(eventEntry);
+        regularEvents.push(event);
+        console.log(`    📝 Regular event: ${event.type}`);
       }
     }
 
-    if (isReconnectionEnded) {
-      break;
-    }
-  }
-  // console.log(JSON.stringify(eventContext, null, 2))
-  // console.log(JSON.stringify(resumeReport, null, 2))
+    console.log(`Regular events in this round: ${regularEvents.length}`);
+    console.log(`Reconnection events in this round: ${reconnectionEvents.length}`);
+    console.log(`Current total after this round: ${currentTotal}`);
 
+    // Xử lý regularEvents theo thứ tự từ đầu đến cuối
+    if (regularEvents.length > 0) {
+      // Lấy sự kiện tại vị trí hiện tại (currentEventIndex)
+      const nextEvent = regularEvents[0];
+      console.log(`Next resume will be from: ${nextEvent.type} (${nextEvent.id})`);
+
+      // Cập nhật resume token từ sự kiện hiện tại
+      if (data === 'time') {
+        currentTokenResume = nextEvent.time;
+        console.log(`Next resume token (time): ${currentTokenResume}`);
+      } else if (data === 'id') {
+        currentTokenResume = nextEvent.id;
+        console.log(`Next resume token (id): ${currentTokenResume}`);
+      }
+
+      // Tăng index để lần sau resume từ sự kiện tiếp theo
+      currentEventIndex++;
+    } else if (foundReconnectionEnded && currentTotal > 0) {
+      console.log(`❌ WARNING: Found reconnection_ended with total=${currentTotal} but no regular events to resume from`);
+      console.log(`Retrying with same token: ${currentTokenResume}`);
+    }
+
+    // Check completion conditions
+    if (!foundReconnectionEnded) {
+      console.log(`❌ ERROR: No reconnection_ended event found in round ${resumeReport.summary.resumeRounds}`);
+      resumeReport.errors.push({
+        type: 'MissingReconnectionEnded',
+        message: `No reconnection_ended event found in round ${resumeReport.summary.resumeRounds}`,
+        resumeRound: resumeReport.summary.resumeRounds,
+      });
+      isResumeComplete = true;
+    }
+
+    // Safety check to prevent infinite loop
+    if (resumeReport.summary.resumeRounds > 50) {
+      console.log(`❌ ERROR: Exceeded maximum resume rounds (50)`);
+      resumeReport.errors.push({
+        type: 'MaxResumeRoundsExceeded',
+        message: 'Exceeded maximum resume rounds (50)',
+      });
+      isResumeComplete = true;
+    }
+
+    console.log(`=== END ROUND ${resumeReport.summary.resumeRounds} ===\n`);
+  }
+
+  // console.log(JSON.stringify(eventContext, null, 2));
+  const authorEvents = eventContext.events?.find(e => e.author === author)?.events || [];
   const comparisonResults = compareResumeWithNormalEventsDetailed(
     resumeReport.events.filter(e => e.type !== 'ResumePoint'),
-    eventContext.events.find(e => e.author === author)?.events || [],
+    authorEvents,
     author
   );
-  console.log(JSON.stringify(comparisonResults,null, 2))
+  console.log(JSON.stringify(resumeReport, null, 2));
+  console.log(JSON.stringify(comparisonResults, null, 2))
   return resumeReport;
+}
+
+
+function compareResumeWithNormalEventsDetailed(
+  resumeEvents: any[],
+  normalEvents: any[],
+  author: 'Actor' | 'Recipient'
+): ResumeComparisonResult {
+
+  const adjustedNormalEvents = normalEvents.slice(1);
+
+  const filteredResumeEvents = resumeEvents.filter(
+    e => e.type !== 'ResumePoint' && !e.isReconnectedEvent
+  ); // Loại bỏ ResumePoint và các sự kiện reconnection
+
+  // Initialize result
+  const result: ResumeComparisonResult = {
+    [author === 'Actor' ? 'actorResults' : 'recipientResults']: {
+      totalEventsResume: resumeEvents.length,
+      passedEventsResume: 0,
+      failedEventsResume: 0,
+      missingEventsResume: [],
+      extraEventsResume: [],
+      orderEventsResume: true,
+      duplicateEventsResume: [],
+      events: []
+    }
+  };
+
+  const resultsKey = author === 'Actor' ? 'actorResults' : 'recipientResults';
+  const results = result[resultsKey]!;
+
+  // Create lookup maps
+  const normalEventMap = new Map(normalEvents.map(e => [e.id, e]));
+  const resumeEventMap = new Map(filteredResumeEvents.map(e => [e.eventId || e.id, e]));
+
+  // check each round resume
+  const eventsByRound = new Map<number, any[]>();
+  filteredResumeEvents.forEach(event => {
+    const round = event.resumeRound;
+    if (!eventsByRound.has(round)) {
+      eventsByRound.set(round, []);
+    }
+    eventsByRound.get(round)!.push(event);
+  });
+
+  // Check for missing/extra events
+  results.missingEventsResume = [];
+  results.extraEventsResume = [];
+  results.orderEventsResume = Array.from(eventsByRound.entries()).every(([round, roundEvents]) => {
+    if (roundEvents.length === 0) return true;
+
+    const firstEvent = roundEvents[0];
+    const firstEventIndex = adjustedNormalEvents.findIndex(
+      e => e.id === (firstEvent.eventId || firstEvent.id)
+    );
+
+    if (firstEventIndex === -1) {
+      console.log(
+        `Round ${round}: Không tìm thấy sự kiện đầu tiên (${firstEvent.eventId}) trong adjustedNormalEvents`
+      );
+      results.extraEventsResume.push(...roundEvents.map(e => e.eventId || e.id));
+      return false;
+    }
+
+    // Tạo danh sách các sự kiện mong đợi cho round này
+    const expectedEvents = adjustedNormalEvents.slice(
+      firstEventIndex,
+      firstEventIndex + roundEvents.length
+    );
+
+    // Kiểm tra missing events
+    const roundEventIds = new Set(roundEvents.map(e => e.eventId || e.id));
+    const missingInRound = expectedEvents
+      .filter(e => !roundEventIds.has(e.id))
+      .map(e => e.id);
+    if (missingInRound.length > 0) {
+      console.log(`Round ${round}: Missing events: ${missingInRound.join(', ')}`);
+      results.missingEventsResume.push(...missingInRound);
+    }
+
+    // Kiểm tra extra events
+    const expectedEventIds = new Set(expectedEvents.map(e => e.id));
+    const extraInRound = roundEvents
+      .filter(e => !expectedEventIds.has(e.eventId || e.id))
+      .map(e => e.eventId || e.id);
+    if (extraInRound.length > 0) {
+      console.log(`Round ${round}: Extra events: ${extraInRound.join(', ')}`);
+      results.extraEventsResume.push(...extraInRound);
+    }
+
+    // Kiểm tra thứ tự trong round
+    const isValid = roundEvents.every((resumeEvent, index) => {
+      const normalEvent = expectedEvents[index];
+      console.log(
+        `Round ${round}, Index ${index}: normalEvent.type=${normalEvent?.type || 'undefined'
+        }, resumeEvent.type=${resumeEvent.type}`
+      );
+      return normalEvent && resumeEvent.type === normalEvent.type;
+    });
+
+    return isValid;
+  });
+  // Check order
+
+  // check duplicate resume event
+  results.duplicateEventsResume = [];
+  Array.from(eventsByRound.entries()).forEach(([round, roundEvents]) => {
+    const eventIdCounts = new Map<string, number>();
+    roundEvents.forEach(e => {
+      const id = e.eventId || e.id;
+      eventIdCounts.set(id, (eventIdCounts.get(id) || 0) + 1);
+    });
+
+    const duplicatesInRound = Array.from(eventIdCounts.entries())
+      .filter(([_, count]) => count > 1)
+      .map(([id]) => id);
+
+    if (duplicatesInRound.length > 0) {
+      console.log(`Round ${round}: Found duplicate events: ${duplicatesInRound.join(', ')}`);
+      results.duplicateEventsResume.push(...duplicatesInRound);
+    }
+  });
+
+
+  // Compare each event
+  resumeEvents
+    .filter(e => e.type !== 'ResumePoint') // Loại bỏ ResumePoint
+    .forEach((resumeEvent, index) => {
+      if (resumeEvent.isReconnectedEvent) {
+        // Đánh dấu reconnection_ended và RECONNECTION_STARTED là passed
+        const eventResult: EventResult = {
+          eventIndex: index,
+          resumeRound: resumeEvent.resumeRound,
+          eventType: resumeEvent.type,
+          eventAuthor: author,
+          isPassed: true,
+          specversionResult: { isEqual: true, allDifferences: [] },
+          versionResult: { isEqual: true, allDifferences: [] },
+          sourceResult: { isEqual: true, allDifferences: [] },
+          typeResult: { isEqual: true, allDifferences: [] },
+          dataResult: { isEqual: true, allDifferences: [] },
+        };
+        results.events.push(eventResult);
+        results.passedEventsResume++;
+      } else {
+        // So sánh các sự kiện thông thường
+        const normalEvent = normalEventMap.get(resumeEvent.eventId);
+
+        const eventResult: EventResult = {
+          eventIndex: index,
+          resumeRound: resumeEvent.resumeRound,
+          eventType: resumeEvent.type,
+          eventAuthor: author,
+          isPassed: false,
+          specversionResult: compareField(resumeEvent.specversion, normalEvent?.specversion, 'specversion'),
+          versionResult: compareField(resumeEvent.version, normalEvent?.version, 'version'),
+          sourceResult: compareField(resumeEvent.source, normalEvent?.source, 'source'),
+          typeResult: compareField(resumeEvent.type, normalEvent?.type, 'type'),
+          dataResult: deepCompareData(resumeEvent.data, normalEvent?.data)
+        };
+
+        eventResult.isPassed = [
+          eventResult.specversionResult.isEqual,
+          eventResult.versionResult.isEqual,
+          eventResult.sourceResult.isEqual,
+          eventResult.typeResult.isEqual,
+          eventResult.dataResult.isEqual
+        ].every(Boolean);
+
+        if (eventResult.isPassed) {
+          results.passedEventsResume++;
+        } else {
+          results.failedEventsResume++;
+        }
+
+        results.events.push(eventResult);
+      }
+    });
+
+  return result;
+}
+// Helper functions remain the same
+function compareField(actual: any, expected: any, fieldName: string): EventComparisonDetail {
+  if (actual === expected) {
+    return { isEqual: true, allDifferences: [] };
+  }
+  return {
+    isEqual: false,
+    allDifferences: [`${fieldName} => actual: ${JSON.stringify(actual)} !== expected: ${JSON.stringify(expected)}`]
+  };
+}
+
+function deepCompareData(actualData: any, expectedData: any, path = ''): EventComparisonDetail {
+  const result: EventComparisonDetail = {
+    isEqual: true,
+    allDifferences: []
+  };
+
+  if (actualData === expectedData) {
+    return result;
+  }
+
+  if (typeof actualData !== 'object' || typeof expectedData !== 'object' ||
+    actualData === null || expectedData === null) {
+    result.isEqual = false;
+    result.allDifferences.push(
+      `${path} => actual: ${JSON.stringify(actualData)} !== expected: ${JSON.stringify(expectedData)}`
+    );
+    return result;
+  }
+
+  for (const key in expectedData) {
+    const currentPath = path ? `${path}.${key}` : key;
+
+    if (!(key in actualData)) {
+      result.isEqual = false;
+      result.allDifferences.push(
+        `${currentPath}: missing in actual (expected has ${JSON.stringify(expectedData[key])})`
+      );
+      continue;
+    }
+
+    const fieldResult = deepCompareData(actualData[key], expectedData[key], currentPath);
+    if (!fieldResult.isEqual) {
+      result.isEqual = false;
+      result.allDifferences.push(...fieldResult.allDifferences);
+    }
+  }
+
+  return result;
 }
 
 function checkDuplicateEvent(collectedEvents): string[] {
@@ -946,6 +1256,7 @@ interface EventComparisonDetail {
 
 interface EventResult {
   eventIndex: number;
+  resumeRound: number;
   eventType: string;
   eventAuthor: string;
   isPassed: boolean;
@@ -958,198 +1269,17 @@ interface EventResult {
 
 interface ParticipantResults {
   totalEvents: number;
-  eventExpected: number;
-  missingEventExpected: string[];
-  passedEvents: number;
-  failedEvents: number;
-  missingEvents: string[];
-  extraEvents: string[];
-  orderIsValid: boolean;
-  duplicateEvents: string[];
+  passedEventsResume: number;
+  failedEventsResume: number;
+  missingEventsResume: string[];
+  extraEventsResume: string[];
+  orderEventsResume: boolean;
+  duplicateEventsResume: string[];
   events: EventResult[];
 }
 
 interface ResumeComparisonResult {
-  stepAction: string;
+
   actorResults?: ParticipantResults;
   recipientResults?: ParticipantResults;
-}
-
-function compareResumeWithNormalEventsDetailed(
-  resumeEvents: any[],
-  normalEvents: any[],
-  author: 'Actor' | 'Recipient'
-): ResumeComparisonResult {
-  // Filter events by author
-  const filteredNormalEvents = normalEvents
-    .filter(e => e.author === author)
-    .sort((a, b) => new Date(a.time).getTime() - new Date(b.time).getTime());
-
-  const filteredResumeEvents = resumeEvents
-    .filter(e => e.type !== 'ResumePoint')
-    .sort((a, b) => new Date(a.timestamp || a.time).getTime() - new Date(b.timestamp || b.time).getTime());
-
-  // Initialize result structure
-  const result: ResumeComparisonResult = {
-    stepAction,
-  };
-
-  // Create the appropriate results property based on author
-  const resultsKey = author === 'Actor' ? 'actorResults' : 'recipientResults';
-  
-  result[resultsKey] = {
-    totalEvents: filteredResumeEvents.length,
-    eventExpected: filteredNormalEvents.length,
-    missingEventExpected: [],
-    passedEvents: 0,
-    failedEvents: 0,
-    missingEvents: [],
-    extraEvents: [],
-    orderIsValid: true,
-    duplicateEvents: [],
-    events: []
-  };
-
-  // Check for missing expected events
-  const normalEventIds = new Set(filteredNormalEvents.map(e => e.id));
-  const resumeEventIds = new Set(filteredResumeEvents.map(e => e.eventId || e.id));
-
-  result[resultsKey]!.missingEventExpected = filteredNormalEvents
-    .filter(e => !resumeEventIds.has(e.id))
-    .map(e => e.id);
-
-  // Check for extra events in resume
-  result[resultsKey]!.extraEvents = filteredResumeEvents
-    .filter(e => !normalEventIds.has(e.eventId || e.id))
-    .map(e => e.eventId || e.id);
-
-  // Check event order
-  if (filteredResumeEvents.length === filteredNormalEvents.length) {
-    for (let i = 0; i < filteredResumeEvents.length; i++) {
-      if (filteredResumeEvents[i].type !== filteredNormalEvents[i].type) {
-        result[resultsKey]!.orderIsValid = false;
-        break;
-      }
-    }
-  }
-
-  // Compare each event in detail
-  for (let i = 0; i < filteredResumeEvents.length; i++) {
-    const resumeEvent = filteredResumeEvents[i];
-    const normalEvent = filteredNormalEvents.find(e => e.id === (resumeEvent.eventId || resumeEvent.id));
-
-    const eventResult: EventResult = {
-      eventIndex: i,
-      eventType: resumeEvent.type,
-      eventAuthor: author,
-      isPassed: false,
-      specversionResult: { isEqual: true, allDifferences: [] },
-      versionResult: { isEqual: true, allDifferences: [] },
-      sourceResult: { isEqual: true, allDifferences: [] },
-      typeResult: { isEqual: true, allDifferences: [] },
-      dataResult: { isEqual: true, allDifferences: [] }
-    };
-
-    if (!normalEvent) {
-      eventResult.isPassed = false;
-      result[resultsKey]!.events.push(eventResult);
-      continue;
-    }
-
-    // Compare each field
-    eventResult.specversionResult = compareField(
-      resumeEvent.specversion,
-      normalEvent.specversion,
-      'specversion'
-    );
-    eventResult.versionResult = compareField(
-      resumeEvent.version,
-      normalEvent.version,
-      'version'
-    );
-    eventResult.sourceResult = compareField(
-      resumeEvent.source,
-      normalEvent.source,
-      'source'
-    );
-    eventResult.typeResult = compareField(
-      resumeEvent.type,
-      normalEvent.type,
-      'type'
-    );
-    eventResult.dataResult = deepCompareData(
-      resumeEvent.data,
-      normalEvent.data
-    );
-
-    // Determine if event passed
-    eventResult.isPassed = [
-      eventResult.specversionResult.isEqual,
-      eventResult.versionResult.isEqual,
-      eventResult.sourceResult.isEqual,
-      eventResult.typeResult.isEqual,
-      eventResult.dataResult.isEqual
-    ].every(Boolean);
-
-    if (eventResult.isPassed) {
-      result[resultsKey]!.passedEvents++;
-    } else {
-      result[resultsKey]!.failedEvents++;
-    }
-
-    result[resultsKey]!.events.push(eventResult);
-  }
-
-  return result;
-}
-
-// Helper functions remain the same
-function compareField(actual: any, expected: any, fieldName: string): EventComparisonDetail {
-  if (actual === expected) {
-    return { isEqual: true, allDifferences: [] };
-  }
-  return {
-    isEqual: false,
-    allDifferences: [`${fieldName} => actual: ${JSON.stringify(actual)} !== expected: ${JSON.stringify(expected)}`]
-  };
-}
-
-function deepCompareData(actualData: any, expectedData: any, path = ''): EventComparisonDetail {
-  const result: EventComparisonDetail = {
-    isEqual: true,
-    allDifferences: []
-  };
-
-  if (actualData === expectedData) {
-    return result;
-  }
-
-  if (typeof actualData !== 'object' || typeof expectedData !== 'object' || 
-      actualData === null || expectedData === null) {
-    result.isEqual = false;
-    result.allDifferences.push(
-      `${path} => actual: ${JSON.stringify(actualData)} !== expected: ${JSON.stringify(expectedData)}`
-    );
-    return result;
-  }
-
-  for (const key in expectedData) {
-    const currentPath = path ? `${path}.${key}` : key;
-    
-    if (!(key in actualData)) {
-      result.isEqual = false;
-      result.allDifferences.push(
-        `${currentPath}: missing in actual (expected has ${JSON.stringify(expectedData[key])})`
-      );
-      continue;
-    }
-
-    const fieldResult = deepCompareData(actualData[key], expectedData[key], currentPath);
-    if (!fieldResult.isEqual) {
-      result.isEqual = false;
-      result.allDifferences.push(...fieldResult.allDifferences);
-    }
-  }
-
-  return result;
 }

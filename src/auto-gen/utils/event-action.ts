@@ -90,6 +90,46 @@ export const EVENTS_BY_ACTION: Record<
       },
     },
   },
+  [ACTION.ADD_DM_MESSAGE_REACTION]: {
+    scenarios: {
+      NEW_CONTACT: {
+        actor: [
+          API_EVENT.halome.v3.chat.USER_MESSAGE_REACTION_UPDATED
+        ],
+        recipient: [
+          API_EVENT.halome.v3.chat.MESSAGE_REACTION_UPDATED
+        ]
+      },
+      EXISTING_CONTACT: {
+        actor: [
+          API_EVENT.halome.v3.chat.USER_MESSAGE_REACTION_UPDATED
+        ],
+        recipient: [
+          API_EVENT.halome.v3.chat.MESSAGE_REACTION_UPDATED
+        ]
+      }
+    }
+  },
+  [ACTION.REVOKE_DM_MESSAGE_REACTION]: {
+    scenarios: {
+      NEW_CONTACT: {
+        actor: [
+          API_EVENT.halome.v3.chat.USER_MESSAGE_REACTION_UPDATED
+        ],
+        recipient: [
+          API_EVENT.halome.v3.chat.MESSAGE_REACTION_UPDATED
+        ]
+      },
+      EXISTING_CONTACT: {
+        actor: [
+          API_EVENT.halome.v3.chat.USER_MESSAGE_REACTION_UPDATED
+        ],
+        recipient: [
+          API_EVENT.halome.v3.chat.MESSAGE_REACTION_UPDATED
+        ]
+      }
+    }
+  }
   // [ACTION.SEND_MESSAGE]: {
   //   types: [
   //     'com.halome.chat.v3.message.created',
