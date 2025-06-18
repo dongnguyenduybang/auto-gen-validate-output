@@ -140,7 +140,23 @@ export const SendDmMessageWS = new WSBuilder()
             specversion: chain.expect.exact(VAR.specversion),
             version: chain.expect.exact(VAR.version),
             data: chain.expect.exact({
-
+                emoji: VAR.emoji1,
+                isReacted: true,
+                messageId: VAR.messageId,
+                actorId: VAR.userId,
+            })
+        },
+        {
+            type: chain.expect.exact(API_EVENT.halome.v3.chat.MESSAGE_REACTION_UPDATED),
+            author: VAR.recipient,
+            source: chain.expect.exact({
+                userId: VAR.userId,
+                deviceId: VAR.deviceId,
+            }),
+            specversion: chain.expect.exact(VAR.specversion),
+            version: chain.expect.exact(VAR.version),
+            data: chain.expect.exact({
+                messageId: VAR.messageId,
             })
         }
     ])
@@ -167,11 +183,26 @@ export const SendDmMessageWS = new WSBuilder()
             specversion: chain.expect.exact(VAR.specversion),
             version: chain.expect.exact(VAR.version),
             data: chain.expect.exact({
-
+                emoji: VAR.emoji1,
+                isReacted: false,
+                messageId: VAR.messageId,
+                actorId: VAR.userId1,
+            })
+        },
+        {
+            type: chain.expect.exact(API_EVENT.halome.v3.chat.MESSAGE_REACTION_UPDATED),
+            author: VAR.recipient,
+            source: chain.expect.exact({
+                userId: VAR.userId,
+                deviceId: VAR.deviceId,
+            }),
+            specversion: chain.expect.exact(VAR.specversion),
+            version: chain.expect.exact(VAR.version),
+            data: chain.expect.exact({
+                messageId: VAR.messageId,
             })
         }
     ])
-
-    .addResume('resume send dm message', VAR.recipient, API_EVENT.halome.v3.chat.INCOMING_MESSAGE_REQUEST_CREATED, VAR.id)
-.addResume('resume send dm message', VAR.actor, API_EVENT.halome.v3.chat.USER_MESSAGE_REACTION_UPDATED, VAR.time)
+    .addResume('resume send dm message', VAR.actor, API_EVENT.halome.v3.chat.OUTGOING_MESSAGE_REQUEST_CREATED, VAR.time)
+    .addResume('resume send dm message', VAR.recipient, API_EVENT.halome.v3.chat.INCOMING_MESSAGE_REQUEST_CREATED, VAR.time)
     .execute();

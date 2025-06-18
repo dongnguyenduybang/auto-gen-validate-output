@@ -3,6 +3,7 @@ export const API_EVENT = {
     v3: {
       webSocket: {
         RECONNECTION_STARTED: 'com.halome.websocket.v3.reconnection_started',
+        RECONNECTION_ENDED: 'com.halome.websocket.v3.reconnection_ended'
       },
       user: {
         AVATAR_FRAME_CREATED: 'com.halome.user.v3.profile.avatar_frame_created',

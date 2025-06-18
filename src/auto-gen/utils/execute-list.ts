@@ -1,12 +1,13 @@
-import { ACTION, ACTION_CONFIG } from '../enums';
+import { ACTION, ACTION_CONFIG, VAR } from '../enums';
 import { getApiFunctions } from '../functions/api-registry';
-import { deepEqual } from './chain-function';
 import {
   CustomMatcher,
-  EventConfig,
+  EventComparisonDetail,
+  EventResult,
   EventValidation,
   EventValidationResult,
   MatcherResult,
+  ResumeComparisonResult,
   StepValidationResult,
 } from './declarations';
 import { EVENTS_BY_ACTION } from './event-action';
@@ -185,7 +186,7 @@ export async function executeStepWS(
   const bodyApi = { resolveHeader, resolveBody };
 
   // Define authors to process
-  const authors = ['Actor', 'Recipient'];
+  const authors = [VAR.actor, VAR.recipient];
 
   // Collect and push events for each author
   for (const eventAuthor of authors) {
@@ -202,7 +203,7 @@ export async function executeStepWS(
     const taggedEvents = events.map(event => ({
       ...event,
       action: event.type.includes('com.halome.chat.v3')
-        ? (eventAuthor === 'Recipient' ? action : action)
+        ? (eventAuthor === VAR.recipient ? action : action)
         : event.action || action,
     }));
 
@@ -242,8 +243,8 @@ export async function executeStepWS(
   console.log('Expected events:', getExpectedEvents(action));
 
   const allEvents = eventContext.getValue();
-  const actorEventCount = allEvents.find(e => e.author === 'Actor')?.events.length || 0;
-  const recipientEventCount = allEvents.find(e => e.author === 'Recipient')?.events.length || 0;
+  const actorEventCount = allEvents.find(e => e.author === VAR.actor)?.events.length || 0;
+  const recipientEventCount = allEvents.find(e => e.author === VAR.recipient)?.events.length || 0;
 
   if (actorEventCount + recipientEventCount < minCount) {
     validationResult.isValid = false;
@@ -275,19 +276,19 @@ export async function executeEvents(
     const { title, author, action, eventList } = step;
 
     // Calculate total events per author
-    const actorTotalEvents = eventList.filter(e => e.author === 'Actor' || !e.author).length;
-    const recipientTotalEvents = eventList.filter(e => e.author === 'Recipient').length;
+    const actorTotalEvents = eventList.filter(e => e.author === VAR.actor || !e.author).length;
+    const recipientTotalEvents = eventList.filter(e => e.author === VAR.recipient).length;
 
     const allEvent = eventContext.getValue();
 
     const actorEvents =
       allEvent
-        .find((e) => e.author === 'Actor')
+        .find((e) => e.author === VAR.actor)
         ?.events.filter((e) => e.action === action) || [];
     const recipientEvents =
       allEvent
-        .find((e) => e.author === 'Recipient')
-        ?.events || [];
+        .find((e) => e.author === VAR.recipient)
+        ?.events.filter((e) => e.action === action) || [];
 
     // Map getDmStatus result to string
     const isExiting = getDmStatus([...actorEvents, ...recipientEvents]);
@@ -337,10 +338,10 @@ export async function executeEvents(
 
     // Check missing expected events in eventList compared to EVENTS_BY_ACTION
     const eventListActorTypes = eventList
-      .filter(e => (e.author || 'Actor') === 'Actor')
+      .filter(e => (e.author || VAR.actor) === VAR.actor)
       .map(e => e.type?.expectedValue);
     const eventListRecipientTypes = eventList
-      .filter(e => e.author === 'Recipient')
+      .filter(e => e.author === VAR.recipient)
       .map(e => e.type?.expectedValue);
 
     const missingExpectedActorEvents = expectedActorEvents.filter(
@@ -398,11 +399,11 @@ export async function executeEvents(
     for (let i = 0; i < eventList.length; i++) {
       const expectedEvent = eventList[i];
       const expectedEventType = expectedEvent.type?.expectedValue;
-      const eventAuthor = expectedEvent.author || 'Actor'; // Default to Actor if not specified
+      const eventAuthor = expectedEvent.author || VAR.actor; // Default to Actor if not specified
 
-      const targetEvents = eventAuthor === 'Actor' ? actorEvents : recipientEvents;
-      const expectedEvents = eventAuthor === 'Actor' ? expectedActorEvents : expectedRecipientEvents;
-      const resultContainer = eventAuthor === 'Actor' ? stepResult.actorResults : stepResult.recipientResults;
+      const targetEvents = eventAuthor === VAR.actor ? actorEvents : recipientEvents;
+      const expectedEvents = eventAuthor === VAR.actor ? expectedActorEvents : expectedRecipientEvents;
+      const resultContainer = eventAuthor === VAR.actor ? stepResult.actorResults : stepResult.recipientResults;
 
       const actualEvent = targetEvents.find((e) => e.type === expectedEventType);
       const eventType = expectedEventType || `Unknown event at index ${i}`;
@@ -456,7 +457,7 @@ export async function executeEvents(
       // Check order validity
       const receivedTypes = targetEvents.map(e => e.type);
       const expectedTypes = eventList
-        .filter(e => (e.author || 'Actor') === eventAuthor)
+        .filter(e => (e.author || VAR.actor) === eventAuthor)
         .map(e => e.type?.expectedValue);
       resultContainer.orderIsValid = receivedTypes.every((type, idx) => !expectedTypes[idx] || type === expectedTypes[idx]);
     }
@@ -504,92 +505,6 @@ async function debugCompare(
   }
 }
 
-// function mapStepIndexToEvents(stepIndex: number, eventContext: EventContext, action: string) {
-//     // Lấy thông tin các event type cần tìm từ EVENTS_BY_ACTION
-//     const eventConfig = EVENTS_BY_ACTION[action];
-//     if (!eventConfig) {
-//         return [];
-//     }
-
-//     // Tìm step tương ứng trong eventContext
-//     const stepEvents = eventContext.events.find(e => e.stepIndex === stepIndex);
-//     if (!stepEvents || !stepEvents.events) {
-//         return [];
-//     }
-
-//     // Lọc các event theo types đã định nghĩa
-//     const matchedEvents = stepEvents.events.filter(event =>
-//         eventConfig.types.includes(event.type)
-//     );
-
-//     return matchedEvents;
-// }
-
-// export async function executeAllResumesFromPoint(
-//     startStep: { title: string; data: string },
-//     resumeDates,
-//     context: TestContext,
-//     eventContext: EventContext,
-//     resumeContext: ResumeContext,
-//     collectors: Record<string, WebSocketEventCollector>,
-// ): Promise<Array<{ tokenResume: string | null; events: any[] }>> {
-//     const { title, data } = startStep;
-
-//     const results: Array<{ tokenResume: string | null; events: any[] }> = [];
-
-//     // Lấy tất cả sự kiện từ ResumeContext cho action
-//     const entry = resumeContext.getEntries().find((e) => e.action === lastWord);
-//     if (!entry) {
-//         console.warn(`Không tìm thấy action: ${lastWord} trong ResumeContext`);
-//         return results;
-//     }
-
-//     // Sắp xếp các sự kiện theo time
-//     const sortedEvents = entry.resume
-//         .map((event) => ({
-//             title: event.title,
-//             data: event.data,
-//         }))
-//         .sort(
-//             (a, b) =>
-//                 new Date(a.data.time).getTime() - new Date(b.data.time).getTime(),
-//         );
-
-//     // Tìm index của resume point ban đầu
-//     const startIndex = sortedEvents.findIndex(
-//         (event) => event.title === title && event.data.time === resumeDates.time,
-//     );
-
-//     if (startIndex === -1) {
-//         console.warn(
-//             `Không tìm thấy resume point: ${title} tại ${resumeDates.time}`,
-//         );
-//         return results;
-//     }
-
-//     // Lặp qua các sự kiện từ startIndex trở đi
-//     for (let i = startIndex; i < sortedEvents.length; i++) {
-//         const event = sortedEvents[i];
-//         const step = {
-//             title: event.title,
-//             data: 'id',
-//         };
-
-//         console.log(`Xử lý resume point ${i + 1}/${sortedEvents.length}:`, step);
-//         const result = await executeResume(
-//             step,
-//             context,
-//             eventContext,
-//             resumeContext,
-//             collectors,
-//             i,
-//         );
-//         // results.push(result);
-//     }
-
-//     return results;
-// }
-
 export function executeAfterAll(step, context: TestContext) { }
 
 export function executeBeforeEach(step, context: TestContext) {
@@ -600,7 +515,6 @@ export function executeAfterEach(step, context: TestContext) { }
 
 export function getExpectedEvents(action: string, scenarioType?: 'NEW_CONTACT' | 'EXISTING_CONTACT' | 'DEFAULT') {
   const config = EVENTS_BY_ACTION[action];
-  console.log(config, scenarioType)
   if (isScenarioConfig(config) && scenarioType !== 'DEFAULT') {
     return {
       actorEvents: config.scenarios[scenarioType].actor,
@@ -614,91 +528,6 @@ export function getExpectedEvents(action: string, scenarioType?: 'NEW_CONTACT' |
       minCount: config.scenarios[scenarioType].minCount || config.scenarios[scenarioType].actor.length
     };
   }
-
-
-}
-
-function compareObjects(obj1: Object, obj2: Object, path: string): any {
-  const differences: any[] = [];
-  console.log(obj1);
-  console.log(obj2);
-  if (obj1 == null && obj2 == null) {
-    return differences;
-  }
-  if (obj1 == null || obj2 == null) {
-    differences.push({
-      path: path,
-      message: 'miss match',
-      actual: `${JSON.stringify(obj1)}`,
-      expected: `${JSON.stringify(obj2)}`,
-    });
-    return differences;
-  }
-
-  if (Array.isArray(obj1) && Array.isArray(obj2)) {
-    return compareArrays(obj1, obj2, path);
-  }
-
-  if (typeof obj1 === 'object' && typeof obj2 === 'object') {
-    for (const key in obj1) {
-      if (!(key in obj2)) {
-        differences.push({
-          path: path,
-          message: `${key} is missing`,
-          actual: `${JSON.stringify(obj1)}`,
-          expected: `${JSON.stringify(obj2)}`,
-        });
-      } else {
-        const nestedDiff = compareObjects(
-          obj1[key],
-          obj2[key],
-          `${path}.${key}`,
-        );
-        differences.push(...nestedDiff);
-      }
-    }
-
-    for (const key in obj2) {
-      if (!(key in obj1)) {
-        differences.push({
-          path: path,
-          message: `${key} is extra`,
-          actual: `${JSON.stringify(obj1)}`,
-          expected: `${JSON.stringify(obj2)}`,
-        });
-      }
-    }
-  } else if (JSON.stringify(obj1) !== JSON.stringify(obj2)) {
-    differences.push({
-      path: path,
-      message: 'miss match',
-      actual: `${JSON.stringify(obj1)}`,
-      expected: `${JSON.stringify(obj2)}`,
-    });
-  }
-
-  return differences;
-}
-
-function compareArrays(arr1: string[], arr2: string[], path: string): string[] {
-  const differences: any[] = [];
-
-  if (arr1.length !== arr2.length) {
-    differences.push({
-      path: path,
-      message: 'miss match',
-      actual: `${JSON.stringify(arr1)}`,
-      expected: `${JSON.stringify(arr2)}`,
-    });
-  }
-
-  const maxLength = Math.min(arr1.length, arr2.length);
-  for (let i = 0; i < maxLength; i++) {
-    const itemDiff = compareObjects(arr1[i], arr2[i], `${path}[${i}]`);
-    differences.push(...itemDiff);
-  }
-
-  return differences;
 }
 
 export async function executeResume(
@@ -708,7 +537,14 @@ export async function executeResume(
   resumeContext: ResumeContext,
   collectors: Record<string, WebSocketEventCollector>,
 ) {
-  // Create report object
+
+  // Continuous resume loop
+  let isResumeComplete = false;
+  let lastTotal = Infinity;
+  let currentEventIndex = 0;
+
+
+  // Create report 
   const resumeReport = {
     startTime: new Date().toISOString(),
     stepInfo: {
@@ -741,8 +577,8 @@ export async function executeResume(
     }
 
     const allEvents = [
-      ...(eventContext.events.find((e) => e.author === 'Actor')?.events || []),
-      ...(eventContext.events.find((e) => e.author === 'Recipient')?.events || []),
+      ...(eventContext.events.find((e) => e.author === VAR.actor)?.events || []),
+      ...(eventContext.events.find((e) => e.author === VAR.recipient)?.events || []),
     ];
     return allEvents.find((event) => event.id === eventId);
   };
@@ -805,14 +641,6 @@ export async function executeResume(
     }
   }
 
-  // Continuous resume loop
-  let isResumeComplete = false;
-  let lastTotal = Infinity;
-  let nextResumeEvent = null;
-
-  // Thêm biến lưu trữ index hiện tại
-  let currentEventIndex = 0;
-
   while (!isResumeComplete) {
     resumeReport.summary.resumeRounds++;
 
@@ -828,15 +656,10 @@ export async function executeResume(
       },
     };
 
-    console.log(`\n=== RESUME ROUND ${resumeReport.summary.resumeRounds} ===`);
-    console.log(`Sending resume with token: ${currentTokenResume}`);
-    console.log(`Expected remaining events: ${lastTotal}`);
-
     collector.sendMessage(message);
     await new Promise((resolve) => setTimeout(resolve, 100));
 
     const events = await collector.collectEventsAfterAction();
-    console.log(`Received ${events.length} total events in this round`);
 
     const eventIds = new Set();
     let foundReconnectionEnded = false;
@@ -845,10 +668,8 @@ export async function executeResume(
     const reconnectionEvents = [];
 
     for (const event of events) {
-      console.log(`  - Event: ${event.type} | ID: ${event.id} | Time: ${event.time}`);
 
       if (eventIds.has(event.id)) {
-        console.log(`    ❌ DUPLICATE EVENT: ${event.id}`);
         resumeReport.duplicates.push({
           eventId: event.id,
           type: event.type,
@@ -873,32 +694,25 @@ export async function executeResume(
         dataConsistent: matchedEvent ? compareEventData(event, matchedEvent) : false,
         resumeRound: resumeReport.summary.resumeRounds,
         isReconnectedEvent:
-          event.type === API_EVENT.halome.v3.webSocket.RECONNECTION_STARTED ||
-          event.type === 'com.halome.websocket.v3.reconnection_ended',
+          event.type === API_EVENT.halome.v3.webSocket.RECONNECTION_ENDED
       };
 
 
       // Categorize events
-      if (event.type === 'com.halome.websocket.v3.reconnection_ended') {
+      if (event.type === API_EVENT.halome.v3.webSocket.RECONNECTION_ENDED) {
         reconnectionEvents.push(event);
         foundReconnectionEnded = true;
         currentTotal = event.data?.total || 0;
-        console.log(`    🔄 Reconnection event: total=${currentTotal}`);
 
-        // Kiểm tra giá trị total
         if (currentTotal !== regularEvents.length) {
-          console.log(`    ❌ ERROR: reconnection_ended total mismatch. Expected ${regularEvents.length}, got ${currentTotal}`);
           resumeReport.errors.push({
             type: 'ReconnectionTotalMismatch',
             message: `reconnection_ended total mismatch. Expected ${regularEvents.length}, got ${currentTotal}`,
             eventId: event.id,
             resumeRound: resumeReport.summary.resumeRounds,
           });
-        } else {
-          console.log(`    ✅ reconnection_ended total is correct: ${currentTotal}`);
         }
 
-        // Lưu vào reconnectionEvents
         resumeReport.reconnectionEvents.push({
           eventId: event.id,
           type: event.type,
@@ -913,45 +727,34 @@ export async function executeResume(
         if (currentTotal === 0) {
           isResumeComplete = true;
           resumeReport.summary.reconnectionEnded = true;
-          console.log(`    ✅ Resume completed: reconnection_ended with total=0`);
+
           break;
         }
       } else if (event.type !== API_EVENT.halome.v3.webSocket.RECONNECTION_STARTED) {
         resumeReport.events.push(eventEntry);
         regularEvents.push(event);
-        console.log(`    📝 Regular event: ${event.type}`);
+
       }
     }
 
-    console.log(`Regular events in this round: ${regularEvents.length}`);
-    console.log(`Reconnection events in this round: ${reconnectionEvents.length}`);
-    console.log(`Current total after this round: ${currentTotal}`);
-
-    // Xử lý regularEvents theo thứ tự từ đầu đến cuối
     if (regularEvents.length > 0) {
-      // Lấy sự kiện tại vị trí hiện tại (currentEventIndex)
-      const nextEvent = regularEvents[0];
-      console.log(`Next resume will be from: ${nextEvent.type} (${nextEvent.id})`);
 
-      // Cập nhật resume token từ sự kiện hiện tại
+      const nextEvent = regularEvents[0];
+
       if (data === 'time') {
         currentTokenResume = nextEvent.time;
-        console.log(`Next resume token (time): ${currentTokenResume}`);
       } else if (data === 'id') {
         currentTokenResume = nextEvent.id;
-        console.log(`Next resume token (id): ${currentTokenResume}`);
       }
 
       // Tăng index để lần sau resume từ sự kiện tiếp theo
       currentEventIndex++;
     } else if (foundReconnectionEnded && currentTotal > 0) {
-      console.log(`❌ WARNING: Found reconnection_ended with total=${currentTotal} but no regular events to resume from`);
       console.log(`Retrying with same token: ${currentTokenResume}`);
     }
 
     // Check completion conditions
     if (!foundReconnectionEnded) {
-      console.log(`❌ ERROR: No reconnection_ended event found in round ${resumeReport.summary.resumeRounds}`);
       resumeReport.errors.push({
         type: 'MissingReconnectionEnded',
         message: `No reconnection_ended event found in round ${resumeReport.summary.resumeRounds}`,
@@ -962,7 +765,6 @@ export async function executeResume(
 
     // Safety check to prevent infinite loop
     if (resumeReport.summary.resumeRounds > 50) {
-      console.log(`❌ ERROR: Exceeded maximum resume rounds (50)`);
       resumeReport.errors.push({
         type: 'MaxResumeRoundsExceeded',
         message: 'Exceeded maximum resume rounds (50)',
@@ -970,7 +772,6 @@ export async function executeResume(
       isResumeComplete = true;
     }
 
-    console.log(`=== END ROUND ${resumeReport.summary.resumeRounds} ===\n`);
   }
 
   // console.log(JSON.stringify(eventContext, null, 2));
@@ -980,27 +781,26 @@ export async function executeResume(
     authorEvents,
     author
   );
-  console.log(JSON.stringify(resumeReport, null, 2));
-  console.log(JSON.stringify(comparisonResults, null, 2))
-  return resumeReport;
+  // console.log(JSON.stringify(resumeReport, null, 2));
+  // console.log(JSON.stringify(comparisonResults, null, 2))
+  console.log(comparisonResults)
+  return comparisonResults;
 }
-
 
 function compareResumeWithNormalEventsDetailed(
   resumeEvents: any[],
   normalEvents: any[],
-  author: 'Actor' | 'Recipient'
+  author: VAR.actor | VAR.recipient
 ): ResumeComparisonResult {
-
   const adjustedNormalEvents = normalEvents.slice(1);
 
   const filteredResumeEvents = resumeEvents.filter(
     e => e.type !== 'ResumePoint' && !e.isReconnectedEvent
-  ); // Loại bỏ ResumePoint và các sự kiện reconnection
+  );
 
   // Initialize result
   const result: ResumeComparisonResult = {
-    [author === 'Actor' ? 'actorResults' : 'recipientResults']: {
+    [author === VAR.actor ? 'actorResults' : 'recipientResults']: {
       totalEventsResume: resumeEvents.length,
       passedEventsResume: 0,
       failedEventsResume: 0,
@@ -1012,7 +812,7 @@ function compareResumeWithNormalEventsDetailed(
     }
   };
 
-  const resultsKey = author === 'Actor' ? 'actorResults' : 'recipientResults';
+  const resultsKey = author === VAR.actor ? 'actorResults' : 'recipientResults';
   const results = result[resultsKey]!;
 
   // Create lookup maps
@@ -1041,14 +841,10 @@ function compareResumeWithNormalEventsDetailed(
     );
 
     if (firstEventIndex === -1) {
-      console.log(
-        `Round ${round}: Không tìm thấy sự kiện đầu tiên (${firstEvent.eventId}) trong adjustedNormalEvents`
-      );
       results.extraEventsResume.push(...roundEvents.map(e => e.eventId || e.id));
       return false;
     }
 
-    // Tạo danh sách các sự kiện mong đợi cho round này
     const expectedEvents = adjustedNormalEvents.slice(
       firstEventIndex,
       firstEventIndex + roundEvents.length
@@ -1060,7 +856,7 @@ function compareResumeWithNormalEventsDetailed(
       .filter(e => !roundEventIds.has(e.id))
       .map(e => e.id);
     if (missingInRound.length > 0) {
-      console.log(`Round ${round}: Missing events: ${missingInRound.join(', ')}`);
+
       results.missingEventsResume.push(...missingInRound);
     }
 
@@ -1070,17 +866,14 @@ function compareResumeWithNormalEventsDetailed(
       .filter(e => !expectedEventIds.has(e.eventId || e.id))
       .map(e => e.eventId || e.id);
     if (extraInRound.length > 0) {
-      console.log(`Round ${round}: Extra events: ${extraInRound.join(', ')}`);
+
       results.extraEventsResume.push(...extraInRound);
     }
 
     // Kiểm tra thứ tự trong round
     const isValid = roundEvents.every((resumeEvent, index) => {
       const normalEvent = expectedEvents[index];
-      console.log(
-        `Round ${round}, Index ${index}: normalEvent.type=${normalEvent?.type || 'undefined'
-        }, resumeEvent.type=${resumeEvent.type}`
-      );
+
       return normalEvent && resumeEvent.type === normalEvent.type;
     });
 
@@ -1102,7 +895,7 @@ function compareResumeWithNormalEventsDetailed(
       .map(([id]) => id);
 
     if (duplicatesInRound.length > 0) {
-      console.log(`Round ${round}: Found duplicate events: ${duplicatesInRound.join(', ')}`);
+
       results.duplicateEventsResume.push(...duplicatesInRound);
     }
   });
@@ -1110,10 +903,10 @@ function compareResumeWithNormalEventsDetailed(
 
   // Compare each event
   resumeEvents
-    .filter(e => e.type !== 'ResumePoint') // Loại bỏ ResumePoint
+    .filter(e => e.type !== 'ResumePoint')
     .forEach((resumeEvent, index) => {
       if (resumeEvent.isReconnectedEvent) {
-        // Đánh dấu reconnection_ended và RECONNECTION_STARTED là passed
+
         const eventResult: EventResult = {
           eventIndex: index,
           resumeRound: resumeEvent.resumeRound,
@@ -1129,9 +922,8 @@ function compareResumeWithNormalEventsDetailed(
         results.events.push(eventResult);
         results.passedEventsResume++;
       } else {
-        // So sánh các sự kiện thông thường
-        const normalEvent = normalEventMap.get(resumeEvent.eventId);
 
+        const normalEvent = normalEventMap.get(resumeEvent.eventId);
         const eventResult: EventResult = {
           eventIndex: index,
           resumeRound: resumeEvent.resumeRound,
@@ -1249,37 +1041,85 @@ function checkOrderEvent(collectedEvents, action: string, dmStatus): boolean {
   return orderIsValid;
 }
 
-interface EventComparisonDetail {
-  isEqual: boolean;
-  allDifferences: string[];
+function compareObjects(obj1: Object, obj2: Object, path: string): any {
+  const differences: any[] = [];
+  console.log(obj1);
+  console.log(obj2);
+  if (obj1 == null && obj2 == null) {
+    return differences;
+  }
+  if (obj1 == null || obj2 == null) {
+    differences.push({
+      path: path,
+      message: 'miss match',
+      actual: `${JSON.stringify(obj1)}`,
+      expected: `${JSON.stringify(obj2)}`,
+    });
+    return differences;
+  }
+
+  if (Array.isArray(obj1) && Array.isArray(obj2)) {
+    return compareArrays(obj1, obj2, path);
+  }
+
+  if (typeof obj1 === 'object' && typeof obj2 === 'object') {
+    for (const key in obj1) {
+      if (!(key in obj2)) {
+        differences.push({
+          path: path,
+          message: `${key} is missing`,
+          actual: `${JSON.stringify(obj1)}`,
+          expected: `${JSON.stringify(obj2)}`,
+        });
+      } else {
+        const nestedDiff = compareObjects(
+          obj1[key],
+          obj2[key],
+          `${path}.${key}`,
+        );
+        differences.push(...nestedDiff);
+      }
+    }
+
+    for (const key in obj2) {
+      if (!(key in obj1)) {
+        differences.push({
+          path: path,
+          message: `${key} is extra`,
+          actual: `${JSON.stringify(obj1)}`,
+          expected: `${JSON.stringify(obj2)}`,
+        });
+      }
+    }
+  } else if (JSON.stringify(obj1) !== JSON.stringify(obj2)) {
+    differences.push({
+      path: path,
+      message: 'miss match',
+      actual: `${JSON.stringify(obj1)}`,
+      expected: `${JSON.stringify(obj2)}`,
+    });
+  }
+
+  return differences;
 }
 
-interface EventResult {
-  eventIndex: number;
-  resumeRound: number;
-  eventType: string;
-  eventAuthor: string;
-  isPassed: boolean;
-  specversionResult: EventComparisonDetail;
-  versionResult: EventComparisonDetail;
-  sourceResult: EventComparisonDetail;
-  typeResult: EventComparisonDetail;
-  dataResult: EventComparisonDetail;
-}
+function compareArrays(arr1: string[], arr2: string[], path: string): string[] {
+  const differences: any[] = [];
 
-interface ParticipantResults {
-  totalEvents: number;
-  passedEventsResume: number;
-  failedEventsResume: number;
-  missingEventsResume: string[];
-  extraEventsResume: string[];
-  orderEventsResume: boolean;
-  duplicateEventsResume: string[];
-  events: EventResult[];
-}
+  if (arr1.length !== arr2.length) {
+    differences.push({
+      path: path,
+      message: 'miss match',
+      actual: `${JSON.stringify(arr1)}`,
+      expected: `${JSON.stringify(arr2)}`,
+    });
+  }
 
-interface ResumeComparisonResult {
+  const maxLength = Math.min(arr1.length, arr2.length);
+  for (let i = 0; i < maxLength; i++) {
+    const itemDiff = compareObjects(arr1[i], arr2[i], `${path}[${i}]`);
+    differences.push(...itemDiff);
+  }
 
-  actorResults?: ParticipantResults;
-  recipientResults?: ParticipantResults;
+  return differences;
 }

@@ -364,3 +364,38 @@ export type DeepEqualResult = {
   nonMatchingActual?: any;
   path: string;
 };
+
+
+export interface EventComparisonDetail {
+  isEqual: boolean;
+  allDifferences: string[];
+}
+
+export interface EventResult {
+  eventIndex: number;
+  resumeRound: number;
+  eventType: string;
+  eventAuthor: string;
+  isPassed: boolean;
+  specversionResult: EventComparisonDetail;
+  versionResult: EventComparisonDetail;
+  sourceResult: EventComparisonDetail;
+  typeResult: EventComparisonDetail;
+  dataResult: EventComparisonDetail;
+}
+
+interface ParticipantResults {
+  totalEvents: number;
+  passedEventsResume: number;
+  failedEventsResume: number;
+  missingEventsResume: string[];
+  extraEventsResume: string[];
+  orderEventsResume: boolean;
+  duplicateEventsResume: string[];
+  events: EventResult[];
+}
+
+export interface ResumeComparisonResult {
+  actorResults?: ParticipantResults;
+  recipientResults?: ParticipantResults;
+}

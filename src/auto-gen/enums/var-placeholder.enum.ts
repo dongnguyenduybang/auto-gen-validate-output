@@ -50,6 +50,7 @@ export enum VAR {
   id = 'id',
   time = 'time',
   emoji = '😁',
+  emoji1 = '🚀',
   version = '2.0',
   specversion = '1.0',
 }
