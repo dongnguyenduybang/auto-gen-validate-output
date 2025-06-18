@@ -206,3 +206,46 @@ export interface ValidIfOptions {
   };
   logicalOperator?: 'AND' | 'OR';
 }
+
+export interface TestReport {
+  path: string;
+  passedTests: number;
+  totalTests: number;
+  failedTests: { code: number }[];
+  warnings: any[];
+  codedTest: { code: number }[];
+}
+
+// Định nghĩa interface cho dữ liệu phân tích
+export interface ReportMetrics {
+  endpoint: string;
+  passed: number;
+  failed: number;
+  warnings: number;
+  code_200: number;
+  code_201: number;
+  code_400: number;
+  code_403: number;
+  code_500: number;
+}
+
+export interface TestReport {
+  path: string;
+  passedTests: number;
+  failedTests: { code: number }[];
+  warnings: any[];
+  codedTest: { code: number }[];
+}
+
+// Định nghĩa interface cho dữ liệu phân tích
+export interface ReportMetrics {
+  endpoint: string;
+  passed: number;
+  failed: number;
+  warnings: number;
+  code_200: number;
+  code_201: number;
+  code_400: number;
+  code_403: number;
+  code_500: number;
+}
