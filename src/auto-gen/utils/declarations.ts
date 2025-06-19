@@ -249,3 +249,22 @@ export interface ReportMetrics {
   code_403: number;
   code_500: number;
 }
+
+export interface ReportData {
+  endpoint: string;
+  dtoName: string;
+  total: number;
+  passed: number;
+  failed: number;
+  warnings: number;
+  case200: number;
+  case201: number;
+  case400: number;
+  case403: number;
+  case404: number;
+  case500: number;
+  hasFailures: boolean;
+  jsonFile: string;
+  detailFilePath: string | null;
+  reportCategory: string;
+}

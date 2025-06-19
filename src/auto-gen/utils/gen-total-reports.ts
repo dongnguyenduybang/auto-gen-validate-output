@@ -1,25 +1,6 @@
 import * as path from 'path';
 import { promises as fsPromises } from 'fs';
-import { TestResult } from './declarations';
-
-interface ReportData {
-  endpoint: string;
-  dtoName: string;
-  total: number;
-  passed: number;
-  failed: number;
-  warnings: number;
-  case200: number;
-  case201: number;
-  case400: number;
-  case403: number;
-  case404: number;
-  case500: number;
-  hasFailures: boolean;
-  jsonFile: string;
-  detailFilePath: string | null;
-  reportCategory: string;
-}
+import { ReportData, TestResult } from './declarations';
 
 export async function generateTotalReportsFromJSON(
   inputDir: string = path.join(__dirname, '../tmp-reports'),
@@ -129,7 +110,7 @@ function generateSummaryMarkdown(data: ReportData[]): string {
   let content = `# 📊 Test Report Summary\n\n`;
   content += `\n---\n`;
   content += `Time: ${new Date().toLocaleString()}\n`;
-  // Overview section
+
   const totalEndpoints = data.length;
   const passedEndpoints = data.filter(d => !d.hasFailures).length;
   const failedEndpoints = data.filter(d => d.hasFailures).length;
@@ -137,11 +118,6 @@ function generateSummaryMarkdown(data: ReportData[]): string {
   const totalPassed = data.reduce((sum, d) => sum + d.passed, 0);
   const totalFailed = data.reduce((sum, d) => sum + d.failed, 0);
   const totalWarnings = data.reduce((sum, d) => sum + d.warnings, 0);
-  const case200 = data.reduce((sum, d) => sum + d.case200, 0);
-  const case201 = data.reduce((sum, d) => sum + d.case201, 0);
-  const case400 = data.reduce((sum, d) => sum + d.case400, 0);
-  const case403 = data.reduce((sum, d) => sum + d.case403, 0);
-  const case500 = data.reduce((sum, d) => sum + d.case500, 0);
 
   content += `## 📋 Overview\n\n`;
   content += `| Metric | Count |\n`;
@@ -154,7 +130,6 @@ function generateSummaryMarkdown(data: ReportData[]): string {
   content += `| ❌ Failed Tests | ${totalFailed} |\n`;
   content += `| ⚠️ Warnings | ${totalWarnings} |\n\n`;
 
-  // Failed Endpoints section (có thể click)
   const failed = data.filter(d => d.hasFailures);
   if (failed.length > 0) {
     content += `## ❌ Failed Endpoints (${failed.length})\n\n`;
@@ -170,7 +145,7 @@ function generateSummaryMarkdown(data: ReportData[]): string {
         const encodedPath = item.detailFilePath.replace(/\\/g, '/');
         detailLink = `[📄 View Report](./${encodedPath})`;
 
-        // Debug: Log để kiểm tra path
+
 
       }
 
