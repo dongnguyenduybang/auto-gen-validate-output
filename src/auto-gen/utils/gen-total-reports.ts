@@ -9,6 +9,12 @@ interface ReportData {
   passed: number;
   failed: number;
   warnings: number;
+  case200: number;
+  case201: number;
+  case400: number;
+  case403: number;
+  case404: number;
+  case500: number;
   hasFailures: boolean;
   jsonFile: string;
   detailFilePath: string | null;
@@ -91,7 +97,13 @@ export async function generateTotalReportsFromJSON(
         passed: data.passedTests || 0,
         failed: data.failedTests?.length || 0,
         warnings: data.warnings?.length || 0,
-        hasFailures,
+        case200: data.codedTest?.filter(test => test.code === 200).length || 0,
+        case201: data.codedTest?.filter(test => test.code === 201).length || 0,
+        case400: data.codedTest?.filter(test => test.code === 400).length || 0,
+        case403: data.codedTest?.filter(test => test.code === 403).length || 0,
+        case404: data.codedTest?.filter(test => test.code === 404).length || 0,
+        case500: data.codedTest?.filter(test => test.code === 500).length || 0,
+        hasFailures: data.failedTests?.length > 0,
         jsonFile: file,
         detailFilePath: detailFilePath ? path.relative(outputDir, detailFilePath) : null,
         reportCategory
@@ -115,7 +127,8 @@ export async function generateTotalReportsFromJSON(
 
 function generateSummaryMarkdown(data: ReportData[]): string {
   let content = `# 📊 Test Report Summary\n\n`;
-
+  content += `\n---\n`;
+  content += `Time: ${new Date().toLocaleString()}\n`;
   // Overview section
   const totalEndpoints = data.length;
   const passedEndpoints = data.filter(d => !d.hasFailures).length;
@@ -124,6 +137,11 @@ function generateSummaryMarkdown(data: ReportData[]): string {
   const totalPassed = data.reduce((sum, d) => sum + d.passed, 0);
   const totalFailed = data.reduce((sum, d) => sum + d.failed, 0);
   const totalWarnings = data.reduce((sum, d) => sum + d.warnings, 0);
+  const case200 = data.reduce((sum, d) => sum + d.case200, 0);
+  const case201 = data.reduce((sum, d) => sum + d.case201, 0);
+  const case400 = data.reduce((sum, d) => sum + d.case400, 0);
+  const case403 = data.reduce((sum, d) => sum + d.case403, 0);
+  const case500 = data.reduce((sum, d) => sum + d.case500, 0);
 
   content += `## 📋 Overview\n\n`;
   content += `| Metric | Count |\n`;
@@ -140,10 +158,11 @@ function generateSummaryMarkdown(data: ReportData[]): string {
   const failed = data.filter(d => d.hasFailures);
   if (failed.length > 0) {
     content += `## ❌ Failed Endpoints (${failed.length})\n\n`;
-    content += `| Endpoint | DTO | Passed | Failed | Warnings | Detail Report |\n`;
-    content += `|----------|-----|--------|--------|----------|---------------|\n`;
+    content += `| Endpoint | DTO | Passed | Failed | Warnings | 200 | 201 | 400 | 403 | 404 | 500 | Detail Report |\n`;
+    content += `|----------|-----|--------|--------|----------|-----|-----|-----|-----|-----|-----|---------------|\n`;
 
     failed.forEach(item => {
+      console.log(item)
       let detailLink = '❌ No Report';
 
       if (item.detailFilePath) {
@@ -152,10 +171,10 @@ function generateSummaryMarkdown(data: ReportData[]): string {
         detailLink = `[📄 View Report](./${encodedPath})`;
 
         // Debug: Log để kiểm tra path
-        console.log(`Debug - DTO: ${item.dtoName}, Path: ${encodedPath}`);
+
       }
 
-      content += `| ${item.endpoint} | ${item.dtoName} | ${item.passed} | ${item.failed} | ${item.warnings} | ${detailLink} |\n`;
+      content += `| ${item.endpoint} | ${item.dtoName} | ${item.passed} | ${item.failed} | ${item.warnings} | ${item.case200} | ${item.case201} | ${item.case400} | ${item.case403} | ${item.case404} | ${item.case500} | ${detailLink} |\n`;
     });
     content += `\n`;
   }
@@ -163,48 +182,18 @@ function generateSummaryMarkdown(data: ReportData[]): string {
   const passed = data.filter(d => !d.hasFailures);
   if (passed.length > 0) {
     content += `## ✅ Passed Endpoints (${passed.length})\n\n`;
-    content += `| Endpoint | DTO | Passed | Total | Detail Report |\n`;
-    content += `|----------|-----|--------|-------|---------------|\n`;
+    content += `| Endpoint | DTO | Passed | Failed | Warnings | 200 | 201 | 400 | 403 | 404 | 500 | Detail Report |\n`;
+    content += `|----------|-----|--------|--------|----------|-----|-----|-----|-----|-----|-----|---------------|\n`;
 
     passed.forEach(item => {
       const detailLink = item.detailFilePath
         ? `[📄 View Report](${item.detailFilePath})`
         : '❌ No Report';
 
-      content += `| ${item.endpoint} | ${item.dtoName} | ${item.passed} | ${item.total} | ${detailLink} |\n`;
+      content += `| ${item.endpoint} | ${item.dtoName} | ${item.passed} | ${item.failed} | ${item.warnings} | ${item.case200} | ${item.case201} | ${item.case400} | ${item.case403} | ${item.case404} | ${item.case500} | ${detailLink} |\n`;
     });
     content += `\n`;
   }
-
-  content += `## 📁 Reports by Category\n\n`;
-  content += `### ❌ Failed Reports\n`;
-  content += `Location: \`test-requests/.reports/failed-reports/\`\n\n`;
-
-  const failedByDto = failed.reduce((acc, item) => {
-    if (!acc[item.dtoName]) acc[item.dtoName] = [];
-    acc[item.dtoName].push(item);
-    return acc;
-  }, {} as Record<string, ReportData[]>);
-
-  Object.entries(failedByDto).forEach(([dtoName, items]) => {
-    content += `- **${dtoName}**: ${items.length} endpoint(s)\n`;
-  });
-
-  content += `\n### ✅ Success Reports\n`;
-  content += `Location: \`test-requests/.reports/success-reports/\`\n\n`;
-
-  const passedByDto = passed.reduce((acc, item) => {
-    if (!acc[item.dtoName]) acc[item.dtoName] = [];
-    acc[item.dtoName].push(item);
-    return acc;
-  }, {} as Record<string, ReportData[]>);
-
-  Object.entries(passedByDto).forEach(([dtoName, items]) => {
-    content += `- **${dtoName}**: ${items.length} endpoint(s)\n`;
-  });
-
-  content += `\n---\n`;
-  content += `*Generated at: ${new Date().toLocaleString()}*\n`;
 
   return content;
 }

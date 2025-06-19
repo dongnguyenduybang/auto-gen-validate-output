@@ -1,0 +1,67 @@
+=== Request Test Report for delete-user-avatar ===
+• Host: N/A
+• Endpoint: /UserProfile/DeleteUserAvatar
+• Date: 19/06/2025, 16:07:43
+
+=== Execution Steps ===
+
+=== Test Summary ===
+✅ Passed: 0
+❌ Failed: 4
+⚠️ Warnings: 1
+📊 Total: 5
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 0
+ 🟢 201: 0
+ 🟠 400: 0
+ 🟠 403: 0
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Warnings ===
+ 🟠 1. Case #1
+     ├─ Status: 200
+     ├─ Body: {"avatarPath":123}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: avatarPath expected string, received number
+     └─ Message: Actual errors includes of expected errors
+
+=== Unique Errors ===
+ 🟣 1. avatarPath invalid url (Occurred: 2 times)
+ 🟣 2. avatarPath required (Occurred: 1 time)
+ 🟣 3. avatarPath should not be empty (Occurred: 1 time)
+ 🟣 4. avatarPath expected string, received null (Occurred: 1 time)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #2
+     ├─ Status: 400
+     ├─ Body: {"avatarPath":"https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"}
+     ├─ Actual: Not found avatar
+     ├─ Expected: None
+     └─ Details: No details
+
+ 🟣 2. Case #3
+     ├─ Status: 400
+     ├─ Body: {}
+     ├─ Actual: Not found avatar
+     ├─ Expected: avatarPath invalid url, avatarPath required
+     └─ Details: No details
+
+ 🟣 3. Case #4
+     ├─ Status: 400
+     ├─ Body: {"avatarPath":""}
+     ├─ Actual: Not found avatar
+     ├─ Expected: avatarPath invalid url, avatarPath should not be empty
+     └─ Details: No details
+
+ 🟣 4. Case #5
+     ├─ Status: 400
+     ├─ Body: {"avatarPath":null}
+     ├─ Actual: Not found avatar
+     ├─ Expected: avatarPath expected string, received null
+     └─ Details: No details
+
+=== End of Report ===

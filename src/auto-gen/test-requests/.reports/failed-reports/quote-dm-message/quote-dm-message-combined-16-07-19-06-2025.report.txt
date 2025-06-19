@@ -1,0 +1,221 @@
+=== Request Test Report for quote-dm-message ===
+• Host: N/A
+• Endpoint: /Message/QuoteDMMessage
+• Date: 19/06/2025, 16:07:43
+
+=== Execution Steps ===
+  1. [✅ PASSED] sendDmMessage
+
+=== Test Summary ===
+✅ Passed: 127
+❌ Failed: 10
+⚠️ Warnings: 18
+📊 Total: 155
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 0
+ 🟢 201: 1
+ 🟠 400: 51
+ 🟠 403: 75
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Warnings ===
+ 🟠 1. Case #23
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FAB4XH9G7YNPEQ0XQSAQF","messageId":"01JY3FACCTYYPD8GY6AXY6SPV5","content":"","ref":"ref"}
+     ├─ Actual Errors: content string must contain at least 1 character(s)
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 2. Case #28
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FAB4XH9G7YNPEQ0XQSAQF","messageId":"01JY3FACCTYYPD8GY6AXY6SPV5","content":"test DTO quote message","ref":""}
+     ├─ Actual Errors: ref string must contain at least 1 character(s)
+     ├─ Expected Errors: ref should not be empty, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 3. Case #92
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FAB4XH9G7YNPEQ0XQSAQF","messageId":123,"content":"","ref":"ref"}
+     ├─ Actual Errors: content string must contain at least 1 character(s), messageId expected string, received number
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s), messageId expected string, received number
+     └─ Message: Actual errors includes of expected errors
+ 🟠 4. Case #97
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FAB4XH9G7YNPEQ0XQSAQF","messageId":123,"content":"test DTO quote message","ref":""}
+     ├─ Actual Errors: messageId expected string, received number, ref string must contain at least 1 character(s)
+     ├─ Expected Errors: messageId expected string, received number, ref should not be empty, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 5. Case #101
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FAB4XH9G7YNPEQ0XQSAQF","content":"","ref":"ref"}
+     ├─ Actual Errors: content string must contain at least 1 character(s), messageId required
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s), messageId required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 6. Case #106
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FAB4XH9G7YNPEQ0XQSAQF","content":"test DTO quote message","ref":""}
+     ├─ Actual Errors: messageId required, ref string must contain at least 1 character(s)
+     ├─ Expected Errors: messageId required, ref should not be empty, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 7. Case #119
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FAB4XH9G7YNPEQ0XQSAQF","messageId":null,"content":"","ref":"ref"}
+     ├─ Actual Errors: content string must contain at least 1 character(s), messageId expected string, received null
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s), messageId expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 8. Case #124
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FAB4XH9G7YNPEQ0XQSAQF","messageId":null,"content":"test DTO quote message","ref":""}
+     ├─ Actual Errors: messageId expected string, received null, ref string must contain at least 1 character(s)
+     ├─ Expected Errors: messageId expected string, received null, ref should not be empty, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 9. Case #128
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FAB4XH9G7YNPEQ0XQSAQF","messageId":"invalid_ULID","content":"","ref":"ref"}
+     ├─ Actual Errors: content string must contain at least 1 character(s), messageId invalid ulid
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s), messageId invalid ulid
+     └─ Message: Actual errors includes of expected errors
+ 🟠 10. Case #133
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FAB4XH9G7YNPEQ0XQSAQF","messageId":"invalid_ULID","content":"test DTO quote message","ref":""}
+     ├─ Actual Errors: messageId invalid ulid, ref string must contain at least 1 character(s)
+     ├─ Expected Errors: messageId invalid ulid, ref should not be empty, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 11. Case #137
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FAB4XH9G7YNPEQ0XQSAQF","messageId":"01JY3FACCTYYPD8GY6AXY6SPV5","content":123,"ref":""}
+     ├─ Actual Errors: content expected string, received number, ref string must contain at least 1 character(s)
+     ├─ Expected Errors: content expected string, received number, ref should not be empty, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 12. Case #140
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FAB4XH9G7YNPEQ0XQSAQF","messageId":"01JY3FACCTYYPD8GY6AXY6SPV5","content":"","ref":123}
+     ├─ Actual Errors: content string must contain at least 1 character(s), ref expected string, received number
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s), ref expected string, received number
+     └─ Message: Actual errors includes of expected errors
+ 🟠 13. Case #141
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FAB4XH9G7YNPEQ0XQSAQF","messageId":"01JY3FACCTYYPD8GY6AXY6SPV5","content":"","ref":""}
+     ├─ Actual Errors: content string must contain at least 1 character(s), ref string must contain at least 1 character(s)
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s), ref should not be empty, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 14. Case #142
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FAB4XH9G7YNPEQ0XQSAQF","messageId":"01JY3FACCTYYPD8GY6AXY6SPV5","content":""}
+     ├─ Actual Errors: content string must contain at least 1 character(s), ref required
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s), ref required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 15. Case #143
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FAB4XH9G7YNPEQ0XQSAQF","messageId":"01JY3FACCTYYPD8GY6AXY6SPV5","content":"","ref":null}
+     ├─ Actual Errors: content string must contain at least 1 character(s), ref expected string, received null
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s), ref expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 16. Case #145
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FAB4XH9G7YNPEQ0XQSAQF","messageId":"01JY3FACCTYYPD8GY6AXY6SPV5","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":""}
+     ├─ Actual Errors: content string must contain at most 2000 character(s), ref string must contain at least 1 character(s)
+     ├─ Expected Errors: content string must contain at most 2000 character(s), ref should not be empty, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 17. Case #149
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FAB4XH9G7YNPEQ0XQSAQF","messageId":"01JY3FACCTYYPD8GY6AXY6SPV5","ref":""}
+     ├─ Actual Errors: content required, ref string must contain at least 1 character(s)
+     ├─ Expected Errors: content required, ref should not be empty, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 18. Case #153
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FAB4XH9G7YNPEQ0XQSAQF","messageId":"01JY3FACCTYYPD8GY6AXY6SPV5","content":null,"ref":""}
+     ├─ Actual Errors: content expected string, received null, ref string must contain at least 1 character(s)
+     ├─ Expected Errors: content expected string, received null, ref should not be empty, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+
+=== Unique Errors ===
+ 🟣 1. messageId invalid ulid (Occurred: 10 times)
+ 🟣 2. messageId should not be empty (Occurred: 10 times)
+ 🟣 3. content expected string, received number (Occurred: 1 time)
+ 🟣 4. content should not be empty (Occurred: 1 time)
+ 🟣 5. content string must contain at least 1 character(s) (Occurred: 1 time)
+ 🟣 6. content string must contain at most 2000 character(s) (Occurred: 1 time)
+ 🟣 7. content required (Occurred: 1 time)
+ 🟣 8. content expected string, received null (Occurred: 1 time)
+ 🟣 9. ref expected string, received number (Occurred: 1 time)
+ 🟣 10. ref should not be empty (Occurred: 1 time)
+ 🟣 11. ref string must contain at least 1 character(s) (Occurred: 1 time)
+ 🟣 12. ref required (Occurred: 1 time)
+ 🟣 13. ref expected string, received null (Occurred: 1 time)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #19
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FAB4XH9G7YNPEQ0XQSAQF","messageId":"","content":"test DTO quote message","ref":"ref"}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 2. Case #109
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FAB4XH9G7YNPEQ0XQSAQF","messageId":"","content":123,"ref":"ref"}
+     ├─ Actual: content expected string, received number, messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: content expected string, received number, messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 3. Case #110
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FAB4XH9G7YNPEQ0XQSAQF","messageId":"","content":"","ref":"ref"}
+     ├─ Actual: content string must contain at least 1 character(s), messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: content should not be empty, content string must contain at least 1 character(s), messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 4. Case #111
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FAB4XH9G7YNPEQ0XQSAQF","messageId":"","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":"ref"}
+     ├─ Actual: content string must contain at most 2000 character(s), messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: content string must contain at most 2000 character(s), messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 5. Case #112
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FAB4XH9G7YNPEQ0XQSAQF","messageId":"","ref":"ref"}
+     ├─ Actual: content required, messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: content required, messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 6. Case #113
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FAB4XH9G7YNPEQ0XQSAQF","messageId":"","content":null,"ref":"ref"}
+     ├─ Actual: content expected string, received null, messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: content expected string, received null, messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 7. Case #114
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FAB4XH9G7YNPEQ0XQSAQF","messageId":"","content":"test DTO quote message","ref":123}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s), ref expected string, received number
+     ├─ Expected: messageId invalid ulid, messageId should not be empty, ref expected string, received number
+     └─ Details: No details
+
+ 🟣 8. Case #115
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FAB4XH9G7YNPEQ0XQSAQF","messageId":"","content":"test DTO quote message","ref":""}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s), ref string must contain at least 1 character(s)
+     ├─ Expected: messageId invalid ulid, messageId should not be empty, ref should not be empty, ref string must contain at least 1 character(s)
+     └─ Details: No details
+
+ 🟣 9. Case #116
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FAB4XH9G7YNPEQ0XQSAQF","messageId":"","content":"test DTO quote message"}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s), ref required
+     ├─ Expected: messageId invalid ulid, messageId should not be empty, ref required
+     └─ Details: No details
+
+ 🟣 10. Case #117
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FAB4XH9G7YNPEQ0XQSAQF","messageId":"","content":"test DTO quote message","ref":null}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s), ref expected string, received null
+     ├─ Expected: messageId invalid ulid, messageId should not be empty, ref expected string, received null
+     └─ Details: No details
+
+=== End of Report ===

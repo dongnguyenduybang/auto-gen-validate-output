@@ -1,0 +1,1692 @@
+=== Request Test Report for update-dm-media-attachment ===
+• Host: N/A
+• Endpoint: /Message/UpdateDmMediaAttachments
+• Date: 19/06/2025, 16:07:43
+
+=== Execution Steps ===
+  1. [✅ PASSED] sendDmMessageMedia
+
+=== Test Summary ===
+✅ Passed: 462
+❌ Failed: 0
+⚠️ Warnings: 277
+📊 Total: 462
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 0
+ 🟢 201: 0
+ 🟠 400: 0
+ 🟠 403: 185
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Warnings ===
+ 🟠 1. Case #38
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 2. Case #39
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"invalid_enum_value","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 3. Case #40
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 4. Case #41
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType should not be empty, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 5. Case #42
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":null,"ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 6. Case #43
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":123,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected string, received object, ref expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 7. Case #44
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected string, received object, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 8. Case #45
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected string, received object, ref required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 9. Case #46
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":null,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected string, received object, ref expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 10. Case #47
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"ref","mediaObjects":"not_an_array"}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects expected array, received string
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 11. Case #48
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"ref","mediaObjects":["string"]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected object, received string
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 12. Case #49
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"ref","mediaObjects":[{}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, fileUrl invalid url, fileUrl required, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 13. Case #50
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"ref","mediaObjects":["uniqueItem","uniqueItem"]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects array must contain unique items, mediaObjects has element 0 expected object, received string, mediaObjects has element 1 expected object, received string
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 14. Case #51
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"ref","mediaObjects":[null]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 15. Case #52
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"ref","mediaObjects":[""]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected object, received string, mediaObjects has element 0 string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 16. Case #53
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"ref","mediaObjects":[{"attachmentType":"invalid_enum_value","fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 17. Case #54
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"ref","mediaObjects":[{"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 18. Case #55
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"ref","mediaObjects":[{"attachmentType":"","fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType should not be empty, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 19. Case #56
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"ref","mediaObjects":[{"attachmentType":null,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 20. Case #57
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":123,"fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: fileUrl expected string, received number, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 21. Case #58
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"ref","mediaObjects":[{"attachmentType":1,"fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: fileUrl invalid url, fileUrl required, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 22. Case #59
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: fileUrl invalid url, fileUrl should not be empty, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 23. Case #60
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":123,"filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected string, received object, mimetype expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 24. Case #61
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected string, received object, mimetype required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 25. Case #62
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected string, received object, mimetype should not be empty
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 26. Case #63
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":null,"filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected string, received object, mimetype expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 27. Case #64
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":123,"extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: filename expected string, received number, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 28. Case #65
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: filename required, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 29. Case #66
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: filename should not be empty, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 30. Case #67
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":null,"extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: filename expected string, received null, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 31. Case #68
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":123}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: extension expected string, received number, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 32. Case #69
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: extension required, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 33. Case #70
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":""}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: extension should not be empty, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 34. Case #71
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":null}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: extension expected string, received null, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 35. Case #72
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"ref"}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects expected array, received undefined, mediaObjects required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 36. Case #73
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"ref","mediaObjects":""}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects expected array, received string, mediaObjects should not be empty
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 37. Case #74
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"ref","mediaObjects":null}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects expected array, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 38. Case #223
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"invalid_enum_value","ref":123,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', mediaObjects has element 0 expected string, received object, ref expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 39. Case #224
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"invalid_enum_value","ref":"","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', mediaObjects has element 0 expected string, received object, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 40. Case #225
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"invalid_enum_value","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', mediaObjects has element 0 expected string, received object, ref required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 41. Case #226
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"invalid_enum_value","ref":null,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', mediaObjects has element 0 expected string, received object, ref expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 42. Case #227
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"invalid_enum_value","ref":"ref","mediaObjects":"not_an_array"}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', mediaObjects expected array, received string
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 43. Case #228
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"invalid_enum_value","ref":"ref","mediaObjects":["string"]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', mediaObjects has element 0 expected object, received string
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 44. Case #229
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"invalid_enum_value","ref":"ref","mediaObjects":[{}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, fileUrl invalid url, fileUrl required, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 45. Case #230
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"invalid_enum_value","ref":"ref","mediaObjects":["uniqueItem","uniqueItem"]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', mediaObjects array must contain unique items, mediaObjects has element 0 expected object, received string, mediaObjects has element 1 expected object, received string
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 46. Case #231
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"invalid_enum_value","ref":"ref","mediaObjects":[null]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 47. Case #232
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"invalid_enum_value","ref":"ref","mediaObjects":[""]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', mediaObjects has element 0 expected object, received string, mediaObjects has element 0 string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 48. Case #233
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"invalid_enum_value","ref":"ref","mediaObjects":[{"attachmentType":"invalid_enum_value","fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 49. Case #234
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"invalid_enum_value","ref":"ref","mediaObjects":[{"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 50. Case #235
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"invalid_enum_value","ref":"ref","mediaObjects":[{"attachmentType":"","fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', attachmentType should not be empty, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 51. Case #236
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"invalid_enum_value","ref":"ref","mediaObjects":[{"attachmentType":null,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 52. Case #237
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"invalid_enum_value","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":123,"fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', fileUrl expected string, received number, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 53. Case #238
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"invalid_enum_value","ref":"ref","mediaObjects":[{"attachmentType":1,"fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', fileUrl invalid url, fileUrl required, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 54. Case #239
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"invalid_enum_value","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', fileUrl invalid url, fileUrl should not be empty, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 55. Case #240
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"invalid_enum_value","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":123,"filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', mediaObjects has element 0 expected string, received object, mimetype expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 56. Case #241
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"invalid_enum_value","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', mediaObjects has element 0 expected string, received object, mimetype required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 57. Case #242
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"invalid_enum_value","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', mediaObjects has element 0 expected string, received object, mimetype should not be empty
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 58. Case #243
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"invalid_enum_value","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":null,"filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', mediaObjects has element 0 expected string, received object, mimetype expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 59. Case #244
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"invalid_enum_value","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":123,"extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', filename expected string, received number, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 60. Case #245
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"invalid_enum_value","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', filename required, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 61. Case #246
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"invalid_enum_value","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', filename should not be empty, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 62. Case #247
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"invalid_enum_value","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":null,"extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', filename expected string, received null, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 63. Case #248
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"invalid_enum_value","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":123}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', extension expected string, received number, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 64. Case #249
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"invalid_enum_value","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', extension required, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 65. Case #250
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"invalid_enum_value","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":""}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', extension should not be empty, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 66. Case #251
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"invalid_enum_value","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":null}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', extension expected string, received null, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 67. Case #252
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"invalid_enum_value","ref":"ref"}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', mediaObjects expected array, received undefined, mediaObjects required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 68. Case #253
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"invalid_enum_value","ref":"ref","mediaObjects":""}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', mediaObjects expected array, received string, mediaObjects should not be empty
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 69. Case #254
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"invalid_enum_value","ref":"ref","mediaObjects":null}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', mediaObjects expected array, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 70. Case #255
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","ref":123,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, mediaObjects has element 0 expected string, received object, ref expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 71. Case #256
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","ref":"","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, mediaObjects has element 0 expected string, received object, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 72. Case #257
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, mediaObjects has element 0 expected string, received object, ref required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 73. Case #258
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","ref":null,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, mediaObjects has element 0 expected string, received object, ref expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 74. Case #259
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","ref":"ref","mediaObjects":"not_an_array"}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, mediaObjects expected array, received string
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 75. Case #260
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","ref":"ref","mediaObjects":["string"]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, mediaObjects has element 0 expected object, received string
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 76. Case #261
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","ref":"ref","mediaObjects":[{}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, attachmentType required, fileUrl invalid url, fileUrl required, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 77. Case #262
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","ref":"ref","mediaObjects":["uniqueItem","uniqueItem"]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, mediaObjects array must contain unique items, mediaObjects has element 0 expected object, received string, mediaObjects has element 1 expected object, received string
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 78. Case #263
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","ref":"ref","mediaObjects":[null]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 79. Case #264
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","ref":"ref","mediaObjects":[""]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, mediaObjects has element 0 expected object, received string, mediaObjects has element 0 string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 80. Case #265
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","ref":"ref","mediaObjects":[{"attachmentType":"invalid_enum_value","fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 81. Case #266
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","ref":"ref","mediaObjects":[{"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, attachmentType required, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 82. Case #267
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","ref":"ref","mediaObjects":[{"attachmentType":"","fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, attachmentType should not be empty, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 83. Case #268
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","ref":"ref","mediaObjects":[{"attachmentType":null,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 84. Case #269
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":123,"fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, fileUrl expected string, received number, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 85. Case #270
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","ref":"ref","mediaObjects":[{"attachmentType":1,"fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, fileUrl invalid url, fileUrl required, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 86. Case #271
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, fileUrl invalid url, fileUrl should not be empty, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 87. Case #272
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":123,"filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, mediaObjects has element 0 expected string, received object, mimetype expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 88. Case #273
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, mediaObjects has element 0 expected string, received object, mimetype required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 89. Case #274
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, mediaObjects has element 0 expected string, received object, mimetype should not be empty
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 90. Case #275
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":null,"filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, mediaObjects has element 0 expected string, received object, mimetype expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 91. Case #276
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":123,"extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, filename expected string, received number, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 92. Case #277
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, filename required, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 93. Case #278
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, filename should not be empty, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 94. Case #279
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":null,"extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, filename expected string, received null, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 95. Case #280
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":123}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, extension expected string, received number, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 96. Case #281
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, extension required, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 97. Case #282
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":""}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, extension should not be empty, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 98. Case #283
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":null}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, extension expected string, received null, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 99. Case #284
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","ref":"ref"}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, mediaObjects expected array, received undefined, mediaObjects required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 100. Case #285
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","ref":"ref","mediaObjects":""}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, mediaObjects expected array, received string, mediaObjects should not be empty
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 101. Case #286
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","ref":"ref","mediaObjects":null}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, mediaObjects expected array, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 102. Case #287
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"","ref":123,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType should not be empty, mediaObjects has element 0 expected string, received object, ref expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 103. Case #288
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"","ref":"","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType should not be empty, mediaObjects has element 0 expected string, received object, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 104. Case #289
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType should not be empty, mediaObjects has element 0 expected string, received object, ref required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 105. Case #290
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"","ref":null,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType should not be empty, mediaObjects has element 0 expected string, received object, ref expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 106. Case #291
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"","ref":"ref","mediaObjects":"not_an_array"}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType should not be empty, mediaObjects expected array, received string
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 107. Case #292
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"","ref":"ref","mediaObjects":["string"]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType should not be empty, mediaObjects has element 0 expected object, received string
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 108. Case #293
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"","ref":"ref","mediaObjects":[{}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, attachmentType should not be empty, fileUrl invalid url, fileUrl required, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 109. Case #294
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"","ref":"ref","mediaObjects":["uniqueItem","uniqueItem"]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType should not be empty, mediaObjects array must contain unique items, mediaObjects has element 0 expected object, received string, mediaObjects has element 1 expected object, received string
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 110. Case #295
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"","ref":"ref","mediaObjects":[null]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType should not be empty, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 111. Case #296
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"","ref":"ref","mediaObjects":[""]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType should not be empty, mediaObjects has element 0 expected object, received string, mediaObjects has element 0 string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 112. Case #297
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"","ref":"ref","mediaObjects":[{"attachmentType":"invalid_enum_value","fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', attachmentType should not be empty, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 113. Case #298
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"","ref":"ref","mediaObjects":[{"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, attachmentType should not be empty, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 114. Case #299
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"","ref":"ref","mediaObjects":[{"attachmentType":"","fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType should not be empty, attachmentType should not be empty, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 115. Case #300
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"","ref":"ref","mediaObjects":[{"attachmentType":null,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', attachmentType should not be empty, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 116. Case #301
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":123,"fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType should not be empty, fileUrl expected string, received number, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 117. Case #302
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"","ref":"ref","mediaObjects":[{"attachmentType":1,"fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType should not be empty, fileUrl invalid url, fileUrl required, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 118. Case #303
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType should not be empty, fileUrl invalid url, fileUrl should not be empty, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 119. Case #304
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":123,"filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType should not be empty, mediaObjects has element 0 expected string, received object, mimetype expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 120. Case #305
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType should not be empty, mediaObjects has element 0 expected string, received object, mimetype required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 121. Case #306
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType should not be empty, mediaObjects has element 0 expected string, received object, mimetype should not be empty
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 122. Case #307
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":null,"filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType should not be empty, mediaObjects has element 0 expected string, received object, mimetype expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 123. Case #308
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":123,"extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType should not be empty, filename expected string, received number, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 124. Case #309
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType should not be empty, filename required, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 125. Case #310
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType should not be empty, filename should not be empty, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 126. Case #311
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":null,"extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType should not be empty, filename expected string, received null, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 127. Case #312
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":123}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType should not be empty, extension expected string, received number, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 128. Case #313
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType should not be empty, extension required, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 129. Case #314
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":""}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType should not be empty, extension should not be empty, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 130. Case #315
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"","ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":null}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType should not be empty, extension expected string, received null, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 131. Case #316
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"","ref":"ref"}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType should not be empty, mediaObjects expected array, received undefined, mediaObjects required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 132. Case #317
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"","ref":"ref","mediaObjects":""}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType should not be empty, mediaObjects expected array, received string, mediaObjects should not be empty
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 133. Case #318
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":"","ref":"ref","mediaObjects":null}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType should not be empty, mediaObjects expected array, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 134. Case #319
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":null,"ref":123,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', mediaObjects has element 0 expected string, received object, ref expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 135. Case #320
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":null,"ref":"","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', mediaObjects has element 0 expected string, received object, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 136. Case #321
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":null,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', mediaObjects has element 0 expected string, received object, ref required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 137. Case #322
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":null,"ref":null,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', mediaObjects has element 0 expected string, received object, ref expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 138. Case #323
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":null,"ref":"ref","mediaObjects":"not_an_array"}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', mediaObjects expected array, received string
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 139. Case #324
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":null,"ref":"ref","mediaObjects":["string"]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', mediaObjects has element 0 expected object, received string
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 140. Case #325
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":null,"ref":"ref","mediaObjects":[{}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, fileUrl invalid url, fileUrl required, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 141. Case #326
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":null,"ref":"ref","mediaObjects":["uniqueItem","uniqueItem"]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', mediaObjects array must contain unique items, mediaObjects has element 0 expected object, received string, mediaObjects has element 1 expected object, received string
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 142. Case #327
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":null,"ref":"ref","mediaObjects":[null]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 143. Case #328
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":null,"ref":"ref","mediaObjects":[""]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', mediaObjects has element 0 expected object, received string, mediaObjects has element 0 string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 144. Case #329
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":null,"ref":"ref","mediaObjects":[{"attachmentType":"invalid_enum_value","fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 145. Case #330
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":null,"ref":"ref","mediaObjects":[{"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 146. Case #331
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":null,"ref":"ref","mediaObjects":[{"attachmentType":"","fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', attachmentType should not be empty, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 147. Case #332
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":null,"ref":"ref","mediaObjects":[{"attachmentType":null,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 148. Case #333
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":null,"ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":123,"fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', fileUrl expected string, received number, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 149. Case #334
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":null,"ref":"ref","mediaObjects":[{"attachmentType":1,"fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', fileUrl invalid url, fileUrl required, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 150. Case #335
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":null,"ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', fileUrl invalid url, fileUrl should not be empty, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 151. Case #336
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":null,"ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":123,"filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', mediaObjects has element 0 expected string, received object, mimetype expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 152. Case #337
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":null,"ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', mediaObjects has element 0 expected string, received object, mimetype required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 153. Case #338
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":null,"ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', mediaObjects has element 0 expected string, received object, mimetype should not be empty
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 154. Case #339
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":null,"ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":null,"filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', mediaObjects has element 0 expected string, received object, mimetype expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 155. Case #340
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":null,"ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":123,"extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', filename expected string, received number, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 156. Case #341
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":null,"ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', filename required, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 157. Case #342
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":null,"ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', filename should not be empty, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 158. Case #343
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":null,"ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":null,"extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', filename expected string, received null, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 159. Case #344
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":null,"ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":123}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', extension expected string, received number, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 160. Case #345
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":null,"ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', extension required, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 161. Case #346
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":null,"ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":""}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', extension should not be empty, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 162. Case #347
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":null,"ref":"ref","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":null}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', extension expected string, received null, mediaObjects has element 0 expected string, received object
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 163. Case #348
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":null,"ref":"ref"}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', mediaObjects expected array, received undefined, mediaObjects required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 164. Case #349
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":null,"ref":"ref","mediaObjects":""}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', mediaObjects expected array, received string, mediaObjects should not be empty
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 165. Case #350
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":null,"ref":"ref","mediaObjects":null}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', mediaObjects expected array, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 166. Case #351
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":123,"mediaObjects":"not_an_array"}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects expected array, received string, ref expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 167. Case #352
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":123,"mediaObjects":["string"]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected object, received string, ref expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 168. Case #353
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":123,"mediaObjects":[{}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, fileUrl invalid url, fileUrl required, mediaObjects has element 0 expected string, received object, ref expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 169. Case #354
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":123,"mediaObjects":["uniqueItem","uniqueItem"]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects array must contain unique items, mediaObjects has element 0 expected object, received string, mediaObjects has element 1 expected object, received string, ref expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 170. Case #355
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":123,"mediaObjects":[null]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected string, received object, ref expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 171. Case #356
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":123,"mediaObjects":[""]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected object, received string, mediaObjects has element 0 string must contain at least 1 character(s), ref expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 172. Case #357
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":123,"mediaObjects":[{"attachmentType":"invalid_enum_value","fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', mediaObjects has element 0 expected string, received object, ref expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 173. Case #358
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":123,"mediaObjects":[{"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, mediaObjects has element 0 expected string, received object, ref expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 174. Case #359
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":123,"mediaObjects":[{"attachmentType":"","fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType should not be empty, mediaObjects has element 0 expected string, received object, ref expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 175. Case #360
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":123,"mediaObjects":[{"attachmentType":null,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', mediaObjects has element 0 expected string, received object, ref expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 176. Case #361
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":123,"mediaObjects":[{"attachmentType":1,"fileUrl":123,"fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: fileUrl expected string, received number, mediaObjects has element 0 expected string, received object, ref expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 177. Case #362
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":123,"mediaObjects":[{"attachmentType":1,"fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: fileUrl invalid url, fileUrl required, mediaObjects has element 0 expected string, received object, ref expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 178. Case #363
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":123,"mediaObjects":[{"attachmentType":1,"fileUrl":"","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: fileUrl invalid url, fileUrl should not be empty, mediaObjects has element 0 expected string, received object, ref expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 179. Case #364
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":123,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":123,"filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected string, received object, mimetype expected string, received number, ref expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 180. Case #365
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":123,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected string, received object, mimetype required, ref expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 181. Case #366
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":123,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected string, received object, mimetype should not be empty, ref expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 182. Case #367
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":123,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":null,"filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected string, received object, mimetype expected string, received null, ref expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 183. Case #368
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":123,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":123,"extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: filename expected string, received number, mediaObjects has element 0 expected string, received object, ref expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 184. Case #369
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":123,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: filename required, mediaObjects has element 0 expected string, received object, ref expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 185. Case #370
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":123,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: filename should not be empty, mediaObjects has element 0 expected string, received object, ref expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 186. Case #371
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":123,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":null,"extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: filename expected string, received null, mediaObjects has element 0 expected string, received object, ref expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 187. Case #372
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":123,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":123}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: extension expected string, received number, mediaObjects has element 0 expected string, received object, ref expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 188. Case #373
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":123,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: extension required, mediaObjects has element 0 expected string, received object, ref expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 189. Case #374
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":123,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":""}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: extension should not be empty, mediaObjects has element 0 expected string, received object, ref expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 190. Case #375
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":123,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":null}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: extension expected string, received null, mediaObjects has element 0 expected string, received object, ref expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 191. Case #376
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":123}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects expected array, received undefined, mediaObjects required, ref expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 192. Case #377
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":123,"mediaObjects":""}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects expected array, received string, mediaObjects should not be empty, ref expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 193. Case #378
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":123,"mediaObjects":null}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects expected array, received null, ref expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 194. Case #379
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"","mediaObjects":"not_an_array"}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects expected array, received string, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 195. Case #380
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"","mediaObjects":["string"]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected object, received string, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 196. Case #381
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"","mediaObjects":[{}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, fileUrl invalid url, fileUrl required, mediaObjects has element 0 expected string, received object, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 197. Case #382
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"","mediaObjects":["uniqueItem","uniqueItem"]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects array must contain unique items, mediaObjects has element 0 expected object, received string, mediaObjects has element 1 expected object, received string, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 198. Case #383
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"","mediaObjects":[null]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected string, received object, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 199. Case #384
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"","mediaObjects":[""]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected object, received string, mediaObjects has element 0 string must contain at least 1 character(s), ref string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 200. Case #385
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"","mediaObjects":[{"attachmentType":"invalid_enum_value","fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', mediaObjects has element 0 expected string, received object, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 201. Case #386
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"","mediaObjects":[{"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, mediaObjects has element 0 expected string, received object, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 202. Case #387
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"","mediaObjects":[{"attachmentType":"","fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType should not be empty, mediaObjects has element 0 expected string, received object, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 203. Case #388
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"","mediaObjects":[{"attachmentType":null,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', mediaObjects has element 0 expected string, received object, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 204. Case #389
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"","mediaObjects":[{"attachmentType":1,"fileUrl":123,"fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: fileUrl expected string, received number, mediaObjects has element 0 expected string, received object, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 205. Case #390
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"","mediaObjects":[{"attachmentType":1,"fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: fileUrl invalid url, fileUrl required, mediaObjects has element 0 expected string, received object, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 206. Case #391
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"","mediaObjects":[{"attachmentType":1,"fileUrl":"","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: fileUrl invalid url, fileUrl should not be empty, mediaObjects has element 0 expected string, received object, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 207. Case #392
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":123,"filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected string, received object, mimetype expected string, received number, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 208. Case #393
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected string, received object, mimetype required, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 209. Case #394
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected string, received object, mimetype should not be empty, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 210. Case #395
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":null,"filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected string, received object, mimetype expected string, received null, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 211. Case #396
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":123,"extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: filename expected string, received number, mediaObjects has element 0 expected string, received object, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 212. Case #397
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: filename required, mediaObjects has element 0 expected string, received object, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 213. Case #398
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: filename should not be empty, mediaObjects has element 0 expected string, received object, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 214. Case #399
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":null,"extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: filename expected string, received null, mediaObjects has element 0 expected string, received object, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 215. Case #400
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":123}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: extension expected string, received number, mediaObjects has element 0 expected string, received object, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 216. Case #401
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: extension required, mediaObjects has element 0 expected string, received object, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 217. Case #402
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":""}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: extension should not be empty, mediaObjects has element 0 expected string, received object, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 218. Case #403
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"","mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":null}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: extension expected string, received null, mediaObjects has element 0 expected string, received object, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 219. Case #404
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":""}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects expected array, received undefined, mediaObjects required, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 220. Case #405
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"","mediaObjects":""}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects expected array, received string, mediaObjects should not be empty, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 221. Case #406
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":"","mediaObjects":null}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects expected array, received null, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 222. Case #407
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"mediaObjects":"not_an_array"}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects expected array, received string, ref required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 223. Case #408
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"mediaObjects":["string"]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected object, received string, ref required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 224. Case #409
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"mediaObjects":[{}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, fileUrl invalid url, fileUrl required, mediaObjects has element 0 expected string, received object, ref required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 225. Case #410
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"mediaObjects":["uniqueItem","uniqueItem"]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects array must contain unique items, mediaObjects has element 0 expected object, received string, mediaObjects has element 1 expected object, received string, ref required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 226. Case #411
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"mediaObjects":[null]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected string, received object, ref required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 227. Case #412
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"mediaObjects":[""]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected object, received string, mediaObjects has element 0 string must contain at least 1 character(s), ref required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 228. Case #413
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"mediaObjects":[{"attachmentType":"invalid_enum_value","fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', mediaObjects has element 0 expected string, received object, ref required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 229. Case #414
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"mediaObjects":[{"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, mediaObjects has element 0 expected string, received object, ref required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 230. Case #415
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"mediaObjects":[{"attachmentType":"","fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType should not be empty, mediaObjects has element 0 expected string, received object, ref required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 231. Case #416
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"mediaObjects":[{"attachmentType":null,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', mediaObjects has element 0 expected string, received object, ref required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 232. Case #417
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"mediaObjects":[{"attachmentType":1,"fileUrl":123,"fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: fileUrl expected string, received number, mediaObjects has element 0 expected string, received object, ref required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 233. Case #418
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"mediaObjects":[{"attachmentType":1,"fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: fileUrl invalid url, fileUrl required, mediaObjects has element 0 expected string, received object, ref required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 234. Case #419
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"mediaObjects":[{"attachmentType":1,"fileUrl":"","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: fileUrl invalid url, fileUrl should not be empty, mediaObjects has element 0 expected string, received object, ref required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 235. Case #420
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":123,"filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected string, received object, mimetype expected string, received number, ref required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 236. Case #421
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected string, received object, mimetype required, ref required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 237. Case #422
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected string, received object, mimetype should not be empty, ref required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 238. Case #423
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":null,"filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected string, received object, mimetype expected string, received null, ref required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 239. Case #424
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":123,"extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: filename expected string, received number, mediaObjects has element 0 expected string, received object, ref required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 240. Case #425
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: filename required, mediaObjects has element 0 expected string, received object, ref required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 241. Case #426
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: filename should not be empty, mediaObjects has element 0 expected string, received object, ref required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 242. Case #427
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":null,"extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: filename expected string, received null, mediaObjects has element 0 expected string, received object, ref required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 243. Case #428
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":123}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: extension expected string, received number, mediaObjects has element 0 expected string, received object, ref required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 244. Case #429
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: extension required, mediaObjects has element 0 expected string, received object, ref required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 245. Case #430
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":""}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: extension should not be empty, mediaObjects has element 0 expected string, received object, ref required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 246. Case #431
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":null}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: extension expected string, received null, mediaObjects has element 0 expected string, received object, ref required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 247. Case #432
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects expected array, received undefined, mediaObjects required, ref required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 248. Case #433
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"mediaObjects":""}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects expected array, received string, mediaObjects should not be empty, ref required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 249. Case #434
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"mediaObjects":null}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects expected array, received null, ref required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 250. Case #435
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":null,"mediaObjects":"not_an_array"}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects expected array, received string, ref expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 251. Case #436
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":null,"mediaObjects":["string"]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected object, received string, ref expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 252. Case #437
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":null,"mediaObjects":[{}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, fileUrl invalid url, fileUrl required, mediaObjects has element 0 expected string, received object, ref expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 253. Case #438
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":null,"mediaObjects":["uniqueItem","uniqueItem"]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects array must contain unique items, mediaObjects has element 0 expected object, received string, mediaObjects has element 1 expected object, received string, ref expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 254. Case #439
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":null,"mediaObjects":[null]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected string, received object, ref expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 255. Case #440
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":null,"mediaObjects":[""]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected object, received string, mediaObjects has element 0 string must contain at least 1 character(s), ref expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 256. Case #441
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":null,"mediaObjects":[{"attachmentType":"invalid_enum_value","fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value', mediaObjects has element 0 expected string, received object, ref expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 257. Case #442
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":null,"mediaObjects":[{"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined', attachmentType required, mediaObjects has element 0 expected string, received object, ref expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 258. Case #443
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":null,"mediaObjects":[{"attachmentType":"","fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received '', attachmentType should not be empty, mediaObjects has element 0 expected string, received object, ref expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 259. Case #444
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":null,"mediaObjects":[{"attachmentType":null,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null', mediaObjects has element 0 expected string, received object, ref expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 260. Case #445
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":null,"mediaObjects":[{"attachmentType":1,"fileUrl":123,"fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: fileUrl expected string, received number, mediaObjects has element 0 expected string, received object, ref expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 261. Case #446
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":null,"mediaObjects":[{"attachmentType":1,"fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: fileUrl invalid url, fileUrl required, mediaObjects has element 0 expected string, received object, ref expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 262. Case #447
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":null,"mediaObjects":[{"attachmentType":1,"fileUrl":"","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: fileUrl invalid url, fileUrl should not be empty, mediaObjects has element 0 expected string, received object, ref expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 263. Case #448
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":null,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":123,"filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected string, received object, mimetype expected string, received number, ref expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 264. Case #449
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":null,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected string, received object, mimetype required, ref expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 265. Case #450
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":null,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"","filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected string, received object, mimetype should not be empty, ref expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 266. Case #451
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":null,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":null,"filename":"AAAA.txt","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects has element 0 expected string, received object, mimetype expected string, received null, ref expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 267. Case #452
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":null,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":123,"extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: filename expected string, received number, mediaObjects has element 0 expected string, received object, ref expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 268. Case #453
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":null,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: filename required, mediaObjects has element 0 expected string, received object, ref expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 269. Case #454
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":null,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"","extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: filename should not be empty, mediaObjects has element 0 expected string, received object, ref expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 270. Case #455
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":null,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":null,"extension":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: filename expected string, received null, mediaObjects has element 0 expected string, received object, ref expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 271. Case #456
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":null,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":123}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: extension expected string, received number, mediaObjects has element 0 expected string, received object, ref expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 272. Case #457
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":null,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt"}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: extension required, mediaObjects has element 0 expected string, received object, ref expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 273. Case #458
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":null,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":""}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: extension should not be empty, mediaObjects has element 0 expected string, received object, ref expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 274. Case #459
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":null,"mediaObjects":[{"attachmentType":1,"fileUrl":"https://fs.ugc.ziicdn.net/SSSSSSS/heic_300kB.png","fileMetadata":{"mimetype":"text/plain","filename":"AAAA.txt","extension":null}}]}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: extension expected string, received null, mediaObjects has element 0 expected string, received object, ref expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 275. Case #460
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":null}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects expected array, received undefined, mediaObjects required, ref expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 276. Case #461
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":null,"mediaObjects":""}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects expected array, received string, mediaObjects should not be empty, ref expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 277. Case #462
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FWBCYWYJ8S9QY5NH59AH9","attachmentType":0,"ref":null,"mediaObjects":null}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: mediaObjects expected array, received null, ref expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+
+=== Unique Errors ===
+
+[DTO Validation Issues]
+
+=== End of Report ===

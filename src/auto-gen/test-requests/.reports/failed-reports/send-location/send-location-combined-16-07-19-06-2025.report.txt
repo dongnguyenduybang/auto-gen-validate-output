@@ -1,0 +1,850 @@
+=== Request Test Report for send-location ===
+• Host: N/A
+• Endpoint: /Message/SendLocation
+• Date: 19/06/2025, 16:07:43
+
+=== Execution Steps ===
+
+=== Test Summary ===
+✅ Passed: 282
+❌ Failed: 22
+⚠️ Warnings: 111
+📊 Total: 415
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 0
+ 🟢 201: 1
+ 🟠 400: 68
+ 🟠 403: 213
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Warnings ===
+ 🟠 1. Case #34
+     ├─ Status: 201
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"","ref":"ref","description":"description","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 2. Case #36
+     ├─ Status: 201
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","ref":"ref","description":"description","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: content required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 3. Case #37
+     ├─ Status: 201
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":null,"ref":"ref","description":"description","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: content expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 4. Case #39
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"","description":"description","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: ref string must contain at least 1 character(s)
+     ├─ Expected Errors: ref should not be empty, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 5. Case #43
+     ├─ Status: 201
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"ref","description":"","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: description should not be empty
+     └─ Message: Actual errors includes of expected errors
+ 🟠 6. Case #44
+     ├─ Status: 201
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"ref","description":null,"latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: description expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 7. Case #46
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"ref","description":"description","latitude":"","longitude":"105.7833368"}
+     ├─ Actual Errors: latitude string must contain at least 1 character(s)
+     ├─ Expected Errors: latitude should not be empty, latitude string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 8. Case #50
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"ref","description":"description","latitude":"10.0324312","longitude":""}
+     ├─ Actual Errors: longitude string must contain at least 1 character(s)
+     ├─ Expected Errors: longitude should not be empty, longitude string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 9. Case #258
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":123,"ref":"","description":"description","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: content expected string, received number, ref string must contain at least 1 character(s)
+     ├─ Expected Errors: content expected string, received number, ref should not be empty, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 10. Case #262
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":123,"ref":"ref","description":"","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: content expected string, received number
+     ├─ Expected Errors: content expected string, received number, description should not be empty
+     └─ Message: Actual errors includes of expected errors
+ 🟠 11. Case #263
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":123,"ref":"ref","description":null,"latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: content expected string, received number
+     ├─ Expected Errors: content expected string, received number, description expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 12. Case #265
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":123,"ref":"ref","description":"description","latitude":"","longitude":"105.7833368"}
+     ├─ Actual Errors: content expected string, received number, latitude string must contain at least 1 character(s)
+     ├─ Expected Errors: content expected string, received number, latitude should not be empty, latitude string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 13. Case #269
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":123,"ref":"ref","description":"description","latitude":"10.0324312","longitude":""}
+     ├─ Actual Errors: content expected string, received number, longitude string must contain at least 1 character(s)
+     ├─ Expected Errors: content expected string, received number, longitude should not be empty, longitude string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 14. Case #272
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"","ref":123,"description":"description","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: ref expected string, received number
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s), ref expected string, received number
+     └─ Message: Actual errors includes of expected errors
+ 🟠 15. Case #273
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"","ref":"","description":"description","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: ref string must contain at least 1 character(s)
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s), ref should not be empty, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 16. Case #274
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"","description":"description","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: ref required
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s), ref required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 17. Case #275
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"","ref":null,"description":"description","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: ref expected string, received null
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s), ref expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 18. Case #276
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"","ref":"ref","description":123,"latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: description expected string, received number
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s), description expected string, received number
+     └─ Message: Actual errors includes of expected errors
+ 🟠 19. Case #277
+     ├─ Status: 201
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"","ref":"ref","description":"","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s), description should not be empty
+     └─ Message: Actual errors includes of expected errors
+ 🟠 20. Case #278
+     ├─ Status: 201
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"","ref":"ref","description":null,"latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s), description expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 21. Case #279
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"","ref":"ref","description":"description","latitude":123,"longitude":"105.7833368"}
+     ├─ Actual Errors: latitude expected string, received number
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s), latitude expected string, received number
+     └─ Message: Actual errors includes of expected errors
+ 🟠 22. Case #280
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"","ref":"ref","description":"description","latitude":"","longitude":"105.7833368"}
+     ├─ Actual Errors: latitude string must contain at least 1 character(s)
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s), latitude should not be empty, latitude string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 23. Case #281
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"","ref":"ref","description":"description","longitude":"105.7833368"}
+     ├─ Actual Errors: latitude required
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s), latitude required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 24. Case #282
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"","ref":"ref","description":"description","latitude":null,"longitude":"105.7833368"}
+     ├─ Actual Errors: latitude expected string, received null
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s), latitude expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 25. Case #283
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"","ref":"ref","description":"description","latitude":"10.0324312","longitude":123}
+     ├─ Actual Errors: longitude expected string, received number
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s), longitude expected string, received number
+     └─ Message: Actual errors includes of expected errors
+ 🟠 26. Case #284
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"","ref":"ref","description":"description","latitude":"10.0324312","longitude":""}
+     ├─ Actual Errors: longitude string must contain at least 1 character(s)
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s), longitude should not be empty, longitude string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 27. Case #285
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"","ref":"ref","description":"description","latitude":"10.0324312"}
+     ├─ Actual Errors: longitude required
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s), longitude required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 28. Case #286
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"","ref":"ref","description":"description","latitude":"10.0324312","longitude":null}
+     ├─ Actual Errors: longitude expected string, received null
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s), longitude expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 29. Case #288
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":"","description":"description","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: content string must contain at most 2000 character(s), ref string must contain at least 1 character(s)
+     ├─ Expected Errors: content string must contain at most 2000 character(s), ref should not be empty, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 30. Case #292
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":"ref","description":"","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: content string must contain at most 2000 character(s)
+     ├─ Expected Errors: content string must contain at most 2000 character(s), description should not be empty
+     └─ Message: Actual errors includes of expected errors
+ 🟠 31. Case #293
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":"ref","description":null,"latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: content string must contain at most 2000 character(s)
+     ├─ Expected Errors: content string must contain at most 2000 character(s), description expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 32. Case #295
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":"ref","description":"description","latitude":"","longitude":"105.7833368"}
+     ├─ Actual Errors: content string must contain at most 2000 character(s), latitude string must contain at least 1 character(s)
+     ├─ Expected Errors: content string must contain at most 2000 character(s), latitude should not be empty, latitude string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 33. Case #299
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":"ref","description":"description","latitude":"10.0324312","longitude":""}
+     ├─ Actual Errors: content string must contain at most 2000 character(s), longitude string must contain at least 1 character(s)
+     ├─ Expected Errors: content string must contain at most 2000 character(s), longitude should not be empty, longitude string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 34. Case #302
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","ref":123,"description":"description","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: ref expected string, received number
+     ├─ Expected Errors: content required, ref expected string, received number
+     └─ Message: Actual errors includes of expected errors
+ 🟠 35. Case #303
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","ref":"","description":"description","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: ref string must contain at least 1 character(s)
+     ├─ Expected Errors: content required, ref should not be empty, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 36. Case #304
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","description":"description","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: ref required
+     ├─ Expected Errors: content required, ref required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 37. Case #305
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","ref":null,"description":"description","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: ref expected string, received null
+     ├─ Expected Errors: content required, ref expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 38. Case #306
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","ref":"ref","description":123,"latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: description expected string, received number
+     ├─ Expected Errors: content required, description expected string, received number
+     └─ Message: Actual errors includes of expected errors
+ 🟠 39. Case #307
+     ├─ Status: 201
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","ref":"ref","description":"","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: content required, description should not be empty
+     └─ Message: Actual errors includes of expected errors
+ 🟠 40. Case #308
+     ├─ Status: 201
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","ref":"ref","description":null,"latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: content required, description expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 41. Case #309
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","ref":"ref","description":"description","latitude":123,"longitude":"105.7833368"}
+     ├─ Actual Errors: latitude expected string, received number
+     ├─ Expected Errors: content required, latitude expected string, received number
+     └─ Message: Actual errors includes of expected errors
+ 🟠 42. Case #310
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","ref":"ref","description":"description","latitude":"","longitude":"105.7833368"}
+     ├─ Actual Errors: latitude string must contain at least 1 character(s)
+     ├─ Expected Errors: content required, latitude should not be empty, latitude string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 43. Case #311
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","ref":"ref","description":"description","longitude":"105.7833368"}
+     ├─ Actual Errors: latitude required
+     ├─ Expected Errors: content required, latitude required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 44. Case #312
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","ref":"ref","description":"description","latitude":null,"longitude":"105.7833368"}
+     ├─ Actual Errors: latitude expected string, received null
+     ├─ Expected Errors: content required, latitude expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 45. Case #313
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","ref":"ref","description":"description","latitude":"10.0324312","longitude":123}
+     ├─ Actual Errors: longitude expected string, received number
+     ├─ Expected Errors: content required, longitude expected string, received number
+     └─ Message: Actual errors includes of expected errors
+ 🟠 46. Case #314
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","ref":"ref","description":"description","latitude":"10.0324312","longitude":""}
+     ├─ Actual Errors: longitude string must contain at least 1 character(s)
+     ├─ Expected Errors: content required, longitude should not be empty, longitude string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 47. Case #315
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","ref":"ref","description":"description","latitude":"10.0324312"}
+     ├─ Actual Errors: longitude required
+     ├─ Expected Errors: content required, longitude required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 48. Case #316
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","ref":"ref","description":"description","latitude":"10.0324312","longitude":null}
+     ├─ Actual Errors: longitude expected string, received null
+     ├─ Expected Errors: content required, longitude expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 49. Case #317
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":null,"ref":123,"description":"description","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: ref expected string, received number
+     ├─ Expected Errors: content expected string, received null, ref expected string, received number
+     └─ Message: Actual errors includes of expected errors
+ 🟠 50. Case #318
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":null,"ref":"","description":"description","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: ref string must contain at least 1 character(s)
+     ├─ Expected Errors: content expected string, received null, ref should not be empty, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 51. Case #319
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":null,"description":"description","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: ref required
+     ├─ Expected Errors: content expected string, received null, ref required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 52. Case #320
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":null,"ref":null,"description":"description","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: ref expected string, received null
+     ├─ Expected Errors: content expected string, received null, ref expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 53. Case #321
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":null,"ref":"ref","description":123,"latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: description expected string, received number
+     ├─ Expected Errors: content expected string, received null, description expected string, received number
+     └─ Message: Actual errors includes of expected errors
+ 🟠 54. Case #322
+     ├─ Status: 201
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":null,"ref":"ref","description":"","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: content expected string, received null, description should not be empty
+     └─ Message: Actual errors includes of expected errors
+ 🟠 55. Case #323
+     ├─ Status: 201
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":null,"ref":"ref","description":null,"latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: content expected string, received null, description expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 56. Case #324
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":null,"ref":"ref","description":"description","latitude":123,"longitude":"105.7833368"}
+     ├─ Actual Errors: latitude expected string, received number
+     ├─ Expected Errors: content expected string, received null, latitude expected string, received number
+     └─ Message: Actual errors includes of expected errors
+ 🟠 57. Case #325
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":null,"ref":"ref","description":"description","latitude":"","longitude":"105.7833368"}
+     ├─ Actual Errors: latitude string must contain at least 1 character(s)
+     ├─ Expected Errors: content expected string, received null, latitude should not be empty, latitude string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 58. Case #326
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":null,"ref":"ref","description":"description","longitude":"105.7833368"}
+     ├─ Actual Errors: latitude required
+     ├─ Expected Errors: content expected string, received null, latitude required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 59. Case #327
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":null,"ref":"ref","description":"description","latitude":null,"longitude":"105.7833368"}
+     ├─ Actual Errors: latitude expected string, received null
+     ├─ Expected Errors: content expected string, received null, latitude expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 60. Case #328
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":null,"ref":"ref","description":"description","latitude":"10.0324312","longitude":123}
+     ├─ Actual Errors: longitude expected string, received number
+     ├─ Expected Errors: content expected string, received null, longitude expected string, received number
+     └─ Message: Actual errors includes of expected errors
+ 🟠 61. Case #329
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":null,"ref":"ref","description":"description","latitude":"10.0324312","longitude":""}
+     ├─ Actual Errors: longitude string must contain at least 1 character(s)
+     ├─ Expected Errors: content expected string, received null, longitude should not be empty, longitude string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 62. Case #330
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":null,"ref":"ref","description":"description","latitude":"10.0324312"}
+     ├─ Actual Errors: longitude required
+     ├─ Expected Errors: content expected string, received null, longitude required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 63. Case #331
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":null,"ref":"ref","description":"description","latitude":"10.0324312","longitude":null}
+     ├─ Actual Errors: longitude expected string, received null
+     ├─ Expected Errors: content expected string, received null, longitude expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 64. Case #333
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":123,"description":"","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: ref expected string, received number
+     ├─ Expected Errors: description should not be empty, ref expected string, received number
+     └─ Message: Actual errors includes of expected errors
+ 🟠 65. Case #334
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":123,"description":null,"latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: ref expected string, received number
+     ├─ Expected Errors: description expected string, received null, ref expected string, received number
+     └─ Message: Actual errors includes of expected errors
+ 🟠 66. Case #336
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":123,"description":"description","latitude":"","longitude":"105.7833368"}
+     ├─ Actual Errors: latitude string must contain at least 1 character(s), ref expected string, received number
+     ├─ Expected Errors: latitude should not be empty, latitude string must contain at least 1 character(s), ref expected string, received number
+     └─ Message: Actual errors includes of expected errors
+ 🟠 67. Case #340
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":123,"description":"description","latitude":"10.0324312","longitude":""}
+     ├─ Actual Errors: longitude string must contain at least 1 character(s), ref expected string, received number
+     ├─ Expected Errors: longitude should not be empty, longitude string must contain at least 1 character(s), ref expected string, received number
+     └─ Message: Actual errors includes of expected errors
+ 🟠 68. Case #343
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"","description":123,"latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: description expected string, received number, ref string must contain at least 1 character(s)
+     ├─ Expected Errors: description expected string, received number, ref should not be empty, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 69. Case #344
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"","description":"","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: ref string must contain at least 1 character(s)
+     ├─ Expected Errors: description should not be empty, ref should not be empty, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 70. Case #345
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"","description":null,"latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: ref string must contain at least 1 character(s)
+     ├─ Expected Errors: description expected string, received null, ref should not be empty, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 71. Case #346
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"","description":"description","latitude":123,"longitude":"105.7833368"}
+     ├─ Actual Errors: latitude expected string, received number, ref string must contain at least 1 character(s)
+     ├─ Expected Errors: latitude expected string, received number, ref should not be empty, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 72. Case #347
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"","description":"description","latitude":"","longitude":"105.7833368"}
+     ├─ Actual Errors: latitude string must contain at least 1 character(s), ref string must contain at least 1 character(s)
+     ├─ Expected Errors: latitude should not be empty, latitude string must contain at least 1 character(s), ref should not be empty, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 73. Case #348
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"","description":"description","longitude":"105.7833368"}
+     ├─ Actual Errors: latitude required, ref string must contain at least 1 character(s)
+     ├─ Expected Errors: latitude required, ref should not be empty, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 74. Case #349
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"","description":"description","latitude":null,"longitude":"105.7833368"}
+     ├─ Actual Errors: latitude expected string, received null, ref string must contain at least 1 character(s)
+     ├─ Expected Errors: latitude expected string, received null, ref should not be empty, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 75. Case #350
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"","description":"description","latitude":"10.0324312","longitude":123}
+     ├─ Actual Errors: longitude expected string, received number, ref string must contain at least 1 character(s)
+     ├─ Expected Errors: longitude expected string, received number, ref should not be empty, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 76. Case #351
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"","description":"description","latitude":"10.0324312","longitude":""}
+     ├─ Actual Errors: longitude string must contain at least 1 character(s), ref string must contain at least 1 character(s)
+     ├─ Expected Errors: longitude should not be empty, longitude string must contain at least 1 character(s), ref should not be empty, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 77. Case #352
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"","description":"description","latitude":"10.0324312"}
+     ├─ Actual Errors: longitude required, ref string must contain at least 1 character(s)
+     ├─ Expected Errors: longitude required, ref should not be empty, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 78. Case #353
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"","description":"description","latitude":"10.0324312","longitude":null}
+     ├─ Actual Errors: longitude expected string, received null, ref string must contain at least 1 character(s)
+     ├─ Expected Errors: longitude expected string, received null, ref should not be empty, ref string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 79. Case #355
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","description":"","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: ref required
+     ├─ Expected Errors: description should not be empty, ref required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 80. Case #356
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","description":null,"latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: ref required
+     ├─ Expected Errors: description expected string, received null, ref required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 81. Case #358
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","description":"description","latitude":"","longitude":"105.7833368"}
+     ├─ Actual Errors: latitude string must contain at least 1 character(s), ref required
+     ├─ Expected Errors: latitude should not be empty, latitude string must contain at least 1 character(s), ref required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 82. Case #362
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","description":"description","latitude":"10.0324312","longitude":""}
+     ├─ Actual Errors: longitude string must contain at least 1 character(s), ref required
+     ├─ Expected Errors: longitude should not be empty, longitude string must contain at least 1 character(s), ref required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 83. Case #366
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":null,"description":"","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: ref expected string, received null
+     ├─ Expected Errors: description should not be empty, ref expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 84. Case #367
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":null,"description":null,"latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual Errors: ref expected string, received null
+     ├─ Expected Errors: description expected string, received null, ref expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 85. Case #369
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":null,"description":"description","latitude":"","longitude":"105.7833368"}
+     ├─ Actual Errors: latitude string must contain at least 1 character(s), ref expected string, received null
+     ├─ Expected Errors: latitude should not be empty, latitude string must contain at least 1 character(s), ref expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 86. Case #373
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":null,"description":"description","latitude":"10.0324312","longitude":""}
+     ├─ Actual Errors: longitude string must contain at least 1 character(s), ref expected string, received null
+     ├─ Expected Errors: longitude should not be empty, longitude string must contain at least 1 character(s), ref expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 87. Case #377
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"ref","description":123,"latitude":"","longitude":"105.7833368"}
+     ├─ Actual Errors: description expected string, received number, latitude string must contain at least 1 character(s)
+     ├─ Expected Errors: description expected string, received number, latitude should not be empty, latitude string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 88. Case #381
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"ref","description":123,"latitude":"10.0324312","longitude":""}
+     ├─ Actual Errors: description expected string, received number, longitude string must contain at least 1 character(s)
+     ├─ Expected Errors: description expected string, received number, longitude should not be empty, longitude string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 89. Case #384
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"ref","description":"","latitude":123,"longitude":"105.7833368"}
+     ├─ Actual Errors: latitude expected string, received number
+     ├─ Expected Errors: description should not be empty, latitude expected string, received number
+     └─ Message: Actual errors includes of expected errors
+ 🟠 90. Case #385
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"ref","description":"","latitude":"","longitude":"105.7833368"}
+     ├─ Actual Errors: latitude string must contain at least 1 character(s)
+     ├─ Expected Errors: description should not be empty, latitude should not be empty, latitude string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 91. Case #386
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"ref","description":"","longitude":"105.7833368"}
+     ├─ Actual Errors: latitude required
+     ├─ Expected Errors: description should not be empty, latitude required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 92. Case #387
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"ref","description":"","latitude":null,"longitude":"105.7833368"}
+     ├─ Actual Errors: latitude expected string, received null
+     ├─ Expected Errors: description should not be empty, latitude expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 93. Case #388
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"ref","description":"","latitude":"10.0324312","longitude":123}
+     ├─ Actual Errors: longitude expected string, received number
+     ├─ Expected Errors: description should not be empty, longitude expected string, received number
+     └─ Message: Actual errors includes of expected errors
+ 🟠 94. Case #389
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"ref","description":"","latitude":"10.0324312","longitude":""}
+     ├─ Actual Errors: longitude string must contain at least 1 character(s)
+     ├─ Expected Errors: description should not be empty, longitude should not be empty, longitude string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 95. Case #390
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"ref","description":"","latitude":"10.0324312"}
+     ├─ Actual Errors: longitude required
+     ├─ Expected Errors: description should not be empty, longitude required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 96. Case #391
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"ref","description":"","latitude":"10.0324312","longitude":null}
+     ├─ Actual Errors: longitude expected string, received null
+     ├─ Expected Errors: description should not be empty, longitude expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 97. Case #392
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"ref","description":null,"latitude":123,"longitude":"105.7833368"}
+     ├─ Actual Errors: latitude expected string, received number
+     ├─ Expected Errors: description expected string, received null, latitude expected string, received number
+     └─ Message: Actual errors includes of expected errors
+ 🟠 98. Case #393
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"ref","description":null,"latitude":"","longitude":"105.7833368"}
+     ├─ Actual Errors: latitude string must contain at least 1 character(s)
+     ├─ Expected Errors: description expected string, received null, latitude should not be empty, latitude string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 99. Case #394
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"ref","description":null,"longitude":"105.7833368"}
+     ├─ Actual Errors: latitude required
+     ├─ Expected Errors: description expected string, received null, latitude required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 100. Case #395
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"ref","description":null,"latitude":null,"longitude":"105.7833368"}
+     ├─ Actual Errors: latitude expected string, received null
+     ├─ Expected Errors: description expected string, received null, latitude expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 101. Case #396
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"ref","description":null,"latitude":"10.0324312","longitude":123}
+     ├─ Actual Errors: longitude expected string, received number
+     ├─ Expected Errors: description expected string, received null, longitude expected string, received number
+     └─ Message: Actual errors includes of expected errors
+ 🟠 102. Case #397
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"ref","description":null,"latitude":"10.0324312","longitude":""}
+     ├─ Actual Errors: longitude string must contain at least 1 character(s)
+     ├─ Expected Errors: description expected string, received null, longitude should not be empty, longitude string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 103. Case #398
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"ref","description":null,"latitude":"10.0324312"}
+     ├─ Actual Errors: longitude required
+     ├─ Expected Errors: description expected string, received null, longitude required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 104. Case #399
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"ref","description":null,"latitude":"10.0324312","longitude":null}
+     ├─ Actual Errors: longitude expected string, received null
+     ├─ Expected Errors: description expected string, received null, longitude expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 105. Case #401
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"ref","description":"description","latitude":123,"longitude":""}
+     ├─ Actual Errors: latitude expected string, received number, longitude string must contain at least 1 character(s)
+     ├─ Expected Errors: latitude expected string, received number, longitude should not be empty, longitude string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 106. Case #404
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"ref","description":"description","latitude":"","longitude":123}
+     ├─ Actual Errors: latitude string must contain at least 1 character(s), longitude expected string, received number
+     ├─ Expected Errors: latitude should not be empty, latitude string must contain at least 1 character(s), longitude expected string, received number
+     └─ Message: Actual errors includes of expected errors
+ 🟠 107. Case #405
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"ref","description":"description","latitude":"","longitude":""}
+     ├─ Actual Errors: latitude string must contain at least 1 character(s), longitude string must contain at least 1 character(s)
+     ├─ Expected Errors: latitude should not be empty, latitude string must contain at least 1 character(s), longitude should not be empty, longitude string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 108. Case #406
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"ref","description":"description","latitude":""}
+     ├─ Actual Errors: latitude string must contain at least 1 character(s), longitude required
+     ├─ Expected Errors: latitude should not be empty, latitude string must contain at least 1 character(s), longitude required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 109. Case #407
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"ref","description":"description","latitude":"","longitude":null}
+     ├─ Actual Errors: latitude string must contain at least 1 character(s), longitude expected string, received null
+     ├─ Expected Errors: latitude should not be empty, latitude string must contain at least 1 character(s), longitude expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 110. Case #409
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"ref","description":"description","longitude":""}
+     ├─ Actual Errors: latitude required, longitude string must contain at least 1 character(s)
+     ├─ Expected Errors: latitude required, longitude should not be empty, longitude string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 111. Case #413
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E1PF84X48YM02PYTX7XKV","content":"test DTO send message","ref":"ref","description":"description","latitude":null,"longitude":""}
+     ├─ Actual Errors: latitude expected string, received null, longitude string must contain at least 1 character(s)
+     ├─ Expected Errors: latitude expected string, received null, longitude should not be empty, longitude string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+
+=== Unique Errors ===
+ 🟣 1. Unsupported permission type (Occurred: 22 times)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #29
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","content":"test DTO send message","ref":"ref","description":"description","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 2. Case #133
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"invalid_value","content":"test DTO send message","ref":"ref","description":"description","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 3. Case #177
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","content":123,"ref":"ref","description":"description","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 4. Case #178
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","content":"","ref":"ref","description":"description","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 5. Case #179
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":"ref","description":"description","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 6. Case #180
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","ref":"ref","description":"description","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 7. Case #181
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","content":null,"ref":"ref","description":"description","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 8. Case #182
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","content":"test DTO send message","ref":123,"description":"description","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 9. Case #183
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","content":"test DTO send message","ref":"","description":"description","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 10. Case #184
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","content":"test DTO send message","description":"description","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 11. Case #185
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","content":"test DTO send message","ref":null,"description":"description","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 12. Case #186
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","content":"test DTO send message","ref":"ref","description":123,"latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 13. Case #187
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","content":"test DTO send message","ref":"ref","description":"","latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 14. Case #188
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","content":"test DTO send message","ref":"ref","description":null,"latitude":"10.0324312","longitude":"105.7833368"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 15. Case #189
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","content":"test DTO send message","ref":"ref","description":"description","latitude":123,"longitude":"105.7833368"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 16. Case #190
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","content":"test DTO send message","ref":"ref","description":"description","latitude":"","longitude":"105.7833368"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 17. Case #191
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","content":"test DTO send message","ref":"ref","description":"description","longitude":"105.7833368"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 18. Case #192
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","content":"test DTO send message","ref":"ref","description":"description","latitude":null,"longitude":"105.7833368"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 19. Case #193
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","content":"test DTO send message","ref":"ref","description":"description","latitude":"10.0324312","longitude":123}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 20. Case #194
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","content":"test DTO send message","ref":"ref","description":"description","latitude":"10.0324312","longitude":""}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 21. Case #195
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","content":"test DTO send message","ref":"ref","description":"description","latitude":"10.0324312"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 22. Case #196
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","content":"test DTO send message","ref":"ref","description":"description","latitude":"10.0324312","longitude":null}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+=== End of Report ===

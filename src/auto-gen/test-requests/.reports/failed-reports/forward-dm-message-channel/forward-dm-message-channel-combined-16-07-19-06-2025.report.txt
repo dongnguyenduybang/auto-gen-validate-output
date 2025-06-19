@@ -1,0 +1,51 @@
+=== Request Test Report for forward-dm-message-channel ===
+• Host: N/A
+• Endpoint: /Message/ForwardMessagesToDMChannel
+• Date: 19/06/2025, 16:07:43
+
+=== Execution Steps ===
+  1. [✅ PASSED] sendMessage
+
+=== Test Summary ===
+✅ Passed: 57
+❌ Failed: 1
+⚠️ Warnings: 2
+📊 Total: 60
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 0
+ 🟢 201: 1
+ 🟠 400: 5
+ 🟠 403: 50
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Warnings ===
+ 🟠 1. Case #14
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3F4R517GGP66Z4NP8MT7MT","originalMessageIds":[123]}
+     ├─ Actual Errors: originalMessageIds has element 0 expected string, received number
+     ├─ Expected Errors: originalMessageIds has element 0 expected string, received number, originalMessageIds has element 0 invalid ulid
+     └─ Message: Actual errors includes of expected errors
+ 🟠 2. Case #20
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3F4R517GGP66Z4NP8MT7MT"}
+     ├─ Actual Errors: originalMessageIds required
+     ├─ Expected Errors: originalMessageIds expected array, received undefined, originalMessageIds required
+     └─ Message: Actual errors includes of expected errors
+
+=== Unique Errors ===
+ 🟣 1. originalMessageIds has element 0 expected string, received object (Occurred: 1 time)
+ 🟣 2. originalMessageIds has element 0 invalid ulid (Occurred: 1 time)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #18
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3F4R517GGP66Z4NP8MT7MT","originalMessageIds":[null]}
+     ├─ Actual: originalMessageIds has element 0 expected string, received null
+     ├─ Expected: originalMessageIds has element 0 expected string, received object, originalMessageIds has element 0 invalid ulid
+     └─ Details: No details
+
+=== End of Report ===
