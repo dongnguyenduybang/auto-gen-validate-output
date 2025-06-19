@@ -10,7 +10,7 @@ import { ActionHandler } from './utils/declarations';
 import { generateAllReports } from './utils/combine-report';
 import { clearFiles, clearReports, findAllDtoDirectories, findTestPath } from './utils/helper';
 import { genClientSwagger } from './swagger/gen-client-swagger';
-import { generateTotalReports } from './utils/gen-total-reports';
+import {  generateTotalReportsFromJSON } from './utils/gen-total-reports';
 
 const args = process.argv.slice(2);
 if (args.length < 2) {
@@ -67,9 +67,11 @@ const actionHandlers: Record<string, Record<string, ActionHandler[]>> = {
     saga: [(dto) => Promise.resolve(genTestSaga(dto))],
     reports: [(dto) => generateAllReports(dto)],
     swagger: [() => genClientSwagger()],
-    totalReports:  [
-      (folder) => generateTotalReports(folder, restArgs[1] || 'report.txt'),
-    ],
+  totalReports: [
+    (folder) => generateTotalReportsFromJSON(
+     // Luôn xuất ra file SUMMARY.md
+    ),
+  ],
   },
   test: {
     request: [runTests('test-requests')],

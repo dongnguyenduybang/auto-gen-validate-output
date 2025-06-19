@@ -1,0 +1,60 @@
+=== Request Test Report for set-ring-back-tone ===
+• Host: N/A
+• Endpoint: /RingbackTone/SetRingbackTone
+• Date: 19/06/2025, 15:36:41
+
+=== Execution Steps ===
+  1. [✅ PASSED] ringBackToneCreate
+
+=== Test Summary ===
+✅ Passed: 6
+❌ Failed: 0
+⚠️ Warnings: 5
+📊 Total: 6
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 0
+ 🟢 201: 0
+ 🟠 400: 0
+ 🟠 403: 0
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Warnings ===
+ 🟠 1. Case #1
+     ├─ Status: 404
+     ├─ Body: {"ringbackToneId":123}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: ringbackToneId expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 2. Case #3
+     ├─ Status: 404
+     ├─ Body: {}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: ringbackToneId required
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 3. Case #4
+     ├─ Status: 404
+     ├─ Body: {"ringbackToneId":""}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: ringbackToneId invalid ulid, ringbackToneId should not be empty
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 4. Case #5
+     ├─ Status: 404
+     ├─ Body: {"ringbackToneId":null}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: ringbackToneId expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 5. Case #6
+     ├─ Status: 404
+     ├─ Body: {"ringbackToneId":"invalid_ULID"}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: ringbackToneId invalid ulid
+     └─ Message: Actual errors are subset of expected errors
+
+=== Unique Errors ===
+
+[DTO Validation Issues]
+
+=== End of Report ===

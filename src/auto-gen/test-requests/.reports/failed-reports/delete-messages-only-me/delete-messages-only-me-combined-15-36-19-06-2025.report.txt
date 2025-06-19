@@ -1,0 +1,187 @@
+=== Request Test Report for delete-messages-only-me ===
+• Host: N/A
+• Endpoint: /Message/DeleteMessagesOnlyMe
+• Date: 19/06/2025, 15:36:41
+
+=== Execution Steps ===
+  1. [✅ PASSED] sendMessage
+
+=== Test Summary ===
+✅ Passed: 88
+❌ Failed: 22
+⚠️ Warnings: 0
+📊 Total: 110
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 0
+ 🟢 201: 0
+ 🟠 400: 0
+ 🟠 403: 88
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Warnings ===
+✅ No warnings
+
+=== Unique Errors ===
+ 🟣 1. Could not resolve permission type (Occurred: 12 times)
+ 🟣 2. Unsupported permission type (Occurred: 10 times)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #2
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":123,"messageIds":["01JY3DKS7CVQ2Z221WW6VYXDBN"]}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 2. Case #5
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"invalid_value","messageIds":["01JY3DKS7CVQ2Z221WW6VYXDBN"]}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 3. Case #15
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"messageIds":["01JY3DKS7CVQ2Z221WW6VYXDBN"]}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 4. Case #16
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageIds":["01JY3DKS7CVQ2Z221WW6VYXDBN"]}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 5. Case #67
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"invalid_value","channelId":123,"messageIds":["01JY3DKS7CVQ2Z221WW6VYXDBN"]}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 6. Case #68
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"invalid_value","messageIds":["01JY3DKS7CVQ2Z221WW6VYXDBN"]}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 7. Case #79
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"messageIds":"not_an_array"}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 8. Case #80
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"messageIds":[123]}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 9. Case #81
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"messageIds":["valid_string"]}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 10. Case #82
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"messageIds":[null]}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 11. Case #83
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"messageIds":["01JY3DC3GQTJKDB0RT3ZDXRVVF"]}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 12. Case #84
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 13. Case #85
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"messageIds":""}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 14. Case #86
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"messageIds":null}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 15. Case #87
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageIds":"not_an_array"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 16. Case #88
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageIds":[123]}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 17. Case #89
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageIds":["valid_string"]}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 18. Case #90
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageIds":[null]}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 19. Case #91
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageIds":["01JY3DC3GQTJKDB0RT3ZDXRVVF"]}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 20. Case #92
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 21. Case #93
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageIds":""}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 22. Case #94
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageIds":null}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+=== End of Report ===

@@ -1,0 +1,253 @@
+=== Request Test Report for list-dm-message-reaction ===
+• Host: N/A
+• Endpoint: /MessageView/ListDMMessageReactions
+• Date: 19/06/2025, 15:28:20
+
+=== Execution Steps ===
+  1. [✅ PASSED] sendDmMessage
+  2. [✅ PASSED] addDmMessageReaction
+
+=== Test Summary ===
+✅ Passed: 49
+❌ Failed: 24
+⚠️ Warnings: 7
+📊 Total: 80
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 1
+ 🟢 201: 0
+ 🟠 400: 8
+ 🟠 403: 40
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Warnings ===
+ 🟠 1. Case #13
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3GBWVZ3XVG47SKFKKS0G45","messageId":"","emoji":"🚀"}
+     ├─ Actual Errors: messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected Errors: messageId invalid ulid, messageId should not be empty, messageId string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 2. Case #18
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3GBWVZ3XVG47SKFKKS0G45","messageId":"01JY3GBY2W7ZHXWKJR3RZWD4RH","emoji":""}
+     ├─ Actual Errors: emoji invalid emoji, emoji only accepts 1 emoji
+     ├─ Expected Errors: emoji invalid emoji, emoji only accepts 1 emoji, emoji should not be empty
+     └─ Message: Actual errors includes of expected errors
+ 🟠 3. Case #67
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3GBWVZ3XVG47SKFKKS0G45","messageId":"","emoji":"🚀🚀"}
+     ├─ Actual Errors: emoji only accepts 1 emoji, messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected Errors: emoji only accepts 1 emoji, messageId invalid ulid, messageId should not be empty, messageId string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 4. Case #68
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3GBWVZ3XVG47SKFKKS0G45","messageId":"","emoji":""}
+     ├─ Actual Errors: emoji invalid emoji, emoji only accepts 1 emoji, messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected Errors: emoji invalid emoji, emoji only accepts 1 emoji, emoji should not be empty, messageId invalid ulid, messageId should not be empty, messageId string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 5. Case #69
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3GBWVZ3XVG47SKFKKS0G45","messageId":""}
+     ├─ Actual Errors: emoji required, messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected Errors: emoji required, messageId invalid ulid, messageId should not be empty, messageId string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 6. Case #73
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3GBWVZ3XVG47SKFKKS0G45","emoji":""}
+     ├─ Actual Errors: emoji invalid emoji, emoji only accepts 1 emoji, messageId required
+     ├─ Expected Errors: emoji invalid emoji, emoji only accepts 1 emoji, emoji should not be empty, messageId required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 7. Case #78
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3GBWVZ3XVG47SKFKKS0G45","messageId":"invalid_ULID","emoji":""}
+     ├─ Actual Errors: emoji invalid emoji, emoji only accepts 1 emoji, messageId invalid ulid
+     ├─ Expected Errors: emoji invalid emoji, emoji only accepts 1 emoji, emoji should not be empty, messageId invalid ulid
+     └─ Message: Actual errors includes of expected errors
+
+=== Unique Errors ===
+ 🟣 1. Could not resolve permission type (Occurred: 10 times)
+ 🟣 2. messageId expected string, received number (Occurred: 6 times)
+ 🟣 3. emoji expected string, received number (Occurred: 5 times)
+ 🟣 4. emoji expected string, received null (Occurred: 5 times)
+ 🟣 5. emoji only accepts 1 emoji (Occurred: 2 times)
+ 🟣 6. emoji invalid emoji (Occurred: 1 time)
+ 🟣 7. emoji should not be empty (Occurred: 1 time)
+ 🟣 8. emoji required (Occurred: 1 time)
+ 🟣 9. messageId invalid ulid (Occurred: 4 times)
+ 🟣 10. messageId should not be empty (Occurred: 2 times)
+ 🟣 11. messageId string must contain at least 1 character(s) (Occurred: 2 times)
+ 🟣 12. messageId required (Occurred: 2 times)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #1
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"messageId":"01JY3GBY2W7ZHXWKJR3RZWD4RH","emoji":"🚀"}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 2. Case #2
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"messageId":123,"emoji":"🚀"}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 3. Case #3
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"messageId":"","emoji":"🚀"}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 4. Case #4
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"emoji":"🚀"}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 5. Case #5
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"messageId":"invalid_ULID","emoji":"🚀"}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 6. Case #6
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"messageId":"01JY3GBY2W7ZHXWKJR3RZWD4RH","emoji":123}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 7. Case #7
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"messageId":"01JY3GBY2W7ZHXWKJR3RZWD4RH","emoji":"🚀🚀"}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 8. Case #8
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"messageId":"01JY3GBY2W7ZHXWKJR3RZWD4RH","emoji":""}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 9. Case #9
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"messageId":"01JY3GBY2W7ZHXWKJR3RZWD4RH"}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 10. Case #10
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"messageId":"01JY3GBY2W7ZHXWKJR3RZWD4RH","emoji":null}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 11. Case #12
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3GBWVZ3XVG47SKFKKS0G45","messageId":123,"emoji":"🚀"}
+     ├─ Actual: messageId invalid ulid
+     ├─ Expected: messageId expected string, received number
+     └─ Details: No details
+
+ 🟣 12. Case #16
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3GBWVZ3XVG47SKFKKS0G45","messageId":"01JY3GBY2W7ZHXWKJR3RZWD4RH","emoji":123}
+     ├─ Actual: emoji only accepts 1 emoji
+     ├─ Expected: emoji expected string, received number
+     └─ Details: No details
+
+ 🟣 13. Case #20
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3GBWVZ3XVG47SKFKKS0G45","messageId":"01JY3GBY2W7ZHXWKJR3RZWD4RH","emoji":null}
+     ├─ Actual: emoji required
+     ├─ Expected: emoji expected string, received null
+     └─ Details: No details
+
+ 🟣 14. Case #61
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3GBWVZ3XVG47SKFKKS0G45","messageId":123,"emoji":123}
+     ├─ Actual: emoji only accepts 1 emoji, messageId invalid ulid
+     ├─ Expected: emoji expected string, received number, messageId expected string, received number
+     └─ Details: No details
+
+ 🟣 15. Case #62
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3GBWVZ3XVG47SKFKKS0G45","messageId":123,"emoji":"🚀🚀"}
+     ├─ Actual: emoji only accepts 1 emoji, messageId invalid ulid
+     ├─ Expected: emoji only accepts 1 emoji, messageId expected string, received number
+     └─ Details: No details
+
+ 🟣 16. Case #63
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3GBWVZ3XVG47SKFKKS0G45","messageId":123,"emoji":""}
+     ├─ Actual: emoji invalid emoji, emoji only accepts 1 emoji, messageId invalid ulid
+     ├─ Expected: emoji invalid emoji, emoji only accepts 1 emoji, emoji should not be empty, messageId expected string, received number
+     └─ Details: No details
+
+ 🟣 17. Case #64
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3GBWVZ3XVG47SKFKKS0G45","messageId":123}
+     ├─ Actual: emoji required, messageId invalid ulid
+     ├─ Expected: emoji required, messageId expected string, received number
+     └─ Details: No details
+
+ 🟣 18. Case #65
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3GBWVZ3XVG47SKFKKS0G45","messageId":123,"emoji":null}
+     ├─ Actual: emoji required, messageId invalid ulid
+     ├─ Expected: emoji expected string, received null, messageId expected string, received number
+     └─ Details: No details
+
+ 🟣 19. Case #66
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3GBWVZ3XVG47SKFKKS0G45","messageId":"","emoji":123}
+     ├─ Actual: emoji only accepts 1 emoji, messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: emoji expected string, received number, messageId invalid ulid, messageId should not be empty, messageId string must contain at least 1 character(s)
+     └─ Details: No details
+
+ 🟣 20. Case #70
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3GBWVZ3XVG47SKFKKS0G45","messageId":"","emoji":null}
+     ├─ Actual: emoji required, messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: emoji expected string, received null, messageId invalid ulid, messageId should not be empty, messageId string must contain at least 1 character(s)
+     └─ Details: No details
+
+ 🟣 21. Case #71
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3GBWVZ3XVG47SKFKKS0G45","emoji":123}
+     ├─ Actual: emoji only accepts 1 emoji, messageId required
+     ├─ Expected: emoji expected string, received number, messageId required
+     └─ Details: No details
+
+ 🟣 22. Case #75
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3GBWVZ3XVG47SKFKKS0G45","emoji":null}
+     ├─ Actual: emoji required, messageId required
+     ├─ Expected: emoji expected string, received null, messageId required
+     └─ Details: No details
+
+ 🟣 23. Case #76
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3GBWVZ3XVG47SKFKKS0G45","messageId":"invalid_ULID","emoji":123}
+     ├─ Actual: emoji only accepts 1 emoji, messageId invalid ulid
+     ├─ Expected: emoji expected string, received number, messageId invalid ulid
+     └─ Details: No details
+
+ 🟣 24. Case #80
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3GBWVZ3XVG47SKFKKS0G45","messageId":"invalid_ULID","emoji":null}
+     ├─ Actual: emoji required, messageId invalid ulid
+     ├─ Expected: emoji expected string, received null, messageId invalid ulid
+     └─ Details: No details
+
+=== End of Report ===

@@ -1,0 +1,276 @@
+=== Request Test Report for send-message ===
+• Host: N/A
+• Endpoint: /Message/SendMessageSticker, /Message/SendMessage
+• Date: 19/06/2025, 15:34:15
+
+=== Execution Steps ===
+  1. [✅ PASSED] mockUser
+  2. [✅ PASSED] createChannel
+  3. [✅ PASSED] deleteMockedUsers
+
+=== Test Summary ===
+✅ Passed: 259
+❌ Failed: 27
+⚠️ Warnings: 8
+📊 Total: 294
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 0
+ 🟢 201: 2
+ 🟠 400: 38
+ 🟠 403: 219
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Warnings ===
+ 🟠 1. Case #152
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3ED3K5KSSC7EMMVTB5KMMZ","stickerId":"invalid_value","ref":123}
+     ├─ Actual Errors: ref expected string, received number
+     ├─ Expected Errors: Message: This sticker has not been exists., ref expected string, received number
+     └─ Message: Actual errors includes of expected errors
+ 🟠 2. Case #153
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3ED3K5KSSC7EMMVTB5KMMZ","stickerId":"invalid_value","ref":""}
+     ├─ Actual Errors: ref string must contain at least 1 character(s)
+     ├─ Expected Errors: Message: This sticker has not been exists., ref string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 3. Case #154
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3ED3K5KSSC7EMMVTB5KMMZ","stickerId":"invalid_value"}
+     ├─ Actual Errors: ref required
+     ├─ Expected Errors: Message: This sticker has not been exists., ref required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 4. Case #155
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3ED3K5KSSC7EMMVTB5KMMZ","stickerId":"invalid_value","ref":null}
+     ├─ Actual Errors: ref expected string, received null
+     ├─ Expected Errors: Message: This sticker has not been exists., ref expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 5. Case #22
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E5VJG4BQKF7XVK4PECZ5G","content":"","ref":"ref"}
+     ├─ Actual Errors: content string must contain at least 1 character(s)
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 6. Case #128
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E5VJG4BQKF7XVK4PECZ5G","content":"","ref":123}
+     ├─ Actual Errors: content string must contain at least 1 character(s), ref expected string, received number
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s), ref expected string, received number
+     └─ Message: Actual errors includes of expected errors
+ 🟠 7. Case #129
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E5VJG4BQKF7XVK4PECZ5G","content":"","ref":""}
+     ├─ Actual Errors: content string must contain at least 1 character(s), ref string must contain at least 1 character(s)
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s), ref string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 8. Case #130
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3E5VJG4BQKF7XVK4PECZ5G","content":""}
+     ├─ Actual Errors: content string must contain at least 1 character(s), ref required
+     ├─ Expected Errors: content should not be empty, content string must contain at least 1 character(s), ref required
+     └─ Message: Actual errors includes of expected errors
+
+=== Unique Errors ===
+ 🟣 1. Unsupported permission type (Occurred: 21 times)
+ 🟣 2. Message: This sticker has not been exists. (Occurred: 6 times)
+ 🟣 3. stickerId should not be empty (Occurred: 5 times)
+ 🟣 4. ref expected string, received number (Occurred: 1 time)
+ 🟣 5. ref string must contain at least 1 character(s) (Occurred: 1 time)
+ 🟣 6. ref required (Occurred: 1 time)
+ 🟣 7. ref expected string, received null (Occurred: 1 time)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #18
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","stickerId":"01JPPHQFHA85NG58H2TYTMCXK0","ref":"ref"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 2. Case #24
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3ED3K5KSSC7EMMVTB5KMMZ","stickerId":"","ref":"ref"}
+     ├─ Actual: stickerId string must contain at least 1 character(s)
+     ├─ Expected: Message: This sticker has not been exists., stickerId should not be empty
+     └─ Details: No details
+
+ 🟣 3. Case #26
+     ├─ Status: 404
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3ED3K5KSSC7EMMVTB5KMMZ","stickerId":"invalid_value","ref":"ref"}
+     ├─ Actual: Sticker not exist
+     ├─ Expected: Message: This sticker has not been exists.
+     └─ Details: No details
+
+ 🟣 4. Case #78
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"invalid_value","stickerId":"01JPPHQFHA85NG58H2TYTMCXK0","ref":"ref"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 5. Case #100
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","stickerId":123,"ref":"ref"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 6. Case #101
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","ref":"ref"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 7. Case #102
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","stickerId":"","ref":"ref"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 8. Case #103
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","stickerId":null,"ref":"ref"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 9. Case #104
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","stickerId":"invalid_value","ref":"ref"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 10. Case #105
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","stickerId":"01JPPHQFHA85NG58H2TYTMCXK0","ref":123}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 11. Case #106
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","stickerId":"01JPPHQFHA85NG58H2TYTMCXK0","ref":""}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 12. Case #107
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","stickerId":"01JPPHQFHA85NG58H2TYTMCXK0"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 13. Case #108
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","stickerId":"01JPPHQFHA85NG58H2TYTMCXK0","ref":null}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 14. Case #144
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3ED3K5KSSC7EMMVTB5KMMZ","stickerId":"","ref":123}
+     ├─ Actual: ref expected string, received number, stickerId string must contain at least 1 character(s)
+     ├─ Expected: Message: This sticker has not been exists., ref expected string, received number, stickerId should not be empty
+     └─ Details: No details
+
+ 🟣 15. Case #145
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3ED3K5KSSC7EMMVTB5KMMZ","stickerId":"","ref":""}
+     ├─ Actual: ref string must contain at least 1 character(s), stickerId string must contain at least 1 character(s)
+     ├─ Expected: Message: This sticker has not been exists., ref string must contain at least 1 character(s), stickerId should not be empty
+     └─ Details: No details
+
+ 🟣 16. Case #146
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3ED3K5KSSC7EMMVTB5KMMZ","stickerId":""}
+     ├─ Actual: ref required, stickerId string must contain at least 1 character(s)
+     ├─ Expected: Message: This sticker has not been exists., ref required, stickerId should not be empty
+     └─ Details: No details
+
+ 🟣 17. Case #147
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3ED3K5KSSC7EMMVTB5KMMZ","stickerId":"","ref":null}
+     ├─ Actual: ref expected string, received null, stickerId string must contain at least 1 character(s)
+     ├─ Expected: Message: This sticker has not been exists., ref expected string, received null, stickerId should not be empty
+     └─ Details: No details
+
+ 🟣 18. Case #17
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","content":"test DTO send message","ref":"ref"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 19. Case #73
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"invalid_value","content":"test DTO send message","ref":"ref"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 20. Case #93
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","content":123,"ref":"ref"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 21. Case #94
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","content":"","ref":"ref"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 22. Case #95
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","ref":"ref"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 23. Case #96
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","ref":"ref"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 24. Case #97
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","content":null,"ref":"ref"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 25. Case #98
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","content":"test DTO send message","ref":123}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 26. Case #99
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","content":"test DTO send message","ref":""}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 27. Case #100
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","content":"test DTO send message"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+=== End of Report ===

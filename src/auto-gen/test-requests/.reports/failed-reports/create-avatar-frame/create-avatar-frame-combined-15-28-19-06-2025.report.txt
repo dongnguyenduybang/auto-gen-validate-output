@@ -1,0 +1,70 @@
+=== Request Test Report for create-avatar-frame ===
+• Host: N/A
+• Endpoint: /AvatarFrame/CreateAvatarFrame
+• Date: 19/06/2025, 15:28:20
+
+=== Execution Steps ===
+
+=== Test Summary ===
+✅ Passed: 0
+❌ Failed: 5
+⚠️ Warnings: 0
+📊 Total: 5
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 0
+ 🟢 201: 0
+ 🟠 400: 0
+ 🟠 403: 0
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Warnings ===
+✅ No warnings
+
+=== Unique Errors ===
+ 🟣 1. avatarFramePath expected string, received number (Occurred: 1 time)
+ 🟣 2. avatarFramePath invalid url (Occurred: 2 times)
+ 🟣 3. avatarFramePath required (Occurred: 1 time)
+ 🟣 4. avatarFramePath should not be empty (Occurred: 1 time)
+ 🟣 5. avatarFramePath expected string, received null (Occurred: 1 time)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #1
+     ├─ Status: 403
+     ├─ Body: {"avatarFramePath":123}
+     ├─ Actual: Invalid rule
+     ├─ Expected: avatarFramePath expected string, received number
+     └─ Details: No details
+
+ 🟣 2. Case #2
+     ├─ Status: 403
+     ├─ Body: {"avatarFramePath":"https://fs.ugc.ziicdn.net/01JEWASZD3TK58P25Y1QJSYRPC/heic_300kB.heic"}
+     ├─ Actual: Invalid rule
+     ├─ Expected: None
+     └─ Details: No details
+
+ 🟣 3. Case #3
+     ├─ Status: 403
+     ├─ Body: {}
+     ├─ Actual: Invalid rule
+     ├─ Expected: avatarFramePath invalid url, avatarFramePath required
+     └─ Details: No details
+
+ 🟣 4. Case #4
+     ├─ Status: 403
+     ├─ Body: {"avatarFramePath":""}
+     ├─ Actual: Invalid rule
+     ├─ Expected: avatarFramePath invalid url, avatarFramePath should not be empty
+     └─ Details: No details
+
+ 🟣 5. Case #5
+     ├─ Status: 403
+     ├─ Body: {"avatarFramePath":null}
+     ├─ Actual: Invalid rule
+     ├─ Expected: avatarFramePath expected string, received null
+     └─ Details: No details
+
+=== End of Report ===

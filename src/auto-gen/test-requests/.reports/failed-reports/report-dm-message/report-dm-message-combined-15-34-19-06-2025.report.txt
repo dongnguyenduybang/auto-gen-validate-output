@@ -1,0 +1,802 @@
+=== Request Test Report for report-dm-message ===
+• Host: N/A
+• Endpoint: /Message/ReportDMMessage
+• Date: 19/06/2025, 15:34:14
+
+=== Execution Steps ===
+  1. [✅ PASSED] sendDmMessage
+
+=== Test Summary ===
+✅ Passed: 122
+❌ Failed: 81
+⚠️ Warnings: 31
+📊 Total: 234
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 0
+ 🟢 201: 1
+ 🟠 400: 26
+ 🟠 403: 95
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Warnings ===
+ 🟠 1. Case #28
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportReason":"report message","pretendingTo":2}
+     ├─ Actual Errors: reportCategory required
+     ├─ Expected Errors: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined', reportCategory required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 2. Case #32
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":3,"reportReason":"","pretendingTo":2}
+     ├─ Actual Errors: reportReason string must contain at least 1 character(s)
+     ├─ Expected Errors: reportReason should not be empty, reportReason string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 3. Case #37
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":3,"reportReason":"report message"}
+     ├─ Actual Errors: pretendingTo required
+     ├─ Expected Errors: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined', pretendingTo required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 4. Case #117
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":123,"reportReason":"report message","pretendingTo":2}
+     ├─ Actual Errors: messageId expected string, received number, reportCategory required
+     ├─ Expected Errors: messageId expected string, received number, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined', reportCategory required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 5. Case #118
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":123,"reportCategory":"","reportReason":"report message","pretendingTo":2}
+     ├─ Actual Errors: messageId expected string, received number
+     ├─ Expected Errors: messageId expected string, received number, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received '', reportCategory should not be empty
+     └─ Message: Actual errors includes of expected errors
+ 🟠 6. Case #121
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":123,"reportCategory":3,"reportReason":"","pretendingTo":2}
+     ├─ Actual Errors: messageId expected string, received number, reportReason string must contain at least 1 character(s)
+     ├─ Expected Errors: messageId expected string, received number, reportReason should not be empty, reportReason string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 7. Case #126
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":123,"reportCategory":3,"reportReason":"report message"}
+     ├─ Actual Errors: messageId expected string, received number
+     ├─ Expected Errors: messageId expected string, received number, pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined', pretendingTo required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 8. Case #130
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","reportReason":"report message","pretendingTo":2}
+     ├─ Actual Errors: messageId required, reportCategory required
+     ├─ Expected Errors: messageId required, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined', reportCategory required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 9. Case #131
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","reportCategory":"","reportReason":"report message","pretendingTo":2}
+     ├─ Actual Errors: messageId required
+     ├─ Expected Errors: messageId required, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received '', reportCategory should not be empty
+     └─ Message: Actual errors includes of expected errors
+ 🟠 10. Case #134
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","reportCategory":3,"reportReason":"","pretendingTo":2}
+     ├─ Actual Errors: messageId required, reportReason string must contain at least 1 character(s)
+     ├─ Expected Errors: messageId required, reportReason should not be empty, reportReason string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 11. Case #139
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","reportCategory":3,"reportReason":"report message"}
+     ├─ Actual Errors: messageId required
+     ├─ Expected Errors: messageId required, pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined', pretendingTo required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 12. Case #156
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":null,"reportReason":"report message","pretendingTo":2}
+     ├─ Actual Errors: messageId expected string, received null, reportCategory required
+     ├─ Expected Errors: messageId expected string, received null, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined', reportCategory required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 13. Case #157
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":null,"reportCategory":"","reportReason":"report message","pretendingTo":2}
+     ├─ Actual Errors: messageId expected string, received null
+     ├─ Expected Errors: messageId expected string, received null, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received '', reportCategory should not be empty
+     └─ Message: Actual errors includes of expected errors
+ 🟠 14. Case #160
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":null,"reportCategory":3,"reportReason":"","pretendingTo":2}
+     ├─ Actual Errors: messageId expected string, received null, reportReason string must contain at least 1 character(s)
+     ├─ Expected Errors: messageId expected string, received null, reportReason should not be empty, reportReason string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 15. Case #165
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":null,"reportCategory":3,"reportReason":"report message"}
+     ├─ Actual Errors: messageId expected string, received null
+     ├─ Expected Errors: messageId expected string, received null, pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined', pretendingTo required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 16. Case #169
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"invalid_ULID","reportReason":"report message","pretendingTo":2}
+     ├─ Actual Errors: messageId invalid ulid, reportCategory required
+     ├─ Expected Errors: messageId invalid ulid, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined', reportCategory required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 17. Case #170
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"invalid_ULID","reportCategory":"","reportReason":"report message","pretendingTo":2}
+     ├─ Actual Errors: messageId invalid ulid
+     ├─ Expected Errors: messageId invalid ulid, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received '', reportCategory should not be empty
+     └─ Message: Actual errors includes of expected errors
+ 🟠 18. Case #173
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"invalid_ULID","reportCategory":3,"reportReason":"","pretendingTo":2}
+     ├─ Actual Errors: messageId invalid ulid, reportReason string must contain at least 1 character(s)
+     ├─ Expected Errors: messageId invalid ulid, reportReason should not be empty, reportReason string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 19. Case #178
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"invalid_ULID","reportCategory":3,"reportReason":"report message"}
+     ├─ Actual Errors: messageId invalid ulid, pretendingTo required
+     ├─ Expected Errors: messageId invalid ulid, pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined', pretendingTo required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 20. Case #196
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportReason":123,"pretendingTo":2}
+     ├─ Actual Errors: reportCategory required, reportReason expected string, received number
+     ├─ Expected Errors: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined', reportCategory required, reportReason expected string, received number
+     └─ Message: Actual errors includes of expected errors
+ 🟠 21. Case #197
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportReason":"","pretendingTo":2}
+     ├─ Actual Errors: reportCategory required, reportReason string must contain at least 1 character(s)
+     ├─ Expected Errors: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined', reportCategory required, reportReason should not be empty, reportReason string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 22. Case #198
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportReason":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","pretendingTo":2}
+     ├─ Actual Errors: reportCategory required, reportReason string must contain at most 255 character(s)
+     ├─ Expected Errors: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined', reportCategory required, reportReason string must contain at most 255 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 23. Case #199
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","pretendingTo":2}
+     ├─ Actual Errors: reportCategory required
+     ├─ Expected Errors: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined', reportCategory required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 24. Case #202
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportReason":"report message"}
+     ├─ Actual Errors: reportCategory required
+     ├─ Expected Errors: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined', reportCategory required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 25. Case #204
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":"","reportReason":123,"pretendingTo":2}
+     ├─ Actual Errors: reportReason expected string, received number
+     ├─ Expected Errors: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received '', reportCategory should not be empty, reportReason expected string, received number
+     └─ Message: Actual errors includes of expected errors
+ 🟠 26. Case #205
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":"","reportReason":"","pretendingTo":2}
+     ├─ Actual Errors: reportReason string must contain at least 1 character(s)
+     ├─ Expected Errors: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received '', reportCategory should not be empty, reportReason should not be empty, reportReason string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 27. Case #206
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":"","reportReason":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","pretendingTo":2}
+     ├─ Actual Errors: reportReason string must contain at most 255 character(s)
+     ├─ Expected Errors: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received '', reportCategory should not be empty, reportReason string must contain at most 255 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 28. Case #221
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":3,"reportReason":123}
+     ├─ Actual Errors: reportReason expected string, received number
+     ├─ Expected Errors: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined', pretendingTo required, reportReason expected string, received number
+     └─ Message: Actual errors includes of expected errors
+ 🟠 29. Case #224
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":3,"reportReason":""}
+     ├─ Actual Errors: pretendingTo required, reportReason string must contain at least 1 character(s)
+     ├─ Expected Errors: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined', pretendingTo required, reportReason should not be empty, reportReason string must contain at least 1 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 30. Case #227
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":3,"reportReason":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}
+     ├─ Actual Errors: pretendingTo required, reportReason string must contain at most 255 character(s)
+     ├─ Expected Errors: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined', pretendingTo required, reportReason string must contain at most 255 character(s)
+     └─ Message: Actual errors includes of expected errors
+ 🟠 31. Case #230
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":3}
+     ├─ Actual Errors: pretendingTo required
+     ├─ Expected Errors: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined', pretendingTo required
+     └─ Message: Actual errors includes of expected errors
+
+=== Unique Errors ===
+ 🟣 1. messageId invalid ulid (Occurred: 19 times)
+ 🟣 2. messageId should not be empty (Occurred: 14 times)
+ 🟣 3. reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value' (Occurred: 14 times)
+ 🟣 4. reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received '' (Occurred: 7 times)
+ 🟣 5. reportCategory should not be empty (Occurred: 7 times)
+ 🟣 6. reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'null' (Occurred: 14 times)
+ 🟣 7. pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value' (Occurred: 16 times)
+ 🟣 8. pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'null' (Occurred: 11 times)
+ 🟣 9. messageId expected string, received number (Occurred: 5 times)
+ 🟣 10. messageId required (Occurred: 5 times)
+ 🟣 11. reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined' (Occurred: 4 times)
+ 🟣 12. reportCategory required (Occurred: 4 times)
+ 🟣 13. reportReason expected string, received number (Occurred: 5 times)
+ 🟣 14. reportReason should not be empty (Occurred: 6 times)
+ 🟣 15. reportReason string must contain at least 1 character(s) (Occurred: 6 times)
+ 🟣 16. reportReason string must contain at most 255 character(s) (Occurred: 5 times)
+ 🟣 17. pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined' (Occurred: 2 times)
+ 🟣 18. pretendingTo required (Occurred: 2 times)
+ 🟣 19. messageId expected string, received null (Occurred: 5 times)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #23
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"","reportCategory":3,"reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 2. Case #26
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":"invalid_enum_value","reportReason":"report message","pretendingTo":2}
+     ├─ Actual: reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 3. Case #27
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":20,"reportReason":"report message","pretendingTo":2}
+     ├─ Actual: Invalid message
+     ├─ Expected: None
+     └─ Details: No details
+
+ 🟣 4. Case #29
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":"","reportReason":"report message","pretendingTo":2}
+     ├─ Actual: Invalid message
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received '', reportCategory should not be empty
+     └─ Details: No details
+
+ 🟣 5. Case #30
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":null,"reportReason":"report message","pretendingTo":2}
+     ├─ Actual: reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received null
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'null'
+     └─ Details: No details
+
+ 🟣 6. Case #34
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":3,"pretendingTo":2}
+     ├─ Actual: Invalid message
+     ├─ Expected: None
+     └─ Details: No details
+
+ 🟣 7. Case #35
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":3,"reportReason":null,"pretendingTo":2}
+     ├─ Actual: reportReason expected string, received null
+     ├─ Expected: None
+     └─ Details: No details
+
+ 🟣 8. Case #36
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":3,"reportReason":"report message","pretendingTo":"invalid_enum_value"}
+     ├─ Actual: pretendingTo expected 0 | 1 | 2 | 3, received nan
+     ├─ Expected: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 9. Case #38
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":3,"reportReason":"report message","pretendingTo":null}
+     ├─ Actual: pretendingTo expected 0 | 1 | 2 | 3, received null
+     ├─ Expected: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'null'
+     └─ Details: No details
+
+ 🟣 10. Case #115
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":123,"reportCategory":"invalid_enum_value","reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId expected string, received number, reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan
+     ├─ Expected: messageId expected string, received number, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 11. Case #119
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":123,"reportCategory":null,"reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId expected string, received number, reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received null
+     ├─ Expected: messageId expected string, received number, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'null'
+     └─ Details: No details
+
+ 🟣 12. Case #124
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":123,"reportCategory":3,"reportReason":null,"pretendingTo":2}
+     ├─ Actual: messageId expected string, received number, reportReason expected string, received null
+     ├─ Expected: messageId expected string, received number
+     └─ Details: No details
+
+ 🟣 13. Case #125
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":123,"reportCategory":3,"reportReason":"report message","pretendingTo":"invalid_enum_value"}
+     ├─ Actual: messageId expected string, received number, pretendingTo expected 0 | 1 | 2 | 3, received nan
+     ├─ Expected: messageId expected string, received number, pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 14. Case #127
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":123,"reportCategory":3,"reportReason":"report message","pretendingTo":null}
+     ├─ Actual: messageId expected string, received number, pretendingTo expected 0 | 1 | 2 | 3, received null
+     ├─ Expected: messageId expected string, received number, pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'null'
+     └─ Details: No details
+
+ 🟣 15. Case #128
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","reportCategory":"invalid_enum_value","reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId required, reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan
+     ├─ Expected: messageId required, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 16. Case #132
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","reportCategory":null,"reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId required, reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received null
+     ├─ Expected: messageId required, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'null'
+     └─ Details: No details
+
+ 🟣 17. Case #137
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","reportCategory":3,"reportReason":null,"pretendingTo":2}
+     ├─ Actual: messageId required, reportReason expected string, received null
+     ├─ Expected: messageId required
+     └─ Details: No details
+
+ 🟣 18. Case #138
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","reportCategory":3,"reportReason":"report message","pretendingTo":"invalid_enum_value"}
+     ├─ Actual: messageId required, pretendingTo expected 0 | 1 | 2 | 3, received nan
+     ├─ Expected: messageId required, pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 19. Case #140
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","reportCategory":3,"reportReason":"report message","pretendingTo":null}
+     ├─ Actual: messageId required, pretendingTo expected 0 | 1 | 2 | 3, received null
+     ├─ Expected: messageId required, pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'null'
+     └─ Details: No details
+
+ 🟣 20. Case #141
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"","reportCategory":"invalid_enum_value","reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s), reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan
+     ├─ Expected: messageId invalid ulid, messageId should not be empty, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 21. Case #142
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"","reportCategory":20,"reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 22. Case #143
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"","reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s), reportCategory required
+     ├─ Expected: messageId invalid ulid, messageId should not be empty, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined', reportCategory required
+     └─ Details: No details
+
+ 🟣 23. Case #144
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"","reportCategory":"","reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: messageId invalid ulid, messageId should not be empty, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received '', reportCategory should not be empty
+     └─ Details: No details
+
+ 🟣 24. Case #145
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"","reportCategory":null,"reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s), reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received null
+     ├─ Expected: messageId invalid ulid, messageId should not be empty, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'null'
+     └─ Details: No details
+
+ 🟣 25. Case #146
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"","reportCategory":3,"reportReason":123,"pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s), reportReason expected string, received number
+     ├─ Expected: messageId invalid ulid, messageId should not be empty, reportReason expected string, received number
+     └─ Details: No details
+
+ 🟣 26. Case #147
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"","reportCategory":3,"reportReason":"","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s), reportReason string must contain at least 1 character(s)
+     ├─ Expected: messageId invalid ulid, messageId should not be empty, reportReason should not be empty, reportReason string must contain at least 1 character(s)
+     └─ Details: No details
+
+ 🟣 27. Case #148
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"","reportCategory":3,"reportReason":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s), reportReason string must contain at most 255 character(s)
+     ├─ Expected: messageId invalid ulid, messageId should not be empty, reportReason string must contain at most 255 character(s)
+     └─ Details: No details
+
+ 🟣 28. Case #149
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"","reportCategory":3,"pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 29. Case #150
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"","reportCategory":3,"reportReason":null,"pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s), reportReason expected string, received null
+     ├─ Expected: messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 30. Case #151
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"","reportCategory":3,"reportReason":"report message","pretendingTo":"invalid_enum_value"}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s), pretendingTo expected 0 | 1 | 2 | 3, received nan
+     ├─ Expected: messageId invalid ulid, messageId should not be empty, pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 31. Case #152
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"","reportCategory":3,"reportReason":"report message"}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s), pretendingTo required
+     ├─ Expected: messageId invalid ulid, messageId should not be empty, pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined', pretendingTo required
+     └─ Details: No details
+
+ 🟣 32. Case #153
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"","reportCategory":3,"reportReason":"report message","pretendingTo":null}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s), pretendingTo expected 0 | 1 | 2 | 3, received null
+     ├─ Expected: messageId invalid ulid, messageId should not be empty, pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'null'
+     └─ Details: No details
+
+ 🟣 33. Case #154
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":null,"reportCategory":"invalid_enum_value","reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId expected string, received null, reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan
+     ├─ Expected: messageId expected string, received null, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 34. Case #158
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":null,"reportCategory":null,"reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId expected string, received null, reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received null
+     ├─ Expected: messageId expected string, received null, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'null'
+     └─ Details: No details
+
+ 🟣 35. Case #163
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":null,"reportCategory":3,"reportReason":null,"pretendingTo":2}
+     ├─ Actual: messageId expected string, received null, reportReason expected string, received null
+     ├─ Expected: messageId expected string, received null
+     └─ Details: No details
+
+ 🟣 36. Case #164
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":null,"reportCategory":3,"reportReason":"report message","pretendingTo":"invalid_enum_value"}
+     ├─ Actual: messageId expected string, received null, pretendingTo expected 0 | 1 | 2 | 3, received nan
+     ├─ Expected: messageId expected string, received null, pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 37. Case #166
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":null,"reportCategory":3,"reportReason":"report message","pretendingTo":null}
+     ├─ Actual: messageId expected string, received null, pretendingTo expected 0 | 1 | 2 | 3, received null
+     ├─ Expected: messageId expected string, received null, pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'null'
+     └─ Details: No details
+
+ 🟣 38. Case #167
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"invalid_ULID","reportCategory":"invalid_enum_value","reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan
+     ├─ Expected: messageId invalid ulid, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 39. Case #171
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"invalid_ULID","reportCategory":null,"reportReason":"report message","pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received null
+     ├─ Expected: messageId invalid ulid, reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'null'
+     └─ Details: No details
+
+ 🟣 40. Case #176
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"invalid_ULID","reportCategory":3,"reportReason":null,"pretendingTo":2}
+     ├─ Actual: messageId invalid ulid, reportReason expected string, received null
+     ├─ Expected: messageId invalid ulid
+     └─ Details: No details
+
+ 🟣 41. Case #177
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"invalid_ULID","reportCategory":3,"reportReason":"report message","pretendingTo":"invalid_enum_value"}
+     ├─ Actual: messageId invalid ulid, pretendingTo expected 0 | 1 | 2 | 3, received nan
+     ├─ Expected: messageId invalid ulid, pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 42. Case #179
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"invalid_ULID","reportCategory":3,"reportReason":"report message","pretendingTo":null}
+     ├─ Actual: messageId invalid ulid, pretendingTo expected 0 | 1 | 2 | 3, received null
+     ├─ Expected: messageId invalid ulid, pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'null'
+     └─ Details: No details
+
+ 🟣 43. Case #180
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":"invalid_enum_value","reportReason":123,"pretendingTo":2}
+     ├─ Actual: reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan, reportReason expected string, received number
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', reportReason expected string, received number
+     └─ Details: No details
+
+ 🟣 44. Case #181
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":"invalid_enum_value","reportReason":"","pretendingTo":2}
+     ├─ Actual: reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan, reportReason string must contain at least 1 character(s)
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', reportReason should not be empty, reportReason string must contain at least 1 character(s)
+     └─ Details: No details
+
+ 🟣 45. Case #182
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":"invalid_enum_value","reportReason":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","pretendingTo":2}
+     ├─ Actual: reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan, reportReason string must contain at most 255 character(s)
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value', reportReason string must contain at most 255 character(s)
+     └─ Details: No details
+
+ 🟣 46. Case #183
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":"invalid_enum_value","pretendingTo":2}
+     ├─ Actual: reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 47. Case #184
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":"invalid_enum_value","reportReason":null,"pretendingTo":2}
+     ├─ Actual: reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan, reportReason expected string, received null
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 48. Case #185
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":"invalid_enum_value","reportReason":"report message","pretendingTo":"invalid_enum_value"}
+     ├─ Actual: pretendingTo expected 0 | 1 | 2 | 3, received nan, reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan
+     ├─ Expected: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 49. Case #186
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":"invalid_enum_value","reportReason":"report message"}
+     ├─ Actual: reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 50. Case #187
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":"invalid_enum_value","reportReason":"report message","pretendingTo":null}
+     ├─ Actual: pretendingTo expected 0 | 1 | 2 | 3, received null, reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 51. Case #189
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":20,"reportReason":"","pretendingTo":2}
+     ├─ Actual: reportReason required, reportReason string must contain at least 1 character(s)
+     ├─ Expected: reportReason should not be empty, reportReason string must contain at least 1 character(s)
+     └─ Details: No details
+
+ 🟣 52. Case #193
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":20,"reportReason":"report message","pretendingTo":"invalid_enum_value"}
+     ├─ Actual: pretendingTo expected 0 | 1 | 2 | 3, received nan
+     ├─ Expected: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 53. Case #194
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":20,"reportReason":"report message"}
+     ├─ Actual: Invalid message
+     ├─ Expected: None
+     └─ Details: No details
+
+ 🟣 54. Case #195
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":20,"reportReason":"report message","pretendingTo":null}
+     ├─ Actual: pretendingTo expected 0 | 1 | 2 | 3, received null
+     ├─ Expected: None
+     └─ Details: No details
+
+ 🟣 55. Case #200
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportReason":null,"pretendingTo":2}
+     ├─ Actual: reportCategory required, reportReason expected string, received null
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined', reportCategory required
+     └─ Details: No details
+
+ 🟣 56. Case #201
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportReason":"report message","pretendingTo":"invalid_enum_value"}
+     ├─ Actual: pretendingTo expected 0 | 1 | 2 | 3, received nan, reportCategory required
+     ├─ Expected: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined', reportCategory required
+     └─ Details: No details
+
+ 🟣 57. Case #203
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportReason":"report message","pretendingTo":null}
+     ├─ Actual: pretendingTo expected 0 | 1 | 2 | 3, received null, reportCategory required
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined', reportCategory required
+     └─ Details: No details
+
+ 🟣 58. Case #207
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":"","pretendingTo":2}
+     ├─ Actual: Invalid message
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received '', reportCategory should not be empty
+     └─ Details: No details
+
+ 🟣 59. Case #208
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":"","reportReason":null,"pretendingTo":2}
+     ├─ Actual: reportReason expected string, received null
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received '', reportCategory should not be empty
+     └─ Details: No details
+
+ 🟣 60. Case #209
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":"","reportReason":"report message","pretendingTo":"invalid_enum_value"}
+     ├─ Actual: pretendingTo expected 0 | 1 | 2 | 3, received nan
+     ├─ Expected: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received '', reportCategory should not be empty
+     └─ Details: No details
+
+ 🟣 61. Case #210
+     ├─ Status: 404
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":"","reportReason":"report message"}
+     ├─ Actual: Invalid message
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received '', reportCategory should not be empty
+     └─ Details: No details
+
+ 🟣 62. Case #211
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":"","reportReason":"report message","pretendingTo":null}
+     ├─ Actual: pretendingTo expected 0 | 1 | 2 | 3, received null
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received '', reportCategory should not be empty
+     └─ Details: No details
+
+ 🟣 63. Case #212
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":null,"reportReason":123,"pretendingTo":2}
+     ├─ Actual: reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received null, reportReason expected string, received number
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'null', reportReason expected string, received number
+     └─ Details: No details
+
+ 🟣 64. Case #213
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":null,"reportReason":"","pretendingTo":2}
+     ├─ Actual: reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received null, reportReason string must contain at least 1 character(s)
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'null', reportReason should not be empty, reportReason string must contain at least 1 character(s)
+     └─ Details: No details
+
+ 🟣 65. Case #214
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":null,"reportReason":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","pretendingTo":2}
+     ├─ Actual: reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received null, reportReason string must contain at most 255 character(s)
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'null', reportReason string must contain at most 255 character(s)
+     └─ Details: No details
+
+ 🟣 66. Case #215
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":null,"pretendingTo":2}
+     ├─ Actual: reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received null
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'null'
+     └─ Details: No details
+
+ 🟣 67. Case #216
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":null,"reportReason":null,"pretendingTo":2}
+     ├─ Actual: reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received null, reportReason expected string, received null
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'null'
+     └─ Details: No details
+
+ 🟣 68. Case #217
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":null,"reportReason":"report message","pretendingTo":"invalid_enum_value"}
+     ├─ Actual: pretendingTo expected 0 | 1 | 2 | 3, received nan, reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received null
+     ├─ Expected: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'null'
+     └─ Details: No details
+
+ 🟣 69. Case #218
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":null,"reportReason":"report message"}
+     ├─ Actual: reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received null
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'null'
+     └─ Details: No details
+
+ 🟣 70. Case #219
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":null,"reportReason":"report message","pretendingTo":null}
+     ├─ Actual: pretendingTo expected 0 | 1 | 2 | 3, received null, reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received null
+     ├─ Expected: reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'null'
+     └─ Details: No details
+
+ 🟣 71. Case #220
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":3,"reportReason":123,"pretendingTo":"invalid_enum_value"}
+     ├─ Actual: pretendingTo expected 0 | 1 | 2 | 3, received nan, reportReason expected string, received number
+     ├─ Expected: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportReason expected string, received number
+     └─ Details: No details
+
+ 🟣 72. Case #222
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":3,"reportReason":123,"pretendingTo":null}
+     ├─ Actual: pretendingTo expected 0 | 1 | 2 | 3, received null, reportReason expected string, received number
+     ├─ Expected: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'null', reportReason expected string, received number
+     └─ Details: No details
+
+ 🟣 73. Case #223
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":3,"reportReason":"","pretendingTo":"invalid_enum_value"}
+     ├─ Actual: pretendingTo expected 0 | 1 | 2 | 3, received nan, reportReason string must contain at least 1 character(s)
+     ├─ Expected: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportReason should not be empty, reportReason string must contain at least 1 character(s)
+     └─ Details: No details
+
+ 🟣 74. Case #225
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":3,"reportReason":"","pretendingTo":null}
+     ├─ Actual: pretendingTo expected 0 | 1 | 2 | 3, received null, reportReason string must contain at least 1 character(s)
+     ├─ Expected: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'null', reportReason should not be empty, reportReason string must contain at least 1 character(s)
+     └─ Details: No details
+
+ 🟣 75. Case #226
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":3,"reportReason":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","pretendingTo":"invalid_enum_value"}
+     ├─ Actual: pretendingTo expected 0 | 1 | 2 | 3, received nan, reportReason string must contain at most 255 character(s)
+     ├─ Expected: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value', reportReason string must contain at most 255 character(s)
+     └─ Details: No details
+
+ 🟣 76. Case #228
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":3,"reportReason":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","pretendingTo":null}
+     ├─ Actual: pretendingTo expected 0 | 1 | 2 | 3, received null, reportReason string must contain at most 255 character(s)
+     ├─ Expected: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'null', reportReason string must contain at most 255 character(s)
+     └─ Details: No details
+
+ 🟣 77. Case #229
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":3,"pretendingTo":"invalid_enum_value"}
+     ├─ Actual: pretendingTo expected 0 | 1 | 2 | 3, received nan
+     ├─ Expected: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 78. Case #231
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":3,"pretendingTo":null}
+     ├─ Actual: pretendingTo expected 0 | 1 | 2 | 3, received null
+     ├─ Expected: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'null'
+     └─ Details: No details
+
+ 🟣 79. Case #232
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":3,"reportReason":null,"pretendingTo":"invalid_enum_value"}
+     ├─ Actual: pretendingTo expected 0 | 1 | 2 | 3, received nan, reportReason expected string, received null
+     ├─ Expected: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'
+     └─ Details: No details
+
+ 🟣 80. Case #233
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":3,"reportReason":null}
+     ├─ Actual: reportReason expected string, received null
+     ├─ Expected: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined', pretendingTo required
+     └─ Details: No details
+
+ 🟣 81. Case #234
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FBSBX98ZTSBQZ2BK9G9HJ","messageId":"01JY3FBTM3RWWEYAZZSTJ3NNQH","reportCategory":3,"reportReason":null,"pretendingTo":null}
+     ├─ Actual: pretendingTo expected 0 | 1 | 2 | 3, received null, reportReason expected string, received null
+     ├─ Expected: pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'null'
+     └─ Details: No details
+
+=== End of Report ===

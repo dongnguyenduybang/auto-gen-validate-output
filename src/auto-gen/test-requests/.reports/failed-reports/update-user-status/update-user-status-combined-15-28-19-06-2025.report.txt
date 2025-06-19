@@ -1,0 +1,160 @@
+=== Request Test Report for update-user-status ===
+• Host: N/A
+• Endpoint: /UserProfile/UpdateUserStatus
+• Date: 19/06/2025, 15:28:20
+
+=== Execution Steps ===
+  1. [✅ PASSED] addUserStatus
+
+=== Test Summary ===
+✅ Passed: 6
+❌ Failed: 9
+⚠️ Warnings: 10
+📊 Total: 25
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 1
+ 🟢 201: 0
+ 🟠 400: 5
+ 🟠 403: 0
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Warnings ===
+ 🟠 1. Case #3
+     ├─ Status: 400
+     ├─ Body: {"content":123,"status":"🧑🏼‍❤️‍💋‍🧑🏿🧑🏼‍❤️‍💋‍🧑🏿"}
+     ├─ Actual Errors: content expected string, received number
+     ├─ Expected Errors: content expected string, received number, status only accepts 1 emoji
+     └─ Message: Actual errors includes of expected errors
+ 🟠 2. Case #4
+     ├─ Status: 400
+     ├─ Body: {"content":123,"status":""}
+     ├─ Actual Errors: content expected string, received number
+     ├─ Expected Errors: content expected string, received number, status invalid emoji, status only accepts 1 emoji, status should not be empty
+     └─ Message: Actual errors includes of expected errors
+ 🟠 3. Case #5
+     ├─ Status: 400
+     ├─ Body: {"content":123,"status":null}
+     ├─ Actual Errors: content expected string, received number
+     ├─ Expected Errors: content expected string, received number, status expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 4. Case #9
+     ├─ Status: 200
+     ├─ Body: {"content":"Hi hi","status":""}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: status invalid emoji, status only accepts 1 emoji, status should not be empty
+     └─ Message: Actual errors includes of expected errors
+ 🟠 5. Case #10
+     ├─ Status: 200
+     ├─ Body: {"content":"Hi hi","status":null}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: status expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 6. Case #14
+     ├─ Status: 400
+     ├─ Body: {"content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","status":""}
+     ├─ Actual Errors: content string must contain at most 50 character(s)
+     ├─ Expected Errors: content string must contain at most 50 character(s), status invalid emoji, status only accepts 1 emoji, status should not be empty
+     └─ Message: Actual errors includes of expected errors
+ 🟠 7. Case #15
+     ├─ Status: 400
+     ├─ Body: {"content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","status":null}
+     ├─ Actual Errors: content string must contain at most 50 character(s)
+     ├─ Expected Errors: content string must contain at most 50 character(s), status expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 8. Case #16
+     ├─ Status: 200
+     ├─ Body: {"content":"","status":"🧑🏼‍❤️‍💋‍🧑🏿"}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: content should not be empty
+     └─ Message: Actual errors includes of expected errors
+ 🟠 9. Case #17
+     ├─ Status: 400
+     ├─ Body: {"content":"","status":123}
+     ├─ Actual Errors: status expected string, received number
+     ├─ Expected Errors: content should not be empty, status expected string, received number
+     └─ Message: Actual errors includes of expected errors
+ 🟠 10. Case #22
+     ├─ Status: 400
+     ├─ Body: {"content":null,"status":123}
+     ├─ Actual Errors: status expected string, received number
+     ├─ Expected Errors: content expected string, received null, status expected string, received number
+     └─ Message: Actual errors includes of expected errors
+
+=== Unique Errors ===
+ 🟣 1. status only accepts 1 emoji (Occurred: 6 times)
+ 🟣 2. content string must contain at most 50 character(s) (Occurred: 1 time)
+ 🟣 3. content should not be empty (Occurred: 3 times)
+ 🟣 4. status invalid emoji (Occurred: 2 times)
+ 🟣 5. status should not be empty (Occurred: 2 times)
+ 🟣 6. status expected string, received null (Occurred: 2 times)
+ 🟣 7. content expected string, received null (Occurred: 4 times)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #8
+     ├─ Status: 400
+     ├─ Body: {"content":"Hi hi","status":"🧑🏼‍❤️‍💋‍🧑🏿🧑🏼‍❤️‍💋‍🧑🏿"}
+     ├─ Actual: only accepts 1 emoji
+     ├─ Expected: status only accepts 1 emoji
+     └─ Details: No details
+
+ 🟣 2. Case #13
+     ├─ Status: 400
+     ├─ Body: {"content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","status":"🧑🏼‍❤️‍💋‍🧑🏿🧑🏼‍❤️‍💋‍🧑🏿"}
+     ├─ Actual: content string must contain at most 50 character(s), only accepts 1 emoji
+     ├─ Expected: content string must contain at most 50 character(s), status only accepts 1 emoji
+     └─ Details: No details
+
+ 🟣 3. Case #18
+     ├─ Status: 400
+     ├─ Body: {"content":"","status":"🧑🏼‍❤️‍💋‍🧑🏿🧑🏼‍❤️‍💋‍🧑🏿"}
+     ├─ Actual: only accepts 1 emoji
+     ├─ Expected: content should not be empty, status only accepts 1 emoji
+     └─ Details: No details
+
+ 🟣 4. Case #19
+     ├─ Status: 400
+     ├─ Body: {"content":"","status":""}
+     ├─ Actual: User status does not exist
+     ├─ Expected: content should not be empty, status invalid emoji, status only accepts 1 emoji, status should not be empty
+     └─ Details: No details
+
+ 🟣 5. Case #20
+     ├─ Status: 400
+     ├─ Body: {"content":"","status":null}
+     ├─ Actual: User status does not exist
+     ├─ Expected: content should not be empty, status expected string, received null
+     └─ Details: No details
+
+ 🟣 6. Case #21
+     ├─ Status: 400
+     ├─ Body: {"content":null,"status":"🧑🏼‍❤️‍💋‍🧑🏿"}
+     ├─ Actual: User status does not exist
+     ├─ Expected: content expected string, received null
+     └─ Details: No details
+
+ 🟣 7. Case #23
+     ├─ Status: 400
+     ├─ Body: {"content":null,"status":"🧑🏼‍❤️‍💋‍🧑🏿🧑🏼‍❤️‍💋‍🧑🏿"}
+     ├─ Actual: only accepts 1 emoji
+     ├─ Expected: content expected string, received null, status only accepts 1 emoji
+     └─ Details: No details
+
+ 🟣 8. Case #24
+     ├─ Status: 400
+     ├─ Body: {"content":null,"status":""}
+     ├─ Actual: User status does not exist
+     ├─ Expected: content expected string, received null, status invalid emoji, status only accepts 1 emoji, status should not be empty
+     └─ Details: No details
+
+ 🟣 9. Case #25
+     ├─ Status: 400
+     ├─ Body: {"content":null,"status":null}
+     ├─ Actual: User status does not exist
+     ├─ Expected: content expected string, received null, status expected string, received null
+     └─ Details: No details
+
+=== End of Report ===

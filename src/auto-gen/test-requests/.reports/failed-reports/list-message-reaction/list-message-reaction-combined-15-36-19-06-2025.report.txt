@@ -1,0 +1,1012 @@
+=== Request Test Report for list-message-reaction ===
+• Host: N/A
+• Endpoint: /MessageView/ListMessageReactions
+• Date: 19/06/2025, 15:36:41
+
+=== Execution Steps ===
+  1. [✅ PASSED] acceptInvitation
+  2. [❌ FAILED] sendMessage
+     type: response
+     └─ includes.users[0].userId: userId must === 01JY3GDM9QDR1TX2J3WJP0ECH7 (actual: 01JY3GDMESDPYGR9Z60HG7P62E, expected: 01JY3GDM9QDR1TX2J3WJP0ECH7)
+       includes.users[0].username must end with 01JY3GDM9QDR1TX2J3WJP0ECH7
+       includes.members[0].userId: userId must === 01JY3GDM9QDR1TX2J3WJP0ECH7 (actual: 01JY3GDMESDPYGR9Z60HG7P62E, expected: 01JY3GDM9QDR1TX2J3WJP0ECH7)
+
+=== Test Summary ===
+✅ Passed: 137
+❌ Failed: 132
+⚠️ Warnings: 6
+📊 Total: 275
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 0
+ 🟢 201: 0
+ 🟠 400: 4
+ 🟠 403: 133
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Warnings ===
+ 🟠 1. Case #214
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","emoji":"","limit":10}
+     ├─ Actual Errors: emoji invalid emoji, emoji only accepts 1 emoji, messageId required
+     ├─ Expected Errors: emoji invalid emoji, emoji only accepts 1 emoji, emoji should not be empty, messageId required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 2. Case #219
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","emoji":"🚀"}
+     ├─ Actual Errors: messageId required
+     ├─ Expected Errors: limit must be a number conforming to the specified constraints, limit required, messageId required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 3. Case #221
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","emoji":"🚀","limit":null}
+     ├─ Actual Errors: messageId required
+     ├─ Expected Errors: limit must be a number conforming to the specified constraints, messageId required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 4. Case #244
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"invalid_ULID","emoji":"","limit":10}
+     ├─ Actual Errors: emoji invalid emoji, emoji only accepts 1 emoji, messageId invalid ulid
+     ├─ Expected Errors: emoji invalid emoji, emoji only accepts 1 emoji, emoji should not be empty, messageId invalid ulid
+     └─ Message: Actual errors includes of expected errors
+ 🟠 5. Case #249
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"invalid_ULID","emoji":"🚀"}
+     ├─ Actual Errors: messageId invalid ulid
+     ├─ Expected Errors: limit must be a number conforming to the specified constraints, limit required, messageId invalid ulid
+     └─ Message: Actual errors includes of expected errors
+ 🟠 6. Case #251
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"invalid_ULID","emoji":"🚀","limit":null}
+     ├─ Actual Errors: messageId invalid ulid
+     ├─ Expected Errors: limit must be a number conforming to the specified constraints, messageId invalid ulid
+     └─ Message: Actual errors includes of expected errors
+
+=== Unique Errors ===
+ 🟣 1. Could not resolve permission type (Occurred: 35 times)
+ 🟣 2. Unsupported permission type (Occurred: 17 times)
+ 🟣 3. messageId expected string, received number (Occurred: 11 times)
+ 🟣 4. messageId invalid ulid (Occurred: 17 times)
+ 🟣 5. messageId should not be empty (Occurred: 11 times)
+ 🟣 6. messageId expected string, received null (Occurred: 11 times)
+ 🟣 7. emoji expected string, received number (Occurred: 12 times)
+ 🟣 8. emoji only accepts 1 emoji (Occurred: 20 times)
+ 🟣 9. emoji invalid emoji (Occurred: 10 times)
+ 🟣 10. emoji should not be empty (Occurred: 10 times)
+ 🟣 11. emoji expected string, received null (Occurred: 12 times)
+ 🟣 12. limit must be a number conforming to the specified constraints (Occurred: 36 times)
+ 🟣 13. limit must be at least 1 (Occurred: 10 times)
+ 🟣 14. limit must be at most 500 (Occurred: 10 times)
+ 🟣 15. limit required (Occurred: 8 times)
+ 🟣 16. limit should not be empty (Occurred: 10 times)
+ 🟣 17. messageId required (Occurred: 6 times)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #1
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":"🚀","limit":10}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 2. Case #2
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":123,"messageId":"{{messageId}}","emoji":"🚀","limit":10}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 3. Case #6
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"invalid_value","messageId":"{{messageId}}","emoji":"🚀","limit":10}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 4. Case #7
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":123,"emoji":"🚀","limit":10}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 5. Case #8
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","emoji":"🚀","limit":10}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 6. Case #9
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"","emoji":"🚀","limit":10}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 7. Case #10
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":null,"emoji":"🚀","limit":10}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 8. Case #11
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"invalid_ULID","emoji":"🚀","limit":10}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 9. Case #12
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":123,"limit":10}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 10. Case #13
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":"🚀🚀","limit":10}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 11. Case #14
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":"","limit":10}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 12. Case #15
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":null,"limit":10}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 13. Case #16
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":"🚀","limit":"invalid_number"}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 14. Case #17
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":"🚀","limit":0}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 15. Case #18
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":"🚀","limit":501}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 16. Case #19
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":"🚀"}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 17. Case #20
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":"🚀","limit":""}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 18. Case #21
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":"🚀","limit":null}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 19. Case #22
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":"🚀","limit":10}
+     ├─ Actual: messageId invalid ulid
+     ├─ Expected: None
+     └─ Details: No details
+
+ 🟣 20. Case #23
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"messageId":"{{messageId}}","emoji":"🚀","limit":10}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 21. Case #24
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"{{messageId}}","emoji":"🚀","limit":10}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 22. Case #28
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":123,"emoji":"🚀","limit":10}
+     ├─ Actual: messageId invalid ulid
+     ├─ Expected: messageId expected string, received number
+     └─ Details: No details
+
+ 🟣 23. Case #30
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"","emoji":"🚀","limit":10}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 24. Case #31
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":null,"emoji":"🚀","limit":10}
+     ├─ Actual: messageId required
+     ├─ Expected: messageId expected string, received null
+     └─ Details: No details
+
+ 🟣 25. Case #33
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":123,"limit":10}
+     ├─ Actual: emoji only accepts 1 emoji, messageId invalid ulid
+     ├─ Expected: emoji expected string, received number
+     └─ Details: No details
+
+ 🟣 26. Case #34
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":"🚀🚀","limit":10}
+     ├─ Actual: emoji only accepts 1 emoji, messageId invalid ulid
+     ├─ Expected: emoji only accepts 1 emoji
+     └─ Details: No details
+
+ 🟣 27. Case #35
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":"","limit":10}
+     ├─ Actual: emoji invalid emoji, emoji only accepts 1 emoji, messageId invalid ulid
+     ├─ Expected: emoji invalid emoji, emoji only accepts 1 emoji, emoji should not be empty
+     └─ Details: No details
+
+ 🟣 28. Case #36
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":null,"limit":10}
+     ├─ Actual: emoji required, messageId invalid ulid
+     ├─ Expected: emoji expected string, received null
+     └─ Details: No details
+
+ 🟣 29. Case #37
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":"🚀","limit":"invalid_number"}
+     ├─ Actual: limit expected number, received nan, messageId invalid ulid
+     ├─ Expected: limit must be a number conforming to the specified constraints
+     └─ Details: No details
+
+ 🟣 30. Case #38
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":"🚀","limit":0}
+     ├─ Actual: limit range from 1 to 500, messageId invalid ulid
+     ├─ Expected: limit must be at least 1
+     └─ Details: No details
+
+ 🟣 31. Case #39
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":"🚀","limit":501}
+     ├─ Actual: limit range from 1 to 500, messageId invalid ulid
+     ├─ Expected: limit must be at most 500
+     └─ Details: No details
+
+ 🟣 32. Case #40
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":"🚀"}
+     ├─ Actual: messageId invalid ulid
+     ├─ Expected: limit must be a number conforming to the specified constraints, limit required
+     └─ Details: No details
+
+ 🟣 33. Case #41
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":"🚀","limit":""}
+     ├─ Actual: limit range from 1 to 500, messageId invalid ulid
+     ├─ Expected: limit must be a number conforming to the specified constraints, limit should not be empty
+     └─ Details: No details
+
+ 🟣 34. Case #42
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":"🚀","limit":null}
+     ├─ Actual: messageId invalid ulid
+     ├─ Expected: limit must be a number conforming to the specified constraints
+     └─ Details: No details
+
+ 🟣 35. Case #107
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"invalid_value","channelId":123,"messageId":"{{messageId}}","emoji":"🚀","limit":10}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 36. Case #108
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"invalid_value","messageId":"{{messageId}}","emoji":"🚀","limit":10}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 37. Case #127
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"messageId":123,"emoji":"🚀","limit":10}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 38. Case #128
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"emoji":"🚀","limit":10}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 39. Case #129
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"messageId":"","emoji":"🚀","limit":10}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 40. Case #130
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"messageId":null,"emoji":"🚀","limit":10}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 41. Case #131
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"messageId":"invalid_ULID","emoji":"🚀","limit":10}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 42. Case #132
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"messageId":"{{messageId}}","emoji":123,"limit":10}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 43. Case #133
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"messageId":"{{messageId}}","emoji":"🚀🚀","limit":10}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 44. Case #134
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"messageId":"{{messageId}}","emoji":"","limit":10}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 45. Case #135
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"messageId":"{{messageId}}","emoji":null,"limit":10}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 46. Case #136
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"messageId":"{{messageId}}","emoji":"🚀","limit":"invalid_number"}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 47. Case #137
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"messageId":"{{messageId}}","emoji":"🚀","limit":0}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 48. Case #138
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"messageId":"{{messageId}}","emoji":"🚀","limit":501}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 49. Case #139
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"messageId":"{{messageId}}","emoji":"🚀"}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 50. Case #140
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"messageId":"{{messageId}}","emoji":"🚀","limit":""}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 51. Case #141
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"messageId":"{{messageId}}","emoji":"🚀","limit":null}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 52. Case #142
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":123,"emoji":"🚀","limit":10}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 53. Case #143
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","emoji":"🚀","limit":10}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 54. Case #144
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"","emoji":"🚀","limit":10}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 55. Case #145
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":null,"emoji":"🚀","limit":10}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 56. Case #146
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"invalid_ULID","emoji":"🚀","limit":10}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 57. Case #147
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"{{messageId}}","emoji":123,"limit":10}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 58. Case #148
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"{{messageId}}","emoji":"🚀🚀","limit":10}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 59. Case #149
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"{{messageId}}","emoji":"","limit":10}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 60. Case #150
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"{{messageId}}","emoji":null,"limit":10}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 61. Case #151
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"{{messageId}}","emoji":"🚀","limit":"invalid_number"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 62. Case #152
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"{{messageId}}","emoji":"🚀","limit":0}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 63. Case #153
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"{{messageId}}","emoji":"🚀","limit":501}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 64. Case #154
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"{{messageId}}","emoji":"🚀"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 65. Case #155
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"{{messageId}}","emoji":"🚀","limit":""}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 66. Case #156
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","messageId":"{{messageId}}","emoji":"🚀","limit":null}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 67. Case #202
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":123,"emoji":123,"limit":10}
+     ├─ Actual: emoji only accepts 1 emoji, messageId invalid ulid
+     ├─ Expected: emoji expected string, received number, messageId expected string, received number
+     └─ Details: No details
+
+ 🟣 68. Case #203
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":123,"emoji":"🚀🚀","limit":10}
+     ├─ Actual: emoji only accepts 1 emoji, messageId invalid ulid
+     ├─ Expected: emoji only accepts 1 emoji, messageId expected string, received number
+     └─ Details: No details
+
+ 🟣 69. Case #204
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":123,"emoji":"","limit":10}
+     ├─ Actual: emoji invalid emoji, emoji only accepts 1 emoji, messageId invalid ulid
+     ├─ Expected: emoji invalid emoji, emoji only accepts 1 emoji, emoji should not be empty, messageId expected string, received number
+     └─ Details: No details
+
+ 🟣 70. Case #205
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":123,"emoji":null,"limit":10}
+     ├─ Actual: emoji required, messageId invalid ulid
+     ├─ Expected: emoji expected string, received null, messageId expected string, received number
+     └─ Details: No details
+
+ 🟣 71. Case #206
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":123,"emoji":"🚀","limit":"invalid_number"}
+     ├─ Actual: limit expected number, received nan, messageId invalid ulid
+     ├─ Expected: limit must be a number conforming to the specified constraints, messageId expected string, received number
+     └─ Details: No details
+
+ 🟣 72. Case #207
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":123,"emoji":"🚀","limit":0}
+     ├─ Actual: limit range from 1 to 500, messageId invalid ulid
+     ├─ Expected: limit must be at least 1, messageId expected string, received number
+     └─ Details: No details
+
+ 🟣 73. Case #208
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":123,"emoji":"🚀","limit":501}
+     ├─ Actual: limit range from 1 to 500, messageId invalid ulid
+     ├─ Expected: limit must be at most 500, messageId expected string, received number
+     └─ Details: No details
+
+ 🟣 74. Case #209
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":123,"emoji":"🚀"}
+     ├─ Actual: messageId invalid ulid
+     ├─ Expected: limit must be a number conforming to the specified constraints, limit required, messageId expected string, received number
+     └─ Details: No details
+
+ 🟣 75. Case #210
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":123,"emoji":"🚀","limit":""}
+     ├─ Actual: limit range from 1 to 500, messageId invalid ulid
+     ├─ Expected: limit must be a number conforming to the specified constraints, limit should not be empty, messageId expected string, received number
+     └─ Details: No details
+
+ 🟣 76. Case #211
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":123,"emoji":"🚀","limit":null}
+     ├─ Actual: messageId invalid ulid
+     ├─ Expected: limit must be a number conforming to the specified constraints, messageId expected string, received number
+     └─ Details: No details
+
+ 🟣 77. Case #212
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","emoji":123,"limit":10}
+     ├─ Actual: emoji only accepts 1 emoji, messageId required
+     ├─ Expected: emoji expected string, received number, messageId required
+     └─ Details: No details
+
+ 🟣 78. Case #215
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","emoji":null,"limit":10}
+     ├─ Actual: emoji required, messageId required
+     ├─ Expected: emoji expected string, received null, messageId required
+     └─ Details: No details
+
+ 🟣 79. Case #216
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","emoji":"🚀","limit":"invalid_number"}
+     ├─ Actual: limit expected number, received nan, messageId required
+     ├─ Expected: limit must be a number conforming to the specified constraints, messageId required
+     └─ Details: No details
+
+ 🟣 80. Case #217
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","emoji":"🚀","limit":0}
+     ├─ Actual: limit range from 1 to 500, messageId required
+     ├─ Expected: limit must be at least 1, messageId required
+     └─ Details: No details
+
+ 🟣 81. Case #218
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","emoji":"🚀","limit":501}
+     ├─ Actual: limit range from 1 to 500, messageId required
+     ├─ Expected: limit must be at most 500, messageId required
+     └─ Details: No details
+
+ 🟣 82. Case #220
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","emoji":"🚀","limit":""}
+     ├─ Actual: limit range from 1 to 500, messageId required
+     ├─ Expected: limit must be a number conforming to the specified constraints, limit should not be empty, messageId required
+     └─ Details: No details
+
+ 🟣 83. Case #222
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"","emoji":123,"limit":10}
+     ├─ Actual: emoji only accepts 1 emoji, messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: emoji expected string, received number, messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 84. Case #223
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"","emoji":"🚀🚀","limit":10}
+     ├─ Actual: emoji only accepts 1 emoji, messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: emoji only accepts 1 emoji, messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 85. Case #224
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"","emoji":"","limit":10}
+     ├─ Actual: emoji invalid emoji, emoji only accepts 1 emoji, messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: emoji invalid emoji, emoji only accepts 1 emoji, emoji should not be empty, messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 86. Case #225
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"","emoji":null,"limit":10}
+     ├─ Actual: emoji required, messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: emoji expected string, received null, messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 87. Case #226
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"","emoji":"🚀","limit":"invalid_number"}
+     ├─ Actual: limit expected number, received nan, messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: limit must be a number conforming to the specified constraints, messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 88. Case #227
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"","emoji":"🚀","limit":0}
+     ├─ Actual: limit range from 1 to 500, messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: limit must be at least 1, messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 89. Case #228
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"","emoji":"🚀","limit":501}
+     ├─ Actual: limit range from 1 to 500, messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: limit must be at most 500, messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 90. Case #229
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"","emoji":"🚀"}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: limit must be a number conforming to the specified constraints, limit required, messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 91. Case #230
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"","emoji":"🚀","limit":""}
+     ├─ Actual: limit range from 1 to 500, messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: limit must be a number conforming to the specified constraints, limit should not be empty, messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 92. Case #231
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"","emoji":"🚀","limit":null}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: limit must be a number conforming to the specified constraints, messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 93. Case #232
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":null,"emoji":123,"limit":10}
+     ├─ Actual: emoji only accepts 1 emoji, messageId required
+     ├─ Expected: emoji expected string, received number, messageId expected string, received null
+     └─ Details: No details
+
+ 🟣 94. Case #233
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":null,"emoji":"🚀🚀","limit":10}
+     ├─ Actual: emoji only accepts 1 emoji, messageId required
+     ├─ Expected: emoji only accepts 1 emoji, messageId expected string, received null
+     └─ Details: No details
+
+ 🟣 95. Case #234
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":null,"emoji":"","limit":10}
+     ├─ Actual: emoji invalid emoji, emoji only accepts 1 emoji, messageId required
+     ├─ Expected: emoji invalid emoji, emoji only accepts 1 emoji, emoji should not be empty, messageId expected string, received null
+     └─ Details: No details
+
+ 🟣 96. Case #235
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":null,"emoji":null,"limit":10}
+     ├─ Actual: emoji required, messageId required
+     ├─ Expected: emoji expected string, received null, messageId expected string, received null
+     └─ Details: No details
+
+ 🟣 97. Case #236
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":null,"emoji":"🚀","limit":"invalid_number"}
+     ├─ Actual: limit expected number, received nan, messageId required
+     ├─ Expected: limit must be a number conforming to the specified constraints, messageId expected string, received null
+     └─ Details: No details
+
+ 🟣 98. Case #237
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":null,"emoji":"🚀","limit":0}
+     ├─ Actual: limit range from 1 to 500, messageId required
+     ├─ Expected: limit must be at least 1, messageId expected string, received null
+     └─ Details: No details
+
+ 🟣 99. Case #238
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":null,"emoji":"🚀","limit":501}
+     ├─ Actual: limit range from 1 to 500, messageId required
+     ├─ Expected: limit must be at most 500, messageId expected string, received null
+     └─ Details: No details
+
+ 🟣 100. Case #239
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":null,"emoji":"🚀"}
+     ├─ Actual: messageId required
+     ├─ Expected: limit must be a number conforming to the specified constraints, limit required, messageId expected string, received null
+     └─ Details: No details
+
+ 🟣 101. Case #240
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":null,"emoji":"🚀","limit":""}
+     ├─ Actual: limit range from 1 to 500, messageId required
+     ├─ Expected: limit must be a number conforming to the specified constraints, limit should not be empty, messageId expected string, received null
+     └─ Details: No details
+
+ 🟣 102. Case #241
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":null,"emoji":"🚀","limit":null}
+     ├─ Actual: messageId required
+     ├─ Expected: limit must be a number conforming to the specified constraints, messageId expected string, received null
+     └─ Details: No details
+
+ 🟣 103. Case #242
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"invalid_ULID","emoji":123,"limit":10}
+     ├─ Actual: emoji only accepts 1 emoji, messageId invalid ulid
+     ├─ Expected: emoji expected string, received number, messageId invalid ulid
+     └─ Details: No details
+
+ 🟣 104. Case #245
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"invalid_ULID","emoji":null,"limit":10}
+     ├─ Actual: emoji required, messageId invalid ulid
+     ├─ Expected: emoji expected string, received null, messageId invalid ulid
+     └─ Details: No details
+
+ 🟣 105. Case #246
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"invalid_ULID","emoji":"🚀","limit":"invalid_number"}
+     ├─ Actual: limit expected number, received nan, messageId invalid ulid
+     ├─ Expected: limit must be a number conforming to the specified constraints, messageId invalid ulid
+     └─ Details: No details
+
+ 🟣 106. Case #247
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"invalid_ULID","emoji":"🚀","limit":0}
+     ├─ Actual: limit range from 1 to 500, messageId invalid ulid
+     ├─ Expected: limit must be at least 1, messageId invalid ulid
+     └─ Details: No details
+
+ 🟣 107. Case #248
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"invalid_ULID","emoji":"🚀","limit":501}
+     ├─ Actual: limit range from 1 to 500, messageId invalid ulid
+     ├─ Expected: limit must be at most 500, messageId invalid ulid
+     └─ Details: No details
+
+ 🟣 108. Case #250
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"invalid_ULID","emoji":"🚀","limit":""}
+     ├─ Actual: limit range from 1 to 500, messageId invalid ulid
+     ├─ Expected: limit must be a number conforming to the specified constraints, limit should not be empty, messageId invalid ulid
+     └─ Details: No details
+
+ 🟣 109. Case #252
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":123,"limit":"invalid_number"}
+     ├─ Actual: emoji only accepts 1 emoji, limit expected number, received nan, messageId invalid ulid
+     ├─ Expected: emoji expected string, received number, limit must be a number conforming to the specified constraints
+     └─ Details: No details
+
+ 🟣 110. Case #253
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":123,"limit":0}
+     ├─ Actual: emoji only accepts 1 emoji, limit range from 1 to 500, messageId invalid ulid
+     ├─ Expected: emoji expected string, received number, limit must be at least 1
+     └─ Details: No details
+
+ 🟣 111. Case #254
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":123,"limit":501}
+     ├─ Actual: emoji only accepts 1 emoji, limit range from 1 to 500, messageId invalid ulid
+     ├─ Expected: emoji expected string, received number, limit must be at most 500
+     └─ Details: No details
+
+ 🟣 112. Case #255
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":123}
+     ├─ Actual: emoji only accepts 1 emoji, messageId invalid ulid
+     ├─ Expected: emoji expected string, received number, limit must be a number conforming to the specified constraints, limit required
+     └─ Details: No details
+
+ 🟣 113. Case #256
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":123,"limit":""}
+     ├─ Actual: emoji only accepts 1 emoji, limit range from 1 to 500, messageId invalid ulid
+     ├─ Expected: emoji expected string, received number, limit must be a number conforming to the specified constraints, limit should not be empty
+     └─ Details: No details
+
+ 🟣 114. Case #257
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":123,"limit":null}
+     ├─ Actual: emoji only accepts 1 emoji, messageId invalid ulid
+     ├─ Expected: emoji expected string, received number, limit must be a number conforming to the specified constraints
+     └─ Details: No details
+
+ 🟣 115. Case #258
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":"🚀🚀","limit":"invalid_number"}
+     ├─ Actual: emoji only accepts 1 emoji, limit expected number, received nan, messageId invalid ulid
+     ├─ Expected: emoji only accepts 1 emoji, limit must be a number conforming to the specified constraints
+     └─ Details: No details
+
+ 🟣 116. Case #259
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":"🚀🚀","limit":0}
+     ├─ Actual: emoji only accepts 1 emoji, limit range from 1 to 500, messageId invalid ulid
+     ├─ Expected: emoji only accepts 1 emoji, limit must be at least 1
+     └─ Details: No details
+
+ 🟣 117. Case #260
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":"🚀🚀","limit":501}
+     ├─ Actual: emoji only accepts 1 emoji, limit range from 1 to 500, messageId invalid ulid
+     ├─ Expected: emoji only accepts 1 emoji, limit must be at most 500
+     └─ Details: No details
+
+ 🟣 118. Case #261
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":"🚀🚀"}
+     ├─ Actual: emoji only accepts 1 emoji, messageId invalid ulid
+     ├─ Expected: emoji only accepts 1 emoji, limit must be a number conforming to the specified constraints, limit required
+     └─ Details: No details
+
+ 🟣 119. Case #262
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":"🚀🚀","limit":""}
+     ├─ Actual: emoji only accepts 1 emoji, limit range from 1 to 500, messageId invalid ulid
+     ├─ Expected: emoji only accepts 1 emoji, limit must be a number conforming to the specified constraints, limit should not be empty
+     └─ Details: No details
+
+ 🟣 120. Case #263
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":"🚀🚀","limit":null}
+     ├─ Actual: emoji only accepts 1 emoji, messageId invalid ulid
+     ├─ Expected: emoji only accepts 1 emoji, limit must be a number conforming to the specified constraints
+     └─ Details: No details
+
+ 🟣 121. Case #264
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":"","limit":"invalid_number"}
+     ├─ Actual: emoji invalid emoji, emoji only accepts 1 emoji, limit expected number, received nan, messageId invalid ulid
+     ├─ Expected: emoji invalid emoji, emoji only accepts 1 emoji, emoji should not be empty, limit must be a number conforming to the specified constraints
+     └─ Details: No details
+
+ 🟣 122. Case #265
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":"","limit":0}
+     ├─ Actual: emoji invalid emoji, emoji only accepts 1 emoji, limit range from 1 to 500, messageId invalid ulid
+     ├─ Expected: emoji invalid emoji, emoji only accepts 1 emoji, emoji should not be empty, limit must be at least 1
+     └─ Details: No details
+
+ 🟣 123. Case #266
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":"","limit":501}
+     ├─ Actual: emoji invalid emoji, emoji only accepts 1 emoji, limit range from 1 to 500, messageId invalid ulid
+     ├─ Expected: emoji invalid emoji, emoji only accepts 1 emoji, emoji should not be empty, limit must be at most 500
+     └─ Details: No details
+
+ 🟣 124. Case #267
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":""}
+     ├─ Actual: emoji invalid emoji, emoji only accepts 1 emoji, messageId invalid ulid
+     ├─ Expected: emoji invalid emoji, emoji only accepts 1 emoji, emoji should not be empty, limit must be a number conforming to the specified constraints, limit required
+     └─ Details: No details
+
+ 🟣 125. Case #268
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":"","limit":""}
+     ├─ Actual: emoji invalid emoji, emoji only accepts 1 emoji, limit range from 1 to 500, messageId invalid ulid
+     ├─ Expected: emoji invalid emoji, emoji only accepts 1 emoji, emoji should not be empty, limit must be a number conforming to the specified constraints, limit should not be empty
+     └─ Details: No details
+
+ 🟣 126. Case #269
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":"","limit":null}
+     ├─ Actual: emoji invalid emoji, emoji only accepts 1 emoji, messageId invalid ulid
+     ├─ Expected: emoji invalid emoji, emoji only accepts 1 emoji, emoji should not be empty, limit must be a number conforming to the specified constraints
+     └─ Details: No details
+
+ 🟣 127. Case #270
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":null,"limit":"invalid_number"}
+     ├─ Actual: emoji required, limit expected number, received nan, messageId invalid ulid
+     ├─ Expected: emoji expected string, received null, limit must be a number conforming to the specified constraints
+     └─ Details: No details
+
+ 🟣 128. Case #271
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":null,"limit":0}
+     ├─ Actual: emoji required, limit range from 1 to 500, messageId invalid ulid
+     ├─ Expected: emoji expected string, received null, limit must be at least 1
+     └─ Details: No details
+
+ 🟣 129. Case #272
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":null,"limit":501}
+     ├─ Actual: emoji required, limit range from 1 to 500, messageId invalid ulid
+     ├─ Expected: emoji expected string, received null, limit must be at most 500
+     └─ Details: No details
+
+ 🟣 130. Case #273
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":null}
+     ├─ Actual: emoji required, messageId invalid ulid
+     ├─ Expected: emoji expected string, received null, limit must be a number conforming to the specified constraints, limit required
+     └─ Details: No details
+
+ 🟣 131. Case #274
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":null,"limit":""}
+     ├─ Actual: emoji required, limit range from 1 to 500, messageId invalid ulid
+     ├─ Expected: emoji expected string, received null, limit must be a number conforming to the specified constraints, limit should not be empty
+     └─ Details: No details
+
+ 🟣 132. Case #275
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3GDMRVGP2ZQGG64YZ8T9XZ","messageId":"{{messageId}}","emoji":null,"limit":null}
+     ├─ Actual: emoji required, messageId invalid ulid
+     ├─ Expected: emoji expected string, received null, limit must be a number conforming to the specified constraints
+     └─ Details: No details
+
+=== End of Report ===

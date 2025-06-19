@@ -1,0 +1,111 @@
+=== Request Test Report for revoke-dm-message-reaction ===
+• Host: N/A
+• Endpoint: /Message/RevokeDMMessageReaction
+• Date: 19/06/2025, 15:36:41
+
+=== Execution Steps ===
+  1. [✅ PASSED] sendDmMessage
+  2. [✅ PASSED] addDmMessageReaction
+
+=== Test Summary ===
+✅ Passed: 80
+❌ Failed: 6
+⚠️ Warnings: 5
+📊 Total: 91
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 1
+ 🟢 201: 0
+ 🟠 400: 24
+ 🟠 403: 55
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Warnings ===
+ 🟠 1. Case #20
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FE0GBTN3QZQTMTSEFA53X","messageId":"01JY3FE1QTBS61DDH3EQYHM091","emoji":""}
+     ├─ Actual Errors: emoji invalid emoji, emoji only accepts 1 emoji
+     ├─ Expected Errors: emoji invalid emoji, emoji only accepts 1 emoji, emoji should not be empty
+     └─ Message: Actual errors includes of expected errors
+ 🟠 2. Case #69
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FE0GBTN3QZQTMTSEFA53X","messageId":123,"emoji":""}
+     ├─ Actual Errors: emoji invalid emoji, emoji only accepts 1 emoji, messageId expected string, received number
+     ├─ Expected Errors: emoji invalid emoji, emoji only accepts 1 emoji, emoji should not be empty, messageId expected string, received number
+     └─ Message: Actual errors includes of expected errors
+ 🟠 3. Case #74
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FE0GBTN3QZQTMTSEFA53X","emoji":""}
+     ├─ Actual Errors: emoji invalid emoji, emoji only accepts 1 emoji, messageId required
+     ├─ Expected Errors: emoji invalid emoji, emoji only accepts 1 emoji, emoji should not be empty, messageId required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 4. Case #84
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FE0GBTN3QZQTMTSEFA53X","messageId":null,"emoji":""}
+     ├─ Actual Errors: emoji invalid emoji, emoji only accepts 1 emoji, messageId expected string, received null
+     ├─ Expected Errors: emoji invalid emoji, emoji only accepts 1 emoji, emoji should not be empty, messageId expected string, received null
+     └─ Message: Actual errors includes of expected errors
+ 🟠 5. Case #89
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FE0GBTN3QZQTMTSEFA53X","messageId":"invalid_ULID","emoji":""}
+     ├─ Actual Errors: emoji invalid emoji, emoji only accepts 1 emoji, messageId invalid ulid
+     ├─ Expected Errors: emoji invalid emoji, emoji only accepts 1 emoji, emoji should not be empty, messageId invalid ulid
+     └─ Message: Actual errors includes of expected errors
+
+=== Unique Errors ===
+ 🟣 1. messageId invalid ulid (Occurred: 6 times)
+ 🟣 2. messageId should not be empty (Occurred: 6 times)
+ 🟣 3. emoji expected string, received number (Occurred: 1 time)
+ 🟣 4. emoji only accepts 1 emoji (Occurred: 2 times)
+ 🟣 5. emoji invalid emoji (Occurred: 1 time)
+ 🟣 6. emoji should not be empty (Occurred: 1 time)
+ 🟣 7. emoji required (Occurred: 1 time)
+ 🟣 8. emoji expected string, received null (Occurred: 1 time)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #15
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FE0GBTN3QZQTMTSEFA53X","messageId":"","emoji":"🚀"}
+     ├─ Actual: messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 2. Case #77
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FE0GBTN3QZQTMTSEFA53X","messageId":"","emoji":123}
+     ├─ Actual: emoji expected string, received number, messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: emoji expected string, received number, messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 3. Case #78
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FE0GBTN3QZQTMTSEFA53X","messageId":"","emoji":"🚀🚀"}
+     ├─ Actual: emoji only accepts 1 emoji, messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: emoji only accepts 1 emoji, messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 4. Case #79
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FE0GBTN3QZQTMTSEFA53X","messageId":"","emoji":""}
+     ├─ Actual: emoji invalid emoji, emoji only accepts 1 emoji, messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: emoji invalid emoji, emoji only accepts 1 emoji, emoji should not be empty, messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 5. Case #80
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FE0GBTN3QZQTMTSEFA53X","messageId":""}
+     ├─ Actual: emoji required, messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: emoji required, messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+ 🟣 6. Case #81
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3FE0GBTN3QZQTMTSEFA53X","messageId":"","emoji":null}
+     ├─ Actual: emoji expected string, received null, messageId invalid ulid, messageId string must contain at least 1 character(s)
+     ├─ Expected: emoji expected string, received null, messageId invalid ulid, messageId should not be empty
+     └─ Details: No details
+
+=== End of Report ===

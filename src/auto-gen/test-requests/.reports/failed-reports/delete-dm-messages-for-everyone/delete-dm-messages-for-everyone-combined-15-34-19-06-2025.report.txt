@@ -1,0 +1,139 @@
+=== Request Test Report for delete-dm-messages-for-everyone ===
+• Host: N/A
+• Endpoint: /Message/DeleteDMMessagesForEveryone
+• Date: 19/06/2025, 15:34:14
+
+=== Execution Steps ===
+  1. [✅ PASSED] sendDmMessage
+
+=== Test Summary ===
+✅ Passed: 39
+❌ Failed: 13
+⚠️ Warnings: 2
+📊 Total: 54
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 1
+ 🟢 201: 0
+ 🟠 400: 1
+ 🟠 403: 36
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Warnings ===
+ 🟠 1. Case #12
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3F1E2841SPMD3YTJR3JJPF","messageIds":[123]}
+     ├─ Actual Errors: messageIds has element 0 invalid ulid
+     ├─ Expected Errors: messageIds has element 0 expected string, received number, messageIds has element 0 invalid ulid
+     └─ Message: Actual errors includes of expected errors
+ 🟠 2. Case #16
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3F1E2841SPMD3YTJR3JJPF"}
+     ├─ Actual Errors: messageIds required
+     ├─ Expected Errors: messageIds expected array, received undefined, messageIds required
+     └─ Message: Actual errors includes of expected errors
+
+=== Unique Errors ===
+ 🟣 1. Could not resolve permission type (Occurred: 9 times)
+ 🟣 2. messageIds expected array, received string (Occurred: 2 times)
+ 🟣 3. messageIds has element 0 expected string, received object (Occurred: 1 time)
+ 🟣 4. messageIds has element 0 invalid ulid (Occurred: 1 time)
+ 🟣 5. messageIds should not be empty (Occurred: 1 time)
+ 🟣 6. messageIds expected array, received null (Occurred: 1 time)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #1
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"messageIds":["01JY3F1FPXV0XZB2R23KQWYZVZ"]}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 2. Case #2
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"messageIds":"not_an_array"}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 3. Case #3
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"messageIds":[123]}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 4. Case #4
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"messageIds":["valid_string"]}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 5. Case #5
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"messageIds":[null]}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 6. Case #6
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"messageIds":["01JY3DC76M3QJJP1DK6D8AS7W9"]}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 7. Case #7
+     ├─ Status: 403
+     ├─ Body: {"userId":123}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 8. Case #8
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"messageIds":""}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 9. Case #9
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"messageIds":null}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 10. Case #11
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3F1E2841SPMD3YTJR3JJPF","messageIds":"not_an_array"}
+     ├─ Actual: messageIds has element 0 invalid ulid
+     ├─ Expected: messageIds expected array, received string
+     └─ Details: No details
+
+ 🟣 11. Case #14
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3F1E2841SPMD3YTJR3JJPF","messageIds":[null]}
+     ├─ Actual: messageIds required
+     ├─ Expected: messageIds has element 0 expected string, received object, messageIds has element 0 invalid ulid
+     └─ Details: No details
+
+ 🟣 12. Case #17
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3F1E2841SPMD3YTJR3JJPF","messageIds":""}
+     ├─ Actual: messageIds has element 0 invalid ulid
+     ├─ Expected: messageIds expected array, received string, messageIds should not be empty
+     └─ Details: No details
+
+ 🟣 13. Case #18
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JY3F1E2841SPMD3YTJR3JJPF","messageIds":null}
+     ├─ Actual: messageIds required
+     ├─ Expected: messageIds expected array, received null
+     └─ Details: No details
+
+=== End of Report ===
