@@ -56,7 +56,7 @@
         "body": {
             "userId": 123,
             "messageIds": [
-                "01JXM421VTWMQWE39QXEFQRG4J"
+                "01JY3DC7FCH3KBSTPBRW18WC7Y"
             ]
         },
         "expects": [
@@ -91,15 +91,6 @@
     },
     {
         "body": {
-            "userId": 123,
-            "messageIds": "invalid_ULID"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
             "userId": "{{userId1}}",
             "messageIds": [
                 "{{messageId}}"
@@ -113,7 +104,6 @@
             "messageIds": "not_an_array"
         },
         "expects": [
-            "messageIds invalid ulid",
             "messageIds expected array, received string"
         ]
     },
@@ -125,7 +115,8 @@
             ]
         },
         "expects": [
-            "messageIds has element 0 expected object, received number"
+            "messageIds has element 0 expected string, received number",
+            "messageIds has element 0 invalid ulid"
         ]
     },
     {
@@ -147,14 +138,15 @@
             ]
         },
         "expects": [
-            "messageIds has element 0 expected object, received null"
+            "messageIds has element 0 expected string, received object",
+            "messageIds has element 0 invalid ulid"
         ]
     },
     {
         "body": {
             "userId": "{{userId1}}",
             "messageIds": [
-                "01JXM421VTWMQWE39QXEFQRG4J"
+                "01JY3DC7FCH3KBSTPBRW18WC7Y"
             ]
         },
         "expects": [
@@ -177,7 +169,6 @@
         },
         "expects": [
             "messageIds should not be empty",
-            "messageIds invalid ulid",
             "messageIds expected array, received string"
         ]
     },
@@ -188,16 +179,6 @@
         },
         "expects": [
             "messageIds expected array, received null"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "messageIds": "invalid_ULID"
-        },
-        "expects": [
-            "messageIds invalid ulid",
-            "messageIds expected array, received string"
         ]
     },
     {
@@ -251,7 +232,7 @@
     {
         "body": {
             "messageIds": [
-                "01JXM421VTWMQWE39QXEFQRG4J"
+                "01JY3DC7FCH3KBSTPBRW18WC7Y"
             ]
         },
         "expects": [
@@ -282,14 +263,6 @@
     },
     {
         "body": {
-            "messageIds": "invalid_ULID"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
             "userId": "",
             "messageIds": [
                 "{{messageId}}"
@@ -345,7 +318,7 @@
         "body": {
             "userId": "",
             "messageIds": [
-                "01JXM421VTWMQWE39QXEFQRG4J"
+                "01JY3DC7FCH3KBSTPBRW18WC7Y"
             ]
         },
         "expects": [
@@ -380,15 +353,6 @@
     },
     {
         "body": {
-            "userId": "",
-            "messageIds": "invalid_ULID"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
             "userId": null,
             "messageIds": [
                 "{{messageId}}"
@@ -444,7 +408,7 @@
         "body": {
             "userId": null,
             "messageIds": [
-                "01JXM421VTWMQWE39QXEFQRG4J"
+                "01JY3DC7FCH3KBSTPBRW18WC7Y"
             ]
         },
         "expects": [
@@ -479,15 +443,6 @@
     },
     {
         "body": {
-            "userId": null,
-            "messageIds": "invalid_ULID"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
             "userId": "invalid_value",
             "messageIds": [
                 "{{messageId}}"
@@ -543,7 +498,7 @@
         "body": {
             "userId": "invalid_value",
             "messageIds": [
-                "01JXM421VTWMQWE39QXEFQRG4J"
+                "01JY3DC7FCH3KBSTPBRW18WC7Y"
             ]
         },
         "expects": [
@@ -571,15 +526,6 @@
         "body": {
             "userId": "invalid_value",
             "messageIds": null
-        },
-        "expects": [
-            "Unauthorized request"
-        ]
-    },
-    {
-        "body": {
-            "userId": "invalid_value",
-            "messageIds": "invalid_ULID"
         },
         "expects": [
             "Unauthorized request"

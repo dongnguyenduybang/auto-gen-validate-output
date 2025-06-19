@@ -1,0 +1,1759 @@
+{
+  "path": "/Message/PinUnpinMessage",
+  "className": "unpin-message",
+  "allSteps": [
+    {
+      "type": null,
+      "status": true,
+      "stepName": "sendMessage",
+      "caseTitle": "Case 0",
+      "phase": "beforeAll"
+    },
+    {
+      "type": null,
+      "status": true,
+      "stepName": "pinUnpinMessage",
+      "caseTitle": "Case 0",
+      "phase": "beforeAll"
+    }
+  ],
+  "failedTests": [
+    {
+      "testcase": 18,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    },
+    {
+      "testcase": 24,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "",
+        "status": false
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "messageId invalid ulid",
+        "messageId should not be empty"
+      ]
+    },
+    {
+      "testcase": 78,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    },
+    {
+      "testcase": 100,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "messageId": 123,
+        "status": false
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    },
+    {
+      "testcase": 101,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "status": false
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    },
+    {
+      "testcase": 102,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "messageId": "",
+        "status": false
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    },
+    {
+      "testcase": 103,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "messageId": null,
+        "status": false
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    },
+    {
+      "testcase": 104,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "messageId": "invalid_ULID",
+        "status": false
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    },
+    {
+      "testcase": 105,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": "invalid_boolean"
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    },
+    {
+      "testcase": 106,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18"
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    },
+    {
+      "testcase": 107,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": ""
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    },
+    {
+      "testcase": 108,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": null
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    },
+    {
+      "testcase": 144,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "",
+        "status": "invalid_boolean"
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)",
+        "status expected boolean, received string"
+      ],
+      "extra": [
+        "messageId invalid ulid",
+        "messageId should not be empty",
+        "status expected boolean, received string"
+      ]
+    },
+    {
+      "testcase": 145,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": ""
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "messageId invalid ulid",
+        "messageId should not be empty",
+        "status expected boolean, received undefined",
+        "status required"
+      ]
+    },
+    {
+      "testcase": 146,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "",
+        "status": ""
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)",
+        "status expected boolean, received string"
+      ],
+      "extra": [
+        "messageId invalid ulid",
+        "messageId should not be empty",
+        "status expected boolean, received string",
+        "status should not be empty"
+      ]
+    },
+    {
+      "testcase": 147,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "",
+        "status": null
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "messageId invalid ulid",
+        "messageId should not be empty",
+        "status expected boolean, received null"
+      ]
+    }
+  ],
+  "codedTest": [
+    {
+      "testcase": 1,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      }
+    },
+    {
+      "testcase": 2,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": 123,
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      }
+    },
+    {
+      "testcase": 3,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      }
+    },
+    {
+      "testcase": 4,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      }
+    },
+    {
+      "testcase": 5,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": null,
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      }
+    },
+    {
+      "testcase": 6,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "invalid_value",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      }
+    },
+    {
+      "testcase": 7,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": 123,
+        "status": false
+      }
+    },
+    {
+      "testcase": 8,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "status": false
+      }
+    },
+    {
+      "testcase": 9,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "",
+        "status": false
+      }
+    },
+    {
+      "testcase": 10,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": null,
+        "status": false
+      }
+    },
+    {
+      "testcase": 11,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "invalid_ULID",
+        "status": false
+      }
+    },
+    {
+      "testcase": 12,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": "invalid_boolean"
+      }
+    },
+    {
+      "testcase": 13,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18"
+      }
+    },
+    {
+      "testcase": 14,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": ""
+      }
+    },
+    {
+      "testcase": 15,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": null
+      }
+    },
+    {
+      "testcase": 16,
+      "code": 201,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      }
+    },
+    {
+      "testcase": 17,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      }
+    },
+    {
+      "testcase": 19,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      }
+    },
+    {
+      "testcase": 20,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": null,
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      }
+    },
+    {
+      "testcase": 21,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      }
+    },
+    {
+      "testcase": 22,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": 123,
+        "status": false
+      }
+    },
+    {
+      "testcase": 23,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "status": false
+      }
+    },
+    {
+      "testcase": 25,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": null,
+        "status": false
+      }
+    },
+    {
+      "testcase": 26,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "invalid_ULID",
+        "status": false
+      }
+    },
+    {
+      "testcase": 27,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": "invalid_boolean"
+      }
+    },
+    {
+      "testcase": 31,
+      "code": 403,
+      "body": {
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      }
+    },
+    {
+      "testcase": 32,
+      "code": 403,
+      "body": {
+        "channelId": 123,
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      }
+    },
+    {
+      "testcase": 33,
+      "code": 403,
+      "body": {
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      }
+    },
+    {
+      "testcase": 34,
+      "code": 403,
+      "body": {
+        "channelId": "",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      }
+    },
+    {
+      "testcase": 35,
+      "code": 403,
+      "body": {
+        "channelId": null,
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      }
+    },
+    {
+      "testcase": 36,
+      "code": 403,
+      "body": {
+        "channelId": "invalid_value",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      }
+    },
+    {
+      "testcase": 37,
+      "code": 403,
+      "body": {
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": 123,
+        "status": false
+      }
+    },
+    {
+      "testcase": 38,
+      "code": 403,
+      "body": {
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "status": false
+      }
+    },
+    {
+      "testcase": 39,
+      "code": 403,
+      "body": {
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "",
+        "status": false
+      }
+    },
+    {
+      "testcase": 40,
+      "code": 403,
+      "body": {
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": null,
+        "status": false
+      }
+    },
+    {
+      "testcase": 41,
+      "code": 403,
+      "body": {
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "invalid_ULID",
+        "status": false
+      }
+    },
+    {
+      "testcase": 42,
+      "code": 403,
+      "body": {
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": "invalid_boolean"
+      }
+    },
+    {
+      "testcase": 43,
+      "code": 403,
+      "body": {
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18"
+      }
+    },
+    {
+      "testcase": 44,
+      "code": 403,
+      "body": {
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": ""
+      }
+    },
+    {
+      "testcase": 45,
+      "code": 403,
+      "body": {
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": null
+      }
+    },
+    {
+      "testcase": 46,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      }
+    },
+    {
+      "testcase": 47,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": 123,
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      }
+    },
+    {
+      "testcase": 48,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      }
+    },
+    {
+      "testcase": 49,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      }
+    },
+    {
+      "testcase": 50,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": null,
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      }
+    },
+    {
+      "testcase": 51,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "invalid_value",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      }
+    },
+    {
+      "testcase": 52,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": 123,
+        "status": false
+      }
+    },
+    {
+      "testcase": 53,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "status": false
+      }
+    },
+    {
+      "testcase": 54,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "",
+        "status": false
+      }
+    },
+    {
+      "testcase": 55,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": null,
+        "status": false
+      }
+    },
+    {
+      "testcase": 56,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "invalid_ULID",
+        "status": false
+      }
+    },
+    {
+      "testcase": 57,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": "invalid_boolean"
+      }
+    },
+    {
+      "testcase": 58,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18"
+      }
+    },
+    {
+      "testcase": 59,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": ""
+      }
+    },
+    {
+      "testcase": 60,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": null
+      }
+    },
+    {
+      "testcase": 61,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      }
+    },
+    {
+      "testcase": 62,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": 123,
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      }
+    },
+    {
+      "testcase": 63,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      }
+    },
+    {
+      "testcase": 64,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      }
+    },
+    {
+      "testcase": 65,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": null,
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      }
+    },
+    {
+      "testcase": 66,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "invalid_value",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      }
+    },
+    {
+      "testcase": 67,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": 123,
+        "status": false
+      }
+    },
+    {
+      "testcase": 68,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "status": false
+      }
+    },
+    {
+      "testcase": 69,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "",
+        "status": false
+      }
+    },
+    {
+      "testcase": 70,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": null,
+        "status": false
+      }
+    },
+    {
+      "testcase": 71,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "invalid_ULID",
+        "status": false
+      }
+    },
+    {
+      "testcase": 72,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": "invalid_boolean"
+      }
+    },
+    {
+      "testcase": 73,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18"
+      }
+    },
+    {
+      "testcase": 74,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": ""
+      }
+    },
+    {
+      "testcase": 75,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": null
+      }
+    },
+    {
+      "testcase": 76,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      }
+    },
+    {
+      "testcase": 77,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": 123,
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      }
+    },
+    {
+      "testcase": 79,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      }
+    },
+    {
+      "testcase": 80,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": null,
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      }
+    },
+    {
+      "testcase": 81,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "invalid_value",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": false
+      }
+    },
+    {
+      "testcase": 82,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": 123,
+        "status": false
+      }
+    },
+    {
+      "testcase": 83,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "status": false
+      }
+    },
+    {
+      "testcase": 84,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "",
+        "status": false
+      }
+    },
+    {
+      "testcase": 85,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": null,
+        "status": false
+      }
+    },
+    {
+      "testcase": 86,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "invalid_ULID",
+        "status": false
+      }
+    },
+    {
+      "testcase": 87,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": "invalid_boolean"
+      }
+    },
+    {
+      "testcase": 88,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18"
+      }
+    },
+    {
+      "testcase": 89,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": ""
+      }
+    },
+    {
+      "testcase": 90,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": null
+      }
+    },
+    {
+      "testcase": 91,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "messageId": 123,
+        "status": false
+      }
+    },
+    {
+      "testcase": 92,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "status": false
+      }
+    },
+    {
+      "testcase": 93,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "messageId": "",
+        "status": false
+      }
+    },
+    {
+      "testcase": 94,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "messageId": null,
+        "status": false
+      }
+    },
+    {
+      "testcase": 95,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "messageId": "invalid_ULID",
+        "status": false
+      }
+    },
+    {
+      "testcase": 96,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": "invalid_boolean"
+      }
+    },
+    {
+      "testcase": 97,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18"
+      }
+    },
+    {
+      "testcase": 98,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": ""
+      }
+    },
+    {
+      "testcase": 99,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": null
+      }
+    },
+    {
+      "testcase": 109,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "messageId": 123,
+        "status": false
+      }
+    },
+    {
+      "testcase": 110,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "status": false
+      }
+    },
+    {
+      "testcase": 111,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "messageId": "",
+        "status": false
+      }
+    },
+    {
+      "testcase": 112,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "messageId": null,
+        "status": false
+      }
+    },
+    {
+      "testcase": 113,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "messageId": "invalid_ULID",
+        "status": false
+      }
+    },
+    {
+      "testcase": 114,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": "invalid_boolean"
+      }
+    },
+    {
+      "testcase": 115,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18"
+      }
+    },
+    {
+      "testcase": 116,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": ""
+      }
+    },
+    {
+      "testcase": 117,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": null
+      }
+    },
+    {
+      "testcase": 118,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": null,
+        "messageId": 123,
+        "status": false
+      }
+    },
+    {
+      "testcase": 119,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": null,
+        "status": false
+      }
+    },
+    {
+      "testcase": 120,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": null,
+        "messageId": "",
+        "status": false
+      }
+    },
+    {
+      "testcase": 121,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": null,
+        "messageId": null,
+        "status": false
+      }
+    },
+    {
+      "testcase": 122,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": null,
+        "messageId": "invalid_ULID",
+        "status": false
+      }
+    },
+    {
+      "testcase": 123,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": null,
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": "invalid_boolean"
+      }
+    },
+    {
+      "testcase": 124,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": null,
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18"
+      }
+    },
+    {
+      "testcase": 125,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": null,
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": ""
+      }
+    },
+    {
+      "testcase": 126,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": null,
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": null
+      }
+    },
+    {
+      "testcase": 127,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "messageId": 123,
+        "status": false
+      }
+    },
+    {
+      "testcase": 128,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "status": false
+      }
+    },
+    {
+      "testcase": 129,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "messageId": "",
+        "status": false
+      }
+    },
+    {
+      "testcase": 130,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "messageId": null,
+        "status": false
+      }
+    },
+    {
+      "testcase": 131,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "messageId": "invalid_ULID",
+        "status": false
+      }
+    },
+    {
+      "testcase": 132,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": "invalid_boolean"
+      }
+    },
+    {
+      "testcase": 133,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18"
+      }
+    },
+    {
+      "testcase": 134,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": ""
+      }
+    },
+    {
+      "testcase": 135,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": null
+      }
+    },
+    {
+      "testcase": 136,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": 123,
+        "status": "invalid_boolean"
+      }
+    },
+    {
+      "testcase": 140,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "status": "invalid_boolean"
+      }
+    },
+    {
+      "testcase": 148,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": null,
+        "status": "invalid_boolean"
+      }
+    },
+    {
+      "testcase": 152,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "invalid_ULID",
+        "status": "invalid_boolean"
+      }
+    }
+  ],
+  "warnings": [
+    {
+      "testcase": 28,
+      "code": 201,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18"
+      },
+      "actualErrors": [],
+      "expectedErrors": [
+        "status expected boolean, received undefined",
+        "status required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 29,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": ""
+      },
+      "actualErrors": [
+        "status expected boolean, received string"
+      ],
+      "expectedErrors": [
+        "status expected boolean, received string",
+        "status should not be empty"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 30,
+      "code": 201,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "01JY3EEWQZW59X7B1JVJZPWC18",
+        "status": null
+      },
+      "actualErrors": [],
+      "expectedErrors": [
+        "status expected boolean, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 137,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": 123
+      },
+      "actualErrors": [
+        "messageId expected string, received number"
+      ],
+      "expectedErrors": [
+        "messageId expected string, received number",
+        "status expected boolean, received undefined",
+        "status required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 138,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": 123,
+        "status": ""
+      },
+      "actualErrors": [
+        "messageId expected string, received number",
+        "status expected boolean, received string"
+      ],
+      "expectedErrors": [
+        "messageId expected string, received number",
+        "status expected boolean, received string",
+        "status should not be empty"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 139,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": 123,
+        "status": null
+      },
+      "actualErrors": [
+        "messageId expected string, received number"
+      ],
+      "expectedErrors": [
+        "messageId expected string, received number",
+        "status expected boolean, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 141,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ"
+      },
+      "actualErrors": [
+        "messageId required"
+      ],
+      "expectedErrors": [
+        "messageId required",
+        "status expected boolean, received undefined",
+        "status required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 142,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "status": ""
+      },
+      "actualErrors": [
+        "messageId required",
+        "status expected boolean, received string"
+      ],
+      "expectedErrors": [
+        "messageId required",
+        "status expected boolean, received string",
+        "status should not be empty"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 143,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "status": null
+      },
+      "actualErrors": [
+        "messageId required"
+      ],
+      "expectedErrors": [
+        "messageId required",
+        "status expected boolean, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 149,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": null
+      },
+      "actualErrors": [
+        "messageId expected string, received null"
+      ],
+      "expectedErrors": [
+        "messageId expected string, received null",
+        "status expected boolean, received undefined",
+        "status required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 150,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": null,
+        "status": ""
+      },
+      "actualErrors": [
+        "messageId expected string, received null",
+        "status expected boolean, received string"
+      ],
+      "expectedErrors": [
+        "messageId expected string, received null",
+        "status expected boolean, received string",
+        "status should not be empty"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 151,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": null,
+        "status": null
+      },
+      "actualErrors": [
+        "messageId expected string, received null"
+      ],
+      "expectedErrors": [
+        "messageId expected string, received null",
+        "status expected boolean, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 153,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "invalid_ULID"
+      },
+      "actualErrors": [
+        "messageId invalid ulid"
+      ],
+      "expectedErrors": [
+        "messageId invalid ulid",
+        "status expected boolean, received undefined",
+        "status required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 154,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "invalid_ULID",
+        "status": ""
+      },
+      "actualErrors": [
+        "messageId invalid ulid",
+        "status expected boolean, received string"
+      ],
+      "expectedErrors": [
+        "messageId invalid ulid",
+        "status expected boolean, received string",
+        "status should not be empty"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 155,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3EEW13AYP56XG06QWSN6YZ",
+        "messageId": "invalid_ULID",
+        "status": null
+      },
+      "actualErrors": [
+        "messageId invalid ulid"
+      ],
+      "expectedErrors": [
+        "messageId invalid ulid",
+        "status expected boolean, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    }
+  ],
+  "passedTests": 124,
+  "totalTests": 155,
+  "failedStep": []
+}

@@ -1,0 +1,4040 @@
+{
+  "path": "/MessageView/ListMessageReactions",
+  "className": "list-message-reaction",
+  "allSteps": [
+    {
+      "type": null,
+      "status": true,
+      "stepName": "acceptInvitation",
+      "caseTitle": "Case 0",
+      "phase": "beforeAll"
+    },
+    {
+      "type": "response",
+      "status": false,
+      "stepName": "sendMessage",
+      "error": "[\n  \"includes.users[0].userId: userId must === 01JY3GDM9QDR1TX2J3WJP0ECH7 (actual: 01JY3GDMESDPYGR9Z60HG7P62E, expected: 01JY3GDM9QDR1TX2J3WJP0ECH7)\",\n  \"includes.users[0].username must end with 01JY3GDM9QDR1TX2J3WJP0ECH7\",\n  \"includes.members[0].userId: userId must === 01JY3GDM9QDR1TX2J3WJP0ECH7 (actual: 01JY3GDMESDPYGR9Z60HG7P62E, expected: 01JY3GDM9QDR1TX2J3WJP0ECH7)\"\n]",
+      "caseTitle": "Case 0",
+      "phase": "beforeAll"
+    }
+  ],
+  "failedTests": [
+    {
+      "testcase": 1,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 2,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": 123,
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 6,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "invalid_value",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 7,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": 123,
+        "emoji": "🚀",
+        "limit": 10
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 8,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "emoji": "🚀",
+        "limit": 10
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 9,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "",
+        "emoji": "🚀",
+        "limit": 10
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 10,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": null,
+        "emoji": "🚀",
+        "limit": 10
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 11,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "invalid_ULID",
+        "emoji": "🚀",
+        "limit": 10
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 12,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": 123,
+        "limit": 10
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 13,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀🚀",
+        "limit": 10
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 14,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "",
+        "limit": 10
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 15,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": null,
+        "limit": 10
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 16,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": "invalid_number"
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 17,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 0
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 18,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 501
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 19,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀"
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 20,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": ""
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 21,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": null
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 22,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      },
+      "missing": [
+        "messageId invalid ulid"
+      ],
+      "extra": []
+    },
+    {
+      "testcase": 23,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 24,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    },
+    {
+      "testcase": 28,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": 123,
+        "emoji": "🚀",
+        "limit": 10
+      },
+      "missing": [
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "messageId expected string, received number"
+      ]
+    },
+    {
+      "testcase": 30,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "",
+        "emoji": "🚀",
+        "limit": 10
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "messageId invalid ulid",
+        "messageId should not be empty"
+      ]
+    },
+    {
+      "testcase": 31,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": null,
+        "emoji": "🚀",
+        "limit": 10
+      },
+      "missing": [
+        "messageId required"
+      ],
+      "extra": [
+        "messageId expected string, received null"
+      ]
+    },
+    {
+      "testcase": 33,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": 123,
+        "limit": 10
+      },
+      "missing": [
+        "emoji only accepts 1 emoji",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "emoji expected string, received number"
+      ]
+    },
+    {
+      "testcase": 34,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀🚀",
+        "limit": 10
+      },
+      "missing": [
+        "emoji only accepts 1 emoji",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "emoji only accepts 1 emoji"
+      ]
+    },
+    {
+      "testcase": 35,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "",
+        "limit": 10
+      },
+      "missing": [
+        "emoji invalid emoji",
+        "emoji only accepts 1 emoji",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "emoji invalid emoji",
+        "emoji only accepts 1 emoji",
+        "emoji should not be empty"
+      ]
+    },
+    {
+      "testcase": 36,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": null,
+        "limit": 10
+      },
+      "missing": [
+        "emoji required",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "emoji expected string, received null"
+      ]
+    },
+    {
+      "testcase": 37,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": "invalid_number"
+      },
+      "missing": [
+        "limit expected number, received nan",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints"
+      ]
+    },
+    {
+      "testcase": 38,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 0
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "limit must be at least 1"
+      ]
+    },
+    {
+      "testcase": 39,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 501
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "limit must be at most 500"
+      ]
+    },
+    {
+      "testcase": 40,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀"
+      },
+      "missing": [
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "limit required"
+      ]
+    },
+    {
+      "testcase": 41,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": ""
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "limit should not be empty"
+      ]
+    },
+    {
+      "testcase": 42,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": null
+      },
+      "missing": [
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints"
+      ]
+    },
+    {
+      "testcase": 107,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": 123,
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 108,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    },
+    {
+      "testcase": 127,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "messageId": 123,
+        "emoji": "🚀",
+        "limit": 10
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 128,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "emoji": "🚀",
+        "limit": 10
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 129,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "messageId": "",
+        "emoji": "🚀",
+        "limit": 10
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 130,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "messageId": null,
+        "emoji": "🚀",
+        "limit": 10
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 131,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "messageId": "invalid_ULID",
+        "emoji": "🚀",
+        "limit": 10
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 132,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "messageId": "{{messageId}}",
+        "emoji": 123,
+        "limit": 10
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 133,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "messageId": "{{messageId}}",
+        "emoji": "🚀🚀",
+        "limit": 10
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 134,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "messageId": "{{messageId}}",
+        "emoji": "",
+        "limit": 10
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 135,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "messageId": "{{messageId}}",
+        "emoji": null,
+        "limit": 10
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 136,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": "invalid_number"
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 137,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 0
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 138,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 501
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 139,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "messageId": "{{messageId}}",
+        "emoji": "🚀"
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 140,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": ""
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 141,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": null
+      },
+      "missing": [
+        "Invalid channel"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 142,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "messageId": 123,
+        "emoji": "🚀",
+        "limit": 10
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    },
+    {
+      "testcase": 143,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "emoji": "🚀",
+        "limit": 10
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    },
+    {
+      "testcase": 144,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "messageId": "",
+        "emoji": "🚀",
+        "limit": 10
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    },
+    {
+      "testcase": 145,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "messageId": null,
+        "emoji": "🚀",
+        "limit": 10
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    },
+    {
+      "testcase": 146,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "messageId": "invalid_ULID",
+        "emoji": "🚀",
+        "limit": 10
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    },
+    {
+      "testcase": 147,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "messageId": "{{messageId}}",
+        "emoji": 123,
+        "limit": 10
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    },
+    {
+      "testcase": 148,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀🚀",
+        "limit": 10
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    },
+    {
+      "testcase": 149,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "messageId": "{{messageId}}",
+        "emoji": "",
+        "limit": 10
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    },
+    {
+      "testcase": 150,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "messageId": "{{messageId}}",
+        "emoji": null,
+        "limit": 10
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    },
+    {
+      "testcase": 151,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": "invalid_number"
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    },
+    {
+      "testcase": 152,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 0
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    },
+    {
+      "testcase": 153,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 501
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    },
+    {
+      "testcase": 154,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀"
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    },
+    {
+      "testcase": 155,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": ""
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    },
+    {
+      "testcase": 156,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": null
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    },
+    {
+      "testcase": 202,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": 123,
+        "emoji": 123,
+        "limit": 10
+      },
+      "missing": [
+        "emoji only accepts 1 emoji",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "emoji expected string, received number",
+        "messageId expected string, received number"
+      ]
+    },
+    {
+      "testcase": 203,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": 123,
+        "emoji": "🚀🚀",
+        "limit": 10
+      },
+      "missing": [
+        "emoji only accepts 1 emoji",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "emoji only accepts 1 emoji",
+        "messageId expected string, received number"
+      ]
+    },
+    {
+      "testcase": 204,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": 123,
+        "emoji": "",
+        "limit": 10
+      },
+      "missing": [
+        "emoji invalid emoji",
+        "emoji only accepts 1 emoji",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "emoji invalid emoji",
+        "emoji only accepts 1 emoji",
+        "emoji should not be empty",
+        "messageId expected string, received number"
+      ]
+    },
+    {
+      "testcase": 205,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": 123,
+        "emoji": null,
+        "limit": 10
+      },
+      "missing": [
+        "emoji required",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "emoji expected string, received null",
+        "messageId expected string, received number"
+      ]
+    },
+    {
+      "testcase": 206,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": 123,
+        "emoji": "🚀",
+        "limit": "invalid_number"
+      },
+      "missing": [
+        "limit expected number, received nan",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "messageId expected string, received number"
+      ]
+    },
+    {
+      "testcase": 207,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": 123,
+        "emoji": "🚀",
+        "limit": 0
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "limit must be at least 1",
+        "messageId expected string, received number"
+      ]
+    },
+    {
+      "testcase": 208,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": 123,
+        "emoji": "🚀",
+        "limit": 501
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "limit must be at most 500",
+        "messageId expected string, received number"
+      ]
+    },
+    {
+      "testcase": 209,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": 123,
+        "emoji": "🚀"
+      },
+      "missing": [
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "limit required",
+        "messageId expected string, received number"
+      ]
+    },
+    {
+      "testcase": 210,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": 123,
+        "emoji": "🚀",
+        "limit": ""
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "limit should not be empty",
+        "messageId expected string, received number"
+      ]
+    },
+    {
+      "testcase": 211,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": 123,
+        "emoji": "🚀",
+        "limit": null
+      },
+      "missing": [
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "messageId expected string, received number"
+      ]
+    },
+    {
+      "testcase": 212,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "emoji": 123,
+        "limit": 10
+      },
+      "missing": [
+        "emoji only accepts 1 emoji",
+        "messageId required"
+      ],
+      "extra": [
+        "emoji expected string, received number",
+        "messageId required"
+      ]
+    },
+    {
+      "testcase": 215,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "emoji": null,
+        "limit": 10
+      },
+      "missing": [
+        "emoji required",
+        "messageId required"
+      ],
+      "extra": [
+        "emoji expected string, received null",
+        "messageId required"
+      ]
+    },
+    {
+      "testcase": 216,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "emoji": "🚀",
+        "limit": "invalid_number"
+      },
+      "missing": [
+        "limit expected number, received nan",
+        "messageId required"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "messageId required"
+      ]
+    },
+    {
+      "testcase": 217,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "emoji": "🚀",
+        "limit": 0
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "messageId required"
+      ],
+      "extra": [
+        "limit must be at least 1",
+        "messageId required"
+      ]
+    },
+    {
+      "testcase": 218,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "emoji": "🚀",
+        "limit": 501
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "messageId required"
+      ],
+      "extra": [
+        "limit must be at most 500",
+        "messageId required"
+      ]
+    },
+    {
+      "testcase": 220,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "emoji": "🚀",
+        "limit": ""
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "messageId required"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "limit should not be empty",
+        "messageId required"
+      ]
+    },
+    {
+      "testcase": 222,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "",
+        "emoji": 123,
+        "limit": 10
+      },
+      "missing": [
+        "emoji only accepts 1 emoji",
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "emoji expected string, received number",
+        "messageId invalid ulid",
+        "messageId should not be empty"
+      ]
+    },
+    {
+      "testcase": 223,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "",
+        "emoji": "🚀🚀",
+        "limit": 10
+      },
+      "missing": [
+        "emoji only accepts 1 emoji",
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "emoji only accepts 1 emoji",
+        "messageId invalid ulid",
+        "messageId should not be empty"
+      ]
+    },
+    {
+      "testcase": 224,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "",
+        "emoji": "",
+        "limit": 10
+      },
+      "missing": [
+        "emoji invalid emoji",
+        "emoji only accepts 1 emoji",
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "emoji invalid emoji",
+        "emoji only accepts 1 emoji",
+        "emoji should not be empty",
+        "messageId invalid ulid",
+        "messageId should not be empty"
+      ]
+    },
+    {
+      "testcase": 225,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "",
+        "emoji": null,
+        "limit": 10
+      },
+      "missing": [
+        "emoji required",
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "emoji expected string, received null",
+        "messageId invalid ulid",
+        "messageId should not be empty"
+      ]
+    },
+    {
+      "testcase": 226,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "",
+        "emoji": "🚀",
+        "limit": "invalid_number"
+      },
+      "missing": [
+        "limit expected number, received nan",
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "messageId invalid ulid",
+        "messageId should not be empty"
+      ]
+    },
+    {
+      "testcase": 227,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "",
+        "emoji": "🚀",
+        "limit": 0
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "limit must be at least 1",
+        "messageId invalid ulid",
+        "messageId should not be empty"
+      ]
+    },
+    {
+      "testcase": 228,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "",
+        "emoji": "🚀",
+        "limit": 501
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "limit must be at most 500",
+        "messageId invalid ulid",
+        "messageId should not be empty"
+      ]
+    },
+    {
+      "testcase": 229,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "",
+        "emoji": "🚀"
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "limit required",
+        "messageId invalid ulid",
+        "messageId should not be empty"
+      ]
+    },
+    {
+      "testcase": 230,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "",
+        "emoji": "🚀",
+        "limit": ""
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "limit should not be empty",
+        "messageId invalid ulid",
+        "messageId should not be empty"
+      ]
+    },
+    {
+      "testcase": 231,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "",
+        "emoji": "🚀",
+        "limit": null
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "messageId invalid ulid",
+        "messageId should not be empty"
+      ]
+    },
+    {
+      "testcase": 232,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": null,
+        "emoji": 123,
+        "limit": 10
+      },
+      "missing": [
+        "emoji only accepts 1 emoji",
+        "messageId required"
+      ],
+      "extra": [
+        "emoji expected string, received number",
+        "messageId expected string, received null"
+      ]
+    },
+    {
+      "testcase": 233,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": null,
+        "emoji": "🚀🚀",
+        "limit": 10
+      },
+      "missing": [
+        "emoji only accepts 1 emoji",
+        "messageId required"
+      ],
+      "extra": [
+        "emoji only accepts 1 emoji",
+        "messageId expected string, received null"
+      ]
+    },
+    {
+      "testcase": 234,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": null,
+        "emoji": "",
+        "limit": 10
+      },
+      "missing": [
+        "emoji invalid emoji",
+        "emoji only accepts 1 emoji",
+        "messageId required"
+      ],
+      "extra": [
+        "emoji invalid emoji",
+        "emoji only accepts 1 emoji",
+        "emoji should not be empty",
+        "messageId expected string, received null"
+      ]
+    },
+    {
+      "testcase": 235,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": null,
+        "emoji": null,
+        "limit": 10
+      },
+      "missing": [
+        "emoji required",
+        "messageId required"
+      ],
+      "extra": [
+        "emoji expected string, received null",
+        "messageId expected string, received null"
+      ]
+    },
+    {
+      "testcase": 236,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": null,
+        "emoji": "🚀",
+        "limit": "invalid_number"
+      },
+      "missing": [
+        "limit expected number, received nan",
+        "messageId required"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "messageId expected string, received null"
+      ]
+    },
+    {
+      "testcase": 237,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": null,
+        "emoji": "🚀",
+        "limit": 0
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "messageId required"
+      ],
+      "extra": [
+        "limit must be at least 1",
+        "messageId expected string, received null"
+      ]
+    },
+    {
+      "testcase": 238,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": null,
+        "emoji": "🚀",
+        "limit": 501
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "messageId required"
+      ],
+      "extra": [
+        "limit must be at most 500",
+        "messageId expected string, received null"
+      ]
+    },
+    {
+      "testcase": 239,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": null,
+        "emoji": "🚀"
+      },
+      "missing": [
+        "messageId required"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "limit required",
+        "messageId expected string, received null"
+      ]
+    },
+    {
+      "testcase": 240,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": null,
+        "emoji": "🚀",
+        "limit": ""
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "messageId required"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "limit should not be empty",
+        "messageId expected string, received null"
+      ]
+    },
+    {
+      "testcase": 241,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": null,
+        "emoji": "🚀",
+        "limit": null
+      },
+      "missing": [
+        "messageId required"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "messageId expected string, received null"
+      ]
+    },
+    {
+      "testcase": 242,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "invalid_ULID",
+        "emoji": 123,
+        "limit": 10
+      },
+      "missing": [
+        "emoji only accepts 1 emoji",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "emoji expected string, received number",
+        "messageId invalid ulid"
+      ]
+    },
+    {
+      "testcase": 245,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "invalid_ULID",
+        "emoji": null,
+        "limit": 10
+      },
+      "missing": [
+        "emoji required",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "emoji expected string, received null",
+        "messageId invalid ulid"
+      ]
+    },
+    {
+      "testcase": 246,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "invalid_ULID",
+        "emoji": "🚀",
+        "limit": "invalid_number"
+      },
+      "missing": [
+        "limit expected number, received nan",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "messageId invalid ulid"
+      ]
+    },
+    {
+      "testcase": 247,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "invalid_ULID",
+        "emoji": "🚀",
+        "limit": 0
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "limit must be at least 1",
+        "messageId invalid ulid"
+      ]
+    },
+    {
+      "testcase": 248,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "invalid_ULID",
+        "emoji": "🚀",
+        "limit": 501
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "limit must be at most 500",
+        "messageId invalid ulid"
+      ]
+    },
+    {
+      "testcase": 250,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "invalid_ULID",
+        "emoji": "🚀",
+        "limit": ""
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "limit should not be empty",
+        "messageId invalid ulid"
+      ]
+    },
+    {
+      "testcase": 252,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": 123,
+        "limit": "invalid_number"
+      },
+      "missing": [
+        "emoji only accepts 1 emoji",
+        "limit expected number, received nan",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "emoji expected string, received number",
+        "limit must be a number conforming to the specified constraints"
+      ]
+    },
+    {
+      "testcase": 253,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": 123,
+        "limit": 0
+      },
+      "missing": [
+        "emoji only accepts 1 emoji",
+        "limit range from 1 to 500",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "emoji expected string, received number",
+        "limit must be at least 1"
+      ]
+    },
+    {
+      "testcase": 254,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": 123,
+        "limit": 501
+      },
+      "missing": [
+        "emoji only accepts 1 emoji",
+        "limit range from 1 to 500",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "emoji expected string, received number",
+        "limit must be at most 500"
+      ]
+    },
+    {
+      "testcase": 255,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": 123
+      },
+      "missing": [
+        "emoji only accepts 1 emoji",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "emoji expected string, received number",
+        "limit must be a number conforming to the specified constraints",
+        "limit required"
+      ]
+    },
+    {
+      "testcase": 256,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": 123,
+        "limit": ""
+      },
+      "missing": [
+        "emoji only accepts 1 emoji",
+        "limit range from 1 to 500",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "emoji expected string, received number",
+        "limit must be a number conforming to the specified constraints",
+        "limit should not be empty"
+      ]
+    },
+    {
+      "testcase": 257,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": 123,
+        "limit": null
+      },
+      "missing": [
+        "emoji only accepts 1 emoji",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "emoji expected string, received number",
+        "limit must be a number conforming to the specified constraints"
+      ]
+    },
+    {
+      "testcase": 258,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀🚀",
+        "limit": "invalid_number"
+      },
+      "missing": [
+        "emoji only accepts 1 emoji",
+        "limit expected number, received nan",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "emoji only accepts 1 emoji",
+        "limit must be a number conforming to the specified constraints"
+      ]
+    },
+    {
+      "testcase": 259,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀🚀",
+        "limit": 0
+      },
+      "missing": [
+        "emoji only accepts 1 emoji",
+        "limit range from 1 to 500",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "emoji only accepts 1 emoji",
+        "limit must be at least 1"
+      ]
+    },
+    {
+      "testcase": 260,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀🚀",
+        "limit": 501
+      },
+      "missing": [
+        "emoji only accepts 1 emoji",
+        "limit range from 1 to 500",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "emoji only accepts 1 emoji",
+        "limit must be at most 500"
+      ]
+    },
+    {
+      "testcase": 261,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀🚀"
+      },
+      "missing": [
+        "emoji only accepts 1 emoji",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "emoji only accepts 1 emoji",
+        "limit must be a number conforming to the specified constraints",
+        "limit required"
+      ]
+    },
+    {
+      "testcase": 262,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀🚀",
+        "limit": ""
+      },
+      "missing": [
+        "emoji only accepts 1 emoji",
+        "limit range from 1 to 500",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "emoji only accepts 1 emoji",
+        "limit must be a number conforming to the specified constraints",
+        "limit should not be empty"
+      ]
+    },
+    {
+      "testcase": 263,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀🚀",
+        "limit": null
+      },
+      "missing": [
+        "emoji only accepts 1 emoji",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "emoji only accepts 1 emoji",
+        "limit must be a number conforming to the specified constraints"
+      ]
+    },
+    {
+      "testcase": 264,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "",
+        "limit": "invalid_number"
+      },
+      "missing": [
+        "emoji invalid emoji",
+        "emoji only accepts 1 emoji",
+        "limit expected number, received nan",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "emoji invalid emoji",
+        "emoji only accepts 1 emoji",
+        "emoji should not be empty",
+        "limit must be a number conforming to the specified constraints"
+      ]
+    },
+    {
+      "testcase": 265,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "",
+        "limit": 0
+      },
+      "missing": [
+        "emoji invalid emoji",
+        "emoji only accepts 1 emoji",
+        "limit range from 1 to 500",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "emoji invalid emoji",
+        "emoji only accepts 1 emoji",
+        "emoji should not be empty",
+        "limit must be at least 1"
+      ]
+    },
+    {
+      "testcase": 266,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "",
+        "limit": 501
+      },
+      "missing": [
+        "emoji invalid emoji",
+        "emoji only accepts 1 emoji",
+        "limit range from 1 to 500",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "emoji invalid emoji",
+        "emoji only accepts 1 emoji",
+        "emoji should not be empty",
+        "limit must be at most 500"
+      ]
+    },
+    {
+      "testcase": 267,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": ""
+      },
+      "missing": [
+        "emoji invalid emoji",
+        "emoji only accepts 1 emoji",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "emoji invalid emoji",
+        "emoji only accepts 1 emoji",
+        "emoji should not be empty",
+        "limit must be a number conforming to the specified constraints",
+        "limit required"
+      ]
+    },
+    {
+      "testcase": 268,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "",
+        "limit": ""
+      },
+      "missing": [
+        "emoji invalid emoji",
+        "emoji only accepts 1 emoji",
+        "limit range from 1 to 500",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "emoji invalid emoji",
+        "emoji only accepts 1 emoji",
+        "emoji should not be empty",
+        "limit must be a number conforming to the specified constraints",
+        "limit should not be empty"
+      ]
+    },
+    {
+      "testcase": 269,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "",
+        "limit": null
+      },
+      "missing": [
+        "emoji invalid emoji",
+        "emoji only accepts 1 emoji",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "emoji invalid emoji",
+        "emoji only accepts 1 emoji",
+        "emoji should not be empty",
+        "limit must be a number conforming to the specified constraints"
+      ]
+    },
+    {
+      "testcase": 270,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": null,
+        "limit": "invalid_number"
+      },
+      "missing": [
+        "emoji required",
+        "limit expected number, received nan",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "emoji expected string, received null",
+        "limit must be a number conforming to the specified constraints"
+      ]
+    },
+    {
+      "testcase": 271,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": null,
+        "limit": 0
+      },
+      "missing": [
+        "emoji required",
+        "limit range from 1 to 500",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "emoji expected string, received null",
+        "limit must be at least 1"
+      ]
+    },
+    {
+      "testcase": 272,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": null,
+        "limit": 501
+      },
+      "missing": [
+        "emoji required",
+        "limit range from 1 to 500",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "emoji expected string, received null",
+        "limit must be at most 500"
+      ]
+    },
+    {
+      "testcase": 273,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": null
+      },
+      "missing": [
+        "emoji required",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "emoji expected string, received null",
+        "limit must be a number conforming to the specified constraints",
+        "limit required"
+      ]
+    },
+    {
+      "testcase": 274,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": null,
+        "limit": ""
+      },
+      "missing": [
+        "emoji required",
+        "limit range from 1 to 500",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "emoji expected string, received null",
+        "limit must be a number conforming to the specified constraints",
+        "limit should not be empty"
+      ]
+    },
+    {
+      "testcase": 275,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": null,
+        "limit": null
+      },
+      "missing": [
+        "emoji required",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "emoji expected string, received null",
+        "limit must be a number conforming to the specified constraints"
+      ]
+    }
+  ],
+  "codedTest": [
+    {
+      "testcase": 3,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 4,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 5,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": null,
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 25,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 26,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": null,
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 27,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 29,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 32,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "invalid_ULID",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 43,
+      "code": 403,
+      "body": {
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 44,
+      "code": 403,
+      "body": {
+        "channelId": 123,
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 45,
+      "code": 403,
+      "body": {
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 46,
+      "code": 403,
+      "body": {
+        "channelId": "",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 47,
+      "code": 403,
+      "body": {
+        "channelId": null,
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 48,
+      "code": 403,
+      "body": {
+        "channelId": "invalid_value",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 49,
+      "code": 403,
+      "body": {
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": 123,
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 50,
+      "code": 403,
+      "body": {
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 51,
+      "code": 403,
+      "body": {
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 52,
+      "code": 403,
+      "body": {
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": null,
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 53,
+      "code": 403,
+      "body": {
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "invalid_ULID",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 54,
+      "code": 403,
+      "body": {
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": 123,
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 55,
+      "code": 403,
+      "body": {
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 56,
+      "code": 403,
+      "body": {
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 57,
+      "code": 403,
+      "body": {
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": null,
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 58,
+      "code": 403,
+      "body": {
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": "invalid_number"
+      }
+    },
+    {
+      "testcase": 59,
+      "code": 403,
+      "body": {
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 0
+      }
+    },
+    {
+      "testcase": 60,
+      "code": 403,
+      "body": {
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 501
+      }
+    },
+    {
+      "testcase": 61,
+      "code": 403,
+      "body": {
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀"
+      }
+    },
+    {
+      "testcase": 62,
+      "code": 403,
+      "body": {
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": ""
+      }
+    },
+    {
+      "testcase": 63,
+      "code": 403,
+      "body": {
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": null
+      }
+    },
+    {
+      "testcase": 64,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 65,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": 123,
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 66,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 67,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 68,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": null,
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 69,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "invalid_value",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 70,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": 123,
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 71,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 72,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 73,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": null,
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 74,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "invalid_ULID",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 75,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": 123,
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 76,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 77,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 78,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": null,
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 79,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": "invalid_number"
+      }
+    },
+    {
+      "testcase": 80,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 0
+      }
+    },
+    {
+      "testcase": 81,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 501
+      }
+    },
+    {
+      "testcase": 82,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀"
+      }
+    },
+    {
+      "testcase": 83,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": ""
+      }
+    },
+    {
+      "testcase": 84,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": null
+      }
+    },
+    {
+      "testcase": 85,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 86,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": 123,
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 87,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 88,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 89,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": null,
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 90,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "invalid_value",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 91,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": 123,
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 92,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 93,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 94,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": null,
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 95,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "invalid_ULID",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 96,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": 123,
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 97,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 98,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 99,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": null,
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 100,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": "invalid_number"
+      }
+    },
+    {
+      "testcase": 101,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 0
+      }
+    },
+    {
+      "testcase": 102,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 501
+      }
+    },
+    {
+      "testcase": 103,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀"
+      }
+    },
+    {
+      "testcase": 104,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": ""
+      }
+    },
+    {
+      "testcase": 105,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": null
+      }
+    },
+    {
+      "testcase": 106,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 109,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 110,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": null,
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 111,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "invalid_value",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 112,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": 123,
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 113,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 114,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 115,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": null,
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 116,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "invalid_ULID",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 117,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": 123,
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 118,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 119,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 120,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": null,
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 121,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": "invalid_number"
+      }
+    },
+    {
+      "testcase": 122,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 0
+      }
+    },
+    {
+      "testcase": 123,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 501
+      }
+    },
+    {
+      "testcase": 124,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀"
+      }
+    },
+    {
+      "testcase": 125,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": ""
+      }
+    },
+    {
+      "testcase": 126,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": null
+      }
+    },
+    {
+      "testcase": 157,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "messageId": 123,
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 158,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 159,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "messageId": "",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 160,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "messageId": null,
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 161,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "messageId": "invalid_ULID",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 162,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "messageId": "{{messageId}}",
+        "emoji": 123,
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 163,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 164,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "messageId": "{{messageId}}",
+        "emoji": "",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 165,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "messageId": "{{messageId}}",
+        "emoji": null,
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 166,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": "invalid_number"
+      }
+    },
+    {
+      "testcase": 167,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 0
+      }
+    },
+    {
+      "testcase": 168,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 501
+      }
+    },
+    {
+      "testcase": 169,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀"
+      }
+    },
+    {
+      "testcase": 170,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": ""
+      }
+    },
+    {
+      "testcase": 171,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": null
+      }
+    },
+    {
+      "testcase": 172,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": null,
+        "messageId": 123,
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 173,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": null,
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 174,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": null,
+        "messageId": "",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 175,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": null,
+        "messageId": null,
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 176,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": null,
+        "messageId": "invalid_ULID",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 177,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": null,
+        "messageId": "{{messageId}}",
+        "emoji": 123,
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 178,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": null,
+        "messageId": "{{messageId}}",
+        "emoji": "🚀🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 179,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": null,
+        "messageId": "{{messageId}}",
+        "emoji": "",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 180,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": null,
+        "messageId": "{{messageId}}",
+        "emoji": null,
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 181,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": null,
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": "invalid_number"
+      }
+    },
+    {
+      "testcase": 182,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": null,
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 0
+      }
+    },
+    {
+      "testcase": 183,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": null,
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 501
+      }
+    },
+    {
+      "testcase": 184,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": null,
+        "messageId": "{{messageId}}",
+        "emoji": "🚀"
+      }
+    },
+    {
+      "testcase": 185,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": null,
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": ""
+      }
+    },
+    {
+      "testcase": 186,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": null,
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": null
+      }
+    },
+    {
+      "testcase": 187,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "messageId": 123,
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 188,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 189,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "messageId": "",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 190,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "messageId": null,
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 191,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "messageId": "invalid_ULID",
+        "emoji": "🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 192,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "messageId": "{{messageId}}",
+        "emoji": 123,
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 193,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 194,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "messageId": "{{messageId}}",
+        "emoji": "",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 195,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "messageId": "{{messageId}}",
+        "emoji": null,
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 196,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": "invalid_number"
+      }
+    },
+    {
+      "testcase": 197,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 0
+      }
+    },
+    {
+      "testcase": 198,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": 501
+      }
+    },
+    {
+      "testcase": 199,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀"
+      }
+    },
+    {
+      "testcase": 200,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": ""
+      }
+    },
+    {
+      "testcase": 201,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "messageId": "{{messageId}}",
+        "emoji": "🚀",
+        "limit": null
+      }
+    },
+    {
+      "testcase": 213,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "emoji": "🚀🚀",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 243,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "invalid_ULID",
+        "emoji": "🚀🚀",
+        "limit": 10
+      }
+    }
+  ],
+  "warnings": [
+    {
+      "testcase": 214,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "emoji": "",
+        "limit": 10
+      },
+      "actualErrors": [
+        "emoji invalid emoji",
+        "emoji only accepts 1 emoji",
+        "messageId required"
+      ],
+      "expectedErrors": [
+        "emoji invalid emoji",
+        "emoji only accepts 1 emoji",
+        "emoji should not be empty",
+        "messageId required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 219,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "emoji": "🚀"
+      },
+      "actualErrors": [
+        "messageId required"
+      ],
+      "expectedErrors": [
+        "limit must be a number conforming to the specified constraints",
+        "limit required",
+        "messageId required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 221,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "emoji": "🚀",
+        "limit": null
+      },
+      "actualErrors": [
+        "messageId required"
+      ],
+      "expectedErrors": [
+        "limit must be a number conforming to the specified constraints",
+        "messageId required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 244,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "invalid_ULID",
+        "emoji": "",
+        "limit": 10
+      },
+      "actualErrors": [
+        "emoji invalid emoji",
+        "emoji only accepts 1 emoji",
+        "messageId invalid ulid"
+      ],
+      "expectedErrors": [
+        "emoji invalid emoji",
+        "emoji only accepts 1 emoji",
+        "emoji should not be empty",
+        "messageId invalid ulid"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 249,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "invalid_ULID",
+        "emoji": "🚀"
+      },
+      "actualErrors": [
+        "messageId invalid ulid"
+      ],
+      "expectedErrors": [
+        "limit must be a number conforming to the specified constraints",
+        "limit required",
+        "messageId invalid ulid"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 251,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3GDMRVGP2ZQGG64YZ8T9XZ",
+        "messageId": "invalid_ULID",
+        "emoji": "🚀",
+        "limit": null
+      },
+      "actualErrors": [
+        "messageId invalid ulid"
+      ],
+      "expectedErrors": [
+        "limit must be a number conforming to the specified constraints",
+        "messageId invalid ulid"
+      ],
+      "message": "Actual errors includes of expected errors"
+    }
+  ],
+  "passedTests": 137,
+  "totalTests": 275,
+  "failedStep": []
+}

@@ -1,0 +1,99 @@
+{
+  "path": "/FriendView/GetFriend",
+  "className": "get-friend",
+  "allSteps": [
+    {
+      "type": null,
+      "status": true,
+      "stepName": "addFriend",
+      "caseTitle": "Case 0",
+      "phase": "beforeAll"
+    },
+    {
+      "type": null,
+      "status": true,
+      "stepName": "acceptFriendRequest",
+      "caseTitle": "Case 0",
+      "phase": "beforeAll"
+    }
+  ],
+  "failedTests": [
+    {
+      "testcase": 1,
+      "code": 400,
+      "body": {
+        "userId": 123
+      },
+      "missing": [
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 3,
+      "code": 400,
+      "body": {},
+      "missing": [
+        "userId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 4,
+      "code": 400,
+      "body": {
+        "userId": ""
+      },
+      "missing": [
+        "userId invalid ulid",
+        "userId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 5,
+      "code": 400,
+      "body": {
+        "userId": null
+      },
+      "missing": [
+        "userId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 6,
+      "code": 400,
+      "body": {
+        "userId": "invalid_value"
+      },
+      "missing": [
+        "userId invalid ulid"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    }
+  ],
+  "codedTest": [
+    {
+      "testcase": 2,
+      "code": 200,
+      "body": {
+        "userId": "01JY3GFTQ4KN16J7E5G51WZHQQ"
+      }
+    }
+  ],
+  "warnings": [],
+  "passedTests": 1,
+  "totalTests": 6,
+  "failedStep": []
+}

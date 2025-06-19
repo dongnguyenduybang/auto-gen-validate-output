@@ -1,0 +1,415 @@
+=== Request Test Report for remove-from-channel ===
+• Host: N/A
+• Endpoint: /Member/RemoveFromChannel
+• Date: 19/06/2025, 14:38:11
+
+=== Execution Steps ===
+  1. [✅ PASSED] acceptInvitation
+
+=== Test Summary ===
+✅ Passed: 58
+❌ Failed: 54
+⚠️ Warnings: 0
+📊 Total: 112
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 1
+ 🟢 201: 0
+ 🟠 400: 0
+ 🟠 403: 57
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Warnings ===
+✅ No warnings
+
+=== Unique Errors ===
+ 🟣 1. Could not resolve permission type (Occurred: 37 times)
+ 🟣 2. Unsupported permission type (Occurred: 10 times)
+ 🟣 3. Unauthorized request (Occurred: 4 times)
+ 🟣 4. reason expected string, received number (Occurred: 1 time)
+ 🟣 5. reason required (Occurred: 1 time)
+ 🟣 6. reason should not be empty (Occurred: 1 time)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #1
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JY3CP4QM2EKJZ34RBV5RBCJ6","userId":"01JY3CP4DZZDHC88W192J862FR","reason":"spam"}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 2. Case #2
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":123,"userId":"01JY3CP4DZZDHC88W192J862FR","reason":"spam"}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 3. Case #5
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"invalid_value","userId":"01JY3CP4DZZDHC88W192J862FR","reason":"spam"}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 4. Case #6
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JY3CP4QM2EKJZ34RBV5RBCJ6","userId":123,"reason":"spam"}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 5. Case #7
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JY3CP4QM2EKJZ34RBV5RBCJ6","reason":"spam"}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 6. Case #8
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JY3CP4QM2EKJZ34RBV5RBCJ6","userId":"","reason":"spam"}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 7. Case #9
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JY3CP4QM2EKJZ34RBV5RBCJ6","userId":null,"reason":"spam"}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 8. Case #10
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JY3CP4QM2EKJZ34RBV5RBCJ6","userId":"invalid_value","reason":"spam"}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 9. Case #11
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JY3CP4QM2EKJZ34RBV5RBCJ6","userId":"01JY3CP4DZZDHC88W192J862FR","reason":123}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 10. Case #12
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JY3CP4QM2EKJZ34RBV5RBCJ6","userId":"01JY3CP4DZZDHC88W192J862FR"}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 11. Case #13
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JY3CP4QM2EKJZ34RBV5RBCJ6","userId":"01JY3CP4DZZDHC88W192J862FR","reason":""}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 12. Case #15
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"userId":"01JY3CP4DZZDHC88W192J862FR","reason":"spam"}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 13. Case #16
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","userId":"01JY3CP4DZZDHC88W192J862FR","reason":"spam"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 14. Case #19
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3CP4QM2EKJZ34RBV5RBCJ6","userId":123,"reason":"spam"}
+     ├─ Actual: userId invalid ulid
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 15. Case #20
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3CP4QM2EKJZ34RBV5RBCJ6","reason":"spam"}
+     ├─ Actual: userId required
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 16. Case #21
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3CP4QM2EKJZ34RBV5RBCJ6","userId":"","reason":"spam"}
+     ├─ Actual: userId invalid ulid, userId string must contain at least 1 character(s)
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 17. Case #22
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3CP4QM2EKJZ34RBV5RBCJ6","userId":null,"reason":"spam"}
+     ├─ Actual: userId required
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 18. Case #23
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3CP4QM2EKJZ34RBV5RBCJ6","userId":"invalid_value","reason":"spam"}
+     ├─ Actual: userId invalid ulid
+     ├─ Expected: Unauthorized request
+     └─ Details: No details
+
+ 🟣 19. Case #24
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3CP4QM2EKJZ34RBV5RBCJ6","userId":"01JY3CP4DZZDHC88W192J862FR","reason":123}
+     ├─ Actual: Invalid member
+     ├─ Expected: reason expected string, received number
+     └─ Details: No details
+
+ 🟣 20. Case #25
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3CP4QM2EKJZ34RBV5RBCJ6","userId":"01JY3CP4DZZDHC88W192J862FR"}
+     ├─ Actual: Invalid member
+     ├─ Expected: reason required
+     └─ Details: No details
+
+ 🟣 21. Case #26
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3CP4QM2EKJZ34RBV5RBCJ6","userId":"01JY3CP4DZZDHC88W192J862FR","reason":""}
+     ├─ Actual: reason string must contain at least 1 character(s)
+     ├─ Expected: reason should not be empty
+     └─ Details: No details
+
+ 🟣 22. Case #54
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"invalid_value","channelId":123,"userId":"01JY3CP4DZZDHC88W192J862FR","reason":"spam"}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 23. Case #55
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"invalid_value","userId":"01JY3CP4DZZDHC88W192J862FR","reason":"spam"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 24. Case #66
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"userId":123,"reason":"spam"}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 25. Case #67
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"reason":"spam"}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 26. Case #68
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"userId":"","reason":"spam"}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 27. Case #69
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"userId":null,"reason":"spam"}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 28. Case #70
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"userId":"invalid_value","reason":"spam"}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 29. Case #71
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"userId":"01JY3CP4DZZDHC88W192J862FR","reason":123}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 30. Case #72
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"userId":"01JY3CP4DZZDHC88W192J862FR"}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 31. Case #73
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"userId":"01JY3CP4DZZDHC88W192J862FR","reason":""}
+     ├─ Actual: Invalid channel
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 32. Case #74
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","userId":123,"reason":"spam"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 33. Case #75
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","reason":"spam"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 34. Case #76
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","userId":"","reason":"spam"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 35. Case #77
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","userId":null,"reason":"spam"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 36. Case #78
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","userId":"invalid_value","reason":"spam"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 37. Case #79
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","userId":"01JY3CP4DZZDHC88W192J862FR","reason":123}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 38. Case #80
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","userId":"01JY3CP4DZZDHC88W192J862FR"}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 39. Case #81
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","userId":"01JY3CP4DZZDHC88W192J862FR","reason":""}
+     ├─ Actual: Could not resolve permission type
+     ├─ Expected: Unsupported permission type
+     └─ Details: No details
+
+ 🟣 40. Case #98
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3CP4QM2EKJZ34RBV5RBCJ6","userId":123,"reason":123}
+     ├─ Actual: userId invalid ulid
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 41. Case #99
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3CP4QM2EKJZ34RBV5RBCJ6","userId":123}
+     ├─ Actual: userId invalid ulid
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 42. Case #100
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3CP4QM2EKJZ34RBV5RBCJ6","userId":123,"reason":""}
+     ├─ Actual: reason string must contain at least 1 character(s), userId invalid ulid
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 43. Case #101
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3CP4QM2EKJZ34RBV5RBCJ6","reason":123}
+     ├─ Actual: userId required
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 44. Case #102
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3CP4QM2EKJZ34RBV5RBCJ6"}
+     ├─ Actual: userId required
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 45. Case #103
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3CP4QM2EKJZ34RBV5RBCJ6","reason":""}
+     ├─ Actual: reason string must contain at least 1 character(s), userId required
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 46. Case #104
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3CP4QM2EKJZ34RBV5RBCJ6","userId":"","reason":123}
+     ├─ Actual: userId invalid ulid, userId string must contain at least 1 character(s)
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 47. Case #105
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3CP4QM2EKJZ34RBV5RBCJ6","userId":""}
+     ├─ Actual: userId invalid ulid, userId string must contain at least 1 character(s)
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 48. Case #106
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3CP4QM2EKJZ34RBV5RBCJ6","userId":"","reason":""}
+     ├─ Actual: reason string must contain at least 1 character(s), userId invalid ulid, userId string must contain at least 1 character(s)
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 49. Case #107
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3CP4QM2EKJZ34RBV5RBCJ6","userId":null,"reason":123}
+     ├─ Actual: userId required
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 50. Case #108
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3CP4QM2EKJZ34RBV5RBCJ6","userId":null}
+     ├─ Actual: userId required
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 51. Case #109
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3CP4QM2EKJZ34RBV5RBCJ6","userId":null,"reason":""}
+     ├─ Actual: reason string must contain at least 1 character(s), userId required
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 52. Case #110
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3CP4QM2EKJZ34RBV5RBCJ6","userId":"invalid_value","reason":123}
+     ├─ Actual: userId invalid ulid
+     ├─ Expected: Unauthorized request
+     └─ Details: No details
+
+ 🟣 53. Case #111
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3CP4QM2EKJZ34RBV5RBCJ6","userId":"invalid_value"}
+     ├─ Actual: userId invalid ulid
+     ├─ Expected: Unauthorized request
+     └─ Details: No details
+
+ 🟣 54. Case #112
+     ├─ Status: 400
+     ├─ Body: {"workspaceId":"0","channelId":"01JY3CP4QM2EKJZ34RBV5RBCJ6","userId":"invalid_value","reason":""}
+     ├─ Actual: reason string must contain at least 1 character(s), userId invalid ulid
+     ├─ Expected: Unauthorized request
+     └─ Details: No details
+
+=== End of Report ===

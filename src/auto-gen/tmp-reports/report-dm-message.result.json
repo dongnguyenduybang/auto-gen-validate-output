@@ -1,0 +1,3408 @@
+{
+  "path": "/Message/ReportDMMessage",
+  "className": "report-dm-message",
+  "allSteps": [
+    {
+      "type": null,
+      "status": true,
+      "stepName": "sendDmMessage",
+      "caseTitle": "Case 0",
+      "phase": "beforeAll"
+    }
+  ],
+  "failedTests": [
+    {
+      "testcase": 23,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "messageId invalid ulid",
+        "messageId should not be empty"
+      ]
+    },
+    {
+      "testcase": 26,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": "invalid_enum_value",
+        "reportReason": "report message",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan"
+      ],
+      "extra": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'"
+      ]
+    },
+    {
+      "testcase": 27,
+      "code": 404,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 20,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "Invalid message"
+      ],
+      "extra": []
+    },
+    {
+      "testcase": 29,
+      "code": 404,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": "",
+        "reportReason": "report message",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "Invalid message"
+      ],
+      "extra": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "reportCategory should not be empty"
+      ]
+    },
+    {
+      "testcase": 30,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": null,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received null"
+      ],
+      "extra": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'null'"
+      ]
+    },
+    {
+      "testcase": 34,
+      "code": 404,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "pretendingTo": 2
+      },
+      "missing": [
+        "Invalid message"
+      ],
+      "extra": []
+    },
+    {
+      "testcase": 35,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": null,
+        "pretendingTo": 2
+      },
+      "missing": [
+        "reportReason expected string, received null"
+      ],
+      "extra": []
+    },
+    {
+      "testcase": 36,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "pretendingTo expected 0 | 1 | 2 | 3, received nan"
+      ],
+      "extra": [
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'"
+      ]
+    },
+    {
+      "testcase": 38,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": null
+      },
+      "missing": [
+        "pretendingTo expected 0 | 1 | 2 | 3, received null"
+      ],
+      "extra": [
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'null'"
+      ]
+    },
+    {
+      "testcase": 115,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": 123,
+        "reportCategory": "invalid_enum_value",
+        "reportReason": "report message",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "messageId expected string, received number",
+        "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan"
+      ],
+      "extra": [
+        "messageId expected string, received number",
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'"
+      ]
+    },
+    {
+      "testcase": 119,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": 123,
+        "reportCategory": null,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "messageId expected string, received number",
+        "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received null"
+      ],
+      "extra": [
+        "messageId expected string, received number",
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'null'"
+      ]
+    },
+    {
+      "testcase": 124,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": 123,
+        "reportCategory": 3,
+        "reportReason": null,
+        "pretendingTo": 2
+      },
+      "missing": [
+        "messageId expected string, received number",
+        "reportReason expected string, received null"
+      ],
+      "extra": [
+        "messageId expected string, received number"
+      ]
+    },
+    {
+      "testcase": 125,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": 123,
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "messageId expected string, received number",
+        "pretendingTo expected 0 | 1 | 2 | 3, received nan"
+      ],
+      "extra": [
+        "messageId expected string, received number",
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'"
+      ]
+    },
+    {
+      "testcase": 127,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": 123,
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": null
+      },
+      "missing": [
+        "messageId expected string, received number",
+        "pretendingTo expected 0 | 1 | 2 | 3, received null"
+      ],
+      "extra": [
+        "messageId expected string, received number",
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'null'"
+      ]
+    },
+    {
+      "testcase": 128,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "reportCategory": "invalid_enum_value",
+        "reportReason": "report message",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "messageId required",
+        "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan"
+      ],
+      "extra": [
+        "messageId required",
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'"
+      ]
+    },
+    {
+      "testcase": 132,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "reportCategory": null,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "messageId required",
+        "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received null"
+      ],
+      "extra": [
+        "messageId required",
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'null'"
+      ]
+    },
+    {
+      "testcase": 137,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "reportCategory": 3,
+        "reportReason": null,
+        "pretendingTo": 2
+      },
+      "missing": [
+        "messageId required",
+        "reportReason expected string, received null"
+      ],
+      "extra": [
+        "messageId required"
+      ]
+    },
+    {
+      "testcase": 138,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "messageId required",
+        "pretendingTo expected 0 | 1 | 2 | 3, received nan"
+      ],
+      "extra": [
+        "messageId required",
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'"
+      ]
+    },
+    {
+      "testcase": 140,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": null
+      },
+      "missing": [
+        "messageId required",
+        "pretendingTo expected 0 | 1 | 2 | 3, received null"
+      ],
+      "extra": [
+        "messageId required",
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'null'"
+      ]
+    },
+    {
+      "testcase": 141,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "",
+        "reportCategory": "invalid_enum_value",
+        "reportReason": "report message",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)",
+        "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan"
+      ],
+      "extra": [
+        "messageId invalid ulid",
+        "messageId should not be empty",
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'"
+      ]
+    },
+    {
+      "testcase": 142,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "",
+        "reportCategory": 20,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "messageId invalid ulid",
+        "messageId should not be empty"
+      ]
+    },
+    {
+      "testcase": 143,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "",
+        "reportReason": "report message",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)",
+        "reportCategory required"
+      ],
+      "extra": [
+        "messageId invalid ulid",
+        "messageId should not be empty",
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'",
+        "reportCategory required"
+      ]
+    },
+    {
+      "testcase": 144,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "",
+        "reportCategory": "",
+        "reportReason": "report message",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "messageId invalid ulid",
+        "messageId should not be empty",
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "reportCategory should not be empty"
+      ]
+    },
+    {
+      "testcase": 145,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "",
+        "reportCategory": null,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)",
+        "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received null"
+      ],
+      "extra": [
+        "messageId invalid ulid",
+        "messageId should not be empty",
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'null'"
+      ]
+    },
+    {
+      "testcase": 146,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "",
+        "reportCategory": 3,
+        "reportReason": 123,
+        "pretendingTo": 2
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)",
+        "reportReason expected string, received number"
+      ],
+      "extra": [
+        "messageId invalid ulid",
+        "messageId should not be empty",
+        "reportReason expected string, received number"
+      ]
+    },
+    {
+      "testcase": 147,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "",
+        "reportCategory": 3,
+        "reportReason": "",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)",
+        "reportReason string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "messageId invalid ulid",
+        "messageId should not be empty",
+        "reportReason should not be empty",
+        "reportReason string must contain at least 1 character(s)"
+      ]
+    },
+    {
+      "testcase": 148,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "",
+        "reportCategory": 3,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)",
+        "reportReason string must contain at most 255 character(s)"
+      ],
+      "extra": [
+        "messageId invalid ulid",
+        "messageId should not be empty",
+        "reportReason string must contain at most 255 character(s)"
+      ]
+    },
+    {
+      "testcase": 149,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "",
+        "reportCategory": 3,
+        "pretendingTo": 2
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "messageId invalid ulid",
+        "messageId should not be empty"
+      ]
+    },
+    {
+      "testcase": 150,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "",
+        "reportCategory": 3,
+        "reportReason": null,
+        "pretendingTo": 2
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)",
+        "reportReason expected string, received null"
+      ],
+      "extra": [
+        "messageId invalid ulid",
+        "messageId should not be empty"
+      ]
+    },
+    {
+      "testcase": 151,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)",
+        "pretendingTo expected 0 | 1 | 2 | 3, received nan"
+      ],
+      "extra": [
+        "messageId invalid ulid",
+        "messageId should not be empty",
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'"
+      ]
+    },
+    {
+      "testcase": 152,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "",
+        "reportCategory": 3,
+        "reportReason": "report message"
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)",
+        "pretendingTo required"
+      ],
+      "extra": [
+        "messageId invalid ulid",
+        "messageId should not be empty",
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined'",
+        "pretendingTo required"
+      ]
+    },
+    {
+      "testcase": 153,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": null
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)",
+        "pretendingTo expected 0 | 1 | 2 | 3, received null"
+      ],
+      "extra": [
+        "messageId invalid ulid",
+        "messageId should not be empty",
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'null'"
+      ]
+    },
+    {
+      "testcase": 154,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": null,
+        "reportCategory": "invalid_enum_value",
+        "reportReason": "report message",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "messageId expected string, received null",
+        "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan"
+      ],
+      "extra": [
+        "messageId expected string, received null",
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'"
+      ]
+    },
+    {
+      "testcase": 158,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": null,
+        "reportCategory": null,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "messageId expected string, received null",
+        "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received null"
+      ],
+      "extra": [
+        "messageId expected string, received null",
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'null'"
+      ]
+    },
+    {
+      "testcase": 163,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": null,
+        "reportCategory": 3,
+        "reportReason": null,
+        "pretendingTo": 2
+      },
+      "missing": [
+        "messageId expected string, received null",
+        "reportReason expected string, received null"
+      ],
+      "extra": [
+        "messageId expected string, received null"
+      ]
+    },
+    {
+      "testcase": 164,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": null,
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "messageId expected string, received null",
+        "pretendingTo expected 0 | 1 | 2 | 3, received nan"
+      ],
+      "extra": [
+        "messageId expected string, received null",
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'"
+      ]
+    },
+    {
+      "testcase": 166,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": null,
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": null
+      },
+      "missing": [
+        "messageId expected string, received null",
+        "pretendingTo expected 0 | 1 | 2 | 3, received null"
+      ],
+      "extra": [
+        "messageId expected string, received null",
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'null'"
+      ]
+    },
+    {
+      "testcase": 167,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "invalid_ULID",
+        "reportCategory": "invalid_enum_value",
+        "reportReason": "report message",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan"
+      ],
+      "extra": [
+        "messageId invalid ulid",
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'"
+      ]
+    },
+    {
+      "testcase": 171,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "invalid_ULID",
+        "reportCategory": null,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received null"
+      ],
+      "extra": [
+        "messageId invalid ulid",
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'null'"
+      ]
+    },
+    {
+      "testcase": 176,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "invalid_ULID",
+        "reportCategory": 3,
+        "reportReason": null,
+        "pretendingTo": 2
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "reportReason expected string, received null"
+      ],
+      "extra": [
+        "messageId invalid ulid"
+      ]
+    },
+    {
+      "testcase": 177,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "invalid_ULID",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "pretendingTo expected 0 | 1 | 2 | 3, received nan"
+      ],
+      "extra": [
+        "messageId invalid ulid",
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'"
+      ]
+    },
+    {
+      "testcase": 179,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "invalid_ULID",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": null
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "pretendingTo expected 0 | 1 | 2 | 3, received null"
+      ],
+      "extra": [
+        "messageId invalid ulid",
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'null'"
+      ]
+    },
+    {
+      "testcase": 180,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": "invalid_enum_value",
+        "reportReason": 123,
+        "pretendingTo": 2
+      },
+      "missing": [
+        "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan",
+        "reportReason expected string, received number"
+      ],
+      "extra": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'",
+        "reportReason expected string, received number"
+      ]
+    },
+    {
+      "testcase": 181,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": "invalid_enum_value",
+        "reportReason": "",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan",
+        "reportReason string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'",
+        "reportReason should not be empty",
+        "reportReason string must contain at least 1 character(s)"
+      ]
+    },
+    {
+      "testcase": 182,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": "invalid_enum_value",
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan",
+        "reportReason string must contain at most 255 character(s)"
+      ],
+      "extra": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'",
+        "reportReason string must contain at most 255 character(s)"
+      ]
+    },
+    {
+      "testcase": 183,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": "invalid_enum_value",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan"
+      ],
+      "extra": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'"
+      ]
+    },
+    {
+      "testcase": 184,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": "invalid_enum_value",
+        "reportReason": null,
+        "pretendingTo": 2
+      },
+      "missing": [
+        "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan",
+        "reportReason expected string, received null"
+      ],
+      "extra": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'"
+      ]
+    },
+    {
+      "testcase": 185,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": "invalid_enum_value",
+        "reportReason": "report message",
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "pretendingTo expected 0 | 1 | 2 | 3, received nan",
+        "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan"
+      ],
+      "extra": [
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'",
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'"
+      ]
+    },
+    {
+      "testcase": 186,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": "invalid_enum_value",
+        "reportReason": "report message"
+      },
+      "missing": [
+        "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan"
+      ],
+      "extra": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'"
+      ]
+    },
+    {
+      "testcase": 187,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": "invalid_enum_value",
+        "reportReason": "report message",
+        "pretendingTo": null
+      },
+      "missing": [
+        "pretendingTo expected 0 | 1 | 2 | 3, received null",
+        "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan"
+      ],
+      "extra": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'"
+      ]
+    },
+    {
+      "testcase": 189,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 20,
+        "reportReason": "",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "reportReason required",
+        "reportReason string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "reportReason should not be empty",
+        "reportReason string must contain at least 1 character(s)"
+      ]
+    },
+    {
+      "testcase": 193,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 20,
+        "reportReason": "report message",
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "pretendingTo expected 0 | 1 | 2 | 3, received nan"
+      ],
+      "extra": [
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'"
+      ]
+    },
+    {
+      "testcase": 194,
+      "code": 404,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 20,
+        "reportReason": "report message"
+      },
+      "missing": [
+        "Invalid message"
+      ],
+      "extra": []
+    },
+    {
+      "testcase": 195,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 20,
+        "reportReason": "report message",
+        "pretendingTo": null
+      },
+      "missing": [
+        "pretendingTo expected 0 | 1 | 2 | 3, received null"
+      ],
+      "extra": []
+    },
+    {
+      "testcase": 200,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportReason": null,
+        "pretendingTo": 2
+      },
+      "missing": [
+        "reportCategory required",
+        "reportReason expected string, received null"
+      ],
+      "extra": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'",
+        "reportCategory required"
+      ]
+    },
+    {
+      "testcase": 201,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportReason": "report message",
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "pretendingTo expected 0 | 1 | 2 | 3, received nan",
+        "reportCategory required"
+      ],
+      "extra": [
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'",
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'",
+        "reportCategory required"
+      ]
+    },
+    {
+      "testcase": 203,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportReason": "report message",
+        "pretendingTo": null
+      },
+      "missing": [
+        "pretendingTo expected 0 | 1 | 2 | 3, received null",
+        "reportCategory required"
+      ],
+      "extra": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'",
+        "reportCategory required"
+      ]
+    },
+    {
+      "testcase": 207,
+      "code": 404,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": "",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "Invalid message"
+      ],
+      "extra": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "reportCategory should not be empty"
+      ]
+    },
+    {
+      "testcase": 208,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": "",
+        "reportReason": null,
+        "pretendingTo": 2
+      },
+      "missing": [
+        "reportReason expected string, received null"
+      ],
+      "extra": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "reportCategory should not be empty"
+      ]
+    },
+    {
+      "testcase": 209,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": "",
+        "reportReason": "report message",
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "pretendingTo expected 0 | 1 | 2 | 3, received nan"
+      ],
+      "extra": [
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'",
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "reportCategory should not be empty"
+      ]
+    },
+    {
+      "testcase": 210,
+      "code": 404,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": "",
+        "reportReason": "report message"
+      },
+      "missing": [
+        "Invalid message"
+      ],
+      "extra": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "reportCategory should not be empty"
+      ]
+    },
+    {
+      "testcase": 211,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": "",
+        "reportReason": "report message",
+        "pretendingTo": null
+      },
+      "missing": [
+        "pretendingTo expected 0 | 1 | 2 | 3, received null"
+      ],
+      "extra": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "reportCategory should not be empty"
+      ]
+    },
+    {
+      "testcase": 212,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": null,
+        "reportReason": 123,
+        "pretendingTo": 2
+      },
+      "missing": [
+        "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received null",
+        "reportReason expected string, received number"
+      ],
+      "extra": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'null'",
+        "reportReason expected string, received number"
+      ]
+    },
+    {
+      "testcase": 213,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": null,
+        "reportReason": "",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received null",
+        "reportReason string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'null'",
+        "reportReason should not be empty",
+        "reportReason string must contain at least 1 character(s)"
+      ]
+    },
+    {
+      "testcase": 214,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": null,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 2
+      },
+      "missing": [
+        "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received null",
+        "reportReason string must contain at most 255 character(s)"
+      ],
+      "extra": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'null'",
+        "reportReason string must contain at most 255 character(s)"
+      ]
+    },
+    {
+      "testcase": 215,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": null,
+        "pretendingTo": 2
+      },
+      "missing": [
+        "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received null"
+      ],
+      "extra": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'null'"
+      ]
+    },
+    {
+      "testcase": 216,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": null,
+        "reportReason": null,
+        "pretendingTo": 2
+      },
+      "missing": [
+        "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received null",
+        "reportReason expected string, received null"
+      ],
+      "extra": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'null'"
+      ]
+    },
+    {
+      "testcase": 217,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": null,
+        "reportReason": "report message",
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "pretendingTo expected 0 | 1 | 2 | 3, received nan",
+        "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received null"
+      ],
+      "extra": [
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'",
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'null'"
+      ]
+    },
+    {
+      "testcase": 218,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": null,
+        "reportReason": "report message"
+      },
+      "missing": [
+        "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received null"
+      ],
+      "extra": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'null'"
+      ]
+    },
+    {
+      "testcase": 219,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": null,
+        "reportReason": "report message",
+        "pretendingTo": null
+      },
+      "missing": [
+        "pretendingTo expected 0 | 1 | 2 | 3, received null",
+        "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received null"
+      ],
+      "extra": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'null'"
+      ]
+    },
+    {
+      "testcase": 220,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": 123,
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "pretendingTo expected 0 | 1 | 2 | 3, received nan",
+        "reportReason expected string, received number"
+      ],
+      "extra": [
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'",
+        "reportReason expected string, received number"
+      ]
+    },
+    {
+      "testcase": 222,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": 123,
+        "pretendingTo": null
+      },
+      "missing": [
+        "pretendingTo expected 0 | 1 | 2 | 3, received null",
+        "reportReason expected string, received number"
+      ],
+      "extra": [
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'null'",
+        "reportReason expected string, received number"
+      ]
+    },
+    {
+      "testcase": 223,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "",
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "pretendingTo expected 0 | 1 | 2 | 3, received nan",
+        "reportReason string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'",
+        "reportReason should not be empty",
+        "reportReason string must contain at least 1 character(s)"
+      ]
+    },
+    {
+      "testcase": 225,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "",
+        "pretendingTo": null
+      },
+      "missing": [
+        "pretendingTo expected 0 | 1 | 2 | 3, received null",
+        "reportReason string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'null'",
+        "reportReason should not be empty",
+        "reportReason string must contain at least 1 character(s)"
+      ]
+    },
+    {
+      "testcase": 226,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "pretendingTo expected 0 | 1 | 2 | 3, received nan",
+        "reportReason string must contain at most 255 character(s)"
+      ],
+      "extra": [
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'",
+        "reportReason string must contain at most 255 character(s)"
+      ]
+    },
+    {
+      "testcase": 228,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": null
+      },
+      "missing": [
+        "pretendingTo expected 0 | 1 | 2 | 3, received null",
+        "reportReason string must contain at most 255 character(s)"
+      ],
+      "extra": [
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'null'",
+        "reportReason string must contain at most 255 character(s)"
+      ]
+    },
+    {
+      "testcase": 229,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "pretendingTo expected 0 | 1 | 2 | 3, received nan"
+      ],
+      "extra": [
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'"
+      ]
+    },
+    {
+      "testcase": 231,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "pretendingTo": null
+      },
+      "missing": [
+        "pretendingTo expected 0 | 1 | 2 | 3, received null"
+      ],
+      "extra": [
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'null'"
+      ]
+    },
+    {
+      "testcase": 232,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": null,
+        "pretendingTo": "invalid_enum_value"
+      },
+      "missing": [
+        "pretendingTo expected 0 | 1 | 2 | 3, received nan",
+        "reportReason expected string, received null"
+      ],
+      "extra": [
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'"
+      ]
+    },
+    {
+      "testcase": 233,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": null
+      },
+      "missing": [
+        "reportReason expected string, received null"
+      ],
+      "extra": [
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined'",
+        "pretendingTo required"
+      ]
+    },
+    {
+      "testcase": 234,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": null,
+        "pretendingTo": null
+      },
+      "missing": [
+        "pretendingTo expected 0 | 1 | 2 | 3, received null",
+        "reportReason expected string, received null"
+      ],
+      "extra": [
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'null'"
+      ]
+    }
+  ],
+  "codedTest": [
+    {
+      "testcase": 1,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 2,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": 123,
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 3,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 4,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 5,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": null,
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 6,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "invalid_ULID",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 7,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": "invalid_enum_value",
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 8,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 20,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 9,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 10,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": "",
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 11,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": null,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 12,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": 123,
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 13,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 14,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 15,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 16,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": null,
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 17,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": "invalid_enum_value"
+      }
+    },
+    {
+      "testcase": 18,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "report message"
+      }
+    },
+    {
+      "testcase": 19,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": null
+      }
+    },
+    {
+      "testcase": 20,
+      "code": 201,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 21,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": 123,
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 22,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 24,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": null,
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 25,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "invalid_ULID",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 31,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": 123,
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 33,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 39,
+      "code": 403,
+      "body": {
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 40,
+      "code": 403,
+      "body": {
+        "messageId": 123,
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 41,
+      "code": 403,
+      "body": {
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 42,
+      "code": 403,
+      "body": {
+        "messageId": "",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 43,
+      "code": 403,
+      "body": {
+        "messageId": null,
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 44,
+      "code": 403,
+      "body": {
+        "messageId": "invalid_ULID",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 45,
+      "code": 403,
+      "body": {
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": "invalid_enum_value",
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 46,
+      "code": 403,
+      "body": {
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 20,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 47,
+      "code": 403,
+      "body": {
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 48,
+      "code": 403,
+      "body": {
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": "",
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 49,
+      "code": 403,
+      "body": {
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": null,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 50,
+      "code": 403,
+      "body": {
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": 123,
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 51,
+      "code": 403,
+      "body": {
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 52,
+      "code": 403,
+      "body": {
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 53,
+      "code": 403,
+      "body": {
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 54,
+      "code": 403,
+      "body": {
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": null,
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 55,
+      "code": 403,
+      "body": {
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": "invalid_enum_value"
+      }
+    },
+    {
+      "testcase": 56,
+      "code": 403,
+      "body": {
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "report message"
+      }
+    },
+    {
+      "testcase": 57,
+      "code": 403,
+      "body": {
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": null
+      }
+    },
+    {
+      "testcase": 58,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 59,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": 123,
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 60,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 61,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 62,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": null,
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 63,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "invalid_ULID",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 64,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": "invalid_enum_value",
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 65,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 20,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 66,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 67,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": "",
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 68,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": null,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 69,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": 123,
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 70,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 71,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 72,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 73,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": null,
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 74,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": "invalid_enum_value"
+      }
+    },
+    {
+      "testcase": 75,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "report message"
+      }
+    },
+    {
+      "testcase": 76,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": null
+      }
+    },
+    {
+      "testcase": 77,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 78,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": 123,
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 79,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 80,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 81,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": null,
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 82,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "invalid_ULID",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 83,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": "invalid_enum_value",
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 84,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 20,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 85,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 86,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": "",
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 87,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": null,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 88,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": 123,
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 89,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 90,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 91,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 92,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": null,
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 93,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": "invalid_enum_value"
+      }
+    },
+    {
+      "testcase": 94,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "report message"
+      }
+    },
+    {
+      "testcase": 95,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": null
+      }
+    },
+    {
+      "testcase": 96,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 97,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": 123,
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 98,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 99,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 100,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": null,
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 101,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "invalid_ULID",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 102,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": "invalid_enum_value",
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 103,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 20,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 104,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 105,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": "",
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 106,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": null,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 107,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": 123,
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 108,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 109,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 110,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 111,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": null,
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 112,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": "invalid_enum_value"
+      }
+    },
+    {
+      "testcase": 113,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "report message"
+      }
+    },
+    {
+      "testcase": 114,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "report message",
+        "pretendingTo": null
+      }
+    },
+    {
+      "testcase": 116,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": 123,
+        "reportCategory": 20,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 120,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": 123,
+        "reportCategory": 3,
+        "reportReason": 123,
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 122,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": 123,
+        "reportCategory": 3,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 123,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": 123,
+        "reportCategory": 3,
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 129,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "reportCategory": 20,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 133,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "reportCategory": 3,
+        "reportReason": 123,
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 135,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "reportCategory": 3,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 136,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "reportCategory": 3,
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 155,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": null,
+        "reportCategory": 20,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 159,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": null,
+        "reportCategory": 3,
+        "reportReason": 123,
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 161,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": null,
+        "reportCategory": 3,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 162,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": null,
+        "reportCategory": 3,
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 168,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "invalid_ULID",
+        "reportCategory": 20,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 172,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "invalid_ULID",
+        "reportCategory": 3,
+        "reportReason": 123,
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 174,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "invalid_ULID",
+        "reportCategory": 3,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 175,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "invalid_ULID",
+        "reportCategory": 3,
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 188,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 20,
+        "reportReason": 123,
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 190,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 20,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 191,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 20,
+        "pretendingTo": 2
+      }
+    },
+    {
+      "testcase": 192,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 20,
+        "reportReason": null,
+        "pretendingTo": 2
+      }
+    }
+  ],
+  "warnings": [
+    {
+      "testcase": 28,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportReason": "report message",
+        "pretendingTo": 2
+      },
+      "actualErrors": [
+        "reportCategory required"
+      ],
+      "expectedErrors": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'",
+        "reportCategory required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 32,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "",
+        "pretendingTo": 2
+      },
+      "actualErrors": [
+        "reportReason string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "reportReason should not be empty",
+        "reportReason string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 37,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "report message"
+      },
+      "actualErrors": [
+        "pretendingTo required"
+      ],
+      "expectedErrors": [
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined'",
+        "pretendingTo required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 117,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": 123,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      },
+      "actualErrors": [
+        "messageId expected string, received number",
+        "reportCategory required"
+      ],
+      "expectedErrors": [
+        "messageId expected string, received number",
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'",
+        "reportCategory required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 118,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": 123,
+        "reportCategory": "",
+        "reportReason": "report message",
+        "pretendingTo": 2
+      },
+      "actualErrors": [
+        "messageId expected string, received number"
+      ],
+      "expectedErrors": [
+        "messageId expected string, received number",
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "reportCategory should not be empty"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 121,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": 123,
+        "reportCategory": 3,
+        "reportReason": "",
+        "pretendingTo": 2
+      },
+      "actualErrors": [
+        "messageId expected string, received number",
+        "reportReason string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "messageId expected string, received number",
+        "reportReason should not be empty",
+        "reportReason string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 126,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": 123,
+        "reportCategory": 3,
+        "reportReason": "report message"
+      },
+      "actualErrors": [
+        "messageId expected string, received number"
+      ],
+      "expectedErrors": [
+        "messageId expected string, received number",
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined'",
+        "pretendingTo required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 130,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "reportReason": "report message",
+        "pretendingTo": 2
+      },
+      "actualErrors": [
+        "messageId required",
+        "reportCategory required"
+      ],
+      "expectedErrors": [
+        "messageId required",
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'",
+        "reportCategory required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 131,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "reportCategory": "",
+        "reportReason": "report message",
+        "pretendingTo": 2
+      },
+      "actualErrors": [
+        "messageId required"
+      ],
+      "expectedErrors": [
+        "messageId required",
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "reportCategory should not be empty"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 134,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "reportCategory": 3,
+        "reportReason": "",
+        "pretendingTo": 2
+      },
+      "actualErrors": [
+        "messageId required",
+        "reportReason string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "messageId required",
+        "reportReason should not be empty",
+        "reportReason string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 139,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "reportCategory": 3,
+        "reportReason": "report message"
+      },
+      "actualErrors": [
+        "messageId required"
+      ],
+      "expectedErrors": [
+        "messageId required",
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined'",
+        "pretendingTo required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 156,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": null,
+        "reportReason": "report message",
+        "pretendingTo": 2
+      },
+      "actualErrors": [
+        "messageId expected string, received null",
+        "reportCategory required"
+      ],
+      "expectedErrors": [
+        "messageId expected string, received null",
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'",
+        "reportCategory required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 157,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": null,
+        "reportCategory": "",
+        "reportReason": "report message",
+        "pretendingTo": 2
+      },
+      "actualErrors": [
+        "messageId expected string, received null"
+      ],
+      "expectedErrors": [
+        "messageId expected string, received null",
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "reportCategory should not be empty"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 160,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": null,
+        "reportCategory": 3,
+        "reportReason": "",
+        "pretendingTo": 2
+      },
+      "actualErrors": [
+        "messageId expected string, received null",
+        "reportReason string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "messageId expected string, received null",
+        "reportReason should not be empty",
+        "reportReason string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 165,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": null,
+        "reportCategory": 3,
+        "reportReason": "report message"
+      },
+      "actualErrors": [
+        "messageId expected string, received null"
+      ],
+      "expectedErrors": [
+        "messageId expected string, received null",
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined'",
+        "pretendingTo required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 169,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "invalid_ULID",
+        "reportReason": "report message",
+        "pretendingTo": 2
+      },
+      "actualErrors": [
+        "messageId invalid ulid",
+        "reportCategory required"
+      ],
+      "expectedErrors": [
+        "messageId invalid ulid",
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'",
+        "reportCategory required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 170,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "invalid_ULID",
+        "reportCategory": "",
+        "reportReason": "report message",
+        "pretendingTo": 2
+      },
+      "actualErrors": [
+        "messageId invalid ulid"
+      ],
+      "expectedErrors": [
+        "messageId invalid ulid",
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "reportCategory should not be empty"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 173,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "invalid_ULID",
+        "reportCategory": 3,
+        "reportReason": "",
+        "pretendingTo": 2
+      },
+      "actualErrors": [
+        "messageId invalid ulid",
+        "reportReason string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "messageId invalid ulid",
+        "reportReason should not be empty",
+        "reportReason string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 178,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "invalid_ULID",
+        "reportCategory": 3,
+        "reportReason": "report message"
+      },
+      "actualErrors": [
+        "messageId invalid ulid",
+        "pretendingTo required"
+      ],
+      "expectedErrors": [
+        "messageId invalid ulid",
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined'",
+        "pretendingTo required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 196,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportReason": 123,
+        "pretendingTo": 2
+      },
+      "actualErrors": [
+        "reportCategory required",
+        "reportReason expected string, received number"
+      ],
+      "expectedErrors": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'",
+        "reportCategory required",
+        "reportReason expected string, received number"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 197,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportReason": "",
+        "pretendingTo": 2
+      },
+      "actualErrors": [
+        "reportCategory required",
+        "reportReason string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'",
+        "reportCategory required",
+        "reportReason should not be empty",
+        "reportReason string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 198,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 2
+      },
+      "actualErrors": [
+        "reportCategory required",
+        "reportReason string must contain at most 255 character(s)"
+      ],
+      "expectedErrors": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'",
+        "reportCategory required",
+        "reportReason string must contain at most 255 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 199,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "pretendingTo": 2
+      },
+      "actualErrors": [
+        "reportCategory required"
+      ],
+      "expectedErrors": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'",
+        "reportCategory required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 202,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportReason": "report message"
+      },
+      "actualErrors": [
+        "reportCategory required"
+      ],
+      "expectedErrors": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'",
+        "reportCategory required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 204,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": "",
+        "reportReason": 123,
+        "pretendingTo": 2
+      },
+      "actualErrors": [
+        "reportReason expected string, received number"
+      ],
+      "expectedErrors": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "reportCategory should not be empty",
+        "reportReason expected string, received number"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 205,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": "",
+        "reportReason": "",
+        "pretendingTo": 2
+      },
+      "actualErrors": [
+        "reportReason string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "reportCategory should not be empty",
+        "reportReason should not be empty",
+        "reportReason string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 206,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": "",
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pretendingTo": 2
+      },
+      "actualErrors": [
+        "reportReason string must contain at most 255 character(s)"
+      ],
+      "expectedErrors": [
+        "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
+        "reportCategory should not be empty",
+        "reportReason string must contain at most 255 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 221,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": 123
+      },
+      "actualErrors": [
+        "reportReason expected string, received number"
+      ],
+      "expectedErrors": [
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined'",
+        "pretendingTo required",
+        "reportReason expected string, received number"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 224,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": ""
+      },
+      "actualErrors": [
+        "pretendingTo required",
+        "reportReason string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined'",
+        "pretendingTo required",
+        "reportReason should not be empty",
+        "reportReason string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 227,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3,
+        "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "actualErrors": [
+        "pretendingTo required",
+        "reportReason string must contain at most 255 character(s)"
+      ],
+      "expectedErrors": [
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined'",
+        "pretendingTo required",
+        "reportReason string must contain at most 255 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 230,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FBSBX98ZTSBQZ2BK9G9HJ",
+        "messageId": "01JY3FBTM3RWWEYAZZSTJ3NNQH",
+        "reportCategory": 3
+      },
+      "actualErrors": [
+        "pretendingTo required"
+      ],
+      "expectedErrors": [
+        "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined'",
+        "pretendingTo required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    }
+  ],
+  "passedTests": 122,
+  "totalTests": 234,
+  "failedStep": []
+}

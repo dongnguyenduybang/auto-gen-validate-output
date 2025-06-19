@@ -94,7 +94,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -135,8 +135,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -222,7 +222,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -263,8 +263,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -350,7 +350,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -391,8 +391,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -478,7 +478,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -519,8 +519,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -606,7 +606,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -647,8 +647,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -734,7 +734,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -775,8 +775,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -862,7 +862,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -903,8 +903,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -990,7 +990,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -1031,8 +1031,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -1118,7 +1118,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -1159,8 +1159,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -1246,7 +1246,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -1287,8 +1287,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -1374,7 +1374,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -1415,8 +1415,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -1502,7 +1502,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -1543,8 +1543,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -1630,7 +1630,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -1671,8 +1671,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -1758,7 +1758,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -1799,8 +1799,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -1886,7 +1886,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -1927,8 +1927,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -2014,7 +2014,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -2055,8 +2055,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -2142,7 +2142,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -2183,8 +2183,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -2270,7 +2270,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -2311,8 +2311,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -2398,7 +2398,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -2439,8 +2439,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -2526,7 +2526,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -2567,8 +2567,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -2654,7 +2654,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -2695,8 +2695,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -2782,7 +2782,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -2823,8 +2823,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -2910,7 +2910,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -2951,8 +2951,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -3038,7 +3038,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -3079,8 +3079,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -3166,7 +3166,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -3207,8 +3207,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -3294,7 +3294,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -3335,8 +3335,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -3422,7 +3422,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -3463,8 +3463,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -3550,7 +3550,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -3591,8 +3591,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -3678,7 +3678,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -3719,8 +3719,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -3806,7 +3806,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -3847,8 +3847,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -3934,7 +3934,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -3975,8 +3975,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -4062,7 +4062,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -4103,8 +4103,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -4190,7 +4190,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -4231,8 +4231,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -4318,7 +4318,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -4359,8 +4359,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -4446,7 +4446,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -4487,8 +4487,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -4574,7 +4574,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -4615,8 +4615,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -4702,7 +4702,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -4743,8 +4743,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -4830,7 +4830,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -4871,8 +4871,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -4958,7 +4958,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -4999,8 +4999,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -5086,7 +5086,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -5127,8 +5127,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -5214,7 +5214,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -5255,8 +5255,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -5342,7 +5342,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -5383,8 +5383,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -5470,7 +5470,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -5511,8 +5511,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -5598,7 +5598,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -5639,8 +5639,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -5726,7 +5726,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -5767,8 +5767,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -5854,7 +5854,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -5895,8 +5895,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -5982,7 +5982,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -6023,8 +6023,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -6110,7 +6110,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -6151,8 +6151,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -6238,7 +6238,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -6279,8 +6279,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -6366,7 +6366,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -6407,8 +6407,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -6494,7 +6494,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -6535,8 +6535,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -6622,7 +6622,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -6663,8 +6663,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -6750,7 +6750,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -6791,8 +6791,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -6878,7 +6878,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -6919,8 +6919,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -7006,7 +7006,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -7047,8 +7047,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -7134,7 +7134,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -7175,8 +7175,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -7262,7 +7262,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -7303,8 +7303,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -7390,7 +7390,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -7431,8 +7431,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -7518,7 +7518,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -7559,8 +7559,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -7646,7 +7646,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -7687,8 +7687,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -7774,7 +7774,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -7815,8 +7815,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -7902,7 +7902,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -7943,8 +7943,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -8030,7 +8030,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -8071,8 +8071,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -8158,7 +8158,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -8199,8 +8199,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -8286,7 +8286,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -8327,8 +8327,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -8414,7 +8414,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -8455,8 +8455,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -8542,7 +8542,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -8583,8 +8583,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -8670,7 +8670,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -8711,8 +8711,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -8798,7 +8798,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -8839,8 +8839,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -8926,7 +8926,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -8967,8 +8967,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -9054,7 +9054,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -9095,8 +9095,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -9182,7 +9182,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -9223,8 +9223,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -9310,7 +9310,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -9351,8 +9351,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -9438,7 +9438,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -9479,8 +9479,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -9566,7 +9566,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -9607,8 +9607,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -9694,7 +9694,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -9735,8 +9735,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -9822,7 +9822,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -9863,8 +9863,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -9950,7 +9950,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -9991,8 +9991,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -10078,7 +10078,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -10119,8 +10119,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -10206,7 +10206,7 @@
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true && data?.data && data?.includes) // check có data (status 201)
+                            : (data?.ok === true) // check có data (status 201)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
@@ -10247,8 +10247,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;

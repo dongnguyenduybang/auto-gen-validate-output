@@ -1,0 +1,365 @@
+{
+  "path": "/UserProfile/UpdateUserStatus",
+  "className": "update-user-status",
+  "allSteps": [
+    {
+      "type": null,
+      "status": true,
+      "stepName": "addUserStatus",
+      "caseTitle": "Case 0",
+      "phase": "beforeAll"
+    }
+  ],
+  "failedTests": [
+    {
+      "testcase": 8,
+      "code": 400,
+      "body": {
+        "content": "Hi hi",
+        "status": "🧑🏼‍❤️‍💋‍🧑🏿🧑🏼‍❤️‍💋‍🧑🏿"
+      },
+      "missing": [
+        "only accepts 1 emoji"
+      ],
+      "extra": [
+        "status only accepts 1 emoji"
+      ]
+    },
+    {
+      "testcase": 13,
+      "code": 400,
+      "body": {
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "status": "🧑🏼‍❤️‍💋‍🧑🏿🧑🏼‍❤️‍💋‍🧑🏿"
+      },
+      "missing": [
+        "content string must contain at most 50 character(s)",
+        "only accepts 1 emoji"
+      ],
+      "extra": [
+        "content string must contain at most 50 character(s)",
+        "status only accepts 1 emoji"
+      ]
+    },
+    {
+      "testcase": 18,
+      "code": 400,
+      "body": {
+        "content": "",
+        "status": "🧑🏼‍❤️‍💋‍🧑🏿🧑🏼‍❤️‍💋‍🧑🏿"
+      },
+      "missing": [
+        "only accepts 1 emoji"
+      ],
+      "extra": [
+        "content should not be empty",
+        "status only accepts 1 emoji"
+      ]
+    },
+    {
+      "testcase": 19,
+      "code": 400,
+      "body": {
+        "content": "",
+        "status": ""
+      },
+      "missing": [
+        "User status does not exist"
+      ],
+      "extra": [
+        "content should not be empty",
+        "status invalid emoji",
+        "status only accepts 1 emoji",
+        "status should not be empty"
+      ]
+    },
+    {
+      "testcase": 20,
+      "code": 400,
+      "body": {
+        "content": "",
+        "status": null
+      },
+      "missing": [
+        "User status does not exist"
+      ],
+      "extra": [
+        "content should not be empty",
+        "status expected string, received null"
+      ]
+    },
+    {
+      "testcase": 21,
+      "code": 400,
+      "body": {
+        "content": null,
+        "status": "🧑🏼‍❤️‍💋‍🧑🏿"
+      },
+      "missing": [
+        "User status does not exist"
+      ],
+      "extra": [
+        "content expected string, received null"
+      ]
+    },
+    {
+      "testcase": 23,
+      "code": 400,
+      "body": {
+        "content": null,
+        "status": "🧑🏼‍❤️‍💋‍🧑🏿🧑🏼‍❤️‍💋‍🧑🏿"
+      },
+      "missing": [
+        "only accepts 1 emoji"
+      ],
+      "extra": [
+        "content expected string, received null",
+        "status only accepts 1 emoji"
+      ]
+    },
+    {
+      "testcase": 24,
+      "code": 400,
+      "body": {
+        "content": null,
+        "status": ""
+      },
+      "missing": [
+        "User status does not exist"
+      ],
+      "extra": [
+        "content expected string, received null",
+        "status invalid emoji",
+        "status only accepts 1 emoji",
+        "status should not be empty"
+      ]
+    },
+    {
+      "testcase": 25,
+      "code": 400,
+      "body": {
+        "content": null,
+        "status": null
+      },
+      "missing": [
+        "User status does not exist"
+      ],
+      "extra": [
+        "content expected string, received null",
+        "status expected string, received null"
+      ]
+    }
+  ],
+  "codedTest": [
+    {
+      "testcase": 1,
+      "code": 400,
+      "body": {
+        "content": 123,
+        "status": "🧑🏼‍❤️‍💋‍🧑🏿"
+      }
+    },
+    {
+      "testcase": 2,
+      "code": 400,
+      "body": {
+        "content": 123,
+        "status": 123
+      }
+    },
+    {
+      "testcase": 6,
+      "code": 200,
+      "body": {
+        "content": "Hi hi",
+        "status": "🧑🏼‍❤️‍💋‍🧑🏿"
+      }
+    },
+    {
+      "testcase": 7,
+      "code": 400,
+      "body": {
+        "content": "Hi hi",
+        "status": 123
+      }
+    },
+    {
+      "testcase": 11,
+      "code": 400,
+      "body": {
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "status": "🧑🏼‍❤️‍💋‍🧑🏿"
+      }
+    },
+    {
+      "testcase": 12,
+      "code": 400,
+      "body": {
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "status": 123
+      }
+    }
+  ],
+  "warnings": [
+    {
+      "testcase": 3,
+      "code": 400,
+      "body": {
+        "content": 123,
+        "status": "🧑🏼‍❤️‍💋‍🧑🏿🧑🏼‍❤️‍💋‍🧑🏿"
+      },
+      "actualErrors": [
+        "content expected string, received number"
+      ],
+      "expectedErrors": [
+        "content expected string, received number",
+        "status only accepts 1 emoji"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 4,
+      "code": 400,
+      "body": {
+        "content": 123,
+        "status": ""
+      },
+      "actualErrors": [
+        "content expected string, received number"
+      ],
+      "expectedErrors": [
+        "content expected string, received number",
+        "status invalid emoji",
+        "status only accepts 1 emoji",
+        "status should not be empty"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 5,
+      "code": 400,
+      "body": {
+        "content": 123,
+        "status": null
+      },
+      "actualErrors": [
+        "content expected string, received number"
+      ],
+      "expectedErrors": [
+        "content expected string, received number",
+        "status expected string, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 9,
+      "code": 200,
+      "body": {
+        "content": "Hi hi",
+        "status": ""
+      },
+      "actualErrors": [],
+      "expectedErrors": [
+        "status invalid emoji",
+        "status only accepts 1 emoji",
+        "status should not be empty"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 10,
+      "code": 200,
+      "body": {
+        "content": "Hi hi",
+        "status": null
+      },
+      "actualErrors": [],
+      "expectedErrors": [
+        "status expected string, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 14,
+      "code": 400,
+      "body": {
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "status": ""
+      },
+      "actualErrors": [
+        "content string must contain at most 50 character(s)"
+      ],
+      "expectedErrors": [
+        "content string must contain at most 50 character(s)",
+        "status invalid emoji",
+        "status only accepts 1 emoji",
+        "status should not be empty"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 15,
+      "code": 400,
+      "body": {
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "status": null
+      },
+      "actualErrors": [
+        "content string must contain at most 50 character(s)"
+      ],
+      "expectedErrors": [
+        "content string must contain at most 50 character(s)",
+        "status expected string, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 16,
+      "code": 200,
+      "body": {
+        "content": "",
+        "status": "🧑🏼‍❤️‍💋‍🧑🏿"
+      },
+      "actualErrors": [],
+      "expectedErrors": [
+        "content should not be empty"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 17,
+      "code": 400,
+      "body": {
+        "content": "",
+        "status": 123
+      },
+      "actualErrors": [
+        "status expected string, received number"
+      ],
+      "expectedErrors": [
+        "content should not be empty",
+        "status expected string, received number"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 22,
+      "code": 400,
+      "body": {
+        "content": null,
+        "status": 123
+      },
+      "actualErrors": [
+        "status expected string, received number"
+      ],
+      "expectedErrors": [
+        "content expected string, received null",
+        "status expected string, received number"
+      ],
+      "message": "Actual errors includes of expected errors"
+    }
+  ],
+  "passedTests": 6,
+  "totalTests": 25,
+  "failedStep": []
+}

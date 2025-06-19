@@ -1,0 +1,82 @@
+{
+  "path": "/UserView/GetUserByUsername",
+  "className": "get-user-by-username",
+  "allSteps": [],
+  "failedTests": [
+    {
+      "testcase": 1,
+      "code": 404,
+      "body": {
+        "username": 123
+      },
+      "missing": [
+        "User not exists"
+      ],
+      "extra": [
+        "username expected string, received number"
+      ]
+    },
+    {
+      "testcase": 3,
+      "code": 403,
+      "body": {
+        "username": ""
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "username should not be empty",
+        "username string must contain at least 1 character(s)"
+      ]
+    },
+    {
+      "testcase": 4,
+      "code": 403,
+      "body": {},
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "username required"
+      ]
+    },
+    {
+      "testcase": 5,
+      "code": 403,
+      "body": {
+        "username": null
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "username expected string, received null"
+      ]
+    },
+    {
+      "testcase": 6,
+      "code": 404,
+      "body": {
+        "username": "invalid_value"
+      },
+      "missing": [
+        "User not exists"
+      ],
+      "extra": []
+    }
+  ],
+  "codedTest": [
+    {
+      "testcase": 2,
+      "code": 200,
+      "body": {
+        "username": "testabc12301JY3G3ER6S39AZ76634RSQ7CX"
+      }
+    }
+  ],
+  "warnings": [],
+  "passedTests": 1,
+  "totalTests": 6,
+  "failedStep": []
+}

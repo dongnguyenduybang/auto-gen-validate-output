@@ -34,7 +34,7 @@ export enum VAR {
   coverPath = 'https://fs.ugc.ziicdn.net/01JEWASZD3TK58P25Y1QJSYRPC/heic_300kB.heic',
   latitude = '10.0324312',
   longitude = '105.7833368',
-  stickerId = '01HXTX9THMYNP2DSPDT4B48E91',
+  stickerId = '01JPPHQFHA85NG58H2TYTMCXK0',
   email = 'ziichat@halome.com',
   ringBackTone = 'https://fs.ugc.ziicdn.net/01JEZJ0GPMSHH2RVX9QTSJJNRX/heic_300kB.heic',
   ringBackToneId = '{{ringbackToneId}}',

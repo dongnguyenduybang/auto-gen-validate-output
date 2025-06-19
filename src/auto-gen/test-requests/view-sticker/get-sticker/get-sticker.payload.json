@@ -9,7 +9,7 @@
     },
     {
         "body": {
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91"
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0"
         },
         "expects": [
             "stickerId invalid ulid"

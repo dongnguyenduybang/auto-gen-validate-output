@@ -4,16 +4,16 @@ import fs from 'fs';
 import path from 'path';
 import { TestReport } from './declarations';
 
-export async function generateTotalReports(folderPath: string, outputFile: string = 'report.txt'): Promise<void> {
-  // Xử lý đường dẫn thư mục
+export async function generateTotalReports(folderPath: string,   outputDir: string = path.join(__dirname, '../test-requests/.reports')): Promise<void> {
+
   let resolvedFolderPath = folderPath;
   if (!path.isAbsolute(folderPath)) {
-    // Ánh xạ tới thư mục tmp-reports mặc định trong src/auto-gen/test-requests
+
     resolvedFolderPath = path.resolve(__dirname, '..', folderPath || 'tmp-reports');
     console.log(`Resolved folder path: ${resolvedFolderPath}`);
   }
 
-  // Kiểm tra xem thư mục có tồn tại không
+
   try {
     await fsPromises.access(resolvedFolderPath);
   } catch (error) {
@@ -21,7 +21,6 @@ export async function generateTotalReports(folderPath: string, outputFile: strin
     throw error;
   }
 
-  // Đọc tất cả file JSON trong thư mục
   const jsonData: TestReport[] = [];
   try {
     const files = await fsPromises.readdir(resolvedFolderPath);
@@ -47,7 +46,6 @@ export async function generateTotalReports(folderPath: string, outputFile: strin
     return;
   }
 
-  // Phân tích dữ liệu
   const rows = jsonData.map(data => {
     const endpoint = data.path || 'Unknown';
     const total = data.totalTests || 0;
@@ -77,11 +75,10 @@ export async function generateTotalReports(folderPath: string, outputFile: strin
         statusCounts[403] || 0,
         statusCounts[500] || 0,
       ],
-      failed // Lưu failed để lọc
+      failed 
     };
   });
 
-  // Tạo bảng Fail Report (chỉ các endpoint có Fail > 0)
   const headers = [
     'Endpoint',
     'Total',
@@ -105,7 +102,6 @@ export async function generateTotalReports(folderPath: string, outputFile: strin
     });
   }
 
-  // Tạo bảng Success Report (chỉ các endpoint có Fail = 0)
   const successRows = rows.filter(r => r.failed === 0).map(r => r.row);
   let successTableOutput = '';
   if (successRows.length === 0) {
@@ -117,7 +113,6 @@ export async function generateTotalReports(folderPath: string, outputFile: strin
     });
   }
 
-  // Kết hợp nội dung hai bảng với tiêu đề
   const combinedOutput = [
     'Fail Report',
     '===========',
@@ -127,13 +122,13 @@ export async function generateTotalReports(folderPath: string, outputFile: strin
     successTableOutput,
   ].join('\n');
 
-  // Ghi ra file
+
   try {
-    const resolvedOutputFile = path.resolve(outputFile);
-    await fsPromises.writeFile(resolvedOutputFile, combinedOutput, 'utf-8');
-    console.log(`Combined report generated successfully at ${resolvedOutputFile}`);
+
+    await fsPromises.writeFile(outputDir, combinedOutput, 'utf-8');
+    console.log(`Combined report generated successfully at ${outputDir}`);
   } catch (error) {
-    console.error(`Error writing to ${outputFile}: ${error}`);
+    console.error(`Error writing to ${outputDir}: ${error}`);
     throw error;
   }
 }

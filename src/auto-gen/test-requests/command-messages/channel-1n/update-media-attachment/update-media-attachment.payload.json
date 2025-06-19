@@ -1010,7 +1010,9 @@
                 }
             ]
         },
-        "expects": []
+        "expects": [
+            "mediaObjects has element 0 expected string, received object"
+        ]
     },
     {
         "body": {
@@ -1146,7 +1148,8 @@
             ]
         },
         "expects": [
-            "messageId expected string, received number"
+            "messageId expected string, received number",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -1168,7 +1171,8 @@
             ]
         },
         "expects": [
-            "messageId required"
+            "messageId required",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -1192,7 +1196,8 @@
         },
         "expects": [
             "messageId should not be empty",
-            "messageId invalid ulid"
+            "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -1215,7 +1220,8 @@
             ]
         },
         "expects": [
-            "messageId expected string, received null"
+            "messageId expected string, received null",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -1238,7 +1244,8 @@
             ]
         },
         "expects": [
-            "messageId invalid ulid"
+            "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -1261,7 +1268,8 @@
             ]
         },
         "expects": [
-            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'"
+            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -1284,7 +1292,8 @@
         },
         "expects": [
             "attachmentType required",
-            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'"
+            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -1308,7 +1317,8 @@
         },
         "expects": [
             "attachmentType should not be empty",
-            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''"
+            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -1331,7 +1341,8 @@
             ]
         },
         "expects": [
-            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'"
+            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -1354,7 +1365,8 @@
             ]
         },
         "expects": [
-            "ref expected string, received number"
+            "ref expected string, received number",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -1377,7 +1389,8 @@
             ]
         },
         "expects": [
-            "ref string must contain at least 1 character(s)"
+            "ref string must contain at least 1 character(s)",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -1399,7 +1412,8 @@
             ]
         },
         "expects": [
-            "ref required"
+            "ref required",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -1422,7 +1436,8 @@
             ]
         },
         "expects": [
-            "ref expected string, received null"
+            "ref expected string, received null",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -1465,6 +1480,7 @@
             ]
         },
         "expects": [
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
             "fileUrl required",
@@ -1501,7 +1517,7 @@
             ]
         },
         "expects": [
-            "mediaObjects has element 0 expected object, received null"
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -1540,6 +1556,7 @@
             ]
         },
         "expects": [
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'"
         ]
     },
@@ -1562,6 +1579,7 @@
             ]
         },
         "expects": [
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'"
         ]
@@ -1586,6 +1604,7 @@
             ]
         },
         "expects": [
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''"
         ]
@@ -1610,6 +1629,7 @@
             ]
         },
         "expects": [
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'"
         ]
     },
@@ -1633,6 +1653,7 @@
             ]
         },
         "expects": [
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl expected string, received number"
         ]
     },
@@ -1655,6 +1676,7 @@
             ]
         },
         "expects": [
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl required",
             "fileUrl invalid url"
         ]
@@ -1679,6 +1701,7 @@
             ]
         },
         "expects": [
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl should not be empty",
             "fileUrl invalid url"
         ]
@@ -1703,6 +1726,7 @@
             ]
         },
         "expects": [
+            "mediaObjects has element 0 expected string, received object",
             "mimetype expected string, received number"
         ]
     },
@@ -1725,6 +1749,7 @@
             ]
         },
         "expects": [
+            "mediaObjects has element 0 expected string, received object",
             "mimetype required"
         ]
     },
@@ -1748,6 +1773,7 @@
             ]
         },
         "expects": [
+            "mediaObjects has element 0 expected string, received object",
             "mimetype should not be empty"
         ]
     },
@@ -1771,6 +1797,7 @@
             ]
         },
         "expects": [
+            "mediaObjects has element 0 expected string, received object",
             "mimetype expected string, received null"
         ]
     },
@@ -1794,6 +1821,7 @@
             ]
         },
         "expects": [
+            "mediaObjects has element 0 expected string, received object",
             "filename expected string, received number"
         ]
     },
@@ -1816,6 +1844,7 @@
             ]
         },
         "expects": [
+            "mediaObjects has element 0 expected string, received object",
             "filename required"
         ]
     },
@@ -1839,6 +1868,7 @@
             ]
         },
         "expects": [
+            "mediaObjects has element 0 expected string, received object",
             "filename should not be empty"
         ]
     },
@@ -1862,6 +1892,7 @@
             ]
         },
         "expects": [
+            "mediaObjects has element 0 expected string, received object",
             "filename expected string, received null"
         ]
     },
@@ -1885,6 +1916,7 @@
             ]
         },
         "expects": [
+            "mediaObjects has element 0 expected string, received object",
             "extension expected string, received number"
         ]
     },
@@ -1907,6 +1939,7 @@
             ]
         },
         "expects": [
+            "mediaObjects has element 0 expected string, received object",
             "extension required"
         ]
     },
@@ -1930,6 +1963,7 @@
             ]
         },
         "expects": [
+            "mediaObjects has element 0 expected string, received object",
             "extension should not be empty"
         ]
     },
@@ -1953,6 +1987,7 @@
             ]
         },
         "expects": [
+            "mediaObjects has element 0 expected string, received object",
             "extension expected string, received null"
         ]
     },
@@ -10172,7 +10207,8 @@
         },
         "expects": [
             "messageId expected string, received number",
-            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'"
+            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -10196,7 +10232,8 @@
         "expects": [
             "messageId expected string, received number",
             "attachmentType required",
-            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'"
+            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -10221,7 +10258,8 @@
         "expects": [
             "messageId expected string, received number",
             "attachmentType should not be empty",
-            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''"
+            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -10245,7 +10283,8 @@
         },
         "expects": [
             "messageId expected string, received number",
-            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'"
+            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -10269,7 +10308,8 @@
         },
         "expects": [
             "messageId expected string, received number",
-            "ref expected string, received number"
+            "ref expected string, received number",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -10293,7 +10333,8 @@
         },
         "expects": [
             "messageId expected string, received number",
-            "ref string must contain at least 1 character(s)"
+            "ref string must contain at least 1 character(s)",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -10316,7 +10357,8 @@
         },
         "expects": [
             "messageId expected string, received number",
-            "ref required"
+            "ref required",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -10340,7 +10382,8 @@
         },
         "expects": [
             "messageId expected string, received number",
-            "ref expected string, received null"
+            "ref expected string, received null",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -10386,6 +10429,7 @@
         },
         "expects": [
             "messageId expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
             "fileUrl required",
@@ -10424,7 +10468,7 @@
         },
         "expects": [
             "messageId expected string, received number",
-            "mediaObjects has element 0 expected object, received null"
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -10465,6 +10509,7 @@
         },
         "expects": [
             "messageId expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'"
         ]
     },
@@ -10488,6 +10533,7 @@
         },
         "expects": [
             "messageId expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'"
         ]
@@ -10513,6 +10559,7 @@
         },
         "expects": [
             "messageId expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''"
         ]
@@ -10538,6 +10585,7 @@
         },
         "expects": [
             "messageId expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'"
         ]
     },
@@ -10562,6 +10610,7 @@
         },
         "expects": [
             "messageId expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl expected string, received number"
         ]
     },
@@ -10585,6 +10634,7 @@
         },
         "expects": [
             "messageId expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl required",
             "fileUrl invalid url"
         ]
@@ -10610,6 +10660,7 @@
         },
         "expects": [
             "messageId expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl should not be empty",
             "fileUrl invalid url"
         ]
@@ -10635,6 +10686,7 @@
         },
         "expects": [
             "messageId expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype expected string, received number"
         ]
     },
@@ -10658,6 +10710,7 @@
         },
         "expects": [
             "messageId expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype required"
         ]
     },
@@ -10682,6 +10735,7 @@
         },
         "expects": [
             "messageId expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype should not be empty"
         ]
     },
@@ -10706,6 +10760,7 @@
         },
         "expects": [
             "messageId expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype expected string, received null"
         ]
     },
@@ -10730,6 +10785,7 @@
         },
         "expects": [
             "messageId expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "filename expected string, received number"
         ]
     },
@@ -10753,6 +10809,7 @@
         },
         "expects": [
             "messageId expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "filename required"
         ]
     },
@@ -10777,6 +10834,7 @@
         },
         "expects": [
             "messageId expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "filename should not be empty"
         ]
     },
@@ -10801,6 +10859,7 @@
         },
         "expects": [
             "messageId expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "filename expected string, received null"
         ]
     },
@@ -10825,6 +10884,7 @@
         },
         "expects": [
             "messageId expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "extension expected string, received number"
         ]
     },
@@ -10848,6 +10908,7 @@
         },
         "expects": [
             "messageId expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "extension required"
         ]
     },
@@ -10872,6 +10933,7 @@
         },
         "expects": [
             "messageId expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "extension should not be empty"
         ]
     },
@@ -10896,6 +10958,7 @@
         },
         "expects": [
             "messageId expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "extension expected string, received null"
         ]
     },
@@ -10962,7 +11025,8 @@
         },
         "expects": [
             "messageId required",
-            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'"
+            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -10985,7 +11049,8 @@
         "expects": [
             "messageId required",
             "attachmentType required",
-            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'"
+            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -11009,7 +11074,8 @@
         "expects": [
             "messageId required",
             "attachmentType should not be empty",
-            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''"
+            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -11032,7 +11098,8 @@
         },
         "expects": [
             "messageId required",
-            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'"
+            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -11055,7 +11122,8 @@
         },
         "expects": [
             "messageId required",
-            "ref expected string, received number"
+            "ref expected string, received number",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -11078,7 +11146,8 @@
         },
         "expects": [
             "messageId required",
-            "ref string must contain at least 1 character(s)"
+            "ref string must contain at least 1 character(s)",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -11100,7 +11169,8 @@
         },
         "expects": [
             "messageId required",
-            "ref required"
+            "ref required",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -11123,7 +11193,8 @@
         },
         "expects": [
             "messageId required",
-            "ref expected string, received null"
+            "ref expected string, received null",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -11166,6 +11237,7 @@
         },
         "expects": [
             "messageId required",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
             "fileUrl required",
@@ -11202,7 +11274,7 @@
         },
         "expects": [
             "messageId required",
-            "mediaObjects has element 0 expected object, received null"
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -11241,6 +11313,7 @@
         },
         "expects": [
             "messageId required",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'"
         ]
     },
@@ -11263,6 +11336,7 @@
         },
         "expects": [
             "messageId required",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'"
         ]
@@ -11287,6 +11361,7 @@
         },
         "expects": [
             "messageId required",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''"
         ]
@@ -11311,6 +11386,7 @@
         },
         "expects": [
             "messageId required",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'"
         ]
     },
@@ -11334,6 +11410,7 @@
         },
         "expects": [
             "messageId required",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl expected string, received number"
         ]
     },
@@ -11356,6 +11433,7 @@
         },
         "expects": [
             "messageId required",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl required",
             "fileUrl invalid url"
         ]
@@ -11380,6 +11458,7 @@
         },
         "expects": [
             "messageId required",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl should not be empty",
             "fileUrl invalid url"
         ]
@@ -11404,6 +11483,7 @@
         },
         "expects": [
             "messageId required",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype expected string, received number"
         ]
     },
@@ -11426,6 +11506,7 @@
         },
         "expects": [
             "messageId required",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype required"
         ]
     },
@@ -11449,6 +11530,7 @@
         },
         "expects": [
             "messageId required",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype should not be empty"
         ]
     },
@@ -11472,6 +11554,7 @@
         },
         "expects": [
             "messageId required",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype expected string, received null"
         ]
     },
@@ -11495,6 +11578,7 @@
         },
         "expects": [
             "messageId required",
+            "mediaObjects has element 0 expected string, received object",
             "filename expected string, received number"
         ]
     },
@@ -11517,6 +11601,7 @@
         },
         "expects": [
             "messageId required",
+            "mediaObjects has element 0 expected string, received object",
             "filename required"
         ]
     },
@@ -11540,6 +11625,7 @@
         },
         "expects": [
             "messageId required",
+            "mediaObjects has element 0 expected string, received object",
             "filename should not be empty"
         ]
     },
@@ -11563,6 +11649,7 @@
         },
         "expects": [
             "messageId required",
+            "mediaObjects has element 0 expected string, received object",
             "filename expected string, received null"
         ]
     },
@@ -11586,6 +11673,7 @@
         },
         "expects": [
             "messageId required",
+            "mediaObjects has element 0 expected string, received object",
             "extension expected string, received number"
         ]
     },
@@ -11608,6 +11696,7 @@
         },
         "expects": [
             "messageId required",
+            "mediaObjects has element 0 expected string, received object",
             "extension required"
         ]
     },
@@ -11631,6 +11720,7 @@
         },
         "expects": [
             "messageId required",
+            "mediaObjects has element 0 expected string, received object",
             "extension should not be empty"
         ]
     },
@@ -11654,6 +11744,7 @@
         },
         "expects": [
             "messageId required",
+            "mediaObjects has element 0 expected string, received object",
             "extension expected string, received null"
         ]
     },
@@ -11719,7 +11810,8 @@
         "expects": [
             "messageId should not be empty",
             "messageId invalid ulid",
-            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'"
+            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -11744,7 +11836,8 @@
             "messageId should not be empty",
             "messageId invalid ulid",
             "attachmentType required",
-            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'"
+            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -11770,7 +11863,8 @@
             "messageId should not be empty",
             "messageId invalid ulid",
             "attachmentType should not be empty",
-            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''"
+            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -11795,7 +11889,8 @@
         "expects": [
             "messageId should not be empty",
             "messageId invalid ulid",
-            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'"
+            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -11820,7 +11915,8 @@
         "expects": [
             "messageId should not be empty",
             "messageId invalid ulid",
-            "ref expected string, received number"
+            "ref expected string, received number",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -11845,7 +11941,8 @@
         "expects": [
             "messageId should not be empty",
             "messageId invalid ulid",
-            "ref string must contain at least 1 character(s)"
+            "ref string must contain at least 1 character(s)",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -11869,7 +11966,8 @@
         "expects": [
             "messageId should not be empty",
             "messageId invalid ulid",
-            "ref required"
+            "ref required",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -11894,7 +11992,8 @@
         "expects": [
             "messageId should not be empty",
             "messageId invalid ulid",
-            "ref expected string, received null"
+            "ref expected string, received null",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -11943,6 +12042,7 @@
         "expects": [
             "messageId should not be empty",
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
             "fileUrl required",
@@ -11983,7 +12083,7 @@
         "expects": [
             "messageId should not be empty",
             "messageId invalid ulid",
-            "mediaObjects has element 0 expected object, received null"
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -12026,6 +12126,7 @@
         "expects": [
             "messageId should not be empty",
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'"
         ]
     },
@@ -12050,6 +12151,7 @@
         "expects": [
             "messageId should not be empty",
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'"
         ]
@@ -12076,6 +12178,7 @@
         "expects": [
             "messageId should not be empty",
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''"
         ]
@@ -12102,6 +12205,7 @@
         "expects": [
             "messageId should not be empty",
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'"
         ]
     },
@@ -12127,6 +12231,7 @@
         "expects": [
             "messageId should not be empty",
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl expected string, received number"
         ]
     },
@@ -12151,6 +12256,7 @@
         "expects": [
             "messageId should not be empty",
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl required",
             "fileUrl invalid url"
         ]
@@ -12177,6 +12283,7 @@
         "expects": [
             "messageId should not be empty",
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl should not be empty",
             "fileUrl invalid url"
         ]
@@ -12203,6 +12310,7 @@
         "expects": [
             "messageId should not be empty",
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype expected string, received number"
         ]
     },
@@ -12227,6 +12335,7 @@
         "expects": [
             "messageId should not be empty",
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype required"
         ]
     },
@@ -12252,6 +12361,7 @@
         "expects": [
             "messageId should not be empty",
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype should not be empty"
         ]
     },
@@ -12277,6 +12387,7 @@
         "expects": [
             "messageId should not be empty",
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype expected string, received null"
         ]
     },
@@ -12302,6 +12413,7 @@
         "expects": [
             "messageId should not be empty",
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "filename expected string, received number"
         ]
     },
@@ -12326,6 +12438,7 @@
         "expects": [
             "messageId should not be empty",
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "filename required"
         ]
     },
@@ -12351,6 +12464,7 @@
         "expects": [
             "messageId should not be empty",
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "filename should not be empty"
         ]
     },
@@ -12376,6 +12490,7 @@
         "expects": [
             "messageId should not be empty",
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "filename expected string, received null"
         ]
     },
@@ -12401,6 +12516,7 @@
         "expects": [
             "messageId should not be empty",
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "extension expected string, received number"
         ]
     },
@@ -12425,6 +12541,7 @@
         "expects": [
             "messageId should not be empty",
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "extension required"
         ]
     },
@@ -12450,6 +12567,7 @@
         "expects": [
             "messageId should not be empty",
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "extension should not be empty"
         ]
     },
@@ -12475,6 +12593,7 @@
         "expects": [
             "messageId should not be empty",
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "extension expected string, received null"
         ]
     },
@@ -12545,7 +12664,8 @@
         },
         "expects": [
             "messageId expected string, received null",
-            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'"
+            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -12569,7 +12689,8 @@
         "expects": [
             "messageId expected string, received null",
             "attachmentType required",
-            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'"
+            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -12594,7 +12715,8 @@
         "expects": [
             "messageId expected string, received null",
             "attachmentType should not be empty",
-            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''"
+            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -12618,7 +12740,8 @@
         },
         "expects": [
             "messageId expected string, received null",
-            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'"
+            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -12642,7 +12765,8 @@
         },
         "expects": [
             "messageId expected string, received null",
-            "ref expected string, received number"
+            "ref expected string, received number",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -12666,7 +12790,8 @@
         },
         "expects": [
             "messageId expected string, received null",
-            "ref string must contain at least 1 character(s)"
+            "ref string must contain at least 1 character(s)",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -12689,7 +12814,8 @@
         },
         "expects": [
             "messageId expected string, received null",
-            "ref required"
+            "ref required",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -12713,7 +12839,8 @@
         },
         "expects": [
             "messageId expected string, received null",
-            "ref expected string, received null"
+            "ref expected string, received null",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -12759,6 +12886,7 @@
         },
         "expects": [
             "messageId expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
             "fileUrl required",
@@ -12797,7 +12925,7 @@
         },
         "expects": [
             "messageId expected string, received null",
-            "mediaObjects has element 0 expected object, received null"
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -12838,6 +12966,7 @@
         },
         "expects": [
             "messageId expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'"
         ]
     },
@@ -12861,6 +12990,7 @@
         },
         "expects": [
             "messageId expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'"
         ]
@@ -12886,6 +13016,7 @@
         },
         "expects": [
             "messageId expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''"
         ]
@@ -12911,6 +13042,7 @@
         },
         "expects": [
             "messageId expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'"
         ]
     },
@@ -12935,6 +13067,7 @@
         },
         "expects": [
             "messageId expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl expected string, received number"
         ]
     },
@@ -12958,6 +13091,7 @@
         },
         "expects": [
             "messageId expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl required",
             "fileUrl invalid url"
         ]
@@ -12983,6 +13117,7 @@
         },
         "expects": [
             "messageId expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl should not be empty",
             "fileUrl invalid url"
         ]
@@ -13008,6 +13143,7 @@
         },
         "expects": [
             "messageId expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype expected string, received number"
         ]
     },
@@ -13031,6 +13167,7 @@
         },
         "expects": [
             "messageId expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype required"
         ]
     },
@@ -13055,6 +13192,7 @@
         },
         "expects": [
             "messageId expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype should not be empty"
         ]
     },
@@ -13079,6 +13217,7 @@
         },
         "expects": [
             "messageId expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype expected string, received null"
         ]
     },
@@ -13103,6 +13242,7 @@
         },
         "expects": [
             "messageId expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "filename expected string, received number"
         ]
     },
@@ -13126,6 +13266,7 @@
         },
         "expects": [
             "messageId expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "filename required"
         ]
     },
@@ -13150,6 +13291,7 @@
         },
         "expects": [
             "messageId expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "filename should not be empty"
         ]
     },
@@ -13174,6 +13316,7 @@
         },
         "expects": [
             "messageId expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "filename expected string, received null"
         ]
     },
@@ -13198,6 +13341,7 @@
         },
         "expects": [
             "messageId expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "extension expected string, received number"
         ]
     },
@@ -13221,6 +13365,7 @@
         },
         "expects": [
             "messageId expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "extension required"
         ]
     },
@@ -13245,6 +13390,7 @@
         },
         "expects": [
             "messageId expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "extension should not be empty"
         ]
     },
@@ -13269,6 +13415,7 @@
         },
         "expects": [
             "messageId expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "extension expected string, received null"
         ]
     },
@@ -13336,7 +13483,8 @@
         },
         "expects": [
             "messageId invalid ulid",
-            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'"
+            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -13360,7 +13508,8 @@
         "expects": [
             "messageId invalid ulid",
             "attachmentType required",
-            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'"
+            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -13385,7 +13534,8 @@
         "expects": [
             "messageId invalid ulid",
             "attachmentType should not be empty",
-            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''"
+            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -13409,7 +13559,8 @@
         },
         "expects": [
             "messageId invalid ulid",
-            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'"
+            "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -13433,7 +13584,8 @@
         },
         "expects": [
             "messageId invalid ulid",
-            "ref expected string, received number"
+            "ref expected string, received number",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -13457,7 +13609,8 @@
         },
         "expects": [
             "messageId invalid ulid",
-            "ref string must contain at least 1 character(s)"
+            "ref string must contain at least 1 character(s)",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -13480,7 +13633,8 @@
         },
         "expects": [
             "messageId invalid ulid",
-            "ref required"
+            "ref required",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -13504,7 +13658,8 @@
         },
         "expects": [
             "messageId invalid ulid",
-            "ref expected string, received null"
+            "ref expected string, received null",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -13550,6 +13705,7 @@
         },
         "expects": [
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
             "fileUrl required",
@@ -13588,7 +13744,7 @@
         },
         "expects": [
             "messageId invalid ulid",
-            "mediaObjects has element 0 expected object, received null"
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -13629,6 +13785,7 @@
         },
         "expects": [
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'"
         ]
     },
@@ -13652,6 +13809,7 @@
         },
         "expects": [
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'"
         ]
@@ -13677,6 +13835,7 @@
         },
         "expects": [
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''"
         ]
@@ -13702,6 +13861,7 @@
         },
         "expects": [
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'"
         ]
     },
@@ -13726,6 +13886,7 @@
         },
         "expects": [
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl expected string, received number"
         ]
     },
@@ -13749,6 +13910,7 @@
         },
         "expects": [
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl required",
             "fileUrl invalid url"
         ]
@@ -13774,6 +13936,7 @@
         },
         "expects": [
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl should not be empty",
             "fileUrl invalid url"
         ]
@@ -13799,6 +13962,7 @@
         },
         "expects": [
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype expected string, received number"
         ]
     },
@@ -13822,6 +13986,7 @@
         },
         "expects": [
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype required"
         ]
     },
@@ -13846,6 +14011,7 @@
         },
         "expects": [
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype should not be empty"
         ]
     },
@@ -13870,6 +14036,7 @@
         },
         "expects": [
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype expected string, received null"
         ]
     },
@@ -13894,6 +14061,7 @@
         },
         "expects": [
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "filename expected string, received number"
         ]
     },
@@ -13917,6 +14085,7 @@
         },
         "expects": [
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "filename required"
         ]
     },
@@ -13941,6 +14110,7 @@
         },
         "expects": [
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "filename should not be empty"
         ]
     },
@@ -13965,6 +14135,7 @@
         },
         "expects": [
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "filename expected string, received null"
         ]
     },
@@ -13989,6 +14160,7 @@
         },
         "expects": [
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "extension expected string, received number"
         ]
     },
@@ -14012,6 +14184,7 @@
         },
         "expects": [
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "extension required"
         ]
     },
@@ -14036,6 +14209,7 @@
         },
         "expects": [
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "extension should not be empty"
         ]
     },
@@ -14060,6 +14234,7 @@
         },
         "expects": [
             "messageId invalid ulid",
+            "mediaObjects has element 0 expected string, received object",
             "extension expected string, received null"
         ]
     },
@@ -14127,7 +14302,8 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'",
-            "ref expected string, received number"
+            "ref expected string, received number",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -14151,7 +14327,8 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'",
-            "ref string must contain at least 1 character(s)"
+            "ref string must contain at least 1 character(s)",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -14174,7 +14351,8 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'",
-            "ref required"
+            "ref required",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -14198,7 +14376,8 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'",
-            "ref expected string, received null"
+            "ref expected string, received null",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -14244,6 +14423,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
             "fileUrl required",
@@ -14282,7 +14462,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'",
-            "mediaObjects has element 0 expected object, received null"
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -14323,6 +14503,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'"
         ]
     },
@@ -14346,6 +14527,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'"
         ]
@@ -14371,6 +14553,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''"
         ]
@@ -14396,6 +14579,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'"
         ]
     },
@@ -14420,6 +14604,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl expected string, received number"
         ]
     },
@@ -14443,6 +14628,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl required",
             "fileUrl invalid url"
         ]
@@ -14468,6 +14654,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl should not be empty",
             "fileUrl invalid url"
         ]
@@ -14493,6 +14680,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype expected string, received number"
         ]
     },
@@ -14516,6 +14704,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype required"
         ]
     },
@@ -14540,6 +14729,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype should not be empty"
         ]
     },
@@ -14564,6 +14754,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype expected string, received null"
         ]
     },
@@ -14588,6 +14779,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'",
+            "mediaObjects has element 0 expected string, received object",
             "filename expected string, received number"
         ]
     },
@@ -14611,6 +14803,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'",
+            "mediaObjects has element 0 expected string, received object",
             "filename required"
         ]
     },
@@ -14635,6 +14828,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'",
+            "mediaObjects has element 0 expected string, received object",
             "filename should not be empty"
         ]
     },
@@ -14659,6 +14853,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'",
+            "mediaObjects has element 0 expected string, received object",
             "filename expected string, received null"
         ]
     },
@@ -14683,6 +14878,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'",
+            "mediaObjects has element 0 expected string, received object",
             "extension expected string, received number"
         ]
     },
@@ -14706,6 +14902,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'",
+            "mediaObjects has element 0 expected string, received object",
             "extension required"
         ]
     },
@@ -14730,6 +14927,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'",
+            "mediaObjects has element 0 expected string, received object",
             "extension should not be empty"
         ]
     },
@@ -14754,6 +14952,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'",
+            "mediaObjects has element 0 expected string, received object",
             "extension expected string, received null"
         ]
     },
@@ -14821,7 +15020,8 @@
         "expects": [
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
-            "ref expected string, received number"
+            "ref expected string, received number",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -14845,7 +15045,8 @@
         "expects": [
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
-            "ref string must contain at least 1 character(s)"
+            "ref string must contain at least 1 character(s)",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -14868,7 +15069,8 @@
         "expects": [
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
-            "ref required"
+            "ref required",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -14892,7 +15094,8 @@
         "expects": [
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
-            "ref expected string, received null"
+            "ref expected string, received null",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -14938,6 +15141,7 @@
         "expects": [
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
             "fileUrl required",
@@ -14976,7 +15180,7 @@
         "expects": [
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
-            "mediaObjects has element 0 expected object, received null"
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -15017,6 +15221,7 @@
         "expects": [
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'"
         ]
     },
@@ -15040,6 +15245,7 @@
         "expects": [
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'"
         ]
@@ -15065,6 +15271,7 @@
         "expects": [
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''"
         ]
@@ -15090,6 +15297,7 @@
         "expects": [
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'"
         ]
     },
@@ -15114,6 +15322,7 @@
         "expects": [
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl expected string, received number"
         ]
     },
@@ -15137,6 +15346,7 @@
         "expects": [
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl required",
             "fileUrl invalid url"
         ]
@@ -15162,6 +15372,7 @@
         "expects": [
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl should not be empty",
             "fileUrl invalid url"
         ]
@@ -15187,6 +15398,7 @@
         "expects": [
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype expected string, received number"
         ]
     },
@@ -15210,6 +15422,7 @@
         "expects": [
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype required"
         ]
     },
@@ -15234,6 +15447,7 @@
         "expects": [
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype should not be empty"
         ]
     },
@@ -15258,6 +15472,7 @@
         "expects": [
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype expected string, received null"
         ]
     },
@@ -15282,6 +15497,7 @@
         "expects": [
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
+            "mediaObjects has element 0 expected string, received object",
             "filename expected string, received number"
         ]
     },
@@ -15305,6 +15521,7 @@
         "expects": [
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
+            "mediaObjects has element 0 expected string, received object",
             "filename required"
         ]
     },
@@ -15329,6 +15546,7 @@
         "expects": [
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
+            "mediaObjects has element 0 expected string, received object",
             "filename should not be empty"
         ]
     },
@@ -15353,6 +15571,7 @@
         "expects": [
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
+            "mediaObjects has element 0 expected string, received object",
             "filename expected string, received null"
         ]
     },
@@ -15377,6 +15596,7 @@
         "expects": [
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
+            "mediaObjects has element 0 expected string, received object",
             "extension expected string, received number"
         ]
     },
@@ -15400,6 +15620,7 @@
         "expects": [
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
+            "mediaObjects has element 0 expected string, received object",
             "extension required"
         ]
     },
@@ -15424,6 +15645,7 @@
         "expects": [
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
+            "mediaObjects has element 0 expected string, received object",
             "extension should not be empty"
         ]
     },
@@ -15448,6 +15670,7 @@
         "expects": [
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
+            "mediaObjects has element 0 expected string, received object",
             "extension expected string, received null"
         ]
     },
@@ -15516,7 +15739,8 @@
         "expects": [
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''",
-            "ref expected string, received number"
+            "ref expected string, received number",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -15541,7 +15765,8 @@
         "expects": [
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''",
-            "ref string must contain at least 1 character(s)"
+            "ref string must contain at least 1 character(s)",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -15565,7 +15790,8 @@
         "expects": [
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''",
-            "ref required"
+            "ref required",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -15590,7 +15816,8 @@
         "expects": [
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''",
-            "ref expected string, received null"
+            "ref expected string, received null",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -15639,6 +15866,7 @@
         "expects": [
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
             "fileUrl required",
@@ -15679,7 +15907,7 @@
         "expects": [
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''",
-            "mediaObjects has element 0 expected object, received null"
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -15722,6 +15950,7 @@
         "expects": [
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'"
         ]
     },
@@ -15746,6 +15975,7 @@
         "expects": [
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'"
         ]
@@ -15772,6 +16002,7 @@
         "expects": [
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''"
         ]
@@ -15798,6 +16029,7 @@
         "expects": [
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'"
         ]
     },
@@ -15823,6 +16055,7 @@
         "expects": [
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl expected string, received number"
         ]
     },
@@ -15847,6 +16080,7 @@
         "expects": [
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl required",
             "fileUrl invalid url"
         ]
@@ -15873,6 +16107,7 @@
         "expects": [
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl should not be empty",
             "fileUrl invalid url"
         ]
@@ -15899,6 +16134,7 @@
         "expects": [
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype expected string, received number"
         ]
     },
@@ -15923,6 +16159,7 @@
         "expects": [
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype required"
         ]
     },
@@ -15948,6 +16185,7 @@
         "expects": [
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype should not be empty"
         ]
     },
@@ -15973,6 +16211,7 @@
         "expects": [
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype expected string, received null"
         ]
     },
@@ -15998,6 +16237,7 @@
         "expects": [
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''",
+            "mediaObjects has element 0 expected string, received object",
             "filename expected string, received number"
         ]
     },
@@ -16022,6 +16262,7 @@
         "expects": [
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''",
+            "mediaObjects has element 0 expected string, received object",
             "filename required"
         ]
     },
@@ -16047,6 +16288,7 @@
         "expects": [
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''",
+            "mediaObjects has element 0 expected string, received object",
             "filename should not be empty"
         ]
     },
@@ -16072,6 +16314,7 @@
         "expects": [
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''",
+            "mediaObjects has element 0 expected string, received object",
             "filename expected string, received null"
         ]
     },
@@ -16097,6 +16340,7 @@
         "expects": [
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''",
+            "mediaObjects has element 0 expected string, received object",
             "extension expected string, received number"
         ]
     },
@@ -16121,6 +16365,7 @@
         "expects": [
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''",
+            "mediaObjects has element 0 expected string, received object",
             "extension required"
         ]
     },
@@ -16146,6 +16391,7 @@
         "expects": [
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''",
+            "mediaObjects has element 0 expected string, received object",
             "extension should not be empty"
         ]
     },
@@ -16171,6 +16417,7 @@
         "expects": [
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''",
+            "mediaObjects has element 0 expected string, received object",
             "extension expected string, received null"
         ]
     },
@@ -16241,7 +16488,8 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'",
-            "ref expected string, received number"
+            "ref expected string, received number",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -16265,7 +16513,8 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'",
-            "ref string must contain at least 1 character(s)"
+            "ref string must contain at least 1 character(s)",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -16288,7 +16537,8 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'",
-            "ref required"
+            "ref required",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -16312,7 +16562,8 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'",
-            "ref expected string, received null"
+            "ref expected string, received null",
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -16358,6 +16609,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
             "fileUrl required",
@@ -16396,7 +16648,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'",
-            "mediaObjects has element 0 expected object, received null"
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -16437,6 +16689,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'"
         ]
     },
@@ -16460,6 +16713,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'"
         ]
@@ -16485,6 +16739,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''"
         ]
@@ -16510,6 +16765,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'"
         ]
     },
@@ -16534,6 +16790,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl expected string, received number"
         ]
     },
@@ -16557,6 +16814,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl required",
             "fileUrl invalid url"
         ]
@@ -16582,6 +16840,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl should not be empty",
             "fileUrl invalid url"
         ]
@@ -16607,6 +16866,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype expected string, received number"
         ]
     },
@@ -16630,6 +16890,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype required"
         ]
     },
@@ -16654,6 +16915,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype should not be empty"
         ]
     },
@@ -16678,6 +16940,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype expected string, received null"
         ]
     },
@@ -16702,6 +16965,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'",
+            "mediaObjects has element 0 expected string, received object",
             "filename expected string, received number"
         ]
     },
@@ -16725,6 +16989,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'",
+            "mediaObjects has element 0 expected string, received object",
             "filename required"
         ]
     },
@@ -16749,6 +17014,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'",
+            "mediaObjects has element 0 expected string, received object",
             "filename should not be empty"
         ]
     },
@@ -16773,6 +17039,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'",
+            "mediaObjects has element 0 expected string, received object",
             "filename expected string, received null"
         ]
     },
@@ -16797,6 +17064,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'",
+            "mediaObjects has element 0 expected string, received object",
             "extension expected string, received number"
         ]
     },
@@ -16820,6 +17088,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'",
+            "mediaObjects has element 0 expected string, received object",
             "extension required"
         ]
     },
@@ -16844,6 +17113,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'",
+            "mediaObjects has element 0 expected string, received object",
             "extension should not be empty"
         ]
     },
@@ -16868,6 +17138,7 @@
         },
         "expects": [
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'",
+            "mediaObjects has element 0 expected string, received object",
             "extension expected string, received null"
         ]
     },
@@ -16957,6 +17228,7 @@
         },
         "expects": [
             "ref expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
             "fileUrl required",
@@ -16995,7 +17267,7 @@
         },
         "expects": [
             "ref expected string, received number",
-            "mediaObjects has element 0 expected object, received null"
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -17036,6 +17308,7 @@
         },
         "expects": [
             "ref expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'"
         ]
     },
@@ -17059,6 +17332,7 @@
         },
         "expects": [
             "ref expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'"
         ]
@@ -17084,6 +17358,7 @@
         },
         "expects": [
             "ref expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''"
         ]
@@ -17109,6 +17384,7 @@
         },
         "expects": [
             "ref expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'"
         ]
     },
@@ -17133,6 +17409,7 @@
         },
         "expects": [
             "ref expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl expected string, received number"
         ]
     },
@@ -17156,6 +17433,7 @@
         },
         "expects": [
             "ref expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl required",
             "fileUrl invalid url"
         ]
@@ -17181,6 +17459,7 @@
         },
         "expects": [
             "ref expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl should not be empty",
             "fileUrl invalid url"
         ]
@@ -17206,6 +17485,7 @@
         },
         "expects": [
             "ref expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype expected string, received number"
         ]
     },
@@ -17229,6 +17509,7 @@
         },
         "expects": [
             "ref expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype required"
         ]
     },
@@ -17253,6 +17534,7 @@
         },
         "expects": [
             "ref expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype should not be empty"
         ]
     },
@@ -17277,6 +17559,7 @@
         },
         "expects": [
             "ref expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype expected string, received null"
         ]
     },
@@ -17301,6 +17584,7 @@
         },
         "expects": [
             "ref expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "filename expected string, received number"
         ]
     },
@@ -17324,6 +17608,7 @@
         },
         "expects": [
             "ref expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "filename required"
         ]
     },
@@ -17348,6 +17633,7 @@
         },
         "expects": [
             "ref expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "filename should not be empty"
         ]
     },
@@ -17372,6 +17658,7 @@
         },
         "expects": [
             "ref expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "filename expected string, received null"
         ]
     },
@@ -17396,6 +17683,7 @@
         },
         "expects": [
             "ref expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "extension expected string, received number"
         ]
     },
@@ -17419,6 +17707,7 @@
         },
         "expects": [
             "ref expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "extension required"
         ]
     },
@@ -17443,6 +17732,7 @@
         },
         "expects": [
             "ref expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "extension should not be empty"
         ]
     },
@@ -17467,6 +17757,7 @@
         },
         "expects": [
             "ref expected string, received number",
+            "mediaObjects has element 0 expected string, received object",
             "extension expected string, received null"
         ]
     },
@@ -17556,6 +17847,7 @@
         },
         "expects": [
             "ref string must contain at least 1 character(s)",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
             "fileUrl required",
@@ -17594,7 +17886,7 @@
         },
         "expects": [
             "ref string must contain at least 1 character(s)",
-            "mediaObjects has element 0 expected object, received null"
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -17635,6 +17927,7 @@
         },
         "expects": [
             "ref string must contain at least 1 character(s)",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'"
         ]
     },
@@ -17658,6 +17951,7 @@
         },
         "expects": [
             "ref string must contain at least 1 character(s)",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'"
         ]
@@ -17683,6 +17977,7 @@
         },
         "expects": [
             "ref string must contain at least 1 character(s)",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''"
         ]
@@ -17708,6 +18003,7 @@
         },
         "expects": [
             "ref string must contain at least 1 character(s)",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'"
         ]
     },
@@ -17732,6 +18028,7 @@
         },
         "expects": [
             "ref string must contain at least 1 character(s)",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl expected string, received number"
         ]
     },
@@ -17755,6 +18052,7 @@
         },
         "expects": [
             "ref string must contain at least 1 character(s)",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl required",
             "fileUrl invalid url"
         ]
@@ -17780,6 +18078,7 @@
         },
         "expects": [
             "ref string must contain at least 1 character(s)",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl should not be empty",
             "fileUrl invalid url"
         ]
@@ -17805,6 +18104,7 @@
         },
         "expects": [
             "ref string must contain at least 1 character(s)",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype expected string, received number"
         ]
     },
@@ -17828,6 +18128,7 @@
         },
         "expects": [
             "ref string must contain at least 1 character(s)",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype required"
         ]
     },
@@ -17852,6 +18153,7 @@
         },
         "expects": [
             "ref string must contain at least 1 character(s)",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype should not be empty"
         ]
     },
@@ -17876,6 +18178,7 @@
         },
         "expects": [
             "ref string must contain at least 1 character(s)",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype expected string, received null"
         ]
     },
@@ -17900,6 +18203,7 @@
         },
         "expects": [
             "ref string must contain at least 1 character(s)",
+            "mediaObjects has element 0 expected string, received object",
             "filename expected string, received number"
         ]
     },
@@ -17923,6 +18227,7 @@
         },
         "expects": [
             "ref string must contain at least 1 character(s)",
+            "mediaObjects has element 0 expected string, received object",
             "filename required"
         ]
     },
@@ -17947,6 +18252,7 @@
         },
         "expects": [
             "ref string must contain at least 1 character(s)",
+            "mediaObjects has element 0 expected string, received object",
             "filename should not be empty"
         ]
     },
@@ -17971,6 +18277,7 @@
         },
         "expects": [
             "ref string must contain at least 1 character(s)",
+            "mediaObjects has element 0 expected string, received object",
             "filename expected string, received null"
         ]
     },
@@ -17995,6 +18302,7 @@
         },
         "expects": [
             "ref string must contain at least 1 character(s)",
+            "mediaObjects has element 0 expected string, received object",
             "extension expected string, received number"
         ]
     },
@@ -18018,6 +18326,7 @@
         },
         "expects": [
             "ref string must contain at least 1 character(s)",
+            "mediaObjects has element 0 expected string, received object",
             "extension required"
         ]
     },
@@ -18042,6 +18351,7 @@
         },
         "expects": [
             "ref string must contain at least 1 character(s)",
+            "mediaObjects has element 0 expected string, received object",
             "extension should not be empty"
         ]
     },
@@ -18066,6 +18376,7 @@
         },
         "expects": [
             "ref string must contain at least 1 character(s)",
+            "mediaObjects has element 0 expected string, received object",
             "extension expected string, received null"
         ]
     },
@@ -18152,6 +18463,7 @@
         },
         "expects": [
             "ref required",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
             "fileUrl required",
@@ -18188,7 +18500,7 @@
         },
         "expects": [
             "ref required",
-            "mediaObjects has element 0 expected object, received null"
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -18227,6 +18539,7 @@
         },
         "expects": [
             "ref required",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'"
         ]
     },
@@ -18249,6 +18562,7 @@
         },
         "expects": [
             "ref required",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'"
         ]
@@ -18273,6 +18587,7 @@
         },
         "expects": [
             "ref required",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''"
         ]
@@ -18297,6 +18612,7 @@
         },
         "expects": [
             "ref required",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'"
         ]
     },
@@ -18320,6 +18636,7 @@
         },
         "expects": [
             "ref required",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl expected string, received number"
         ]
     },
@@ -18342,6 +18659,7 @@
         },
         "expects": [
             "ref required",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl required",
             "fileUrl invalid url"
         ]
@@ -18366,6 +18684,7 @@
         },
         "expects": [
             "ref required",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl should not be empty",
             "fileUrl invalid url"
         ]
@@ -18390,6 +18709,7 @@
         },
         "expects": [
             "ref required",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype expected string, received number"
         ]
     },
@@ -18412,6 +18732,7 @@
         },
         "expects": [
             "ref required",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype required"
         ]
     },
@@ -18435,6 +18756,7 @@
         },
         "expects": [
             "ref required",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype should not be empty"
         ]
     },
@@ -18458,6 +18780,7 @@
         },
         "expects": [
             "ref required",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype expected string, received null"
         ]
     },
@@ -18481,6 +18804,7 @@
         },
         "expects": [
             "ref required",
+            "mediaObjects has element 0 expected string, received object",
             "filename expected string, received number"
         ]
     },
@@ -18503,6 +18827,7 @@
         },
         "expects": [
             "ref required",
+            "mediaObjects has element 0 expected string, received object",
             "filename required"
         ]
     },
@@ -18526,6 +18851,7 @@
         },
         "expects": [
             "ref required",
+            "mediaObjects has element 0 expected string, received object",
             "filename should not be empty"
         ]
     },
@@ -18549,6 +18875,7 @@
         },
         "expects": [
             "ref required",
+            "mediaObjects has element 0 expected string, received object",
             "filename expected string, received null"
         ]
     },
@@ -18572,6 +18899,7 @@
         },
         "expects": [
             "ref required",
+            "mediaObjects has element 0 expected string, received object",
             "extension expected string, received number"
         ]
     },
@@ -18594,6 +18922,7 @@
         },
         "expects": [
             "ref required",
+            "mediaObjects has element 0 expected string, received object",
             "extension required"
         ]
     },
@@ -18617,6 +18946,7 @@
         },
         "expects": [
             "ref required",
+            "mediaObjects has element 0 expected string, received object",
             "extension should not be empty"
         ]
     },
@@ -18640,6 +18970,7 @@
         },
         "expects": [
             "ref required",
+            "mediaObjects has element 0 expected string, received object",
             "extension expected string, received null"
         ]
     },
@@ -18726,6 +19057,7 @@
         },
         "expects": [
             "ref expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'",
             "fileUrl required",
@@ -18764,7 +19096,7 @@
         },
         "expects": [
             "ref expected string, received null",
-            "mediaObjects has element 0 expected object, received null"
+            "mediaObjects has element 0 expected string, received object"
         ]
     },
     {
@@ -18805,6 +19137,7 @@
         },
         "expects": [
             "ref expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'invalid_enum_value'"
         ]
     },
@@ -18828,6 +19161,7 @@
         },
         "expects": [
             "ref expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType required",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'undefined'"
         ]
@@ -18853,6 +19187,7 @@
         },
         "expects": [
             "ref expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType should not be empty",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received ''"
         ]
@@ -18878,6 +19213,7 @@
         },
         "expects": [
             "ref expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "attachmentType invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received 'null'"
         ]
     },
@@ -18902,6 +19238,7 @@
         },
         "expects": [
             "ref expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl expected string, received number"
         ]
     },
@@ -18925,6 +19262,7 @@
         },
         "expects": [
             "ref expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl required",
             "fileUrl invalid url"
         ]
@@ -18950,6 +19288,7 @@
         },
         "expects": [
             "ref expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "fileUrl should not be empty",
             "fileUrl invalid url"
         ]
@@ -18975,6 +19314,7 @@
         },
         "expects": [
             "ref expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype expected string, received number"
         ]
     },
@@ -18998,6 +19338,7 @@
         },
         "expects": [
             "ref expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype required"
         ]
     },
@@ -19022,6 +19363,7 @@
         },
         "expects": [
             "ref expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype should not be empty"
         ]
     },
@@ -19046,6 +19388,7 @@
         },
         "expects": [
             "ref expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "mimetype expected string, received null"
         ]
     },
@@ -19070,6 +19413,7 @@
         },
         "expects": [
             "ref expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "filename expected string, received number"
         ]
     },
@@ -19093,6 +19437,7 @@
         },
         "expects": [
             "ref expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "filename required"
         ]
     },
@@ -19117,6 +19462,7 @@
         },
         "expects": [
             "ref expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "filename should not be empty"
         ]
     },
@@ -19141,6 +19487,7 @@
         },
         "expects": [
             "ref expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "filename expected string, received null"
         ]
     },
@@ -19165,6 +19512,7 @@
         },
         "expects": [
             "ref expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "extension expected string, received number"
         ]
     },
@@ -19188,6 +19536,7 @@
         },
         "expects": [
             "ref expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "extension required"
         ]
     },
@@ -19212,6 +19561,7 @@
         },
         "expects": [
             "ref expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "extension should not be empty"
         ]
     },
@@ -19236,6 +19586,7 @@
         },
         "expects": [
             "ref expected string, received null",
+            "mediaObjects has element 0 expected string, received object",
             "extension expected string, received null"
         ]
     },

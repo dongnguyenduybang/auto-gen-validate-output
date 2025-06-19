@@ -1,0 +1,857 @@
+{
+  "path": "/Message/MarkAsRead",
+  "className": "mark-as-read",
+  "allSteps": [
+    {
+      "type": null,
+      "status": true,
+      "stepName": "sendMessage",
+      "caseTitle": "Case 0",
+      "phase": "beforeAll"
+    }
+  ],
+  "failedTests": [
+    {
+      "testcase": 14,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    },
+    {
+      "testcase": 20,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2",
+        "messageId": ""
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "messageId invalid ulid",
+        "messageId should not be empty"
+      ]
+    },
+    {
+      "testcase": 58,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    },
+    {
+      "testcase": 72,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "messageId": 123
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    },
+    {
+      "testcase": 73,
+      "code": 403,
+      "body": {
+        "workspaceId": "0"
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    },
+    {
+      "testcase": 74,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "messageId": ""
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    },
+    {
+      "testcase": 75,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "messageId": null
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    },
+    {
+      "testcase": 76,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "messageId": "invalid_ULID"
+      },
+      "missing": [
+        "Could not resolve permission type"
+      ],
+      "extra": [
+        "Unsupported permission type"
+      ]
+    }
+  ],
+  "codedTest": [
+    {
+      "testcase": 1,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2",
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      }
+    },
+    {
+      "testcase": 2,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": 123,
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      }
+    },
+    {
+      "testcase": 3,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      }
+    },
+    {
+      "testcase": 4,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "",
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      }
+    },
+    {
+      "testcase": 5,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": null,
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      }
+    },
+    {
+      "testcase": 6,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "invalid_value",
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      }
+    },
+    {
+      "testcase": 7,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2",
+        "messageId": 123
+      }
+    },
+    {
+      "testcase": 8,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2"
+      }
+    },
+    {
+      "testcase": 9,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2",
+        "messageId": ""
+      }
+    },
+    {
+      "testcase": 10,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2",
+        "messageId": null
+      }
+    },
+    {
+      "testcase": 11,
+      "code": 403,
+      "body": {
+        "workspaceId": 123,
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2",
+        "messageId": "invalid_ULID"
+      }
+    },
+    {
+      "testcase": 12,
+      "code": 201,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2",
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      }
+    },
+    {
+      "testcase": 13,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      }
+    },
+    {
+      "testcase": 15,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      }
+    },
+    {
+      "testcase": 16,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": null,
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      }
+    },
+    {
+      "testcase": 17,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      }
+    },
+    {
+      "testcase": 18,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2",
+        "messageId": 123
+      }
+    },
+    {
+      "testcase": 19,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2"
+      }
+    },
+    {
+      "testcase": 21,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2",
+        "messageId": null
+      }
+    },
+    {
+      "testcase": 22,
+      "code": 400,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2",
+        "messageId": "invalid_ULID"
+      }
+    },
+    {
+      "testcase": 23,
+      "code": 403,
+      "body": {
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2",
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      }
+    },
+    {
+      "testcase": 24,
+      "code": 403,
+      "body": {
+        "channelId": 123,
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      }
+    },
+    {
+      "testcase": 25,
+      "code": 403,
+      "body": {
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      }
+    },
+    {
+      "testcase": 26,
+      "code": 403,
+      "body": {
+        "channelId": "",
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      }
+    },
+    {
+      "testcase": 27,
+      "code": 403,
+      "body": {
+        "channelId": null,
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      }
+    },
+    {
+      "testcase": 28,
+      "code": 403,
+      "body": {
+        "channelId": "invalid_value",
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      }
+    },
+    {
+      "testcase": 29,
+      "code": 403,
+      "body": {
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2",
+        "messageId": 123
+      }
+    },
+    {
+      "testcase": 30,
+      "code": 403,
+      "body": {
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2"
+      }
+    },
+    {
+      "testcase": 31,
+      "code": 403,
+      "body": {
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2",
+        "messageId": ""
+      }
+    },
+    {
+      "testcase": 32,
+      "code": 403,
+      "body": {
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2",
+        "messageId": null
+      }
+    },
+    {
+      "testcase": 33,
+      "code": 403,
+      "body": {
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2",
+        "messageId": "invalid_ULID"
+      }
+    },
+    {
+      "testcase": 34,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2",
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      }
+    },
+    {
+      "testcase": 35,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": 123,
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      }
+    },
+    {
+      "testcase": 36,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      }
+    },
+    {
+      "testcase": 37,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "",
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      }
+    },
+    {
+      "testcase": 38,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": null,
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      }
+    },
+    {
+      "testcase": 39,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "invalid_value",
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      }
+    },
+    {
+      "testcase": 40,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2",
+        "messageId": 123
+      }
+    },
+    {
+      "testcase": 41,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2"
+      }
+    },
+    {
+      "testcase": 42,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2",
+        "messageId": ""
+      }
+    },
+    {
+      "testcase": 43,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2",
+        "messageId": null
+      }
+    },
+    {
+      "testcase": 44,
+      "code": 403,
+      "body": {
+        "workspaceId": "",
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2",
+        "messageId": "invalid_ULID"
+      }
+    },
+    {
+      "testcase": 45,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2",
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      }
+    },
+    {
+      "testcase": 46,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": 123,
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      }
+    },
+    {
+      "testcase": 47,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      }
+    },
+    {
+      "testcase": 48,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "",
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      }
+    },
+    {
+      "testcase": 49,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": null,
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      }
+    },
+    {
+      "testcase": 50,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "invalid_value",
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      }
+    },
+    {
+      "testcase": 51,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2",
+        "messageId": 123
+      }
+    },
+    {
+      "testcase": 52,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2"
+      }
+    },
+    {
+      "testcase": 53,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2",
+        "messageId": ""
+      }
+    },
+    {
+      "testcase": 54,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2",
+        "messageId": null
+      }
+    },
+    {
+      "testcase": 55,
+      "code": 403,
+      "body": {
+        "workspaceId": null,
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2",
+        "messageId": "invalid_ULID"
+      }
+    },
+    {
+      "testcase": 56,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2",
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      }
+    },
+    {
+      "testcase": 57,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": 123,
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      }
+    },
+    {
+      "testcase": 59,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "",
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      }
+    },
+    {
+      "testcase": 60,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": null,
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      }
+    },
+    {
+      "testcase": 61,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "invalid_value",
+        "messageId": "01JY3DNJSYPNC110AVNP094TGV"
+      }
+    },
+    {
+      "testcase": 62,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2",
+        "messageId": 123
+      }
+    },
+    {
+      "testcase": 63,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2"
+      }
+    },
+    {
+      "testcase": 64,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2",
+        "messageId": ""
+      }
+    },
+    {
+      "testcase": 65,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2",
+        "messageId": null
+      }
+    },
+    {
+      "testcase": 66,
+      "code": 403,
+      "body": {
+        "workspaceId": "invalid_value",
+        "channelId": "01JY3DNHZQGC2Z0XQ087MHMQH2",
+        "messageId": "invalid_ULID"
+      }
+    },
+    {
+      "testcase": 67,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "messageId": 123
+      }
+    },
+    {
+      "testcase": 68,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123
+      }
+    },
+    {
+      "testcase": 69,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "messageId": ""
+      }
+    },
+    {
+      "testcase": 70,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "messageId": null
+      }
+    },
+    {
+      "testcase": 71,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": 123,
+        "messageId": "invalid_ULID"
+      }
+    },
+    {
+      "testcase": 77,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "messageId": 123
+      }
+    },
+    {
+      "testcase": 78,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": ""
+      }
+    },
+    {
+      "testcase": 79,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "messageId": ""
+      }
+    },
+    {
+      "testcase": 80,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "messageId": null
+      }
+    },
+    {
+      "testcase": 81,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "",
+        "messageId": "invalid_ULID"
+      }
+    },
+    {
+      "testcase": 82,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": null,
+        "messageId": 123
+      }
+    },
+    {
+      "testcase": 83,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": null
+      }
+    },
+    {
+      "testcase": 84,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": null,
+        "messageId": ""
+      }
+    },
+    {
+      "testcase": 85,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": null,
+        "messageId": null
+      }
+    },
+    {
+      "testcase": 86,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": null,
+        "messageId": "invalid_ULID"
+      }
+    },
+    {
+      "testcase": 87,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "messageId": 123
+      }
+    },
+    {
+      "testcase": 88,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value"
+      }
+    },
+    {
+      "testcase": 89,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "messageId": ""
+      }
+    },
+    {
+      "testcase": 90,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "messageId": null
+      }
+    },
+    {
+      "testcase": 91,
+      "code": 403,
+      "body": {
+        "workspaceId": "0",
+        "channelId": "invalid_value",
+        "messageId": "invalid_ULID"
+      }
+    }
+  ],
+  "warnings": [],
+  "passedTests": 83,
+  "totalTests": 91,
+  "failedStep": []
+}

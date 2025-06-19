@@ -1,0 +1,90 @@
+{
+  "path": "/Friend/Unfriend",
+  "className": "unfriend",
+  "allSteps": [
+    {
+      "type": null,
+      "status": true,
+      "stepName": "addFriend",
+      "caseTitle": "Case 0",
+      "phase": "beforeAll"
+    },
+    {
+      "type": null,
+      "status": true,
+      "stepName": "acceptFriendRequest",
+      "caseTitle": "Case 0",
+      "phase": "beforeAll"
+    }
+  ],
+  "failedTests": [
+    {
+      "testcase": 1,
+      "code": 403,
+      "body": {
+        "userId": 123
+      },
+      "missing": [
+        "Invalid rule"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 2,
+      "code": 403,
+      "body": {
+        "userId": "01JY3BTP1X3G911JVX1FM0TXF1"
+      },
+      "missing": [
+        "Invalid rule"
+      ],
+      "extra": []
+    },
+    {
+      "testcase": 4,
+      "code": 403,
+      "body": {
+        "userId": ""
+      },
+      "missing": [
+        "Invalid rule"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 6,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value"
+      },
+      "missing": [
+        "Invalid rule"
+      ],
+      "extra": [
+        "Unauthorized request"
+      ]
+    }
+  ],
+  "codedTest": [
+    {
+      "testcase": 3,
+      "code": 403,
+      "body": {}
+    },
+    {
+      "testcase": 5,
+      "code": 403,
+      "body": {
+        "userId": null
+      }
+    }
+  ],
+  "warnings": [],
+  "passedTests": 2,
+  "totalTests": 6,
+  "failedStep": []
+}

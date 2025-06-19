@@ -3,7 +3,7 @@
         "body": {
             "workspaceId": 123,
             "channelId": "{{channelId}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -14,7 +14,7 @@
         "body": {
             "workspaceId": 123,
             "channelId": 123,
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -24,7 +24,7 @@
     {
         "body": {
             "workspaceId": 123,
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -35,7 +35,7 @@
         "body": {
             "workspaceId": 123,
             "channelId": "",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -46,7 +46,7 @@
         "body": {
             "workspaceId": 123,
             "channelId": null,
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -57,7 +57,7 @@
         "body": {
             "workspaceId": 123,
             "channelId": "invalid_value",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -122,7 +122,7 @@
         "body": {
             "workspaceId": 123,
             "channelId": "{{channelId}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": 123
         },
         "expects": [
@@ -133,7 +133,7 @@
         "body": {
             "workspaceId": 123,
             "channelId": "{{channelId}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": ""
         },
         "expects": [
@@ -144,7 +144,7 @@
         "body": {
             "workspaceId": 123,
             "channelId": "{{channelId}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91"
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0"
         },
         "expects": [
             "Could not resolve permission type"
@@ -154,7 +154,7 @@
         "body": {
             "workspaceId": 123,
             "channelId": "{{channelId}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": null
         },
         "expects": [
@@ -165,7 +165,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": "{{channelId}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": []
@@ -174,7 +174,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": 123,
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -184,7 +184,7 @@
     {
         "body": {
             "workspaceId": "0",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -195,7 +195,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": "",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -206,7 +206,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": null,
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -217,7 +217,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": "invalid_value",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -283,7 +283,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": "{{channelId}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": 123
         },
         "expects": [
@@ -294,7 +294,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": "{{channelId}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": ""
         },
         "expects": [
@@ -305,7 +305,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": "{{channelId}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91"
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0"
         },
         "expects": [
             "ref required"
@@ -315,7 +315,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": "{{channelId}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": null
         },
         "expects": [
@@ -325,7 +325,7 @@
     {
         "body": {
             "channelId": "{{channelId}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -335,7 +335,7 @@
     {
         "body": {
             "channelId": 123,
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -344,7 +344,7 @@
     },
     {
         "body": {
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -354,7 +354,7 @@
     {
         "body": {
             "channelId": "",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -364,7 +364,7 @@
     {
         "body": {
             "channelId": null,
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -374,7 +374,7 @@
     {
         "body": {
             "channelId": "invalid_value",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -433,7 +433,7 @@
     {
         "body": {
             "channelId": "{{channelId}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": 123
         },
         "expects": [
@@ -443,7 +443,7 @@
     {
         "body": {
             "channelId": "{{channelId}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": ""
         },
         "expects": [
@@ -453,7 +453,7 @@
     {
         "body": {
             "channelId": "{{channelId}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91"
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0"
         },
         "expects": [
             "Could not resolve permission type"
@@ -462,7 +462,7 @@
     {
         "body": {
             "channelId": "{{channelId}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": null
         },
         "expects": [
@@ -473,7 +473,7 @@
         "body": {
             "workspaceId": "",
             "channelId": "{{channelId}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -484,7 +484,7 @@
         "body": {
             "workspaceId": "",
             "channelId": 123,
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -494,7 +494,7 @@
     {
         "body": {
             "workspaceId": "",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -505,7 +505,7 @@
         "body": {
             "workspaceId": "",
             "channelId": "",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -516,7 +516,7 @@
         "body": {
             "workspaceId": "",
             "channelId": null,
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -527,7 +527,7 @@
         "body": {
             "workspaceId": "",
             "channelId": "invalid_value",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -592,7 +592,7 @@
         "body": {
             "workspaceId": "",
             "channelId": "{{channelId}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": 123
         },
         "expects": [
@@ -603,7 +603,7 @@
         "body": {
             "workspaceId": "",
             "channelId": "{{channelId}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": ""
         },
         "expects": [
@@ -614,7 +614,7 @@
         "body": {
             "workspaceId": "",
             "channelId": "{{channelId}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91"
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0"
         },
         "expects": [
             "Could not resolve permission type"
@@ -624,7 +624,7 @@
         "body": {
             "workspaceId": "",
             "channelId": "{{channelId}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": null
         },
         "expects": [
@@ -635,7 +635,7 @@
         "body": {
             "workspaceId": null,
             "channelId": "{{channelId}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -646,7 +646,7 @@
         "body": {
             "workspaceId": null,
             "channelId": 123,
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -656,7 +656,7 @@
     {
         "body": {
             "workspaceId": null,
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -667,7 +667,7 @@
         "body": {
             "workspaceId": null,
             "channelId": "",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -678,7 +678,7 @@
         "body": {
             "workspaceId": null,
             "channelId": null,
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -689,7 +689,7 @@
         "body": {
             "workspaceId": null,
             "channelId": "invalid_value",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -754,7 +754,7 @@
         "body": {
             "workspaceId": null,
             "channelId": "{{channelId}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": 123
         },
         "expects": [
@@ -765,7 +765,7 @@
         "body": {
             "workspaceId": null,
             "channelId": "{{channelId}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": ""
         },
         "expects": [
@@ -776,7 +776,7 @@
         "body": {
             "workspaceId": null,
             "channelId": "{{channelId}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91"
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0"
         },
         "expects": [
             "Could not resolve permission type"
@@ -786,7 +786,7 @@
         "body": {
             "workspaceId": null,
             "channelId": "{{channelId}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": null
         },
         "expects": [
@@ -797,7 +797,7 @@
         "body": {
             "workspaceId": "invalid_value",
             "channelId": "{{channelId}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -808,7 +808,7 @@
         "body": {
             "workspaceId": "invalid_value",
             "channelId": 123,
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -818,7 +818,7 @@
     {
         "body": {
             "workspaceId": "invalid_value",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -829,7 +829,7 @@
         "body": {
             "workspaceId": "invalid_value",
             "channelId": "",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -840,7 +840,7 @@
         "body": {
             "workspaceId": "invalid_value",
             "channelId": null,
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -851,7 +851,7 @@
         "body": {
             "workspaceId": "invalid_value",
             "channelId": "invalid_value",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -916,7 +916,7 @@
         "body": {
             "workspaceId": "invalid_value",
             "channelId": "{{channelId}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": 123
         },
         "expects": [
@@ -927,7 +927,7 @@
         "body": {
             "workspaceId": "invalid_value",
             "channelId": "{{channelId}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": ""
         },
         "expects": [
@@ -938,7 +938,7 @@
         "body": {
             "workspaceId": "invalid_value",
             "channelId": "{{channelId}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91"
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0"
         },
         "expects": [
             "Invalid channel"
@@ -948,7 +948,7 @@
         "body": {
             "workspaceId": "invalid_value",
             "channelId": "{{channelId}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": null
         },
         "expects": [
@@ -1013,7 +1013,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": 123,
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": 123
         },
         "expects": [
@@ -1024,7 +1024,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": 123,
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": ""
         },
         "expects": [
@@ -1035,7 +1035,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": 123,
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91"
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0"
         },
         "expects": [
             "Could not resolve permission type"
@@ -1045,7 +1045,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": 123,
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": null
         },
         "expects": [
@@ -1104,7 +1104,7 @@
     {
         "body": {
             "workspaceId": "0",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": 123
         },
         "expects": [
@@ -1114,7 +1114,7 @@
     {
         "body": {
             "workspaceId": "0",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": ""
         },
         "expects": [
@@ -1124,7 +1124,7 @@
     {
         "body": {
             "workspaceId": "0",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91"
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0"
         },
         "expects": [
             "Unsupported permission type"
@@ -1133,7 +1133,7 @@
     {
         "body": {
             "workspaceId": "0",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": null
         },
         "expects": [
@@ -1198,7 +1198,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": "",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": 123
         },
         "expects": [
@@ -1209,7 +1209,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": "",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": ""
         },
         "expects": [
@@ -1220,7 +1220,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": "",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91"
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0"
         },
         "expects": [
             "Could not resolve permission type"
@@ -1230,7 +1230,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": "",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": null
         },
         "expects": [
@@ -1295,7 +1295,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": null,
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": 123
         },
         "expects": [
@@ -1306,7 +1306,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": null,
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": ""
         },
         "expects": [
@@ -1317,7 +1317,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": null,
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91"
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0"
         },
         "expects": [
             "Could not resolve permission type"
@@ -1327,7 +1327,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": null,
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": null
         },
         "expects": [
@@ -1392,7 +1392,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": "invalid_value",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": 123
         },
         "expects": [
@@ -1403,7 +1403,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": "invalid_value",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": ""
         },
         "expects": [
@@ -1414,7 +1414,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": "invalid_value",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91"
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0"
         },
         "expects": [
             "Invalid channel"
@@ -1424,7 +1424,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": "invalid_value",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": null
         },
         "expects": [

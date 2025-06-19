@@ -1,0 +1,85 @@
+{
+  "path": "/UserSetting/UnblockUser",
+  "className": "unblock-user",
+  "allSteps": [],
+  "failedTests": [
+    {
+      "testcase": 1,
+      "code": 400,
+      "body": {
+        "targetUserId": 123
+      },
+      "missing": [
+        "targetUserId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 2,
+      "code": 400,
+      "body": {
+        "targetUserId": "01JY3H47XHK1YHKN9H4ZJ4SDPJ"
+      },
+      "missing": [
+        "Invalid target user"
+      ],
+      "extra": []
+    },
+    {
+      "testcase": 3,
+      "code": 400,
+      "body": {},
+      "missing": [
+        "targetUserId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 4,
+      "code": 400,
+      "body": {
+        "targetUserId": ""
+      },
+      "missing": [
+        "targetUserId invalid ulid",
+        "targetUserId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 5,
+      "code": 400,
+      "body": {
+        "targetUserId": null
+      },
+      "missing": [
+        "targetUserId expected string, received null"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 6,
+      "code": 400,
+      "body": {
+        "targetUserId": "invalid_value"
+      },
+      "missing": [
+        "targetUserId invalid ulid"
+      ],
+      "extra": []
+    }
+  ],
+  "codedTest": [],
+  "warnings": [],
+  "passedTests": 0,
+  "totalTests": 6,
+  "failedStep": []
+}

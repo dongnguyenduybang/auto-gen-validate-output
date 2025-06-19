@@ -1,0 +1,67 @@
+{
+  "path": "/Friend/DeleteFriendRequest",
+  "className": "delete-friend-request",
+  "allSteps": [
+    {
+      "type": null,
+      "status": true,
+      "stepName": "addFriend",
+      "caseTitle": "Case 0",
+      "phase": "beforeAll"
+    }
+  ],
+  "failedTests": [
+    {
+      "testcase": 1,
+      "code": 403,
+      "body": {
+        "userId": 123
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    }
+  ],
+  "codedTest": [
+    {
+      "testcase": 2,
+      "code": 200,
+      "body": {
+        "userId": "01JY3BP5YN2PCA55ZJW70EZ3S1"
+      }
+    },
+    {
+      "testcase": 3,
+      "code": 403,
+      "body": {}
+    },
+    {
+      "testcase": 4,
+      "code": 403,
+      "body": {
+        "userId": ""
+      }
+    },
+    {
+      "testcase": 5,
+      "code": 403,
+      "body": {
+        "userId": null
+      }
+    },
+    {
+      "testcase": 6,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value"
+      }
+    }
+  ],
+  "warnings": [],
+  "passedTests": 5,
+  "totalTests": 6,
+  "failedStep": []
+}

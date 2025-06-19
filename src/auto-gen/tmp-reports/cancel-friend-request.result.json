@@ -1,0 +1,60 @@
+{
+  "path": "/Friend/CancelFriendRequest",
+  "className": "cancel-friend-request",
+  "allSteps": [
+    {
+      "type": null,
+      "status": true,
+      "stepName": "addFriend",
+      "caseTitle": "Case 0",
+      "phase": "beforeAll"
+    }
+  ],
+  "failedTests": [],
+  "codedTest": [
+    {
+      "testcase": 1,
+      "code": 403,
+      "body": {
+        "userId": 123
+      }
+    },
+    {
+      "testcase": 2,
+      "code": 201,
+      "body": {
+        "userId": "01JY3BN5F18CNG5PVQSPYBAP9R"
+      }
+    },
+    {
+      "testcase": 3,
+      "code": 403,
+      "body": {}
+    },
+    {
+      "testcase": 4,
+      "code": 403,
+      "body": {
+        "userId": ""
+      }
+    },
+    {
+      "testcase": 5,
+      "code": 403,
+      "body": {
+        "userId": null
+      }
+    },
+    {
+      "testcase": 6,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value"
+      }
+    }
+  ],
+  "warnings": [],
+  "passedTests": 6,
+  "totalTests": 6,
+  "failedStep": []
+}

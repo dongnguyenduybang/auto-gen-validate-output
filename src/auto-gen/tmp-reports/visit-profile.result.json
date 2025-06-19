@@ -1,0 +1,52 @@
+{
+  "path": "/UserProfile/VisitedProfile",
+  "className": "visit-profile",
+  "allSteps": [],
+  "failedTests": [],
+  "codedTest": [
+    {
+      "testcase": 1,
+      "code": 403,
+      "body": {
+        "userId": 123
+      }
+    },
+    {
+      "testcase": 2,
+      "code": 201,
+      "body": {
+        "userId": "01JY3H2WEGSHS4JTZ9BNT120YX"
+      }
+    },
+    {
+      "testcase": 3,
+      "code": 403,
+      "body": {}
+    },
+    {
+      "testcase": 4,
+      "code": 403,
+      "body": {
+        "userId": ""
+      }
+    },
+    {
+      "testcase": 5,
+      "code": 403,
+      "body": {
+        "userId": null
+      }
+    },
+    {
+      "testcase": 6,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value"
+      }
+    }
+  ],
+  "warnings": [],
+  "passedTests": 6,
+  "totalTests": 6,
+  "failedStep": []
+}

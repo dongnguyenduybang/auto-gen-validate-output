@@ -1,0 +1,595 @@
+{
+  "path": "/Message/DeleteDMMessagesOnlyMe",
+  "className": "delete-dm-messages-only-me",
+  "allSteps": [
+    {
+      "type": null,
+      "status": true,
+      "stepName": "sendDmMessage",
+      "caseTitle": "Case 0",
+      "phase": "beforeAll"
+    }
+  ],
+  "failedTests": [
+    {
+      "testcase": 1,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageIds": [
+          "01JY3F31XMGR9Y12GT5ZFYFCA7"
+        ]
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 2,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageIds": "not_an_array"
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 3,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageIds": [
+          123
+        ]
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 4,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageIds": [
+          "valid_string"
+        ]
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 5,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageIds": [
+          null
+        ]
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 6,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageIds": [
+          "01JY3DC7FCH3KBSTPBRW18WC7Y"
+        ]
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 7,
+      "code": 403,
+      "body": {
+        "userId": 123
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 8,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageIds": ""
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 9,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageIds": null
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 11,
+      "code": 400,
+      "body": {
+        "userId": "01JY3F30JWC449SK20DBMGCX4D",
+        "messageIds": "not_an_array"
+      },
+      "missing": [
+        "messageIds has element 0 invalid ulid"
+      ],
+      "extra": [
+        "messageIds expected array, received string"
+      ]
+    },
+    {
+      "testcase": 14,
+      "code": 400,
+      "body": {
+        "userId": "01JY3F30JWC449SK20DBMGCX4D",
+        "messageIds": [
+          null
+        ]
+      },
+      "missing": [
+        "messageIds required"
+      ],
+      "extra": [
+        "messageIds has element 0 expected string, received object",
+        "messageIds has element 0 invalid ulid"
+      ]
+    },
+    {
+      "testcase": 17,
+      "code": 400,
+      "body": {
+        "userId": "01JY3F30JWC449SK20DBMGCX4D",
+        "messageIds": ""
+      },
+      "missing": [
+        "messageIds has element 0 invalid ulid",
+        "messageIds has element 0 string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "messageIds expected array, received string",
+        "messageIds should not be empty"
+      ]
+    },
+    {
+      "testcase": 18,
+      "code": 400,
+      "body": {
+        "userId": "01JY3F30JWC449SK20DBMGCX4D",
+        "messageIds": null
+      },
+      "missing": [
+        "messageIds required"
+      ],
+      "extra": [
+        "messageIds expected array, received null"
+      ]
+    }
+  ],
+  "codedTest": [
+    {
+      "testcase": 10,
+      "code": 200,
+      "body": {
+        "userId": "01JY3F30JWC449SK20DBMGCX4D",
+        "messageIds": [
+          "01JY3F31XMGR9Y12GT5ZFYFCA7"
+        ]
+      }
+    },
+    {
+      "testcase": 13,
+      "code": 400,
+      "body": {
+        "userId": "01JY3F30JWC449SK20DBMGCX4D",
+        "messageIds": [
+          "valid_string"
+        ]
+      }
+    },
+    {
+      "testcase": 15,
+      "code": 404,
+      "body": {
+        "userId": "01JY3F30JWC449SK20DBMGCX4D",
+        "messageIds": [
+          "01JY3DC7FCH3KBSTPBRW18WC7Y"
+        ]
+      }
+    },
+    {
+      "testcase": 19,
+      "code": 403,
+      "body": {
+        "messageIds": [
+          "01JY3F31XMGR9Y12GT5ZFYFCA7"
+        ]
+      }
+    },
+    {
+      "testcase": 20,
+      "code": 403,
+      "body": {
+        "messageIds": "not_an_array"
+      }
+    },
+    {
+      "testcase": 21,
+      "code": 403,
+      "body": {
+        "messageIds": [
+          123
+        ]
+      }
+    },
+    {
+      "testcase": 22,
+      "code": 403,
+      "body": {
+        "messageIds": [
+          "valid_string"
+        ]
+      }
+    },
+    {
+      "testcase": 23,
+      "code": 403,
+      "body": {
+        "messageIds": [
+          null
+        ]
+      }
+    },
+    {
+      "testcase": 24,
+      "code": 403,
+      "body": {
+        "messageIds": [
+          "01JY3DC7FCH3KBSTPBRW18WC7Y"
+        ]
+      }
+    },
+    {
+      "testcase": 25,
+      "code": 403,
+      "body": {}
+    },
+    {
+      "testcase": 26,
+      "code": 403,
+      "body": {
+        "messageIds": ""
+      }
+    },
+    {
+      "testcase": 27,
+      "code": 403,
+      "body": {
+        "messageIds": null
+      }
+    },
+    {
+      "testcase": 28,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageIds": [
+          "01JY3F31XMGR9Y12GT5ZFYFCA7"
+        ]
+      }
+    },
+    {
+      "testcase": 29,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageIds": "not_an_array"
+      }
+    },
+    {
+      "testcase": 30,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageIds": [
+          123
+        ]
+      }
+    },
+    {
+      "testcase": 31,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageIds": [
+          "valid_string"
+        ]
+      }
+    },
+    {
+      "testcase": 32,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageIds": [
+          null
+        ]
+      }
+    },
+    {
+      "testcase": 33,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageIds": [
+          "01JY3DC7FCH3KBSTPBRW18WC7Y"
+        ]
+      }
+    },
+    {
+      "testcase": 34,
+      "code": 403,
+      "body": {
+        "userId": ""
+      }
+    },
+    {
+      "testcase": 35,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageIds": ""
+      }
+    },
+    {
+      "testcase": 36,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageIds": null
+      }
+    },
+    {
+      "testcase": 37,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageIds": [
+          "01JY3F31XMGR9Y12GT5ZFYFCA7"
+        ]
+      }
+    },
+    {
+      "testcase": 38,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageIds": "not_an_array"
+      }
+    },
+    {
+      "testcase": 39,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageIds": [
+          123
+        ]
+      }
+    },
+    {
+      "testcase": 40,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageIds": [
+          "valid_string"
+        ]
+      }
+    },
+    {
+      "testcase": 41,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageIds": [
+          null
+        ]
+      }
+    },
+    {
+      "testcase": 42,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageIds": [
+          "01JY3DC7FCH3KBSTPBRW18WC7Y"
+        ]
+      }
+    },
+    {
+      "testcase": 43,
+      "code": 403,
+      "body": {
+        "userId": null
+      }
+    },
+    {
+      "testcase": 44,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageIds": ""
+      }
+    },
+    {
+      "testcase": 45,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageIds": null
+      }
+    },
+    {
+      "testcase": 46,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageIds": [
+          "01JY3F31XMGR9Y12GT5ZFYFCA7"
+        ]
+      }
+    },
+    {
+      "testcase": 47,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageIds": "not_an_array"
+      }
+    },
+    {
+      "testcase": 48,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageIds": [
+          123
+        ]
+      }
+    },
+    {
+      "testcase": 49,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageIds": [
+          "valid_string"
+        ]
+      }
+    },
+    {
+      "testcase": 50,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageIds": [
+          null
+        ]
+      }
+    },
+    {
+      "testcase": 51,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageIds": [
+          "01JY3DC7FCH3KBSTPBRW18WC7Y"
+        ]
+      }
+    },
+    {
+      "testcase": 52,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value"
+      }
+    },
+    {
+      "testcase": 53,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageIds": ""
+      }
+    },
+    {
+      "testcase": 54,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageIds": null
+      }
+    }
+  ],
+  "warnings": [
+    {
+      "testcase": 12,
+      "code": 400,
+      "body": {
+        "userId": "01JY3F30JWC449SK20DBMGCX4D",
+        "messageIds": [
+          123
+        ]
+      },
+      "actualErrors": [
+        "messageIds has element 0 invalid ulid"
+      ],
+      "expectedErrors": [
+        "messageIds has element 0 expected string, received number",
+        "messageIds has element 0 invalid ulid"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 16,
+      "code": 400,
+      "body": {
+        "userId": "01JY3F30JWC449SK20DBMGCX4D"
+      },
+      "actualErrors": [
+        "messageIds required"
+      ],
+      "expectedErrors": [
+        "messageIds expected array, received undefined",
+        "messageIds required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    }
+  ],
+  "passedTests": 39,
+  "totalTests": 54,
+  "failedStep": []
+}

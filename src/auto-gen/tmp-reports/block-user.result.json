@@ -1,0 +1,82 @@
+{
+  "path": "/UserSetting/BlockUser",
+  "className": "block-user",
+  "allSteps": [],
+  "failedTests": [
+    {
+      "testcase": 1,
+      "code": 400,
+      "body": {
+        "targetUserId": 123
+      },
+      "missing": [
+        "targetUserId expected string, received number"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 3,
+      "code": 400,
+      "body": {},
+      "missing": [
+        "targetUserId required"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 4,
+      "code": 400,
+      "body": {
+        "targetUserId": ""
+      },
+      "missing": [
+        "targetUserId invalid ulid",
+        "targetUserId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 5,
+      "code": 400,
+      "body": {
+        "targetUserId": null
+      },
+      "missing": [
+        "targetUserId expected string, received null"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 6,
+      "code": 400,
+      "body": {
+        "targetUserId": "invalid_value"
+      },
+      "missing": [
+        "targetUserId invalid ulid"
+      ],
+      "extra": []
+    }
+  ],
+  "codedTest": [
+    {
+      "testcase": 2,
+      "code": 201,
+      "body": {
+        "targetUserId": "01JY3H3XDS3GAJ5DPNQ74CV3A2"
+      }
+    }
+  ],
+  "warnings": [],
+  "passedTests": 1,
+  "totalTests": 6,
+  "failedStep": []
+}

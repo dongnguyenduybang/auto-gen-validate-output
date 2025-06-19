@@ -1,0 +1,4290 @@
+{
+  "path": "/Message/SendDMLocation",
+  "className": "send-dm-location",
+  "allSteps": [],
+  "failedTests": [
+    {
+      "testcase": 27,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": null,
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "missing": [
+        "You have reached the limit of 3 messages for strangers"
+      ],
+      "extra": [
+        "content expected string, received null"
+      ]
+    },
+    {
+      "testcase": 33,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "missing": [
+        "You have reached the limit of 3 messages for strangers"
+      ],
+      "extra": [
+        "description should not be empty"
+      ]
+    },
+    {
+      "testcase": 34,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": null,
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "missing": [
+        "You have reached the limit of 3 messages for strangers"
+      ],
+      "extra": [
+        "description expected string, received null"
+      ]
+    },
+    {
+      "testcase": 147,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "",
+        "ref": "ref",
+        "description": "",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "missing": [
+        "You have reached the limit of 3 messages for strangers"
+      ],
+      "extra": [
+        "content should not be empty",
+        "content string must contain at least 1 character(s)",
+        "description should not be empty"
+      ]
+    },
+    {
+      "testcase": 148,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "",
+        "ref": "ref",
+        "description": null,
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "missing": [
+        "You have reached the limit of 3 messages for strangers"
+      ],
+      "extra": [
+        "content should not be empty",
+        "content string must contain at least 1 character(s)",
+        "description expected string, received null"
+      ]
+    },
+    {
+      "testcase": 177,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "ref": "ref",
+        "description": "",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "missing": [
+        "You have reached the limit of 3 messages for strangers"
+      ],
+      "extra": [
+        "content required",
+        "description should not be empty"
+      ]
+    },
+    {
+      "testcase": 178,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "ref": "ref",
+        "description": null,
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "missing": [
+        "You have reached the limit of 3 messages for strangers"
+      ],
+      "extra": [
+        "content required",
+        "description expected string, received null"
+      ]
+    },
+    {
+      "testcase": 192,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": null,
+        "ref": "ref",
+        "description": "",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "missing": [
+        "You have reached the limit of 3 messages for strangers"
+      ],
+      "extra": [
+        "content expected string, received null",
+        "description should not be empty"
+      ]
+    },
+    {
+      "testcase": 193,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": null,
+        "ref": "ref",
+        "description": null,
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "missing": [
+        "You have reached the limit of 3 messages for strangers"
+      ],
+      "extra": [
+        "content expected string, received null",
+        "description expected string, received null"
+      ]
+    }
+  ],
+  "codedTest": [
+    {
+      "testcase": 1,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 2,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "content": 123,
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 3,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "content": "",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 4,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 5,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 6,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "content": null,
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 7,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "content": "test DTO send message",
+        "ref": 123,
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 8,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "content": "test DTO send message",
+        "ref": "",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 9,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "content": "test DTO send message",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 10,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "content": "test DTO send message",
+        "ref": null,
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 11,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": 123,
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 12,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 13,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": null,
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 14,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": 123,
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 15,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 16,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 17,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": null,
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 18,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": 123
+      }
+    },
+    {
+      "testcase": 19,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": ""
+      }
+    },
+    {
+      "testcase": 20,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312"
+      }
+    },
+    {
+      "testcase": 21,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": null
+      }
+    },
+    {
+      "testcase": 22,
+      "code": 201,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 23,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": 123,
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 25,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 28,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": 123,
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 30,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 31,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": null,
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 32,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": 123,
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 35,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": 123,
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 37,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 38,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": null,
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 39,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": 123
+      }
+    },
+    {
+      "testcase": 41,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312"
+      }
+    },
+    {
+      "testcase": 42,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": null
+      }
+    },
+    {
+      "testcase": 43,
+      "code": 403,
+      "body": {
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 44,
+      "code": 403,
+      "body": {
+        "content": 123,
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 45,
+      "code": 403,
+      "body": {
+        "content": "",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 46,
+      "code": 403,
+      "body": {
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 47,
+      "code": 403,
+      "body": {
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 48,
+      "code": 403,
+      "body": {
+        "content": null,
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 49,
+      "code": 403,
+      "body": {
+        "content": "test DTO send message",
+        "ref": 123,
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 50,
+      "code": 403,
+      "body": {
+        "content": "test DTO send message",
+        "ref": "",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 51,
+      "code": 403,
+      "body": {
+        "content": "test DTO send message",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 52,
+      "code": 403,
+      "body": {
+        "content": "test DTO send message",
+        "ref": null,
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 53,
+      "code": 403,
+      "body": {
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": 123,
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 54,
+      "code": 403,
+      "body": {
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 55,
+      "code": 403,
+      "body": {
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": null,
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 56,
+      "code": 403,
+      "body": {
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": 123,
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 57,
+      "code": 403,
+      "body": {
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 58,
+      "code": 403,
+      "body": {
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 59,
+      "code": 403,
+      "body": {
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": null,
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 60,
+      "code": 403,
+      "body": {
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": 123
+      }
+    },
+    {
+      "testcase": 61,
+      "code": 403,
+      "body": {
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": ""
+      }
+    },
+    {
+      "testcase": 62,
+      "code": 403,
+      "body": {
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312"
+      }
+    },
+    {
+      "testcase": 63,
+      "code": 403,
+      "body": {
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": null
+      }
+    },
+    {
+      "testcase": 64,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 65,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "content": 123,
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 66,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "content": "",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 67,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 68,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 69,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "content": null,
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 70,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "content": "test DTO send message",
+        "ref": 123,
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 71,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "content": "test DTO send message",
+        "ref": "",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 72,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "content": "test DTO send message",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 73,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "content": "test DTO send message",
+        "ref": null,
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 74,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": 123,
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 75,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 76,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": null,
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 77,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": 123,
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 78,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 79,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 80,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": null,
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 81,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": 123
+      }
+    },
+    {
+      "testcase": 82,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": ""
+      }
+    },
+    {
+      "testcase": 83,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312"
+      }
+    },
+    {
+      "testcase": 84,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": null
+      }
+    },
+    {
+      "testcase": 85,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 86,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "content": 123,
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 87,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "content": "",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 88,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 89,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 90,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "content": null,
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 91,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "content": "test DTO send message",
+        "ref": 123,
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 92,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "content": "test DTO send message",
+        "ref": "",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 93,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "content": "test DTO send message",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 94,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "content": "test DTO send message",
+        "ref": null,
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 95,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": 123,
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 96,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 97,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": null,
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 98,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": 123,
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 99,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 100,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 101,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": null,
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 102,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": 123
+      }
+    },
+    {
+      "testcase": 103,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": ""
+      }
+    },
+    {
+      "testcase": 104,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312"
+      }
+    },
+    {
+      "testcase": 105,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": null
+      }
+    },
+    {
+      "testcase": 106,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 107,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "content": 123,
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 108,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "content": "",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 109,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 110,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 111,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "content": null,
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 112,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "content": "test DTO send message",
+        "ref": 123,
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 113,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "content": "test DTO send message",
+        "ref": "",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 114,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "content": "test DTO send message",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 115,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "content": "test DTO send message",
+        "ref": null,
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 116,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": 123,
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 117,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 118,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": null,
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 119,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": 123,
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 120,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 121,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 122,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": null,
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 123,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": 123
+      }
+    },
+    {
+      "testcase": 124,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": ""
+      }
+    },
+    {
+      "testcase": 125,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312"
+      }
+    },
+    {
+      "testcase": 126,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": null
+      }
+    },
+    {
+      "testcase": 127,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": 123,
+        "ref": 123,
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 129,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": 123,
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 130,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": 123,
+        "ref": null,
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 131,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": 123,
+        "ref": "ref",
+        "description": 123,
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 134,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": 123,
+        "ref": "ref",
+        "description": "description",
+        "latitude": 123,
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 136,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": 123,
+        "ref": "ref",
+        "description": "description",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 137,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": 123,
+        "ref": "ref",
+        "description": "description",
+        "latitude": null,
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 138,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": 123,
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": 123
+      }
+    },
+    {
+      "testcase": 140,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": 123,
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312"
+      }
+    },
+    {
+      "testcase": 141,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": 123,
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": null
+      }
+    },
+    {
+      "testcase": 157,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": 123,
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 159,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 160,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": null,
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 161,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": "ref",
+        "description": 123,
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 164,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": "ref",
+        "description": "description",
+        "latitude": 123,
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 166,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": "ref",
+        "description": "description",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 167,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": "ref",
+        "description": "description",
+        "latitude": null,
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 168,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": 123
+      }
+    },
+    {
+      "testcase": 170,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312"
+      }
+    },
+    {
+      "testcase": 171,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": null
+      }
+    },
+    {
+      "testcase": 202,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": 123,
+        "description": 123,
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 205,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": 123,
+        "description": "description",
+        "latitude": 123,
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 207,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": 123,
+        "description": "description",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 208,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": 123,
+        "description": "description",
+        "latitude": null,
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 209,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": 123,
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": 123
+      }
+    },
+    {
+      "testcase": 211,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": 123,
+        "description": "description",
+        "latitude": "10.0324312"
+      }
+    },
+    {
+      "testcase": 212,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": 123,
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": null
+      }
+    },
+    {
+      "testcase": 224,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "description": 123,
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 227,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "description": "description",
+        "latitude": 123,
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 229,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "description": "description",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 230,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "description": "description",
+        "latitude": null,
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 231,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": 123
+      }
+    },
+    {
+      "testcase": 233,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "description": "description",
+        "latitude": "10.0324312"
+      }
+    },
+    {
+      "testcase": 234,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": null
+      }
+    },
+    {
+      "testcase": 235,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": null,
+        "description": 123,
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 238,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": null,
+        "description": "description",
+        "latitude": 123,
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 240,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": null,
+        "description": "description",
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 241,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": null,
+        "description": "description",
+        "latitude": null,
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 242,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": null,
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": 123
+      }
+    },
+    {
+      "testcase": 244,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": null,
+        "description": "description",
+        "latitude": "10.0324312"
+      }
+    },
+    {
+      "testcase": 245,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": null,
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": null
+      }
+    },
+    {
+      "testcase": 246,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": 123,
+        "latitude": 123,
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 248,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": 123,
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 249,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": 123,
+        "latitude": null,
+        "longitude": "105.7833368"
+      }
+    },
+    {
+      "testcase": 250,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": 123,
+        "latitude": "10.0324312",
+        "longitude": 123
+      }
+    },
+    {
+      "testcase": 252,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": 123,
+        "latitude": "10.0324312"
+      }
+    },
+    {
+      "testcase": 253,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": 123,
+        "latitude": "10.0324312",
+        "longitude": null
+      }
+    },
+    {
+      "testcase": 270,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": 123,
+        "longitude": 123
+      }
+    },
+    {
+      "testcase": 272,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": 123
+      }
+    },
+    {
+      "testcase": 273,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": 123,
+        "longitude": null
+      }
+    },
+    {
+      "testcase": 278,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "longitude": 123
+      }
+    },
+    {
+      "testcase": 280,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description"
+      }
+    },
+    {
+      "testcase": 281,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "longitude": null
+      }
+    },
+    {
+      "testcase": 282,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": null,
+        "longitude": 123
+      }
+    },
+    {
+      "testcase": 284,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": null
+      }
+    },
+    {
+      "testcase": 285,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": null,
+        "longitude": null
+      }
+    }
+  ],
+  "warnings": [
+    {
+      "testcase": 24,
+      "code": 201,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [],
+      "expectedErrors": [
+        "content should not be empty",
+        "content string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 26,
+      "code": 201,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [],
+      "expectedErrors": [
+        "content required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 29,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "ref string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 36,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "latitude string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "latitude should not be empty",
+        "latitude string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 40,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": ""
+      },
+      "actualErrors": [
+        "longitude string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "longitude should not be empty",
+        "longitude string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 128,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": 123,
+        "ref": "",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "content expected string, received number",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "content expected string, received number",
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 132,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": 123,
+        "ref": "ref",
+        "description": "",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "content expected string, received number"
+      ],
+      "expectedErrors": [
+        "content expected string, received number",
+        "description should not be empty"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 133,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": 123,
+        "ref": "ref",
+        "description": null,
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "content expected string, received number"
+      ],
+      "expectedErrors": [
+        "content expected string, received number",
+        "description expected string, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 135,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": 123,
+        "ref": "ref",
+        "description": "description",
+        "latitude": "",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "content expected string, received number",
+        "latitude string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "content expected string, received number",
+        "latitude should not be empty",
+        "latitude string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 139,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": 123,
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": ""
+      },
+      "actualErrors": [
+        "content expected string, received number",
+        "longitude string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "content expected string, received number",
+        "longitude should not be empty",
+        "longitude string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 142,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "",
+        "ref": 123,
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "ref expected string, received number"
+      ],
+      "expectedErrors": [
+        "content should not be empty",
+        "content string must contain at least 1 character(s)",
+        "ref expected string, received number"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 143,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "",
+        "ref": "",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "ref string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "content should not be empty",
+        "content string must contain at least 1 character(s)",
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 144,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "ref required"
+      ],
+      "expectedErrors": [
+        "content should not be empty",
+        "content string must contain at least 1 character(s)",
+        "ref required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 145,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "",
+        "ref": null,
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "ref expected string, received null"
+      ],
+      "expectedErrors": [
+        "content should not be empty",
+        "content string must contain at least 1 character(s)",
+        "ref expected string, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 146,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "",
+        "ref": "ref",
+        "description": 123,
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "description expected string, received number"
+      ],
+      "expectedErrors": [
+        "content should not be empty",
+        "content string must contain at least 1 character(s)",
+        "description expected string, received number"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 149,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "",
+        "ref": "ref",
+        "description": "description",
+        "latitude": 123,
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "latitude expected string, received number"
+      ],
+      "expectedErrors": [
+        "content should not be empty",
+        "content string must contain at least 1 character(s)",
+        "latitude expected string, received number"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 150,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "latitude string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "content should not be empty",
+        "content string must contain at least 1 character(s)",
+        "latitude should not be empty",
+        "latitude string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 151,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "",
+        "ref": "ref",
+        "description": "description",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "latitude required"
+      ],
+      "expectedErrors": [
+        "content should not be empty",
+        "content string must contain at least 1 character(s)",
+        "latitude required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 152,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "",
+        "ref": "ref",
+        "description": "description",
+        "latitude": null,
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "latitude expected string, received null"
+      ],
+      "expectedErrors": [
+        "content should not be empty",
+        "content string must contain at least 1 character(s)",
+        "latitude expected string, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 153,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": 123
+      },
+      "actualErrors": [
+        "longitude expected string, received number"
+      ],
+      "expectedErrors": [
+        "content should not be empty",
+        "content string must contain at least 1 character(s)",
+        "longitude expected string, received number"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 154,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": ""
+      },
+      "actualErrors": [
+        "longitude string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "content should not be empty",
+        "content string must contain at least 1 character(s)",
+        "longitude should not be empty",
+        "longitude string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 155,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312"
+      },
+      "actualErrors": [
+        "longitude required"
+      ],
+      "expectedErrors": [
+        "content should not be empty",
+        "content string must contain at least 1 character(s)",
+        "longitude required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 156,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": null
+      },
+      "actualErrors": [
+        "longitude expected string, received null"
+      ],
+      "expectedErrors": [
+        "content should not be empty",
+        "content string must contain at least 1 character(s)",
+        "longitude expected string, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 158,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": "",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "content string must contain at most 2000 character(s)",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "content string must contain at most 2000 character(s)",
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 162,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": "ref",
+        "description": "",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "content string must contain at most 2000 character(s)"
+      ],
+      "expectedErrors": [
+        "content string must contain at most 2000 character(s)",
+        "description should not be empty"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 163,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": "ref",
+        "description": null,
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "content string must contain at most 2000 character(s)"
+      ],
+      "expectedErrors": [
+        "content string must contain at most 2000 character(s)",
+        "description expected string, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 165,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "content string must contain at most 2000 character(s)",
+        "latitude string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "content string must contain at most 2000 character(s)",
+        "latitude should not be empty",
+        "latitude string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 169,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": ""
+      },
+      "actualErrors": [
+        "content string must contain at most 2000 character(s)",
+        "longitude string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "content string must contain at most 2000 character(s)",
+        "longitude should not be empty",
+        "longitude string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 172,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "ref": 123,
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "ref expected string, received number"
+      ],
+      "expectedErrors": [
+        "content required",
+        "ref expected string, received number"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 173,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "ref": "",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "ref string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "content required",
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 174,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "ref required"
+      ],
+      "expectedErrors": [
+        "content required",
+        "ref required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 175,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "ref": null,
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "ref expected string, received null"
+      ],
+      "expectedErrors": [
+        "content required",
+        "ref expected string, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 176,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "ref": "ref",
+        "description": 123,
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "description expected string, received number"
+      ],
+      "expectedErrors": [
+        "content required",
+        "description expected string, received number"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 179,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "ref": "ref",
+        "description": "description",
+        "latitude": 123,
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "latitude expected string, received number"
+      ],
+      "expectedErrors": [
+        "content required",
+        "latitude expected string, received number"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 180,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "latitude string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "content required",
+        "latitude should not be empty",
+        "latitude string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 181,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "ref": "ref",
+        "description": "description",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "latitude required"
+      ],
+      "expectedErrors": [
+        "content required",
+        "latitude required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 182,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "ref": "ref",
+        "description": "description",
+        "latitude": null,
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "latitude expected string, received null"
+      ],
+      "expectedErrors": [
+        "content required",
+        "latitude expected string, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 183,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": 123
+      },
+      "actualErrors": [
+        "longitude expected string, received number"
+      ],
+      "expectedErrors": [
+        "content required",
+        "longitude expected string, received number"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 184,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": ""
+      },
+      "actualErrors": [
+        "longitude string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "content required",
+        "longitude should not be empty",
+        "longitude string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 185,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312"
+      },
+      "actualErrors": [
+        "longitude required"
+      ],
+      "expectedErrors": [
+        "content required",
+        "longitude required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 186,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": null
+      },
+      "actualErrors": [
+        "longitude expected string, received null"
+      ],
+      "expectedErrors": [
+        "content required",
+        "longitude expected string, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 187,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": null,
+        "ref": 123,
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "ref expected string, received number"
+      ],
+      "expectedErrors": [
+        "content expected string, received null",
+        "ref expected string, received number"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 188,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": null,
+        "ref": "",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "ref string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "content expected string, received null",
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 189,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": null,
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "ref required"
+      ],
+      "expectedErrors": [
+        "content expected string, received null",
+        "ref required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 190,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": null,
+        "ref": null,
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "ref expected string, received null"
+      ],
+      "expectedErrors": [
+        "content expected string, received null",
+        "ref expected string, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 191,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": null,
+        "ref": "ref",
+        "description": 123,
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "description expected string, received number"
+      ],
+      "expectedErrors": [
+        "content expected string, received null",
+        "description expected string, received number"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 194,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": null,
+        "ref": "ref",
+        "description": "description",
+        "latitude": 123,
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "latitude expected string, received number"
+      ],
+      "expectedErrors": [
+        "content expected string, received null",
+        "latitude expected string, received number"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 195,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": null,
+        "ref": "ref",
+        "description": "description",
+        "latitude": "",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "latitude string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "content expected string, received null",
+        "latitude should not be empty",
+        "latitude string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 196,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": null,
+        "ref": "ref",
+        "description": "description",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "latitude required"
+      ],
+      "expectedErrors": [
+        "content expected string, received null",
+        "latitude required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 197,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": null,
+        "ref": "ref",
+        "description": "description",
+        "latitude": null,
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "latitude expected string, received null"
+      ],
+      "expectedErrors": [
+        "content expected string, received null",
+        "latitude expected string, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 198,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": null,
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": 123
+      },
+      "actualErrors": [
+        "longitude expected string, received number"
+      ],
+      "expectedErrors": [
+        "content expected string, received null",
+        "longitude expected string, received number"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 199,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": null,
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": ""
+      },
+      "actualErrors": [
+        "longitude string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "content expected string, received null",
+        "longitude should not be empty",
+        "longitude string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 200,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": null,
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312"
+      },
+      "actualErrors": [
+        "longitude required"
+      ],
+      "expectedErrors": [
+        "content expected string, received null",
+        "longitude required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 201,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": null,
+        "ref": "ref",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": null
+      },
+      "actualErrors": [
+        "longitude expected string, received null"
+      ],
+      "expectedErrors": [
+        "content expected string, received null",
+        "longitude expected string, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 203,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": 123,
+        "description": "",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "ref expected string, received number"
+      ],
+      "expectedErrors": [
+        "description should not be empty",
+        "ref expected string, received number"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 204,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": 123,
+        "description": null,
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "ref expected string, received number"
+      ],
+      "expectedErrors": [
+        "description expected string, received null",
+        "ref expected string, received number"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 206,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": 123,
+        "description": "description",
+        "latitude": "",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "latitude string must contain at least 1 character(s)",
+        "ref expected string, received number"
+      ],
+      "expectedErrors": [
+        "latitude should not be empty",
+        "latitude string must contain at least 1 character(s)",
+        "ref expected string, received number"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 210,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": 123,
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": ""
+      },
+      "actualErrors": [
+        "longitude string must contain at least 1 character(s)",
+        "ref expected string, received number"
+      ],
+      "expectedErrors": [
+        "longitude should not be empty",
+        "longitude string must contain at least 1 character(s)",
+        "ref expected string, received number"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 213,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "",
+        "description": 123,
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "description expected string, received number",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "description expected string, received number",
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 214,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "",
+        "description": "",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "ref string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "description should not be empty",
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 215,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "",
+        "description": null,
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "ref string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "description expected string, received null",
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 216,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "",
+        "description": "description",
+        "latitude": 123,
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "latitude expected string, received number",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "latitude expected string, received number",
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 217,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "",
+        "description": "description",
+        "latitude": "",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "latitude string must contain at least 1 character(s)",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "latitude should not be empty",
+        "latitude string must contain at least 1 character(s)",
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 218,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "",
+        "description": "description",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "latitude required",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "latitude required",
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 219,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "",
+        "description": "description",
+        "latitude": null,
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "latitude expected string, received null",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "latitude expected string, received null",
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 220,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": 123
+      },
+      "actualErrors": [
+        "longitude expected string, received number",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "longitude expected string, received number",
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 221,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": ""
+      },
+      "actualErrors": [
+        "longitude string must contain at least 1 character(s)",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "longitude should not be empty",
+        "longitude string must contain at least 1 character(s)",
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 222,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "",
+        "description": "description",
+        "latitude": "10.0324312"
+      },
+      "actualErrors": [
+        "longitude required",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "longitude required",
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 223,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": null
+      },
+      "actualErrors": [
+        "longitude expected string, received null",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "longitude expected string, received null",
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 225,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "description": "",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "ref required"
+      ],
+      "expectedErrors": [
+        "description should not be empty",
+        "ref required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 226,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "description": null,
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "ref required"
+      ],
+      "expectedErrors": [
+        "description expected string, received null",
+        "ref required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 228,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "description": "description",
+        "latitude": "",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "latitude string must contain at least 1 character(s)",
+        "ref required"
+      ],
+      "expectedErrors": [
+        "latitude should not be empty",
+        "latitude string must contain at least 1 character(s)",
+        "ref required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 232,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": ""
+      },
+      "actualErrors": [
+        "longitude string must contain at least 1 character(s)",
+        "ref required"
+      ],
+      "expectedErrors": [
+        "longitude should not be empty",
+        "longitude string must contain at least 1 character(s)",
+        "ref required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 236,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": null,
+        "description": "",
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "ref expected string, received null"
+      ],
+      "expectedErrors": [
+        "description should not be empty",
+        "ref expected string, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 237,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": null,
+        "description": null,
+        "latitude": "10.0324312",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "ref expected string, received null"
+      ],
+      "expectedErrors": [
+        "description expected string, received null",
+        "ref expected string, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 239,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": null,
+        "description": "description",
+        "latitude": "",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "latitude string must contain at least 1 character(s)",
+        "ref expected string, received null"
+      ],
+      "expectedErrors": [
+        "latitude should not be empty",
+        "latitude string must contain at least 1 character(s)",
+        "ref expected string, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 243,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": null,
+        "description": "description",
+        "latitude": "10.0324312",
+        "longitude": ""
+      },
+      "actualErrors": [
+        "longitude string must contain at least 1 character(s)",
+        "ref expected string, received null"
+      ],
+      "expectedErrors": [
+        "longitude should not be empty",
+        "longitude string must contain at least 1 character(s)",
+        "ref expected string, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 247,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": 123,
+        "latitude": "",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "description expected string, received number",
+        "latitude string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "description expected string, received number",
+        "latitude should not be empty",
+        "latitude string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 251,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": 123,
+        "latitude": "10.0324312",
+        "longitude": ""
+      },
+      "actualErrors": [
+        "description expected string, received number",
+        "longitude string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "description expected string, received number",
+        "longitude should not be empty",
+        "longitude string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 254,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "",
+        "latitude": 123,
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "latitude expected string, received number"
+      ],
+      "expectedErrors": [
+        "description should not be empty",
+        "latitude expected string, received number"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 255,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "",
+        "latitude": "",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "latitude string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "description should not be empty",
+        "latitude should not be empty",
+        "latitude string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 256,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "latitude required"
+      ],
+      "expectedErrors": [
+        "description should not be empty",
+        "latitude required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 257,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "",
+        "latitude": null,
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "latitude expected string, received null"
+      ],
+      "expectedErrors": [
+        "description should not be empty",
+        "latitude expected string, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 258,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "",
+        "latitude": "10.0324312",
+        "longitude": 123
+      },
+      "actualErrors": [
+        "longitude expected string, received number"
+      ],
+      "expectedErrors": [
+        "description should not be empty",
+        "longitude expected string, received number"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 259,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "",
+        "latitude": "10.0324312",
+        "longitude": ""
+      },
+      "actualErrors": [
+        "longitude string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "description should not be empty",
+        "longitude should not be empty",
+        "longitude string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 260,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "",
+        "latitude": "10.0324312"
+      },
+      "actualErrors": [
+        "longitude required"
+      ],
+      "expectedErrors": [
+        "description should not be empty",
+        "longitude required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 261,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "",
+        "latitude": "10.0324312",
+        "longitude": null
+      },
+      "actualErrors": [
+        "longitude expected string, received null"
+      ],
+      "expectedErrors": [
+        "description should not be empty",
+        "longitude expected string, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 262,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": null,
+        "latitude": 123,
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "latitude expected string, received number"
+      ],
+      "expectedErrors": [
+        "description expected string, received null",
+        "latitude expected string, received number"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 263,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": null,
+        "latitude": "",
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "latitude string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "description expected string, received null",
+        "latitude should not be empty",
+        "latitude string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 264,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": null,
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "latitude required"
+      ],
+      "expectedErrors": [
+        "description expected string, received null",
+        "latitude required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 265,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": null,
+        "latitude": null,
+        "longitude": "105.7833368"
+      },
+      "actualErrors": [
+        "latitude expected string, received null"
+      ],
+      "expectedErrors": [
+        "description expected string, received null",
+        "latitude expected string, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 266,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": null,
+        "latitude": "10.0324312",
+        "longitude": 123
+      },
+      "actualErrors": [
+        "longitude expected string, received number"
+      ],
+      "expectedErrors": [
+        "description expected string, received null",
+        "longitude expected string, received number"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 267,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": null,
+        "latitude": "10.0324312",
+        "longitude": ""
+      },
+      "actualErrors": [
+        "longitude string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "description expected string, received null",
+        "longitude should not be empty",
+        "longitude string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 268,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": null,
+        "latitude": "10.0324312"
+      },
+      "actualErrors": [
+        "longitude required"
+      ],
+      "expectedErrors": [
+        "description expected string, received null",
+        "longitude required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 269,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": null,
+        "latitude": "10.0324312",
+        "longitude": null
+      },
+      "actualErrors": [
+        "longitude expected string, received null"
+      ],
+      "expectedErrors": [
+        "description expected string, received null",
+        "longitude expected string, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 271,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": 123,
+        "longitude": ""
+      },
+      "actualErrors": [
+        "latitude expected string, received number",
+        "longitude string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "latitude expected string, received number",
+        "longitude should not be empty",
+        "longitude string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 274,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "",
+        "longitude": 123
+      },
+      "actualErrors": [
+        "latitude string must contain at least 1 character(s)",
+        "longitude expected string, received number"
+      ],
+      "expectedErrors": [
+        "latitude should not be empty",
+        "latitude string must contain at least 1 character(s)",
+        "longitude expected string, received number"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 275,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "",
+        "longitude": ""
+      },
+      "actualErrors": [
+        "latitude string must contain at least 1 character(s)",
+        "longitude string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "latitude should not be empty",
+        "latitude string must contain at least 1 character(s)",
+        "longitude should not be empty",
+        "longitude string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 276,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": ""
+      },
+      "actualErrors": [
+        "latitude string must contain at least 1 character(s)",
+        "longitude required"
+      ],
+      "expectedErrors": [
+        "latitude should not be empty",
+        "latitude string must contain at least 1 character(s)",
+        "longitude required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 277,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": "",
+        "longitude": null
+      },
+      "actualErrors": [
+        "latitude string must contain at least 1 character(s)",
+        "longitude expected string, received null"
+      ],
+      "expectedErrors": [
+        "latitude should not be empty",
+        "latitude string must contain at least 1 character(s)",
+        "longitude expected string, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 279,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "longitude": ""
+      },
+      "actualErrors": [
+        "latitude required",
+        "longitude string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "latitude required",
+        "longitude should not be empty",
+        "longitude string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 283,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FFWQ8EX0JYQ4Y136Q3896",
+        "content": "test DTO send message",
+        "ref": "ref",
+        "description": "description",
+        "latitude": null,
+        "longitude": ""
+      },
+      "actualErrors": [
+        "latitude expected string, received null",
+        "longitude string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "latitude expected string, received null",
+        "longitude should not be empty",
+        "longitude string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    }
+  ],
+  "passedTests": 174,
+  "totalTests": 285,
+  "failedStep": []
+}

@@ -1,0 +1,66 @@
+=== Request Test Report for block-user ===
+• Host: N/A
+• Endpoint: /UserSetting/BlockUser
+• Date: 19/06/2025, 14:38:11
+
+=== Execution Steps ===
+
+=== Test Summary ===
+✅ Passed: 1
+❌ Failed: 5
+⚠️ Warnings: 0
+📊 Total: 6
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 0
+ 🟢 201: 1
+ 🟠 400: 0
+ 🟠 403: 0
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Warnings ===
+✅ No warnings
+
+=== Unique Errors ===
+ 🟣 1. Could not resolve permission type (Occurred: 4 times)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #1
+     ├─ Status: 400
+     ├─ Body: {"targetUserId":123}
+     ├─ Actual: targetUserId expected string, received number
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 2. Case #3
+     ├─ Status: 400
+     ├─ Body: {}
+     ├─ Actual: targetUserId required
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 3. Case #4
+     ├─ Status: 400
+     ├─ Body: {"targetUserId":""}
+     ├─ Actual: targetUserId invalid ulid, targetUserId string must contain at least 1 character(s)
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 4. Case #5
+     ├─ Status: 400
+     ├─ Body: {"targetUserId":null}
+     ├─ Actual: targetUserId expected string, received null
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 5. Case #6
+     ├─ Status: 400
+     ├─ Body: {"targetUserId":"invalid_value"}
+     ├─ Actual: targetUserId invalid ulid
+     ├─ Expected: None
+     └─ Details: No details
+
+=== End of Report ===

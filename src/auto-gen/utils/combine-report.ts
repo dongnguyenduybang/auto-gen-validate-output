@@ -68,7 +68,7 @@ function generateSummary(
     statusCodes: {
       200: filterByCode(codedTests, 200).length,
       201: filterByCode(codedTests, 201).length,
-      400: filterByCode(codedTests, 400).length, 
+      400: filterByCode(codedTests, 400).length,
       403: filterByCode(codedTests, 403).length,
       500: filterByCode(failedTests, 500).length,
     },
@@ -104,6 +104,9 @@ async function combineReports(className: string) {
 
   const results = parseTestResults(reportDir, reportFiles);
 
+  // Kiểm tra có case fail hay không
+  const noFailedTests = hasNoFailedTests(results);
+
   const combinedFailedTests = results.map(extractFailedTests).flat();
   const combinedCodedTest = results.map(extractCodedTests).flat();
   const combinedFailedStep = results.map(extractFailedSteps).flat();
@@ -130,11 +133,14 @@ async function combineReports(className: string) {
     combinedWarnings
   );
 
+  // Xác định thư mục output dựa trên có case fail hay không
+  const outputBaseDir = path.join(__dirname, '../test-requests/.reports');
   const outputDir = path.join(
-    __dirname,
-    '../test-requests/.reports',
-    className,
+    outputBaseDir,
+    noFailedTests ? 'success-reports' : 'failed-reports',
+    className
   );
+  
   ensureDirExists(outputDir);
 
   const reportFileName = `${className}-combined-${getTime()}.report.txt`;
@@ -143,6 +149,7 @@ async function combineReports(className: string) {
   try {
     fs.writeFileSync(reportPath, reportContent, 'utf-8');
     console.log(`📄 Combined report generated: ${reportPath}`);
+    console.log(`ℹ️ Report classified as: ${noFailedTests ? 'SUCCESS (no failed tests)' : 'FAILED (has failed tests)'}`);
     // cleanupTempFiles(reportDir, reportFiles);
   } catch (error) {
     console.error(`Error writing combined report to ${reportPath}:`, error);
@@ -151,7 +158,7 @@ async function combineReports(className: string) {
 
 export async function generateAllReports(dtoName?: string): Promise<void> {
   const reportDir = path.join(__dirname, '../tmp-reports');
-  
+
   // Nếu có truyền dtoName => chỉ gen report cho DTO đó
   if (dtoName) {
     console.log(`Generating report for single DTO: ${dtoName}`);
@@ -184,8 +191,8 @@ export async function generateAllReports(dtoName?: string): Promise<void> {
 
   for (const file of jsonFiles) {
     // Giả sử tên file có dạng: "dtoName-report.json" hoặc "dtoName.json"
-const dtoName = file.split('.')[0]; // Lấy phần trước dấu '.' đầu tiên
-    
+    const dtoName = file.split('.')[0]; // Lấy phần trước dấu '.' đầu tiên
+
     if (!dtoMap[dtoName]) {
       dtoMap[dtoName] = [];
     }
@@ -196,7 +203,7 @@ const dtoName = file.split('.')[0]; // Lấy phần trước dấu '.' đầu ti
   for (const [dtoName, files] of Object.entries(dtoMap)) {
     console.log(`\n🚀 Generating report for DTO: ${dtoName}`);
     console.log(`📄 Files: ${files.join(', ')}`);
-    
+
     try {
       await combineReports(dtoName);
       console.log(`✅ Successfully generated report for ${dtoName}`);
@@ -206,4 +213,8 @@ const dtoName = file.split('.')[0]; // Lấy phần trước dấu '.' đầu ti
   }
 
   console.log('\n🎉 All reports generated successfully!');
+}
+
+function hasNoFailedTests(results: TestResult[]): boolean {
+  return results.every(result => result.failedTests.length === 0);
 }

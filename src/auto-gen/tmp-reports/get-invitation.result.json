@@ -1,0 +1,75 @@
+{
+  "path": "/InvitationView/GetInvitation",
+  "className": "get-invitation",
+  "allSteps": [
+    {
+      "type": null,
+      "status": true,
+      "stepName": "createInvitation",
+      "caseTitle": "Case 0",
+      "phase": "beforeAll"
+    }
+  ],
+  "failedTests": [
+    {
+      "testcase": 1,
+      "code": 404,
+      "body": {
+        "code": 123
+      },
+      "missing": [
+        "Failed to get invitation"
+      ],
+      "extra": [
+        "code expected string, received number"
+      ]
+    },
+    {
+      "testcase": 5,
+      "code": 400,
+      "body": {
+        "code": null
+      },
+      "missing": [
+        "code required"
+      ],
+      "extra": [
+        "code expected string, received null"
+      ]
+    }
+  ],
+  "codedTest": [
+    {
+      "testcase": 2,
+      "code": 200,
+      "body": {
+        "code": "bbmwnHnx16P20LJ"
+      }
+    },
+    {
+      "testcase": 4,
+      "code": 400,
+      "body": {}
+    }
+  ],
+  "warnings": [
+    {
+      "testcase": 3,
+      "code": 400,
+      "body": {
+        "code": ""
+      },
+      "actualErrors": [
+        "code string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "code should not be empty",
+        "code string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    }
+  ],
+  "passedTests": 2,
+  "totalTests": 5,
+  "failedStep": []
+}

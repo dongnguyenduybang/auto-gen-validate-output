@@ -1,0 +1,456 @@
+{
+  "path": "/RingbackTone/RingbackToneRename",
+  "className": "ring-back-tone-rename",
+  "allSteps": [
+    {
+      "type": null,
+      "status": true,
+      "stepName": "ringBackToneCreate",
+      "caseTitle": "Case 0",
+      "phase": "beforeAll"
+    }
+  ],
+  "failedTests": [
+    {
+      "testcase": 1,
+      "code": 400,
+      "body": {
+        "name": 123,
+        "ringbackToneId": "{{ringbackToneId}}"
+      },
+      "missing": [
+        "name expected string, received number",
+        "ringbackToneId invalid ulid"
+      ],
+      "extra": [
+        "name expected string, received number"
+      ]
+    },
+    {
+      "testcase": 4,
+      "code": 400,
+      "body": {
+        "name": 123,
+        "ringbackToneId": ""
+      },
+      "missing": [
+        "name expected string, received number",
+        "ringbackToneId invalid ulid",
+        "ringbackToneId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "name expected string, received number",
+        "ringbackToneId invalid ulid",
+        "ringbackToneId should not be empty"
+      ]
+    },
+    {
+      "testcase": 7,
+      "code": 400,
+      "body": {
+        "name": "rename nhac cho  ",
+        "ringbackToneId": "{{ringbackToneId}}"
+      },
+      "missing": [
+        "ringbackToneId invalid ulid"
+      ],
+      "extra": []
+    },
+    {
+      "testcase": 10,
+      "code": 400,
+      "body": {
+        "name": "rename nhac cho  ",
+        "ringbackToneId": ""
+      },
+      "missing": [
+        "ringbackToneId invalid ulid",
+        "ringbackToneId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "ringbackToneId invalid ulid",
+        "ringbackToneId should not be empty"
+      ]
+    },
+    {
+      "testcase": 13,
+      "code": 400,
+      "body": {
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ringbackToneId": "{{ringbackToneId}}"
+      },
+      "missing": [
+        "ringbackToneId invalid ulid"
+      ],
+      "extra": [
+        "name string must contain at most 50 character(s)"
+      ]
+    },
+    {
+      "testcase": 16,
+      "code": 400,
+      "body": {
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ringbackToneId": ""
+      },
+      "missing": [
+        "ringbackToneId invalid ulid",
+        "ringbackToneId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "name string must contain at most 50 character(s)",
+        "ringbackToneId invalid ulid",
+        "ringbackToneId should not be empty"
+      ]
+    },
+    {
+      "testcase": 19,
+      "code": 400,
+      "body": {
+        "ringbackToneId": "{{ringbackToneId}}"
+      },
+      "missing": [
+        "name required",
+        "ringbackToneId invalid ulid"
+      ],
+      "extra": [
+        "name required"
+      ]
+    },
+    {
+      "testcase": 22,
+      "code": 400,
+      "body": {
+        "ringbackToneId": ""
+      },
+      "missing": [
+        "name required",
+        "ringbackToneId invalid ulid",
+        "ringbackToneId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "name required",
+        "ringbackToneId invalid ulid",
+        "ringbackToneId should not be empty"
+      ]
+    },
+    {
+      "testcase": 25,
+      "code": 400,
+      "body": {
+        "name": "",
+        "ringbackToneId": "{{ringbackToneId}}"
+      },
+      "missing": [
+        "name string must contain at least 1 character(s)",
+        "ringbackToneId invalid ulid"
+      ],
+      "extra": [
+        "name should not be empty"
+      ]
+    },
+    {
+      "testcase": 26,
+      "code": 400,
+      "body": {
+        "name": "",
+        "ringbackToneId": 123
+      },
+      "missing": [
+        "name string must contain at least 1 character(s)",
+        "ringbackToneId expected string, received number"
+      ],
+      "extra": [
+        "name should not be empty",
+        "ringbackToneId expected string, received number"
+      ]
+    },
+    {
+      "testcase": 27,
+      "code": 400,
+      "body": {
+        "name": ""
+      },
+      "missing": [
+        "name string must contain at least 1 character(s)",
+        "ringbackToneId required"
+      ],
+      "extra": [
+        "name should not be empty",
+        "ringbackToneId required"
+      ]
+    },
+    {
+      "testcase": 28,
+      "code": 400,
+      "body": {
+        "name": "",
+        "ringbackToneId": ""
+      },
+      "missing": [
+        "name string must contain at least 1 character(s)",
+        "ringbackToneId invalid ulid",
+        "ringbackToneId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "name should not be empty",
+        "ringbackToneId invalid ulid",
+        "ringbackToneId should not be empty"
+      ]
+    },
+    {
+      "testcase": 29,
+      "code": 400,
+      "body": {
+        "name": "",
+        "ringbackToneId": null
+      },
+      "missing": [
+        "name string must contain at least 1 character(s)",
+        "ringbackToneId expected string, received null"
+      ],
+      "extra": [
+        "name should not be empty",
+        "ringbackToneId expected string, received null"
+      ]
+    },
+    {
+      "testcase": 30,
+      "code": 400,
+      "body": {
+        "name": "",
+        "ringbackToneId": "invalid_ULID"
+      },
+      "missing": [
+        "name string must contain at least 1 character(s)",
+        "ringbackToneId invalid ulid"
+      ],
+      "extra": [
+        "name should not be empty",
+        "ringbackToneId invalid ulid"
+      ]
+    },
+    {
+      "testcase": 31,
+      "code": 400,
+      "body": {
+        "name": null,
+        "ringbackToneId": "{{ringbackToneId}}"
+      },
+      "missing": [
+        "name expected string, received null",
+        "ringbackToneId invalid ulid"
+      ],
+      "extra": [
+        "name expected string, received null"
+      ]
+    },
+    {
+      "testcase": 34,
+      "code": 400,
+      "body": {
+        "name": null,
+        "ringbackToneId": ""
+      },
+      "missing": [
+        "name expected string, received null",
+        "ringbackToneId invalid ulid",
+        "ringbackToneId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "name expected string, received null",
+        "ringbackToneId invalid ulid",
+        "ringbackToneId should not be empty"
+      ]
+    }
+  ],
+  "codedTest": [
+    {
+      "testcase": 2,
+      "code": 400,
+      "body": {
+        "name": 123,
+        "ringbackToneId": 123
+      }
+    },
+    {
+      "testcase": 3,
+      "code": 400,
+      "body": {
+        "name": 123
+      }
+    },
+    {
+      "testcase": 5,
+      "code": 400,
+      "body": {
+        "name": 123,
+        "ringbackToneId": null
+      }
+    },
+    {
+      "testcase": 6,
+      "code": 400,
+      "body": {
+        "name": 123,
+        "ringbackToneId": "invalid_ULID"
+      }
+    },
+    {
+      "testcase": 8,
+      "code": 400,
+      "body": {
+        "name": "rename nhac cho  ",
+        "ringbackToneId": 123
+      }
+    },
+    {
+      "testcase": 9,
+      "code": 400,
+      "body": {
+        "name": "rename nhac cho  "
+      }
+    },
+    {
+      "testcase": 11,
+      "code": 400,
+      "body": {
+        "name": "rename nhac cho  ",
+        "ringbackToneId": null
+      }
+    },
+    {
+      "testcase": 12,
+      "code": 400,
+      "body": {
+        "name": "rename nhac cho  ",
+        "ringbackToneId": "invalid_ULID"
+      }
+    },
+    {
+      "testcase": 20,
+      "code": 400,
+      "body": {
+        "ringbackToneId": 123
+      }
+    },
+    {
+      "testcase": 21,
+      "code": 400,
+      "body": {}
+    },
+    {
+      "testcase": 23,
+      "code": 400,
+      "body": {
+        "ringbackToneId": null
+      }
+    },
+    {
+      "testcase": 24,
+      "code": 400,
+      "body": {
+        "ringbackToneId": "invalid_ULID"
+      }
+    },
+    {
+      "testcase": 32,
+      "code": 400,
+      "body": {
+        "name": null,
+        "ringbackToneId": 123
+      }
+    },
+    {
+      "testcase": 33,
+      "code": 400,
+      "body": {
+        "name": null
+      }
+    },
+    {
+      "testcase": 35,
+      "code": 400,
+      "body": {
+        "name": null,
+        "ringbackToneId": null
+      }
+    },
+    {
+      "testcase": 36,
+      "code": 400,
+      "body": {
+        "name": null,
+        "ringbackToneId": "invalid_ULID"
+      }
+    }
+  ],
+  "warnings": [
+    {
+      "testcase": 14,
+      "code": 400,
+      "body": {
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ringbackToneId": 123
+      },
+      "actualErrors": [
+        "ringbackToneId expected string, received number"
+      ],
+      "expectedErrors": [
+        "name string must contain at most 50 character(s)",
+        "ringbackToneId expected string, received number"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 15,
+      "code": 400,
+      "body": {
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "actualErrors": [
+        "ringbackToneId required"
+      ],
+      "expectedErrors": [
+        "name string must contain at most 50 character(s)",
+        "ringbackToneId required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 17,
+      "code": 400,
+      "body": {
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ringbackToneId": null
+      },
+      "actualErrors": [
+        "ringbackToneId expected string, received null"
+      ],
+      "expectedErrors": [
+        "name string must contain at most 50 character(s)",
+        "ringbackToneId expected string, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 18,
+      "code": 400,
+      "body": {
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ringbackToneId": "invalid_ULID"
+      },
+      "actualErrors": [
+        "ringbackToneId invalid ulid"
+      ],
+      "expectedErrors": [
+        "name string must contain at most 50 character(s)",
+        "ringbackToneId invalid ulid"
+      ],
+      "message": "Actual errors includes of expected errors"
+    }
+  ],
+  "passedTests": 16,
+  "totalTests": 36,
+  "failedStep": []
+}

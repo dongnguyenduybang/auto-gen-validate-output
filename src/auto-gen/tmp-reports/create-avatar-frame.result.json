@@ -1,0 +1,75 @@
+{
+  "path": "/AvatarFrame/CreateAvatarFrame",
+  "className": "create-avatar-frame",
+  "allSteps": [],
+  "failedTests": [
+    {
+      "testcase": 1,
+      "code": 403,
+      "body": {
+        "avatarFramePath": 123
+      },
+      "missing": [
+        "Invalid rule"
+      ],
+      "extra": [
+        "avatarFramePath expected string, received number"
+      ]
+    },
+    {
+      "testcase": 2,
+      "code": 403,
+      "body": {
+        "avatarFramePath": "https://fs.ugc.ziicdn.net/01JEWASZD3TK58P25Y1QJSYRPC/heic_300kB.heic"
+      },
+      "missing": [
+        "Invalid rule"
+      ],
+      "extra": []
+    },
+    {
+      "testcase": 3,
+      "code": 403,
+      "body": {},
+      "missing": [
+        "Invalid rule"
+      ],
+      "extra": [
+        "avatarFramePath invalid url",
+        "avatarFramePath required"
+      ]
+    },
+    {
+      "testcase": 4,
+      "code": 403,
+      "body": {
+        "avatarFramePath": ""
+      },
+      "missing": [
+        "Invalid rule"
+      ],
+      "extra": [
+        "avatarFramePath invalid url",
+        "avatarFramePath should not be empty"
+      ]
+    },
+    {
+      "testcase": 5,
+      "code": 403,
+      "body": {
+        "avatarFramePath": null
+      },
+      "missing": [
+        "Invalid rule"
+      ],
+      "extra": [
+        "avatarFramePath expected string, received null"
+      ]
+    }
+  ],
+  "codedTest": [],
+  "warnings": [],
+  "passedTests": 0,
+  "totalTests": 5,
+  "failedStep": []
+}

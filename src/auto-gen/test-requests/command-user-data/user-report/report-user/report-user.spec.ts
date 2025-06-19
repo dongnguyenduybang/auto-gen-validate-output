@@ -135,8 +135,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -263,8 +263,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -391,8 +391,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -519,8 +519,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -647,8 +647,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -775,8 +775,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -903,8 +903,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -1031,8 +1031,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -1159,8 +1159,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -1287,8 +1287,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -1415,8 +1415,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -1543,8 +1543,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -1671,8 +1671,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -1799,8 +1799,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -1927,8 +1927,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -2055,8 +2055,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -2183,8 +2183,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -2311,8 +2311,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -2439,8 +2439,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -2567,8 +2567,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -2695,8 +2695,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -2823,8 +2823,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -2951,8 +2951,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -3079,8 +3079,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -3207,8 +3207,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -3335,8 +3335,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -3463,8 +3463,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -3591,8 +3591,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -3719,8 +3719,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -3847,8 +3847,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -3975,8 +3975,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -4103,8 +4103,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -4231,8 +4231,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -4359,8 +4359,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -4487,8 +4487,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -4615,8 +4615,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -4743,8 +4743,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -4871,8 +4871,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -4999,8 +4999,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -5127,8 +5127,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -5255,8 +5255,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -5383,8 +5383,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -5511,8 +5511,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -5639,8 +5639,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -5767,8 +5767,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -5895,8 +5895,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -6023,8 +6023,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -6151,8 +6151,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -6279,8 +6279,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -6407,8 +6407,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -6535,8 +6535,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -6663,8 +6663,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -6791,8 +6791,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -6919,8 +6919,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -7047,8 +7047,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -7175,8 +7175,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -7303,8 +7303,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -7431,8 +7431,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -7559,8 +7559,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -7687,8 +7687,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -7815,8 +7815,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -7943,8 +7943,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -8071,8 +8071,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -8199,8 +8199,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -8327,8 +8327,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -8455,8 +8455,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -8583,8 +8583,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -8711,8 +8711,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -8839,8 +8839,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -8967,8 +8967,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -9095,8 +9095,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -9223,8 +9223,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -9351,8 +9351,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -9479,8 +9479,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -9607,8 +9607,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -9735,8 +9735,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -9863,8 +9863,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -9991,8 +9991,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -10119,8 +10119,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -10247,8 +10247,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -10375,8 +10375,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -10503,8 +10503,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -10631,8 +10631,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -10759,8 +10759,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -10887,8 +10887,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -11015,8 +11015,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -11143,8 +11143,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -11271,8 +11271,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -11399,8 +11399,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -11527,8 +11527,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -11655,8 +11655,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -11783,8 +11783,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -11911,8 +11911,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -12039,8 +12039,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -12167,8 +12167,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -12295,8 +12295,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -12423,8 +12423,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -12551,8 +12551,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -12679,8 +12679,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -12807,8 +12807,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -12935,8 +12935,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -13063,8 +13063,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -13191,8 +13191,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -13319,8 +13319,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -13447,8 +13447,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -13575,8 +13575,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -13703,8 +13703,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -13831,8 +13831,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -13959,8 +13959,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;
@@ -14087,8 +14087,8 @@
                         testcase: testNumber,
                         code: response.status,
                         body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                        missing: softExpectDetails,
+                        extra: expectJson,
                     });
                 }
                 break;

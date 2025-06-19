@@ -1,0 +1,1788 @@
+{
+  "path": "/Message/QuoteDMMessage",
+  "className": "quote-dm-message",
+  "allSteps": [
+    {
+      "type": null,
+      "status": true,
+      "stepName": "sendDmMessage",
+      "caseTitle": "Case 0",
+      "phase": "beforeAll"
+    }
+  ],
+  "failedTests": [
+    {
+      "testcase": 19,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "",
+        "content": "test DTO quote message",
+        "ref": "ref"
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "messageId invalid ulid",
+        "messageId should not be empty"
+      ]
+    },
+    {
+      "testcase": 109,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "",
+        "content": 123,
+        "ref": "ref"
+      },
+      "missing": [
+        "content expected string, received number",
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "content expected string, received number",
+        "messageId invalid ulid",
+        "messageId should not be empty"
+      ]
+    },
+    {
+      "testcase": 110,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "",
+        "content": "",
+        "ref": "ref"
+      },
+      "missing": [
+        "content string must contain at least 1 character(s)",
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "content should not be empty",
+        "content string must contain at least 1 character(s)",
+        "messageId invalid ulid",
+        "messageId should not be empty"
+      ]
+    },
+    {
+      "testcase": 111,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": "ref"
+      },
+      "missing": [
+        "content string must contain at most 2000 character(s)",
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "content string must contain at most 2000 character(s)",
+        "messageId invalid ulid",
+        "messageId should not be empty"
+      ]
+    },
+    {
+      "testcase": 112,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "",
+        "ref": "ref"
+      },
+      "missing": [
+        "content required",
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "content required",
+        "messageId invalid ulid",
+        "messageId should not be empty"
+      ]
+    },
+    {
+      "testcase": 113,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "",
+        "content": null,
+        "ref": "ref"
+      },
+      "missing": [
+        "content expected string, received null",
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "content expected string, received null",
+        "messageId invalid ulid",
+        "messageId should not be empty"
+      ]
+    },
+    {
+      "testcase": 114,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "",
+        "content": "test DTO quote message",
+        "ref": 123
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)",
+        "ref expected string, received number"
+      ],
+      "extra": [
+        "messageId invalid ulid",
+        "messageId should not be empty",
+        "ref expected string, received number"
+      ]
+    },
+    {
+      "testcase": 115,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "",
+        "content": "test DTO quote message",
+        "ref": ""
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "messageId invalid ulid",
+        "messageId should not be empty",
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ]
+    },
+    {
+      "testcase": 116,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "",
+        "content": "test DTO quote message"
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)",
+        "ref required"
+      ],
+      "extra": [
+        "messageId invalid ulid",
+        "messageId should not be empty",
+        "ref required"
+      ]
+    },
+    {
+      "testcase": 117,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "",
+        "content": "test DTO quote message",
+        "ref": null
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)",
+        "ref expected string, received null"
+      ],
+      "extra": [
+        "messageId invalid ulid",
+        "messageId should not be empty",
+        "ref expected string, received null"
+      ]
+    }
+  ],
+  "codedTest": [
+    {
+      "testcase": 1,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 2,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": 123,
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 3,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 4,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "",
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 5,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": null,
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 6,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "invalid_ULID",
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 7,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": 123,
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 8,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 9,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 10,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 11,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": null,
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 12,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "test DTO quote message",
+        "ref": 123
+      }
+    },
+    {
+      "testcase": 13,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "test DTO quote message",
+        "ref": ""
+      }
+    },
+    {
+      "testcase": 14,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "test DTO quote message"
+      }
+    },
+    {
+      "testcase": 15,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "test DTO quote message",
+        "ref": null
+      }
+    },
+    {
+      "testcase": 16,
+      "code": 201,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 17,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": 123,
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 18,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 20,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": null,
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 21,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "invalid_ULID",
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 22,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": 123,
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 24,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 25,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 26,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": null,
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 27,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "test DTO quote message",
+        "ref": 123
+      }
+    },
+    {
+      "testcase": 29,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "test DTO quote message"
+      }
+    },
+    {
+      "testcase": 30,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "test DTO quote message",
+        "ref": null
+      }
+    },
+    {
+      "testcase": 31,
+      "code": 403,
+      "body": {
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 32,
+      "code": 403,
+      "body": {
+        "messageId": 123,
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 33,
+      "code": 403,
+      "body": {
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 34,
+      "code": 403,
+      "body": {
+        "messageId": "",
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 35,
+      "code": 403,
+      "body": {
+        "messageId": null,
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 36,
+      "code": 403,
+      "body": {
+        "messageId": "invalid_ULID",
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 37,
+      "code": 403,
+      "body": {
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": 123,
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 38,
+      "code": 403,
+      "body": {
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 39,
+      "code": 403,
+      "body": {
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 40,
+      "code": 403,
+      "body": {
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 41,
+      "code": 403,
+      "body": {
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": null,
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 42,
+      "code": 403,
+      "body": {
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "test DTO quote message",
+        "ref": 123
+      }
+    },
+    {
+      "testcase": 43,
+      "code": 403,
+      "body": {
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "test DTO quote message",
+        "ref": ""
+      }
+    },
+    {
+      "testcase": 44,
+      "code": 403,
+      "body": {
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "test DTO quote message"
+      }
+    },
+    {
+      "testcase": 45,
+      "code": 403,
+      "body": {
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "test DTO quote message",
+        "ref": null
+      }
+    },
+    {
+      "testcase": 46,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 47,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": 123,
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 48,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 49,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "",
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 50,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": null,
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 51,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "invalid_ULID",
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 52,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": 123,
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 53,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 54,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 55,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 56,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": null,
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 57,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "test DTO quote message",
+        "ref": 123
+      }
+    },
+    {
+      "testcase": 58,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "test DTO quote message",
+        "ref": ""
+      }
+    },
+    {
+      "testcase": 59,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "test DTO quote message"
+      }
+    },
+    {
+      "testcase": 60,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "test DTO quote message",
+        "ref": null
+      }
+    },
+    {
+      "testcase": 61,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 62,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": 123,
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 63,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 64,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "",
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 65,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": null,
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 66,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "invalid_ULID",
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 67,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": 123,
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 68,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 69,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 70,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 71,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": null,
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 72,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "test DTO quote message",
+        "ref": 123
+      }
+    },
+    {
+      "testcase": 73,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "test DTO quote message",
+        "ref": ""
+      }
+    },
+    {
+      "testcase": 74,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "test DTO quote message"
+      }
+    },
+    {
+      "testcase": 75,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "test DTO quote message",
+        "ref": null
+      }
+    },
+    {
+      "testcase": 76,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 77,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": 123,
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 78,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 79,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "",
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 80,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": null,
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 81,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "invalid_ULID",
+        "content": "test DTO quote message",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 82,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": 123,
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 83,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 84,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 85,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 86,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": null,
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 87,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "test DTO quote message",
+        "ref": 123
+      }
+    },
+    {
+      "testcase": 88,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "test DTO quote message",
+        "ref": ""
+      }
+    },
+    {
+      "testcase": 89,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "test DTO quote message"
+      }
+    },
+    {
+      "testcase": 90,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "test DTO quote message",
+        "ref": null
+      }
+    },
+    {
+      "testcase": 91,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": 123,
+        "content": 123,
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 93,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": 123,
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 94,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": 123,
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 95,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": 123,
+        "content": null,
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 96,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": 123,
+        "content": "test DTO quote message",
+        "ref": 123
+      }
+    },
+    {
+      "testcase": 98,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": 123,
+        "content": "test DTO quote message"
+      }
+    },
+    {
+      "testcase": 99,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": 123,
+        "content": "test DTO quote message",
+        "ref": null
+      }
+    },
+    {
+      "testcase": 100,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "content": 123,
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 102,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 103,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 104,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "content": null,
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 105,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "content": "test DTO quote message",
+        "ref": 123
+      }
+    },
+    {
+      "testcase": 107,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "content": "test DTO quote message"
+      }
+    },
+    {
+      "testcase": 108,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "content": "test DTO quote message",
+        "ref": null
+      }
+    },
+    {
+      "testcase": 118,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": null,
+        "content": 123,
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 120,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": null,
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 121,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": null,
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 122,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": null,
+        "content": null,
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 123,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": null,
+        "content": "test DTO quote message",
+        "ref": 123
+      }
+    },
+    {
+      "testcase": 125,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": null,
+        "content": "test DTO quote message"
+      }
+    },
+    {
+      "testcase": 126,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": null,
+        "content": "test DTO quote message",
+        "ref": null
+      }
+    },
+    {
+      "testcase": 127,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "invalid_ULID",
+        "content": 123,
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 129,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "invalid_ULID",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 130,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "invalid_ULID",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 131,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "invalid_ULID",
+        "content": null,
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 132,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "invalid_ULID",
+        "content": "test DTO quote message",
+        "ref": 123
+      }
+    },
+    {
+      "testcase": 134,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "invalid_ULID",
+        "content": "test DTO quote message"
+      }
+    },
+    {
+      "testcase": 135,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "invalid_ULID",
+        "content": "test DTO quote message",
+        "ref": null
+      }
+    },
+    {
+      "testcase": 136,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": 123,
+        "ref": 123
+      }
+    },
+    {
+      "testcase": 138,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": 123
+      }
+    },
+    {
+      "testcase": 139,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": 123,
+        "ref": null
+      }
+    },
+    {
+      "testcase": 144,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": 123
+      }
+    },
+    {
+      "testcase": 146,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    {
+      "testcase": 147,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": null
+      }
+    },
+    {
+      "testcase": 148,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "ref": 123
+      }
+    },
+    {
+      "testcase": 150,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5"
+      }
+    },
+    {
+      "testcase": 151,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "ref": null
+      }
+    },
+    {
+      "testcase": 152,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": null,
+        "ref": 123
+      }
+    },
+    {
+      "testcase": 154,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": null
+      }
+    },
+    {
+      "testcase": 155,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": null,
+        "ref": null
+      }
+    }
+  ],
+  "warnings": [
+    {
+      "testcase": 23,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "",
+        "ref": "ref"
+      },
+      "actualErrors": [
+        "content string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "content should not be empty",
+        "content string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 28,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "test DTO quote message",
+        "ref": ""
+      },
+      "actualErrors": [
+        "ref string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 92,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": 123,
+        "content": "",
+        "ref": "ref"
+      },
+      "actualErrors": [
+        "content string must contain at least 1 character(s)",
+        "messageId expected string, received number"
+      ],
+      "expectedErrors": [
+        "content should not be empty",
+        "content string must contain at least 1 character(s)",
+        "messageId expected string, received number"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 97,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": 123,
+        "content": "test DTO quote message",
+        "ref": ""
+      },
+      "actualErrors": [
+        "messageId expected string, received number",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "messageId expected string, received number",
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 101,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "content": "",
+        "ref": "ref"
+      },
+      "actualErrors": [
+        "content string must contain at least 1 character(s)",
+        "messageId required"
+      ],
+      "expectedErrors": [
+        "content should not be empty",
+        "content string must contain at least 1 character(s)",
+        "messageId required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 106,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "content": "test DTO quote message",
+        "ref": ""
+      },
+      "actualErrors": [
+        "messageId required",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "messageId required",
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 119,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": null,
+        "content": "",
+        "ref": "ref"
+      },
+      "actualErrors": [
+        "content string must contain at least 1 character(s)",
+        "messageId expected string, received null"
+      ],
+      "expectedErrors": [
+        "content should not be empty",
+        "content string must contain at least 1 character(s)",
+        "messageId expected string, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 124,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": null,
+        "content": "test DTO quote message",
+        "ref": ""
+      },
+      "actualErrors": [
+        "messageId expected string, received null",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "messageId expected string, received null",
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 128,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "invalid_ULID",
+        "content": "",
+        "ref": "ref"
+      },
+      "actualErrors": [
+        "content string must contain at least 1 character(s)",
+        "messageId invalid ulid"
+      ],
+      "expectedErrors": [
+        "content should not be empty",
+        "content string must contain at least 1 character(s)",
+        "messageId invalid ulid"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 133,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "invalid_ULID",
+        "content": "test DTO quote message",
+        "ref": ""
+      },
+      "actualErrors": [
+        "messageId invalid ulid",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "messageId invalid ulid",
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 137,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": 123,
+        "ref": ""
+      },
+      "actualErrors": [
+        "content expected string, received number",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "content expected string, received number",
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 140,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "",
+        "ref": 123
+      },
+      "actualErrors": [
+        "content string must contain at least 1 character(s)",
+        "ref expected string, received number"
+      ],
+      "expectedErrors": [
+        "content should not be empty",
+        "content string must contain at least 1 character(s)",
+        "ref expected string, received number"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 141,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "",
+        "ref": ""
+      },
+      "actualErrors": [
+        "content string must contain at least 1 character(s)",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "content should not be empty",
+        "content string must contain at least 1 character(s)",
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 142,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": ""
+      },
+      "actualErrors": [
+        "content string must contain at least 1 character(s)",
+        "ref required"
+      ],
+      "expectedErrors": [
+        "content should not be empty",
+        "content string must contain at least 1 character(s)",
+        "ref required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 143,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "",
+        "ref": null
+      },
+      "actualErrors": [
+        "content string must contain at least 1 character(s)",
+        "ref expected string, received null"
+      ],
+      "expectedErrors": [
+        "content should not be empty",
+        "content string must contain at least 1 character(s)",
+        "ref expected string, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 145,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "ref": ""
+      },
+      "actualErrors": [
+        "content string must contain at most 2000 character(s)",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "content string must contain at most 2000 character(s)",
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 149,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "ref": ""
+      },
+      "actualErrors": [
+        "content required",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "content required",
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 153,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FAB4XH9G7YNPEQ0XQSAQF",
+        "messageId": "01JY3FACCTYYPD8GY6AXY6SPV5",
+        "content": null,
+        "ref": ""
+      },
+      "actualErrors": [
+        "content expected string, received null",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "content expected string, received null",
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    }
+  ],
+  "passedTests": 127,
+  "totalTests": 155,
+  "failedStep": []
+}

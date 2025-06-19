@@ -1,0 +1,39 @@
+=== Request Test Report for delete-friend-request ===
+• Host: N/A
+• Endpoint: /Friend/DeleteFriendRequest
+• Date: 19/06/2025, 14:38:11
+
+=== Execution Steps ===
+  1. [✅ PASSED] addFriend
+
+=== Test Summary ===
+✅ Passed: 5
+❌ Failed: 1
+⚠️ Warnings: 0
+📊 Total: 6
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 1
+ 🟢 201: 0
+ 🟠 400: 0
+ 🟠 403: 4
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Warnings ===
+✅ No warnings
+
+=== Unique Errors ===
+ 🟣 1. Could not resolve permission type (Occurred: 1 time)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #1
+     ├─ Status: 403
+     ├─ Body: {"userId":123}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+=== End of Report ===

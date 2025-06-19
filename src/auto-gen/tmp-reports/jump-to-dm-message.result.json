@@ -1,0 +1,1289 @@
+{
+  "path": "/MessageView/JumpToDMMessage",
+  "className": "jump-to-dm-message",
+  "allSteps": [
+    {
+      "type": null,
+      "status": true,
+      "stepName": "sendDmMessage",
+      "caseTitle": "Case 0",
+      "phase": "beforeAll"
+    }
+  ],
+  "failedTests": [
+    {
+      "testcase": 1,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": 10
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 2,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": 123,
+        "limit": 10
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 3,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "limit": 10
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 4,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "",
+        "limit": 10
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 5,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": null,
+        "limit": 10
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 6,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "invalid_ULID",
+        "limit": 10
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 7,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": "invalid_number"
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 8,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": 0
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 9,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": 501
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 10,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM"
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 11,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": ""
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 12,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": null
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 14,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": 123,
+        "limit": 10
+      },
+      "missing": [
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "messageId expected string, received number"
+      ]
+    },
+    {
+      "testcase": 16,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": "",
+        "limit": 10
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "messageId invalid ulid",
+        "messageId should not be empty"
+      ]
+    },
+    {
+      "testcase": 17,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": null,
+        "limit": 10
+      },
+      "missing": [
+        "messageId required"
+      ],
+      "extra": [
+        "messageId expected string, received null"
+      ]
+    },
+    {
+      "testcase": 19,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": "invalid_number"
+      },
+      "missing": [
+        "limit expected number, received nan"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints"
+      ]
+    },
+    {
+      "testcase": 20,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": 0
+      },
+      "missing": [
+        "limit range from 1 to 500"
+      ],
+      "extra": [
+        "limit must be at least 1"
+      ]
+    },
+    {
+      "testcase": 21,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": 501
+      },
+      "missing": [
+        "limit range from 1 to 500"
+      ],
+      "extra": [
+        "limit must be at most 500"
+      ]
+    },
+    {
+      "testcase": 23,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": ""
+      },
+      "missing": [
+        "limit range from 1 to 500"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "limit should not be empty"
+      ]
+    },
+    {
+      "testcase": 73,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": 123,
+        "limit": "invalid_number"
+      },
+      "missing": [
+        "limit expected number, received nan",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "messageId expected string, received number"
+      ]
+    },
+    {
+      "testcase": 74,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": 123,
+        "limit": 0
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "limit must be at least 1",
+        "messageId expected string, received number"
+      ]
+    },
+    {
+      "testcase": 75,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": 123,
+        "limit": 501
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "limit must be at most 500",
+        "messageId expected string, received number"
+      ]
+    },
+    {
+      "testcase": 76,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": 123
+      },
+      "missing": [
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "limit required",
+        "messageId expected string, received number"
+      ]
+    },
+    {
+      "testcase": 77,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": 123,
+        "limit": ""
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "limit should not be empty",
+        "messageId expected string, received number"
+      ]
+    },
+    {
+      "testcase": 78,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": 123,
+        "limit": null
+      },
+      "missing": [
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "messageId expected string, received number"
+      ]
+    },
+    {
+      "testcase": 79,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "limit": "invalid_number"
+      },
+      "missing": [
+        "limit expected number, received nan",
+        "messageId required"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "messageId required"
+      ]
+    },
+    {
+      "testcase": 80,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "limit": 0
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "messageId required"
+      ],
+      "extra": [
+        "limit must be at least 1",
+        "messageId required"
+      ]
+    },
+    {
+      "testcase": 81,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "limit": 501
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "messageId required"
+      ],
+      "extra": [
+        "limit must be at most 500",
+        "messageId required"
+      ]
+    },
+    {
+      "testcase": 83,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "limit": ""
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "messageId required"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "limit should not be empty",
+        "messageId required"
+      ]
+    },
+    {
+      "testcase": 85,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": "",
+        "limit": "invalid_number"
+      },
+      "missing": [
+        "limit expected number, received nan",
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "messageId invalid ulid",
+        "messageId should not be empty"
+      ]
+    },
+    {
+      "testcase": 86,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": "",
+        "limit": 0
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "limit must be at least 1",
+        "messageId invalid ulid",
+        "messageId should not be empty"
+      ]
+    },
+    {
+      "testcase": 87,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": "",
+        "limit": 501
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "limit must be at most 500",
+        "messageId invalid ulid",
+        "messageId should not be empty"
+      ]
+    },
+    {
+      "testcase": 88,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": ""
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "limit required",
+        "messageId invalid ulid",
+        "messageId should not be empty"
+      ]
+    },
+    {
+      "testcase": 89,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": "",
+        "limit": ""
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "limit should not be empty",
+        "messageId invalid ulid",
+        "messageId should not be empty"
+      ]
+    },
+    {
+      "testcase": 90,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": "",
+        "limit": null
+      },
+      "missing": [
+        "messageId invalid ulid",
+        "messageId string must contain at least 1 character(s)"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "messageId invalid ulid",
+        "messageId should not be empty"
+      ]
+    },
+    {
+      "testcase": 91,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": null,
+        "limit": "invalid_number"
+      },
+      "missing": [
+        "limit expected number, received nan",
+        "messageId required"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "messageId expected string, received null"
+      ]
+    },
+    {
+      "testcase": 92,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": null,
+        "limit": 0
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "messageId required"
+      ],
+      "extra": [
+        "limit must be at least 1",
+        "messageId expected string, received null"
+      ]
+    },
+    {
+      "testcase": 93,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": null,
+        "limit": 501
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "messageId required"
+      ],
+      "extra": [
+        "limit must be at most 500",
+        "messageId expected string, received null"
+      ]
+    },
+    {
+      "testcase": 94,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": null
+      },
+      "missing": [
+        "messageId required"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "limit required",
+        "messageId expected string, received null"
+      ]
+    },
+    {
+      "testcase": 95,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": null,
+        "limit": ""
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "messageId required"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "limit should not be empty",
+        "messageId expected string, received null"
+      ]
+    },
+    {
+      "testcase": 96,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": null,
+        "limit": null
+      },
+      "missing": [
+        "messageId required"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "messageId expected string, received null"
+      ]
+    },
+    {
+      "testcase": 97,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": "invalid_ULID",
+        "limit": "invalid_number"
+      },
+      "missing": [
+        "limit expected number, received nan",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "messageId invalid ulid"
+      ]
+    },
+    {
+      "testcase": 98,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": "invalid_ULID",
+        "limit": 0
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "limit must be at least 1",
+        "messageId invalid ulid"
+      ]
+    },
+    {
+      "testcase": 99,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": "invalid_ULID",
+        "limit": 501
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "limit must be at most 500",
+        "messageId invalid ulid"
+      ]
+    },
+    {
+      "testcase": 101,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": "invalid_ULID",
+        "limit": ""
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "messageId invalid ulid"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "limit should not be empty",
+        "messageId invalid ulid"
+      ]
+    }
+  ],
+  "codedTest": [
+    {
+      "testcase": 13,
+      "code": 200,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 15,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 18,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": "invalid_ULID",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 25,
+      "code": 403,
+      "body": {
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 26,
+      "code": 403,
+      "body": {
+        "messageId": 123,
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 27,
+      "code": 403,
+      "body": {
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 28,
+      "code": 403,
+      "body": {
+        "messageId": "",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 29,
+      "code": 403,
+      "body": {
+        "messageId": null,
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 30,
+      "code": 403,
+      "body": {
+        "messageId": "invalid_ULID",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 31,
+      "code": 403,
+      "body": {
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": "invalid_number"
+      }
+    },
+    {
+      "testcase": 32,
+      "code": 403,
+      "body": {
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": 0
+      }
+    },
+    {
+      "testcase": 33,
+      "code": 403,
+      "body": {
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": 501
+      }
+    },
+    {
+      "testcase": 34,
+      "code": 403,
+      "body": {
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM"
+      }
+    },
+    {
+      "testcase": 35,
+      "code": 403,
+      "body": {
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": ""
+      }
+    },
+    {
+      "testcase": 36,
+      "code": 403,
+      "body": {
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": null
+      }
+    },
+    {
+      "testcase": 37,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 38,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": 123,
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 39,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 40,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 41,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": null,
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 42,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "invalid_ULID",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 43,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": "invalid_number"
+      }
+    },
+    {
+      "testcase": 44,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": 0
+      }
+    },
+    {
+      "testcase": 45,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": 501
+      }
+    },
+    {
+      "testcase": 46,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM"
+      }
+    },
+    {
+      "testcase": 47,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": ""
+      }
+    },
+    {
+      "testcase": 48,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": null
+      }
+    },
+    {
+      "testcase": 49,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 50,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": 123,
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 51,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 52,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 53,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": null,
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 54,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "invalid_ULID",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 55,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": "invalid_number"
+      }
+    },
+    {
+      "testcase": 56,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": 0
+      }
+    },
+    {
+      "testcase": 57,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": 501
+      }
+    },
+    {
+      "testcase": 58,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM"
+      }
+    },
+    {
+      "testcase": 59,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": ""
+      }
+    },
+    {
+      "testcase": 60,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": null
+      }
+    },
+    {
+      "testcase": 61,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 62,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": 123,
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 63,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 64,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 65,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": null,
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 66,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "invalid_ULID",
+        "limit": 10
+      }
+    },
+    {
+      "testcase": 67,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": "invalid_number"
+      }
+    },
+    {
+      "testcase": 68,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": 0
+      }
+    },
+    {
+      "testcase": 69,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": 501
+      }
+    },
+    {
+      "testcase": 70,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM"
+      }
+    },
+    {
+      "testcase": 71,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": ""
+      }
+    },
+    {
+      "testcase": 72,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": null
+      }
+    }
+  ],
+  "warnings": [
+    {
+      "testcase": 22,
+      "code": 200,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM"
+      },
+      "actualErrors": [],
+      "expectedErrors": [
+        "limit must be a number conforming to the specified constraints",
+        "limit required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 24,
+      "code": 200,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": "01JY3GB8S4RSY5D9G69HNNX9NM",
+        "limit": null
+      },
+      "actualErrors": [],
+      "expectedErrors": [
+        "limit must be a number conforming to the specified constraints"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 82,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S"
+      },
+      "actualErrors": [
+        "messageId required"
+      ],
+      "expectedErrors": [
+        "limit must be a number conforming to the specified constraints",
+        "limit required",
+        "messageId required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 84,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "limit": null
+      },
+      "actualErrors": [
+        "messageId required"
+      ],
+      "expectedErrors": [
+        "limit must be a number conforming to the specified constraints",
+        "messageId required"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 100,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": "invalid_ULID"
+      },
+      "actualErrors": [
+        "messageId invalid ulid"
+      ],
+      "expectedErrors": [
+        "limit must be a number conforming to the specified constraints",
+        "limit required",
+        "messageId invalid ulid"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 102,
+      "code": 400,
+      "body": {
+        "userId": "01JY3GB7M9WPPTSDDHBKGXR63S",
+        "messageId": "invalid_ULID",
+        "limit": null
+      },
+      "actualErrors": [
+        "messageId invalid ulid"
+      ],
+      "expectedErrors": [
+        "limit must be a number conforming to the specified constraints",
+        "messageId invalid ulid"
+      ],
+      "message": "Actual errors includes of expected errors"
+    }
+  ],
+  "passedTests": 51,
+  "totalTests": 102,
+  "failedStep": []
+}

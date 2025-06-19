@@ -1,0 +1,254 @@
+{
+  "path": "/Message/SendPokeMessage",
+  "className": "send-poke-message",
+  "allSteps": [],
+  "failedTests": [
+    {
+      "testcase": 6,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FS3J1JFAHEWEMN6XTYB6P",
+        "ref": "ref"
+      },
+      "missing": [
+        "Can not poke message"
+      ],
+      "extra": []
+    }
+  ],
+  "codedTest": [
+    {
+      "testcase": 1,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 2,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "ref": 123
+      }
+    },
+    {
+      "testcase": 3,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "ref": ""
+      }
+    },
+    {
+      "testcase": 4,
+      "code": 403,
+      "body": {
+        "userId": 123
+      }
+    },
+    {
+      "testcase": 5,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "ref": null
+      }
+    },
+    {
+      "testcase": 7,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FS3J1JFAHEWEMN6XTYB6P",
+        "ref": 123
+      }
+    },
+    {
+      "testcase": 9,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FS3J1JFAHEWEMN6XTYB6P"
+      }
+    },
+    {
+      "testcase": 10,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FS3J1JFAHEWEMN6XTYB6P",
+        "ref": null
+      }
+    },
+    {
+      "testcase": 11,
+      "code": 403,
+      "body": {
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 12,
+      "code": 403,
+      "body": {
+        "ref": 123
+      }
+    },
+    {
+      "testcase": 13,
+      "code": 403,
+      "body": {
+        "ref": ""
+      }
+    },
+    {
+      "testcase": 14,
+      "code": 403,
+      "body": {}
+    },
+    {
+      "testcase": 15,
+      "code": 403,
+      "body": {
+        "ref": null
+      }
+    },
+    {
+      "testcase": 16,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 17,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "ref": 123
+      }
+    },
+    {
+      "testcase": 18,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "ref": ""
+      }
+    },
+    {
+      "testcase": 19,
+      "code": 403,
+      "body": {
+        "userId": ""
+      }
+    },
+    {
+      "testcase": 20,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "ref": null
+      }
+    },
+    {
+      "testcase": 21,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 22,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "ref": 123
+      }
+    },
+    {
+      "testcase": 23,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "ref": ""
+      }
+    },
+    {
+      "testcase": 24,
+      "code": 403,
+      "body": {
+        "userId": null
+      }
+    },
+    {
+      "testcase": 25,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "ref": null
+      }
+    },
+    {
+      "testcase": 26,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "ref": "ref"
+      }
+    },
+    {
+      "testcase": 27,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "ref": 123
+      }
+    },
+    {
+      "testcase": 28,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "ref": ""
+      }
+    },
+    {
+      "testcase": 29,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value"
+      }
+    },
+    {
+      "testcase": 30,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "ref": null
+      }
+    }
+  ],
+  "warnings": [
+    {
+      "testcase": 8,
+      "code": 400,
+      "body": {
+        "userId": "01JY3FS3J1JFAHEWEMN6XTYB6P",
+        "ref": ""
+      },
+      "actualErrors": [
+        "ref string must contain at least 1 character(s)"
+      ],
+      "expectedErrors": [
+        "ref should not be empty",
+        "ref string must contain at least 1 character(s)"
+      ],
+      "message": "Actual errors includes of expected errors"
+    }
+  ],
+  "passedTests": 28,
+  "totalTests": 30,
+  "failedStep": []
+}

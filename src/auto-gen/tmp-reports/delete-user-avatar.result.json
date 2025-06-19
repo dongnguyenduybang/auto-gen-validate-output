@@ -1,0 +1,75 @@
+{
+  "path": "/UserProfile/DeleteUserAvatar",
+  "className": "delete-user-avatar",
+  "allSteps": [],
+  "failedTests": [
+    {
+      "testcase": 2,
+      "code": 400,
+      "body": {
+        "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+      },
+      "missing": [
+        "Not found avatar"
+      ],
+      "extra": []
+    },
+    {
+      "testcase": 3,
+      "code": 400,
+      "body": {},
+      "missing": [
+        "Not found avatar"
+      ],
+      "extra": [
+        "avatarPath invalid url",
+        "avatarPath required"
+      ]
+    },
+    {
+      "testcase": 4,
+      "code": 400,
+      "body": {
+        "avatarPath": ""
+      },
+      "missing": [
+        "Not found avatar"
+      ],
+      "extra": [
+        "avatarPath invalid url",
+        "avatarPath should not be empty"
+      ]
+    },
+    {
+      "testcase": 5,
+      "code": 400,
+      "body": {
+        "avatarPath": null
+      },
+      "missing": [
+        "Not found avatar"
+      ],
+      "extra": [
+        "avatarPath expected string, received null"
+      ]
+    }
+  ],
+  "codedTest": [],
+  "warnings": [
+    {
+      "testcase": 1,
+      "code": 200,
+      "body": {
+        "avatarPath": 123
+      },
+      "actualErrors": [],
+      "expectedErrors": [
+        "avatarPath expected string, received number"
+      ],
+      "message": "Actual errors includes of expected errors"
+    }
+  ],
+  "passedTests": 0,
+  "totalTests": 5,
+  "failedStep": []
+}
